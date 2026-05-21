@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "neural-gomoku"
+version = "0.1.0"
+description = "Pure neural-network Gomoku with CNN policy-value self-play."
+requires-python = ">=3.10"
+dependencies = [
+  "numpy>=2.0",
+  "torch>=2.4",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]

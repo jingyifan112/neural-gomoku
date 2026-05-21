@@ -1,0 +1,39 @@
+from __future__ import annotations
+
+from pathlib import Path
+from typing import Any
+
+import torch
+
+from .model import PolicyValueNet
+
+
+def load_compatible_checkpoint(
+    model: PolicyValueNet,
+    checkpoint: Path,
+    device: torch.device,
+    board_size: int,
+    channels: int,
+    blocks: int,
+) -> bool:
+    if not checkpoint.exists():
+        return False
+
+    payload: dict[str, Any] = torch.load(checkpoint, map_location=device)
+    expected = {
+        "board_size": board_size,
+        "channels": channels,
+        "blocks": blocks,
+    }
+    actual = {key: payload.get(key) for key in expected}
+    if actual != expected:
+        print(
+            f"warning: skipped incompatible checkpoint {checkpoint} "
+            f"(expected {expected}, found {actual})",
+            flush=True,
+        )
+        return False
+
+    model.load_state_dict(payload["model"])
+    print(f"loaded {checkpoint}", flush=True)
+    return True
