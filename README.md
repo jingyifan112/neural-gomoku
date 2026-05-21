@@ -1,6 +1,6 @@
 # Neural Gomoku
 
-Pure neural-network Gomoku baseline inspired by the 400-line tic-tac-toe RL article, but upgraded for a larger board:
+Pure neural-network Gomoku baseline inspired by Arthur Chiao's tic-tac-toe reinforcement learning examplet, but upgraded for a larger board:
 
 - CNN policy-value network instead of a single-layer MLP
 - neural MCTS self-play instead of training only against random moves
