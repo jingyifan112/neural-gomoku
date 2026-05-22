@@ -54,6 +54,41 @@ python -m gomoku_agent.play --board-size 9 --checkpoint checkpoints/9x9.pt
 MCTS is expensive on CPU. Increase `--games`, `--iterations`, and `--mcts-sims`
 gradually only after the quick command works.
 
+## Colab GPU
+
+For faster 9x9 experiments, enable a GPU runtime in Google Colab, clone the
+repo, and keep checkpoints in Google Drive so runtime disconnects do not erase
+the trained model:
+
+```python
+from google.colab import drive
+drive.mount("/content/drive")
+```
+
+```bash
+git clone https://github.com/jingyifan112/neural-gomoku.git
+cd /content/neural-gomoku
+pip install -r requirements.txt
+mkdir -p /content/drive/MyDrive/gomoku_checkpoints
+```
+
+Example 9x9 Colab training run:
+
+```bash
+PYTHONPATH=src python -m gomoku_agent.train \
+  --iterations 3 \
+  --games 20 \
+  --epochs 1 \
+  --board-size 9 \
+  --win-length 5 \
+  --mcts-sims 16 \
+  --allow-immediate-loss \
+  --checkpoint /content/drive/MyDrive/gomoku_checkpoints/9x9.pt
+```
+
+`--allow-immediate-loss` disables the expensive terminal safety checks during
+self-play training. Human play still uses the safety checks by default.
+
 ## Play
 
 ```bash
