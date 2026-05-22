@@ -1,6 +1,6 @@
 # Neural Gomoku
 
-Pure neural-network Gomoku baseline inspired by Arthur Chiao's tic-tac-toe reinforcement learning examplet, but upgraded for a larger board:
+Pure neural-network Gomoku baseline inspired by Arthur Chiao's tic-tac-toe reinforcement learning example, but upgraded for a larger board:
 
 - CNN policy-value network instead of a single-layer MLP
 - neural MCTS self-play instead of training only against random moves
@@ -9,7 +9,7 @@ Pure neural-network Gomoku baseline inspired by Arthur Chiao's tic-tac-toe reinf
 
 The first goal is not to beat strong engines immediately. It is to create a clean research repo where model capacity, self-play quality, and search can be improved without adding rule-based tactics.
 
-![Human test board](screenshots/human-test-board.png)
+![Colab GPU human test board](screenshots/colab-gpu-human-test.png)
 
 ## Setup
 
