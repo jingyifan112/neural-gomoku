@@ -10,8 +10,8 @@
 ## Commands
 
 ```bash
-PYTHONPATH=src python -m gomoku_ai.train --iterations 2 --games 10 --epochs 1 --board-size 9 --win-length 5 --mcts-sims 8 --checkpoint checkpoints/9x9.pt
-PYTHONPATH=src python -m gomoku_ai.play --checkpoint checkpoints/9x9.pt --board-size 9 --win-length 5 --mcts-sims 64
+PYTHONPATH=src python -m gomoku_agent.train --iterations 2 --games 10 --epochs 1 --board-size 9 --win-length 5 --mcts-sims 8 --checkpoint checkpoints/9x9.pt
+PYTHONPATH=src python -m gomoku_agent.play --checkpoint checkpoints/9x9.pt --board-size 9 --win-length 5 --mcts-sims 64
 ```
 
 ## Notes

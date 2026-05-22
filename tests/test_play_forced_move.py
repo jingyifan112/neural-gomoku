@@ -1,5 +1,5 @@
-from gomoku_ai.board import Board
-from gomoku_ai.search_safety import forced_terminal_policy
+from gomoku_agent.board import Board
+from gomoku_agent.search_safety import forced_terminal_policy
 
 
 def test_play_entry_forced_policy_blocks_open_end_after_model_side_move():

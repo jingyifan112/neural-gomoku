@@ -34,21 +34,21 @@ python -m pytest
 Start tiny to verify the loop:
 
 ```bash
-python -m gomoku_ai.train --iterations 1 --games 5 --epochs 1 --board-size 9 --win-length 5 --mcts-sims 8
+python -m gomoku_agent.train --iterations 1 --games 5 --epochs 1 --board-size 9 --win-length 5 --mcts-sims 8
 ```
 
 For normal Gomoku:
 
 ```bash
-python -m gomoku_ai.train --iterations 3 --games 30 --epochs 2 --board-size 15 --win-length 5 --mcts-sims 16
+python -m gomoku_agent.train --iterations 3 --games 30 --epochs 2 --board-size 15 --win-length 5 --mcts-sims 16
 ```
 
 Checkpoints are written to `checkpoints/latest.pt`. A checkpoint is tied to
 its board size, so use separate files when switching between 9x9 and 15x15:
 
 ```bash
-python -m gomoku_ai.train --board-size 9 --checkpoint checkpoints/9x9.pt
-python -m gomoku_ai.play --board-size 9 --checkpoint checkpoints/9x9.pt
+python -m gomoku_agent.train --board-size 9 --checkpoint checkpoints/9x9.pt
+python -m gomoku_agent.play --board-size 9 --checkpoint checkpoints/9x9.pt
 ```
 
 MCTS is expensive on CPU. Increase `--games`, `--iterations`, and `--mcts-sims`
@@ -57,7 +57,7 @@ gradually only after the quick command works.
 ## Play
 
 ```bash
-python -m gomoku_ai.play --checkpoint checkpoints/latest.pt --board-size 15 --win-length 5 --mcts-sims 128
+python -m gomoku_agent.play --checkpoint checkpoints/latest.pt --board-size 15 --win-length 5 --mcts-sims 128
 ```
 
 Enter moves as `row col`, using zero-based coordinates.
@@ -77,3 +77,8 @@ shape knowledge. Pass `--allow-immediate-loss` to disable that filter.
 3. Add data augmentation with board symmetries.
 4. Run model-vs-model evaluation between checkpoints.
 5. Tune residual blocks, channels, temperature, and replay buffer size.
+
+## Experiment Logs
+
+- [2026-05-21 human test](run_logs/2026-05-21-human-test.md)
+- [2026-05-22 Colab GPU run](run_logs/2026-05-22-colab-gpu.md)

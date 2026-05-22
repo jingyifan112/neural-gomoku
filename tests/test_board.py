@@ -1,6 +1,6 @@
 import numpy as np
 
-from gomoku_ai.board import BLACK, WHITE, Board
+from gomoku_agent.board import BLACK, WHITE, Board
 
 
 def test_horizontal_win():

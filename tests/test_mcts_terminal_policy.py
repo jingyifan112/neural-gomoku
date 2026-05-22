@@ -1,7 +1,7 @@
 import numpy as np
 
-from gomoku_ai.board import Board
-from gomoku_ai.search_safety import forced_terminal_policy
+from gomoku_agent.board import Board
+from gomoku_agent.search_safety import forced_terminal_policy
 
 
 def test_forced_terminal_policy_blocks_opponent_win():

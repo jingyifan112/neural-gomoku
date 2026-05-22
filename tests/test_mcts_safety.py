@@ -1,7 +1,7 @@
 import numpy as np
 
-from gomoku_ai.board import BLACK, Board
-from gomoku_ai.search_safety import filter_immediate_losses, filter_unavoidable_terminal_replies
+from gomoku_agent.board import BLACK, Board
+from gomoku_agent.search_safety import filter_immediate_losses, filter_unavoidable_terminal_replies
 
 
 def test_immediate_winning_moves():
