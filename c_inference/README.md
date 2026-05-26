@@ -96,18 +96,38 @@ Python top legal move.
 
 ## C Command-Line Play
 
-Build and run direct CNN CPU play:
+C play has two modes:
+
+- direct CNN policy only
+- CNN policy plus terminal safety
+
+Terminal safety is enabled by default. It checks only terminal win/loss
+conditions and shallow lookahead:
+
+- take an immediate winning move
+- block an opponent immediate winning move
+- avoid moves that allow an opponent immediate win
+- avoid moves that allow the opponent to create multiple immediate winning
+  moves next turn
+
+It is not a full Gomoku strategy engine and does not implement neural MCTS.
+
+Build and run C CPU play:
 
 ```bash
 make play_c
 ./play_c weights/9x9_weights.bin
 ```
 
-The C player masks illegal moves and chooses the highest-policy legal move.
-This is direct policy/value inference only; it does not run neural MCTS.
+Disable terminal safety to measure direct CNN policy play:
 
-Because this mode is direct CNN inference only, weak tactical play is expected.
-It does not include the Python neural MCTS search or terminal-safety layer yet.
+```bash
+./play_c weights/9x9_weights.bin --no-safety
+```
+
+The C player masks illegal moves and uses CNN policy logits as the ranking
+signal. With safety enabled, terminal-safety filters adjust the candidate move
+selection before the highest-policy move is chosen.
 
 ## Tactical Benchmark
 
@@ -123,13 +143,17 @@ or explicitly:
 ./benchmark_c weights/9x9_weights.bin
 ```
 
-The benchmark creates fixed 9x9 tactical positions and measures whether the
-direct CNN top legal move matches the expected tactical move. Current cases:
+The benchmark creates fixed 9x9 tactical positions and compares:
+
+- direct CNN policy top legal move
+- CNN policy plus terminal safety
+
+Current cases:
 
 - opponent has four in a row with one empty endpoint
 - opponent has open three
 - model has four in a row and can win
 - model has a broken-four gap to fill
 
-This benchmark is for measurement only. It does not add rule-based move
-selection to C play.
+This benchmark is for measurement only. It does not add full rule-based shape
+play or neural MCTS to C.
