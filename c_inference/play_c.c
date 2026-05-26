@@ -86,7 +86,7 @@ int main(int argc, char **argv) {
         board_apply_move(&board, action);
         if (board_has_win_from(&board, action, player)) {
             render(&board);
-            printf("%s wins\n", player == human_player ? "you" : "model");
+            printf("%s\n", player == human_player ? "you win" : "model wins");
             break;
         }
         if (board.move_count == GOMOKU_BOARD_CELLS) {
