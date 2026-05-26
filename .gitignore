@@ -5,3 +5,6 @@ __pycache__/
 checkpoints/*.pt
 data/*.npz
 *.egg-info/
+c_inference/*.o
+c_inference/test_infer
+c_inference/play_c
