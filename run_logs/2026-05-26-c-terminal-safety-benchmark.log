@@ -1,0 +1,62 @@
+case opponent_four_one_endpoint   direct=FAIL safety=PASS
+  note: Opponent O has OOOO with one playable endpoint; model X should block.
+  direct selected: (8,6) logit=1.154999 prob=0.042345 value=0.354984
+  safety selected: (4,5) logit=0.468740 prob=0.021319
+  expected: (4,5)
+    0 1 2 3 4 5 6 7 8
+ 0  . . . . . . . . .
+ 1  . . . . . . . . .
+ 2  . . . . . . . . .
+ 3  . . . . . . . . .
+ 4  X O O O O . . . .
+ 5  . . . . . . . . .
+ 6  . . . . . . . . .
+ 7  . . . . . . . . .
+ 8  . . . . . . . . .
+case opponent_open_three          direct=FAIL safety=PASS
+  note: Opponent O has .OOO.; either endpoint is an expected direct-policy block candidate.
+  direct selected: (8,6) logit=1.245989 prob=0.047981 value=-0.052004
+  safety selected: (4,5) logit=0.487738 prob=0.022478
+  expected: (4,1) or (4,5)
+    0 1 2 3 4 5 6 7 8
+ 0  . . . . . . . . .
+ 1  . . . . . . . . .
+ 2  . . X . . . . . .
+ 3  . . . . . . . . .
+ 4  . . O O O . . . .
+ 5  . . . . . . . . .
+ 6  . . . . . . X . .
+ 7  . . . . . . . . .
+ 8  . . . . . . . . .
+case model_four_can_win           direct=FAIL safety=PASS
+  note: Model X has XXXX.; expected direct winning move.
+  direct selected: (8,6) logit=0.918573 prob=0.035926 value=-0.348236
+  safety selected: (3,4) logit=0.064384 prob=0.015291
+  expected: (3,4)
+    0 1 2 3 4 5 6 7 8
+ 0  O . . . . . . . .
+ 1  . O . . . . . . .
+ 2  . . . . . . . . .
+ 3  X X X X . . . . .
+ 4  . . . . . . . . .
+ 5  . . . . . . . . .
+ 6  . . . . . . . . .
+ 7  . . . . . . . . .
+ 8  . . . . . . . . .
+case broken_four_pattern          direct=FAIL safety=PASS
+  note: Model X has XX.XX; expected fill-gap winning move.
+  direct selected: (6,6) logit=0.571433 prob=0.026153 value=0.541370
+  safety selected: (5,3) logit=0.044571 prob=0.015442
+  expected: (5,3)
+    0 1 2 3 4 5 6 7 8
+ 0  . . . . . . . . O
+ 1  . . . . . . . . O
+ 2  . . . . . . . . .
+ 3  . . . . . . . . .
+ 4  . . . . . . . . .
+ 5  . X X . X X . . .
+ 6  . . . . . . . . .
+ 7  . . . . . . . . .
+ 8  . . . . . . . . .
+direct_policy_accuracy 0/4 0.00%
+policy_plus_safety_accuracy 4/4 100.00%

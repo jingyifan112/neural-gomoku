@@ -1,0 +1,1 @@
+rm -f *.o test_infer benchmark_c play_c
