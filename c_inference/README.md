@@ -105,3 +105,31 @@ make play_c
 
 The C player masks illegal moves and chooses the highest-policy legal move.
 This is direct policy/value inference only; it does not run neural MCTS.
+
+Because this mode is direct CNN inference only, weak tactical play is expected.
+It does not include the Python neural MCTS search or terminal-safety layer yet.
+
+## Tactical Benchmark
+
+Build and run the direct-policy tactical benchmark:
+
+```bash
+make benchmark
+```
+
+or explicitly:
+
+```bash
+./benchmark_c weights/9x9_weights.bin
+```
+
+The benchmark creates fixed 9x9 tactical positions and measures whether the
+direct CNN top legal move matches the expected tactical move. Current cases:
+
+- opponent has four in a row with one empty endpoint
+- opponent has open three
+- model has four in a row and can win
+- model has a broken-four gap to fill
+
+This benchmark is for measurement only. It does not add rule-based move
+selection to C play.
