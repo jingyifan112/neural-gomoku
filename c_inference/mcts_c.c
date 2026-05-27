@@ -70,8 +70,15 @@ static void make_child_board(const CBoard *parent, int action, CBoard *child_boa
         *terminal = 1;
         *terminal_value = 0.0f;
     } else {
-        *terminal = 0;
-        *terminal_value = 0.0f;
+        int reply_wins[GOMOKU_BOARD_CELLS];
+        if (board_immediate_winning_moves(child_board, child_board->current_player, reply_wins) > 0) {
+            /* Values are from the node's player-to-move perspective; parents negate on backup. */
+            *terminal = 1;
+            *terminal_value = 1.0f;
+        } else {
+            *terminal = 0;
+            *terminal_value = 0.0f;
+        }
     }
 }
 
@@ -104,6 +111,10 @@ static float expand_node(MCTSNode *node, const CnnWeights *weights) {
         }
         child->terminal = terminal;
         child->terminal_value = terminal_value;
+        if (terminal) {
+            child->visit_count = 1;
+            child->value_sum = terminal_value;
+        }
         node->children[node->child_count++] = child;
     }
 
