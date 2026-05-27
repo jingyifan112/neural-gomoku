@@ -10,8 +10,21 @@ typedef struct {
     int use_safety;
 } MCTSConfigC;
 
+typedef struct {
+    int move;
+    float prior;
+    int visits;
+    float q_value;
+} MCTSRootChildStatsC;
+
 typedef struct MCTSNode MCTSNode;
 
 int mcts_select_move(const CnnWeights *weights, const CBoard *board, const MCTSConfigC *config);
+int mcts_collect_root_child_stats(
+    const CnnWeights *weights,
+    const CBoard *board,
+    const MCTSConfigC *config,
+    MCTSRootChildStatsC stats[GOMOKU_BOARD_CELLS]
+);
 
 #endif

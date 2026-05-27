@@ -229,3 +229,35 @@ int mcts_select_move(const CnnWeights *weights, const CBoard *board, const MCTSC
     node_free(root);
     return move;
 }
+
+int mcts_collect_root_child_stats(
+    const CnnWeights *weights,
+    const CBoard *board,
+    const MCTSConfigC *config,
+    MCTSRootChildStatsC stats[GOMOKU_BOARD_CELLS]
+) {
+    if (!stats) {
+        return 0;
+    }
+    memset(stats, 0, sizeof(MCTSRootChildStatsC) * GOMOKU_BOARD_CELLS);
+
+    MCTSNode *root = node_create(board, -1, 1.0f);
+    if (!root) {
+        return 0;
+    }
+    expand_node(root, weights);
+    for (int i = 0; i < config->simulations; i++) {
+        search(root, weights, config);
+    }
+
+    int count = root->child_count;
+    for (int i = 0; i < count; i++) {
+        MCTSNode *child = root->children[i];
+        stats[i].move = child->move_from_parent;
+        stats[i].prior = child->prior;
+        stats[i].visits = child->visit_count;
+        stats[i].q_value = -node_value(child);
+    }
+    node_free(root);
+    return count;
+}

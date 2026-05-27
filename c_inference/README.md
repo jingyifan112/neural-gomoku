@@ -1,7 +1,8 @@
 # C CPU Inference
 
-This directory contains first-stage direct CNN policy/value inference for the
-9x9 Gomoku model. It intentionally does not implement neural MCTS in C yet.
+This directory contains C CPU inference for the 9x9 Gomoku model. It supports
+direct CNN policy/value inference, terminal safety, and an experimental
+inference-time neural MCTS path.
 
 ## Architecture
 
@@ -96,7 +97,7 @@ Python top legal move.
 
 ## C Command-Line Play
 
-C play has two modes:
+C play has three modes:
 
 - direct CNN policy only
 - CNN policy plus terminal safety
@@ -113,21 +114,21 @@ conditions and shallow lookahead:
 
 It is not a full Gomoku strategy engine.
 
-MCTS is enabled by default for play. It uses the exported CNN policy/value
-network for expansion and evaluation, legal-move masking for priors, PUCT
-selection, and visit counts for final move selection.
+Safety-only direct policy is the default play mode because it is currently the
+most reliable defensive baseline with the weak checkpoint. MCTS is available
+as an opt-in mode via `--mcts-sims`.
 
-Build and run C CPU MCTS play:
+Build and run default C CPU play:
 
 ```bash
 make play_c
-./play_c weights/9x9_weights.bin --mcts-sims 64
+./play_c weights/9x9_weights.bin
 ```
 
-Run direct policy plus safety without MCTS:
+Run C neural MCTS:
 
 ```bash
-./play_c weights/9x9_weights.bin --no-mcts
+./play_c weights/9x9_weights.bin --mcts-sims 64
 ```
 
 Disable terminal safety:
@@ -164,6 +165,7 @@ The benchmark creates fixed 9x9 tactical positions and compares:
 
 - direct CNN policy top legal move
 - CNN policy plus terminal safety
+- CNN-guided MCTS without terminal safety
 - CNN-guided MCTS plus terminal safety
 
 Current cases:
@@ -172,6 +174,7 @@ Current cases:
 - opponent has open three
 - model has four in a row and can win
 - model has a broken-four gap to fill
+- regression: MCTS plus safety must block an opponent four-in-a-row threat
 
 This benchmark is for measurement only. It does not add full rule-based shape
-play or neural MCTS to C.
+play or hand-authored open-three/double-three strategy.

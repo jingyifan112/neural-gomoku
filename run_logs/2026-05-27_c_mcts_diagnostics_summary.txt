@@ -1,0 +1,339 @@
+===== date =====
+Wed May 27 16:18:04 CST 2026
+===== git commit before diagnostics commit =====
+eb6c3ce
+===== test_infer =====
+policy_logits_max_abs_diff 4.991889e-07
+policy_probs_max_abs_diff 1.86264515e-08
+value_abs_diff 3.27825546e-07
+top_legal_move C=60 Python=60
+===== benchmark_c default =====
+case opponent_four_one_endpoint   direct=FAIL safety=PASS mcts_raw=FAIL mcts_safety=PASS
+  note: Opponent O has OOOO with one playable endpoint; model X should block.
+  direct selected: (8,6) logit=1.154999 prob=0.042345 value=0.354984
+  safety selected: (4,5) logit=0.468740 prob=0.021319
+  mcts raw selected: (2,6)
+  mcts+safety selected: (4,5)
+  expected: (4,5)
+    0 1 2 3 4 5 6 7 8
+ 0  . . . . . . . . .
+ 1  . . . . . . . . .
+ 2  . . . . . . . . .
+ 3  . . . . . . . . .
+ 4  X O O O O . . . .
+ 5  . . . . . . . . .
+ 6  . . . . . . . . .
+ 7  . . . . . . . . .
+ 8  . . . . . . . . .
+case opponent_open_three          direct=FAIL safety=PASS mcts_raw=FAIL mcts_safety=PASS
+  note: Opponent O has .OOO.; either endpoint is an expected direct-policy block candidate.
+  direct selected: (8,6) logit=1.245989 prob=0.047981 value=-0.052004
+  safety selected: (4,5) logit=0.487738 prob=0.022478
+  mcts raw selected: (2,6)
+  mcts+safety selected: (4,5)
+  expected: (4,1) or (4,5)
+    0 1 2 3 4 5 6 7 8
+ 0  . . . . . . . . .
+ 1  . . . . . . . . .
+ 2  . . X . . . . . .
+ 3  . . . . . . . . .
+ 4  . . O O O . . . .
+ 5  . . . . . . . . .
+ 6  . . . . . . X . .
+ 7  . . . . . . . . .
+ 8  . . . . . . . . .
+case model_four_can_win           direct=FAIL safety=PASS mcts_raw=FAIL mcts_safety=PASS
+  note: Model X has XXXX.; expected direct winning move.
+  direct selected: (8,6) logit=0.918573 prob=0.035926 value=-0.348236
+  safety selected: (3,4) logit=0.064384 prob=0.015291
+  mcts raw selected: (2,6)
+  mcts+safety selected: (3,4)
+  expected: (3,4)
+    0 1 2 3 4 5 6 7 8
+ 0  O . . . . . . . .
+ 1  . O . . . . . . .
+ 2  . . . . . . . . .
+ 3  X X X X . . . . .
+ 4  . . . . . . . . .
+ 5  . . . . . . . . .
+ 6  . . . . . . . . .
+ 7  . . . . . . . . .
+ 8  . . . . . . . . .
+case broken_four_pattern          direct=FAIL safety=PASS mcts_raw=FAIL mcts_safety=PASS
+  note: Model X has XX.XX; expected fill-gap winning move.
+  direct selected: (6,6) logit=0.571433 prob=0.026153 value=0.541370
+  safety selected: (5,3) logit=0.044571 prob=0.015442
+  mcts raw selected: (2,4)
+  mcts+safety selected: (5,3)
+  expected: (5,3)
+    0 1 2 3 4 5 6 7 8
+ 0  . . . . . . . . O
+ 1  . . . . . . . . O
+ 2  . . . . . . . . .
+ 3  . . . . . . . . .
+ 4  . . . . . . . . .
+ 5  . X X . X X . . .
+ 6  . . . . . . . . .
+ 7  . . . . . . . . .
+ 8  . . . . . . . . .
+case mcts_safety_must_block_four  direct=FAIL safety=PASS mcts_raw=PASS mcts_safety=PASS
+  note: Regression: MCTS+safety must block opponent OOOO. before final selection.
+  direct selected: (8,6) logit=0.973948 prob=0.038079 value=0.743684
+  safety selected: (2,6) logit=0.625540 prob=0.026877
+  mcts raw selected: (2,6)
+  mcts+safety selected: (2,6)
+  expected: (2,6)
+    0 1 2 3 4 5 6 7 8
+ 0  . . . . . . . . .
+ 1  . . . . . . . . .
+ 2  . X O O O O . . .
+ 3  . . . . . . . . .
+ 4  . . . . . . . . .
+ 5  . . . . . . . . .
+ 6  . . . . . . . . .
+ 7  . . . . . . . X .
+ 8  . . . . . . . . .
+direct_policy_accuracy 0/5 0.00%
+policy_plus_safety_accuracy 5/5 100.00%
+mcts_raw_accuracy 1/5 20.00%
+mcts_plus_safety_accuracy 5/5 100.00%
+===== simulations sweep =====
+
+===== mcts_sims=16 =====
+direct_policy_accuracy 0/5 0.00%
+policy_plus_safety_accuracy 5/5 100.00%
+mcts_raw_accuracy 0/5 0.00%
+mcts_plus_safety_accuracy 5/5 100.00%
+
+===== mcts_sims=32 =====
+direct_policy_accuracy 0/5 0.00%
+policy_plus_safety_accuracy 5/5 100.00%
+mcts_raw_accuracy 0/5 0.00%
+mcts_plus_safety_accuracy 5/5 100.00%
+
+===== mcts_sims=64 =====
+direct_policy_accuracy 0/5 0.00%
+policy_plus_safety_accuracy 5/5 100.00%
+mcts_raw_accuracy 1/5 20.00%
+mcts_plus_safety_accuracy 5/5 100.00%
+
+===== mcts_sims=128 =====
+direct_policy_accuracy 0/5 0.00%
+policy_plus_safety_accuracy 5/5 100.00%
+mcts_raw_accuracy 1/5 20.00%
+mcts_plus_safety_accuracy 5/5 100.00%
+
+===== mcts_sims=256 =====
+direct_policy_accuracy 0/5 0.00%
+policy_plus_safety_accuracy 5/5 100.00%
+mcts_raw_accuracy 2/5 40.00%
+mcts_plus_safety_accuracy 5/5 100.00%
+
+===== mcts_sims=512 =====
+direct_policy_accuracy 0/5 0.00%
+policy_plus_safety_accuracy 5/5 100.00%
+mcts_raw_accuracy 2/5 40.00%
+mcts_plus_safety_accuracy 5/5 100.00%
+
+===== mcts_sims=1024 =====
+direct_policy_accuracy 0/5 0.00%
+policy_plus_safety_accuracy 5/5 100.00%
+mcts_raw_accuracy 3/5 60.00%
+mcts_plus_safety_accuracy 5/5 100.00%
+
+===== cpuct sweep sims=1024 =====
+
+===== cpuct=0.5 sims=1024 =====
+mcts_raw_accuracy 2/5 40.00%
+mcts_plus_safety_accuracy 5/5 100.00%
+
+===== cpuct=1.0 sims=1024 =====
+mcts_raw_accuracy 3/5 60.00%
+mcts_plus_safety_accuracy 5/5 100.00%
+
+===== cpuct=1.5 sims=1024 =====
+mcts_raw_accuracy 3/5 60.00%
+mcts_plus_safety_accuracy 5/5 100.00%
+
+===== cpuct=2.0 sims=1024 =====
+mcts_raw_accuracy 3/5 60.00%
+mcts_plus_safety_accuracy 5/5 100.00%
+
+===== cpuct=3.0 sims=1024 =====
+mcts_raw_accuracy 3/5 60.00%
+mcts_plus_safety_accuracy 5/5 100.00%
+
+===== cpuct=5.0 sims=1024 =====
+mcts_raw_accuracy 3/5 60.00%
+mcts_plus_safety_accuracy 5/5 100.00%
+
+===== debug sims=1024 =====
+case opponent_four_one_endpoint   direct=FAIL safety=PASS mcts_raw=FAIL mcts_safety=PASS
+  note: Opponent O has OOOO with one playable endpoint; model X should block.
+  direct selected: (8,6) logit=1.154999 prob=0.042345 value=0.354984
+  safety selected: (4,5) logit=0.468740 prob=0.021319
+  mcts raw selected: (8,3)
+  mcts+safety selected: (4,5)
+  expected: (4,5)
+  debug case 0 name=opponent_four_one_endpoint
+  debug expected move: (4,5)
+  debug direct policy top move: (8,6)
+  debug raw MCTS top move: (8,3)
+  debug MCTS+safety top move: (4,5)
+  top root children by visits:
+     1. move=(8,3) prior=0.010356 visits=27 q_value=0.094645
+     2. move=(1,8) prior=0.010030 visits=26 q_value=0.084124
+     3. move=(6,0) prior=0.007224 visits=24 q_value=0.078329
+     4. move=(3,8) prior=0.014263 visits=23 q_value=0.060147
+     5. move=(0,8) prior=0.009700 visits=23 q_value=0.085743
+     6. move=(5,2) prior=0.008857 visits=22 q_value=0.071339
+     7. move=(2,2) prior=0.008469 visits=22 q_value=0.067998
+     8. move=(7,0) prior=0.021091 visits=21 q_value=0.061420
+     9. move=(5,1) prior=0.006347 visits=21 q_value=0.079901
+    10. move=(8,1) prior=0.003997 visits=21 q_value=0.117015
+    0 1 2 3 4 5 6 7 8
+ 0  . . . . . . . . .
+ 1  . . . . . . . . .
+ 2  . . . . . . . . .
+ 3  . . . . . . . . .
+ 4  X O O O O . . . .
+ 5  . . . . . . . . .
+ 6  . . . . . . . . .
+ 7  . . . . . . . . .
+ 8  . . . . . . . . .
+case opponent_open_three          direct=FAIL safety=PASS mcts_raw=FAIL mcts_safety=PASS
+  note: Opponent O has .OOO.; either endpoint is an expected direct-policy block candidate.
+  direct selected: (8,6) logit=1.245989 prob=0.047981 value=-0.052004
+  safety selected: (4,5) logit=0.487738 prob=0.022478
+  mcts raw selected: (2,6)
+  mcts+safety selected: (4,5)
+  expected: (4,1) or (4,5)
+  debug case 1 name=opponent_open_three
+  debug expected move: (4,1) or (4,5)
+  debug direct policy top move: (8,6)
+  debug raw MCTS top move: (2,6)
+  debug MCTS+safety top move: (4,5)
+  top root children by visits:
+     1. move=(2,6) prior=0.029580 visits=522 q_value=0.081914
+     2. move=(3,5) prior=0.012406 visits=183 q_value=0.081756
+     3. move=(7,7) prior=0.015608 visits=11 q_value=-0.028971
+     4. move=(6,0) prior=0.009129 visits=10 q_value=0.034359
+     5. move=(5,4) prior=0.029175 visits=9 q_value=-0.108777
+     6. move=(4,5) prior=0.022478 visits=9 q_value=-0.065176
+     7. move=(6,3) prior=0.010263 visits=9 q_value=-0.019531
+     8. move=(3,0) prior=0.007129 visits=9 q_value=0.026866
+     9. move=(7,2) prior=0.010725 visits=8 q_value=-0.048452
+    10. move=(5,2) prior=0.009063 visits=8 q_value=-0.011041
+    0 1 2 3 4 5 6 7 8
+ 0  . . . . . . . . .
+ 1  . . . . . . . . .
+ 2  . . X . . . . . .
+ 3  . . . . . . . . .
+ 4  . . O O O . . . .
+ 5  . . . . . . . . .
+ 6  . . . . . . X . .
+ 7  . . . . . . . . .
+ 8  . . . . . . . . .
+case model_four_can_win           direct=FAIL safety=PASS mcts_raw=PASS mcts_safety=PASS
+  note: Model X has XXXX.; expected direct winning move.
+  direct selected: (8,6) logit=0.918573 prob=0.035926 value=-0.348236
+  safety selected: (3,4) logit=0.064384 prob=0.015291
+  mcts raw selected: (3,4)
+  mcts+safety selected: (3,4)
+  expected: (3,4)
+  debug case 2 name=model_four_can_win
+  debug expected move: (3,4)
+  debug direct policy top move: (8,6)
+  debug raw MCTS top move: (3,4)
+  debug MCTS+safety top move: (3,4)
+  top root children by visits:
+     1. move=(3,4) prior=0.015291 visits=894 q_value=1.000000
+     2. move=(2,6) prior=0.029485 visits=95 q_value=0.250536
+     3. move=(7,0) prior=0.031331 visits=4 q_value=-0.023488
+     4. move=(4,5) prior=0.023316 visits=4 q_value=0.106570
+     5. move=(5,4) prior=0.020756 visits=3 q_value=0.134270
+     6. move=(6,3) prior=0.016502 visits=3 q_value=0.096682
+     7. move=(7,4) prior=0.016483 visits=3 q_value=0.041032
+     8. move=(1,5) prior=0.016387 visits=3 q_value=-0.025136
+     9. move=(8,6) prior=0.035926 visits=2 q_value=-0.384465
+    10. move=(8,7) prior=0.020632 visits=2 q_value=0.054140
+    0 1 2 3 4 5 6 7 8
+ 0  O . . . . . . . .
+ 1  . O . . . . . . .
+ 2  . . . . . . . . .
+ 3  X X X X . . . . .
+ 4  . . . . . . . . .
+ 5  . . . . . . . . .
+ 6  . . . . . . . . .
+ 7  . . . . . . . . .
+ 8  . . . . . . . . .
+case broken_four_pattern          direct=FAIL safety=PASS mcts_raw=PASS mcts_safety=PASS
+  note: Model X has XX.XX; expected fill-gap winning move.
+  direct selected: (6,6) logit=0.571433 prob=0.026153 value=0.541370
+  safety selected: (5,3) logit=0.044571 prob=0.015442
+  mcts raw selected: (5,3)
+  mcts+safety selected: (5,3)
+  expected: (5,3)
+  debug case 3 name=broken_four_pattern
+  debug expected move: (5,3)
+  debug direct policy top move: (6,6)
+  debug raw MCTS top move: (5,3)
+  debug MCTS+safety top move: (5,3)
+  top root children by visits:
+     1. move=(5,3) prior=0.015442 visits=581 q_value=1.000000
+     2. move=(2,4) prior=0.023168 visits=149 q_value=0.390585
+     3. move=(2,6) prior=0.021306 visits=143 q_value=0.478278
+     4. move=(7,4) prior=0.018483 visits=125 q_value=0.479305
+     5. move=(3,3) prior=0.021339 visits=7 q_value=0.284471
+     6. move=(6,6) prior=0.026153 visits=1 q_value=-0.227357
+     7. move=(7,0) prior=0.024254 visits=1 q_value=-0.191210
+     8. move=(4,4) prior=0.021987 visits=1 q_value=-0.155098
+     9. move=(1,0) prior=0.020777 visits=1 q_value=-0.415604
+    10. move=(8,6) prior=0.020636 visits=1 q_value=-0.444209
+    0 1 2 3 4 5 6 7 8
+ 0  . . . . . . . . O
+ 1  . . . . . . . . O
+ 2  . . . . . . . . .
+ 3  . . . . . . . . .
+ 4  . . . . . . . . .
+ 5  . X X . X X . . .
+ 6  . . . . . . . . .
+ 7  . . . . . . . . .
+ 8  . . . . . . . . .
+case mcts_safety_must_block_four  direct=FAIL safety=PASS mcts_raw=PASS mcts_safety=PASS
+  note: Regression: MCTS+safety must block opponent OOOO. before final selection.
+  direct selected: (8,6) logit=0.973948 prob=0.038079 value=0.743684
+  safety selected: (2,6) logit=0.625540 prob=0.026877
+  mcts raw selected: (2,6)
+  mcts+safety selected: (2,6)
+  expected: (2,6)
+  debug case 4 name=mcts_safety_must_block_four
+  debug expected move: (2,6)
+  debug direct policy top move: (8,6)
+  debug raw MCTS top move: (2,6)
+  debug MCTS+safety top move: (2,6)
+  top root children by visits:
+     1. move=(2,6) prior=0.026877 visits=669 q_value=0.477651
+     2. move=(2,7) prior=0.022492 visits=15 q_value=0.322747
+     3. move=(3,6) prior=0.011971 visits=14 q_value=0.439646
+     4. move=(7,5) prior=0.016381 visits=13 q_value=0.363116
+     5. move=(6,3) prior=0.015897 visits=13 q_value=0.328447
+     6. move=(5,6) prior=0.011518 visits=13 q_value=0.376254
+     7. move=(7,3) prior=0.012500 visits=12 q_value=0.417765
+     8. move=(5,4) prior=0.017422 visits=10 q_value=0.391649
+     9. move=(0,7) prior=0.010896 visits=10 q_value=0.389467
+    10. move=(5,2) prior=0.010045 visits=10 q_value=0.799149
+    0 1 2 3 4 5 6 7 8
+ 0  . . . . . . . . .
+ 1  . . . . . . . . .
+ 2  . X O O O O . . .
+ 3  . . . . . . . . .
+ 4  . . . . . . . . .
+ 5  . . . . . . . . .
+ 6  . . . . . . . . .
+ 7  . . . . . . . X .
+ 8  . . . . . . . . .
+direct_policy_accuracy 0/5 0.00%
+policy_plus_safety_accuracy 5/5 100.00%
+mcts_raw_accuracy 3/5 60.00%
+mcts_plus_safety_accuracy 5/5 100.00%
