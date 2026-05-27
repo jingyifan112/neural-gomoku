@@ -1,4 +1,5 @@
 #include "cnn_infer.h"
+#include "mcts_c.h"
 #include "search_safety_c.h"
 
 #include <stdio.h>
@@ -37,9 +38,15 @@ static void encode(const CBoard *board, float input[GOMOKU_INPUT_CHANNELS * GOMO
 int main(int argc, char **argv) {
     const char *weights_path = argc > 1 ? argv[1] : "weights/9x9_weights.bin";
     int use_safety = 1;
+    int use_mcts = 1;
+    int mcts_sims = 64;
     for (int i = 2; i < argc; i++) {
         if (strcmp(argv[i], "--no-safety") == 0) {
             use_safety = 0;
+        } else if (strcmp(argv[i], "--no-mcts") == 0) {
+            use_mcts = 0;
+        } else if (strcmp(argv[i], "--mcts-sims") == 0 && i + 1 < argc) {
+            mcts_sims = atoi(argv[++i]);
         }
     }
     CnnWeights weights;
@@ -50,6 +57,7 @@ int main(int argc, char **argv) {
     CBoard board;
     board_init(&board);
     int human_player = GOMOKU_BLACK;
+    printf("mode: %s safety=%s mcts_sims=%d\n", use_mcts ? "mcts" : "direct-policy", use_safety ? "on" : "off", mcts_sims);
 
     while (1) {
         render(&board);
@@ -75,11 +83,17 @@ int main(int argc, char **argv) {
             float legal_mask[GOMOKU_BOARD_CELLS];
             float logits[GOMOKU_BOARD_CELLS];
             float value = 0.0f;
-            encode(&board, input, legal_mask);
-            cnn_forward(&weights, input, logits, &value);
-            (void)legal_mask;
-            action = safety_select_move(&board, logits, use_safety);
-            printf("model plays: %d %d value=%.4f%s\n", action / GOMOKU_BOARD_SIZE, action % GOMOKU_BOARD_SIZE, value, use_safety ? " safety=on" : " safety=off");
+            if (use_mcts) {
+                MCTSConfigC config = {.simulations = mcts_sims, .c_puct = 1.5f, .use_safety = use_safety};
+                action = mcts_select_move(&weights, &board, &config);
+                printf("model plays: %d %d mode=mcts safety=%s sims=%d\n", action / GOMOKU_BOARD_SIZE, action % GOMOKU_BOARD_SIZE, use_safety ? "on" : "off", mcts_sims);
+            } else {
+                encode(&board, input, legal_mask);
+                cnn_forward(&weights, input, logits, &value);
+                (void)legal_mask;
+                action = safety_select_move(&board, logits, use_safety);
+                printf("model plays: %d %d value=%.4f mode=direct safety=%s\n", action / GOMOKU_BOARD_SIZE, action % GOMOKU_BOARD_SIZE, value, use_safety ? "on" : "off");
+            }
         }
 
         int player = board.current_player;

@@ -1,4 +1,5 @@
 #include "cnn_infer.h"
+#include "mcts_c.h"
 #include "search_safety_c.h"
 
 #include <stdio.h>
@@ -152,10 +153,13 @@ static int run_case(const CnnWeights *weights, const TacticalCase *tc) {
     cnn_masked_softmax(logits, legal_mask, probs);
     int direct_move = cnn_top_legal_move(logits, legal_mask);
     int safe_move = safety_select_move(&tc->board, logits, 1);
+    MCTSConfigC mcts_config = {.simulations = 64, .c_puct = 1.5f, .use_safety = 1};
+    int mcts_move = mcts_select_move(weights, &tc->board, &mcts_config);
     int direct_pass = is_expected(tc, direct_move);
     int safe_pass = is_expected(tc, safe_move);
+    int mcts_pass = is_expected(tc, mcts_move);
 
-    printf("case %-28s direct=%s safety=%s\n", tc->name, direct_pass ? "PASS" : "FAIL", safe_pass ? "PASS" : "FAIL");
+    printf("case %-28s direct=%s safety=%s mcts_safety=%s\n", tc->name, direct_pass ? "PASS" : "FAIL", safe_pass ? "PASS" : "FAIL", mcts_pass ? "PASS" : "FAIL");
     printf("  note: %s\n", tc->note);
     printf(
         "  direct selected: (%d,%d) logit=%.6f prob=%.6f value=%.6f\n",
@@ -172,13 +176,18 @@ static int run_case(const CnnWeights *weights, const TacticalCase *tc) {
         logits[safe_move],
         probs[safe_move]
     );
+    printf(
+        "  mcts+safety selected: (%d,%d)\n",
+        mcts_move / GOMOKU_BOARD_SIZE,
+        mcts_move % GOMOKU_BOARD_SIZE
+    );
     printf("  expected: ");
     print_expected(tc);
     printf("\n");
-    if (!direct_pass || !safe_pass) {
+    if (!direct_pass || !safe_pass || !mcts_pass) {
         render(&tc->board);
     }
-    return (direct_pass ? 1 : 0) | (safe_pass ? 2 : 0);
+    return (direct_pass ? 1 : 0) | (safe_pass ? 2 : 0) | (mcts_pass ? 4 : 0);
 }
 
 int main(int argc, char **argv) {
@@ -197,14 +206,17 @@ int main(int argc, char **argv) {
     int total = (int)(sizeof(cases) / sizeof(cases[0]));
     int direct_passed = 0;
     int safety_passed = 0;
+    int mcts_passed = 0;
     for (int i = 0; i < total; i++) {
         int result = run_case(&weights, &cases[i]);
         direct_passed += (result & 1) ? 1 : 0;
         safety_passed += (result & 2) ? 1 : 0;
+        mcts_passed += (result & 4) ? 1 : 0;
     }
 
     printf("direct_policy_accuracy %d/%d %.2f%%\n", direct_passed, total, 100.0 * (double)direct_passed / (double)total);
     printf("policy_plus_safety_accuracy %d/%d %.2f%%\n", safety_passed, total, 100.0 * (double)safety_passed / (double)total);
+    printf("mcts_plus_safety_accuracy %d/%d %.2f%%\n", mcts_passed, total, 100.0 * (double)mcts_passed / (double)total);
     cnn_free_weights(&weights);
     return 0;
 }

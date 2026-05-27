@@ -7,10 +7,10 @@ all: test_infer benchmark_c play_c
 test_infer: test_infer.o cnn_infer.o
 	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
-benchmark_c: benchmark_c.o cnn_infer.o search_safety_c.o
+benchmark_c: benchmark_c.o cnn_infer.o search_safety_c.o mcts_c.o
 	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
-play_c: play_c.o cnn_infer.o search_safety_c.o
+play_c: play_c.o cnn_infer.o search_safety_c.o mcts_c.o
 	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
 %.o: %.c cnn_infer.h

@@ -100,6 +100,7 @@ C play has two modes:
 
 - direct CNN policy only
 - CNN policy plus terminal safety
+- CNN-guided MCTS plus terminal safety
 
 Terminal safety is enabled by default. It checks only terminal win/loss
 conditions and shallow lookahead:
@@ -110,19 +111,35 @@ conditions and shallow lookahead:
 - avoid moves that allow the opponent to create multiple immediate winning
   moves next turn
 
-It is not a full Gomoku strategy engine and does not implement neural MCTS.
+It is not a full Gomoku strategy engine.
 
-Build and run C CPU play:
+MCTS is enabled by default for play. It uses the exported CNN policy/value
+network for expansion and evaluation, legal-move masking for priors, PUCT
+selection, and visit counts for final move selection.
+
+Build and run C CPU MCTS play:
 
 ```bash
 make play_c
-./play_c weights/9x9_weights.bin
+./play_c weights/9x9_weights.bin --mcts-sims 64
 ```
 
-Disable terminal safety to measure direct CNN policy play:
+Run direct policy plus safety without MCTS:
+
+```bash
+./play_c weights/9x9_weights.bin --no-mcts
+```
+
+Disable terminal safety:
 
 ```bash
 ./play_c weights/9x9_weights.bin --no-safety
+```
+
+Run direct raw policy only:
+
+```bash
+./play_c weights/9x9_weights.bin --no-mcts --no-safety
 ```
 
 The C player masks illegal moves and uses CNN policy logits as the ranking
@@ -147,6 +164,7 @@ The benchmark creates fixed 9x9 tactical positions and compares:
 
 - direct CNN policy top legal move
 - CNN policy plus terminal safety
+- CNN-guided MCTS plus terminal safety
 
 Current cases:
 
