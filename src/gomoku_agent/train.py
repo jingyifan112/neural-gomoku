@@ -12,6 +12,7 @@ from .checkpoint import load_compatible_checkpoint
 from .mcts import MCTSConfig
 from .model import PolicyValueNet
 from .self_play import play_game
+from .tactical_data import generate_tactical_samples
 
 
 def parse_args() -> argparse.Namespace:
@@ -32,6 +33,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--dirichlet-alpha", type=float, default=0.3)
     parser.add_argument("--exploration-fraction", type=float, default=0.25)
     parser.add_argument("--allow-immediate-loss", action="store_true")
+    parser.add_argument(
+        "--tactical-examples",
+        type=int,
+        default=0,
+        help="Optional supervised tactical examples to mix into each training iteration.",
+    )
     parser.add_argument("--checkpoint", type=Path, default=Path("checkpoints/latest.pt"))
     parser.add_argument("--seed", type=int, default=7)
     return parser.parse_args()
@@ -81,6 +88,19 @@ def main() -> None:
             print(
                 f"iteration {iteration + 1}/{args.iterations} "
                 f"self-play game {game_idx + 1}/{args.games}: {len(game_samples)} moves",
+                flush=True,
+            )
+
+        if args.tactical_examples > 0:
+            tactical_samples = generate_tactical_samples(
+                args.tactical_examples,
+                board_size=args.board_size,
+                seed=args.seed + iteration,
+            )
+            fresh_samples.extend(tactical_samples)
+            print(
+                f"iteration {iteration + 1}/{args.iterations}: "
+                f"added {len(tactical_samples)} tactical examples",
                 flush=True,
             )
 

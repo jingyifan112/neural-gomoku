@@ -54,6 +54,16 @@ python -m gomoku_agent.play --board-size 9 --checkpoint checkpoints/9x9.pt
 MCTS is expensive on CPU. Increase `--games`, `--iterations`, and `--mcts-sims`
 gradually only after the quick command works.
 
+Optional tactical examples can be mixed into each iteration alongside self-play:
+
+```bash
+python -m gomoku_agent.train --board-size 9 --win-length 5 --tactical-examples 500
+```
+
+These supervised policy-value examples cover immediate wins, immediate blocks,
+open fours, double-threat prevention, and the diamond-to-cross fork center move.
+They are disabled by default.
+
 ## Colab GPU
 
 For faster 9x9 experiments, enable a GPU runtime in Google Colab, clone the
