@@ -1,0 +1,19 @@
+{
+  "name": "human_play_cross_center_reference",
+  "board_size": 9,
+  "win_length": 5,
+  "current_player": "O",
+  "last_move": [4, 4],
+  "human_candidate_threat_center": [4, 3],
+  "board": [
+    ".........",
+    ".........",
+    "......O..",
+    "...X.....",
+    "..X.X....",
+    "...XO....",
+    ".........",
+    ".........",
+    "......O.."
+  ]
+}
