@@ -1,0 +1,13 @@
+C play_c human test after MCTS terminal child handling.
+
+Command:
+./play_c weights/9x9_weights.bin --mcts-sims 256
+
+Observation:
+The C/CPU play-time path felt stronger than before. The AI appeared to respond better to immediate tactical threats after adding terminal child handling inside MCTS.
+
+Current intended play-time path:
+CNN policy-value inference + terminal safety + neural MCTS.
+
+Benchmark status:
+MCTS+safety remains stable on tactical benchmark cases. Raw MCTS improved after terminal child handling, but open-three style non-terminal threats may still require safety or stronger training.

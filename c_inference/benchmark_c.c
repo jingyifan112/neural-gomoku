@@ -213,6 +213,31 @@ static TacticalCase mcts_safety_must_block_four(void) {
     return tc;
 }
 
+static TacticalCase human_play_vertical_four_must_block(void) {
+    TacticalCase tc = {0};
+    board_init(&tc.board);
+    tc.name = "human_play_vertical_four_must_block";
+    tc.board.current_player = GOMOKU_WHITE;
+    tc.board.last_move = cell(6, 3);
+    tc.expected_moves[0] = cell(7, 3);
+    tc.expected_moves[1] = -1;
+    tc.expected_count = 1;
+    tc.note = "Regression from C play: AI O must block X vertical four before X wins at (7,3).";
+    set_stone(&tc, 2, 3, GOMOKU_WHITE);
+    set_stone(&tc, 2, 6, GOMOKU_WHITE);
+    set_stone(&tc, 3, 3, GOMOKU_BLACK);
+    set_stone(&tc, 4, 2, GOMOKU_BLACK);
+    set_stone(&tc, 4, 3, GOMOKU_BLACK);
+    set_stone(&tc, 4, 4, GOMOKU_BLACK);
+    set_stone(&tc, 5, 3, GOMOKU_BLACK);
+    set_stone(&tc, 5, 4, GOMOKU_WHITE);
+    set_stone(&tc, 6, 3, GOMOKU_BLACK);
+    set_stone(&tc, 6, 6, GOMOKU_WHITE);
+    set_stone(&tc, 7, 0, GOMOKU_WHITE);
+    set_stone(&tc, 8, 6, GOMOKU_WHITE);
+    return tc;
+}
+
 static int run_case(const CnnWeights *weights, const TacticalCase *tc, int case_index, const BenchmarkConfig *config) {
     float input[GOMOKU_INPUT_CHANNELS * GOMOKU_BOARD_CELLS];
     float legal_mask[GOMOKU_BOARD_CELLS];
@@ -343,6 +368,7 @@ int main(int argc, char **argv) {
         model_four_can_win(),
         broken_four_pattern(),
         mcts_safety_must_block_four(),
+        human_play_vertical_four_must_block(),
     };
     int total = (int)(sizeof(cases) / sizeof(cases[0]));
     int direct_passed = 0;
