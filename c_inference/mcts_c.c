@@ -185,6 +185,15 @@ static int best_visit_move(const CBoard *board, const float visits[GOMOKU_BOARD_
     return best;
 }
 
+static int has_safe_legal_move(const CBoard *board) {
+    for (int action = 0; action < GOMOKU_BOARD_CELLS; action++) {
+        if (board_is_legal(board, action) && safety_move_is_safe(board, action)) {
+            return 1;
+        }
+    }
+    return 0;
+}
+
 int mcts_select_move(const CnnWeights *weights, const CBoard *board, const MCTSConfigC *config) {
     float input[GOMOKU_INPUT_CHANNELS * GOMOKU_BOARD_CELLS];
     float legal_mask[GOMOKU_BOARD_CELLS];
@@ -236,7 +245,12 @@ int mcts_select_move(const CnnWeights *weights, const CBoard *board, const MCTSC
         }
     }
 
-    int move = best_visit_move(board, visits, config->use_safety);
+    int move = -1;
+    if (config->use_safety && !has_safe_legal_move(board)) {
+        move = safety_select_move(board, logits, 1);
+    } else {
+        move = best_visit_move(board, visits, config->use_safety);
+    }
     node_free(root);
     return move;
 }

@@ -151,6 +151,27 @@ static int highest_scored_among(const float policy_scores[GOMOKU_BOARD_CELLS], c
     return best;
 }
 
+static int opponent_fork_creating_moves(const CBoard *board, int moves[GOMOKU_BOARD_CELLS]) {
+    int opponent = -board->current_player;
+    int count = 0;
+    for (int action = 0; action < GOMOKU_BOARD_CELLS; action++) {
+        if (!board_is_legal(board, action)) {
+            continue;
+        }
+        CBoard scratch = *board;
+        scratch.current_player = opponent;
+        if (!board_apply_move(&scratch, action)) {
+            continue;
+        }
+
+        int future_wins[GOMOKU_BOARD_CELLS];
+        if (board_immediate_winning_moves(&scratch, opponent, future_wins) >= 2) {
+            moves[count++] = action;
+        }
+    }
+    return count;
+}
+
 int safety_select_move(const CBoard *board, const float policy_scores[GOMOKU_BOARD_CELLS], int use_safety) {
     if (!use_safety) {
         return highest_scored_move(board, policy_scores);
@@ -185,5 +206,14 @@ int safety_select_move(const CBoard *board, const float policy_scores[GOMOKU_BOA
             best_safe_score = policy_scores[action];
         }
     }
-    return best_safe >= 0 ? best_safe : best_any;
+    if (best_safe >= 0) {
+        return best_safe;
+    }
+
+    int fork_moves[GOMOKU_BOARD_CELLS];
+    int fork_move_count = opponent_fork_creating_moves(board, fork_moves);
+    if (fork_move_count > 0) {
+        return highest_scored_among(policy_scores, fork_moves, fork_move_count);
+    }
+    return best_any;
 }
