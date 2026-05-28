@@ -1,0 +1,27 @@
+Known weakness from C play_c human testing:
+
+Human strategy:
+Build a diamond shape around an empty center, then fill the center to create a cross/fork threat.
+
+Observed pre-center position:
+row 0: . . . . . . . . .
+row 1: . . . . . . . . .
+row 2: . . . . . . O . .
+row 3: . . . X . . . . .
+row 4: . . X . X . . . .
+row 5: . . . X O . . . .
+row 6: . . . . . . . . .
+row 7: . . . . . . . . .
+row 8: . . . . . . O . .
+
+AI to move: O
+Human threat: if O does not occupy (4,3), X can play (4,3) and create a cross/fork structure.
+
+Temporary benchmark result when added as human_play_prevent_cross_center:
+direct=FAIL
+policy+safety=FAIL
+mcts_raw=FAIL
+mcts+safety=FAIL
+
+Interpretation:
+This is not an immediate terminal threat and not just a one-ply double-immediate-win threat. It is a deeper tactical setup. Current safety is not designed to cover it. This should likely be addressed by stronger training / better value learning rather than adding more hard-coded tactical rules.
