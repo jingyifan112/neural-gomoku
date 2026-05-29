@@ -115,6 +115,26 @@ MCTS also filters moves that allow the opponent to win immediately using only
 the game's terminal-state rule. This is search safety, not hand-written Gomoku
 shape knowledge. Pass `--allow-immediate-loss` to disable that filter.
 
+## Evaluate
+
+Run automated 9x9 matches to get a basic W/D/L strength estimate before
+integrating an engine protocol:
+
+```bash
+PYTHONPATH=src python -m gomoku_agent.evaluate \
+  --checkpoint checkpoints/9x9_tactical_v2.pt \
+  --board-size 9 \
+  --win-length 5 \
+  --mcts-sims 128 \
+  --games 20 \
+  --opponent greedy_win_block \
+  --seed 0
+```
+
+Use `--opponent random` for a smoke test, or `--agent policy_only` to evaluate
+the direct policy without MCTS. Add `--json-log run_logs/eval.json` to save a
+machine-readable run log.
+
 ## Roadmap
 
 1. Current baseline: policy-value CNN with self-play sampling.
