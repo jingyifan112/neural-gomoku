@@ -61,8 +61,8 @@ python -m gomoku_agent.train --board-size 9 --win-length 5 --tactical-examples 5
 ```
 
 These supervised policy-value examples cover immediate wins, immediate blocks,
-open fours, double-threat prevention, and the diamond-to-cross fork center move.
-They are disabled by default.
+open fours, double-threat prevention, diamond-to-cross fork prevention, and
+diagonal two-step fork prevention. They are disabled by default.
 
 ## Colab GPU
 

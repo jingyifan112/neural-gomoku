@@ -122,7 +122,7 @@ def make_open_four_case(board_size: int = 9, transform: Transform = identity) ->
 
 
 def make_double_threat_prevention_case(board_size: int = 9, transform: Transform = identity) -> TacticalCase:
-    offset = (board_size - 9) // 2
+    offset = _offset_for_9x9_pattern(board_size)
     stones = [
         ((1 + offset, 3 + offset), WHITE),
         ((1 + offset, 5 + offset), WHITE),
@@ -165,7 +165,7 @@ def make_double_threat_prevention_case(board_size: int = 9, transform: Transform
 
 
 def make_diamond_cross_case(board_size: int = 9, transform: Transform = identity) -> TacticalCase:
-    offset = (board_size - 9) // 2
+    offset = _offset_for_9x9_pattern(board_size)
     stones = [
         ((2 + offset, 6 + offset), WHITE),
         ((3 + offset, 3 + offset), BLACK),
@@ -187,12 +187,44 @@ def make_diamond_cross_case(board_size: int = 9, transform: Transform = identity
     )
 
 
+def make_diagonal_two_step_fork_prevention_case(
+    board_size: int = 9, transform: Transform = identity
+) -> TacticalCase:
+    offset = _offset_for_9x9_pattern(board_size)
+    stones = [
+        ((1 + offset, 1 + offset), WHITE),
+        ((1 + offset, 5 + offset), WHITE),
+        ((2 + offset, 1 + offset), WHITE),
+        ((2 + offset, 2 + offset), BLACK),
+        ((2 + offset, 3 + offset), BLACK),
+        ((2 + offset, 4 + offset), BLACK),
+        ((3 + offset, 3 + offset), BLACK),
+        ((3 + offset, 4 + offset), WHITE),
+        ((3 + offset, 5 + offset), BLACK),
+        ((4 + offset, 2 + offset), BLACK),
+        ((4 + offset, 3 + offset), WHITE),
+        ((4 + offset, 4 + offset), BLACK),
+        ((5 + offset, 4 + offset), WHITE),
+    ]
+    return _make_case(
+        "diagonal_two_step_fork_prevention",
+        board_size,
+        WHITE,
+        stones,
+        [(2 + offset, 6 + offset), (5 + offset, 3 + offset)],
+        value=0.0,
+        last_move=(4 + offset, 4 + offset),
+        transform=transform,
+    )
+
+
 CASE_BUILDERS: tuple[Callable[[int, Transform], TacticalCase], ...] = (
     make_immediate_win_case,
     make_block_immediate_win_case,
     make_open_four_case,
     make_double_threat_prevention_case,
     make_diamond_cross_case,
+    make_diagonal_two_step_fork_prevention_case,
 )
 
 
@@ -238,6 +270,12 @@ def _make_case(
     board.last_move = transform(last_move, board_size)
     target_moves = tuple(_flat(transform(coord, board_size), board_size) for coord in targets)
     return TacticalCase(name=name, board=board, target_moves=target_moves, value=value)
+
+
+def _offset_for_9x9_pattern(board_size: int) -> int:
+    if board_size < 9:
+        raise ValueError("tactical generator requires board_size >= 9")
+    return (board_size - 9) // 2
 
 
 def _flat(coord: Coord, board_size: int) -> int:
