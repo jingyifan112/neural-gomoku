@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import argparse
 from pathlib import Path
 
 import numpy as np
@@ -31,8 +32,45 @@ def add_tensor(items: list[tuple[str, np.ndarray]], name: str, array: np.ndarray
     items.append((name, np.ascontiguousarray(array, dtype=np.float32)))
 
 
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description=(
+            "Export a 9x9 PyTorch Gomoku checkpoint to the raw C inference "
+            "weights format and manifest."
+        )
+    )
+    parser.add_argument(
+        "--checkpoint",
+        type=Path,
+        default=CHECKPOINT,
+        help=f"PyTorch checkpoint to export. Default: {CHECKPOINT.relative_to(ROOT)}",
+    )
+    parser.add_argument(
+        "--weights-bin",
+        type=Path,
+        default=WEIGHTS_BIN,
+        help=f"Output raw float32 weights file. Default: {WEIGHTS_BIN.relative_to(ROOT)}",
+    )
+    parser.add_argument(
+        "--manifest",
+        type=Path,
+        default=MANIFEST,
+        help=f"Output text manifest file. Default: {MANIFEST.relative_to(ROOT)}",
+    )
+    return parser.parse_args()
+
+
+def resolve_path(path: Path) -> Path:
+    return path if path.is_absolute() else ROOT / path
+
+
 def main() -> None:
-    payload = torch.load(CHECKPOINT, map_location="cpu")
+    args = parse_args()
+    checkpoint = resolve_path(args.checkpoint)
+    weights_bin = resolve_path(args.weights_bin)
+    manifest_path = resolve_path(args.manifest)
+
+    payload = torch.load(checkpoint, map_location="cpu")
     board_size = int(payload.get("board_size", 9))
     channels = int(payload.get("channels", 64))
     blocks = int(payload.get("blocks", 4))
@@ -71,12 +109,14 @@ def main() -> None:
     add_tensor(tensors, "value.fc2.weight", model.value_fc[2].weight.detach().cpu().numpy())
     add_tensor(tensors, "value.fc2.bias", model.value_fc[2].bias.detach().cpu().numpy())
 
-    OUT_DIR.mkdir(parents=True, exist_ok=True)
+    weights_bin.parent.mkdir(parents=True, exist_ok=True)
+    manifest_path.parent.mkdir(parents=True, exist_ok=True)
     offset = 0
-    with WEIGHTS_BIN.open("wb") as weights_file, MANIFEST.open("w", encoding="utf-8") as manifest:
+    with weights_bin.open("wb") as weights_file, manifest_path.open("w", encoding="utf-8") as manifest:
         manifest.write("Neural Gomoku C inference weights manifest\n")
         manifest.write("format: raw little-endian float32 tensors concatenated in the order below\n")
         manifest.write("batchnorm: folded into the immediately preceding convolution using eval-mode running stats\n")
+        manifest.write(f"checkpoint: {checkpoint}\n")
         manifest.write(f"board_size: {board_size}\n")
         manifest.write(f"input_shape: [3, {board_size}, {board_size}]\n")
         manifest.write("input_channels: [current_player_stones, opponent_stones, last_move]\n")
@@ -94,8 +134,9 @@ def main() -> None:
         manifest.write(f"total_floats: {offset}\n")
         manifest.write(f"total_bytes: {offset * 4}\n")
 
-    print(f"wrote {WEIGHTS_BIN}")
-    print(f"wrote {MANIFEST}")
+    print(f"loaded {checkpoint}")
+    print(f"wrote {weights_bin}")
+    print(f"wrote {manifest_path}")
 
 
 if __name__ == "__main__":

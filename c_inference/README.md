@@ -46,6 +46,15 @@ This writes:
 
 The manifest documents the exact deterministic tensor order and float offsets.
 
+To export a named tactical checkpoint without overwriting the default C weights:
+
+```bash
+PYTHONPATH=src python tools/export_c_weights.py \
+  --checkpoint checkpoints/9x9_tactical_v2.pt \
+  --weights-bin c_inference/weights/9x9_tactical_v2_weights.bin \
+  --manifest c_inference/weights/9x9_tactical_v2_weights_manifest.txt
+```
+
 ## Dump Python Reference
 
 From the repository root:
