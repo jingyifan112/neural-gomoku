@@ -218,6 +218,45 @@ def make_diagonal_two_step_fork_prevention_case(
     )
 
 
+def make_forced_block_multi_threat_prevention_case(
+    board_size: int = 9, transform: Transform = identity
+) -> TacticalCase:
+    offset = _offset_for_9x9_pattern(board_size)
+    stones = [
+        ((1 + offset, 5 + offset), WHITE),
+        ((2 + offset, 2 + offset), WHITE),
+        ((2 + offset, 3 + offset), WHITE),
+        ((2 + offset, 4 + offset), BLACK),
+        ((2 + offset, 5 + offset), WHITE),
+        ((3 + offset, 2 + offset), WHITE),
+        ((3 + offset, 3 + offset), BLACK),
+        ((3 + offset, 4 + offset), BLACK),
+        ((3 + offset, 5 + offset), BLACK),
+        ((4 + offset, 2 + offset), BLACK),
+        ((4 + offset, 3 + offset), BLACK),
+        ((4 + offset, 4 + offset), BLACK),
+        ((4 + offset, 5 + offset), WHITE),
+        ((5 + offset, 2 + offset), BLACK),
+        ((5 + offset, 3 + offset), BLACK),
+        ((5 + offset, 4 + offset), WHITE),
+        ((5 + offset, 5 + offset), BLACK),
+        ((6 + offset, 2 + offset), WHITE),
+        ((7 + offset, 4 + offset), BLACK),
+        ((7 + offset, 5 + offset), WHITE),
+        ((8 + offset, 4 + offset), WHITE),
+    ]
+    return _make_case(
+        "forced_block_multi_threat_prevention",
+        board_size,
+        WHITE,
+        stones,
+        [(6 + offset, 3 + offset), (4 + offset, 1 + offset)],
+        value=0.0,
+        last_move=(7 + offset, 4 + offset),
+        transform=transform,
+    )
+
+
 CASE_BUILDERS: tuple[Callable[[int, Transform], TacticalCase], ...] = (
     make_immediate_win_case,
     make_block_immediate_win_case,
@@ -225,6 +264,7 @@ CASE_BUILDERS: tuple[Callable[[int, Transform], TacticalCase], ...] = (
     make_double_threat_prevention_case,
     make_diamond_cross_case,
     make_diagonal_two_step_fork_prevention_case,
+    make_forced_block_multi_threat_prevention_case,
 )
 
 

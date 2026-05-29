@@ -6,6 +6,7 @@ from gomoku_agent.tactical_data import (
     generate_tactical_cases,
     make_diagonal_two_step_fork_prevention_case,
     make_diamond_cross_case,
+    make_forced_block_multi_threat_prevention_case,
 )
 
 
@@ -42,11 +43,28 @@ def test_diagonal_two_step_fork_case_targets_setup_points():
     assert np.isclose(sample.policy.sum(), 1.0)
 
 
-def test_generated_tactical_cases_have_legal_targets():
-    cases = generate_tactical_cases(18, board_size=9, seed=123)
+def test_forced_block_multi_threat_case_targets_prevention_points():
+    case = make_forced_block_multi_threat_prevention_case(board_size=9)
 
-    assert len(cases) == 18
+    assert case.name == "forced_block_multi_threat_prevention"
+    assert case.board.current_player == WHITE
+    assert case.board.grid[6, 3] == 0
+    assert case.board.grid[4, 1] == 0
+    assert case.board.grid[7, 4] == BLACK
+    assert case.target_moves == (6 * 9 + 3, 4 * 9 + 1)
+
+    sample = case_to_sample(case)
+    assert sample.policy[6 * 9 + 3] == 0.5
+    assert sample.policy[4 * 9 + 1] == 0.5
+    assert np.isclose(sample.policy.sum(), 1.0)
+
+
+def test_generated_tactical_cases_have_legal_targets():
+    cases = generate_tactical_cases(21, board_size=9, seed=123)
+
+    assert len(cases) == 21
     assert "diagonal_two_step_fork_prevention" in {case.name for case in cases}
+    assert "forced_block_multi_threat_prevention" in {case.name for case in cases}
     for case in cases:
         legal = set(case.board.legal_moves())
         assert set(case.target_moves).issubset(legal)
