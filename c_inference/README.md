@@ -77,6 +77,28 @@ From this directory:
 make
 ```
 
+## Gomocup/Piskvork Smoke Wrapper
+
+The `pbrain-neural-gomoku` executable implements a 9x9 smoke-test subset of
+the Gomocup/Piskvork protocol using the same C neural MCTS and terminal-safety
+path. It loads `weights/9x9_tactical_v2_weights.bin` by default.
+
+Optional environment variables:
+
+- `NEURAL_GOMOKU_WEIGHTS`: override the weights file
+- `NEURAL_GOMOKU_MCTS_SIMS`: override the default 256 MCTS simulations
+
+Smoke tests:
+
+```bash
+echo -e "START 9\nBEGIN\nEND\n" | ./pbrain-neural-gomoku
+echo -e "START 9\nTURN 4,4\nEND\n" | ./pbrain-neural-gomoku
+echo -e "START 15\nEND\n" | ./pbrain-neural-gomoku
+```
+
+Protocol responses are printed to stdout. Debug/loading messages are printed
+to stderr.
+
 ## Consistency Test
 
 From this directory:
