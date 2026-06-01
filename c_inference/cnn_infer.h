@@ -3,13 +3,13 @@
 
 #include <stddef.h>
 
-#define GOMOKU_BOARD_SIZE 9
-#define GOMOKU_BOARD_CELLS 81
+#define GOMOKU_BOARD_SIZE 15
+#define GOMOKU_BOARD_CELLS 225
 #define GOMOKU_INPUT_CHANNELS 3
 #define GOMOKU_CHANNELS 64
 #define GOMOKU_BLOCKS 4
 #define GOMOKU_POLICY_CHANNELS 2
-#define GOMOKU_WEIGHT_FLOATS 315927
+#define GOMOKU_WEIGHT_FLOATS 413415
 
 typedef struct {
     float *data;

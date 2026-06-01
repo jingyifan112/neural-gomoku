@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import argparse
 from pathlib import Path
 
 import numpy as np
@@ -9,10 +10,14 @@ from gomoku_agent.model import PolicyValueNet
 
 
 ROOT = Path(__file__).resolve().parents[1]
-CHECKPOINT = ROOT / "checkpoints" / "9x9.pt"
-OUT_DIR = ROOT / "c_inference" / "weights"
-WEIGHTS_BIN = OUT_DIR / "9x9_weights.bin"
-MANIFEST = OUT_DIR / "9x9_weights_manifest.txt"
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="Export PyTorch Gomoku checkpoint to raw C-readable float32 weights.")
+    parser.add_argument("--checkpoint", type=Path, required=True)
+    parser.add_argument("--out", type=Path, required=True)
+    parser.add_argument("--manifest", type=Path, default=None)
+    return parser.parse_args()
 
 
 def fold_conv_bn(conv: torch.nn.Conv2d, bn: torch.nn.BatchNorm2d) -> tuple[np.ndarray, np.ndarray]:
@@ -32,12 +37,19 @@ def add_tensor(items: list[tuple[str, np.ndarray]], name: str, array: np.ndarray
 
 
 def main() -> None:
-    payload = torch.load(CHECKPOINT, map_location="cpu")
+    args = parse_args()
+
+    checkpoint = args.checkpoint
+    out_path = args.out
+    manifest_path = args.manifest
+    if manifest_path is None:
+        manifest_path = out_path.with_name(out_path.stem + "_manifest.txt")
+
+    payload = torch.load(checkpoint, map_location="cpu")
     board_size = int(payload.get("board_size", 9))
     channels = int(payload.get("channels", 64))
     blocks = int(payload.get("blocks", 4))
-    if board_size != 9:
-        raise ValueError(f"expected a 9x9 checkpoint, got board_size={board_size}")
+    win_length = int(payload.get("win_length", 5))
 
     model = PolicyValueNet(board_size=board_size, channels=channels, blocks=blocks)
     model.load_state_dict(payload["model"])
@@ -53,6 +65,7 @@ def main() -> None:
         weight, bias = fold_conv_bn(block.conv1, block.bn1)
         add_tensor(tensors, f"tower.{block_idx}.conv1_3x3_bn_fused.weight", weight)
         add_tensor(tensors, f"tower.{block_idx}.conv1_3x3_bn_fused.bias", bias)
+
         weight, bias = fold_conv_bn(block.conv2, block.bn2)
         add_tensor(tensors, f"tower.{block_idx}.conv2_3x3_bn_fused.weight", weight)
         add_tensor(tensors, f"tower.{block_idx}.conv2_3x3_bn_fused.bias", bias)
@@ -71,18 +84,23 @@ def main() -> None:
     add_tensor(tensors, "value.fc2.weight", model.value_fc[2].weight.detach().cpu().numpy())
     add_tensor(tensors, "value.fc2.bias", model.value_fc[2].bias.detach().cpu().numpy())
 
-    OUT_DIR.mkdir(parents=True, exist_ok=True)
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    manifest_path.parent.mkdir(parents=True, exist_ok=True)
+
     offset = 0
-    with WEIGHTS_BIN.open("wb") as weights_file, MANIFEST.open("w", encoding="utf-8") as manifest:
+    with out_path.open("wb") as weights_file, manifest_path.open("w", encoding="utf-8") as manifest:
         manifest.write("Neural Gomoku C inference weights manifest\n")
         manifest.write("format: raw little-endian float32 tensors concatenated in the order below\n")
         manifest.write("batchnorm: folded into the immediately preceding convolution using eval-mode running stats\n")
+        manifest.write(f"source_checkpoint: {checkpoint}\n")
         manifest.write(f"board_size: {board_size}\n")
+        manifest.write(f"win_length: {win_length}\n")
         manifest.write(f"input_shape: [3, {board_size}, {board_size}]\n")
         manifest.write("input_channels: [current_player_stones, opponent_stones, last_move]\n")
         manifest.write(f"channels: {channels}\n")
         manifest.write(f"residual_blocks: {blocks}\n")
         manifest.write("tensor_order:\n")
+
         for name, array in tensors:
             flat = np.ascontiguousarray(array, dtype="<f4").ravel()
             weights_file.write(flat.tobytes())
@@ -91,11 +109,17 @@ def main() -> None:
                 f"offset_floats={offset} count={flat.size}\n"
             )
             offset += int(flat.size)
+
         manifest.write(f"total_floats: {offset}\n")
         manifest.write(f"total_bytes: {offset * 4}\n")
 
-    print(f"wrote {WEIGHTS_BIN}")
-    print(f"wrote {MANIFEST}")
+    print(f"checkpoint: {checkpoint}")
+    print(f"board_size: {board_size}")
+    print(f"channels: {channels}")
+    print(f"blocks: {blocks}")
+    print(f"total_floats: {offset}")
+    print(f"wrote {out_path}")
+    print(f"wrote {manifest_path}")
 
 
 if __name__ == "__main__":

@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define DEFAULT_WEIGHTS_PATH "weights/9x9_tactical_v2_weights.bin"
+#define DEFAULT_WEIGHTS_PATH "weights/15x15_smoke_weights.bin"
 #define DEFAULT_MCTS_SIMS 256
 
 typedef struct {
