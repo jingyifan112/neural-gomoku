@@ -9,5 +9,7 @@ c_inference/*.o
 c_inference/test_infer
 c_inference/benchmark_c
 c_inference/play_c
+c_inference/pbrain-neural-gomoku
+c_inference/pbrain-neural-gomoku.exe
 c_inference/weights/
 c_inference/reference/

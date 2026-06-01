@@ -16,6 +16,9 @@ play_c: play_c.o cnn_infer.o search_safety_c.o mcts_c.o
 pbrain-neural-gomoku: pbrain-neural-gomoku.o cnn_infer.o search_safety_c.o mcts_c.o
 	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
+pbrain-neural-gomoku.exe: pbrain-neural-gomoku.o cnn_infer.o search_safety_c.o mcts_c.o
+	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
+
 %.o: %.c cnn_infer.h
 	$(CC) $(CFLAGS) -c -o $@ $<
 
@@ -26,6 +29,6 @@ benchmark: benchmark_c
 	./benchmark_c weights/9x9_weights.bin
 
 clean:
-	rm -f *.o test_infer benchmark_c play_c pbrain-neural-gomoku
+	rm -f *.o test_infer benchmark_c play_c pbrain-neural-gomoku pbrain-neural-gomoku.exe
 
 .PHONY: all clean test benchmark
