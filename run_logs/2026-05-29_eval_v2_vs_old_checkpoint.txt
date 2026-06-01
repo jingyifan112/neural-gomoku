@@ -1,0 +1,25 @@
+loaded checkpoints/9x9_tactical_v2.pt
+loaded checkpoints/9x9.pt
+game=1 first_player=black neural_player=black winner=draw outcome=draw moves=81
+game=2 first_player=black neural_player=white winner=draw outcome=draw moves=81
+game=3 first_player=black neural_player=black winner=draw outcome=draw moves=81
+game=4 first_player=black neural_player=white winner=draw outcome=draw moves=81
+game=5 first_player=black neural_player=black winner=draw outcome=draw moves=81
+game=6 first_player=black neural_player=white winner=draw outcome=draw moves=81
+game=7 first_player=black neural_player=black winner=draw outcome=draw moves=81
+game=8 first_player=black neural_player=white winner=draw outcome=draw moves=81
+game=9 first_player=black neural_player=black winner=draw outcome=draw moves=81
+game=10 first_player=black neural_player=white winner=draw outcome=draw moves=81
+game=11 first_player=black neural_player=black winner=draw outcome=draw moves=81
+game=12 first_player=black neural_player=white winner=draw outcome=draw moves=81
+game=13 first_player=black neural_player=black winner=draw outcome=draw moves=81
+game=14 first_player=black neural_player=white winner=draw outcome=draw moves=81
+game=15 first_player=black neural_player=black winner=draw outcome=draw moves=81
+game=16 first_player=black neural_player=white winner=draw outcome=draw moves=81
+game=17 first_player=black neural_player=black winner=draw outcome=draw moves=81
+game=18 first_player=black neural_player=white winner=draw outcome=draw moves=81
+game=19 first_player=black neural_player=black winner=draw outcome=draw moves=81
+game=20 first_player=black neural_player=white winner=draw outcome=draw moves=81
+summary: wins=0 draws=20 losses=0 win_rate=0.000 average_moves=81.0
+neural_as_black: games=10 wins=0 draws=10 losses=0
+neural_as_white: games=10 wins=0 draws=10 losses=0
