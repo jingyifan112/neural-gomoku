@@ -1,0 +1,17 @@
+device: cpu
+loaded checkpoints/15x15_mcts8_v1.pt
+loaded checkpoints/15x15_smoke.pt
+game 1/4: eval_color=black winner=black moves=61 score_so_far=1-0-0
+game 2/4: eval_color=white winner=black moves=107 score_so_far=1-0-1
+game 3/4: eval_color=black winner=black moves=61 score_so_far=2-0-1
+game 4/4: eval_color=white winner=black moves=107 score_so_far=2-0-2
+
+summary
+checkpoint: checkpoints/15x15_mcts8_v1.pt
+opponent: checkpoint
+opponent_checkpoint: checkpoints/15x15_smoke.pt
+board_size: 15
+mcts_sims: 4
+use_safety: False
+score: 2W / 0D / 2L
+avg_moves: 84.00
