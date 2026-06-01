@@ -13,3 +13,4 @@ c_inference/pbrain-neural-gomoku
 c_inference/pbrain-neural-gomoku.exe
 c_inference/weights/
 c_inference/reference/
+diagnostics/
