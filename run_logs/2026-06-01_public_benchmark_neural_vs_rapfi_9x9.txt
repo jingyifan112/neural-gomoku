@@ -1,0 +1,85 @@
+---------------------------
+Global Options:
+openings = 
+boardSize = 9
+gameRule = 0
+pgn = 
+sgf = 
+msg = 
+log = 0
+sample = 
+random = 0
+repeat = 0
+transform = 0
+sprt = 0
+gauntlet = 0
+concurrency = 1
+games = 10
+rounds = 1
+resignCount = 0
+resignScore = 0
+drawCount = 0
+drawScore = 0
+drawAfter = 81
+fatalerror = 0
+debug = 0
+
+Engine number = 2
+---------------------------
+Engine 0 Options:
+name = neural
+cmd = /Users/jing1fan/gomoku_public_benchmark/run_neural.sh
+nodes = 0
+depth = 0
+timeoutTurn = 1000
+timeoutMatch = 3000
+increment = 0
+maxMemory = 367001600
+thread = 0
+tolerance = 3000
+---------------------------
+Engine 1 Options:
+name = rapfi
+cmd = /Users/jing1fan/gomoku_public_benchmark/run_rapfi.sh
+nodes = 0
+depth = 0
+timeoutTurn = 1000
+timeoutMatch = 3000
+increment = 0
+maxMemory = 367001600
+thread = 0
+tolerance = 3000
+---------------------------
+[1] Load engine: neural-gomoku (version 0.1-9x9-smoke) by neural-gomoku, ?
+[1] Load engine: Rapfi (version 0.43.02 (clang++ 21.0.0 on Apple NEON_DOTPROD)) by Rapfi developers (see AUTHORS file), China
+[1] Started game 1 of 10 (neural vs rapfi)
+[1] Finished game 1 (neural vs rapfi): 0-1 {White win by five connection}
+Score of neural vs rapfi: 0 - 1 - 0  [0.000] 1
+[1] Started game 2 of 10 (rapfi vs neural)
+[1] Finished game 2 (rapfi vs neural): 1-0 {Black win by five connection}
+Score of neural vs rapfi: 0 - 2 - 0  [0.000] 2
+[1] Started game 3 of 10 (neural vs rapfi)
+[1] Finished game 3 (neural vs rapfi): 0-1 {White win by five connection}
+Score of neural vs rapfi: 0 - 3 - 0  [0.000] 3
+[1] Started game 4 of 10 (rapfi vs neural)
+[1] Finished game 4 (rapfi vs neural): 1-0 {Black win by five connection}
+Score of neural vs rapfi: 0 - 4 - 0  [0.000] 4
+[1] Started game 5 of 10 (neural vs rapfi)
+[1] Finished game 5 (neural vs rapfi): 0-1 {White win by five connection}
+Score of neural vs rapfi: 0 - 5 - 0  [0.000] 5
+[1] Started game 6 of 10 (rapfi vs neural)
+[1] Finished game 6 (rapfi vs neural): 1-0 {Black win by five connection}
+Score of neural vs rapfi: 0 - 6 - 0  [0.000] 6
+[1] Started game 7 of 10 (neural vs rapfi)
+[1] engine neural timeout at 60 moves after opening
+[1] Finished game 7 (neural vs rapfi): 0-1 {White win by time forfeit}
+Score of neural vs rapfi: 0 - 7 - 0  [0.000] 7
+[1] Started game 8 of 10 (rapfi vs neural)
+[1] Finished game 8 (rapfi vs neural): 1-0 {Black win by five connection}
+Score of neural vs rapfi: 0 - 8 - 0  [0.000] 8
+[1] Started game 9 of 10 (neural vs rapfi)
+[1] Finished game 9 (neural vs rapfi): 0-1 {White win by five connection}
+Score of neural vs rapfi: 0 - 9 - 0  [0.000] 9
+[1] Started game 10 of 10 (rapfi vs neural)
+[1] Finished game 10 (rapfi vs neural): 1-0 {Black win by five connection}
+Score of neural vs rapfi: 0 - 10 - 0  [0.000] 10
