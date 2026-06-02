@@ -1,0 +1,15 @@
+device: cpu
+loaded checkpoints/15x15_mcts8_v1.pt
+game 1/4: eval_color=black winner=white moves=26 score_so_far=0-0-1
+game 2/4: eval_color=white winner=black moves=25 score_so_far=0-0-2
+game 3/4: eval_color=black winner=white moves=26 score_so_far=0-0-3
+game 4/4: eval_color=white winner=black moves=25 score_so_far=0-0-4
+
+summary
+checkpoint: checkpoints/15x15_mcts8_v1.pt
+opponent: greedy_win_block
+board_size: 15
+mcts_sims: 16
+use_safety: True
+score: 0W / 0D / 4L
+avg_moves: 25.50

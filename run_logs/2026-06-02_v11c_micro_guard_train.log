@@ -1,0 +1,23 @@
+device=cpu
+loaded checkpoints/15x15_v10_frozen.pt
+generating tactical drill samples...
+drill samples=1000
+generating teacher-vs-greedy imitation samples...
+teacher games: teacher_wins=5, greedy_wins=5, draws=0, avg_moves=58.00, samples=580
+pretrain samples total=1580
+pretrain epoch 1/1: loss=0.3455, policy=0.3440, value=0.0152
+generating corrective model-vs-greedy sparring samples...
+corrective sparring 1/10: model_win, moves=91, model_player=black
+corrective sparring 2/10: greedy_win, moves=25, model_player=white
+corrective sparring 3/10: model_win, moves=91, model_player=black
+corrective sparring 4/10: greedy_win, moves=25, model_player=white
+corrective sparring 5/10: model_win, moves=91, model_player=black
+corrective sparring 6/10: greedy_win, moves=25, model_player=white
+corrective sparring 7/10: model_win, moves=91, model_player=black
+corrective sparring 8/10: greedy_win, moves=25, model_player=white
+corrective sparring 9/10: model_win, moves=91, model_player=black
+corrective sparring 10/10: greedy_win, moves=25, model_player=white
+corrective sparring summary: model_wins=5, greedy_wins=5, draws=0, avg_moves=58.00, samples=580
+mixed samples total=2160
+sparring-finetune epoch 1/1: loss=0.2388, policy=0.2375, value=0.0129
+saved checkpoints/15x15_mixed_v11c_micro_guard.pt

@@ -1,0 +1,24 @@
+device=cpu
+loaded checkpoints/15x15_v10_frozen.pt
+loaded checkpoints/15x15_v11e_interp_truefailed_a0.10.pt
+game 1/20: loss, moves=58, model_player=black
+game 2/20: loss, moves=69, model_player=white
+game 3/20: loss, moves=58, model_player=black
+game 4/20: loss, moves=69, model_player=white
+game 5/20: loss, moves=58, model_player=black
+game 6/20: loss, moves=69, model_player=white
+game 7/20: loss, moves=58, model_player=black
+game 8/20: loss, moves=69, model_player=white
+game 9/20: loss, moves=58, model_player=black
+game 10/20: loss, moves=69, model_player=white
+game 11/20: loss, moves=58, model_player=black
+game 12/20: loss, moves=69, model_player=white
+game 13/20: loss, moves=58, model_player=black
+game 14/20: loss, moves=69, model_player=white
+game 15/20: loss, moves=58, model_player=black
+game 16/20: loss, moves=69, model_player=white
+game 17/20: loss, moves=58, model_player=black
+game 18/20: loss, moves=69, model_player=white
+game 19/20: loss, moves=58, model_player=black
+game 20/20: loss, moves=69, model_player=white
+summary: checkpoint=checkpoints/15x15_v10_frozen.pt, opponent=checkpoint, wins=0, losses=20, draws=0, avg_moves=63.50

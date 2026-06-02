@@ -1,0 +1,53 @@
+device=cpu
+loaded checkpoints/15x15_v10_frozen.pt
+generating tactical drill samples...
+drill samples=3000
+generating teacher-vs-greedy imitation samples...
+teacher games: teacher_wins=20, greedy_wins=20, draws=0, avg_moves=58.00, samples=2320
+pretrain samples total=5320
+pretrain epoch 1/1: loss=0.2597, policy=0.2561, value=0.0141
+generating corrective model-vs-greedy sparring samples...
+corrective sparring 1/40: model_win, moves=91, model_player=black
+corrective sparring 2/40: greedy_win, moves=25, model_player=white
+corrective sparring 3/40: model_win, moves=91, model_player=black
+corrective sparring 4/40: greedy_win, moves=25, model_player=white
+corrective sparring 5/40: model_win, moves=91, model_player=black
+corrective sparring 6/40: greedy_win, moves=25, model_player=white
+corrective sparring 7/40: model_win, moves=91, model_player=black
+corrective sparring 8/40: greedy_win, moves=25, model_player=white
+corrective sparring 9/40: model_win, moves=91, model_player=black
+corrective sparring 10/40: greedy_win, moves=25, model_player=white
+corrective sparring 11/40: model_win, moves=91, model_player=black
+corrective sparring 12/40: greedy_win, moves=25, model_player=white
+corrective sparring 13/40: greedy_win, moves=26, model_player=black
+corrective sparring 14/40: greedy_win, moves=25, model_player=white
+corrective sparring 15/40: model_win, moves=91, model_player=black
+corrective sparring 16/40: greedy_win, moves=25, model_player=white
+corrective sparring 17/40: model_win, moves=91, model_player=black
+corrective sparring 18/40: greedy_win, moves=25, model_player=white
+corrective sparring 19/40: model_win, moves=91, model_player=black
+corrective sparring 20/40: greedy_win, moves=25, model_player=white
+corrective sparring 21/40: model_win, moves=91, model_player=black
+corrective sparring 22/40: greedy_win, moves=25, model_player=white
+corrective sparring 23/40: model_win, moves=91, model_player=black
+corrective sparring 24/40: greedy_win, moves=25, model_player=white
+corrective sparring 25/40: model_win, moves=91, model_player=black
+corrective sparring 26/40: greedy_win, moves=25, model_player=white
+corrective sparring 27/40: model_win, moves=91, model_player=black
+corrective sparring 28/40: greedy_win, moves=25, model_player=white
+corrective sparring 29/40: model_win, moves=91, model_player=black
+corrective sparring 30/40: greedy_win, moves=25, model_player=white
+corrective sparring 31/40: model_win, moves=91, model_player=black
+corrective sparring 32/40: greedy_win, moves=25, model_player=white
+corrective sparring 33/40: model_win, moves=91, model_player=black
+corrective sparring 34/40: greedy_win, moves=25, model_player=white
+corrective sparring 35/40: model_win, moves=91, model_player=black
+corrective sparring 36/40: greedy_win, moves=25, model_player=white
+corrective sparring 37/40: model_win, moves=91, model_player=black
+corrective sparring 38/40: greedy_win, moves=25, model_player=white
+corrective sparring 39/40: model_win, moves=91, model_player=black
+corrective sparring 40/40: greedy_win, moves=25, model_player=white
+corrective sparring summary: model_wins=19, greedy_wins=21, draws=0, avg_moves=56.38, samples=2255
+mixed samples total=7575
+sparring-finetune epoch 1/1: loss=0.1417, policy=0.1385, value=0.0128
+saved checkpoints/15x15_mixed_v11b_greedy_guard.pt

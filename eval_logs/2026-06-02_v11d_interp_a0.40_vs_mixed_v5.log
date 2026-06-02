@@ -1,0 +1,23 @@
+device=cpu
+loaded checkpoints/15x15_v11d_interp_stage1_a0.40.pt
+game 1/20: win, moves=11, model_player=black
+game 2/20: win, moves=14, model_player=white
+game 3/20: win, moves=11, model_player=black
+game 4/20: win, moves=14, model_player=white
+game 5/20: win, moves=11, model_player=black
+game 6/20: win, moves=14, model_player=white
+game 7/20: win, moves=11, model_player=black
+game 8/20: win, moves=14, model_player=white
+game 9/20: win, moves=11, model_player=black
+game 10/20: win, moves=14, model_player=white
+game 11/20: win, moves=11, model_player=black
+game 12/20: win, moves=14, model_player=white
+game 13/20: win, moves=11, model_player=black
+game 14/20: win, moves=14, model_player=white
+game 15/20: win, moves=11, model_player=black
+game 16/20: win, moves=14, model_player=white
+game 17/20: win, moves=11, model_player=black
+game 18/20: win, moves=14, model_player=white
+game 19/20: win, moves=11, model_player=black
+game 20/20: win, moves=14, model_player=white
+summary: checkpoint=checkpoints/15x15_v11d_interp_stage1_a0.40.pt, opponent=checkpoint, wins=20, losses=0, draws=0, avg_moves=12.50

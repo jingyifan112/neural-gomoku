@@ -1,0 +1,6 @@
+loaded checkpoints/15x15_smoke.pt
+iteration 1/1 self-play game 1/2: 94 moves
+iteration 1/1 self-play game 2/2: 119 moves
+iteration 1/1: training on 213 replay samples
+epoch 1/1: loss=5.6548
+saved checkpoints/15x15_smoke.pt
