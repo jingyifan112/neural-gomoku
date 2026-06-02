@@ -14,3 +14,8 @@ c_inference/pbrain-neural-gomoku.exe
 c_inference/weights/
 c_inference/reference/
 diagnostics/
+
+# Local trained checkpoints
+checkpoints/15x15_*.pt
+checkpoints/*current_best*.pt
+*.npz
