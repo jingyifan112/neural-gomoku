@@ -1,0 +1,181 @@
+case opponent_four_one_endpoint   direct=PASS safety=PASS mcts_raw=PASS mcts_safety=PASS
+  note: Opponent O has OOOO with one playable endpoint; model X should block.
+  direct selected: (4,5) logit=-1.855183 prob=0.998703 value=0.083684
+  safety selected: (4,5) logit=-1.855183 prob=0.998703
+  mcts raw selected: (4,5)
+  mcts+safety selected: (4,5)
+  expected: (4,5)
+  debug case 0 name=opponent_four_one_endpoint
+  debug expected move: (4,5)
+  debug direct policy top move: (4,5)
+  debug raw MCTS top move: (4,5)
+  debug MCTS+safety top move: (4,5)
+  top root children by visits:
+     1. move=(4,5) prior=0.998703 visits=32 q_value=-0.231836
+     2. move=(7,7) prior=0.000467 visits=1 q_value=-1.000000
+     3. move=(6,5) prior=0.000293 visits=1 q_value=-1.000000
+     4. move=(6,6) prior=0.000136 visits=1 q_value=-1.000000
+     5. move=(5,8) prior=0.000105 visits=1 q_value=-1.000000
+     6. move=(6,4) prior=0.000080 visits=1 q_value=-1.000000
+     7. move=(5,6) prior=0.000033 visits=1 q_value=-1.000000
+     8. move=(8,7) prior=0.000028 visits=1 q_value=-1.000000
+     9. move=(7,11) prior=0.000010 visits=1 q_value=-1.000000
+    10. move=(7,10) prior=0.000008 visits=1 q_value=-1.000000
+case opponent_open_three          direct=PASS safety=PASS mcts_raw=PASS mcts_safety=PASS
+  note: Opponent O has .OOO.; either endpoint is an expected direct-policy block candidate.
+  direct selected: (4,5) logit=-5.293512 prob=0.981593 value=0.059484
+  safety selected: (4,5) logit=-5.293512 prob=0.981593
+  mcts raw selected: (4,5)
+  mcts+safety selected: (4,5)
+  expected: (4,1) or (4,5)
+  debug case 1 name=opponent_open_three
+  debug expected move: (4,1) or (4,5)
+  debug direct policy top move: (4,5)
+  debug raw MCTS top move: (4,5)
+  debug MCTS+safety top move: (4,5)
+  top root children by visits:
+     1. move=(4,5) prior=0.981593 visits=32 q_value=-0.127410
+     2. move=(4,1) prior=0.007901 visits=0 q_value=-0.000000
+     3. move=(6,5) prior=0.003822 visits=0 q_value=-0.000000
+     4. move=(5,7) prior=0.001139 visits=0 q_value=-0.000000
+     5. move=(4,0) prior=0.000966 visits=0 q_value=-0.000000
+     6. move=(7,7) prior=0.000750 visits=0 q_value=-0.000000
+     7. move=(5,5) prior=0.000531 visits=0 q_value=-0.000000
+     8. move=(5,6) prior=0.000431 visits=0 q_value=-0.000000
+     9. move=(4,8) prior=0.000323 visits=0 q_value=-0.000000
+    10. move=(5,8) prior=0.000307 visits=0 q_value=-0.000000
+case model_four_can_win           direct=PASS safety=PASS mcts_raw=PASS mcts_safety=PASS
+  note: Model X has XXXX.; expected direct winning move.
+  direct selected: (3,4) logit=-6.423511 prob=0.895129 value=0.039813
+  safety selected: (3,4) logit=-6.423511 prob=0.895129
+  mcts raw selected: (3,4)
+  mcts+safety selected: (3,4)
+  expected: (3,4)
+  debug case 2 name=model_four_can_win
+  debug expected move: (3,4)
+  debug direct policy top move: (3,4)
+  debug raw MCTS top move: (3,4)
+  debug MCTS+safety top move: (3,4)
+  top root children by visits:
+     1. move=(3,4) prior=0.895129 visits=33 q_value=1.000000
+     2. move=(7,7) prior=0.046882 visits=0 q_value=-0.000000
+     3. move=(0,5) prior=0.006217 visits=0 q_value=-0.000000
+     4. move=(4,5) prior=0.004915 visits=0 q_value=-0.000000
+     5. move=(8,7) prior=0.003474 visits=0 q_value=-0.000000
+     6. move=(5,10) prior=0.003133 visits=0 q_value=-0.000000
+     7. move=(4,8) prior=0.002999 visits=0 q_value=-0.000000
+     8. move=(8,9) prior=0.002607 visits=0 q_value=-0.000000
+     9. move=(0,4) prior=0.002206 visits=0 q_value=-0.000000
+    10. move=(0,2) prior=0.001992 visits=0 q_value=-0.000000
+case broken_four_pattern          direct=PASS safety=PASS mcts_raw=PASS mcts_safety=PASS
+  note: Model X has XX.XX; expected fill-gap winning move.
+  direct selected: (5,3) logit=-2.647180 prob=0.999924 value=0.118867
+  safety selected: (5,3) logit=-2.647180 prob=0.999924
+  mcts raw selected: (5,3)
+  mcts+safety selected: (5,3)
+  expected: (5,3)
+  debug case 3 name=broken_four_pattern
+  debug expected move: (5,3)
+  debug direct policy top move: (5,3)
+  debug raw MCTS top move: (5,3)
+  debug MCTS+safety top move: (5,3)
+  top root children by visits:
+     1. move=(5,3) prior=0.999924 visits=33 q_value=1.000000
+     2. move=(5,6) prior=0.000022 visits=0 q_value=-0.000000
+     3. move=(7,7) prior=0.000014 visits=0 q_value=-0.000000
+     4. move=(2,8) prior=0.000013 visits=0 q_value=-0.000000
+     5. move=(6,4) prior=0.000009 visits=0 q_value=-0.000000
+     6. move=(5,0) prior=0.000006 visits=0 q_value=-0.000000
+     7. move=(0,6) prior=0.000003 visits=0 q_value=-0.000000
+     8. move=(6,2) prior=0.000001 visits=0 q_value=-0.000000
+     9. move=(7,1) prior=0.000001 visits=0 q_value=-0.000000
+    10. move=(3,7) prior=0.000001 visits=0 q_value=-0.000000
+case mcts_safety_must_block_four  direct=PASS safety=PASS mcts_raw=PASS mcts_safety=PASS
+  note: Regression: MCTS+safety must block opponent OOOO. before final selection.
+  direct selected: (2,6) logit=-2.749583 prob=0.989671 value=0.446186
+  safety selected: (2,6) logit=-2.749583 prob=0.989671
+  mcts raw selected: (2,6)
+  mcts+safety selected: (2,6)
+  expected: (2,6)
+  debug case 4 name=mcts_safety_must_block_four
+  debug expected move: (2,6)
+  debug direct policy top move: (2,6)
+  debug raw MCTS top move: (2,6)
+  debug MCTS+safety top move: (2,6)
+  top root children by visits:
+     1. move=(2,6) prior=0.989671 visits=32 q_value=0.184119
+     2. move=(4,6) prior=0.008712 visits=1 q_value=-1.000000
+     3. move=(4,5) prior=0.000257 visits=1 q_value=-1.000000
+     4. move=(0,1) prior=0.000245 visits=1 q_value=-1.000000
+     5. move=(6,6) prior=0.000175 visits=1 q_value=-1.000000
+     6. move=(3,9) prior=0.000103 visits=1 q_value=-1.000000
+     7. move=(9,6) prior=0.000096 visits=1 q_value=-1.000000
+     8. move=(9,11) prior=0.000087 visits=1 q_value=-1.000000
+     9. move=(10,10) prior=0.000035 visits=1 q_value=-1.000000
+    10. move=(7,6) prior=0.000032 visits=1 q_value=-1.000000
+case human_play_vertical_four_must_block direct=PASS safety=PASS mcts_raw=PASS mcts_safety=PASS
+  note: Regression from C play: AI O must block X vertical four before X wins at (7,3).
+  direct selected: (7,3) logit=-9.158242 prob=0.912500 value=-0.016427
+  safety selected: (7,3) logit=-9.158242 prob=0.912500
+  mcts raw selected: (7,3)
+  mcts+safety selected: (7,3)
+  expected: (7,3)
+  debug case 5 name=human_play_vertical_four_must_block
+  debug expected move: (7,3)
+  debug direct policy top move: (7,3)
+  debug raw MCTS top move: (7,3)
+  debug MCTS+safety top move: (7,3)
+  top root children by visits:
+     1. move=(7,3) prior=0.912500 visits=32 q_value=-0.128685
+     2. move=(7,6) prior=0.055186 visits=1 q_value=-1.000000
+     3. move=(5,6) prior=0.016713 visits=1 q_value=-1.000000
+     4. move=(7,5) prior=0.006352 visits=1 q_value=-1.000000
+     5. move=(7,10) prior=0.002284 visits=1 q_value=-1.000000
+     6. move=(7,7) prior=0.001852 visits=1 q_value=-1.000000
+     7. move=(4,1) prior=0.001328 visits=1 q_value=-1.000000
+     8. move=(11,6) prior=0.000877 visits=1 q_value=-1.000000
+     9. move=(8,9) prior=0.000739 visits=1 q_value=-1.000000
+    10. move=(2,4) prior=0.000253 visits=1 q_value=-1.000000
+case human_play_prevent_open_four_fork direct=FAIL safety=PASS mcts_raw=FAIL mcts_safety=PASS
+  note: Regression from C play: AI O should prevent X from creating two diagonal winning endpoints.
+  direct selected: (7,5) logit=-12.591590 prob=0.387315 value=-0.247488
+  safety selected: (4,7) logit=-13.210112 prob=0.208662
+  mcts raw selected: (7,5)
+  mcts+safety selected: (4,7)
+  expected: (4,7)
+  debug case 6 name=human_play_prevent_open_four_fork
+  debug expected move: (4,7)
+  debug direct policy top move: (7,5)
+  debug raw MCTS top move: (7,5)
+  debug MCTS+safety top move: (4,7)
+  top root children by visits:
+     1. move=(7,5) prior=0.387315 visits=5 q_value=-0.566889
+     2. move=(7,7) prior=0.023931 visits=5 q_value=-0.006706
+     3. move=(4,7) prior=0.208662 visits=4 q_value=-0.324946
+     4. move=(9,6) prior=0.088878 visits=2 q_value=-0.234752
+     5. move=(0,7) prior=0.059453 visits=2 q_value=-0.156441
+     6. move=(7,13) prior=0.037977 visits=2 q_value=-0.088147
+     7. move=(6,4) prior=0.026875 visits=2 q_value=-0.104438
+     8. move=(10,3) prior=0.005430 visits=2 q_value=-0.142498
+     9. move=(5,7) prior=0.038782 visits=1 q_value=-0.372011
+    10. move=(0,6) prior=0.017412 visits=1 q_value=-0.058982
+    0 1 2 3 4 5 6 7 8 9 10 11 12 13 14
+ 0  . . . . . . . . . . . . . . .
+ 1  . . . O . O . . . . . . . . .
+ 2  . . . X O . O . . . . . . . .
+ 3  . O X X X . . . . . . . . . .
+ 4  . O X X X . . . . . . . . . .
+ 5  . X O X O X X . . . . . . . .
+ 6  X . O O . X O . . . . . . . .
+ 7  O . . . X . . . . . . . . . .
+ 8  . . . . . O . . . . . . . . .
+ 9  . . . . . . . . . . . . . . .
+10  . . . . . . . . . . . . . . .
+11  . . . . . . . . . . . . . . .
+12  . . . . . . . . . . . . . . .
+13  . . . . . . . . . . . . . . .
+14  . . . . . . . . . . . . . . .
+direct_policy_accuracy 6/7 85.71%
+policy_plus_safety_accuracy 7/7 100.00%
+mcts_raw_accuracy 6/7 85.71%
+mcts_plus_safety_accuracy 7/7 100.00%

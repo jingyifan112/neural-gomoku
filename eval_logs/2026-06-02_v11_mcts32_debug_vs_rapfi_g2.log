@@ -1,0 +1,1661 @@
+---------------------------
+Global Options:
+openings = 
+boardSize = 15
+gameRule = 0
+pgn = 
+sgf = 
+msg = 
+log = 1
+sample = 
+random = 0
+repeat = 0
+transform = 0
+sprt = 0
+gauntlet = 0
+concurrency = 1
+games = 2
+rounds = 1
+resignCount = 0
+resignScore = 0
+drawCount = 0
+drawScore = 0
+drawAfter = 225
+fatalerror = 0
+debug = 1
+
+Engine number = 2
+---------------------------
+Engine 0 Options:
+name = neural_v11_debug
+cmd = /Users/jing1fan/gomoku_public_benchmark/run_neural_v11_15x15_mcts32_debug.sh
+nodes = 0
+depth = 0
+timeoutTurn = 5000
+timeoutMatch = 60000
+increment = 0
+maxMemory = 367001600
+thread = 0
+tolerance = 3000
+---------------------------
+Engine 1 Options:
+name = rapfi_fast
+cmd = /Users/jing1fan/gomoku_public_benchmark/run_rapfi.sh
+nodes = 0
+depth = 1
+timeoutTurn = 1000
+timeoutMatch = 1000
+increment = 0
+maxMemory = 367001600
+thread = 0
+tolerance = 3000
+---------------------------
+[1] Load engine: ? (version ?) by ?, ?
+[1] Load engine: Rapfi (version 0.43.02 (clang++ 21.0.0 on Apple NEON_DOTPROD)) by Rapfi developers (see AUTHORS file), China
+[1] Started game 1 of 2 (neural_v11_debug vs rapfi_fast)
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine neural_v11_debug output debug:_DECISION move_count=0 player=1 sims=32 value=0.329640 direct=(x=7,y=7,row=7,col=7) policy_safety=(x=7,y=7,row=7,col=7) mcts_raw=(x=7,y=7,row=7,col=7) mcts_safety=(x=7,y=7,row=7,col=7) final=(x=7,y=7,row=7,col=7)
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . X . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine rapfi_fast output message: Speed 19000 | Depth 1-2 | Eval -36 | Node 19 | Time 0ms
+engine rapfi_fast output message: Bestline E5
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . O . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . X . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine neural_v11_debug output debug:_DECISION move_count=2 player=1 sims=32 value=0.259312 direct=(x=4,y=6,row=6,col=4) policy_safety=(x=4,y=6,row=6,col=4) mcts_raw=(x=4,y=3,row=3,col=4) mcts_safety=(x=4,y=3,row=3,col=4) final=(x=4,y=3,row=3,col=4)
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . X . . . . . . . . . . 
+  . . . . O . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . X . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine rapfi_fast output message: Speed 181K | Depth 1-2 | Eval 14 | Node 181 | Time 0ms
+engine rapfi_fast output message: Bestline D6
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . X . . . . . . . . . . 
+  . . . . O . . . . . . . . . . 
+  . . . O . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . X . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine neural_v11_debug output debug:_DECISION move_count=4 player=1 sims=32 value=0.146296 direct=(x=2,y=6,row=6,col=2) policy_safety=(x=2,y=6,row=6,col=2) mcts_raw=(x=2,y=6,row=6,col=2) mcts_safety=(x=2,y=6,row=6,col=2) final=(x=2,y=6,row=6,col=2)
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . X . . . . . . . . . . 
+  . . . . O . . . . . . . . . . 
+  . . . O . . . . . . . . . . . 
+  . . X . . . . . . . . . . . . 
+  . . . . . . . X . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine rapfi_fast output message: Speed 209K | Depth 1-2 | Eval 60 | Node 209 | Time 0ms
+engine rapfi_fast output message: Bestline D5
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . X . . . . . . . . . . 
+  . . . O O . . . . . . . . . . 
+  . . . O . . . . . . . . . . . 
+  . . X . . . . . . . . . . . . 
+  . . . . . . . X . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine neural_v11_debug output debug:_DECISION move_count=6 player=1 sims=32 value=0.200152 direct=(x=3,y=3,row=3,col=3) policy_safety=(x=3,y=3,row=3,col=3) mcts_raw=(x=3,y=3,row=3,col=3) mcts_safety=(x=3,y=3,row=3,col=3) final=(x=3,y=3,row=3,col=3)
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . X X . . . . . . . . . . 
+  . . . O O . . . . . . . . . . 
+  . . . O . . . . . . . . . . . 
+  . . X . . . . . . . . . . . . 
+  . . . . . . . X . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine rapfi_fast output message: Speed 203K | Depth 1-2 | Eval 119 | Node 203 | Time 0ms
+engine rapfi_fast output message: Bestline C5
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . X X . . . . . . . . . . 
+  . . O O O . . . . . . . . . . 
+  . . . O . . . . . . . . . . . 
+  . . X . . . . . . . . . . . . 
+  . . . . . . . X . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine neural_v11_debug output debug:_DECISION move_count=8 player=1 sims=32 value=0.055561 direct=(x=4,y=6,row=6,col=4) policy_safety=(x=5,y=4,row=4,col=5) mcts_raw=(x=5,y=4,row=4,col=5) mcts_safety=(x=5,y=4,row=4,col=5) final=(x=5,y=4,row=4,col=5)
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . X X . . . . . . . . . . 
+  . . O O O X . . . . . . . . . 
+  . . . O . . . . . . . . . . . 
+  . . X . . . . . . . . . . . . 
+  . . . . . . . X . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine rapfi_fast output message: Speed 209K | Depth 1-3 | Eval 52 | Node 209 | Time 0ms
+engine rapfi_fast output message: Bestline E7
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . X X . . . . . . . . . . 
+  . . O O O X . . . . . . . . . 
+  . . . O . . . . . . . . . . . 
+  . . X . O . . . . . . . . . . 
+  . . . . . . . X . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine neural_v11_debug output debug:_DECISION move_count=10 player=1 sims=32 value=-0.068301 direct=(x=5,y=7,row=7,col=5) policy_safety=(x=5,y=7,row=7,col=5) mcts_raw=(x=5,y=7,row=7,col=5) mcts_safety=(x=5,y=7,row=7,col=5) final=(x=5,y=7,row=7,col=5)
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . X X . . . . . . . . . . 
+  . . O O O X . . . . . . . . . 
+  . . . O . . . . . . . . . . . 
+  . . X . O . . . . . . . . . . 
+  . . . . . X . X . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine rapfi_fast output message: Speed 233K | Depth 1-5 | Eval -98 | Node 233 | Time 0ms
+engine rapfi_fast output message: Bestline F6
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . X X . . . . . . . . . . 
+  . . O O O X . . . . . . . . . 
+  . . . O . O . . . . . . . . . 
+  . . X . O . . . . . . . . . . 
+  . . . . . X . X . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine neural_v11_debug output debug:_DECISION move_count=12 player=1 sims=32 value=0.111778 direct=(x=3,y=7,row=7,col=3) policy_safety=(x=3,y=7,row=7,col=3) mcts_raw=(x=3,y=7,row=7,col=3) mcts_safety=(x=3,y=7,row=7,col=3) final=(x=3,y=7,row=7,col=3)
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . X X . . . . . . . . . . 
+  . . O O O X . . . . . . . . . 
+  . . . O . O . . . . . . . . . 
+  . . X . O . . . . . . . . . . 
+  . . . X . X . X . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine rapfi_fast output message: Speed 247K | Depth 1-6 | Eval -57 | Node 247 | Time 0ms
+engine rapfi_fast output message: Bestline E6
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . X X . . . . . . . . . . 
+  . . O O O X . . . . . . . . . 
+  . . . O O O . . . . . . . . . 
+  . . X . O . . . . . . . . . . 
+  . . . X . X . X . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine neural_v11_debug output debug:_DECISION move_count=14 player=1 sims=32 value=0.013337 direct=(x=4,y=7,row=7,col=4) policy_safety=(x=6,y=5,row=5,col=6) mcts_raw=(x=6,y=7,row=7,col=6) mcts_safety=(x=2,y=5,row=5,col=2) final=(x=2,y=5,row=5,col=2)
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . X X . . . . . . . . . . 
+  . . O O O X . . . . . . . . . 
+  . . X O O O . . . . . . . . . 
+  . . X . O . . . . . . . . . . 
+  . . . X . X . X . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine rapfi_fast output message: Speed 260K | Depth 1-8 | Eval 65 | Node 260 | Time 0ms
+engine rapfi_fast output message: Bestline G8
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . X X . . . . . . . . . . 
+  . . O O O X . . . . . . . . . 
+  . . X O O O . . . . . . . . . 
+  . . X . O . . . . . . . . . . 
+  . . . X . X O X . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine neural_v11_debug output debug:_DECISION move_count=16 player=1 sims=32 value=-0.013975 direct=(x=4,y=7,row=7,col=4) policy_safety=(x=5,y=6,row=6,col=5) mcts_raw=(x=4,y=7,row=7,col=4) mcts_safety=(x=5,y=6,row=6,col=5) final=(x=5,y=6,row=6,col=5)
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . X X . . . . . . . . . . 
+  . . O O O X . . . . . . . . . 
+  . . X O O O . . . . . . . . . 
+  . . X . O X . . . . . . . . . 
+  . . . X . X O X . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine rapfi_fast output message: Speed 262K | Depth 1-8 | Eval 75 | Node 262 | Time 0ms
+engine rapfi_fast output message: Bestline H7
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . X X . . . . . . . . . . 
+  . . O O O X . . . . . . . . . 
+  . . X O O O . . . . . . . . . 
+  . . X . O X . O . . . . . . . 
+  . . . X . X O X . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine neural_v11_debug output debug:_DECISION move_count=18 player=1 sims=32 value=0.397588 direct=(x=8,y=5,row=5,col=8) policy_safety=(x=8,y=5,row=5,col=8) mcts_raw=(x=5,y=8,row=8,col=5) mcts_safety=(x=5,y=8,row=8,col=5) final=(x=5,y=8,row=8,col=5)
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . X X . . . . . . . . . . 
+  . . O O O X . . . . . . . . . 
+  . . X O O O . . . . . . . . . 
+  . . X . O X . O . . . . . . . 
+  . . . X . X O X . . . . . . . 
+  . . . . . X . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine rapfi_fast output message: Speed 81000 | Depth 1-8 | Eval 7 | Node 81 | Time 0ms
+engine rapfi_fast output message: Bestline F10
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . X X . . . . . . . . . . 
+  . . O O O X . . . . . . . . . 
+  . . X O O O . . . . . . . . . 
+  . . X . O X . O . . . . . . . 
+  . . . X . X O X . . . . . . . 
+  . . . . . X . . . . . . . . . 
+  . . . . . O . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine neural_v11_debug output debug:_DECISION move_count=20 player=1 sims=32 value=0.278400 direct=(x=8,y=5,row=5,col=8) policy_safety=(x=8,y=5,row=5,col=8) mcts_raw=(x=8,y=5,row=5,col=8) mcts_safety=(x=8,y=5,row=5,col=8) final=(x=8,y=5,row=5,col=8)
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . X X . . . . . . . . . . 
+  . . O O O X . . . . . . . . . 
+  . . X O O O . . X . . . . . . 
+  . . X . O X . O . . . . . . . 
+  . . . X . X O X . . . . . . . 
+  . . . . . X . . . . . . . . . 
+  . . . . . O . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine rapfi_fast output message: Speed 310K | Depth 1-8 | Eval 168 | Node 310 | Time 0ms
+engine rapfi_fast output message: Bestline G10
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . X X . . . . . . . . . . 
+  . . O O O X . . . . . . . . . 
+  . . X O O O . . X . . . . . . 
+  . . X . O X . O . . . . . . . 
+  . . . X . X O X . . . . . . . 
+  . . . . . X . . . . . . . . . 
+  . . . . . O O . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine neural_v11_debug output debug:_DECISION move_count=22 player=1 sims=32 value=0.101596 direct=(x=4,y=7,row=7,col=4) policy_safety=(x=4,y=7,row=7,col=4) mcts_raw=(x=4,y=7,row=7,col=4) mcts_safety=(x=4,y=7,row=7,col=4) final=(x=4,y=7,row=7,col=4)
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . X X . . . . . . . . . . 
+  . . O O O X . . . . . . . . . 
+  . . X O O O . . X . . . . . . 
+  . . X . O X . O . . . . . . . 
+  . . . X X X O X . . . . . . . 
+  . . . . . X . . . . . . . . . 
+  . . . . . O O . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine rapfi_fast output message: Speed 302K | Depth 1-7 | Eval 126 | Node 302 | Time 0ms
+engine rapfi_fast output message: Bestline G6 H6
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . X X . . . . . . . . . . 
+  . . O O O X . . . . . . . . . 
+  . . X O O O O . X . . . . . . 
+  . . X . O X . O . . . . . . . 
+  . . . X X X O X . . . . . . . 
+  . . . . . X . . . . . . . . . 
+  . . . . . O O . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine neural_v11_debug output debug:_DECISION move_count=24 player=1 sims=32 value=-0.144914 direct=(x=7,y=9,row=9,col=7) policy_safety=(x=7,y=5,row=5,col=7) mcts_raw=(x=7,y=5,row=5,col=7) mcts_safety=(x=7,y=5,row=5,col=7) final=(x=7,y=5,row=5,col=7)
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . X X . . . . . . . . . . 
+  . . O O O X . . . . . . . . . 
+  . . X O O O O X X . . . . . . 
+  . . X . O X . O . . . . . . . 
+  . . . X X X O X . . . . . . . 
+  . . . . . X . . . . . . . . . 
+  . . . . . O O . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine rapfi_fast output message: Speed 296K | Depth 1-8 | Eval 134 | Node 296 | Time 0ms
+engine rapfi_fast output message: Bestline E10
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . X X . . . . . . . . . . 
+  . . O O O X . . . . . . . . . 
+  . . X O O O O X X . . . . . . 
+  . . X . O X . O . . . . . . . 
+  . . . X X X O X . . . . . . . 
+  . . . . . X . . . . . . . . . 
+  . . . . O O O . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine neural_v11_debug output debug:_DECISION move_count=26 player=1 sims=32 value=-0.234261 direct=(x=7,y=9,row=9,col=7) policy_safety=(x=7,y=9,row=9,col=7) mcts_raw=(x=7,y=9,row=9,col=7) mcts_safety=(x=7,y=9,row=9,col=7) final=(x=7,y=9,row=9,col=7)
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . X X . . . . . . . . . . 
+  . . O O O X . . . . . . . . . 
+  . . X O O O O X X . . . . . . 
+  . . X . O X . O . . . . . . . 
+  . . . X X X O X . . . . . . . 
+  . . . . . X . . . . . . . . . 
+  . . . . O O O X . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine rapfi_fast output message: Speed 296K | Depth 1-8 | Eval 81 | Node 296 | Time 1ms
+engine rapfi_fast output message: Bestline G5
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . X X . . . . . . . . . . 
+  . . O O O X O . . . . . . . . 
+  . . X O O O O X X . . . . . . 
+  . . X . O X . O . . . . . . . 
+  . . . X X X O X . . . . . . . 
+  . . . . . X . . . . . . . . . 
+  . . . . O O O X . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine neural_v11_debug output debug:_DECISION move_count=28 player=1 sims=32 value=-0.235486 direct=(x=6,y=6,row=6,col=6) policy_safety=(x=6,y=6,row=6,col=6) mcts_raw=(x=6,y=6,row=6,col=6) mcts_safety=(x=6,y=6,row=6,col=6) final=(x=6,y=6,row=6,col=6)
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . X X . . . . . . . . . . 
+  . . O O O X O . . . . . . . . 
+  . . X O O O O X X . . . . . . 
+  . . X . O X X O . . . . . . . 
+  . . . X X X O X . . . . . . . 
+  . . . . . X . . . . . . . . . 
+  . . . . O O O X . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine rapfi_fast output message: Speed 58000 | Depth 1-5 | Eval -134 | Node 58 | Time 0ms
+engine rapfi_fast output message: Bestline E9
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . X X . . . . . . . . . . 
+  . . O O O X O . . . . . . . . 
+  . . X O O O O X X . . . . . . 
+  . . X . O X X O . . . . . . . 
+  . . . X X X O X . . . . . . . 
+  . . . . O X . . . . . . . . . 
+  . . . . O O O X . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine neural_v11_debug output debug:_DECISION move_count=30 player=1 sims=32 value=-0.221312 direct=(x=3,y=9,row=9,col=3) policy_safety=(x=3,y=9,row=9,col=3) mcts_raw=(x=3,y=9,row=9,col=3) mcts_safety=(x=3,y=9,row=9,col=3) final=(x=3,y=9,row=9,col=3)
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . X X . . . . . . . . . . 
+  . . O O O X O . . . . . . . . 
+  . . X O O O O X X . . . . . . 
+  . . X . O X X O . . . . . . . 
+  . . . X X X O X . . . . . . . 
+  . . . . O X . . . . . . . . . 
+  . . . X O O O X . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine rapfi_fast output message: Speed 322K | Depth 1-5 | Eval -65 | Node 322 | Time 1ms
+engine rapfi_fast output message: Bestline B5 A5
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . X X . . . . . . . . . . 
+  . O O O O X O . . . . . . . . 
+  . . X O O O O X X . . . . . . 
+  . . X . O X X O . . . . . . . 
+  . . . X X X O X . . . . . . . 
+  . . . . O X . . . . . . . . . 
+  . . . X O O O X . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine neural_v11_debug output debug:_DECISION move_count=32 player=1 sims=32 value=-0.100792 direct=(x=8,y=6,row=6,col=8) policy_safety=(x=0,y=4,row=4,col=0) mcts_raw=(x=0,y=4,row=4,col=0) mcts_safety=(x=0,y=4,row=4,col=0) final=(x=0,y=4,row=4,col=0)
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . X X . . . . . . . . . . 
+  X O O O O X O . . . . . . . . 
+  . . X O O O O X X . . . . . . 
+  . . X . O X X O . . . . . . . 
+  . . . X X X O X . . . . . . . 
+  . . . . O X . . . . . . . . . 
+  . . . X O O O X . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine rapfi_fast output message: Speed 249K | Depth 1-3 | Eval -30 | Node 249 | Time 0ms
+engine rapfi_fast output message: Bestline G11
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . X X . . . . . . . . . . 
+  X O O O O X O . . . . . . . . 
+  . . X O O O O X X . . . . . . 
+  . . X . O X X O . . . . . . . 
+  . . . X X X O X . . . . . . . 
+  . . . . O X . . . . . . . . . 
+  . . . X O O O X . . . . . . . 
+  . . . . . . O . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine neural_v11_debug output debug:_DECISION move_count=34 player=1 sims=32 value=-0.020016 direct=(x=6,y=8,row=8,col=6) policy_safety=(x=6,y=8,row=8,col=6) mcts_raw=(x=6,y=8,row=8,col=6) mcts_safety=(x=6,y=8,row=8,col=6) final=(x=6,y=8,row=8,col=6)
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . X X . . . . . . . . . . 
+  X O O O O X O . . . . . . . . 
+  . . X O O O O X X . . . . . . 
+  . . X . O X X O . . . . . . . 
+  . . . X X X O X . . . . . . . 
+  . . . . O X X . . . . . . . . 
+  . . . X O O O X . . . . . . . 
+  . . . . . . O . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine rapfi_fast output message: Speed 281K | Depth 1-4 | Eval 19 | Node 281 | Time 0ms
+engine rapfi_fast output message: Bestline F11
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . X X . . . . . . . . . . 
+  X O O O O X O . . . . . . . . 
+  . . X O O O O X X . . . . . . 
+  . . X . O X X O . . . . . . . 
+  . . . X X X O X . . . . . . . 
+  . . . . O X X . . . . . . . . 
+  . . . X O O O X . . . . . . . 
+  . . . . . O O . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine neural_v11_debug output debug:_DECISION move_count=36 player=1 sims=32 value=0.340370 direct=(x=7,y=10,row=10,col=7) policy_safety=(x=7,y=10,row=10,col=7) mcts_raw=(x=7,y=10,row=10,col=7) mcts_safety=(x=7,y=10,row=10,col=7) final=(x=7,y=10,row=10,col=7)
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . X X . . . . . . . . . . 
+  X O O O O X O . . . . . . . . 
+  . . X O O O O X X . . . . . . 
+  . . X . O X X O . . . . . . . 
+  . . . X X X O X . . . . . . . 
+  . . . . O X X . . . . . . . . 
+  . . . X O O O X . . . . . . . 
+  . . . . . O O X . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine rapfi_fast output message: Speed 336K | Depth 1-8 | Eval 91 | Node 336 | Time 1ms
+engine rapfi_fast output message: Bestline G12
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . X X . . . . . . . . . . 
+  X O O O O X O . . . . . . . . 
+  . . X O O O O X X . . . . . . 
+  . . X . O X X O . . . . . . . 
+  . . . X X X O X . . . . . . . 
+  . . . . O X X . . . . . . . . 
+  . . . X O O O X . . . . . . . 
+  . . . . . O O X . . . . . . . 
+  . . . . . . O . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine neural_v11_debug output debug:_DECISION move_count=38 player=1 sims=32 value=0.210098 direct=(x=7,y=11,row=11,col=7) policy_safety=(x=3,y=8,row=8,col=3) mcts_raw=(x=8,y=6,row=6,col=8) mcts_safety=(x=3,y=8,row=8,col=3) final=(x=3,y=8,row=8,col=3)
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . X X . . . . . . . . . . 
+  X O O O O X O . . . . . . . . 
+  . . X O O O O X X . . . . . . 
+  . . X . O X X O . . . . . . . 
+  . . . X X X O X . . . . . . . 
+  . . . X O X X . . . . . . . . 
+  . . . X O O O X . . . . . . . 
+  . . . . . O O X . . . . . . . 
+  . . . . . . O . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine rapfi_fast output message: Speed 135K | Depth 1-7 | Eval 50 | Node 135 | Time 0ms
+engine rapfi_fast output message: Bestline H12 I13
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . X X . . . . . . . . . . 
+  X O O O O X O . . . . . . . . 
+  . . X O O O O X X . . . . . . 
+  . . X . O X X O . . . . . . . 
+  . . . X X X O X . . . . . . . 
+  . . . X O X X . . . . . . . . 
+  . . . X O O O X . . . . . . . 
+  . . . . . O O X . . . . . . . 
+  . . . . . . O O . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine neural_v11_debug output debug:_DECISION move_count=40 player=1 sims=32 value=0.091948 direct=(x=7,y=8,row=8,col=7) policy_safety=(x=8,y=12,row=12,col=8) mcts_raw=(x=8,y=12,row=12,col=8) mcts_safety=(x=8,y=12,row=12,col=8) final=(x=8,y=12,row=12,col=8)
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . X X . . . . . . . . . . 
+  X O O O O X O . . . . . . . . 
+  . . X O O O O X X . . . . . . 
+  . . X . O X X O . . . . . . . 
+  . . . X X X O X . . . . . . . 
+  . . . X O X X . . . . . . . . 
+  . . . X O O O X . . . . . . . 
+  . . . . . O O X . . . . . . . 
+  . . . . . . O O . . . . . . . 
+  . . . . . . . . X . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine rapfi_fast output message: Speed 51000 | Depth 1-4 | Eval 81 | Node 51 | Time 0ms
+engine rapfi_fast output message: Bestline D11
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . X X . . . . . . . . . . 
+  X O O O O X O . . . . . . . . 
+  . . X O O O O X X . . . . . . 
+  . . X . O X X O . . . . . . . 
+  . . . X X X O X . . . . . . . 
+  . . . X O X X . . . . . . . . 
+  . . . X O O O X . . . . . . . 
+  . . . O . O O X . . . . . . . 
+  . . . . . . O O . . . . . . . 
+  . . . . . . . . X . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine neural_v11_debug output debug:_DECISION move_count=42 player=1 sims=32 value=0.115401 direct=(x=7,y=8,row=8,col=7) policy_safety=(x=7,y=8,row=8,col=7) mcts_raw=(x=7,y=8,row=8,col=7) mcts_safety=(x=7,y=8,row=8,col=7) final=(x=7,y=8,row=8,col=7)
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . X X . . . . . . . . . . 
+  X O O O O X O . . . . . . . . 
+  . . X O O O O X X . . . . . . 
+  . . X . O X X O . . . . . . . 
+  . . . X X X O X . . . . . . . 
+  . . . X O X X X . . . . . . . 
+  . . . X O O O X . . . . . . . 
+  . . . O . O O X . . . . . . . 
+  . . . . . . O O . . . . . . . 
+  . . . . . . . . X . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine rapfi_fast output message: Speed 281K | Depth 1-3 | Eval +M7 | Node 281 | Time 0ms
+engine rapfi_fast output message: Bestline E11 C11
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . X X . . . . . . . . . . 
+  X O O O O X O . . . . . . . . 
+  . . X O O O O X X . . . . . . 
+  . . X . O X X O . . . . . . . 
+  . . . X X X O X . . . . . . . 
+  . . . X O X X X . . . . . . . 
+  . . . X O O O X . . . . . . . 
+  . . . O O O O X . . . . . . . 
+  . . . . . . O O . . . . . . . 
+  . . . . . . . . X . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine neural_v11_debug output debug:_DECISION move_count=44 player=1 sims=32 value=0.059948 direct=(x=10,y=7,row=7,col=10) policy_safety=(x=2,y=10,row=10,col=2) mcts_raw=(x=2,y=10,row=10,col=2) mcts_safety=(x=2,y=10,row=10,col=2) final=(x=2,y=10,row=10,col=2)
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . X X . . . . . . . . . . 
+  X O O O O X O . . . . . . . . 
+  . . X O O O O X X . . . . . . 
+  . . X . O X X O . . . . . . . 
+  . . . X X X O X . . . . . . . 
+  . . . X O X X X . . . . . . . 
+  . . . X O O O X . . . . . . . 
+  . . X O O O O X . . . . . . . 
+  . . . . . . O O . . . . . . . 
+  . . . . . . . . X . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine rapfi_fast output message: Speed 279K | Depth 1-3 | Eval +M5 | Node 279 | Time 0ms
+engine rapfi_fast output message: Bestline E12 E13
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . X X . . . . . . . . . . 
+  X O O O O X O . . . . . . . . 
+  . . X O O O O X X . . . . . . 
+  . . X . O X X O . . . . . . . 
+  . . . X X X O X . . . . . . . 
+  . . . X O X X X . . . . . . . 
+  . . . X O O O X . . . . . . . 
+  . . X O O O O X . . . . . . . 
+  . . . . O . O O . . . . . . . 
+  . . . . . . . . X . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine neural_v11_debug output debug:_DECISION move_count=46 player=1 sims=32 value=0.037243 direct=(x=2,y=9,row=9,col=2) policy_safety=(x=4,y=12,row=12,col=4) mcts_raw=(x=4,y=12,row=12,col=4) mcts_safety=(x=4,y=12,row=12,col=4) final=(x=4,y=12,row=12,col=4)
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . X X . . . . . . . . . . 
+  X O O O O X O . . . . . . . . 
+  . . X O O O O X X . . . . . . 
+  . . X . O X X O . . . . . . . 
+  . . . X X X O X . . . . . . . 
+  . . . X O X X X . . . . . . . 
+  . . . X O O O X . . . . . . . 
+  . . X O O O O X . . . . . . . 
+  . . . . O . O O . . . . . . . 
+  . . . . X . . . X . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine rapfi_fast output message: Speed 4000 | Depth 1-3 | Eval +M3 | Node 4 | Time 0ms
+engine rapfi_fast output message: Bestline F12 I12
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . X X . . . . . . . . . . 
+  X O O O O X O . . . . . . . . 
+  . . X O O O O X X . . . . . . 
+  . . X . O X X O . . . . . . . 
+  . . . X X X O X . . . . . . . 
+  . . . X O X X X . . . . . . . 
+  . . . X O O O X . . . . . . . 
+  . . X O O O O X . . . . . . . 
+  . . . . O O O O . . . . . . . 
+  . . . . X . . . X . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine neural_v11_debug output debug:_DECISION move_count=48 player=1 sims=32 value=0.018474 direct=(x=10,y=7,row=7,col=10) policy_safety=(x=8,y=11,row=11,col=8) mcts_raw=(x=10,y=7,row=7,col=10) mcts_safety=(x=8,y=11,row=11,col=8) final=(x=8,y=11,row=11,col=8)
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . X X . . . . . . . . . . 
+  X O O O O X O . . . . . . . . 
+  . . X O O O O X X . . . . . . 
+  . . X . O X X O . . . . . . . 
+  . . . X X X O X . . . . . . . 
+  . . . X O X X X . . . . . . . 
+  . . . X O O O X . . . . . . . 
+  . . X O O O O X . . . . . . . 
+  . . . . O O O O X . . . . . . 
+  . . . . X . . . X . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . X X . . . . . . . . . . 
+  X O O O O X O . . . . . . . . 
+  . . X O O O O X X . . . . . . 
+  . . X . O X X O . . . . . . . 
+  . . . X X X O X . . . . . . . 
+  . . . X O X X X . . . . . . . 
+  . . . X O O O X . . . . . . . 
+  . . X O O O O X . . . . . . . 
+  . . . O O O O O X . . . . . . 
+  . . . . X . . . X . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+[1] Finished game 1 (neural_v11_debug vs rapfi_fast): 0-1 {White win by five connection}
+Score of neural_v11_debug vs rapfi_fast: 0 - 1 - 0  [0.000] 1
+[1] Started game 2 of 2 (rapfi_fast vs neural_v11_debug)
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . X . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine neural_v11_debug output debug:_DECISION move_count=1 player=1 sims=32 value=-0.859727 direct=(x=7,y=6,row=6,col=7) policy_safety=(x=7,y=6,row=6,col=7) mcts_raw=(x=7,y=6,row=6,col=7) mcts_safety=(x=7,y=6,row=6,col=7) final=(x=7,y=6,row=6,col=7)
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . O . . . . . . . 
+  . . . . . . . X . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine rapfi_fast output message: Speed 63000 | Depth 1-2 | Eval 86 | Node 63 | Time 0ms
+engine rapfi_fast output message: Bestline G9
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . O . . . . . . . 
+  . . . . . . . X . . . . . . . 
+  . . . . . . X . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine neural_v11_debug output debug:_DECISION move_count=3 player=1 sims=32 value=-0.443011 direct=(x=5,y=9,row=9,col=5) policy_safety=(x=5,y=9,row=9,col=5) mcts_raw=(x=5,y=9,row=9,col=5) mcts_safety=(x=5,y=9,row=9,col=5) final=(x=5,y=9,row=9,col=5)
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . O . . . . . . . 
+  . . . . . . . X . . . . . . . 
+  . . . . . . X . . . . . . . . 
+  . . . . . O . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine rapfi_fast output message: Speed 165K | Depth 1-2 | Eval 135 | Node 165 | Time 0ms
+engine rapfi_fast output message: Bestline G8
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . O . . . . . . . 
+  . . . . . . X X . . . . . . . 
+  . . . . . . X . . . . . . . . 
+  . . . . . O . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine neural_v11_debug output debug:_DECISION move_count=5 player=1 sims=32 value=-0.761639 direct=(x=6,y=6,row=6,col=6) policy_safety=(x=6,y=6,row=6,col=6) mcts_raw=(x=6,y=6,row=6,col=6) mcts_safety=(x=6,y=6,row=6,col=6) final=(x=6,y=6,row=6,col=6)
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . O O . . . . . . . 
+  . . . . . . X X . . . . . . . 
+  . . . . . . X . . . . . . . . 
+  . . . . . O . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine rapfi_fast output message: Speed 165K | Depth 1-2 | Eval 183 | Node 165 | Time 0ms
+engine rapfi_fast output message: Bestline F8
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . O O . . . . . . . 
+  . . . . . X X X . . . . . . . 
+  . . . . . . X . . . . . . . . 
+  . . . . . O . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine neural_v11_debug output debug:_DECISION move_count=7 player=1 sims=32 value=-0.747452 direct=(x=8,y=7,row=7,col=8) policy_safety=(x=8,y=7,row=7,col=8) mcts_raw=(x=8,y=7,row=7,col=8) mcts_safety=(x=8,y=7,row=7,col=8) final=(x=8,y=7,row=7,col=8)
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . O O . . . . . . . 
+  . . . . . X X X O . . . . . . 
+  . . . . . . X . . . . . . . . 
+  . . . . . O . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine rapfi_fast output message: Speed 185K | Depth 1-3 | Eval 140 | Node 185 | Time 0ms
+engine rapfi_fast output message: Bestline E7
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . X . O O . . . . . . . 
+  . . . . . X X X O . . . . . . 
+  . . . . . . X . . . . . . . . 
+  . . . . . O . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine neural_v11_debug output debug:_DECISION move_count=9 player=1 sims=32 value=-0.762663 direct=(x=3,y=5,row=5,col=3) policy_safety=(x=3,y=5,row=5,col=3) mcts_raw=(x=3,y=5,row=5,col=3) mcts_safety=(x=3,y=5,row=5,col=3) final=(x=3,y=5,row=5,col=3)
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . O . . . . . . . . . . . 
+  . . . . X . O O . . . . . . . 
+  . . . . . X X X O . . . . . . 
+  . . . . . . X . . . . . . . . 
+  . . . . . O . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine rapfi_fast output message: Speed 239K | Depth 1-3 | Eval 143 | Node 239 | Time 0ms
+engine rapfi_fast output message: Bestline H9
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . O . . . . . . . . . . . 
+  . . . . X . O O . . . . . . . 
+  . . . . . X X X O . . . . . . 
+  . . . . . . X X . . . . . . . 
+  . . . . . O . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine neural_v11_debug output debug:_DECISION move_count=11 player=1 sims=32 value=-0.878438 direct=(x=5,y=6,row=6,col=5) policy_safety=(x=5,y=6,row=6,col=5) mcts_raw=(x=5,y=6,row=6,col=5) mcts_safety=(x=5,y=6,row=6,col=5) final=(x=5,y=6,row=6,col=5)
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . O . . . . . . . . . . . 
+  . . . . X O O O . . . . . . . 
+  . . . . . X X X O . . . . . . 
+  . . . . . . X X . . . . . . . 
+  . . . . . O . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine rapfi_fast output message: Speed 259K | Depth 1-7 | Eval 198 | Node 259 | Time 1ms
+engine rapfi_fast output message: Bestline J9
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . O . . . . . . . . . . . 
+  . . . . X O O O . . . . . . . 
+  . . . . . X X X O . . . . . . 
+  . . . . . . X X . X . . . . . 
+  . . . . . O . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine neural_v11_debug output debug:_DECISION move_count=13 player=1 sims=32 value=-0.681954 direct=(x=8,y=8,row=8,col=8) policy_safety=(x=8,y=8,row=8,col=8) mcts_raw=(x=8,y=8,row=8,col=8) mcts_safety=(x=8,y=8,row=8,col=8) final=(x=8,y=8,row=8,col=8)
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . O . . . . . . . . . . . 
+  . . . . X O O O . . . . . . . 
+  . . . . . X X X O . . . . . . 
+  . . . . . . X X O X . . . . . 
+  . . . . . O . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine rapfi_fast output message: Speed 55000 | Depth 1-7 | Eval 143 | Node 55 | Time 0ms
+engine rapfi_fast output message: Bestline I10
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . O . . . . . . . . . . . 
+  . . . . X O O O . . . . . . . 
+  . . . . . X X X O . . . . . . 
+  . . . . . . X X O X . . . . . 
+  . . . . . O . . X . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine neural_v11_debug output debug:_DECISION move_count=15 player=1 sims=32 value=-0.093313 direct=(x=7,y=10,row=10,col=7) policy_safety=(x=7,y=10,row=10,col=7) mcts_raw=(x=7,y=10,row=10,col=7) mcts_safety=(x=7,y=10,row=10,col=7) final=(x=7,y=10,row=10,col=7)
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . O . . . . . . . . . . . 
+  . . . . X O O O . . . . . . . 
+  . . . . . X X X O . . . . . . 
+  . . . . . . X X O X . . . . . 
+  . . . . . O . . X . . . . . . 
+  . . . . . . . O . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine rapfi_fast output message: Speed 286K | Depth 1-5 | Eval 225 | Node 286 | Time 0ms
+engine rapfi_fast output message: Bestline I7
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . O . . . . . . . . . . . 
+  . . . . X O O O X . . . . . . 
+  . . . . . X X X O . . . . . . 
+  . . . . . . X X O X . . . . . 
+  . . . . . O . . X . . . . . . 
+  . . . . . . . O . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine neural_v11_debug output debug:_DECISION move_count=17 player=1 sims=32 value=-0.441464 direct=(x=9,y=5,row=5,col=9) policy_safety=(x=9,y=5,row=5,col=9) mcts_raw=(x=9,y=5,row=5,col=9) mcts_safety=(x=9,y=5,row=5,col=9) final=(x=9,y=5,row=5,col=9)
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . O . . . . . O . . . . . 
+  . . . . X O O O X . . . . . . 
+  . . . . . X X X O . . . . . . 
+  . . . . . . X X O X . . . . . 
+  . . . . . O . . X . . . . . . 
+  . . . . . . . O . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine rapfi_fast output message: Speed 274K | Depth 1-5 | Eval +M9 | Node 274 | Time 1ms
+engine rapfi_fast output message: Bestline J11 K12 H10 I11
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . O . . . . . O . . . . . 
+  . . . . X O O O X . . . . . . 
+  . . . . . X X X O . . . . . . 
+  . . . . . . X X O X . . . . . 
+  . . . . . O . . X . . . . . . 
+  . . . . . . . O . X . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine neural_v11_debug output debug:_DECISION move_count=19 player=1 sims=32 value=-0.587152 direct=(x=9,y=9,row=9,col=9) policy_safety=(x=10,y=11,row=11,col=10) mcts_raw=(x=10,y=11,row=11,col=10) mcts_safety=(x=10,y=11,row=11,col=10) final=(x=10,y=11,row=11,col=10)
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . O . . . . . O . . . . . 
+  . . . . X O O O X . . . . . . 
+  . . . . . X X X O . . . . . . 
+  . . . . . . X X O X . . . . . 
+  . . . . . O . . X . . . . . . 
+  . . . . . . . O . X . . . . . 
+  . . . . . . . . . . O . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine rapfi_fast output message: Speed 298K | Depth 1-3 | Eval +M7 | Node 298 | Time 0ms
+engine rapfi_fast output message: Bestline H10 I11
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . O . . . . . O . . . . . 
+  . . . . X O O O X . . . . . . 
+  . . . . . X X X O . . . . . . 
+  . . . . . . X X O X . . . . . 
+  . . . . . O . X X . . . . . . 
+  . . . . . . . O . X . . . . . 
+  . . . . . . . . . . O . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine neural_v11_debug output debug:_DECISION move_count=21 player=1 sims=32 value=-0.375625 direct=(x=9,y=9,row=9,col=9) policy_safety=(x=8,y=10,row=10,col=8) mcts_raw=(x=8,y=10,row=10,col=8) mcts_safety=(x=8,y=10,row=10,col=8) final=(x=8,y=10,row=10,col=8)
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . O . . . . . O . . . . . 
+  . . . . X O O O X . . . . . . 
+  . . . . . X X X O . . . . . . 
+  . . . . . . X X O X . . . . . 
+  . . . . . O . X X . . . . . . 
+  . . . . . . . O O X . . . . . 
+  . . . . . . . . . . O . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine rapfi_fast output message: Speed 297K | Depth 1-3 | Eval +M7 | Node 297 | Time 1ms
+engine rapfi_fast output message: Bestline E8 D8
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . O . . . . . O . . . . . 
+  . . . . X O O O X . . . . . . 
+  . . . . X X X X O . . . . . . 
+  . . . . . . X X O X . . . . . 
+  . . . . . O . X X . . . . . . 
+  . . . . . . . O O X . . . . . 
+  . . . . . . . . . . O . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine neural_v11_debug output debug:_DECISION move_count=23 player=1 sims=32 value=-0.444260 direct=(x=6,y=5,row=5,col=6) policy_safety=(x=3,y=7,row=7,col=3) mcts_raw=(x=3,y=7,row=7,col=3) mcts_safety=(x=3,y=7,row=7,col=3) final=(x=3,y=7,row=7,col=3)
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . O . . . . . O . . . . . 
+  . . . . X O O O X . . . . . . 
+  . . . O X X X X O . . . . . . 
+  . . . . . . X X O X . . . . . 
+  . . . . . O . X X . . . . . . 
+  . . . . . . . O O X . . . . . 
+  . . . . . . . . . . O . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine rapfi_fast output message: Speed 295K | Depth 1-2 | Eval 172 | Node 295 | Time 1ms
+engine rapfi_fast output message: Bestline E9
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . O . . . . . O . . . . . 
+  . . . . X O O O X . . . . . . 
+  . . . O X X X X O . . . . . . 
+  . . . . X . X X O X . . . . . 
+  . . . . . O . X X . . . . . . 
+  . . . . . . . O O X . . . . . 
+  . . . . . . . . . . O . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine neural_v11_debug output debug:_DECISION move_count=25 player=1 sims=32 value=-0.440633 direct=(x=5,y=8,row=8,col=5) policy_safety=(x=4,y=5,row=5,col=4) mcts_raw=(x=5,y=8,row=8,col=5) mcts_safety=(x=4,y=5,row=5,col=4) final=(x=4,y=5,row=5,col=4)
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . O O . . . . O . . . . . 
+  . . . . X O O O X . . . . . . 
+  . . . O X X X X O . . . . . . 
+  . . . . X . X X O X . . . . . 
+  . . . . . O . X X . . . . . . 
+  . . . . . . . O O X . . . . . 
+  . . . . . . . . . . O . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine rapfi_fast output message: Speed 297K | Depth 1-3 | Eval +M7 | Node 297 | Time 0ms
+engine rapfi_fast output message: Bestline D9 F9
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . O O . . . . O . . . . . 
+  . . . . X O O O X . . . . . . 
+  . . . O X X X X O . . . . . . 
+  . . . X X . X X O X . . . . . 
+  . . . . . O . X X . . . . . . 
+  . . . . . . . O O X . . . . . 
+  . . . . . . . . . . O . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine neural_v11_debug output debug:_DECISION move_count=27 player=1 sims=32 value=-0.578626 direct=(x=5,y=8,row=8,col=5) policy_safety=(x=5,y=8,row=8,col=5) mcts_raw=(x=5,y=8,row=8,col=5) mcts_safety=(x=5,y=8,row=8,col=5) final=(x=5,y=8,row=8,col=5)
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . O O . . . . O . . . . . 
+  . . . . X O O O X . . . . . . 
+  . . . O X X X X O . . . . . . 
+  . . . X X O X X O X . . . . . 
+  . . . . . O . X X . . . . . . 
+  . . . . . . . O O X . . . . . 
+  . . . . . . . . . . O . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine rapfi_fast output message: Speed 298K | Depth 1-3 | Eval +M7 | Node 298 | Time 0ms
+engine rapfi_fast output message: Bestline E11 E10
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . O O . . . . O . . . . . 
+  . . . . X O O O X . . . . . . 
+  . . . O X X X X O . . . . . . 
+  . . . X X O X X O X . . . . . 
+  . . . . . O . X X . . . . . . 
+  . . . . X . . O O X . . . . . 
+  . . . . . . . . . . O . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine neural_v11_debug output debug:_DECISION move_count=29 player=1 sims=32 value=-0.759072 direct=(x=3,y=4,row=4,col=3) policy_safety=(x=4,y=9,row=9,col=4) mcts_raw=(x=4,y=9,row=9,col=4) mcts_safety=(x=4,y=9,row=9,col=4) final=(x=4,y=9,row=9,col=4)
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . O O . . . . O . . . . . 
+  . . . . X O O O X . . . . . . 
+  . . . O X X X X O . . . . . . 
+  . . . X X O X X O X . . . . . 
+  . . . . O O . X X . . . . . . 
+  . . . . X . . O O X . . . . . 
+  . . . . . . . . . . O . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine rapfi_fast output message: Speed 293K | Depth 1-2 | Eval 60 | Node 293 | Time 0ms
+engine rapfi_fast output message: Bestline J10
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . O O . . . . O . . . . . 
+  . . . . X O O O X . . . . . . 
+  . . . O X X X X O . . . . . . 
+  . . . X X O X X O X . . . . . 
+  . . . . O O . X X X . . . . . 
+  . . . . X . . O O X . . . . . 
+  . . . . . . . . . . O . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine neural_v11_debug output debug:_DECISION move_count=31 player=1 sims=32 value=-0.745447 direct=(x=3,y=4,row=4,col=3) policy_safety=(x=10,y=9,row=9,col=10) mcts_raw=(x=3,y=4,row=4,col=3) mcts_safety=(x=10,y=9,row=9,col=10) final=(x=10,y=9,row=9,col=10)
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . O O . . . . O . . . . . 
+  . . . . X O O O X . . . . . . 
+  . . . O X X X X O . . . . . . 
+  . . . X X O X X O X . . . . . 
+  . . . . O O . X X X O . . . . 
+  . . . . X . . O O X . . . . . 
+  . . . . . . . . . . O . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine rapfi_fast output message: Speed 4000 | Depth 1-3 | Eval +M3 | Node 4 | Time 0ms
+engine rapfi_fast output message: Bestline J8 J12
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . O O . . . . O . . . . . 
+  . . . . X O O O X . . . . . . 
+  . . . O X X X X O X . . . . . 
+  . . . X X O X X O X . . . . . 
+  . . . . O O . X X X O . . . . 
+  . . . . X . . O O X . . . . . 
+  . . . . . . . . . . O . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+engine neural_v11_debug output debug:_DECISION move_count=33 player=1 sims=32 value=-0.741298 direct=(x=10,y=8,row=8,col=10) policy_safety=(x=9,y=6,row=6,col=9) mcts_raw=(x=10,y=8,row=8,col=10) mcts_safety=(x=9,y=6,row=6,col=9) final=(x=9,y=6,row=6,col=9)
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . O O . . . . O . . . . . 
+  . . . . X O O O X O . . . . . 
+  . . . O X X X X O X . . . . . 
+  . . . X X O X X O X . . . . . 
+  . . . . O O . X X X O . . . . 
+  . . . . X . . O O X . . . . . 
+  . . . . . . . . . . O . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+  ------------------------------
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . O O . . . . O . . . . . 
+  . . . . X O O O X O . . . . . 
+  . . . O X X X X O X . . . . . 
+  . . . X X O X X O X . . . . . 
+  . . . . O O . X X X O . . . . 
+  . . . . X . . O O X . . . . . 
+  . . . . . . . . . X O . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  . . . . . . . . . . . . . . . 
+  ------------------------------
+[1] Finished game 2 (rapfi_fast vs neural_v11_debug): 1-0 {Black win by five connection}
+Score of neural_v11_debug vs rapfi_fast: 0 - 2 - 0  [0.000] 2
