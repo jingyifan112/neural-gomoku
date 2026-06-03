@@ -1,0 +1,9 @@
+game_number,move_count,side_to_move,value,direct,policy_safety,mcts_raw,mcts_safety,final,previous_rapfi_bestline,next_rapfi_bestline,failure_type,notes
+1,12,black,0.680296,"6,8","6,8","6,8","6,8","6,8",G8,D6,needs_review,needs_review
+1,14,black,0.478734,"4,5","4,5","4,5","4,5","4,5",D6,F4 F3,needs_review,needs_review
+1,16,black,0.757017,"3,7","5,2","5,2","5,2","5,2",F4 F3,G3 H2,needs_review,needs_review
+1,18,black,0.695656,"7,1","7,1","7,1","7,1","7,1",G3 H2,,needs_review,needs_review
+2,27,white,-0.61592,"5,8","5,8","5,8","5,8","5,8",D9 F9,E5 E6,needs_review,needs_review
+2,29,white,-0.666071,"4,5","4,5","4,5","4,5","4,5",E5 E6,J10,needs_review,needs_review
+2,31,white,-0.754536,"10,7","10,9","3,9","10,9","10,9",J10,J8 J12,needs_review,needs_review
+2,33,white,-0.768495,"9,6","9,6","9,6","9,6","9,6",J8 J12,,needs_review,needs_review

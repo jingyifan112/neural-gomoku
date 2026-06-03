@@ -80,3 +80,15 @@ This reads `analysis/rapfi_failure_set.csv` and `analysis/rapfi_failure_threat_a
 - `analysis/rapfi_failure_label_summary.md`
 
 Use the labeled CSV/JSON as the compact hand-reviewed v12 failure set. The summary Markdown gives label counts plus one short rationale block per selected position.
+
+## Rapfi failure repair training
+
+Use `scripts/train_rapfi_failure_repair.py` for a small targeted supervised repair pass seeded from the labeled Rapfi failure set:
+
+```bash
+PYTHONPATH=src python scripts/train_rapfi_failure_repair.py --dry-run \
+  --init-checkpoint checkpoints/15x15_current_best.pt \
+  --out-checkpoint checkpoints/15x15_v12_rapfi_repair_stage1.pt
+```
+
+Dry-run mode builds the repair dataset and prints policy/value targets without saving a checkpoint. Non-dry-run mode fine-tunes from `--init-checkpoint` and saves `--out-checkpoint`; use it only after reviewing the printed targets and deciding to start v12 stage1.
