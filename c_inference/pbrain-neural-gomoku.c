@@ -1,4 +1,6 @@
 #include "mcts_c.h"
+#include "cnn_infer.h"
+#include "search_safety_c.h"
 
 #include <ctype.h>
 #include <stdio.h>
@@ -15,6 +17,8 @@ typedef struct {
     int started;
     int engine_player;
     int mcts_sims;
+    int debug_decision;
+    const char *move_mode;
 } BrainState;
 
 static void protocol_printf(const char *text) {
@@ -32,6 +36,16 @@ static int parse_positive_int(const char *text, int fallback) {
         return fallback;
     }
     return (int)value;
+}
+
+static int is_valid_move_mode(const char *mode) {
+    if (!mode || !*mode) {
+        return 0;
+    }
+    return strcmp(mode, "mcts_safe") == 0 ||
+           strcmp(mode, "mcts_raw") == 0 ||
+           strcmp(mode, "policy_safe") == 0 ||
+           strcmp(mode, "direct") == 0;
 }
 
 static void strip_newline(char *line) {
@@ -64,17 +78,106 @@ static int first_legal_move(const CBoard *board) {
     return -1;
 }
 
+static void encode_board_for_inference(
+    const CBoard *board,
+    float input[GOMOKU_INPUT_CHANNELS * GOMOKU_BOARD_CELLS],
+    float legal_mask[GOMOKU_BOARD_CELLS]
+) {
+    memset(input, 0, sizeof(float) * GOMOKU_INPUT_CHANNELS * GOMOKU_BOARD_CELLS);
+    for (int i = 0; i < GOMOKU_BOARD_CELLS; i++) {
+        input[i] = board->cells[i] == board->current_player ? 1.0f : 0.0f;
+        input[GOMOKU_BOARD_CELLS + i] = board->cells[i] == -board->current_player ? 1.0f : 0.0f;
+        legal_mask[i] = board->cells[i] == GOMOKU_EMPTY ? 1.0f : 0.0f;
+    }
+    if (board->last_move >= 0 && board->last_move < GOMOKU_BOARD_CELLS) {
+        input[2 * GOMOKU_BOARD_CELLS + board->last_move] = 1.0f;
+    }
+}
+
+static void debug_print_action(const char *label, int action) {
+    if (action < 0) {
+        fprintf(stderr, "%s=(-1,-1)", label);
+        return;
+    }
+    int row = action / GOMOKU_BOARD_SIZE;
+    int col = action % GOMOKU_BOARD_SIZE;
+    fprintf(stderr, "%s=(x=%d,y=%d,row=%d,col=%d)", label, col, row, row, col);
+}
+
 static int choose_engine_move(BrainState *state) {
-    MCTSConfigC config = {
-        .simulations = state->mcts_sims,
-        .c_puct = 1.5f,
-        .use_safety = 1,
-    };
-    int action = mcts_select_move(&state->weights, &state->board, &config);
+    int mode_direct = strcmp(state->move_mode, "direct") == 0;
+    int mode_policy_safe = strcmp(state->move_mode, "policy_safe") == 0;
+    int mode_mcts_raw = strcmp(state->move_mode, "mcts_raw") == 0;
+    int mode_mcts_safe = strcmp(state->move_mode, "mcts_safe") == 0;
+
+    int direct_move = -1;
+    int safe_policy_move = -1;
+    int mcts_raw_move = -1;
+    int mcts_safe_move = -1;
+    float value = 0.0f;
+
+    int need_policy = state->debug_decision || mode_direct || mode_policy_safe;
+    if (need_policy) {
+        float input[GOMOKU_INPUT_CHANNELS * GOMOKU_BOARD_CELLS];
+        float legal_mask[GOMOKU_BOARD_CELLS];
+        float logits[GOMOKU_BOARD_CELLS];
+
+        encode_board_for_inference(&state->board, input, legal_mask);
+        cnn_forward(&state->weights, input, logits, &value);
+
+        direct_move = cnn_top_legal_move(logits, legal_mask);
+        safe_policy_move = safety_select_move(&state->board, logits, 1);
+    }
+
+    if (state->debug_decision || mode_mcts_raw) {
+        MCTSConfigC raw_config = {
+            .simulations = state->mcts_sims,
+            .c_puct = 1.5f,
+            .use_safety = 0,
+        };
+        mcts_raw_move = mcts_select_move(&state->weights, &state->board, &raw_config);
+    }
+
+    if (state->debug_decision || mode_mcts_safe) {
+        MCTSConfigC safe_config = {
+            .simulations = state->mcts_sims,
+            .c_puct = 1.5f,
+            .use_safety = 1,
+        };
+        mcts_safe_move = mcts_select_move(&state->weights, &state->board, &safe_config);
+    }
+
+    int action = -1;
+    if (mode_direct) {
+        action = direct_move;
+    } else if (mode_policy_safe) {
+        action = safe_policy_move;
+    } else if (mode_mcts_raw) {
+        action = mcts_raw_move;
+    } else {
+        action = mcts_safe_move;
+    }
+
     if (!board_is_legal(&state->board, action)) {
-        fprintf(stderr, "selected illegal move %d, falling back to first legal move\n", action);
+        fprintf(stderr, "selected illegal move %d in mode=%s, falling back to first legal move\n", action, state->move_mode);
         action = first_legal_move(&state->board);
     }
+
+    if (state->debug_decision) {
+        fprintf(stderr, "DEBUG_DECISION mode=%s move_count=%d player=%d sims=%d value=%.6f ",
+                state->move_mode, state->board.move_count, state->board.current_player, state->mcts_sims, value);
+        debug_print_action("direct", direct_move);
+        fprintf(stderr, " ");
+        debug_print_action("policy_safety", safe_policy_move);
+        fprintf(stderr, " ");
+        debug_print_action("mcts_raw", mcts_raw_move);
+        fprintf(stderr, " ");
+        debug_print_action("mcts_safety", mcts_safe_move);
+        fprintf(stderr, " ");
+        debug_print_action("final", action);
+        fprintf(stderr, "\n");
+    }
+
     return action;
 }
 
@@ -202,6 +305,11 @@ int main(void) {
     memset(&state, 0, sizeof(state));
     state.engine_player = GOMOKU_BLACK;
     state.mcts_sims = parse_positive_int(getenv("NEURAL_GOMOKU_MCTS_SIMS"), DEFAULT_MCTS_SIMS);
+    state.debug_decision = parse_positive_int(getenv("NEURAL_GOMOKU_DEBUG_DECISION"), 0) > 0;
+    state.move_mode = getenv("NEURAL_GOMOKU_MOVE_MODE");
+    if (!is_valid_move_mode(state.move_mode)) {
+        state.move_mode = "mcts_safe";
+    }
     board_init(&state.board);
 
     const char *weights_path = getenv("NEURAL_GOMOKU_WEIGHTS");
@@ -213,7 +321,7 @@ int main(void) {
         return 1;
     }
     state.weights_loaded = 1;
-    fprintf(stderr, "loaded weights=%s mcts_sims=%d\n", weights_path, state.mcts_sims);
+    fprintf(stderr, "loaded weights=%s mcts_sims=%d debug_decision=%d move_mode=%s\n", weights_path, state.mcts_sims, state.debug_decision, state.move_mode);
 
     char line[256];
     while (fgets(line, sizeof(line), stdin)) {
