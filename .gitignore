@@ -19,3 +19,4 @@ diagnostics/
 checkpoints/15x15_*.pt
 checkpoints/*current_best*.pt
 *.npz
+.DS_Store
