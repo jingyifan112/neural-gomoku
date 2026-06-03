@@ -14,7 +14,7 @@ NEW_EARLY_FORCING = {
     ("1", "16"): -0.7,
     ("1", "18"): -0.7,
 }
-NEW_PRE_DOUBLE = {("2", "31"): -0.5}
+NEW_PRE_DOUBLE = {("2", "31"): -0.75}
 NEW_DOUBLE_THREATS = {("2", "33")}
 
 OUTPUT_FIELDS = [

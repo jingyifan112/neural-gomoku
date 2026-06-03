@@ -148,7 +148,7 @@ v12_g2_m31,15,white,". . . . . . . . . . . . . . .
 . . . . . . . . . . O . . . .
 . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . .",v12_candidate_rapfi_pre_double_threat,31,pre_double_threat_warning,-0.5,,moderate negative value for pre-double-threat warning; no policy target without audit
+. . . . . . . . . . . . . . .",v12_candidate_rapfi_pre_double_threat,31,pre_double_threat_warning,-0.75,,moderate negative value for pre-double-threat warning; no policy target without audit
 v12_g2_m33,15,white,". . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . .

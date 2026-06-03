@@ -115,7 +115,7 @@
     "source": "v12_candidate_rapfi_pre_double_threat",
     "move_count": "31",
     "label_type": "pre_double_threat_warning",
-    "value_target": -0.5,
+    "value_target": -0.75,
     "policy_target": "",
     "notes": "moderate negative value for pre-double-threat warning; no policy target without audit"
   },
