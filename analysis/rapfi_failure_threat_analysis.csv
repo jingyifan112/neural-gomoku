@@ -1,0 +1,8 @@
+game_number,move_count,side_to_move,opponent,value,direct,policy_safety,mcts_raw,mcts_safety,final,current_player_immediate_winning_moves,opponent_immediate_winning_moves,final_blocks_immediate_win,direct_blocks_immediate_win,mcts_raw_blocks_immediate_win,mcts_safety_blocks_immediate_win,preliminary_failure_type
+1,38,black,white,0.210098,"7,11","3,8","8,6","3,8","3,8",,,False,False,False,False,needs_manual_review
+1,44,black,white,0.059948,"10,7","2,10","2,10","2,10","2,10",,"2,10",True,False,True,True,value_miscalibration
+1,46,black,white,0.037243,"2,9","4,12","4,12","4,12","4,12",,"4,12",True,False,True,True,value_miscalibration
+1,48,black,white,0.018474,"10,7","8,11","10,7","8,11","8,11",,"3,11 8,11",True,False,False,True,forced_loss_or_double_threat
+2,29,white,black,-0.759072,"3,4","4,9","4,9","4,9","4,9",,"4,9",True,False,True,True,needs_manual_review
+2,31,white,black,-0.745447,"3,4","10,9","3,4","10,9","10,9",,,False,False,False,False,needs_manual_review
+2,33,white,black,-0.741298,"10,8","9,6","10,8","9,6","9,6",,"9,6 9,11",True,False,False,True,forced_loss_or_double_threat
