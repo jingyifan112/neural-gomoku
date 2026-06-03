@@ -43,7 +43,7 @@ X O O O O X O . . . . . . . .
 . . . . O O O O . . . . . . .
 . . . . X . . . X . . . . . .
 . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . .",v11_labeled_rapfi_failure_set,48,verified_double_threat_loss,-1.0,"3,11","verified old double-threat loss; opponent had two immediate winning moves 3,11 and 8,11; final blocked only one"
+. . . . . . . . . . . . . . .",v11_labeled_rapfi_failure_set,48,verified_double_threat_loss,-1.0,,"verified old double-threat loss; opponent had two immediate winning moves 3,11 and 8,11; final blocked only one"
 old_g2_m29,15,white,". . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . .
@@ -73,7 +73,7 @@ old_g2_m33,15,white,". . . . . . . . . . . . . . .
 . . . . . . . . . . O . . . .
 . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . .",v11_labeled_rapfi_failure_set,33,verified_double_threat_loss,-1.0,"9,6","verified old double-threat loss; opponent had two immediate winning moves 9,6 and 9,11; final blocked only one"
+. . . . . . . . . . . . . . .",v11_labeled_rapfi_failure_set,33,verified_double_threat_loss,-1.0,,"verified old double-threat loss; opponent had two immediate winning moves 9,6 and 9,11; final blocked only one"
 v12_g1_m12,15,black,". . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . .
@@ -133,7 +133,7 @@ v12_g1_m18,15,black,". . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . .",v12_candidate_rapfi_forcing_line,18,early_forcing_value_negative,-1.0,,value-focused early forcing-line repair; no policy target without manual safer-move audit
+. . . . . . . . . . . . . . .",v12_candidate_rapfi_forcing_line,18,early_forcing_value_negative,-0.7,,value-focused early forcing-line repair; no policy target without manual safer-move audit
 v12_g2_m31,15,white,". . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . .
@@ -163,4 +163,4 @@ v12_g2_m33,15,white,". . . . . . . . . . . . . . .
 . . . . . . . . . . O . . . .
 . . . . . . . . . . . . . . .
 . . . . . . . . . . . . . . .
-. . . . . . . . . . . . . . .",v12_candidate_rapfi_double_threat,33,verified_double_threat_loss,-1.0,"9,6","verified v12 double-threat loss; policy target is only one listed block, value target carries loss signal"
+. . . . . . . . . . . . . . .",v12_candidate_rapfi_double_threat,33,verified_double_threat_loss,-1.0,,verified v12 double-threat loss; value-only sample because blocking one listed win may still lose

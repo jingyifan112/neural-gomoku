@@ -12,7 +12,7 @@ NEW_EARLY_FORCING = {
     ("1", "12"): -0.5,
     ("1", "14"): -0.5,
     ("1", "16"): -0.7,
-    ("1", "18"): -1.0,
+    ("1", "18"): -0.7,
 }
 NEW_PRE_DOUBLE = {("2", "31"): -0.5}
 NEW_DOUBLE_THREATS = {("2", "33")}
@@ -131,6 +131,7 @@ def add_old_rows(args: argparse.Namespace, rows: list[dict[str, object]]) -> Non
         else:
             label_type = "verified_double_threat_loss"
             value_target = -1.0
+            policy_target = ""
             notes = f"verified old double-threat loss; {label['notes']}"
 
         rows.append(
@@ -193,8 +194,8 @@ def add_new_rows(args: argparse.Namespace, rows: list[dict[str, object]]) -> Non
                 source="v12_candidate_rapfi_double_threat",
                 label_type="verified_double_threat_loss",
                 value_target=-1.0,
-                policy_target=opponent_wins[0] if opponent_wins else "",
-                notes="verified v12 double-threat loss; policy target is only one listed block, value target carries loss signal",
+                policy_target="",
+                notes="verified v12 double-threat loss; value-only sample because blocking one listed win may still lose",
             )
         )
 
@@ -209,7 +210,7 @@ def write_json(path: Path, rows: list[dict[str, object]]) -> None:
 def write_csv(path: Path, rows: list[dict[str, object]]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=OUTPUT_FIELDS)
+        writer = csv.DictWriter(handle, fieldnames=OUTPUT_FIELDS, lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
 

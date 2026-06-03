@@ -32,7 +32,7 @@
     "move_count": "48",
     "label_type": "verified_double_threat_loss",
     "value_target": -1.0,
-    "policy_target": "3,11",
+    "policy_target": "",
     "notes": "verified old double-threat loss; opponent had two immediate winning moves 3,11 and 8,11; final blocked only one"
   },
   {
@@ -56,7 +56,7 @@
     "move_count": "33",
     "label_type": "verified_double_threat_loss",
     "value_target": -1.0,
-    "policy_target": "9,6",
+    "policy_target": "",
     "notes": "verified old double-threat loss; opponent had two immediate winning moves 9,6 and 9,11; final blocked only one"
   },
   {
@@ -103,7 +103,7 @@
     "source": "v12_candidate_rapfi_forcing_line",
     "move_count": "18",
     "label_type": "early_forcing_value_negative",
-    "value_target": -1.0,
+    "value_target": -0.7,
     "policy_target": "",
     "notes": "value-focused early forcing-line repair; no policy target without manual safer-move audit"
   },
@@ -128,7 +128,7 @@
     "move_count": "33",
     "label_type": "verified_double_threat_loss",
     "value_target": -1.0,
-    "policy_target": "9,6",
-    "notes": "verified v12 double-threat loss; policy target is only one listed block, value target carries loss signal"
+    "policy_target": "",
+    "notes": "verified v12 double-threat loss; value-only sample because blocking one listed win may still lose"
   }
 ]
