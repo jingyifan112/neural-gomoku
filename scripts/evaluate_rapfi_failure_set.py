@@ -21,6 +21,7 @@ def parse_args() -> argparse.Namespace:
         description="Evaluate a checkpoint's direct policy/value on the labeled Rapfi failure positions."
     )
     parser.add_argument("--checkpoint", type=Path, required=True)
+    parser.add_argument("--repair-dataset-json", type=Path, default=None)
     parser.add_argument("--positions-json", type=Path, default=Path("analysis/rapfi_failure_board_snapshots.json"))
     parser.add_argument("--threat-csv", type=Path, default=Path("analysis/rapfi_failure_threat_analysis.csv"))
     parser.add_argument("--out", type=Path, default=None)
@@ -122,10 +123,14 @@ def evaluate_position(model: PolicyValueNet, board: Board, device: torch.device)
 
 def output_fields() -> list[str]:
     return [
+        "sample_id",
         "game_number",
         "move_count",
         "side_to_move",
         "opponent",
+        "label_type",
+        "value_target",
+        "policy_target",
         "labeled_failure_type",
         "logged_value",
         "model_value_estimate",
@@ -146,6 +151,9 @@ def output_fields() -> list[str]:
 
 
 def build_rows(args: argparse.Namespace, model: PolicyValueNet, device: torch.device) -> list[dict[str, str]]:
+    if args.repair_dataset_json is not None:
+        return build_rows_from_repair_dataset(args, model, device)
+
     positions = read_json(args.positions_json)
     threats = read_csv_index(args.threat_csv)
     labels = read_csv_index(args.labels_csv) if args.labels_csv.exists() else {}
@@ -185,10 +193,14 @@ def build_rows(args: argparse.Namespace, model: PolicyValueNet, device: torch.de
 
         rows.append(
             {
+                "sample_id": f"legacy_g{game_number}_m{move_count}",
                 "game_number": game_number,
                 "move_count": move_count,
                 "side_to_move": side_to_move,
                 "opponent": opponent,
+                "label_type": "",
+                "value_target": "",
+                "policy_target": "",
                 "labeled_failure_type": label_row.get("failure_type", position.get("failure_type", "")),
                 "logged_value": str(position["value"]),
                 "model_value_estimate": f"{model_value:.6f}",
@@ -211,12 +223,126 @@ def build_rows(args: argparse.Namespace, model: PolicyValueNet, device: torch.de
     return rows
 
 
+def parse_dataset_board(board_text: str, board_size: int, win_length: int, side_to_move: str) -> Board:
+    board = Board(size=board_size, win_length=win_length)
+    rows: list[list[str]] = []
+    for line in board_text.splitlines():
+        tokens = line.strip().split()
+        if len(tokens) == board_size and all(token in STONE_TO_PLAYER for token in tokens):
+            rows.append(tokens)
+
+    if len(rows) != board_size:
+        raise ValueError(f"expected {board_size} board rows, found {len(rows)}")
+
+    for row_index, row in enumerate(rows):
+        for col_index, token in enumerate(row):
+            board.grid[row_index, col_index] = STONE_TO_PLAYER[token]
+
+    board.current_player = SIDE_TO_PLAYER[side_to_move]
+    board.move_count = int((board.grid != 0).sum())
+    board.last_move = None
+    return board
+
+
+def split_dataset_id(sample_id: str) -> tuple[str, str]:
+    if "_g" not in sample_id or "_m" not in sample_id:
+        return "", ""
+    game_part = sample_id.split("_m", maxsplit=1)[0]
+    move_part = sample_id.split("_m", maxsplit=1)[1]
+    return game_part.split("_g", maxsplit=1)[1], move_part
+
+
+def build_rows_from_repair_dataset(
+    args: argparse.Namespace,
+    model: PolicyValueNet,
+    device: torch.device,
+) -> list[dict[str, str]]:
+    dataset = read_json(args.repair_dataset_json)
+    rows: list[dict[str, str]] = []
+
+    for sample in dataset:
+        sample_id = str(sample["id"])
+        game_number, move_count = split_dataset_id(sample_id)
+        side_to_move = str(sample["side_to_move"])
+        opponent = "white" if side_to_move == "black" else "black"
+        board = parse_dataset_board(
+            str(sample["board"]),
+            board_size=args.board_size,
+            win_length=args.win_length,
+            side_to_move=side_to_move,
+        )
+        top_move, top_prob, model_value = evaluate_position(model, board, device)
+
+        opponent_immediate = moves_to_coords(
+            board.immediate_winning_moves(SIDE_TO_PLAYER[opponent]),
+            args.board_size,
+        )
+        current_immediate = moves_to_coords(
+            board.immediate_winning_moves(SIDE_TO_PLAYER[side_to_move]),
+            args.board_size,
+        )
+        expected_blocks = set(opponent_immediate)
+        policy_target = str(sample.get("policy_target", "") or "")
+        if policy_target:
+            expected_blocks.add(policy_target)
+
+        rows.append(
+            {
+                "sample_id": sample_id,
+                "game_number": game_number,
+                "move_count": str(sample["move_count"]),
+                "side_to_move": side_to_move,
+                "opponent": opponent,
+                "label_type": str(sample["label_type"]),
+                "value_target": str(sample.get("value_target", "")),
+                "policy_target": policy_target,
+                "labeled_failure_type": str(sample["label_type"]),
+                "logged_value": "",
+                "model_value_estimate": f"{model_value:.6f}",
+                "direct_policy_top_move": top_move,
+                "direct_policy_top_prob": f"{top_prob:.6f}",
+                "direct_blocks_opponent_immediate_win": str(blocks_immediate_win(top_move, expected_blocks)),
+                "expected_blocking_moves": " ".join(sorted(expected_blocks)),
+                "opponent_immediate_winning_moves": " ".join(opponent_immediate),
+                "current_player_immediate_winning_moves": " ".join(current_immediate),
+                "logged_direct": "",
+                "logged_policy_safety": "",
+                "logged_mcts_raw": "",
+                "logged_mcts_safety": "",
+                "logged_final": "",
+                "logged_final_blocks_immediate_win": "",
+                "preliminary_failure_type": "",
+            }
+        )
+
+    return rows
+
+
 def write_csv(path: Path, rows: list[dict[str, str]]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=output_fields())
         writer.writeheader()
         writer.writerows(rows)
+
+
+def print_gate_summary(rows: list[dict[str, str]]) -> None:
+    old_blocks = [row for row in rows if row.get("label_type") == "old_immediate_block_regression"]
+    if old_blocks:
+        hits = sum(1 for row in old_blocks if row["direct_blocks_opponent_immediate_win"] == "True")
+        print(f"old immediate-block direct accuracy: {hits}/{len(old_blocks)}")
+
+    for label_type in (
+        "verified_double_threat_loss",
+        "early_forcing_value_negative",
+        "pre_double_threat_warning",
+    ):
+        group = [row for row in rows if row.get("label_type") == label_type]
+        if not group:
+            continue
+        values = [float(row["model_value_estimate"]) for row in group]
+        avg_value = sum(values) / len(values)
+        print(f"{label_type} value avg: {avg_value:.6f} n={len(values)}")
 
 
 def main() -> int:
@@ -228,6 +354,7 @@ def main() -> int:
     write_csv(out, rows)
     print(f"device={device}")
     print(f"evaluated positions: {len(rows)}")
+    print_gate_summary(rows)
     print(f"wrote {out}")
     return 0
 

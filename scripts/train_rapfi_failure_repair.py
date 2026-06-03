@@ -22,9 +22,11 @@ STONE_TO_PLAYER = {"X": BLACK, "O": WHITE, ".": 0}
 
 @dataclass(frozen=True)
 class RepairSample:
+    sample_id: str
     game_number: str
     move_count: str
-    failure_type: str
+    label_type: str
+    source: str
     state: np.ndarray
     policy_target: np.ndarray
     policy_mask: float
@@ -37,8 +39,9 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Small targeted supervised repair pass for Rapfi failure positions."
     )
-    parser.add_argument("--init-checkpoint", type=Path, required=True)
-    parser.add_argument("--out-checkpoint", type=Path, required=True)
+    parser.add_argument("--init-checkpoint", type=Path, default=Path("checkpoints/15x15_v12_candidate.pt"))
+    parser.add_argument("--out-checkpoint", type=Path, default=Path("checkpoints/15x15_v12b_candidate.pt"))
+    parser.add_argument("--repair-dataset-json", type=Path, default=None)
     parser.add_argument("--positions-json", type=Path, default=Path("analysis/rapfi_failure_board_snapshots.json"))
     parser.add_argument("--threat-csv", type=Path, default=Path("analysis/rapfi_failure_threat_analysis.csv"))
     parser.add_argument("--labels-csv", type=Path, default=Path("analysis/rapfi_failure_set_labeled.csv"))
@@ -71,6 +74,27 @@ def parse_board(snapshot: str, board_size: int, win_length: int, side_to_move: s
     board = Board(size=board_size, win_length=win_length)
     rows: list[list[str]] = []
     for line in snapshot.splitlines():
+        tokens = line.strip().split()
+        if len(tokens) == board_size and all(token in STONE_TO_PLAYER for token in tokens):
+            rows.append(tokens)
+
+    if len(rows) != board_size:
+        raise ValueError(f"expected {board_size} board rows, found {len(rows)}")
+
+    for row_index, row in enumerate(rows):
+        for col_index, token in enumerate(row):
+            board.grid[row_index, col_index] = STONE_TO_PLAYER[token]
+
+    board.current_player = SIDE_TO_PLAYER[side_to_move]
+    board.move_count = int((board.grid != 0).sum())
+    board.last_move = None
+    return board
+
+
+def parse_dataset_board(board_text: str, board_size: int, win_length: int, side_to_move: str) -> Board:
+    board = Board(size=board_size, win_length=win_length)
+    rows: list[list[str]] = []
+    for line in board_text.splitlines():
         tokens = line.strip().split()
         if len(tokens) == board_size and all(token in STONE_TO_PLAYER for token in tokens):
             rows.append(tokens)
@@ -138,6 +162,9 @@ def choose_targets(
 
 
 def build_samples(args: argparse.Namespace) -> list[RepairSample]:
+    if args.repair_dataset_json is not None:
+        return build_samples_from_repair_dataset(args)
+
     positions = read_positions(args.positions_json)
     threats = read_csv_index(args.threat_csv)
     labels = read_csv_index(args.labels_csv)
@@ -166,9 +193,72 @@ def build_samples(args: argparse.Namespace) -> list[RepairSample]:
         )
         samples.append(
             RepairSample(
+                sample_id=f"legacy_g{key[0]}_m{key[1]}",
                 game_number=key[0],
                 move_count=key[1],
-                failure_type=label_row["failure_type"],
+                label_type=label_row["failure_type"],
+                source="legacy_rapfi_failure_set",
+                state=board.encode().astype(np.float32),
+                policy_target=policy_target,
+                policy_mask=policy_mask,
+                policy_target_move=policy_target_move,
+                value_target=value_target,
+                value_mask=value_mask,
+            )
+        )
+
+    return samples
+
+
+def build_samples_from_repair_dataset(args: argparse.Namespace) -> list[RepairSample]:
+    with args.repair_dataset_json.open("r", encoding="utf-8") as handle:
+        dataset = json.load(handle)
+    if not isinstance(dataset, list):
+        raise ValueError(f"{args.repair_dataset_json} must contain a JSON list")
+
+    samples: list[RepairSample] = []
+    for row in dataset:
+        if not isinstance(row, dict):
+            raise ValueError("repair dataset rows must be JSON objects")
+
+        board_size = int(row.get("board_size", args.board_size))
+        if board_size != args.board_size:
+            raise ValueError(f"dataset row {row.get('id')} has board_size={board_size}, expected {args.board_size}")
+
+        board = parse_dataset_board(
+            str(row["board"]),
+            board_size=args.board_size,
+            win_length=args.win_length,
+            side_to_move=str(row["side_to_move"]),
+        )
+
+        policy_target_move = str(row.get("policy_target", "") or "")
+        if policy_target_move:
+            policy_target = one_hot_policy(args.board_size, policy_target_move)
+            policy_mask = 1.0
+        else:
+            policy_target = np.zeros(args.board_size * args.board_size, dtype=np.float32)
+            policy_mask = 0.0
+
+        raw_value = row.get("value_target", "")
+        if raw_value == "" or raw_value is None:
+            value_target = 0.0
+            value_mask = 0.0
+        else:
+            value_target = float(raw_value)
+            value_mask = 1.0
+
+        sample_id = str(row["id"])
+        move_count = str(row["move_count"])
+        game_number = sample_id.split("_m", maxsplit=1)[0].split("_g")[-1] if "_g" in sample_id else ""
+
+        samples.append(
+            RepairSample(
+                sample_id=sample_id,
+                game_number=game_number,
+                move_count=move_count,
+                label_type=str(row["label_type"]),
+                source=str(row.get("source", "")),
                 state=board.encode().astype(np.float32),
                 policy_target=policy_target,
                 policy_mask=policy_mask,
@@ -207,8 +297,10 @@ def print_dry_run(samples: list[RepairSample]) -> None:
         value_target = f"{sample.value_target:.1f}" if sample.value_mask > 0 else "none"
         print(
             "target "
+            f"id={sample.sample_id} "
+            f"source={sample.source} "
             f"game={sample.game_number} move_count={sample.move_count} "
-            f"failure_type={sample.failure_type} "
+            f"label_type={sample.label_type} "
             f"policy_target={policy_target} value_target={value_target}"
         )
 

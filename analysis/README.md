@@ -92,3 +92,33 @@ PYTHONPATH=src python scripts/train_rapfi_failure_repair.py --dry-run \
 ```
 
 Dry-run mode builds the repair dataset and prints policy/value targets without saving a checkpoint. Non-dry-run mode fine-tunes from `--init-checkpoint` and saves `--out-checkpoint`; use it only after reviewing the printed targets and deciding to start v12 stage1.
+
+## v12b forced-line repair dataset
+
+Build the explicit v12b repair dataset from the old v11 failure set and the v12 candidate forced-line failures:
+
+```bash
+PYTHONPATH=src python scripts/build_v12b_forced_line_dataset.py
+```
+
+This writes:
+- `analysis/v12b_forced_line_repair_dataset.json`
+- `analysis/v12b_forced_line_repair_dataset.csv`
+
+The dataset schema is explicit: `id`, `board_size`, `side_to_move`, `board`, `source`, `move_count`, `label_type`, `value_target`, optional `policy_target`, and `notes`. The repair trainer can consume it with:
+
+```bash
+PYTHONPATH=src python scripts/train_rapfi_failure_repair.py --dry-run \
+  --repair-dataset-json analysis/v12b_forced_line_repair_dataset.json
+```
+
+The evaluator can score the same dataset before any Rapfi smoke:
+
+```bash
+PYTHONPATH=src python scripts/evaluate_rapfi_failure_set.py \
+  --checkpoint checkpoints/15x15_v12_candidate.pt \
+  --repair-dataset-json analysis/v12b_forced_line_repair_dataset.json \
+  --out analysis/v12b_repair_eval_v12_candidate.csv
+```
+
+Use these checks before any Rapfi smoke: original immediate-block regression rows, old double-threat value rows, new Game 1 move_count 12/14/16/18 value rows, and Game 2 move_count 31 pre-double-threat warning.

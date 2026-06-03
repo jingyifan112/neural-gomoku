@@ -1,0 +1,12 @@
+sample_id,game_number,move_count,side_to_move,opponent,label_type,value_target,policy_target,labeled_failure_type,logged_value,model_value_estimate,direct_policy_top_move,direct_policy_top_prob,direct_blocks_opponent_immediate_win,expected_blocking_moves,opponent_immediate_winning_moves,current_player_immediate_winning_moves,logged_direct,logged_policy_safety,logged_mcts_raw,logged_mcts_safety,logged_final,logged_final_blocks_immediate_win,preliminary_failure_type
+old_g1_m44,1,44,black,white,old_immediate_block_regression,-1.0,"2,10",old_immediate_block_regression,,-0.419415,"2,10",0.528099,True,"2,10","2,10",,,,,,,,
+old_g1_m46,1,46,black,white,old_immediate_block_regression,-1.0,"4,12",old_immediate_block_regression,,-0.410801,"10,7",0.179386,False,"4,12","4,12",,,,,,,,
+old_g1_m48,1,48,black,white,verified_double_threat_loss,-1.0,"3,11",verified_double_threat_loss,,-0.470925,"3,11",0.360374,True,"3,11 8,11","3,11 8,11",,,,,,,,
+old_g2_m29,2,29,white,black,old_immediate_block_regression,,"4,9",old_immediate_block_regression,,-0.819141,"4,9",0.745621,True,"4,9","4,9",,,,,,,,
+old_g2_m33,2,33,white,black,verified_double_threat_loss,-1.0,"9,6",verified_double_threat_loss,,-0.841703,"9,6",0.680219,True,"9,11 9,6","9,6 9,11",,,,,,,,
+v12_g1_m12,1,12,black,white,early_forcing_value_negative,-0.5,,early_forcing_value_negative,,0.639664,"7,6",0.334456,False,,,,,,,,,,
+v12_g1_m14,1,14,black,white,early_forcing_value_negative,-0.5,,early_forcing_value_negative,,0.513987,"4,5",0.436368,False,,,,,,,,,,
+v12_g1_m16,1,16,black,white,early_forcing_value_negative,-0.7,,early_forcing_value_negative,,0.765653,"6,2",0.535883,False,"5,2","5,2",,,,,,,,
+v12_g1_m18,1,18,black,white,early_forcing_value_negative,-1.0,,early_forcing_value_negative,,0.737571,"7,1",0.979427,True,"2,6 7,1","7,1 2,6",,,,,,,,
+v12_g2_m31,2,31,white,black,pre_double_threat_warning,-0.5,,pre_double_threat_warning,,-0.760861,"3,9",0.247485,False,,,,,,,,,,
+v12_g2_m33,2,33,white,black,verified_double_threat_loss,-1.0,"9,6",verified_double_threat_loss,,-0.795591,"9,6",0.865228,True,"9,11 9,6","9,6 9,11",,,,,,,,
