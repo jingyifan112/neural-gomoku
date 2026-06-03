@@ -65,3 +65,18 @@ By default this selects the late-game review positions from game 1 at move count
 - `analysis/rapfi_failure_set.json`
 
 The output is a small position-level review set with policy/MCTS/final move fields and nearby Rapfi bestlines. `failure_type` and `notes` are intentionally left as `needs_review` placeholders until the positions are hand-labeled.
+
+## Labeled Rapfi failure set
+
+After running threat analysis, apply the reviewed labels with:
+
+```bash
+python scripts/label_rapfi_failure_set.py
+```
+
+This reads `analysis/rapfi_failure_set.csv` and `analysis/rapfi_failure_threat_analysis.csv`, then writes:
+- `analysis/rapfi_failure_set_labeled.csv`
+- `analysis/rapfi_failure_set_labeled.json`
+- `analysis/rapfi_failure_label_summary.md`
+
+Use the labeled CSV/JSON as the compact hand-reviewed v12 failure set. The summary Markdown gives label counts plus one short rationale block per selected position.
