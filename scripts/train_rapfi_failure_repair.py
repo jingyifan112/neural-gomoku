@@ -48,6 +48,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--epochs", type=int, default=3)
     parser.add_argument("--lr", type=float, default=5e-5)
     parser.add_argument("--batch-size", type=int, default=8)
+    parser.add_argument("--policy-loss-weight", type=float, default=1.0)
+    parser.add_argument("--value-loss-weight", type=float, default=1.0)
     parser.add_argument("--board-size", type=int, default=15)
     parser.add_argument("--win-length", type=int, default=5)
     parser.add_argument("--channels", type=int, default=64)
@@ -294,7 +296,7 @@ def print_dry_run(samples: list[RepairSample]) -> None:
     print(f"value repair targets: {value_count}")
     for sample in samples:
         policy_target = sample.policy_target_move or "none"
-        value_target = f"{sample.value_target:.1f}" if sample.value_mask > 0 else "none"
+        value_target = f"{sample.value_target:.2f}".rstrip("0").rstrip(".") if sample.value_mask > 0 else "none"
         print(
             "target "
             f"id={sample.sample_id} "
@@ -327,6 +329,8 @@ def train_on_samples(
     model.train()
     for epoch in range(args.epochs):
         total_loss = 0.0
+        total_policy_loss = 0.0
+        total_value_loss = 0.0
         total_rows = 0
         for batch_states, batch_policies, batch_policy_masks, batch_values, batch_value_masks in loader:
             batch_states = batch_states.to(device)
@@ -348,15 +352,23 @@ def train_on_samples(
             else:
                 value_loss = torch.zeros((), device=device)
 
-            loss = policy_loss + value_loss
+            loss = args.policy_loss_weight * policy_loss + args.value_loss_weight * value_loss
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()
 
             total_loss += float(loss.item()) * len(batch_states)
+            total_policy_loss += float(policy_loss.item()) * len(batch_states)
+            total_value_loss += float(value_loss.item()) * len(batch_states)
             total_rows += len(batch_states)
 
-        print(f"epoch {epoch + 1}/{args.epochs}: loss={total_loss / total_rows:.4f}", flush=True)
+        print(
+            f"epoch {epoch + 1}/{args.epochs}: "
+            f"policy_loss={total_policy_loss / total_rows:.4f} "
+            f"value_loss={total_value_loss / total_rows:.4f} "
+            f"weighted_loss={total_loss / total_rows:.4f}",
+            flush=True,
+        )
 
 
 def save_checkpoint(model: PolicyValueNet, args: argparse.Namespace) -> None:
