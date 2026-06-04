@@ -1,0 +1,12 @@
+sample_id,game_number,move_count,side_to_move,opponent,label_type,value_target,policy_target,labeled_failure_type,logged_value,model_value_estimate,direct_policy_top_move,direct_policy_top_prob,direct_blocks_opponent_immediate_win,expected_blocking_moves,opponent_immediate_winning_moves,current_player_immediate_winning_moves,logged_direct,logged_policy_safety,logged_mcts_raw,logged_mcts_safety,logged_final,logged_final_blocks_immediate_win,preliminary_failure_type
+old_g1_m44,1,44,black,white,old_immediate_block_regression,-1.0,"2,10",old_immediate_block_regression,,-0.741232,"2,10",0.611432,True,"2,10","2,10",,,,,,,,
+old_g1_m46,1,46,black,white,old_immediate_block_regression,-1.0,"4,12",old_immediate_block_regression,,-0.745159,"10,7",0.283385,False,"4,12","4,12",,,,,,,,
+old_g1_m48,1,48,black,white,verified_double_threat_loss,-1.0,,verified_double_threat_loss,,-0.773473,"3,11",0.439977,True,"3,11 8,11","3,11 8,11",,,,,,,,
+old_g2_m29,2,29,white,black,old_immediate_block_regression,,"4,9",old_immediate_block_regression,,-0.914568,"4,9",0.833249,True,"4,9","4,9",,,,,,,,
+old_g2_m33,2,33,white,black,verified_double_threat_loss,-1.0,,verified_double_threat_loss,,-0.929139,"9,6",0.613522,True,"9,11 9,6","9,6 9,11",,,,,,,,
+v12_g1_m12,1,12,black,white,early_forcing_value_negative,-0.5,,early_forcing_value_negative,,0.097154,"6,8",0.552108,False,,,,,,,,,,
+v12_g1_m14,1,14,black,white,early_forcing_value_negative,-0.5,,early_forcing_value_negative,,-0.025795,"5,3",0.459707,False,,,,,,,,,,
+v12_g1_m16,1,16,black,white,early_forcing_value_negative,-0.7,,early_forcing_value_negative,,0.319725,"6,2",0.638228,False,"5,2","5,2",,,,,,,,
+v12_g1_m18,1,18,black,white,early_forcing_value_negative,-0.7,,early_forcing_value_negative,,0.261389,"7,1",0.993040,True,"2,6 7,1","7,1 2,6",,,,,,,,
+v12_g2_m31,2,31,white,black,pre_double_threat_warning,-0.75,,pre_double_threat_warning,,-0.882486,"3,9",0.295280,False,,,,,,,,,,
+v12_g2_m33,2,33,white,black,verified_double_threat_loss,-1.0,,verified_double_threat_loss,,-0.904044,"9,6",0.852816,True,"9,11 9,6","9,6 9,11",,,,,,,,
