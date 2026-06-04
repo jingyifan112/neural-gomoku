@@ -50,6 +50,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--batch-size", type=int, default=8)
     parser.add_argument("--policy-loss-weight", type=float, default=1.0)
     parser.add_argument("--value-loss-weight", type=float, default=1.0)
+    parser.add_argument("--train-scope", choices=("all", "value_head"), default="all")
     parser.add_argument("--board-size", type=int, default=15)
     parser.add_argument("--win-length", type=int, default=5)
     parser.add_argument("--channels", type=int, default=64)
@@ -307,6 +308,32 @@ def print_dry_run(samples: list[RepairSample]) -> None:
         )
 
 
+def configure_trainable_parameters(model: PolicyValueNet, args: argparse.Namespace) -> list[torch.nn.Parameter]:
+    if args.train_scope == "all":
+        for _, parameter in model.named_parameters():
+            parameter.requires_grad = True
+    elif args.train_scope == "value_head":
+        for _, parameter in model.named_parameters():
+            parameter.requires_grad = False
+        for name, parameter in model.named_parameters():
+            if name.startswith(("value_conv", "value_fc")):
+                parameter.requires_grad = True
+    else:
+        raise ValueError(f"unsupported train scope: {args.train_scope}")
+
+    trainable = [(name, parameter) for name, parameter in model.named_parameters() if parameter.requires_grad]
+    if not trainable:
+        raise ValueError(f"train scope {args.train_scope!r} selected no trainable parameters")
+
+    trainable_count = sum(parameter.numel() for _, parameter in trainable)
+    print(f"train_scope={args.train_scope}", flush=True)
+    print(f"trainable parameters: {trainable_count}", flush=True)
+    print("trainable parameter names:", flush=True)
+    for name, _ in trainable:
+        print(f"  {name}", flush=True)
+    return [parameter for _, parameter in trainable]
+
+
 def train_on_samples(
     model: PolicyValueNet,
     samples: list[RepairSample],
@@ -324,7 +351,8 @@ def train_on_samples(
         batch_size=args.batch_size,
         shuffle=True,
     )
-    optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=1e-4)
+    trainable_parameters = configure_trainable_parameters(model, args)
+    optimizer = torch.optim.AdamW(trainable_parameters, lr=args.lr, weight_decay=1e-4)
 
     model.train()
     for epoch in range(args.epochs):
