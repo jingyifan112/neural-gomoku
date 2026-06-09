@@ -90,11 +90,47 @@ def parse_side_to_move(side: str) -> int:
     raise ValueError(f"unknown side_to_move {side!r}")
 
 
-def encode_state(board: list[list[int]], current_player: int) -> np.ndarray:
+def _validate_rc(rc: list[int] | tuple[int, int]) -> list[int]:
+    if len(rc) != 2:
+        raise ValueError(f"expected rc with length 2, got {rc!r}")
+    row, col = int(rc[0]), int(rc[1])
+    if not (0 <= row < BOARD_SIZE and 0 <= col < BOARD_SIZE):
+        raise ValueError(f"last_move rc out of range: {rc!r}")
+    return [row, col]
+
+
+def last_move_rc_from_item(item: dict[str, Any]) -> list[int] | None:
+    if "last_move_rc" in item and item["last_move_rc"] not in (None, "", "none", "None", -1):
+        return _validate_rc(item["last_move_rc"])
+
+    if "last_move_xy" in item and item["last_move_xy"] not in (None, "", "none", "None", -1):
+        xy = item["last_move_xy"]
+        if len(xy) != 2:
+            raise ValueError(f"expected xy with length 2, got {xy!r}")
+        x, y = int(xy[0]), int(xy[1])
+        return _validate_rc([y, x])
+
+    if "last_move" in item and item["last_move"] not in (None, "", "none", "None", -1):
+        value = item["last_move"]
+        if isinstance(value, int):
+            return _validate_rc([value // BOARD_SIZE, value % BOARD_SIZE])
+        if isinstance(value, str) and value.isdigit():
+            action = int(value)
+            return _validate_rc([action // BOARD_SIZE, action % BOARD_SIZE])
+
+    return None
+
+
+def encode_state(board: list[list[int]], current_player: int, last_move_rc: list[int] | None = None) -> np.ndarray:
     grid = np.asarray(board, dtype=np.int8)
     current = (grid == current_player).astype(np.float32)
     opponent = (grid == -current_player).astype(np.float32)
     last = np.zeros_like(current, dtype=np.float32)
+
+    if last_move_rc is not None:
+        row, col = _validate_rc(last_move_rc)
+        last[row, col] = 1.0
+
     return np.stack([current, opponent, last], axis=0)
 
 
@@ -131,7 +167,8 @@ def load_anchor_samples(snapshot_path: Path) -> list[dict[str, Any]]:
                 "case_id": f"anchor_g{item.get('game_number')}_m{item.get('move_count')}",
                 "board": board,
                 "current_player": current_player,
-                "state": encode_state(board, current_player),
+                "last_move_rc": last_move_rc_from_item(item),
+                "state": encode_state(board, current_player, last_move_rc_from_item(item)),
                 "legal_mask": legal_mask_from_board(board),
             }
         )
@@ -150,7 +187,7 @@ def make_margin_tensors(samples: list[dict[str, Any]], device: torch.device) -> 
         target = sample["target_rc"]
         suppress = sample["suppress_rc"]
 
-        states.append(encode_state(board, current_player))
+        states.append(encode_state(board, current_player, last_move_rc_from_item(sample)))
         masks.append(legal_mask_from_board(board))
         target_actions.append(rc_to_action(target))
         suppress_actions.append(rc_to_action(suppress))
@@ -199,7 +236,11 @@ def diagnose_cases(
     print("=" * 100)
     print(label)
     for sample in samples:
-        state = torch.tensor(encode_state(sample["board"], int(sample["current_player"])), dtype=torch.float32, device=device).unsqueeze(0)
+        state = torch.tensor(
+            encode_state(sample["board"], int(sample["current_player"]), last_move_rc_from_item(sample)),
+            dtype=torch.float32,
+            device=device,
+        ).unsqueeze(0)
         mask = torch.tensor(legal_mask_from_board(sample["board"]), dtype=torch.float32, device=device).unsqueeze(0)
 
         logits, value = model(state)
