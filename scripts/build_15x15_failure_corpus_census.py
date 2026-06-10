@@ -13,7 +13,7 @@ from pathlib import Path
 import numpy as np
 
 from gomoku_agent.board import BLACK, WHITE, Board
-from gomoku_agent.search_safety import filter_immediate_losses, opponent_has_forcing_terminal_reply
+from gomoku_agent.search_safety import opponent_has_forcing_terminal_reply
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -96,6 +96,12 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--max-games", type=int, default=0, help="Debug limit; 0 means no limit.")
     parser.add_argument("--max-decisions", type=int, default=0, help="Debug limit over censused decisions; 0 means no limit.")
+    parser.add_argument(
+        "--selected-enrichment",
+        action="store_true",
+        help="Enrich only selected high-value rows; non-selected enrichment fields stay NA.",
+    )
+    parser.add_argument("--max-enriched-positions", type=int, default=32)
     return parser.parse_args()
 
 
@@ -288,9 +294,12 @@ def rank_for_action(probs: np.ndarray, board: Board, action: int) -> int | None:
 def move_passes_safety(board: Board, action: int) -> bool:
     if action not in set(int(move) for move in board.legal_moves()):
         return False
-    visits = board.legal_mask()
-    filtered = filter_immediate_losses(board, visits)
-    return bool(filtered[action] > 0)
+    own_wins = board.immediate_winning_moves(board.current_player)
+    if own_wins:
+        return action in own_wins
+    scratch = board.clone()
+    result = scratch.play_flat(action)
+    return bool(result.done or not opponent_has_forcing_terminal_reply(scratch))
 
 
 def immediate_fork_moves(board: Board, player: int) -> list[int]:
@@ -327,6 +336,70 @@ def local_pattern(board: Board, action: int, radius: int = 2) -> str:
     return "".join(chars)
 
 
+def decision_key(game: Game, decision: Decision) -> tuple[str, int, int]:
+    return (str(game.log_path), game.game_number, decision.line_no)
+
+
+def loss_neural_decisions(args: argparse.Namespace, game: Game) -> list[Decision]:
+    decisions = [
+        decision for decision in game.decisions
+        if args.neural_substring.lower() in decision.engine.lower()
+    ]
+    if args.include_non_losses:
+        return decisions
+    return [
+        decision for decision in decisions
+        if side_result(game, decision.engine) == "loss"
+    ]
+
+
+def build_selected_enrichment_map(args: argparse.Namespace, games: list[Game]) -> dict[tuple[str, int, int], str]:
+    selected: dict[tuple[str, int, int], list[str]] = {}
+
+    def add(game: Game, decision: Decision | None, reason: str) -> None:
+        if decision is None:
+            return
+        key = decision_key(game, decision)
+        if key not in selected and len(selected) >= args.max_enriched_positions:
+            return
+        selected.setdefault(key, [])
+        if reason not in selected[key]:
+            selected[key].append(reason)
+
+    for game in games:
+        decisions = loss_neural_decisions(args, game)
+        if not decisions:
+            continue
+
+        base_indices: list[int] = []
+        first_divergence = next(
+            (idx for idx, decision in enumerate(decisions) if decision.direct != decision.mcts_safety),
+            None,
+        )
+        if first_divergence is not None:
+            add(game, decisions[first_divergence], "first_direct_vs_mcts_divergence")
+            base_indices.append(first_divergence)
+
+        first_losing_value = next(
+            (idx for idx, decision in enumerate(decisions) if decision.logged_value <= args.losing_value_threshold),
+            None,
+        )
+        if first_losing_value is not None:
+            add(game, decisions[first_losing_value], "first_losing_value")
+            base_indices.append(first_losing_value)
+
+        for idx in base_indices:
+            if idx - 1 >= 0:
+                add(game, decisions[idx - 1], "neighbor")
+            if idx + 1 < len(decisions):
+                add(game, decisions[idx + 1], "neighbor")
+
+        for decision in decisions[-2:]:
+            add(game, decision, "late_loss_window")
+
+    return {key: ";".join(reasons) for key, reasons in selected.items()}
+
+
 def rows_for_loss_game(args: argparse.Namespace, game: Game) -> list[dict[str, str]]:
     rows: list[dict[str, str]] = []
     for decision in game.decisions:
@@ -340,8 +413,16 @@ def rows_for_loss_game(args: argparse.Namespace, game: Game) -> list[dict[str, s
         board = build_board(decision, args.board_size, args.win_length)
         final_action = xy_to_action(decision.final, args.board_size)
         direct_action = xy_to_action(decision.direct, args.board_size)
+        selected_reason = args._selected_enrichment_map.get(decision_key(game, decision), "")
+        should_enrich = (
+            not args.skip_safety
+            and (
+                not args.selected_enrichment
+                or bool(selected_reason)
+            )
+        )
 
-        if args.skip_safety:
+        if not should_enrich:
             c_value = None
             final_rank: int | None = None
             direct_rank: int | None = None
@@ -358,6 +439,12 @@ def rows_for_loss_game(args: argparse.Namespace, game: Game) -> list[dict[str, s
             forced_before = "NA"
             after_final_forced = "NA"
         else:
+            args._enriched_positions += 1
+            print(
+                f"enriching {game.log_path.stem}:g{game.game_number} ply={decision.ply} "
+                f"reason={selected_reason or 'all'} count={args._enriched_positions}",
+                flush=True,
+            )
             probs, c_value = run_c_eval(args, board, f"{game.log_path.stem}_g{game.game_number}_p{decision.ply}")
             opponent_wins = board.immediate_winning_moves(-board.current_player)
             opponent_forks = immediate_fork_moves(board, -board.current_player)
@@ -372,7 +459,7 @@ def rows_for_loss_game(args: argparse.Namespace, game: Game) -> list[dict[str, s
             if final_action in set(int(move) for move in board.legal_moves()):
                 child = board.clone()
                 result = child.play_flat(final_action)
-            after_final_forced = str(False if result.done else opponent_has_forcing_terminal_reply(child))
+                after_final_forced = str(False if result.done else opponent_has_forcing_terminal_reply(child))
             final_rank = rank_for_action(probs, board, final_action)
             direct_rank = rank_for_action(probs, board, direct_action)
             final_rank_text = str(final_rank) if final_rank is not None else "ILLEGAL"
@@ -397,6 +484,8 @@ def rows_for_loss_game(args: argparse.Namespace, game: Game) -> list[dict[str, s
                 "decision_engine": decision.engine,
                 "decision_engine_result": side_result(game, decision.engine),
                 "ply": str(decision.ply),
+                "enrichment_selected": str(should_enrich),
+                "enrichment_reason": selected_reason if should_enrich else "NA",
                 "neural_move": decision.final,
                 "direct_policy_top_move": decision.direct,
                 "policy_safety_move": decision.policy_safety,
@@ -419,7 +508,7 @@ def rows_for_loss_game(args: argparse.Namespace, game: Game) -> list[dict[str, s
                 "opponent_forcing_reply_exists_before": forced_before,
                 "opponent_forcing_reply_after_neural_move": after_final_forced,
                 "already_forced_loss_signal": (
-                    "NA" if args.skip_safety else str(forced_before == "True" or decision.logged_value <= args.losing_value_threshold)
+                    "NA" if not should_enrich else str(forced_before == "True" or decision.logged_value <= args.losing_value_threshold)
                 ),
                 "board_terminal_before": str(board_terminal_status(board)),
                 "legal_moves_before": str(len(board.legal_moves())),
@@ -536,6 +625,7 @@ def write_report(path: Path, args: argparse.Namespace, census_rows: list[dict[st
     loss_rows = [row for row in census_rows if row["decision_engine_result"] == "loss"]
     move_clusters = Counter(row["neural_move"] for row in loss_rows)
     pattern_clusters = Counter(row["local_pattern_5x5_current_pov"] for row in loss_rows)
+    enriched_rows = [row for row in census_rows if row.get("enrichment_selected") == "True"]
     rec_code, rec_text = recommendation(census_rows, summary_rows)
 
     lines = [
@@ -547,6 +637,9 @@ def write_report(path: Path, args: argparse.Namespace, census_rows: list[dict[st
         f"- logs parsed: {len(args.logs)}",
         f"- baseline C weights for policy/value census: `{args.weights}`",
         f"- lightweight parse mode: `{args.skip_safety}`",
+        f"- selected enrichment mode: `{args.selected_enrichment}`",
+        f"- enriched positions: {len(enriched_rows)}",
+        f"- max enriched positions: {args.max_enriched_positions}",
         "- no training, C export, promotion, or Rapfi smoke was run by this census step.",
         "",
         "## Summary Metrics",
@@ -556,7 +649,7 @@ def write_report(path: Path, args: argparse.Namespace, census_rows: list[dict[st
         f"- neural losses: {result_counts.get('loss', 0)}",
         f"- neural draws: {result_counts.get('draw', 0)}",
         f"- censused neural loss decisions: {len(loss_rows)}",
-        "- safety/forcing and C-policy enrichment were skipped; related fields are `NA`." if args.skip_safety else "- safety/forcing and C-policy enrichment were enabled.",
+        "- safety/forcing and C-policy enrichment were skipped; related fields are `NA`." if args.skip_safety else "- safety/forcing and C-policy enrichment were enabled for selected rows only." if args.selected_enrichment else "- safety/forcing and C-policy enrichment were enabled.",
         "",
         "## Per-Game Summary",
         "",
@@ -593,6 +686,52 @@ def write_report(path: Path, args: argparse.Namespace, census_rows: list[dict[st
     else:
         lines.append("No local pattern clusters yet.")
 
+    if args.selected_enrichment:
+        reason_counts = Counter()
+        for row in enriched_rows:
+            for reason in row["enrichment_reason"].split(";"):
+                if reason and reason != "NA":
+                    reason_counts[reason] += 1
+        enriched_game_count = len({row["game_id"] for row in enriched_rows})
+        selected_safety_rows = [
+            row for row in enriched_rows
+            if row["neural_move_safety_pass"] == "False"
+            or row["opponent_forcing_reply_after_neural_move"] == "True"
+        ]
+        selected_low_policy_rows = [
+            row for row in enriched_rows
+            if row["neural_move_policy_rank"].isdigit()
+            and int(row["neural_move_policy_rank"]) > 10
+        ]
+        lines.extend(["", "## Selected Enrichment", ""])
+        if enriched_rows:
+            lines.extend(
+                [
+                    f"- enriched rows: {len(enriched_rows)} across {enriched_game_count} games",
+                    f"- selected rows with safety/forcing issue: {len(selected_safety_rows)}",
+                    f"- selected rows with policy rank > 10: {len(selected_low_policy_rows)}",
+                    "- the enrichment cap may leave later games parse-only; raise `--max-enriched-positions` for a broader second pass.",
+                    "",
+                ]
+            )
+            lines.extend(
+                [
+                    "| game | ply | reason | move | rank | prob | value | safety | after-move forcing |",
+                    "|---|---:|---|---:|---:|---:|---:|---|---|",
+                ]
+            )
+            for row in enriched_rows:
+                lines.append(
+                    "| {game_id} | {ply} | {enrichment_reason} | {neural_move} | "
+                    "{neural_move_policy_rank} | {neural_move_policy_prob} | {c_value} | "
+                    "{neural_move_safety_pass} | {opponent_forcing_reply_after_neural_move} |".format(**row)
+                )
+            lines.extend(["", "Selected reason counts:"])
+            for reason, amount in reason_counts.most_common():
+                lines.append(f"- {reason}: {amount}")
+        else:
+            lines.append("No rows were selected for enrichment.")
+
     lines.extend(
         [
             "",
@@ -621,6 +760,7 @@ def write_report(path: Path, args: argparse.Namespace, census_rows: list[dict[st
 def main() -> int:
     args = parse_args()
     args._decisions_processed = 0
+    args._enriched_positions = 0
     if not args.skip_safety:
         args.case_dir.mkdir(parents=True, exist_ok=True)
     games: list[Game] = []
@@ -628,8 +768,15 @@ def main() -> int:
         games.extend(parse_games(log, args.board_size, args.rapfi_substring))
     if args.max_games:
         games = games[: args.max_games]
+    args._selected_enrichment_map = (
+        build_selected_enrichment_map(args, games)
+        if args.selected_enrichment and not args.skip_safety
+        else {}
+    )
     print(f"parsed logs: {len(args.logs)}", flush=True)
     print(f"parsed games: {len(games)}", flush=True)
+    if args.selected_enrichment:
+        print(f"selected enrichment positions: {len(args._selected_enrichment_map)}", flush=True)
 
     census_rows: list[dict[str, str]] = []
     for game in games:
