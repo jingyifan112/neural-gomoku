@@ -1,0 +1,9 @@
+model,case_id,game_id,ply,teacher_xy,original_xy,teacher_child_value,original_child_value,teacher_minus_original,teacher_preferred
+before,candidate_g_g2_p15_teacher_7_9_preserve_7_10,2,15,"7,9","7,10",-0.110933,-0.049808,-0.061126,False
+before,candidate_g_g2_p17_teacher_9_9,2,17,"9,9","9,5",0.004199,0.387090,-0.382891,False
+before,candidate_g_g2_p19_teacher_continuation_10_11,2,19,"10,11","9,9",0.409687,0.346889,0.062797,True
+before,candidate_g_g2_p21_teacher_continuation_8_10,2,21,"8,10","9,9",0.074011,0.255407,-0.181396,False
+after,candidate_g_g2_p15_teacher_7_9_preserve_7_10,2,15,"7,9","7,10",0.174598,0.062988,0.111610,True
+after,candidate_g_g2_p17_teacher_9_9,2,17,"9,9","9,5",0.248975,0.196869,0.052105,True
+after,candidate_g_g2_p19_teacher_continuation_10_11,2,19,"10,11","9,9",0.389171,0.295438,0.093732,True
+after,candidate_g_g2_p21_teacher_continuation_8_10,2,21,"8,10","9,9",0.273976,0.252002,0.021974,True

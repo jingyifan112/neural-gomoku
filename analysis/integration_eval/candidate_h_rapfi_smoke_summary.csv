@@ -1,0 +1,4 @@
+candidate,stage,status,score_neural_w_l_d,game1_result,game2_result,game2_ply13_move,game2_ply15_move,game2_ply17_move,game2_ply15_teacher_followed,game2_ply17_teacher_followed,notes
+Candidate D baseline,mcts16,baseline,0-2-0,0-1,0-1,"5,8","7,10","9,10",no,no,Prior Candidate D mcts16 smoke baseline.
+Candidate H,mcts16,run,0-2-0,0-1,0-1,"2,6","2,8","4,10",no,no,No score improvement over Candidate D; game2 line diverged before the fixed Candidate D teacher-disagreement board.
+Candidate H,mcts32,skipped,not_run,not_run,not_run,not_run,not_run,not_run,not_run,not_run,Stage 2 gate required mcts16 improvement over Candidate D; Candidate H stayed 0-2.
