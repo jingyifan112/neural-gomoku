@@ -1,0 +1,9 @@
+START 15
+INFO rule 0
+INFO max_depth 2
+INFO timeout_turn 10000
+BOARD
+7,6,1
+7,7,2
+6,8,2
+DONE

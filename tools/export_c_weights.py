@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 from pathlib import Path
 
 import numpy as np
@@ -88,30 +89,58 @@ def main() -> None:
     manifest_path.parent.mkdir(parents=True, exist_ok=True)
 
     offset = 0
-    with out_path.open("wb") as weights_file, manifest_path.open("w", encoding="utf-8") as manifest:
-        manifest.write("Neural Gomoku C inference weights manifest\n")
-        manifest.write("format: raw little-endian float32 tensors concatenated in the order below\n")
-        manifest.write("batchnorm: folded into the immediately preceding convolution using eval-mode running stats\n")
-        manifest.write(f"source_checkpoint: {checkpoint}\n")
-        manifest.write(f"board_size: {board_size}\n")
-        manifest.write(f"win_length: {win_length}\n")
-        manifest.write(f"input_shape: [3, {board_size}, {board_size}]\n")
-        manifest.write("input_channels: [current_player_stones, opponent_stones, last_move]\n")
-        manifest.write(f"channels: {channels}\n")
-        manifest.write(f"residual_blocks: {blocks}\n")
-        manifest.write("tensor_order:\n")
-
+    manifest_tensors = []
+    with out_path.open("wb") as weights_file:
         for name, array in tensors:
             flat = np.ascontiguousarray(array, dtype="<f4").ravel()
             weights_file.write(flat.tobytes())
-            manifest.write(
-                f"{len(name):02d} {name} shape={list(array.shape)} "
-                f"offset_floats={offset} count={flat.size}\n"
+            manifest_tensors.append(
+                {
+                    "name": name,
+                    "shape": list(array.shape),
+                    "offset_floats": offset,
+                    "count": int(flat.size),
+                }
             )
             offset += int(flat.size)
 
-        manifest.write(f"total_floats: {offset}\n")
-        manifest.write(f"total_bytes: {offset * 4}\n")
+    if manifest_path.suffix == ".json":
+        manifest = {
+            "format": "raw little-endian float32 tensors concatenated in tensor_order",
+            "batchnorm": "folded into the immediately preceding convolution using eval-mode running stats",
+            "source_checkpoint": str(checkpoint),
+            "weights_path": str(out_path),
+            "board_size": board_size,
+            "win_length": win_length,
+            "input_shape": [3, board_size, board_size],
+            "input_channels": ["current_player_stones", "opponent_stones", "last_move"],
+            "channels": channels,
+            "residual_blocks": blocks,
+            "tensor_order": manifest_tensors,
+            "total_floats": offset,
+            "total_bytes": offset * 4,
+        }
+        manifest_path.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
+    else:
+        with manifest_path.open("w", encoding="utf-8") as manifest:
+            manifest.write("Neural Gomoku C inference weights manifest\n")
+            manifest.write("format: raw little-endian float32 tensors concatenated in the order below\n")
+            manifest.write("batchnorm: folded into the immediately preceding convolution using eval-mode running stats\n")
+            manifest.write(f"source_checkpoint: {checkpoint}\n")
+            manifest.write(f"board_size: {board_size}\n")
+            manifest.write(f"win_length: {win_length}\n")
+            manifest.write(f"input_shape: [3, {board_size}, {board_size}]\n")
+            manifest.write("input_channels: [current_player_stones, opponent_stones, last_move]\n")
+            manifest.write(f"channels: {channels}\n")
+            manifest.write(f"residual_blocks: {blocks}\n")
+            manifest.write("tensor_order:\n")
+            for item in manifest_tensors:
+                manifest.write(
+                    f"{len(item['name']):02d} {item['name']} shape={item['shape']} "
+                    f"offset_floats={item['offset_floats']} count={item['count']}\n"
+                )
+            manifest.write(f"total_floats: {offset}\n")
+            manifest.write(f"total_bytes: {offset * 4}\n")
 
     print(f"checkpoint: {checkpoint}")
     print(f"board_size: {board_size}")

@@ -1,0 +1,4 @@
+case,policy_logits_max_abs_diff,policy_probs_max_abs_diff,value_abs_diff,python_top_legal,c_top_legal,top_legal_agree,pass
+g2_ply15_teacher_disagreement,2.0980835e-05,2.68220901e-07,7.74860382e-07,"7,9","7,9",True,True
+g2_ply17_teacher_disagreement,1.90734863e-05,7.15255737e-07,1.1920929e-07,"9,9","9,9",True,True
+candidate_d_repair_anchor,2.0980835e-05,2.68220901e-07,7.74860382e-07,"7,9","7,9",True,True

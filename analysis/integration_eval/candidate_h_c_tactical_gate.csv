@@ -1,0 +1,8 @@
+case,direct,policy_safety,mcts_raw,mcts_safety
+opponent_four_one_endpoint,PASS,PASS,PASS,PASS
+opponent_open_three,PASS,PASS,PASS,PASS
+model_four_can_win,PASS,PASS,PASS,PASS
+broken_four_pattern,PASS,PASS,PASS,PASS
+mcts_safety_must_block_four,PASS,PASS,PASS,PASS
+human_play_vertical_four_must_block,PASS,PASS,PASS,PASS
+human_play_prevent_open_four_fork,PASS,PASS,PASS,PASS

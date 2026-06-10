@@ -2,9 +2,12 @@ CC ?= cc
 CFLAGS ?= -O3 -std=c11 -Wall -Wextra -pedantic
 LDFLAGS ?= -lm
 
-all: test_infer benchmark_c play_c pbrain-neural-gomoku
+all: test_infer dump_infer benchmark_c play_c pbrain-neural-gomoku
 
 test_infer: test_infer.o cnn_infer.o
+	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
+
+dump_infer: dump_infer.o cnn_infer.o
 	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
 benchmark_c: benchmark_c.o cnn_infer.o search_safety_c.o mcts_c.o
@@ -29,6 +32,6 @@ benchmark: benchmark_c
 	./benchmark_c weights/9x9_weights.bin
 
 clean:
-	rm -f *.o test_infer benchmark_c play_c pbrain-neural-gomoku pbrain-neural-gomoku.exe
+	rm -f *.o test_infer dump_infer benchmark_c play_c pbrain-neural-gomoku pbrain-neural-gomoku.exe
 
 .PHONY: all clean test benchmark

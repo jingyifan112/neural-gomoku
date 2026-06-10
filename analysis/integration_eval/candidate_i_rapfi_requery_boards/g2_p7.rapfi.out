@@ -1,0 +1,9 @@
+### attempt 1 depth=2 timeout_ms=10000
+OK
+MESSAGE Speed 98000 | Depth 2-3 | Eval -105 | Node 98 | Time 0ms
+### attempt 2 depth=1 timeout_ms=5000
+OK
+MESSAGE Speed 189K | Depth 1-4 | Eval -80 | Node 189 | Time 0ms
+### attempt 3 depth=2 timeout_ms=5000
+OK
+MESSAGE Speed 98000 | Depth 2-3 | Eval -105 | Node 98 | Time 1ms
