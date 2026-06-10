@@ -20,3 +20,8 @@ checkpoints/15x15_*.pt
 checkpoints/*current_best*.pt
 *.npz
 .DS_Store
+
+# Local generated integration artifacts
+c_inference/dump_infer
+eval_logs/integration_eval/
+weights/
