@@ -85,6 +85,18 @@ Recommended next work:
 The next candidate should come from a corpus-level pattern, not from the
 Candidate I single-line census.
 
+## Follow-Up Pipeline
+
+The broader failure-corpus pipeline has been started with:
+
+- corpus runner: `scripts/run_15x15_rapfi_corpus.py`
+- failure census: `scripts/build_15x15_failure_corpus_census.py`
+- opening diversity seed file: `analysis/integration_eval/15x15_corpus_openings_offset.txt`
+- seed report: `analysis/integration_eval/15x15_failure_corpus_report.md`
+
+The seed census uses existing baseline logs only; it does not train, export, or
+promote any model.
+
 ## References
 
 - Candidate G report: `analysis/integration_eval/candidate_g_teacher_policy_report.md`
