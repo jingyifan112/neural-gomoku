@@ -79,3 +79,24 @@ safety. The next training/diagnostic step should therefore treat move15
 teacher `7,9` and move17 teacher `9,9` as candidate teacher-supervised
 positions, but only after a separate audit confirms they do not regress the
 known Candidate D move15 repair target.
+
+## Candidate H/I/J close-out update
+
+The Candidate G/H local repair line validated the original Candidate D move15
+and move17 teacher targets in fixed probes, but did not produce a promotable
+live candidate.
+
+- Candidate G made the teacher moves policy-visible and passed local tactical
+  gates, but remains no-promote.
+- Candidate H preserved those probe gains and improved targeted child-value
+  ordering, but failed the live mcts16 Rapfi smoke at `0-2`; it remains
+  no-promote.
+- Candidate I re-query diagnostics attempted 25 smoke-loss positions and found
+  only 11 usable concrete Rapfi labels, 1 valid teacher disagreement, and 1
+  low-policy-visibility agreement. Retry/fallback recovered 0 additional
+  labels.
+- Candidate J is not warranted from this dataset and should not be trained.
+
+Next direction: move from single-line repair to a broader self-play/Rapfi-match
+corpus and full-game divergence census. Train only when enough validated labels
+exist across multiple games and failure modes.
