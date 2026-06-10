@@ -89,6 +89,13 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--losing-value-threshold", type=float, default=-0.50)
     parser.add_argument("--top-k-clusters", type=int, default=8)
     parser.add_argument("--include-non-losses", action="store_true")
+    parser.add_argument(
+        "--skip-safety",
+        action="store_true",
+        help="Light parse mode: skip safety/forcing scans and C inference; mark enriched fields as NA.",
+    )
+    parser.add_argument("--max-games", type=int, default=0, help="Debug limit; 0 means no limit.")
+    parser.add_argument("--max-decisions", type=int, default=0, help="Debug limit over censused decisions; 0 means no limit.")
     return parser.parse_args()
 
 
@@ -323,29 +330,59 @@ def local_pattern(board: Board, action: int, radius: int = 2) -> str:
 def rows_for_loss_game(args: argparse.Namespace, game: Game) -> list[dict[str, str]]:
     rows: list[dict[str, str]] = []
     for decision in game.decisions:
+        if args.max_decisions and args._decisions_processed >= args.max_decisions:
+            break
         if args.neural_substring.lower() not in decision.engine.lower():
             continue
         if not args.include_non_losses and side_result(game, decision.engine) != "loss":
             continue
 
         board = build_board(decision, args.board_size, args.win_length)
-        probs, c_value = run_c_eval(args, board, f"{game.log_path.stem}_g{game.game_number}_p{decision.ply}")
         final_action = xy_to_action(decision.final, args.board_size)
         direct_action = xy_to_action(decision.direct, args.board_size)
-        mcts_action = xy_to_action(decision.mcts_safety, args.board_size)
-        opponent_wins = board.immediate_winning_moves(-board.current_player)
-        opponent_forks = immediate_fork_moves(board, -board.current_player)
-        forced_before = opponent_has_forcing_terminal_reply(board.clone())
-        final_safe = move_passes_safety(board, final_action)
-        direct_safe = move_passes_safety(board, direct_action)
-        after_final_forced = "NA"
-        if final_action in set(int(move) for move in board.legal_moves()):
-            child = board.clone()
-            result = child.play_flat(final_action)
-            after_final_forced = str(False if result.done else opponent_has_forcing_terminal_reply(child))
 
-        final_rank = rank_for_action(probs, board, final_action)
-        direct_rank = rank_for_action(probs, board, direct_action)
+        if args.skip_safety:
+            c_value = None
+            final_rank: int | None = None
+            direct_rank: int | None = None
+            final_rank_text = "NA"
+            direct_rank_text = "NA"
+            final_prob = "NA"
+            direct_prob = "NA"
+            final_safe = "NA"
+            direct_safe = "NA"
+            opponent_win_count = "NA"
+            opponent_win_moves = "NA"
+            opponent_fork_count = "NA"
+            opponent_fork_moves = "NA"
+            forced_before = "NA"
+            after_final_forced = "NA"
+        else:
+            probs, c_value = run_c_eval(args, board, f"{game.log_path.stem}_g{game.game_number}_p{decision.ply}")
+            opponent_wins = board.immediate_winning_moves(-board.current_player)
+            opponent_forks = immediate_fork_moves(board, -board.current_player)
+            opponent_win_count = str(len(opponent_wins))
+            opponent_win_moves = " ".join(action_to_xy(action, args.board_size) for action in opponent_wins) or "NA"
+            opponent_fork_count = str(len(opponent_forks))
+            opponent_fork_moves = " ".join(action_to_xy(action, args.board_size) for action in opponent_forks) or "NA"
+            forced_before = str(opponent_has_forcing_terminal_reply(board.clone()))
+            final_safe = str(move_passes_safety(board, final_action))
+            direct_safe = str(move_passes_safety(board, direct_action))
+            after_final_forced = "NA"
+            if final_action in set(int(move) for move in board.legal_moves()):
+                child = board.clone()
+                result = child.play_flat(final_action)
+            after_final_forced = str(False if result.done else opponent_has_forcing_terminal_reply(child))
+            final_rank = rank_for_action(probs, board, final_action)
+            direct_rank = rank_for_action(probs, board, direct_action)
+            final_rank_text = str(final_rank) if final_rank is not None else "ILLEGAL"
+            direct_rank_text = str(direct_rank) if direct_rank is not None else "ILLEGAL"
+            final_prob = f"{float(probs[final_action]):.6f}" if final_rank is not None else "ILLEGAL"
+            direct_prob = f"{float(probs[direct_action]):.6f}" if direct_rank is not None else "ILLEGAL"
+
+        args._decisions_processed += 1
+        if args._decisions_processed % 25 == 0:
+            print(f"processed decisions: {args._decisions_processed}", flush=True)
 
         rows.append(
             {
@@ -368,20 +405,22 @@ def rows_for_loss_game(args: argparse.Namespace, game: Game) -> list[dict[str, s
                 "direct_vs_mcts_divergence": str(decision.direct != decision.mcts_safety),
                 "direct_vs_final_divergence": str(decision.direct != decision.final),
                 "logged_value": f"{decision.logged_value:.6f}",
-                "c_value": f"{c_value:.6f}",
-                "neural_move_policy_rank": str(final_rank) if final_rank is not None else "ILLEGAL",
-                "neural_move_policy_prob": f"{float(probs[final_action]):.6f}" if final_rank is not None else "ILLEGAL",
-                "direct_policy_rank": str(direct_rank) if direct_rank is not None else "ILLEGAL",
-                "direct_policy_prob": f"{float(probs[direct_action]):.6f}" if direct_rank is not None else "ILLEGAL",
-                "neural_move_safety_pass": str(final_safe),
-                "direct_move_safety_pass": str(direct_safe),
-                "opponent_immediate_win_count_before": str(len(opponent_wins)),
-                "opponent_immediate_win_moves_before": " ".join(action_to_xy(action, args.board_size) for action in opponent_wins) or "NA",
-                "opponent_fork_count_before": str(len(opponent_forks)),
-                "opponent_fork_moves_before": " ".join(action_to_xy(action, args.board_size) for action in opponent_forks) or "NA",
-                "opponent_forcing_reply_exists_before": str(forced_before),
+                "c_value": f"{c_value:.6f}" if c_value is not None else "NA",
+                "neural_move_policy_rank": final_rank_text,
+                "neural_move_policy_prob": final_prob,
+                "direct_policy_rank": direct_rank_text,
+                "direct_policy_prob": direct_prob,
+                "neural_move_safety_pass": final_safe,
+                "direct_move_safety_pass": direct_safe,
+                "opponent_immediate_win_count_before": opponent_win_count,
+                "opponent_immediate_win_moves_before": opponent_win_moves,
+                "opponent_fork_count_before": opponent_fork_count,
+                "opponent_fork_moves_before": opponent_fork_moves,
+                "opponent_forcing_reply_exists_before": forced_before,
                 "opponent_forcing_reply_after_neural_move": after_final_forced,
-                "already_forced_loss_signal": str(forced_before or decision.logged_value <= args.losing_value_threshold),
+                "already_forced_loss_signal": (
+                    "NA" if args.skip_safety else str(forced_before == "True" or decision.logged_value <= args.losing_value_threshold)
+                ),
                 "board_terminal_before": str(board_terminal_status(board)),
                 "legal_moves_before": str(len(board.legal_moves())),
                 "local_pattern_5x5_current_pov": local_pattern(board, final_action),
@@ -507,6 +546,7 @@ def write_report(path: Path, args: argparse.Namespace, census_rows: list[dict[st
         "- corpus source: existing debug logs passed to the census script",
         f"- logs parsed: {len(args.logs)}",
         f"- baseline C weights for policy/value census: `{args.weights}`",
+        f"- lightweight parse mode: `{args.skip_safety}`",
         "- no training, C export, promotion, or Rapfi smoke was run by this census step.",
         "",
         "## Summary Metrics",
@@ -516,6 +556,7 @@ def write_report(path: Path, args: argparse.Namespace, census_rows: list[dict[st
         f"- neural losses: {result_counts.get('loss', 0)}",
         f"- neural draws: {result_counts.get('draw', 0)}",
         f"- censused neural loss decisions: {len(loss_rows)}",
+        "- safety/forcing and C-policy enrichment were skipped; related fields are `NA`." if args.skip_safety else "- safety/forcing and C-policy enrichment were enabled.",
         "",
         "## Per-Game Summary",
         "",
@@ -579,22 +620,32 @@ def write_report(path: Path, args: argparse.Namespace, census_rows: list[dict[st
 
 def main() -> int:
     args = parse_args()
-    args.case_dir.mkdir(parents=True, exist_ok=True)
+    args._decisions_processed = 0
+    if not args.skip_safety:
+        args.case_dir.mkdir(parents=True, exist_ok=True)
     games: list[Game] = []
     for log in args.logs:
         games.extend(parse_games(log, args.board_size, args.rapfi_substring))
+    if args.max_games:
+        games = games[: args.max_games]
+    print(f"parsed logs: {len(args.logs)}", flush=True)
+    print(f"parsed games: {len(games)}", flush=True)
 
     census_rows: list[dict[str, str]] = []
     for game in games:
+        game_id = f"{game.log_path.stem}:g{game.game_number}"
+        print(f"processing {game_id} decisions={len(game.decisions)}", flush=True)
         census_rows.extend(rows_for_loss_game(args, game))
+        print(f"finished {game_id}; total decisions processed={args._decisions_processed}", flush=True)
+        if args.max_decisions and args._decisions_processed >= args.max_decisions:
+            print(f"stopping at --max-decisions={args.max_decisions}", flush=True)
+            break
     summary_rows = make_summary_rows(args, games, census_rows)
 
     write_csv(args.output_csv, census_rows)
     write_csv(args.summary_csv, summary_rows)
     write_report(args.output_md, args, census_rows, summary_rows)
 
-    print(f"parsed logs: {len(args.logs)}")
-    print(f"parsed games: {len(games)}")
     print(f"wrote census rows: {len(census_rows)}")
     print(f"wrote {args.output_csv}")
     print(f"wrote {args.summary_csv}")
