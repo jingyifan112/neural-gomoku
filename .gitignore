@@ -25,3 +25,8 @@ checkpoints/*current_best*.pt
 c_inference/dump_infer
 eval_logs/integration_eval/
 weights/
+
+# Local generated integration artifacts
+c_inference/dump_infer
+eval_logs/integration_eval/
+weights/
