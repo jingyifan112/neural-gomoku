@@ -50,7 +50,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--batch-size", type=int, default=8)
     parser.add_argument("--policy-loss-weight", type=float, default=1.0)
     parser.add_argument("--value-loss-weight", type=float, default=1.0)
-    parser.add_argument("--train-scope", choices=("all", "value_head"), default="all")
+    parser.add_argument("--train-scope", choices=("all", "value_head", "policy_head"), default="all")
     parser.add_argument("--board-size", type=int, default=15)
     parser.add_argument("--win-length", type=int, default=5)
     parser.add_argument("--channels", type=int, default=64)
@@ -317,6 +317,12 @@ def configure_trainable_parameters(model: PolicyValueNet, args: argparse.Namespa
             parameter.requires_grad = False
         for name, parameter in model.named_parameters():
             if name.startswith(("value_conv", "value_fc")):
+                parameter.requires_grad = True
+    elif args.train_scope == "policy_head":
+        for _, parameter in model.named_parameters():
+            parameter.requires_grad = False
+        for name, parameter in model.named_parameters():
+            if name.startswith("policy."):
                 parameter.requires_grad = True
     else:
         raise ValueError(f"unsupported train scope: {args.train_scope}")
