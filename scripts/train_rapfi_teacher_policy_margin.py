@@ -157,7 +157,6 @@ def configure_policy_head_trainable(model: PolicyValueNet) -> list[torch.nn.Para
 
 def set_policy_head_training_mode(model: PolicyValueNet) -> None:
     model.eval()
-    model.policy.train()
 
 
 def masked_log_softmax(logits: torch.Tensor, legal_mask: torch.Tensor) -> torch.Tensor:
