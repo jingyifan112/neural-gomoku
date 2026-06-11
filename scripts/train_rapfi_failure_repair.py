@@ -340,6 +340,17 @@ def configure_trainable_parameters(model: PolicyValueNet, args: argparse.Namespa
     return [parameter for _, parameter in trainable]
 
 
+def keep_frozen_batch_norm_eval(model: PolicyValueNet, args: argparse.Namespace) -> None:
+    if args.train_scope != "policy_head":
+        return
+
+    for name, module in model.named_modules():
+        if name == "policy" or name.startswith("policy."):
+            continue
+        if isinstance(module, torch.nn.modules.batchnorm._BatchNorm):
+            module.eval()
+
+
 def train_on_samples(
     model: PolicyValueNet,
     samples: list[RepairSample],
@@ -361,6 +372,7 @@ def train_on_samples(
     optimizer = torch.optim.AdamW(trainable_parameters, lr=args.lr, weight_decay=1e-4)
 
     model.train()
+    keep_frozen_batch_norm_eval(model, args)
     for epoch in range(args.epochs):
         total_loss = 0.0
         total_policy_loss = 0.0
