@@ -1,0 +1,7 @@
+engine,baseline,openings,games,wins,losses,draws,score,total,score_rate
+neural_current_best_mcts32,random,gomocup2026_freestyle15_public_openings,24,24,0,0,24.0,24,1.000
+rapfi_full,random,gomocup2026_freestyle15_public_openings,24,24,0,0,24.0,24,1.000
+neural_current_best_mcts32,tactical_lite,gomocup2026_freestyle15_public_openings,24,23,1,0,23.0,24,0.958
+rapfi_full,tactical_lite,gomocup2026_freestyle15_public_openings,24,24,0,0,24.0,24,1.000
+neural_current_best_mcts32,rapfi_fast_depth1,gomocup2026_freestyle15_public_openings,24,0,24,0,0.0,24,0.000
+rapfi_full,rapfi_fast_depth1,gomocup2026_freestyle15_public_openings,24,24,0,0,24.0,24,1.000
