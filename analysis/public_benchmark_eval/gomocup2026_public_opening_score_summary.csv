@@ -1,0 +1,3 @@
+engine,opponent,openings,games,wins,losses,draws,score,total,score_rate
+neural_current_best_mcts32,rapfi_fast_depth1,gomocup2026_freestyle15_public_openings,24,0,24,0,0.0,24,0.000
+rapfi_full,rapfi_fast_depth1,gomocup2026_freestyle15_public_openings,24,24,0,0,24.0,24,1.000
