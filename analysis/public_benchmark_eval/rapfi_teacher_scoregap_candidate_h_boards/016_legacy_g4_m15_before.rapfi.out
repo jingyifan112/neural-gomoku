@@ -1,0 +1,5 @@
+### attempt 1 depth=2 timeout_ms=3000
+OK
+MESSAGE Speed 20000 | Depth 2-6 | Eval 2 | Node 20 | Time 0ms
+MESSAGE Bestline G5 H5 H4
+6,4
