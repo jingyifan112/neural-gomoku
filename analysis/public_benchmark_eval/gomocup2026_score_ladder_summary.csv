@@ -9,3 +9,5 @@ neural_current_best_mcts32,tactical_plus,gomocup2026_freestyle15_public_openings
 rapfi_full,tactical_plus,gomocup2026_freestyle15_public_openings,24,24,0,0,24.0,24,1.000
 neural_current_best_mcts16,tactical_plus,gomocup2026_freestyle15_public_openings,24,2,20,2,3.0,24,0.125
 neural_current_best_mcts8,tactical_plus,gomocup2026_freestyle15_public_openings,24,0,22,2,1.0,24,0.042
+neural_current_best_mcts16,tactical_mid,gomocup2026_freestyle15_public_openings,24,6,16,2,7.0,24,0.292
+rapfi_full,tactical_mid,gomocup2026_freestyle15_public_openings,24,24,0,0,24.0,24,1.000

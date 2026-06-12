@@ -19,6 +19,8 @@
 | random | rapfi_full | 24 | 0 | 0 | 24.0 / 24 | 1.000 |
 | tactical_lite | neural_current_best_mcts32 | 23 | 1 | 0 | 23.0 / 24 | 0.958 |
 | tactical_lite | rapfi_full | 24 | 0 | 0 | 24.0 / 24 | 1.000 |
+| tactical_mid | neural_current_best_mcts16 | 6 | 16 | 2 | 7.0 / 24 | 0.292 |
+| tactical_mid | rapfi_full | 24 | 0 | 0 | 24.0 / 24 | 1.000 |
 | tactical_plus | neural_current_best_mcts32 | 1 | 23 | 0 | 1.0 / 24 | 0.042 |
 | tactical_plus | neural_current_best_mcts16 | 2 | 20 | 2 | 3.0 / 24 | 0.125 |
 | tactical_plus | neural_current_best_mcts8 | 0 | 22 | 2 | 1.0 / 24 | 0.042 |
@@ -59,3 +61,15 @@ This indicates that part of the `mcts32` tactical_plus loss comes from time pres
 | mcts8 | 0 | 22 | 2 | 1.0 / 24 | 0.042 |
 
 `mcts16` is the best speed-quality tradeoff in this tactical_plus benchmark. `mcts8` confirms that lowering simulations too far loses search quality, while `mcts32` suffers from time pressure.
+
+
+## Tactical-mid result
+
+`tactical_mid` is the best current main benchmark for model iteration.
+
+| Engine | W | L | D | Score | Score rate |
+|---|---:|---:|---:|---:|---:|
+| neural_current_best_mcts16 | 6 | 16 | 2 | 7.0 / 24 | 0.292 |
+| rapfi_full | 24 | 0 | 0 | 24.0 / 24 | 1.000 |
+
+This baseline sits between `tactical_lite` and `tactical_plus`. It gives enough resolution to track neural model improvements without saturating at either 0% or 100%.
