@@ -21,6 +21,7 @@
 | tactical_lite | rapfi_full | 24 | 0 | 0 | 24.0 / 24 | 1.000 |
 | tactical_plus | neural_current_best_mcts32 | 1 | 23 | 0 | 1.0 / 24 | 0.042 |
 | tactical_plus | neural_current_best_mcts16 | 2 | 20 | 2 | 3.0 / 24 | 0.125 |
+| tactical_plus | neural_current_best_mcts8 | 0 | 22 | 2 | 1.0 / 24 | 0.042 |
 | tactical_plus | rapfi_full | 24 | 0 | 0 | 24.0 / 24 | 1.000 |
 | tactical_plus | neural_current_best_mcts32 | 1 | 23 | 0 | 1.0 / 24 | 0.042 |
 | tactical_plus | rapfi_full | 24 | 0 | 0 | 24.0 / 24 | 1.000 |
@@ -47,3 +48,14 @@ The current neural engine is clearly stronger than random and tactical_lite, but
 - `mcts16`: 3.0 / 24, score rate 0.125
 
 This indicates that part of the `mcts32` tactical_plus loss comes from time pressure, but the main gap is still tactical strength rather than only search speed.
+
+
+## MCTS simulation sweep on tactical_plus
+
+| Neural setting | W | L | D | Score | Score rate |
+|---|---:|---:|---:|---:|---:|
+| mcts32 | 1 | 23 | 0 | 1.0 / 24 | 0.042 |
+| mcts16 | 2 | 20 | 2 | 3.0 / 24 | 0.125 |
+| mcts8 | 0 | 22 | 2 | 1.0 / 24 | 0.042 |
+
+`mcts16` is the best speed-quality tradeoff in this tactical_plus benchmark. `mcts8` confirms that lowering simulations too far loses search quality, while `mcts32` suffers from time pressure.
