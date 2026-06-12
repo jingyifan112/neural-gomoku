@@ -20,6 +20,9 @@
 | tactical_lite | neural_current_best_mcts32 | 23 | 1 | 0 | 23.0 / 24 | 0.958 |
 | tactical_lite | rapfi_full | 24 | 0 | 0 | 24.0 / 24 | 1.000 |
 | tactical_plus | neural_current_best_mcts32 | 1 | 23 | 0 | 1.0 / 24 | 0.042 |
+| tactical_plus | neural_current_best_mcts16 | 2 | 20 | 2 | 3.0 / 24 | 0.125 |
+| tactical_plus | rapfi_full | 24 | 0 | 0 | 24.0 / 24 | 1.000 |
+| tactical_plus | neural_current_best_mcts32 | 1 | 23 | 0 | 1.0 / 24 | 0.042 |
 | tactical_plus | rapfi_full | 24 | 0 | 0 | 24.0 / 24 | 1.000 |
 | rapfi_fast_depth1 | neural_current_best_mcts32 | 0 | 24 | 0 | 0.0 / 24 | 0.000 |
 | rapfi_fast_depth1 | rapfi_full | 24 | 0 | 0 | 24.0 / 24 | 1.000 |
@@ -34,3 +37,13 @@ The public opening suite is useful, but baseline strength controls the resolutio
 - `rapfi_fast_depth1` is too strong: neural scores zero while Rapfi scores perfectly.
 
 The current neural engine is clearly stronger than random and tactical_lite, but falls sharply against tactical_plus and Rapfi depth-1 on this public opening suite. The next scoring target should be an intermediate baseline between `tactical_lite` and `tactical_plus`, or a speed-adjusted neural setting such as lower MCTS simulations.
+
+
+## Speed-adjusted tactical_plus result
+
+`neural_current_best_mcts16` improves over `neural_current_best_mcts32` on `tactical_plus`:
+
+- `mcts32`: 1.0 / 24, score rate 0.042
+- `mcts16`: 3.0 / 24, score rate 0.125
+
+This indicates that part of the `mcts32` tactical_plus loss comes from time pressure, but the main gap is still tactical strength rather than only search speed.
