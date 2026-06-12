@@ -8,8 +8,10 @@ from pathlib import Path
 from types import SimpleNamespace
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-if str(REPO_ROOT) not in sys.path:
-    sys.path.insert(0, str(REPO_ROOT))
+SRC_ROOT = REPO_ROOT / "src"
+for path in (REPO_ROOT, SRC_ROOT):
+    if str(path) not in sys.path:
+        sys.path.insert(0, str(path))
 
 import numpy as np
 import torch
@@ -115,6 +117,15 @@ def evaluate_case(case: dict, model, device: torch.device) -> dict[str, str]:
     direct_blocks = direct in opponent_wins
     safe_blocks = safe in opponent_wins if safe is not None else False
 
+    opponent_win_count = len(opponent_wins)
+    too_late_double_threat = opponent_win_count >= 2
+    if too_late_double_threat:
+        diagnostic_label = "too_late_double_threat"
+    elif opponent_win_count == 1:
+        diagnostic_label = "single_terminal_must_block"
+    else:
+        diagnostic_label = "non_terminal_or_extractor_mismatch"
+
     return {
         "case_id": case["case_id"],
         "game": str(case["game"]),
@@ -122,8 +133,11 @@ def evaluate_case(case: dict, model, device: torch.device) -> dict[str, str]:
         "category": case["category"],
         "line_direction": case["line_direction"],
         "phase": case["phase"],
+        "diagnostic_label": diagnostic_label,
         "position_ply_before_blunder": str(case["position_ply_before_blunder"]),
         "current_player": str(current_player),
+        "opponent_immediate_win_count": str(opponent_win_count),
+        "too_late_double_threat": str(too_late_double_threat),
         "target_block_move": fmt_action(target, board_size),
         "actual_neural_move": fmt_action(actual_blunder, board_size),
         "direct_move": fmt_action(direct, board_size),
@@ -154,25 +168,39 @@ def write_md(path: Path, rows: list[dict[str, str]], checkpoint: Path, cases_pat
     safe_target = count_true("policy_safety_target")
     direct_blocks = count_true("direct_blocks_immediate_win")
     safe_blocks = count_true("policy_safety_blocks_immediate_win")
+    too_late_count = count_true("too_late_double_threat")
+    single_terminal_count = sum(r["diagnostic_label"] == "single_terminal_must_block" for r in rows)
 
     category_counts = Counter(r["category"] for r in rows)
+    label_counts = Counter(r["diagnostic_label"] for r in rows)
     miss_rows = [r for r in rows if r["policy_safety_blocks_immediate_win"] != "True"]
 
     lines = []
-    lines.append("# Tactical-mid Must-block Evaluation")
+    lines.append("# Tactical-mid Too-late Double-threat Evaluation")
     lines.append("")
     lines.append(f"- checkpoint: `{checkpoint}`")
     lines.append(f"- cases: `{cases_path}`")
     lines.append(f"- total cases: `{n}`")
+    lines.append("- diagnostic: `too_late_double_threat` means the opponent already has at least two immediate winning moves before the recorded neural move.")
+    lines.append("- interpretation: blocking one endpoint is not enough; these rows should not be used as ordinary single-target must-block training data.")
     lines.append("")
     lines.append("## Summary")
     lines.append("")
     lines.append("| Metric | Count | Rate |")
     lines.append("|---|---:|---:|")
-    lines.append(f"| direct selects exact target | {direct_target}/{n} | {direct_target/n:.3f} |")
-    lines.append(f"| policy_safety selects exact target | {safe_target}/{n} | {safe_target/n:.3f} |")
-    lines.append(f"| direct blocks immediate win | {direct_blocks}/{n} | {direct_blocks/n:.3f} |")
-    lines.append(f"| policy_safety blocks immediate win | {safe_blocks}/{n} | {safe_blocks/n:.3f} |")
+    lines.append(f"| too_late_double_threat positions | {too_late_count}/{n} | {too_late_count/n:.3f} |")
+    lines.append(f"| single-terminal must-block positions | {single_terminal_count}/{n} | {single_terminal_count/n:.3f} |")
+    lines.append(f"| direct selects exact target endpoint | {direct_target}/{n} | {direct_target/n:.3f} |")
+    lines.append(f"| policy_safety selects exact target endpoint | {safe_target}/{n} | {safe_target/n:.3f} |")
+    lines.append(f"| direct selects one opponent immediate-win endpoint | {direct_blocks}/{n} | {direct_blocks/n:.3f} |")
+    lines.append(f"| policy_safety selects one opponent immediate-win endpoint | {safe_blocks}/{n} | {safe_blocks/n:.3f} |")
+    lines.append("")
+    lines.append("## Diagnostic label counts")
+    lines.append("")
+    lines.append("| Label | Count |")
+    lines.append("|---|---:|")
+    for k, v in label_counts.most_common():
+        lines.append(f"| `{k}` | {v} |")
     lines.append("")
     lines.append("## Category counts")
     lines.append("")
@@ -184,14 +212,16 @@ def write_md(path: Path, rows: list[dict[str, str]], checkpoint: Path, cases_pat
     lines.append("")
     lines.append("## Case details")
     lines.append("")
-    lines.append("| Case | Category | Target | Direct | Safety | Target rank | Blunder rank | Direct blocks | Safety blocks |")
-    lines.append("|---|---|---|---|---|---:|---:|---|---|")
+    lines.append("| Case | Label | Opp win count | Category | Target | Direct | Safety | Target rank | Blunder rank | Direct endpoint | Safety endpoint | Opponent immediate wins |")
+    lines.append("|---|---|---:|---|---|---|---|---:|---:|---|---|---|")
     for r in rows:
         lines.append(
-            f"| `{r['case_id']}` | `{r['category']}` | `{r['target_block_move']}` | "
+            f"| `{r['case_id']}` | `{r['diagnostic_label']}` | {r['opponent_immediate_win_count']} | "
+            f"`{r['category']}` | `{r['target_block_move']}` | "
             f"`{r['direct_move']}` | `{r['policy_safety_move']}` | "
             f"{r['target_policy_rank']} | {r['actual_blunder_policy_rank']} | "
-            f"{r['direct_blocks_immediate_win']} | {r['policy_safety_blocks_immediate_win']} |"
+            f"{r['direct_blocks_immediate_win']} | {r['policy_safety_blocks_immediate_win']} | "
+            f"`{r['opponent_immediate_winning_moves']}` |"
         )
 
     if miss_rows:
@@ -261,6 +291,10 @@ def main():
     print(
         "policy_safety_blocks="
         f"{sum(r['policy_safety_blocks_immediate_win'] == 'True' for r in rows)}/{n}"
+    )
+    print(
+        "too_late_double_threat="
+        f"{sum(r['too_late_double_threat'] == 'True' for r in rows)}/{n}"
     )
 
 

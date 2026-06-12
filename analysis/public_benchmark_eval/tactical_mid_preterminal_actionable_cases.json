@@ -1,0 +1,616 @@
+[
+  {
+    "case_id": "tactical_mid_g3_block_4_9_preterminal_back2",
+    "source_case_id": "tactical_mid_g3_block_4_9",
+    "source": "tactical_mid_preterminal_actionable_from_too_late_double_threat",
+    "board_size": 15,
+    "game": 3,
+    "category": "fast_straight_loss",
+    "line_direction": "vertical",
+    "phase": "fast",
+    "neural_color": "W",
+    "side_to_move": "W",
+    "back_ply": 2,
+    "prefix_ply": 23,
+    "moves_before_decision": [
+      {
+        "color": "B",
+        "x": 6,
+        "y": 13
+      },
+      {
+        "color": "W",
+        "x": 6,
+        "y": 10
+      },
+      {
+        "color": "B",
+        "x": 4,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 1,
+        "y": 8
+      },
+      {
+        "color": "B",
+        "x": 3,
+        "y": 12
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 7
+      },
+      {
+        "color": "B",
+        "x": 5,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 6,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 3,
+        "y": 9
+      },
+      {
+        "color": "B",
+        "x": 5,
+        "y": 5
+      },
+      {
+        "color": "W",
+        "x": 5,
+        "y": 4
+      },
+      {
+        "color": "B",
+        "x": 5,
+        "y": 6
+      },
+      {
+        "color": "W",
+        "x": 5,
+        "y": 8
+      },
+      {
+        "color": "B",
+        "x": 4,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 6,
+        "y": 5
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 4
+      },
+      {
+        "color": "B",
+        "x": 3,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 2,
+        "y": 9
+      },
+      {
+        "color": "B",
+        "x": 7,
+        "y": 5
+      },
+      {
+        "color": "W",
+        "x": 8,
+        "y": 5
+      },
+      {
+        "color": "B",
+        "x": 4,
+        "y": 5
+      }
+    ],
+    "observed_neural_move": {
+      "x": 3,
+      "y": 5
+    },
+    "target_prevention_moves": [
+      {
+        "x": 4,
+        "y": 6
+      }
+    ],
+    "opponent_double_threat_replies_after_observed_neural": [
+      {
+        "move": "4,6",
+        "immediate_win_count_after": 2,
+        "immediate_wins_after": [
+          "4,4",
+          "4,9"
+        ]
+      }
+    ],
+    "notes": "Preterminal diagnostic case: at this neural decision point, the observed neural move allows at least one opponent reply that creates a two-end immediate-win threat. The listed target_prevention_moves avoid all such opponent double-threat replies by this extractor."
+  },
+  {
+    "case_id": "tactical_mid_g11_block_7_14_preterminal_back2",
+    "source_case_id": "tactical_mid_g11_block_7_14",
+    "source": "tactical_mid_preterminal_actionable_from_too_late_double_threat",
+    "board_size": 15,
+    "game": 11,
+    "category": "mid_diagonal_loss",
+    "line_direction": "diagonal",
+    "phase": "mid",
+    "neural_color": "W",
+    "side_to_move": "W",
+    "back_ply": 2,
+    "prefix_ply": 85,
+    "moves_before_decision": [
+      {
+        "color": "B",
+        "x": 7,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 10,
+        "y": 4
+      },
+      {
+        "color": "W",
+        "x": 9,
+        "y": 5
+      },
+      {
+        "color": "B",
+        "x": 7,
+        "y": 5
+      },
+      {
+        "color": "W",
+        "x": 6,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 6
+      },
+      {
+        "color": "W",
+        "x": 6,
+        "y": 4
+      },
+      {
+        "color": "B",
+        "x": 6,
+        "y": 5
+      },
+      {
+        "color": "W",
+        "x": 5,
+        "y": 5
+      },
+      {
+        "color": "B",
+        "x": 7,
+        "y": 3
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 4
+      },
+      {
+        "color": "B",
+        "x": 5,
+        "y": 4
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 0
+      },
+      {
+        "color": "B",
+        "x": 9,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 10,
+        "y": 8
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 10,
+        "y": 7
+      },
+      {
+        "color": "B",
+        "x": 6,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 5,
+        "y": 7
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 5
+      },
+      {
+        "color": "W",
+        "x": 8,
+        "y": 4
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 8,
+        "y": 9
+      },
+      {
+        "color": "B",
+        "x": 10,
+        "y": 6
+      },
+      {
+        "color": "W",
+        "x": 11,
+        "y": 5
+      },
+      {
+        "color": "B",
+        "x": 7,
+        "y": 9
+      },
+      {
+        "color": "W",
+        "x": 6,
+        "y": 10
+      },
+      {
+        "color": "B",
+        "x": 9,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 9,
+        "y": 9
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 10
+      },
+      {
+        "color": "W",
+        "x": 5,
+        "y": 3
+      },
+      {
+        "color": "B",
+        "x": 9,
+        "y": 11
+      },
+      {
+        "color": "W",
+        "x": 6,
+        "y": 8
+      },
+      {
+        "color": "B",
+        "x": 10,
+        "y": 12
+      },
+      {
+        "color": "W",
+        "x": 11,
+        "y": 13
+      },
+      {
+        "color": "B",
+        "x": 10,
+        "y": 9
+      },
+      {
+        "color": "W",
+        "x": 4,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 11,
+        "y": 10
+      },
+      {
+        "color": "W",
+        "x": 12,
+        "y": 11
+      },
+      {
+        "color": "B",
+        "x": 5,
+        "y": 6
+      },
+      {
+        "color": "W",
+        "x": 4,
+        "y": 7
+      },
+      {
+        "color": "B",
+        "x": 3,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 5,
+        "y": 8
+      },
+      {
+        "color": "B",
+        "x": 3,
+        "y": 5
+      },
+      {
+        "color": "W",
+        "x": 11,
+        "y": 9
+      },
+      {
+        "color": "B",
+        "x": 4,
+        "y": 5
+      },
+      {
+        "color": "W",
+        "x": 2,
+        "y": 3
+      },
+      {
+        "color": "B",
+        "x": 7,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 3,
+        "y": 4
+      },
+      {
+        "color": "B",
+        "x": 7,
+        "y": 10
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 11
+      },
+      {
+        "color": "B",
+        "x": 3,
+        "y": 6
+      },
+      {
+        "color": "W",
+        "x": 6,
+        "y": 3
+      },
+      {
+        "color": "B",
+        "x": 3,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 3,
+        "y": 9
+      },
+      {
+        "color": "B",
+        "x": 2,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 1,
+        "y": 8
+      },
+      {
+        "color": "B",
+        "x": 4,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 9,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 4,
+        "y": 9
+      },
+      {
+        "color": "W",
+        "x": 1,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 5,
+        "y": 10
+      },
+      {
+        "color": "W",
+        "x": 6,
+        "y": 11
+      },
+      {
+        "color": "B",
+        "x": 6,
+        "y": 9
+      },
+      {
+        "color": "W",
+        "x": 4,
+        "y": 11
+      },
+      {
+        "color": "B",
+        "x": 5,
+        "y": 11
+      },
+      {
+        "color": "W",
+        "x": 10,
+        "y": 1
+      },
+      {
+        "color": "B",
+        "x": 5,
+        "y": 12
+      },
+      {
+        "color": "W",
+        "x": 5,
+        "y": 9
+      },
+      {
+        "color": "B",
+        "x": 5,
+        "y": 13
+      },
+      {
+        "color": "W",
+        "x": 5,
+        "y": 14
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 12
+      },
+      {
+        "color": "W",
+        "x": 12,
+        "y": 5
+      },
+      {
+        "color": "B",
+        "x": 10,
+        "y": 5
+      },
+      {
+        "color": "W",
+        "x": 9,
+        "y": 10
+      },
+      {
+        "color": "B",
+        "x": 10,
+        "y": 3
+      },
+      {
+        "color": "W",
+        "x": 10,
+        "y": 2
+      },
+      {
+        "color": "B",
+        "x": 9,
+        "y": 12
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 12
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 11
+      },
+      {
+        "color": "W",
+        "x": 10,
+        "y": 13
+      },
+      {
+        "color": "B",
+        "x": 11,
+        "y": 12
+      },
+      {
+        "color": "W",
+        "x": 12,
+        "y": 12
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 13
+      }
+    ],
+    "observed_neural_move": {
+      "x": 8,
+      "y": 14
+    },
+    "target_prevention_moves": [
+      {
+        "x": 10,
+        "y": 11
+      }
+    ],
+    "opponent_double_threat_replies_after_observed_neural": [
+      {
+        "move": "10,11",
+        "immediate_win_count_after": 2,
+        "immediate_wins_after": [
+          "12,9",
+          "7,14"
+        ]
+      }
+    ],
+    "notes": "Preterminal diagnostic case: at this neural decision point, the observed neural move allows at least one opponent reply that creates a two-end immediate-win threat. The listed target_prevention_moves avoid all such opponent double-threat replies by this extractor."
+  }
+]
