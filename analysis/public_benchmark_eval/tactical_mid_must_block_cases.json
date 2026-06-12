@@ -1,0 +1,4271 @@
+[
+  {
+    "case_id": "tactical_mid_g1_block_0_8",
+    "source": "gomocup2026_freestyle15_public_openings_vs_tactical_mid",
+    "board_size": 15,
+    "game": 1,
+    "neural_color": "W",
+    "side_to_move": "W",
+    "category": "long_diagonal_loss",
+    "line_direction": "diagonal",
+    "phase": "long",
+    "ply_count_full_game": 175,
+    "position_ply_before_blunder": 173,
+    "target_block_move": {
+      "x": 0,
+      "y": 8
+    },
+    "actual_neural_move": {
+      "x": 5,
+      "y": 13
+    },
+    "opponent_winning_move_after_blunder": {
+      "x": 0,
+      "y": 8
+    },
+    "winner_line_after_blunder": "0,8 1,9 2,10 3,11 4,12",
+    "moves_before_blunder": [
+      {
+        "color": "B",
+        "x": 11,
+        "y": 13
+      },
+      {
+        "color": "W",
+        "x": 8,
+        "y": 12
+      },
+      {
+        "color": "B",
+        "x": 7,
+        "y": 10
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 12
+      },
+      {
+        "color": "B",
+        "x": 6,
+        "y": 12
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 7
+      },
+      {
+        "color": "B",
+        "x": 9,
+        "y": 12
+      },
+      {
+        "color": "W",
+        "x": 10,
+        "y": 12
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 11
+      },
+      {
+        "color": "W",
+        "x": 6,
+        "y": 9
+      },
+      {
+        "color": "B",
+        "x": 10,
+        "y": 13
+      },
+      {
+        "color": "W",
+        "x": 11,
+        "y": 14
+      },
+      {
+        "color": "B",
+        "x": 9,
+        "y": 13
+      },
+      {
+        "color": "W",
+        "x": 8,
+        "y": 13
+      },
+      {
+        "color": "B",
+        "x": 12,
+        "y": 13
+      },
+      {
+        "color": "W",
+        "x": 13,
+        "y": 13
+      },
+      {
+        "color": "B",
+        "x": 9,
+        "y": 11
+      },
+      {
+        "color": "W",
+        "x": 9,
+        "y": 10
+      },
+      {
+        "color": "B",
+        "x": 10,
+        "y": 11
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 11
+      },
+      {
+        "color": "B",
+        "x": 11,
+        "y": 11
+      },
+      {
+        "color": "W",
+        "x": 12,
+        "y": 11
+      },
+      {
+        "color": "B",
+        "x": 6,
+        "y": 11
+      },
+      {
+        "color": "W",
+        "x": 9,
+        "y": 14
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 9
+      },
+      {
+        "color": "W",
+        "x": 5,
+        "y": 12
+      },
+      {
+        "color": "B",
+        "x": 9,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 10,
+        "y": 7
+      },
+      {
+        "color": "B",
+        "x": 6,
+        "y": 13
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 8
+      },
+      {
+        "color": "B",
+        "x": 6,
+        "y": 10
+      },
+      {
+        "color": "W",
+        "x": 6,
+        "y": 14
+      },
+      {
+        "color": "B",
+        "x": 5,
+        "y": 10
+      },
+      {
+        "color": "W",
+        "x": 3,
+        "y": 10
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 10
+      },
+      {
+        "color": "W",
+        "x": 4,
+        "y": 10
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 8,
+        "y": 7
+      },
+      {
+        "color": "B",
+        "x": 9,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 10,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 7,
+        "y": 9
+      },
+      {
+        "color": "W",
+        "x": 5,
+        "y": 11
+      },
+      {
+        "color": "B",
+        "x": 6,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 5,
+        "y": 7
+      },
+      {
+        "color": "B",
+        "x": 9,
+        "y": 6
+      },
+      {
+        "color": "W",
+        "x": 9,
+        "y": 5
+      },
+      {
+        "color": "B",
+        "x": 6,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 9,
+        "y": 9
+      },
+      {
+        "color": "B",
+        "x": 10,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 8,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 11,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 12,
+        "y": 8
+      },
+      {
+        "color": "B",
+        "x": 11,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 11,
+        "y": 9
+      },
+      {
+        "color": "B",
+        "x": 10,
+        "y": 4
+      },
+      {
+        "color": "W",
+        "x": 6,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 10,
+        "y": 14
+      },
+      {
+        "color": "W",
+        "x": 5,
+        "y": 5
+      },
+      {
+        "color": "B",
+        "x": 4,
+        "y": 4
+      },
+      {
+        "color": "W",
+        "x": 4,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 5,
+        "y": 6
+      },
+      {
+        "color": "W",
+        "x": 4,
+        "y": 5
+      },
+      {
+        "color": "B",
+        "x": 3,
+        "y": 5
+      },
+      {
+        "color": "W",
+        "x": 6,
+        "y": 5
+      },
+      {
+        "color": "B",
+        "x": 7,
+        "y": 5
+      },
+      {
+        "color": "W",
+        "x": 8,
+        "y": 5
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 4
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 4
+      },
+      {
+        "color": "B",
+        "x": 5,
+        "y": 3
+      },
+      {
+        "color": "W",
+        "x": 6,
+        "y": 2
+      },
+      {
+        "color": "B",
+        "x": 2,
+        "y": 6
+      },
+      {
+        "color": "W",
+        "x": 1,
+        "y": 7
+      },
+      {
+        "color": "B",
+        "x": 6,
+        "y": 4
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 1
+      },
+      {
+        "color": "B",
+        "x": 4,
+        "y": 2
+      },
+      {
+        "color": "W",
+        "x": 3,
+        "y": 1
+      },
+      {
+        "color": "B",
+        "x": 13,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 3
+      },
+      {
+        "color": "B",
+        "x": 7,
+        "y": 2
+      },
+      {
+        "color": "W",
+        "x": 6,
+        "y": 1
+      },
+      {
+        "color": "B",
+        "x": 5,
+        "y": 1
+      },
+      {
+        "color": "W",
+        "x": 9,
+        "y": 0
+      },
+      {
+        "color": "B",
+        "x": 5,
+        "y": 2
+      },
+      {
+        "color": "W",
+        "x": 9,
+        "y": 3
+      },
+      {
+        "color": "B",
+        "x": 5,
+        "y": 4
+      },
+      {
+        "color": "W",
+        "x": 5,
+        "y": 0
+      },
+      {
+        "color": "B",
+        "x": 3,
+        "y": 4
+      },
+      {
+        "color": "W",
+        "x": 2,
+        "y": 4
+      },
+      {
+        "color": "B",
+        "x": 3,
+        "y": 3
+      },
+      {
+        "color": "W",
+        "x": 3,
+        "y": 2
+      },
+      {
+        "color": "B",
+        "x": 3,
+        "y": 6
+      },
+      {
+        "color": "W",
+        "x": 3,
+        "y": 7
+      },
+      {
+        "color": "B",
+        "x": 2,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 4,
+        "y": 1
+      },
+      {
+        "color": "B",
+        "x": 2,
+        "y": 3
+      },
+      {
+        "color": "W",
+        "x": 1,
+        "y": 3
+      },
+      {
+        "color": "B",
+        "x": 4,
+        "y": 3
+      },
+      {
+        "color": "W",
+        "x": 6,
+        "y": 3
+      },
+      {
+        "color": "B",
+        "x": 2,
+        "y": 5
+      },
+      {
+        "color": "W",
+        "x": 1,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 2,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 2,
+        "y": 9
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 3
+      },
+      {
+        "color": "W",
+        "x": 9,
+        "y": 4
+      },
+      {
+        "color": "B",
+        "x": 4,
+        "y": 11
+      },
+      {
+        "color": "W",
+        "x": 11,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 9,
+        "y": 2
+      },
+      {
+        "color": "W",
+        "x": 10,
+        "y": 5
+      },
+      {
+        "color": "B",
+        "x": 12,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 10,
+        "y": 3
+      },
+      {
+        "color": "W",
+        "x": 1,
+        "y": 4
+      },
+      {
+        "color": "B",
+        "x": 1,
+        "y": 5
+      },
+      {
+        "color": "W",
+        "x": 1,
+        "y": 8
+      },
+      {
+        "color": "B",
+        "x": 1,
+        "y": 9
+      },
+      {
+        "color": "W",
+        "x": 11,
+        "y": 10
+      },
+      {
+        "color": "B",
+        "x": 11,
+        "y": 5
+      },
+      {
+        "color": "W",
+        "x": 12,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 13,
+        "y": 6
+      },
+      {
+        "color": "W",
+        "x": 14,
+        "y": 7
+      },
+      {
+        "color": "B",
+        "x": 10,
+        "y": 9
+      },
+      {
+        "color": "W",
+        "x": 14,
+        "y": 5
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 1
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 0
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 2
+      },
+      {
+        "color": "W",
+        "x": 8,
+        "y": 0
+      },
+      {
+        "color": "B",
+        "x": 6,
+        "y": 0
+      },
+      {
+        "color": "W",
+        "x": 11,
+        "y": 4
+      },
+      {
+        "color": "B",
+        "x": 10,
+        "y": 2
+      },
+      {
+        "color": "W",
+        "x": 11,
+        "y": 2
+      },
+      {
+        "color": "B",
+        "x": 10,
+        "y": 1
+      },
+      {
+        "color": "W",
+        "x": 10,
+        "y": 0
+      },
+      {
+        "color": "B",
+        "x": 11,
+        "y": 0
+      },
+      {
+        "color": "W",
+        "x": 14,
+        "y": 3
+      },
+      {
+        "color": "B",
+        "x": 13,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 13,
+        "y": 5
+      },
+      {
+        "color": "B",
+        "x": 13,
+        "y": 9
+      },
+      {
+        "color": "W",
+        "x": 13,
+        "y": 10
+      },
+      {
+        "color": "B",
+        "x": 12,
+        "y": 10
+      },
+      {
+        "color": "W",
+        "x": 14,
+        "y": 4
+      },
+      {
+        "color": "B",
+        "x": 14,
+        "y": 6
+      },
+      {
+        "color": "W",
+        "x": 13,
+        "y": 3
+      },
+      {
+        "color": "B",
+        "x": 14,
+        "y": 2
+      },
+      {
+        "color": "W",
+        "x": 4,
+        "y": 7
+      },
+      {
+        "color": "B",
+        "x": 4,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 4,
+        "y": 9
+      },
+      {
+        "color": "B",
+        "x": 2,
+        "y": 2
+      },
+      {
+        "color": "W",
+        "x": 3,
+        "y": 8
+      },
+      {
+        "color": "B",
+        "x": 1,
+        "y": 1
+      },
+      {
+        "color": "W",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "color": "B",
+        "x": 3,
+        "y": 9
+      },
+      {
+        "color": "W",
+        "x": 13,
+        "y": 1
+      },
+      {
+        "color": "B",
+        "x": 1,
+        "y": 10
+      },
+      {
+        "color": "W",
+        "x": 13,
+        "y": 2
+      },
+      {
+        "color": "B",
+        "x": 13,
+        "y": 4
+      },
+      {
+        "color": "W",
+        "x": 12,
+        "y": 5
+      },
+      {
+        "color": "B",
+        "x": 12,
+        "y": 3
+      },
+      {
+        "color": "W",
+        "x": 2,
+        "y": 1
+      },
+      {
+        "color": "B",
+        "x": 2,
+        "y": 11
+      },
+      {
+        "color": "W",
+        "x": 10,
+        "y": 10
+      },
+      {
+        "color": "B",
+        "x": 3,
+        "y": 12
+      },
+      {
+        "color": "W",
+        "x": 4,
+        "y": 13
+      },
+      {
+        "color": "B",
+        "x": 2,
+        "y": 13
+      },
+      {
+        "color": "W",
+        "x": 1,
+        "y": 14
+      },
+      {
+        "color": "B",
+        "x": 2,
+        "y": 12
+      },
+      {
+        "color": "W",
+        "x": 5,
+        "y": 9
+      },
+      {
+        "color": "B",
+        "x": 2,
+        "y": 10
+      },
+      {
+        "color": "W",
+        "x": 2,
+        "y": 14
+      },
+      {
+        "color": "B",
+        "x": 1,
+        "y": 11
+      },
+      {
+        "color": "W",
+        "x": 0,
+        "y": 12
+      },
+      {
+        "color": "B",
+        "x": 3,
+        "y": 11
+      },
+      {
+        "color": "W",
+        "x": 0,
+        "y": 11
+      },
+      {
+        "color": "B",
+        "x": 4,
+        "y": 12
+      }
+    ],
+    "notes": "Neural to move should block the opponent's direct five-completion square. In the original game, neural chose actual_neural_move, then the opponent played opponent_winning_move_after_blunder and won immediately."
+  },
+  {
+    "case_id": "tactical_mid_g3_block_4_9",
+    "source": "gomocup2026_freestyle15_public_openings_vs_tactical_mid",
+    "board_size": 15,
+    "game": 3,
+    "neural_color": "W",
+    "side_to_move": "W",
+    "category": "fast_straight_loss",
+    "line_direction": "vertical",
+    "phase": "fast",
+    "ply_count_full_game": 27,
+    "position_ply_before_blunder": 25,
+    "target_block_move": {
+      "x": 4,
+      "y": 9
+    },
+    "actual_neural_move": {
+      "x": 4,
+      "y": 4
+    },
+    "opponent_winning_move_after_blunder": {
+      "x": 4,
+      "y": 9
+    },
+    "winner_line_after_blunder": "4,5 4,6 4,7 4,8 4,9",
+    "moves_before_blunder": [
+      {
+        "color": "B",
+        "x": 6,
+        "y": 13
+      },
+      {
+        "color": "W",
+        "x": 6,
+        "y": 10
+      },
+      {
+        "color": "B",
+        "x": 4,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 1,
+        "y": 8
+      },
+      {
+        "color": "B",
+        "x": 3,
+        "y": 12
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 7
+      },
+      {
+        "color": "B",
+        "x": 5,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 6,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 3,
+        "y": 9
+      },
+      {
+        "color": "B",
+        "x": 5,
+        "y": 5
+      },
+      {
+        "color": "W",
+        "x": 5,
+        "y": 4
+      },
+      {
+        "color": "B",
+        "x": 5,
+        "y": 6
+      },
+      {
+        "color": "W",
+        "x": 5,
+        "y": 8
+      },
+      {
+        "color": "B",
+        "x": 4,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 6,
+        "y": 5
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 4
+      },
+      {
+        "color": "B",
+        "x": 3,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 2,
+        "y": 9
+      },
+      {
+        "color": "B",
+        "x": 7,
+        "y": 5
+      },
+      {
+        "color": "W",
+        "x": 8,
+        "y": 5
+      },
+      {
+        "color": "B",
+        "x": 4,
+        "y": 5
+      },
+      {
+        "color": "W",
+        "x": 3,
+        "y": 5
+      },
+      {
+        "color": "B",
+        "x": 4,
+        "y": 6
+      }
+    ],
+    "notes": "Neural to move should block the opponent's direct five-completion square. In the original game, neural chose actual_neural_move, then the opponent played opponent_winning_move_after_blunder and won immediately."
+  },
+  {
+    "case_id": "tactical_mid_g4_block_1_6",
+    "source": "gomocup2026_freestyle15_public_openings_vs_tactical_mid",
+    "board_size": 15,
+    "game": 4,
+    "neural_color": "B",
+    "side_to_move": "B",
+    "category": "fast_diagonal_loss",
+    "line_direction": "diagonal",
+    "phase": "fast",
+    "ply_count_full_game": 32,
+    "position_ply_before_blunder": 30,
+    "target_block_move": {
+      "x": 1,
+      "y": 6
+    },
+    "actual_neural_move": {
+      "x": 6,
+      "y": 11
+    },
+    "opponent_winning_move_after_blunder": {
+      "x": 1,
+      "y": 6
+    },
+    "winner_line_after_blunder": "1,6 2,7 3,8 4,9 5,10",
+    "moves_before_blunder": [
+      {
+        "color": "B",
+        "x": 6,
+        "y": 13
+      },
+      {
+        "color": "W",
+        "x": 6,
+        "y": 10
+      },
+      {
+        "color": "B",
+        "x": 4,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 1,
+        "y": 8
+      },
+      {
+        "color": "B",
+        "x": 3,
+        "y": 12
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 9
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 5,
+        "y": 11
+      },
+      {
+        "color": "B",
+        "x": 4,
+        "y": 12
+      },
+      {
+        "color": "W",
+        "x": 5,
+        "y": 12
+      },
+      {
+        "color": "B",
+        "x": 7,
+        "y": 13
+      },
+      {
+        "color": "W",
+        "x": 5,
+        "y": 13
+      },
+      {
+        "color": "B",
+        "x": 5,
+        "y": 9
+      },
+      {
+        "color": "W",
+        "x": 5,
+        "y": 10
+      },
+      {
+        "color": "B",
+        "x": 5,
+        "y": 14
+      },
+      {
+        "color": "W",
+        "x": 4,
+        "y": 10
+      },
+      {
+        "color": "B",
+        "x": 7,
+        "y": 10
+      },
+      {
+        "color": "W",
+        "x": 3,
+        "y": 10
+      },
+      {
+        "color": "B",
+        "x": 2,
+        "y": 10
+      },
+      {
+        "color": "W",
+        "x": 3,
+        "y": 9
+      },
+      {
+        "color": "B",
+        "x": 6,
+        "y": 12
+      },
+      {
+        "color": "W",
+        "x": 2,
+        "y": 8
+      },
+      {
+        "color": "B",
+        "x": 1,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 3,
+        "y": 8
+      },
+      {
+        "color": "B",
+        "x": 3,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 2,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 5,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 2,
+        "y": 7
+      },
+      {
+        "color": "B",
+        "x": 2,
+        "y": 9
+      },
+      {
+        "color": "W",
+        "x": 4,
+        "y": 9
+      }
+    ],
+    "notes": "Neural to move should block the opponent's direct five-completion square. In the original game, neural chose actual_neural_move, then the opponent played opponent_winning_move_after_blunder and won immediately."
+  },
+  {
+    "case_id": "tactical_mid_g6_block_8_4",
+    "source": "gomocup2026_freestyle15_public_openings_vs_tactical_mid",
+    "board_size": 15,
+    "game": 6,
+    "neural_color": "B",
+    "side_to_move": "B",
+    "category": "fast_diagonal_loss",
+    "line_direction": "diagonal",
+    "phase": "fast",
+    "ply_count_full_game": 42,
+    "position_ply_before_blunder": 40,
+    "target_block_move": {
+      "x": 8,
+      "y": 4
+    },
+    "actual_neural_move": {
+      "x": 3,
+      "y": 9
+    },
+    "opponent_winning_move_after_blunder": {
+      "x": 8,
+      "y": 4
+    },
+    "winner_line_after_blunder": "4,8 5,7 6,6 7,5 8,4",
+    "moves_before_blunder": [
+      {
+        "color": "B",
+        "x": 7,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 8,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 10,
+        "y": 9
+      },
+      {
+        "color": "W",
+        "x": 6,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 10,
+        "y": 6
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 9,
+        "y": 6
+      },
+      {
+        "color": "W",
+        "x": 5,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 4,
+        "y": 6
+      },
+      {
+        "color": "W",
+        "x": 11,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 9,
+        "y": 9
+      },
+      {
+        "color": "W",
+        "x": 8,
+        "y": 9
+      },
+      {
+        "color": "B",
+        "x": 11,
+        "y": 9
+      },
+      {
+        "color": "W",
+        "x": 12,
+        "y": 9
+      },
+      {
+        "color": "B",
+        "x": 7,
+        "y": 9
+      },
+      {
+        "color": "W",
+        "x": 8,
+        "y": 8
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 10
+      },
+      {
+        "color": "W",
+        "x": 8,
+        "y": 7
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 5
+      },
+      {
+        "color": "W",
+        "x": 6,
+        "y": 5
+      },
+      {
+        "color": "B",
+        "x": 9,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 5,
+        "y": 4
+      },
+      {
+        "color": "B",
+        "x": 4,
+        "y": 3
+      },
+      {
+        "color": "W",
+        "x": 9,
+        "y": 7
+      },
+      {
+        "color": "B",
+        "x": 7,
+        "y": 10
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 8
+      },
+      {
+        "color": "B",
+        "x": 6,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 4
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 3
+      },
+      {
+        "color": "W",
+        "x": 4,
+        "y": 7
+      },
+      {
+        "color": "B",
+        "x": 3,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 5
+      },
+      {
+        "color": "B",
+        "x": 6,
+        "y": 4
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 3
+      },
+      {
+        "color": "B",
+        "x": 7,
+        "y": 2
+      },
+      {
+        "color": "W",
+        "x": 5,
+        "y": 5
+      },
+      {
+        "color": "B",
+        "x": 5,
+        "y": 3
+      },
+      {
+        "color": "W",
+        "x": 5,
+        "y": 7
+      },
+      {
+        "color": "B",
+        "x": 5,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 4,
+        "y": 8
+      }
+    ],
+    "notes": "Neural to move should block the opponent's direct five-completion square. In the original game, neural chose actual_neural_move, then the opponent played opponent_winning_move_after_blunder and won immediately."
+  },
+  {
+    "case_id": "tactical_mid_g10_block_10_5",
+    "source": "gomocup2026_freestyle15_public_openings_vs_tactical_mid",
+    "board_size": 15,
+    "game": 10,
+    "neural_color": "B",
+    "side_to_move": "B",
+    "category": "fast_straight_loss",
+    "line_direction": "vertical",
+    "phase": "fast",
+    "ply_count_full_game": 54,
+    "position_ply_before_blunder": 52,
+    "target_block_move": {
+      "x": 10,
+      "y": 5
+    },
+    "actual_neural_move": {
+      "x": 10,
+      "y": 0
+    },
+    "opponent_winning_move_after_blunder": {
+      "x": 10,
+      "y": 5
+    },
+    "winner_line_after_blunder": "10,1 10,2 10,3 10,4 10,5",
+    "moves_before_blunder": [
+      {
+        "color": "B",
+        "x": 7,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 7,
+        "y": 4
+      },
+      {
+        "color": "W",
+        "x": 8,
+        "y": 4
+      },
+      {
+        "color": "B",
+        "x": 9,
+        "y": 6
+      },
+      {
+        "color": "W",
+        "x": 8,
+        "y": 5
+      },
+      {
+        "color": "B",
+        "x": 6,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 8,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 8,
+        "y": 3
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 2
+      },
+      {
+        "color": "W",
+        "x": 9,
+        "y": 7
+      },
+      {
+        "color": "B",
+        "x": 10,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 5,
+        "y": 7
+      },
+      {
+        "color": "B",
+        "x": 6,
+        "y": 6
+      },
+      {
+        "color": "W",
+        "x": 6,
+        "y": 8
+      },
+      {
+        "color": "B",
+        "x": 4,
+        "y": 6
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 8
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 5,
+        "y": 5
+      },
+      {
+        "color": "B",
+        "x": 9,
+        "y": 5
+      },
+      {
+        "color": "W",
+        "x": 9,
+        "y": 9
+      },
+      {
+        "color": "B",
+        "x": 9,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 11,
+        "y": 8
+      },
+      {
+        "color": "B",
+        "x": 11,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 5,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 5,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 5,
+        "y": 4
+      },
+      {
+        "color": "B",
+        "x": 5,
+        "y": 3
+      },
+      {
+        "color": "W",
+        "x": 6,
+        "y": 5
+      },
+      {
+        "color": "B",
+        "x": 11,
+        "y": 5
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 5
+      },
+      {
+        "color": "B",
+        "x": 4,
+        "y": 5
+      },
+      {
+        "color": "W",
+        "x": 4,
+        "y": 3
+      },
+      {
+        "color": "B",
+        "x": 3,
+        "y": 2
+      },
+      {
+        "color": "W",
+        "x": 4,
+        "y": 7
+      },
+      {
+        "color": "B",
+        "x": 3,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 9,
+        "y": 4
+      },
+      {
+        "color": "B",
+        "x": 7,
+        "y": 2
+      },
+      {
+        "color": "W",
+        "x": 10,
+        "y": 3
+      },
+      {
+        "color": "B",
+        "x": 11,
+        "y": 2
+      },
+      {
+        "color": "W",
+        "x": 9,
+        "y": 3
+      },
+      {
+        "color": "B",
+        "x": 11,
+        "y": 3
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 3
+      },
+      {
+        "color": "B",
+        "x": 6,
+        "y": 3
+      },
+      {
+        "color": "W",
+        "x": 10,
+        "y": 2
+      },
+      {
+        "color": "B",
+        "x": 11,
+        "y": 1
+      },
+      {
+        "color": "W",
+        "x": 11,
+        "y": 4
+      },
+      {
+        "color": "B",
+        "x": 9,
+        "y": 1
+      },
+      {
+        "color": "W",
+        "x": 10,
+        "y": 4
+      },
+      {
+        "color": "B",
+        "x": 12,
+        "y": 4
+      },
+      {
+        "color": "W",
+        "x": 10,
+        "y": 1
+      }
+    ],
+    "notes": "Neural to move should block the opponent's direct five-completion square. In the original game, neural chose actual_neural_move, then the opponent played opponent_winning_move_after_blunder and won immediately."
+  },
+  {
+    "case_id": "tactical_mid_g11_block_7_14",
+    "source": "gomocup2026_freestyle15_public_openings_vs_tactical_mid",
+    "board_size": 15,
+    "game": 11,
+    "neural_color": "W",
+    "side_to_move": "W",
+    "category": "mid_diagonal_loss",
+    "line_direction": "diagonal",
+    "phase": "mid",
+    "ply_count_full_game": 89,
+    "position_ply_before_blunder": 87,
+    "target_block_move": {
+      "x": 7,
+      "y": 14
+    },
+    "actual_neural_move": {
+      "x": 12,
+      "y": 9
+    },
+    "opponent_winning_move_after_blunder": {
+      "x": 7,
+      "y": 14
+    },
+    "winner_line_after_blunder": "7,14 8,13 9,12 10,11 11,10",
+    "moves_before_blunder": [
+      {
+        "color": "B",
+        "x": 7,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 10,
+        "y": 4
+      },
+      {
+        "color": "W",
+        "x": 9,
+        "y": 5
+      },
+      {
+        "color": "B",
+        "x": 7,
+        "y": 5
+      },
+      {
+        "color": "W",
+        "x": 6,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 6
+      },
+      {
+        "color": "W",
+        "x": 6,
+        "y": 4
+      },
+      {
+        "color": "B",
+        "x": 6,
+        "y": 5
+      },
+      {
+        "color": "W",
+        "x": 5,
+        "y": 5
+      },
+      {
+        "color": "B",
+        "x": 7,
+        "y": 3
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 4
+      },
+      {
+        "color": "B",
+        "x": 5,
+        "y": 4
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 0
+      },
+      {
+        "color": "B",
+        "x": 9,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 10,
+        "y": 8
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 10,
+        "y": 7
+      },
+      {
+        "color": "B",
+        "x": 6,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 5,
+        "y": 7
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 5
+      },
+      {
+        "color": "W",
+        "x": 8,
+        "y": 4
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 8,
+        "y": 9
+      },
+      {
+        "color": "B",
+        "x": 10,
+        "y": 6
+      },
+      {
+        "color": "W",
+        "x": 11,
+        "y": 5
+      },
+      {
+        "color": "B",
+        "x": 7,
+        "y": 9
+      },
+      {
+        "color": "W",
+        "x": 6,
+        "y": 10
+      },
+      {
+        "color": "B",
+        "x": 9,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 9,
+        "y": 9
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 10
+      },
+      {
+        "color": "W",
+        "x": 5,
+        "y": 3
+      },
+      {
+        "color": "B",
+        "x": 9,
+        "y": 11
+      },
+      {
+        "color": "W",
+        "x": 6,
+        "y": 8
+      },
+      {
+        "color": "B",
+        "x": 10,
+        "y": 12
+      },
+      {
+        "color": "W",
+        "x": 11,
+        "y": 13
+      },
+      {
+        "color": "B",
+        "x": 10,
+        "y": 9
+      },
+      {
+        "color": "W",
+        "x": 4,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 11,
+        "y": 10
+      },
+      {
+        "color": "W",
+        "x": 12,
+        "y": 11
+      },
+      {
+        "color": "B",
+        "x": 5,
+        "y": 6
+      },
+      {
+        "color": "W",
+        "x": 4,
+        "y": 7
+      },
+      {
+        "color": "B",
+        "x": 3,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 5,
+        "y": 8
+      },
+      {
+        "color": "B",
+        "x": 3,
+        "y": 5
+      },
+      {
+        "color": "W",
+        "x": 11,
+        "y": 9
+      },
+      {
+        "color": "B",
+        "x": 4,
+        "y": 5
+      },
+      {
+        "color": "W",
+        "x": 2,
+        "y": 3
+      },
+      {
+        "color": "B",
+        "x": 7,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 3,
+        "y": 4
+      },
+      {
+        "color": "B",
+        "x": 7,
+        "y": 10
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 11
+      },
+      {
+        "color": "B",
+        "x": 3,
+        "y": 6
+      },
+      {
+        "color": "W",
+        "x": 6,
+        "y": 3
+      },
+      {
+        "color": "B",
+        "x": 3,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 3,
+        "y": 9
+      },
+      {
+        "color": "B",
+        "x": 2,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 1,
+        "y": 8
+      },
+      {
+        "color": "B",
+        "x": 4,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 9,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 4,
+        "y": 9
+      },
+      {
+        "color": "W",
+        "x": 1,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 5,
+        "y": 10
+      },
+      {
+        "color": "W",
+        "x": 6,
+        "y": 11
+      },
+      {
+        "color": "B",
+        "x": 6,
+        "y": 9
+      },
+      {
+        "color": "W",
+        "x": 4,
+        "y": 11
+      },
+      {
+        "color": "B",
+        "x": 5,
+        "y": 11
+      },
+      {
+        "color": "W",
+        "x": 10,
+        "y": 1
+      },
+      {
+        "color": "B",
+        "x": 5,
+        "y": 12
+      },
+      {
+        "color": "W",
+        "x": 5,
+        "y": 9
+      },
+      {
+        "color": "B",
+        "x": 5,
+        "y": 13
+      },
+      {
+        "color": "W",
+        "x": 5,
+        "y": 14
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 12
+      },
+      {
+        "color": "W",
+        "x": 12,
+        "y": 5
+      },
+      {
+        "color": "B",
+        "x": 10,
+        "y": 5
+      },
+      {
+        "color": "W",
+        "x": 9,
+        "y": 10
+      },
+      {
+        "color": "B",
+        "x": 10,
+        "y": 3
+      },
+      {
+        "color": "W",
+        "x": 10,
+        "y": 2
+      },
+      {
+        "color": "B",
+        "x": 9,
+        "y": 12
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 12
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 11
+      },
+      {
+        "color": "W",
+        "x": 10,
+        "y": 13
+      },
+      {
+        "color": "B",
+        "x": 11,
+        "y": 12
+      },
+      {
+        "color": "W",
+        "x": 12,
+        "y": 12
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 13
+      },
+      {
+        "color": "W",
+        "x": 8,
+        "y": 14
+      },
+      {
+        "color": "B",
+        "x": 10,
+        "y": 11
+      }
+    ],
+    "notes": "Neural to move should block the opponent's direct five-completion square. In the original game, neural chose actual_neural_move, then the opponent played opponent_winning_move_after_blunder and won immediately."
+  },
+  {
+    "case_id": "tactical_mid_g13_block_8_10",
+    "source": "gomocup2026_freestyle15_public_openings_vs_tactical_mid",
+    "board_size": 15,
+    "game": 13,
+    "neural_color": "W",
+    "side_to_move": "W",
+    "category": "fast_straight_loss",
+    "line_direction": "horizontal",
+    "phase": "fast",
+    "ply_count_full_game": 25,
+    "position_ply_before_blunder": 23,
+    "target_block_move": {
+      "x": 8,
+      "y": 10
+    },
+    "actual_neural_move": {
+      "x": 13,
+      "y": 10
+    },
+    "opponent_winning_move_after_blunder": {
+      "x": 8,
+      "y": 10
+    },
+    "winner_line_after_blunder": "8,10 9,10 10,10 11,10 12,10",
+    "moves_before_blunder": [
+      {
+        "color": "B",
+        "x": 13,
+        "y": 13
+      },
+      {
+        "color": "W",
+        "x": 11,
+        "y": 11
+      },
+      {
+        "color": "B",
+        "x": 13,
+        "y": 9
+      },
+      {
+        "color": "W",
+        "x": 9,
+        "y": 11
+      },
+      {
+        "color": "B",
+        "x": 10,
+        "y": 9
+      },
+      {
+        "color": "W",
+        "x": 12,
+        "y": 11
+      },
+      {
+        "color": "B",
+        "x": 10,
+        "y": 11
+      },
+      {
+        "color": "W",
+        "x": 11,
+        "y": 8
+      },
+      {
+        "color": "B",
+        "x": 10,
+        "y": 10
+      },
+      {
+        "color": "W",
+        "x": 10,
+        "y": 12
+      },
+      {
+        "color": "B",
+        "x": 10,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 10,
+        "y": 7
+      },
+      {
+        "color": "B",
+        "x": 12,
+        "y": 9
+      },
+      {
+        "color": "W",
+        "x": 9,
+        "y": 9
+      },
+      {
+        "color": "B",
+        "x": 11,
+        "y": 9
+      },
+      {
+        "color": "W",
+        "x": 14,
+        "y": 9
+      },
+      {
+        "color": "B",
+        "x": 12,
+        "y": 10
+      },
+      {
+        "color": "W",
+        "x": 9,
+        "y": 7
+      },
+      {
+        "color": "B",
+        "x": 13,
+        "y": 11
+      },
+      {
+        "color": "W",
+        "x": 14,
+        "y": 12
+      },
+      {
+        "color": "B",
+        "x": 11,
+        "y": 10
+      },
+      {
+        "color": "W",
+        "x": 9,
+        "y": 12
+      },
+      {
+        "color": "B",
+        "x": 9,
+        "y": 10
+      }
+    ],
+    "notes": "Neural to move should block the opponent's direct five-completion square. In the original game, neural chose actual_neural_move, then the opponent played opponent_winning_move_after_blunder and won immediately."
+  },
+  {
+    "case_id": "tactical_mid_g14_block_11_12",
+    "source": "gomocup2026_freestyle15_public_openings_vs_tactical_mid",
+    "board_size": 15,
+    "game": 14,
+    "neural_color": "B",
+    "side_to_move": "B",
+    "category": "fast_straight_loss",
+    "line_direction": "vertical",
+    "phase": "fast",
+    "ply_count_full_game": 26,
+    "position_ply_before_blunder": 24,
+    "target_block_move": {
+      "x": 11,
+      "y": 12
+    },
+    "actual_neural_move": {
+      "x": 11,
+      "y": 7
+    },
+    "opponent_winning_move_after_blunder": {
+      "x": 11,
+      "y": 12
+    },
+    "winner_line_after_blunder": "11,8 11,9 11,10 11,11 11,12",
+    "moves_before_blunder": [
+      {
+        "color": "B",
+        "x": 13,
+        "y": 13
+      },
+      {
+        "color": "W",
+        "x": 11,
+        "y": 11
+      },
+      {
+        "color": "B",
+        "x": 13,
+        "y": 9
+      },
+      {
+        "color": "W",
+        "x": 9,
+        "y": 11
+      },
+      {
+        "color": "B",
+        "x": 10,
+        "y": 9
+      },
+      {
+        "color": "W",
+        "x": 12,
+        "y": 11
+      },
+      {
+        "color": "B",
+        "x": 10,
+        "y": 11
+      },
+      {
+        "color": "W",
+        "x": 10,
+        "y": 10
+      },
+      {
+        "color": "B",
+        "x": 7,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 9,
+        "y": 9
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 9,
+        "y": 10
+      },
+      {
+        "color": "B",
+        "x": 9,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 9,
+        "y": 12
+      },
+      {
+        "color": "B",
+        "x": 9,
+        "y": 13
+      },
+      {
+        "color": "W",
+        "x": 11,
+        "y": 10
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 10
+      },
+      {
+        "color": "W",
+        "x": 12,
+        "y": 10
+      },
+      {
+        "color": "B",
+        "x": 13,
+        "y": 10
+      },
+      {
+        "color": "W",
+        "x": 11,
+        "y": 9
+      },
+      {
+        "color": "B",
+        "x": 12,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 8,
+        "y": 12
+      },
+      {
+        "color": "B",
+        "x": 7,
+        "y": 13
+      },
+      {
+        "color": "W",
+        "x": 11,
+        "y": 8
+      }
+    ],
+    "notes": "Neural to move should block the opponent's direct five-completion square. In the original game, neural chose actual_neural_move, then the opponent played opponent_winning_move_after_blunder and won immediately."
+  },
+  {
+    "case_id": "tactical_mid_g15_block_5_3",
+    "source": "gomocup2026_freestyle15_public_openings_vs_tactical_mid",
+    "board_size": 15,
+    "game": 15,
+    "neural_color": "W",
+    "side_to_move": "W",
+    "category": "fast_diagonal_loss",
+    "line_direction": "diagonal",
+    "phase": "fast",
+    "ply_count_full_game": 37,
+    "position_ply_before_blunder": 35,
+    "target_block_move": {
+      "x": 5,
+      "y": 3
+    },
+    "actual_neural_move": {
+      "x": 10,
+      "y": 8
+    },
+    "opponent_winning_move_after_blunder": {
+      "x": 5,
+      "y": 3
+    },
+    "winner_line_after_blunder": "5,3 6,4 7,5 8,6 9,7",
+    "moves_before_blunder": [
+      {
+        "color": "B",
+        "x": 7,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 10,
+        "y": 6
+      },
+      {
+        "color": "W",
+        "x": 8,
+        "y": 8
+      },
+      {
+        "color": "B",
+        "x": 5,
+        "y": 6
+      },
+      {
+        "color": "W",
+        "x": 6,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 6
+      },
+      {
+        "color": "W",
+        "x": 9,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 9,
+        "y": 5
+      },
+      {
+        "color": "W",
+        "x": 10,
+        "y": 4
+      },
+      {
+        "color": "B",
+        "x": 6,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 5,
+        "y": 9
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 4
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 3
+      },
+      {
+        "color": "B",
+        "x": 11,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 12,
+        "y": 8
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 5
+      },
+      {
+        "color": "W",
+        "x": 8,
+        "y": 7
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 3
+      },
+      {
+        "color": "W",
+        "x": 8,
+        "y": 2
+      },
+      {
+        "color": "B",
+        "x": 10,
+        "y": 5
+      },
+      {
+        "color": "W",
+        "x": 11,
+        "y": 5
+      },
+      {
+        "color": "B",
+        "x": 7,
+        "y": 5
+      },
+      {
+        "color": "W",
+        "x": 6,
+        "y": 5
+      },
+      {
+        "color": "B",
+        "x": 9,
+        "y": 3
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 1
+      },
+      {
+        "color": "B",
+        "x": 10,
+        "y": 2
+      },
+      {
+        "color": "W",
+        "x": 11,
+        "y": 1
+      },
+      {
+        "color": "B",
+        "x": 9,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 10,
+        "y": 3
+      },
+      {
+        "color": "B",
+        "x": 5,
+        "y": 4
+      },
+      {
+        "color": "W",
+        "x": 5,
+        "y": 5
+      },
+      {
+        "color": "B",
+        "x": 6,
+        "y": 4
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 4
+      },
+      {
+        "color": "B",
+        "x": 9,
+        "y": 7
+      }
+    ],
+    "notes": "Neural to move should block the opponent's direct five-completion square. In the original game, neural chose actual_neural_move, then the opponent played opponent_winning_move_after_blunder and won immediately."
+  },
+  {
+    "case_id": "tactical_mid_g17_block_14_7",
+    "source": "gomocup2026_freestyle15_public_openings_vs_tactical_mid",
+    "board_size": 15,
+    "game": 17,
+    "neural_color": "W",
+    "side_to_move": "W",
+    "category": "fast_diagonal_loss",
+    "line_direction": "diagonal",
+    "phase": "fast",
+    "ply_count_full_game": 45,
+    "position_ply_before_blunder": 43,
+    "target_block_move": {
+      "x": 14,
+      "y": 7
+    },
+    "actual_neural_move": {
+      "x": 11,
+      "y": 9
+    },
+    "opponent_winning_move_after_blunder": {
+      "x": 14,
+      "y": 7
+    },
+    "winner_line_after_blunder": "10,11 11,10 12,9 13,8 14,7",
+    "moves_before_blunder": [
+      {
+        "color": "B",
+        "x": 12,
+        "y": 12
+      },
+      {
+        "color": "W",
+        "x": 13,
+        "y": 11
+      },
+      {
+        "color": "B",
+        "x": 14,
+        "y": 10
+      },
+      {
+        "color": "W",
+        "x": 14,
+        "y": 9
+      },
+      {
+        "color": "B",
+        "x": 13,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 12,
+        "y": 7
+      },
+      {
+        "color": "B",
+        "x": 11,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 10,
+        "y": 10
+      },
+      {
+        "color": "B",
+        "x": 10,
+        "y": 11
+      },
+      {
+        "color": "W",
+        "x": 10,
+        "y": 8
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 9
+      },
+      {
+        "color": "W",
+        "x": 8,
+        "y": 8
+      },
+      {
+        "color": "B",
+        "x": 9,
+        "y": 10
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 8
+      },
+      {
+        "color": "B",
+        "x": 11,
+        "y": 12
+      },
+      {
+        "color": "W",
+        "x": 12,
+        "y": 13
+      },
+      {
+        "color": "B",
+        "x": 9,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 9,
+        "y": 9
+      },
+      {
+        "color": "B",
+        "x": 11,
+        "y": 11
+      },
+      {
+        "color": "W",
+        "x": 11,
+        "y": 7
+      },
+      {
+        "color": "B",
+        "x": 7,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 12,
+        "y": 6
+      },
+      {
+        "color": "W",
+        "x": 14,
+        "y": 8
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 10
+      },
+      {
+        "color": "W",
+        "x": 8,
+        "y": 11
+      },
+      {
+        "color": "B",
+        "x": 10,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 11,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 7,
+        "y": 10
+      },
+      {
+        "color": "W",
+        "x": 6,
+        "y": 11
+      },
+      {
+        "color": "B",
+        "x": 6,
+        "y": 10
+      },
+      {
+        "color": "W",
+        "x": 5,
+        "y": 10
+      },
+      {
+        "color": "B",
+        "x": 13,
+        "y": 12
+      },
+      {
+        "color": "W",
+        "x": 9,
+        "y": 12
+      },
+      {
+        "color": "B",
+        "x": 10,
+        "y": 12
+      },
+      {
+        "color": "W",
+        "x": 14,
+        "y": 12
+      },
+      {
+        "color": "B",
+        "x": 12,
+        "y": 10
+      },
+      {
+        "color": "W",
+        "x": 13,
+        "y": 9
+      },
+      {
+        "color": "B",
+        "x": 9,
+        "y": 13
+      },
+      {
+        "color": "W",
+        "x": 8,
+        "y": 14
+      },
+      {
+        "color": "B",
+        "x": 12,
+        "y": 9
+      },
+      {
+        "color": "W",
+        "x": 9,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 11,
+        "y": 10
+      }
+    ],
+    "notes": "Neural to move should block the opponent's direct five-completion square. In the original game, neural chose actual_neural_move, then the opponent played opponent_winning_move_after_blunder and won immediately."
+  },
+  {
+    "case_id": "tactical_mid_g19_block_6_9",
+    "source": "gomocup2026_freestyle15_public_openings_vs_tactical_mid",
+    "board_size": 15,
+    "game": 19,
+    "neural_color": "W",
+    "side_to_move": "W",
+    "category": "fast_diagonal_loss",
+    "line_direction": "diagonal",
+    "phase": "fast",
+    "ply_count_full_game": 25,
+    "position_ply_before_blunder": 23,
+    "target_block_move": {
+      "x": 6,
+      "y": 9
+    },
+    "actual_neural_move": {
+      "x": 11,
+      "y": 4
+    },
+    "opponent_winning_move_after_blunder": {
+      "x": 6,
+      "y": 9
+    },
+    "winner_line_after_blunder": "6,9 7,8 8,7 9,6 10,5",
+    "moves_before_blunder": [
+      {
+        "color": "B",
+        "x": 7,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 8,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 10,
+        "y": 5
+      },
+      {
+        "color": "W",
+        "x": 10,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 11,
+        "y": 9
+      },
+      {
+        "color": "W",
+        "x": 6,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 7,
+        "y": 6
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 5
+      },
+      {
+        "color": "B",
+        "x": 9,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 10,
+        "y": 8
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 6,
+        "y": 7
+      },
+      {
+        "color": "B",
+        "x": 10,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 11,
+        "y": 7
+      },
+      {
+        "color": "B",
+        "x": 6,
+        "y": 5
+      },
+      {
+        "color": "W",
+        "x": 5,
+        "y": 4
+      },
+      {
+        "color": "B",
+        "x": 9,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 10,
+        "y": 9
+      },
+      {
+        "color": "B",
+        "x": 9,
+        "y": 9
+      },
+      {
+        "color": "W",
+        "x": 9,
+        "y": 10
+      },
+      {
+        "color": "B",
+        "x": 9,
+        "y": 6
+      },
+      {
+        "color": "W",
+        "x": 9,
+        "y": 5
+      },
+      {
+        "color": "B",
+        "x": 7,
+        "y": 8
+      }
+    ],
+    "notes": "Neural to move should block the opponent's direct five-completion square. In the original game, neural chose actual_neural_move, then the opponent played opponent_winning_move_after_blunder and won immediately."
+  },
+  {
+    "case_id": "tactical_mid_g20_block_13_9",
+    "source": "gomocup2026_freestyle15_public_openings_vs_tactical_mid",
+    "board_size": 15,
+    "game": 20,
+    "neural_color": "B",
+    "side_to_move": "B",
+    "category": "fast_diagonal_loss",
+    "line_direction": "diagonal",
+    "phase": "fast",
+    "ply_count_full_game": 28,
+    "position_ply_before_blunder": 26,
+    "target_block_move": {
+      "x": 13,
+      "y": 9
+    },
+    "actual_neural_move": {
+      "x": 8,
+      "y": 4
+    },
+    "opponent_winning_move_after_blunder": {
+      "x": 13,
+      "y": 9
+    },
+    "winner_line_after_blunder": "9,5 10,6 11,7 12,8 13,9",
+    "moves_before_blunder": [
+      {
+        "color": "B",
+        "x": 7,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 8,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 10,
+        "y": 5
+      },
+      {
+        "color": "W",
+        "x": 10,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 11,
+        "y": 9
+      },
+      {
+        "color": "W",
+        "x": 9,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 11,
+        "y": 6
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 6,
+        "y": 6
+      },
+      {
+        "color": "W",
+        "x": 8,
+        "y": 8
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 5
+      },
+      {
+        "color": "W",
+        "x": 9,
+        "y": 7
+      },
+      {
+        "color": "B",
+        "x": 11,
+        "y": 5
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 9
+      },
+      {
+        "color": "B",
+        "x": 6,
+        "y": 10
+      },
+      {
+        "color": "W",
+        "x": 9,
+        "y": 5
+      },
+      {
+        "color": "B",
+        "x": 9,
+        "y": 4
+      },
+      {
+        "color": "W",
+        "x": 9,
+        "y": 8
+      },
+      {
+        "color": "B",
+        "x": 9,
+        "y": 9
+      },
+      {
+        "color": "W",
+        "x": 8,
+        "y": 3
+      },
+      {
+        "color": "B",
+        "x": 7,
+        "y": 2
+      },
+      {
+        "color": "W",
+        "x": 12,
+        "y": 7
+      },
+      {
+        "color": "B",
+        "x": 11,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 11,
+        "y": 7
+      },
+      {
+        "color": "B",
+        "x": 10,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 12,
+        "y": 8
+      }
+    ],
+    "notes": "Neural to move should block the opponent's direct five-completion square. In the original game, neural chose actual_neural_move, then the opponent played opponent_winning_move_after_blunder and won immediately."
+  },
+  {
+    "case_id": "tactical_mid_g21_block_6_10",
+    "source": "gomocup2026_freestyle15_public_openings_vs_tactical_mid",
+    "board_size": 15,
+    "game": 21,
+    "neural_color": "W",
+    "side_to_move": "W",
+    "category": "fast_straight_loss",
+    "line_direction": "horizontal",
+    "phase": "fast",
+    "ply_count_full_game": 35,
+    "position_ply_before_blunder": 33,
+    "target_block_move": {
+      "x": 6,
+      "y": 10
+    },
+    "actual_neural_move": {
+      "x": 11,
+      "y": 10
+    },
+    "opponent_winning_move_after_blunder": {
+      "x": 6,
+      "y": 10
+    },
+    "winner_line_after_blunder": "6,10 7,10 8,10 9,10 10,10",
+    "moves_before_blunder": [
+      {
+        "color": "B",
+        "x": 7,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 8,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 10,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 8,
+        "y": 8
+      },
+      {
+        "color": "B",
+        "x": 5,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 6,
+        "y": 7
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 9,
+        "y": 7
+      },
+      {
+        "color": "B",
+        "x": 7,
+        "y": 9
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 8
+      },
+      {
+        "color": "B",
+        "x": 6,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 4,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 10
+      },
+      {
+        "color": "W",
+        "x": 9,
+        "y": 11
+      },
+      {
+        "color": "B",
+        "x": 9,
+        "y": 9
+      },
+      {
+        "color": "W",
+        "x": 11,
+        "y": 7
+      },
+      {
+        "color": "B",
+        "x": 7,
+        "y": 11
+      },
+      {
+        "color": "W",
+        "x": 6,
+        "y": 12
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 9
+      },
+      {
+        "color": "W",
+        "x": 6,
+        "y": 9
+      },
+      {
+        "color": "B",
+        "x": 10,
+        "y": 9
+      },
+      {
+        "color": "W",
+        "x": 11,
+        "y": 9
+      },
+      {
+        "color": "B",
+        "x": 10,
+        "y": 10
+      },
+      {
+        "color": "W",
+        "x": 10,
+        "y": 7
+      },
+      {
+        "color": "B",
+        "x": 10,
+        "y": 11
+      },
+      {
+        "color": "W",
+        "x": 10,
+        "y": 12
+      },
+      {
+        "color": "B",
+        "x": 12,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 12,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 11,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 13,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 9,
+        "y": 10
+      },
+      {
+        "color": "W",
+        "x": 8,
+        "y": 11
+      },
+      {
+        "color": "B",
+        "x": 7,
+        "y": 10
+      }
+    ],
+    "notes": "Neural to move should block the opponent's direct five-completion square. In the original game, neural chose actual_neural_move, then the opponent played opponent_winning_move_after_blunder and won immediately."
+  },
+  {
+    "case_id": "tactical_mid_g22_block_7_9",
+    "source": "gomocup2026_freestyle15_public_openings_vs_tactical_mid",
+    "board_size": 15,
+    "game": 22,
+    "neural_color": "B",
+    "side_to_move": "B",
+    "category": "fast_diagonal_loss",
+    "line_direction": "diagonal",
+    "phase": "fast",
+    "ply_count_full_game": 46,
+    "position_ply_before_blunder": 44,
+    "target_block_move": {
+      "x": 7,
+      "y": 9
+    },
+    "actual_neural_move": {
+      "x": 12,
+      "y": 4
+    },
+    "opponent_winning_move_after_blunder": {
+      "x": 7,
+      "y": 9
+    },
+    "winner_line_after_blunder": "7,9 8,8 9,7 10,6 11,5",
+    "moves_before_blunder": [
+      {
+        "color": "B",
+        "x": 7,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 8,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 10,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 8,
+        "y": 8
+      },
+      {
+        "color": "B",
+        "x": 5,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 8,
+        "y": 7
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 9
+      },
+      {
+        "color": "W",
+        "x": 8,
+        "y": 5
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 4
+      },
+      {
+        "color": "W",
+        "x": 6,
+        "y": 7
+      },
+      {
+        "color": "B",
+        "x": 6,
+        "y": 6
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 5
+      },
+      {
+        "color": "B",
+        "x": 9,
+        "y": 5
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 9,
+        "y": 4
+      },
+      {
+        "color": "W",
+        "x": 5,
+        "y": 8
+      },
+      {
+        "color": "B",
+        "x": 4,
+        "y": 9
+      },
+      {
+        "color": "W",
+        "x": 6,
+        "y": 5
+      },
+      {
+        "color": "B",
+        "x": 5,
+        "y": 4
+      },
+      {
+        "color": "W",
+        "x": 5,
+        "y": 5
+      },
+      {
+        "color": "B",
+        "x": 4,
+        "y": 5
+      },
+      {
+        "color": "W",
+        "x": 9,
+        "y": 8
+      },
+      {
+        "color": "B",
+        "x": 10,
+        "y": 9
+      },
+      {
+        "color": "W",
+        "x": 6,
+        "y": 4
+      },
+      {
+        "color": "B",
+        "x": 4,
+        "y": 2
+      },
+      {
+        "color": "W",
+        "x": 9,
+        "y": 7
+      },
+      {
+        "color": "B",
+        "x": 5,
+        "y": 3
+      },
+      {
+        "color": "W",
+        "x": 9,
+        "y": 9
+      },
+      {
+        "color": "B",
+        "x": 9,
+        "y": 10
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 3
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 2
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 4
+      },
+      {
+        "color": "B",
+        "x": 7,
+        "y": 2
+      },
+      {
+        "color": "W",
+        "x": 4,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 3,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 6,
+        "y": 3
+      },
+      {
+        "color": "B",
+        "x": 5,
+        "y": 2
+      },
+      {
+        "color": "W",
+        "x": 6,
+        "y": 2
+      },
+      {
+        "color": "B",
+        "x": 6,
+        "y": 1
+      },
+      {
+        "color": "W",
+        "x": 9,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 10,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 10,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 11,
+        "y": 6
+      },
+      {
+        "color": "W",
+        "x": 11,
+        "y": 5
+      }
+    ],
+    "notes": "Neural to move should block the opponent's direct five-completion square. In the original game, neural chose actual_neural_move, then the opponent played opponent_winning_move_after_blunder and won immediately."
+  },
+  {
+    "case_id": "tactical_mid_g23_block_9_13",
+    "source": "gomocup2026_freestyle15_public_openings_vs_tactical_mid",
+    "board_size": 15,
+    "game": 23,
+    "neural_color": "W",
+    "side_to_move": "W",
+    "category": "fast_diagonal_loss",
+    "line_direction": "diagonal",
+    "phase": "fast",
+    "ply_count_full_game": 55,
+    "position_ply_before_blunder": 53,
+    "target_block_move": {
+      "x": 9,
+      "y": 13
+    },
+    "actual_neural_move": {
+      "x": 4,
+      "y": 8
+    },
+    "opponent_winning_move_after_blunder": {
+      "x": 9,
+      "y": 13
+    },
+    "winner_line_after_blunder": "5,9 6,10 7,11 8,12 9,13",
+    "moves_before_blunder": [
+      {
+        "color": "B",
+        "x": 7,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 8,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 10,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 9,
+        "y": 8
+      },
+      {
+        "color": "B",
+        "x": 6,
+        "y": 9
+      },
+      {
+        "color": "W",
+        "x": 6,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 7,
+        "y": 6
+      },
+      {
+        "color": "W",
+        "x": 8,
+        "y": 7
+      },
+      {
+        "color": "B",
+        "x": 7,
+        "y": 5
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 4
+      },
+      {
+        "color": "B",
+        "x": 7,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 9
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 5
+      },
+      {
+        "color": "W",
+        "x": 9,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 6,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 5,
+        "y": 8
+      },
+      {
+        "color": "B",
+        "x": 9,
+        "y": 4
+      },
+      {
+        "color": "W",
+        "x": 10,
+        "y": 3
+      },
+      {
+        "color": "B",
+        "x": 6,
+        "y": 5
+      },
+      {
+        "color": "W",
+        "x": 5,
+        "y": 5
+      },
+      {
+        "color": "B",
+        "x": 9,
+        "y": 5
+      },
+      {
+        "color": "W",
+        "x": 10,
+        "y": 5
+      },
+      {
+        "color": "B",
+        "x": 11,
+        "y": 4
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 1
+      },
+      {
+        "color": "B",
+        "x": 10,
+        "y": 4
+      },
+      {
+        "color": "W",
+        "x": 8,
+        "y": 4
+      },
+      {
+        "color": "B",
+        "x": 12,
+        "y": 4
+      },
+      {
+        "color": "W",
+        "x": 13,
+        "y": 4
+      },
+      {
+        "color": "B",
+        "x": 5,
+        "y": 6
+      },
+      {
+        "color": "W",
+        "x": 4,
+        "y": 5
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 9
+      },
+      {
+        "color": "W",
+        "x": 9,
+        "y": 10
+      },
+      {
+        "color": "B",
+        "x": 9,
+        "y": 9
+      },
+      {
+        "color": "W",
+        "x": 4,
+        "y": 7
+      },
+      {
+        "color": "B",
+        "x": 4,
+        "y": 6
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 10
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 10
+      },
+      {
+        "color": "W",
+        "x": 10,
+        "y": 8
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 11
+      },
+      {
+        "color": "W",
+        "x": 8,
+        "y": 8
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 12
+      },
+      {
+        "color": "W",
+        "x": 8,
+        "y": 13
+      },
+      {
+        "color": "B",
+        "x": 11,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 11,
+        "y": 7
+      },
+      {
+        "color": "B",
+        "x": 9,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 11,
+        "y": 9
+      },
+      {
+        "color": "B",
+        "x": 7,
+        "y": 11
+      },
+      {
+        "color": "W",
+        "x": 11,
+        "y": 3
+      },
+      {
+        "color": "B",
+        "x": 6,
+        "y": 12
+      },
+      {
+        "color": "W",
+        "x": 5,
+        "y": 13
+      },
+      {
+        "color": "B",
+        "x": 6,
+        "y": 10
+      },
+      {
+        "color": "W",
+        "x": 6,
+        "y": 11
+      },
+      {
+        "color": "B",
+        "x": 5,
+        "y": 9
+      }
+    ],
+    "notes": "Neural to move should block the opponent's direct five-completion square. In the original game, neural chose actual_neural_move, then the opponent played opponent_winning_move_after_blunder and won immediately."
+  },
+  {
+    "case_id": "tactical_mid_g24_block_11_11",
+    "source": "gomocup2026_freestyle15_public_openings_vs_tactical_mid",
+    "board_size": 15,
+    "game": 24,
+    "neural_color": "B",
+    "side_to_move": "B",
+    "category": "fast_straight_loss",
+    "line_direction": "horizontal",
+    "phase": "fast",
+    "ply_count_full_game": 52,
+    "position_ply_before_blunder": 50,
+    "target_block_move": {
+      "x": 11,
+      "y": 11
+    },
+    "actual_neural_move": {
+      "x": 6,
+      "y": 11
+    },
+    "opponent_winning_move_after_blunder": {
+      "x": 11,
+      "y": 11
+    },
+    "winner_line_after_blunder": "7,11 8,11 9,11 10,11 11,11",
+    "moves_before_blunder": [
+      {
+        "color": "B",
+        "x": 7,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 8,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 10,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 9,
+        "y": 8
+      },
+      {
+        "color": "B",
+        "x": 6,
+        "y": 9
+      },
+      {
+        "color": "W",
+        "x": 8,
+        "y": 7
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 6,
+        "y": 5
+      },
+      {
+        "color": "W",
+        "x": 10,
+        "y": 9
+      },
+      {
+        "color": "B",
+        "x": 11,
+        "y": 10
+      },
+      {
+        "color": "W",
+        "x": 6,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 9,
+        "y": 6
+      },
+      {
+        "color": "W",
+        "x": 5,
+        "y": 6
+      },
+      {
+        "color": "B",
+        "x": 4,
+        "y": 6
+      },
+      {
+        "color": "W",
+        "x": 8,
+        "y": 5
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 4
+      },
+      {
+        "color": "W",
+        "x": 9,
+        "y": 4
+      },
+      {
+        "color": "B",
+        "x": 10,
+        "y": 3
+      },
+      {
+        "color": "W",
+        "x": 6,
+        "y": 7
+      },
+      {
+        "color": "B",
+        "x": 5,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 4,
+        "y": 5
+      },
+      {
+        "color": "B",
+        "x": 3,
+        "y": 4
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 8
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 9
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 9
+      },
+      {
+        "color": "B",
+        "x": 7,
+        "y": 10
+      },
+      {
+        "color": "W",
+        "x": 4,
+        "y": 7
+      },
+      {
+        "color": "B",
+        "x": 3,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 8,
+        "y": 11
+      },
+      {
+        "color": "B",
+        "x": 5,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 9,
+        "y": 10
+      },
+      {
+        "color": "B",
+        "x": 11,
+        "y": 8
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 12
+      },
+      {
+        "color": "B",
+        "x": 6,
+        "y": 13
+      },
+      {
+        "color": "W",
+        "x": 12,
+        "y": 9
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 3
+      },
+      {
+        "color": "W",
+        "x": 11,
+        "y": 9
+      },
+      {
+        "color": "B",
+        "x": 9,
+        "y": 9
+      },
+      {
+        "color": "W",
+        "x": 13,
+        "y": 9
+      },
+      {
+        "color": "B",
+        "x": 14,
+        "y": 9
+      },
+      {
+        "color": "W",
+        "x": 10,
+        "y": 10
+      },
+      {
+        "color": "B",
+        "x": 7,
+        "y": 2
+      },
+      {
+        "color": "W",
+        "x": 12,
+        "y": 8
+      },
+      {
+        "color": "B",
+        "x": 13,
+        "y": 7
+      },
+      {
+        "color": "W",
+        "x": 9,
+        "y": 11
+      },
+      {
+        "color": "B",
+        "x": 8,
+        "y": 12
+      },
+      {
+        "color": "W",
+        "x": 10,
+        "y": 11
+      },
+      {
+        "color": "B",
+        "x": 10,
+        "y": 12
+      },
+      {
+        "color": "W",
+        "x": 7,
+        "y": 11
+      }
+    ],
+    "notes": "Neural to move should block the opponent's direct five-completion square. In the original game, neural chose actual_neural_move, then the opponent played opponent_winning_move_after_blunder and won immediately."
+  }
+]
