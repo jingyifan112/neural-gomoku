@@ -1,0 +1,174 @@
+{
+  "decision": "ACCEPT",
+  "decision_notes": [
+    "clean v2 dataset passes structural validation",
+    "score-gap source is represented in manifest/audit and does not duplicate baseline rows into training",
+    "retention anchors remain held out",
+    "no training/export/benchmark has been run"
+  ],
+  "dataset_check": {
+    "errors": [],
+    "warnings": [],
+    "dataset_rows": 39,
+    "split_counts": {
+      "heldout_retention": 11,
+      "train_candidate": 3,
+      "train_teacher_divergence": 25
+    },
+    "role_counts": {
+      "heldout_retention_anchor": 11,
+      "teacher_divergence": 28
+    },
+    "bucket_counts": {
+      "Black should block/occupy 5,11 before White's lower horizontal threat becomes decisive; B final was 4,12.": 1,
+      "White should block/occupy 10,7 before Black's diagonal threat becomes decisive; B final was 7,11.": 1,
+      "game2 move15 earlier fork-prevention repair candidate; true last_move included": 3,
+      "diagnose mcts16 final 5,8 versus mcts32/direct final 8,8 at game2 move13": 1,
+      "diagnose game2 move17 earlier prevention of y=9 horizontal double threat": 3,
+      "CE-only v12k raised target rank/prob but live C final stayed 9,4": 1,
+      "CE-only v12k raised target rank/prob but live C final stayed 6,6": 1,
+      "candidate_g_seed_teacher_divergence": 3,
+      "priority_policy_numeric_gap": 12,
+      "priority_policy_gap_unavailable": 13
+    },
+    "source_counts": {
+      "canonical_baseline_dataset": 36,
+      "candidate_g_seed_dataset": 3
+    },
+    "train_candidate_summary": [
+      {
+        "id": "tdiv_candidate_g_g1_p22_black",
+        "source_id": "g1_p22_black",
+        "side_to_move": "black",
+        "teacher_move": "4,8",
+        "model_or_current_best_move": "4,7",
+        "teacher_rank_or_gap": 54,
+        "suggested_weight": 2.0,
+        "source": "candidate_g_seed_dataset"
+      },
+      {
+        "id": "tdiv_candidate_g_g2_p15_white",
+        "source_id": "g2_p15_white",
+        "side_to_move": "white",
+        "teacher_move": "7,9",
+        "model_or_current_best_move": "7,10",
+        "teacher_rank_or_gap": 5,
+        "suggested_weight": 1.5,
+        "source": "candidate_g_seed_dataset"
+      },
+      {
+        "id": "tdiv_candidate_g_g2_p17_white",
+        "source_id": "g2_p17_white",
+        "side_to_move": "white",
+        "teacher_move": "9,10",
+        "model_or_current_best_move": "9,5",
+        "teacher_rank_or_gap": 18,
+        "suggested_weight": 2.0,
+        "source": "candidate_g_seed_dataset"
+      }
+    ]
+  },
+  "manifest_check": {
+    "errors": [],
+    "manifest_rows": 109,
+    "manifest_included": 39,
+    "manifest_skipped": 70,
+    "skip_counts": {
+      "missing_policy_target": 13,
+      "duplicate_source_id": 14,
+      "candidate_g_nondivergent_anchor": 11,
+      "included": 39,
+      "model_matches_teacher": 7,
+      "duplicate_source_id_already_in_baseline_or_seed": 25
+    },
+    "scoregap_rows": 32,
+    "scoregap_skip_counts": {
+      "model_matches_teacher": 7,
+      "duplicate_source_id_already_in_baseline_or_seed": 25
+    },
+    "candidate_g_rows": 14,
+    "candidate_g_skip_counts": {
+      "candidate_g_nondivergent_anchor": 11,
+      "included": 3
+    },
+    "external_retention_rows": 27,
+    "external_retention_skip_counts": {
+      "missing_policy_target": 13,
+      "duplicate_source_id": 14
+    }
+  },
+  "source_audit": [
+    {
+      "source_group": "canonical_baseline_dataset",
+      "path": "analysis/integration_eval/teacher_divergence_retention_dataset.json",
+      "exists": true,
+      "rows_seen": 36,
+      "rows_included": 36,
+      "error": ""
+    },
+    {
+      "source_group": "candidate_g_seed_dataset",
+      "path": "analysis/integration_eval/candidate_g_teacher_seed_dataset.json",
+      "exists": true,
+      "rows_seen": 14,
+      "rows_included": 3,
+      "error": ""
+    },
+    {
+      "source_group": "rapfi_scoregap_current_best",
+      "path": "analysis/public_benchmark_eval/rapfi_teacher_scoregap_corpus8_selected.csv",
+      "exists": true,
+      "rows_seen": 32,
+      "rows_included": 0,
+      "error": ""
+    },
+    {
+      "source_group": "external_retention_anchors",
+      "path": "analysis/integration_eval/candidate_c_g2_m19_perspective_diagnostic_anchors.json",
+      "exists": true,
+      "rows_seen": 8,
+      "rows_included": 0,
+      "error": ""
+    },
+    {
+      "source_group": "external_retention_anchors",
+      "path": "analysis/integration_eval/candidate_d_g2_m15_diagnostic_anchors.json",
+      "exists": true,
+      "rows_seen": 3,
+      "rows_included": 0,
+      "error": ""
+    },
+    {
+      "source_group": "external_retention_anchors",
+      "path": "analysis/integration_eval/candidate_e_g2_m13_diagnostic_anchors.json",
+      "exists": true,
+      "rows_seen": 1,
+      "rows_included": 0,
+      "error": ""
+    },
+    {
+      "source_group": "external_retention_anchors",
+      "path": "analysis/integration_eval/candidate_e_g2_m17_diagnostic_anchors.json",
+      "exists": true,
+      "rows_seen": 3,
+      "rows_included": 0,
+      "error": ""
+    },
+    {
+      "source_group": "external_retention_anchors",
+      "path": "analysis/integration_eval/current_best_margin_candidate_c_anchors.json",
+      "exists": true,
+      "rows_seen": 7,
+      "rows_included": 0,
+      "error": ""
+    },
+    {
+      "source_group": "external_retention_anchors",
+      "path": "analysis/integration_eval/current_best_margin_candidate_c_conservative_anchors.json",
+      "exists": true,
+      "rows_seen": 5,
+      "rows_included": 0,
+      "error": ""
+    }
+  ]
+}

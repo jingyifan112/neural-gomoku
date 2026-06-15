@@ -1,0 +1,76 @@
+{
+  "sources": [
+    {
+      "source_group": "canonical_baseline_dataset",
+      "path": "analysis/integration_eval/teacher_divergence_retention_dataset.json",
+      "exists": true,
+      "rows_seen": 36,
+      "rows_included": 36,
+      "error": ""
+    },
+    {
+      "source_group": "candidate_g_seed_dataset",
+      "path": "analysis/integration_eval/candidate_g_teacher_seed_dataset.json",
+      "exists": true,
+      "rows_seen": 14,
+      "rows_included": 3,
+      "error": ""
+    },
+    {
+      "source_group": "rapfi_scoregap_current_best",
+      "path": "analysis/public_benchmark_eval/rapfi_teacher_scoregap_corpus8_selected.csv",
+      "exists": true,
+      "rows_seen": 32,
+      "rows_included": 0,
+      "error": ""
+    },
+    {
+      "source_group": "external_retention_anchors",
+      "path": "analysis/integration_eval/candidate_c_g2_m19_perspective_diagnostic_anchors.json",
+      "exists": true,
+      "rows_seen": 8,
+      "rows_included": 0,
+      "error": ""
+    },
+    {
+      "source_group": "external_retention_anchors",
+      "path": "analysis/integration_eval/candidate_d_g2_m15_diagnostic_anchors.json",
+      "exists": true,
+      "rows_seen": 3,
+      "rows_included": 0,
+      "error": ""
+    },
+    {
+      "source_group": "external_retention_anchors",
+      "path": "analysis/integration_eval/candidate_e_g2_m13_diagnostic_anchors.json",
+      "exists": true,
+      "rows_seen": 1,
+      "rows_included": 0,
+      "error": ""
+    },
+    {
+      "source_group": "external_retention_anchors",
+      "path": "analysis/integration_eval/candidate_e_g2_m17_diagnostic_anchors.json",
+      "exists": true,
+      "rows_seen": 3,
+      "rows_included": 0,
+      "error": ""
+    },
+    {
+      "source_group": "external_retention_anchors",
+      "path": "analysis/integration_eval/current_best_margin_candidate_c_anchors.json",
+      "exists": true,
+      "rows_seen": 7,
+      "rows_included": 0,
+      "error": ""
+    },
+    {
+      "source_group": "external_retention_anchors",
+      "path": "analysis/integration_eval/current_best_margin_candidate_c_conservative_anchors.json",
+      "exists": true,
+      "rows_seen": 5,
+      "rows_included": 0,
+      "error": ""
+    }
+  ]
+}
