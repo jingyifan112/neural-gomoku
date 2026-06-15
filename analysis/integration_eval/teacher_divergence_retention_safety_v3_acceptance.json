@@ -1,0 +1,111 @@
+{
+  "decision": "ACCEPT",
+  "decision_notes": [
+    "safety v3 dataset passes structural validation",
+    "only current_best eval-family safety-block candidates are accepted",
+    "one candidate per sample_id is retained using snapshot priority",
+    "no training/export/benchmark has been run"
+  ],
+  "validation": {
+    "errors": [],
+    "warnings": [],
+    "dataset_rows": 44,
+    "new_rows": 5,
+    "split_counts": {
+      "heldout_retention": 11,
+      "train_candidate": 8,
+      "train_teacher_divergence": 25
+    },
+    "role_counts": {
+      "heldout_retention_anchor": 11,
+      "teacher_divergence": 33
+    },
+    "bucket_counts": {
+      "Black should block/occupy 5,11 before White's lower horizontal threat becomes decisive; B final was 4,12.": 1,
+      "White should block/occupy 10,7 before Black's diagonal threat becomes decisive; B final was 7,11.": 1,
+      "game2 move15 earlier fork-prevention repair candidate; true last_move included": 3,
+      "diagnose mcts16 final 5,8 versus mcts32/direct final 8,8 at game2 move13": 1,
+      "diagnose game2 move17 earlier prevention of y=9 horizontal double threat": 3,
+      "CE-only v12k raised target rank/prob but live C final stayed 9,4": 1,
+      "CE-only v12k raised target rank/prob but live C final stayed 6,6": 1,
+      "candidate_g_seed_teacher_divergence": 3,
+      "priority_policy_numeric_gap": 12,
+      "priority_policy_gap_unavailable": 13,
+      "safety_block_immediate_threat_candidate": 5
+    },
+    "new_source_ids": [
+      "safety_block_current_best_legacy_g1_m44",
+      "safety_block_current_best_legacy_g1_m46",
+      "safety_block_current_best_legacy_g1_m48",
+      "safety_block_current_best_legacy_g2_m29",
+      "safety_block_current_best_legacy_g2_m33"
+    ]
+  },
+  "manifest_counts": {
+    "manifest_rows": 36,
+    "accepted_rows": 5,
+    "skipped_rows": 31,
+    "skip_reason_counts": {
+      "not_current_best_eval_family": 24,
+      "accepted": 5,
+      "deduped_lower_priority_snapshot": 7
+    }
+  },
+  "accepted_samples": [
+    {
+      "source_id": "safety_block_current_best_legacy_g1_m44",
+      "sample_id": "legacy_g1_m44",
+      "side": "black",
+      "target": "2,10",
+      "expected": "2,10",
+      "logged_direct": "10,7",
+      "direct_policy_top_move": "10,7",
+      "logged_final": "2,10",
+      "snapshot_family": "b_mcts16"
+    },
+    {
+      "source_id": "safety_block_current_best_legacy_g1_m46",
+      "sample_id": "legacy_g1_m46",
+      "side": "black",
+      "target": "4,12",
+      "expected": "4,12",
+      "logged_direct": "2,9",
+      "direct_policy_top_move": "10,7",
+      "logged_final": "4,12",
+      "snapshot_family": "b_mcts16"
+    },
+    {
+      "source_id": "safety_block_current_best_legacy_g1_m48",
+      "sample_id": "legacy_g1_m48",
+      "side": "black",
+      "target": "8,11",
+      "expected": "3,11 8,11",
+      "logged_direct": "10,7",
+      "direct_policy_top_move": "10,7",
+      "logged_final": "8,11",
+      "snapshot_family": "b_mcts16"
+    },
+    {
+      "source_id": "safety_block_current_best_legacy_g2_m29",
+      "sample_id": "legacy_g2_m29",
+      "side": "white",
+      "target": "4,9",
+      "expected": "4,9",
+      "logged_direct": "3,4",
+      "direct_policy_top_move": "3,4",
+      "logged_final": "4,9",
+      "snapshot_family": "candidate_d_mcts32_nearend"
+    },
+    {
+      "source_id": "safety_block_current_best_legacy_g2_m33",
+      "sample_id": "legacy_g2_m33",
+      "side": "white",
+      "target": "9,6",
+      "expected": "9,11 9,6",
+      "logged_direct": "10,8",
+      "direct_policy_top_move": "7,5",
+      "logged_final": "9,6",
+      "snapshot_family": "candidate_d_mcts32_nearend"
+    }
+  ]
+}
