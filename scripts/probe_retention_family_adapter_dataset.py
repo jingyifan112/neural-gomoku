@@ -54,12 +54,32 @@ def adapter_meta(row: dict[str, Any]) -> dict[str, Any]:
 
 def write_plain_dataset(path: Path, rows: list[dict[str, Any]]) -> None:
     """
-    The legacy probe has historically consumed a plain list-style dataset.
-    Keep all row fields intact, including adapter metadata, but write a list
-    to maximize compatibility with older scripts.
+    The legacy probe expects a JSON object with a rows field.
+    Keep all row fields intact, including adapter metadata.
     """
+    split_counts: dict[str, int] = {}
+    role_counts: dict[str, int] = {}
+
+    for r in rows:
+        split = clean(r.get("split"))
+        role = clean(r.get("role") or r.get("label_type"))
+        split_counts[split] = split_counts.get(split, 0) + 1
+        role_counts[role] = role_counts.get(role, 0) + 1
+
+    payload = {
+        "metadata": {
+            "source": "retention_family_adapter_probe_temporary_dataset",
+            "row_count": len(rows),
+        },
+        "summary": {
+            "total_rows": len(rows),
+            "split_counts": split_counts,
+            "role_counts": role_counts,
+        },
+        "rows": rows,
+    }
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(rows, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
 
 def read_csv(path: Path) -> list[dict[str, str]]:
