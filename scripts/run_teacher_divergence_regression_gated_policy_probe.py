@@ -32,6 +32,28 @@ def parse_args() -> argparse.Namespace:
         default="train_candidate,train_teacher_divergence",
     )
     parser.add_argument("--train-scope", default="policy_head")
+    parser.add_argument(
+        "--mixed-ce-anchor-splits",
+        default=None,
+        help="Optional pass-through for mixed CE anchor scripts.",
+    )
+    parser.add_argument(
+        "--mixed-ce-anchor-label-types",
+        default=None,
+        help="Optional pass-through for mixed CE anchor scripts.",
+    )
+    parser.add_argument(
+        "--mixed-ce-anchor-weight-scale",
+        type=float,
+        default=None,
+        help="Optional pass-through for mixed CE anchor scripts.",
+    )
+    parser.add_argument(
+        "--mixed-ce-anchor-max-rows",
+        type=int,
+        default=None,
+        help="Optional pass-through for mixed CE anchor scripts.",
+    )
 
     parser.add_argument(
         "--eval-csv",
@@ -105,6 +127,15 @@ def run_anchor_probe(args: argparse.Namespace, *, no_save: bool) -> None:
         "--out-checkpoint",
         str(args.out_checkpoint),
     ]
+    if args.mixed_ce_anchor_splits is not None:
+        cmd.extend(["--mixed-ce-anchor-splits", str(args.mixed_ce_anchor_splits)])
+    if args.mixed_ce_anchor_label_types is not None:
+        cmd.extend(["--mixed-ce-anchor-label-types", str(args.mixed_ce_anchor_label_types)])
+    if args.mixed_ce_anchor_weight_scale is not None:
+        cmd.extend(["--mixed-ce-anchor-weight-scale", str(args.mixed_ce_anchor_weight_scale)])
+    if args.mixed_ce_anchor_max_rows is not None:
+        cmd.extend(["--mixed-ce-anchor-max-rows", str(args.mixed_ce_anchor_max_rows)])
+
     if no_save:
         cmd.append("--no-save")
 
@@ -275,6 +306,10 @@ def write_gate_report(
     lines.append(f"- kl_weight: {args.kl_weight}")
     lines.append(f"- anchor_kl_splits: `{args.anchor_kl_splits}`")
     lines.append(f"- train_scope: `{args.train_scope}`")
+    lines.append(f"- mixed_ce_anchor_splits: `{args.mixed_ce_anchor_splits}`")
+    lines.append(f"- mixed_ce_anchor_label_types: `{args.mixed_ce_anchor_label_types}`")
+    lines.append(f"- mixed_ce_anchor_weight_scale: {args.mixed_ce_anchor_weight_scale}")
+    lines.append(f"- mixed_ce_anchor_max_rows: {args.mixed_ce_anchor_max_rows}")
     lines.append(f"- eval_csv: `{args.eval_csv}`")
     lines.append(f"- train_report: `{args.train_report}`")
     lines.append(f"- out_checkpoint: `{args.out_checkpoint}`")

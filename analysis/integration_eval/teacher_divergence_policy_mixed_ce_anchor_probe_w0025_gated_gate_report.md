@@ -16,11 +16,11 @@ It does not export C weights, run benchmarks, promote a model, overwrite current
 - train_scope: `policy_head`
 - mixed_ce_anchor_splits: `train_teacher_divergence`
 - mixed_ce_anchor_label_types: `None`
-- mixed_ce_anchor_weight_scale: 0.1
+- mixed_ce_anchor_weight_scale: 0.025
 - mixed_ce_anchor_max_rows: None
-- eval_csv: `analysis/integration_eval/teacher_divergence_policy_mixed_ce_anchor_probe_gated_eval.csv`
-- train_report: `analysis/integration_eval/teacher_divergence_policy_mixed_ce_anchor_probe_gated_train_report.md`
-- out_checkpoint: `checkpoints/15x15_teacher_divergence_policy_mixed_ce_anchor_probe_gated.pt`
+- eval_csv: `analysis/integration_eval/teacher_divergence_policy_mixed_ce_anchor_probe_w0025_gated_eval.csv`
+- train_report: `analysis/integration_eval/teacher_divergence_policy_mixed_ce_anchor_probe_w0025_gated_train_report.md`
+- out_checkpoint: `checkpoints/15x15_teacher_divergence_policy_mixed_ce_anchor_probe_w0025_gated.pt`
 - save_on_pass: True
 - saved_checkpoint: False
 
@@ -42,16 +42,16 @@ It does not export C weights, run benchmarks, promote a model, overwrite current
 
 Failures:
 
-- heldout_retention prob_regressed 6 > 4
+- heldout_retention prob_regressed 7 > 4
 - heldout_retention rank_regressed 4 > 3
 
 ## Split summary
 
 | split | rows | rank improved/same/regressed | prob improved/same/regressed | top1 before->after | mean rank before->after | mean prob before->after |
 |---|---:|---:|---:|---:|---:|---:|
-| train_candidate | 8 | 8/0/0 | 8/0/0 | 0->0 | 30.75->16.25 | 0.016975->0.087876 |
-| train_teacher_divergence | 25 | 15/9/1 | 18/0/7 | 0->1 | 17.32->10.80 | 0.025559->0.047270 |
-| heldout_retention | 11 | 3/4/4 | 5/0/6 | 3->4 | 21.82->20.18 | 0.163256->0.198886 |
+| train_candidate | 8 | 8/0/0 | 8/0/0 | 0->0 | 30.75->15.88 | 0.016975->0.088438 |
+| train_teacher_divergence | 25 | 14/9/2 | 17/0/8 | 0->0 | 17.32->12.76 | 0.025559->0.034864 |
+| heldout_retention | 11 | 3/4/4 | 4/0/7 | 3->4 | 21.82->20.82 | 0.163256->0.192396 |
 
 ## Boundary
 

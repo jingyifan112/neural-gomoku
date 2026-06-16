@@ -17,8 +17,8 @@
 
 - dataset: `analysis/integration_eval/teacher_divergence_retention_safety_v3_dataset.json`
 - base_checkpoint: `checkpoints/15x15_current_best_margin_g2m13_m15_3pair_b.pt`
-- out_checkpoint: `checkpoints/15x15_teacher_divergence_policy_mixed_ce_anchor_probe_gated.pt`
-- eval_csv: `analysis/integration_eval/teacher_divergence_policy_mixed_ce_anchor_probe_gated_eval.csv`
+- out_checkpoint: `checkpoints/15x15_teacher_divergence_policy_mixed_ce_anchor_probe_w005_gated.pt`
+- eval_csv: `analysis/integration_eval/teacher_divergence_policy_mixed_ce_anchor_probe_w005_gated_eval.csv`
 - rows: 44
 - split_counts: `{'heldout_retention': 11, 'train_candidate': 8, 'train_teacher_divergence': 25}`
 - role_counts: `{'heldout_retention_anchor': 11, 'teacher_divergence': 33}`
@@ -33,7 +33,7 @@
 - anchor_kl_splits: `train_candidate,train_teacher_divergence`
 - mixed_ce_anchor_splits: `train_teacher_divergence`
 - mixed_ce_anchor_label_types: ``
-- mixed_ce_anchor_weight_scale: 0.1
+- mixed_ce_anchor_weight_scale: 0.05
 - mixed_ce_anchor_max_rows: 0
 - weight_decay: 0.0001
 - seed: 17
@@ -47,18 +47,18 @@
 | before | train_teacher_divergence | 25 | 0 | 0.000 | 17.32 | 0.025559 | 5.021928 |
 | before | heldout_retention | 11 | 3 | 0.273 | 21.82 | 0.163256 | 3.768061 |
 | before | ALL | 44 | 3 | 0.068 | 20.89 | 0.058423 | 4.751621 |
-| after | train_candidate | 8 | 0 | 0.000 | 16.25 | 0.087876 | 3.957135 |
-| after | train_teacher_divergence | 25 | 1 | 0.040 | 10.80 | 0.047270 | 4.656012 |
-| after | heldout_retention | 11 | 4 | 0.364 | 20.18 | 0.198886 | 4.230397 |
-| after | ALL | 44 | 5 | 0.114 | 14.14 | 0.092557 | 4.422540 |
+| after | train_candidate | 8 | 0 | 0.000 | 16.00 | 0.088355 | 3.949505 |
+| after | train_teacher_divergence | 25 | 1 | 0.040 | 11.84 | 0.039793 | 4.802898 |
+| after | heldout_retention | 11 | 4 | 0.364 | 20.27 | 0.193207 | 4.243964 |
+| after | ALL | 44 | 5 | 0.114 | 14.70 | 0.086976 | 4.508002 |
 
 ## Before/after movement
 
 | split | rank_improved | rank_same | rank_regressed | prob_improved | prob_same | prob_regressed |
 |---|---:|---:|---:|---:|---:|---:|
 | train_candidate | 8 | 0 | 0 | 8 | 0 | 0 |
-| train_teacher_divergence | 15 | 9 | 1 | 18 | 0 | 7 |
-| heldout_retention | 3 | 4 | 4 | 5 | 0 | 6 |
+| train_teacher_divergence | 14 | 9 | 2 | 17 | 0 | 8 |
+| heldout_retention | 3 | 4 | 4 | 4 | 0 | 7 |
 
 ## Train candidate rows
 

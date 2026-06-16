@@ -825,15 +825,19 @@ def train(args: argparse.Namespace) -> None:
         if len(mixed_ce_indices) > 0:
             mixed_ce_log_probs = log_probs[mixed_ce_index_tensor]
             mixed_ce_target_actions = target_actions[mixed_ce_index_tensor]
-            mixed_ce_weights = weights[mixed_ce_index_tensor] * args.mixed_ce_anchor_weight_scale
+            mixed_ce_weights = weights[mixed_ce_index_tensor]
             mixed_ce_per_row = F.nll_loss(
                 mixed_ce_log_probs,
                 mixed_ce_target_actions,
                 reduction="none",
             )
-            mixed_ce_loss = (mixed_ce_per_row * mixed_ce_weights).sum() / mixed_ce_weights.sum()
+            mixed_ce_unscaled_loss = (
+                mixed_ce_per_row * mixed_ce_weights
+            ).sum() / mixed_ce_weights.sum()
+            mixed_ce_loss = args.mixed_ce_anchor_weight_scale * mixed_ce_unscaled_loss
             ce_loss = main_ce_loss + mixed_ce_loss
         else:
+            mixed_ce_unscaled_loss = torch.zeros((), dtype=main_ce_loss.dtype, device=device)
             mixed_ce_loss = torch.zeros((), dtype=main_ce_loss.dtype, device=device)
             ce_loss = main_ce_loss
 
@@ -858,6 +862,7 @@ def train(args: argparse.Namespace) -> None:
                 f"epoch {epoch:03d}/{args.epochs} "
                 f"loss={float(loss.item()):.6f} "
                 f"main_ce={float(main_ce_loss.item()):.6f} "
+                f"mixed_ce_unscaled={float(mixed_ce_unscaled_loss.item()):.6f} "
                 f"mixed_ce={float(mixed_ce_loss.item()):.6f} "
                 f"anchor_kl={float(kl_loss.item()):.6f}",
                 flush=True,
