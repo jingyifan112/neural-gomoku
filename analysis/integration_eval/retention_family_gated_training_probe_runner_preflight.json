@@ -1,0 +1,117 @@
+{
+  "checkpoint_action": {
+    "action": "preflight_only_no_checkpoint_action",
+    "candidate_checkpoint": "checkpoints/probes/retention_family_gated_probe_candidate.pt",
+    "candidate_exists": false,
+    "final_checkpoint": "checkpoints/15x15_retention_family_gated_probe_pass.pt"
+  },
+  "command_results": [],
+  "explicit_non_actions": [
+    "no C export",
+    "no public benchmark",
+    "no promotion decision"
+  ],
+  "gates_passed": false,
+  "generated_at_utc": "2026-06-16T07:33:45.971722+00:00",
+  "inputs": {
+    "candidate_checkpoint": "checkpoints/probes/retention_family_gated_probe_candidate.pt",
+    "eval_manifest": "analysis/integration_eval/retention_family_training_input_dryrun_eval_manifest.csv",
+    "final_checkpoint": "checkpoints/15x15_retention_family_gated_probe_pass.pt",
+    "gate_cmd": [],
+    "promote_on_pass": false,
+    "quarantine_on_fail": false,
+    "train_cmd": "",
+    "train_manifest": "analysis/integration_eval/retention_family_training_input_dryrun_train_manifest.csv"
+  },
+  "manifest_summary": {
+    "critical_eval_rows": [
+      {
+        "allowed_as_only_sibling_family_gate": "no",
+        "bucket": "eval_gate_candidate",
+        "dataset_index": "11",
+        "eval_use_policy": "restricted_family_level_gate_candidate",
+        "family_id": "bd:ea22cc14729b88fd",
+        "gate_scope": "external_or_family_level_only_not_sibling_only",
+        "last_move": "",
+        "match_key": "holdout_candidate_d_g2_m15_white_last_8_9_target_safe_7_9_over_live_final_8_8",
+        "match_method": "row_key",
+        "materialized_reason": "stable top1 gain gate, but not valid as the only sibling-family heldout check",
+        "materialized_role": "heldout_retention_gate",
+        "original_role": "heldout_retention_anchor",
+        "original_split": "heldout_retention",
+        "policy_target": "7,9",
+        "proposed_role": "heldout_retention_gate",
+        "proposed_split": "heldout_retention_gate",
+        "risk_flags": "critical_sibling_conflict_family;not_only_sibling_family_gate",
+        "side_to_move": "white",
+        "source": "candidate_d_g2_m15_white_last_8_9_target_safe_7_9_over_live_final_8_8",
+        "source_path": "analysis/integration_eval/candidate_d_g2_m15_diagnostic_anchors.json",
+        "teacher_move": "7,9",
+        "train_use_policy": "exclude_from_train_manifest"
+      }
+    ],
+    "critical_train_rows": [
+      {
+        "allowed_as_only_sibling_family_gate": "no",
+        "bucket": "train_candidate",
+        "dataset_index": "9",
+        "eval_use_policy": "exclude_from_eval_manifest",
+        "family_id": "bd:ea22cc14729b88fd",
+        "gate_scope": "not_a_gate",
+        "last_move": "",
+        "match_key": "holdout_candidate_d_g2_m15_white_last_8_9_target_live_direct_7_10_over_live_final_8_8",
+        "match_method": "row_key",
+        "materialized_reason": "repeated heldout blocker; regression signal; sibling target conflict family; mixed signal family",
+        "materialized_role": "nonheldout_retention_anchor",
+        "original_role": "heldout_retention_anchor",
+        "original_split": "heldout_retention",
+        "policy_target": "7,10",
+        "proposed_role": "nonheldout_retention_anchor",
+        "proposed_split": "train_retention_anchor",
+        "risk_flags": "critical_sibling_conflict_family",
+        "side_to_move": "white",
+        "source": "candidate_d_g2_m15_white_last_8_9_target_live_direct_7_10_over_live_final_8_8",
+        "source_path": "analysis/integration_eval/candidate_d_g2_m15_diagnostic_anchors.json",
+        "teacher_move": "7,10",
+        "train_use_policy": "include_as_nonheldout_retention_anchor_candidate"
+      },
+      {
+        "allowed_as_only_sibling_family_gate": "no",
+        "bucket": "train_candidate",
+        "dataset_index": "10",
+        "eval_use_policy": "exclude_from_eval_manifest",
+        "family_id": "bd:ea22cc14729b88fd",
+        "gate_scope": "not_a_gate",
+        "last_move": "",
+        "match_key": "holdout_candidate_d_g2_m15_white_last_8_9_target_safe_10_7_over_live_final_8_8",
+        "match_method": "row_key",
+        "materialized_reason": "repeated heldout blocker; regression signal; sibling target conflict family; mixed signal family",
+        "materialized_role": "nonheldout_retention_anchor",
+        "original_role": "heldout_retention_anchor",
+        "original_split": "heldout_retention",
+        "policy_target": "10,7",
+        "proposed_role": "nonheldout_retention_anchor",
+        "proposed_split": "train_retention_anchor",
+        "risk_flags": "critical_sibling_conflict_family",
+        "side_to_move": "white",
+        "source": "candidate_d_g2_m15_white_last_8_9_target_safe_10_7_over_live_final_8_8",
+        "source_path": "analysis/integration_eval/candidate_d_g2_m15_diagnostic_anchors.json",
+        "teacher_move": "10,7",
+        "train_use_policy": "include_as_nonheldout_retention_anchor_candidate"
+      }
+    ],
+    "eval_policy_counts": {
+      "restricted_family_level_gate_candidate": 1,
+      "review_before_eval_gate_use": 8
+    },
+    "eval_rows": 9,
+    "train_policy_counts": {
+      "include_as_nonheldout_retention_anchor_candidate": 2
+    },
+    "train_rows": 2
+  },
+  "manifest_validation_errors": [],
+  "mode": "preflight",
+  "overall_status": "preflight_pass",
+  "setup_errors": []
+}
