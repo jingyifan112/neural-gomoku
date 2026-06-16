@@ -1,0 +1,365 @@
+{
+  "findings": [
+    "mixed_ce_rows_zero",
+    "training_log_loss_nan",
+    "training_log_main_ce_nan",
+    "training_log_anchor_kl_nan",
+    "checkpoint_written_despite_nan_loss"
+  ],
+  "inputs": {
+    "dataset": "analysis/integration_eval/retention_family_wrapper_run1/train_plain_dataset.json",
+    "train_script": "scripts/train_teacher_divergence_policy_mixed_ce_anchor_probe.py",
+    "train_stdout": "eval_logs/integration_eval/retention_family_wrapper_run1/train.stdout.log"
+  },
+  "likely_causes": [
+    "legacy_trainer_allows_empty_main_ce_path",
+    "legacy_trainer_does_not_block_nonfinite_loss_before_optimizer_or_checkpoint"
+  ],
+  "row_count": 2,
+  "row_reports": [
+    {
+      "adapter_target_prob_float": "",
+      "adapter_target_prob_raw": "",
+      "adapter_target_prob_status": "missing",
+      "gate_scope": "not_a_gate",
+      "id": "holdout_candidate_d_g2_m15_white_last_8_9_target_live_direct_7_10_over_live_final_8_8",
+      "label_type": "nonheldout_retention_anchor",
+      "policy_target": "7,10",
+      "risk_flags": "critical_sibling_conflict_family",
+      "role": "nonheldout_retention_anchor",
+      "row_index": 1,
+      "split": "train_candidate",
+      "suggested_weight_float": "0.0",
+      "suggested_weight_raw": "0.0",
+      "suggested_weight_status": "finite",
+      "train_use_policy": "include_as_nonheldout_retention_anchor_candidate",
+      "weight_float": "",
+      "weight_raw": "",
+      "weight_status": "missing"
+    },
+    {
+      "adapter_target_prob_float": "",
+      "adapter_target_prob_raw": "",
+      "adapter_target_prob_status": "missing",
+      "gate_scope": "not_a_gate",
+      "id": "holdout_candidate_d_g2_m15_white_last_8_9_target_safe_10_7_over_live_final_8_8",
+      "label_type": "nonheldout_retention_anchor",
+      "policy_target": "10,7",
+      "risk_flags": "critical_sibling_conflict_family",
+      "role": "nonheldout_retention_anchor",
+      "row_index": 2,
+      "split": "train_candidate",
+      "suggested_weight_float": "0.0",
+      "suggested_weight_raw": "0.0",
+      "suggested_weight_status": "finite",
+      "train_use_policy": "include_as_nonheldout_retention_anchor_candidate",
+      "weight_float": "",
+      "weight_raw": "",
+      "weight_status": "missing"
+    }
+  ],
+  "scope": "loss path audit only; no training/checkpoint/C export/benchmark/promotion",
+  "script_hits": [
+    {
+      "line": 60,
+      "text": "        default=Path(\"checkpoints/15x15_teacher_divergence_policy_mixed_ce_anchor_probe.pt\"),"
+    },
+    {
+      "line": 65,
+      "text": "        default=Path(\"analysis/integration_eval/teacher_divergence_policy_mixed_ce_anchor_probe_eval.csv\"),"
+    },
+    {
+      "line": 70,
+      "text": "        default=Path(\"analysis/integration_eval/teacher_divergence_policy_mixed_ce_anchor_probe_report.md\"),"
+    },
+    {
+      "line": 529,
+      "text": "            \"mean_rank\": sum(ranks) / len(ranks) if ranks else float(\"nan\"),"
+    },
+    {
+      "line": 530,
+      "text": "            \"mean_target_prob\": sum(probs) / len(probs) if probs else float(\"nan\"),"
+    },
+    {
+      "line": 531,
+      "text": "            \"mean_target_ce\": sum(ces) / len(ces) if ces else float(\"nan\"),"
+    },
+    {
+      "line": 621,
+      "text": "    lines.append(\"- `heldout_retention` is evaluation-only and is not used in the loss.\")"
+    },
+    {
+      "line": 622,
+      "text": "    lines.append(\"- Value head has no explicit loss in this probe.\")"
+    },
+    {
+      "line": 645,
+      "text": "    lines.append(f\"- anchor_kl_splits: `{args.anchor_kl_splits}`\")"
+    },
+    {
+      "line": 646,
+      "text": "    lines.append(f\"- mixed_ce_anchor_splits: `{args.mixed_ce_anchor_splits}`\")"
+    },
+    {
+      "line": 647,
+      "text": "    lines.append(f\"- mixed_ce_anchor_label_types: `{args.mixed_ce_anchor_label_types}`\")"
+    },
+    {
+      "line": 648,
+      "text": "    lines.append(f\"- mixed_ce_anchor_weight_scale: {args.mixed_ce_anchor_weight_scale}\")"
+    },
+    {
+      "line": 649,
+      "text": "    lines.append(f\"- mixed_ce_anchor_max_rows: {args.mixed_ce_anchor_max_rows}\")"
+    },
+    {
+      "line": 718,
+      "text": "        strict_splits=not args.no_strict_splits,"
+    },
+    {
+      "line": 722,
+      "text": "    if len(train_indices) != 8 and not args.no_strict_splits:"
+    },
+    {
+      "line": 725,
+      "text": "    anchor_kl_splits = tuple("
+    },
+    {
+      "line": 727,
+      "text": "        for item in str(args.anchor_kl_splits).split(\",\")"
+    },
+    {
+      "line": 730,
+      "text": "    if \"heldout_retention\" in anchor_kl_splits and not args.no_strict_splits:"
+    },
+    {
+      "line": 732,
+      "text": "    anchor_indices = [i for i, r in enumerate(rows) if r.split in anchor_kl_splits]"
+    },
+    {
+      "line": 733,
+      "text": "    if not anchor_indices:"
+    },
+    {
+      "line": 734,
+      "text": "        raise ValueError(f\"no KL anchor rows selected by anchor_kl_splits={anchor_kl_splits}\")"
+    },
+    {
+      "line": 736,
+      "text": "    mixed_ce_splits = tuple("
+    },
+    {
+      "line": 738,
+      "text": "        for item in str(args.mixed_ce_anchor_splits).split(\",\")"
+    },
+    {
+      "line": 741,
+      "text": "    mixed_ce_label_types = tuple("
+    },
+    {
+      "line": 743,
+      "text": "        for item in str(args.mixed_ce_anchor_label_types).split(\",\")"
+    },
+    {
+      "line": 746,
+      "text": "    if \"heldout_retention\" in mixed_ce_splits and not args.no_strict_splits:"
+    },
+    {
+      "line": 749,
+      "text": "    mixed_ce_indices = ["
+    },
+    {
+      "line": 752,
+      "text": "        if r.split in mixed_ce_splits"
+    },
+    {
+      "line": 753,
+      "text": "        and (not mixed_ce_label_types or r.label_type in mixed_ce_label_types)"
+    },
+    {
+      "line": 755,
+      "text": "    if args.mixed_ce_anchor_max_rows and args.mixed_ce_anchor_max_rows > 0:"
+    },
+    {
+      "line": 756,
+      "text": "        mixed_ce_indices = mixed_ce_indices[: args.mixed_ce_anchor_max_rows]"
+    },
+    {
+      "line": 762,
+      "text": "    print(f\"anchor_kl_splits={anchor_kl_splits}\")"
+    },
+    {
+      "line": 763,
+      "text": "    print(f\"anchor_kl_rows={len(anchor_indices)}\")"
+    },
+    {
+      "line": 764,
+      "text": "    print(f\"mixed_ce_splits={mixed_ce_splits}\")"
+    },
+    {
+      "line": 765,
+      "text": "    print(f\"mixed_ce_label_types={mixed_ce_label_types}\")"
+    },
+    {
+      "line": 766,
+      "text": "    print(f\"mixed_ce_rows={len(mixed_ce_indices)}\")"
+    },
+    {
+      "line": 767,
+      "text": "    print(f\"mixed_ce_weight_scale={args.mixed_ce_anchor_weight_scale}\")"
+    },
+    {
+      "line": 781,
+      "text": "    anchor_index_tensor = torch.tensor(anchor_indices, dtype=torch.long, device=device)"
+    },
+    {
+      "line": 782,
+      "text": "    mixed_ce_index_tensor = torch.tensor(mixed_ce_indices, dtype=torch.long, device=device)"
+    },
+    {
+      "line": 822,
+      "text": "        ce_per_row = F.nll_loss(train_log_probs, train_target_actions, reduction=\"none\")"
+    },
+    {
+      "line": 823,
+      "text": "        main_ce_loss = (ce_per_row * train_weights).sum() / train_weights.sum()"
+    },
+    {
+      "line": 825,
+      "text": "        if len(mixed_ce_indices) > 0:"
+    },
+    {
+      "line": 826,
+      "text": "            mixed_ce_log_probs = log_probs[mixed_ce_index_tensor]"
+    },
+    {
+      "line": 827,
+      "text": "            mixed_ce_target_actions = target_actions[mixed_ce_index_tensor]"
+    },
+    {
+      "line": 828,
+      "text": "            mixed_ce_weights = weights[mixed_ce_index_tensor]"
+    },
+    {
+      "line": 829,
+      "text": "            mixed_ce_per_row = F.nll_loss("
+    },
+    {
+      "line": 830,
+      "text": "                mixed_ce_log_probs,"
+    },
+    {
+      "line": 831,
+      "text": "                mixed_ce_target_actions,"
+    },
+    {
+      "line": 834,
+      "text": "            mixed_ce_unscaled_loss = ("
+    },
+    {
+      "line": 835,
+      "text": "                mixed_ce_per_row * mixed_ce_weights"
+    },
+    {
+      "line": 836,
+      "text": "            ).sum() / mixed_ce_weights.sum()"
+    },
+    {
+      "line": 837,
+      "text": "            mixed_ce_loss = args.mixed_ce_anchor_weight_scale * mixed_ce_unscaled_loss"
+    },
+    {
+      "line": 838,
+      "text": "            ce_loss = main_ce_loss + mixed_ce_loss"
+    },
+    {
+      "line": 840,
+      "text": "            mixed_ce_unscaled_loss = torch.zeros((), dtype=main_ce_loss.dtype, device=device)"
+    },
+    {
+      "line": 841,
+      "text": "            mixed_ce_loss = torch.zeros((), dtype=main_ce_loss.dtype, device=device)"
+    },
+    {
+      "line": 842,
+      "text": "            ce_loss = main_ce_loss"
+    },
+    {
+      "line": 847,
+      "text": "        anchor_kl = ("
+    },
+    {
+      "line": 851,
+      "text": "        kl_loss = (anchor_kl * anchor_weights).sum() / anchor_weights.sum()"
+    },
+    {
+      "line": 853,
+      "text": "        loss = ce_loss + args.kl_weight * kl_loss"
+    },
+    {
+      "line": 856,
+      "text": "        loss.backward()"
+    },
+    {
+      "line": 858,
+      "text": "        optimizer.step()"
+    },
+    {
+      "line": 863,
+      "text": "                f\"loss={float(loss.item()):.6f} \""
+    },
+    {
+      "line": 864,
+      "text": "                f\"main_ce={float(main_ce_loss.item()):.6f} \""
+    },
+    {
+      "line": 865,
+      "text": "                f\"mixed_ce_unscaled={float(mixed_ce_unscaled_loss.item()):.6f} \""
+    },
+    {
+      "line": 866,
+      "text": "                f\"mixed_ce={float(mixed_ce_loss.item()):.6f} \""
+    },
+    {
+      "line": 867,
+      "text": "                f\"anchor_kl={float(kl_loss.item()):.6f}\","
+    },
+    {
+      "line": 890,
+      "text": "                    \"anchor_kl_splits\": list(anchor_kl_splits),"
+    },
+    {
+      "line": 891,
+      "text": "                    \"anchor_kl_rows\": len(anchor_indices),"
+    },
+    {
+      "line": 892,
+      "text": "                    \"mixed_ce_anchor_splits\": list(mixed_ce_splits),"
+    },
+    {
+      "line": 893,
+      "text": "                    \"mixed_ce_anchor_label_types\": list(mixed_ce_label_types),"
+    },
+    {
+      "line": 894,
+      "text": "                    \"mixed_ce_anchor_weight_scale\": args.mixed_ce_anchor_weight_scale,"
+    },
+    {
+      "line": 895,
+      "text": "                    \"mixed_ce_anchor_rows\": len(mixed_ce_indices),"
+    }
+  ],
+  "train_log_facts": {
+    "anchor_kl_rows": "2",
+    "ce_training_rows": "2",
+    "contains_anchor_kl_nan": true,
+    "contains_checkpoint_written": true,
+    "contains_loss_nan": true,
+    "contains_main_ce_nan": true,
+    "epoch_line": "loss=nan main_ce=nan mixed_ce_unscaled=0.000000 mixed_ce=0.000000 anchor_kl=nan",
+    "exists": true,
+    "mixed_ce_rows": "0",
+    "train_scope": "policy_head",
+    "trainable_parameters": "101607"
+  }
+}
