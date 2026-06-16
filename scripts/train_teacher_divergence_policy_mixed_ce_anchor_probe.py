@@ -781,6 +781,31 @@ def train(args: argparse.Namespace) -> None:
     anchor_index_tensor = torch.tensor(anchor_indices, dtype=torch.long, device=device)
     mixed_ce_index_tensor = torch.tensor(mixed_ce_indices, dtype=torch.long, device=device)
 
+    def require_positive_finite_weight_sum(name: str, selected_weights: torch.Tensor) -> torch.Tensor:
+        weight_sum = selected_weights.sum()
+        if not torch.isfinite(weight_sum).all() or float(weight_sum.item()) <= 0.0:
+            raise ValueError(
+                f"{name} weight sum must be positive and finite before training: "
+                f"sum={float(weight_sum.item()) if torch.isfinite(weight_sum).all() else weight_sum.item()} "
+                f"rows={int(selected_weights.numel())}"
+            )
+        return weight_sum
+
+    train_weight_sum = require_positive_finite_weight_sum(
+        "train_candidate",
+        weights[train_index_tensor],
+    )
+    anchor_weight_sum = require_positive_finite_weight_sum(
+        "anchor_kl",
+        weights[anchor_index_tensor],
+    )
+    mixed_ce_weight_sum = None
+    if len(mixed_ce_indices) > 0:
+        mixed_ce_weight_sum = require_positive_finite_weight_sum(
+            "mixed_ce",
+            weights[mixed_ce_index_tensor],
+        )
+
     model = load_model(args, args.base_checkpoint, device)
     reference = load_model(args, args.base_checkpoint, device)
     reference.eval()
@@ -820,7 +845,7 @@ def train(args: argparse.Namespace) -> None:
         train_target_actions = target_actions[train_index_tensor]
         train_weights = weights[train_index_tensor]
         ce_per_row = F.nll_loss(train_log_probs, train_target_actions, reduction="none")
-        main_ce_loss = (ce_per_row * train_weights).sum() / train_weights.sum()
+        main_ce_loss = (ce_per_row * train_weights).sum() / train_weight_sum
 
         if len(mixed_ce_indices) > 0:
             mixed_ce_log_probs = log_probs[mixed_ce_index_tensor]
@@ -831,9 +856,10 @@ def train(args: argparse.Namespace) -> None:
                 mixed_ce_target_actions,
                 reduction="none",
             )
+            assert mixed_ce_weight_sum is not None
             mixed_ce_unscaled_loss = (
                 mixed_ce_per_row * mixed_ce_weights
-            ).sum() / mixed_ce_weights.sum()
+            ).sum() / mixed_ce_weight_sum
             mixed_ce_loss = args.mixed_ce_anchor_weight_scale * mixed_ce_unscaled_loss
             ce_loss = main_ce_loss + mixed_ce_loss
         else:
@@ -848,14 +874,43 @@ def train(args: argparse.Namespace) -> None:
             anchor_ref_probs
             * (torch.log(anchor_ref_probs.clamp_min(1e-12)) - anchor_log_probs)
         ).sum(dim=-1)
-        kl_loss = (anchor_kl * anchor_weights).sum() / anchor_weights.sum()
+        kl_loss = (anchor_kl * anchor_weights).sum() / anchor_weight_sum
 
         loss = ce_loss + args.kl_weight * kl_loss
+
+        loss_terms = {
+            "main_ce_loss": main_ce_loss,
+            "mixed_ce_unscaled_loss": mixed_ce_unscaled_loss,
+            "mixed_ce_loss": mixed_ce_loss,
+            "kl_loss": kl_loss,
+            "loss": loss,
+        }
+        bad_terms = [
+            f"{name}={float(value.item()) if value.numel() == 1 else value}"
+            for name, value in loss_terms.items()
+            if not torch.isfinite(value).all()
+        ]
+        if bad_terms:
+            raise FloatingPointError(
+                "non-finite loss detected before backward/optimizer step: "
+                + ", ".join(bad_terms)
+            )
 
         optimizer.zero_grad()
         loss.backward()
         torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
         optimizer.step()
+
+        bad_params = []
+        for name, param in model.named_parameters():
+            nonfinite = int((~torch.isfinite(param.detach())).sum().item())
+            if nonfinite:
+                bad_params.append(f"{name}:{nonfinite}")
+        if bad_params:
+            raise FloatingPointError(
+                "non-finite model parameters detected after optimizer step: "
+                + ", ".join(bad_params)
+            )
 
         if epoch == 1 or epoch == args.epochs or epoch % args.print_every == 0:
             print(
