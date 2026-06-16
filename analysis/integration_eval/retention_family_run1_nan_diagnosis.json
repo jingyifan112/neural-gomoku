@@ -1,0 +1,634 @@
+{
+  "board_format_counts": {
+    "matrix_list": 2
+  },
+  "dataset_meta": {
+    "purpose": "wrapper-controlled run1 train dataset generated from retention-family consumer adapter",
+    "row_count": 2,
+    "source": "analysis/integration_eval/retention_family_training_consumer_adapter_train_dataset.json"
+  },
+  "finding_counts": {
+    "train_rank_regressed": 2
+  },
+  "gate_status": {
+    "counts": {
+      "eval_prob_regressed": 0,
+      "eval_rank_regressed": 8,
+      "side_counts": {
+        "eval": 9,
+        "train": 2
+      },
+      "train_improved": 0
+    },
+    "decision": "FAIL",
+    "failures": [
+      "eval rank regressions 8 > 0",
+      "eval top1 losses: 3",
+      "critical 7,9 eval gate regressed",
+      "no train-side row improved"
+    ]
+  },
+  "inputs": {
+    "gate_json": "analysis/integration_eval/retention_family_wrapper_run1/gate_eval.json",
+    "train_after_csv": "analysis/integration_eval/retention_family_wrapper_run1/train_after.csv",
+    "train_before_csv": "analysis/integration_eval/retention_family_wrapper_run1/train_before.csv",
+    "train_dataset": "analysis/integration_eval/retention_family_wrapper_run1/train_plain_dataset.json",
+    "train_eval_csv": "analysis/integration_eval/retention_family_wrapper_run1/train_script_eval.csv",
+    "train_report": "analysis/integration_eval/retention_family_wrapper_run1/train_script_report.md",
+    "train_script": "scripts/train_teacher_divergence_policy_mixed_ce_anchor_probe.py",
+    "wrapper_json": "analysis/integration_eval/retention_family_wrapper_run1/wrapper_result.json"
+  },
+  "label_type_counts": {
+    "nonheldout_retention_anchor": 2
+  },
+  "likely_causes": [
+    "run1_training_report_or_wrapper_records_failed_probe"
+  ],
+  "row_count": 2,
+  "row_reports": [
+    {
+      "adapter_row_index": 1,
+      "after_target_prob": "",
+      "after_target_rank": "143",
+      "after_top1": "no",
+      "before_target_prob": "0.08013152",
+      "before_target_rank": "5",
+      "before_top1": "no",
+      "board_format": "matrix_list",
+      "board_shape": "15x15",
+      "eval_use_policy": "exclude_from_eval_manifest",
+      "family_id": "bd:ea22cc14729b88fd",
+      "findings": "train_rank_regressed",
+      "gate_scope": "not_a_gate",
+      "key": "bd:ea22cc14729b88fd|candidate_d_g2_m15_white_last_8_9_target_live_direct_7_10_over_live_final_8_8|7,10",
+      "label_type": "nonheldout_retention_anchor",
+      "policy_target": "7,10",
+      "risk_flags": "critical_sibling_conflict_family",
+      "role": "nonheldout_retention_anchor",
+      "source": "candidate_d_g2_m15_white_last_8_9_target_live_direct_7_10_over_live_final_8_8",
+      "split": "train_candidate",
+      "target_cell_status": "empty",
+      "target_parse_status": "ok",
+      "target_x": 7,
+      "target_y": 10,
+      "train_use_policy": "include_as_nonheldout_retention_anchor_candidate",
+      "weight_raw": "1.0",
+      "weight_status": "ok"
+    },
+    {
+      "adapter_row_index": 2,
+      "after_target_prob": "",
+      "after_target_rank": "107",
+      "after_top1": "no",
+      "before_target_prob": "0.10073036",
+      "before_target_rank": "2",
+      "before_top1": "no",
+      "board_format": "matrix_list",
+      "board_shape": "15x15",
+      "eval_use_policy": "exclude_from_eval_manifest",
+      "family_id": "bd:ea22cc14729b88fd",
+      "findings": "train_rank_regressed",
+      "gate_scope": "not_a_gate",
+      "key": "bd:ea22cc14729b88fd|candidate_d_g2_m15_white_last_8_9_target_safe_10_7_over_live_final_8_8|10,7",
+      "label_type": "nonheldout_retention_anchor",
+      "policy_target": "10,7",
+      "risk_flags": "critical_sibling_conflict_family",
+      "role": "nonheldout_retention_anchor",
+      "source": "candidate_d_g2_m15_white_last_8_9_target_safe_10_7_over_live_final_8_8",
+      "split": "train_candidate",
+      "target_cell_status": "empty",
+      "target_parse_status": "ok",
+      "target_x": 10,
+      "target_y": 7,
+      "train_use_policy": "include_as_nonheldout_retention_anchor_candidate",
+      "weight_raw": "1.0",
+      "weight_status": "ok"
+    }
+  ],
+  "scope": "run1 NaN diagnosis only; no training/checkpoint/C export/benchmark/promotion",
+  "split_counts": {
+    "train_candidate": 2
+  },
+  "target_cell_counts": {
+    "empty": 2
+  },
+  "train_report_observations": {
+    "contains_loss_nan": false,
+    "contains_nan": true,
+    "line_count": 68,
+    "report_exists": true
+  },
+  "training_script_relevant_lines": [
+    {
+      "line": 30,
+      "text": "    label_type: str"
+    },
+    {
+      "line": 35,
+      "text": "    target_action: int"
+    },
+    {
+      "line": 36,
+      "text": "    target_xy: tuple[int, int]"
+    },
+    {
+      "line": 37,
+      "text": "    weight: float"
+    },
+    {
+      "line": 78,
+      "text": "    parser.add_argument(\"--kl-weight\", type=float, default=0.35)"
+    },
+    {
+      "line": 87,
+      "text": "    parser.add_argument(\"--weight-decay\", type=float, default=1e-4)"
+    },
+    {
+      "line": 93,
+      "text": "        help=\"Comma-separated splits to add as low-weight CE anchors.\","
+    },
+    {
+      "line": 98,
+      "text": "        help=\"Optional comma-separated label_type filter for mixed CE anchor rows.\","
+    },
+    {
+      "line": 101,
+      "text": "        \"--mixed-ce-anchor-weight-scale\","
+    },
+    {
+      "line": 104,
+      "text": "        help=\"Multiplier applied to row weights for mixed CE anchor rows.\","
+    },
+    {
+      "line": 341,
+      "text": "def choose_policy_target(row: dict[str, Any]) -> str:"
+    },
+    {
+      "line": 342,
+      "text": "    for key in (\"policy_target\", \"teacher_move\", \"target_move\"):"
+    },
+    {
+      "line": 346,
+      "text": "    raise ValueError(f\"{row.get('id')}: no policy target\")"
+    },
+    {
+      "line": 353,
+      "text": "    split_counts = Counter(str(r.get(\"split\")) for r in rows)"
+    },
+    {
+      "line": 355,
+      "text": "    label_counts = Counter(str(r.get(\"label_type\")) for r in rows)"
+    },
+    {
+      "line": 359,
+      "text": "    print(f\"split_counts={dict(split_counts)}\")"
+    },
+    {
+      "line": 361,
+      "text": "    print(f\"label_type_counts={dict(label_counts)}\")"
+    },
+    {
+      "line": 369,
+      "text": "        if len(rows) != 44 or dict(split_counts) != expected:"
+    },
+    {
+      "line": 370,
+      "text": "            raise ValueError(f\"strict split check failed: rows={len(rows)} split_counts={dict(split_counts)}\")"
+    },
+    {
+      "line": 376,
+      "text": "        target_xy = parse_coord_xy(choose_policy_target(row))"
+    },
+    {
+      "line": 377,
+      "text": "        if target_xy is None:"
+    },
+    {
+      "line": 378,
+      "text": "            raise ValueError(f\"{row_id}: could not parse policy target {row.get('policy_target')!r}\")"
+    },
+    {
+      "line": 379,
+      "text": "        target_action = xy_to_action(target_xy, board_size)"
+    },
+    {
+      "line": 380,
+      "text": "        if legal[target_action] <= 0:"
+    },
+    {
+      "line": 381,
+      "text": "            raise ValueError(f\"{row_id}: target {xy_to_str(target_xy)} is not legal/empty\")"
+    },
+    {
+      "line": 389,
+      "text": "                label_type=str(row.get(\"label_type\", \"\")),"
+    },
+    {
+      "line": 394,
+      "text": "                target_action=target_action,"
+    },
+    {
+      "line": 395,
+      "text": "                target_xy=target_xy,"
+    },
+    {
+      "line": 396,
+      "text": "                weight=float(row.get(\"suggested_weight\", 1.0)),"
+    },
+    {
+      "line": 403,
+      "text": "def masked_log_softmax(logits: torch.Tensor, masks: torch.Tensor) -> torch.Tensor:"
+    },
+    {
+      "line": 404,
+      "text": "    return F.log_softmax(logits.masked_fill(masks <= 0, -1e9), dim=-1)"
+    },
+    {
+      "line": 469,
+      "text": "    log_probs = masked_log_softmax(logits, masks.to(device))"
+    },
+    {
+      "line": 483,
+      "text": "        target_rank = ranked.index(row.target_action) + 1"
+    },
+    {
+      "line": 484,
+      "text": "        target_prob = float(probs[i, row.target_action].item())"
+    },
+    {
+      "line": 486,
+      "text": "        ce = -math.log(max(target_prob, 1e-12))"
+    },
+    {
+      "line": 494,
+      "text": "                \"label_type\": row.label_type,"
+    },
+    {
+      "line": 497,
+      "text": "                \"policy_target\": xy_to_str(row.target_xy),"
+    },
+    {
+      "line": 498,
+      "text": "                \"target_rank\": target_rank,"
+    },
+    {
+      "line": 499,
+      "text": "                \"target_prob\": f\"{target_prob:.8f}\","
+    },
+    {
+      "line": 500,
+      "text": "                \"target_ce\": f\"{ce:.8f}\","
+    },
+    {
+      "line": 503,
+      "text": "                \"top_matches_target\": str(top_action == row.target_action),"
+    },
+    {
+      "line": 506,
+      "text": "                \"suggested_weight\": f\"{row.weight:.4f}\","
+    },
+    {
+      "line": 521,
+      "text": "        ranks = [int(x[\"target_rank\"]) for x in items]"
+    },
+    {
+      "line": 522,
+      "text": "        probs = [float(x[\"target_prob\"]) for x in items]"
+    },
+    {
+      "line": 523,
+      "text": "        ces = [float(x[\"target_ce\"]) for x in items]"
+    },
+    {
+      "line": 524,
+      "text": "        top1 = sum(x[\"top_matches_target\"] == \"True\" for x in items)"
+    },
+    {
+      "line": 529,
+      "text": "            \"mean_rank\": sum(ranks) / len(ranks) if ranks else float(\"nan\"),"
+    },
+    {
+      "line": 530,
+      "text": "            \"mean_target_prob\": sum(probs) / len(probs) if probs else float(\"nan\"),"
+    },
+    {
+      "line": 531,
+      "text": "            \"mean_target_ce\": sum(ces) / len(ces) if ces else float(\"nan\"),"
+    },
+    {
+      "line": 544,
+      "text": "        b_rank = int(b[\"target_rank\"])"
+    },
+    {
+      "line": 545,
+      "text": "        a_rank = int(a[\"target_rank\"])"
+    },
+    {
+      "line": 546,
+      "text": "        b_prob = float(b[\"target_prob\"])"
+    },
+    {
+      "line": 547,
+      "text": "        a_prob = float(a[\"target_prob\"])"
+    },
+    {
+      "line": 573,
+      "text": "        \"label_type\","
+    },
+    {
+      "line": 576,
+      "text": "        \"policy_target\","
+    },
+    {
+      "line": 577,
+      "text": "        \"target_rank\","
+    },
+    {
+      "line": 578,
+      "text": "        \"target_prob\","
+    },
+    {
+      "line": 579,
+      "text": "        \"target_ce\","
+    },
+    {
+      "line": 582,
+      "text": "        \"top_matches_target\","
+    },
+    {
+      "line": 585,
+      "text": "        \"suggested_weight\","
+    },
+    {
+      "line": 608,
+      "text": "    split_counts = Counter(r.split for r in rows)"
+    },
+    {
+      "line": 609,
+      "text": "    label_counts = Counter(r.label_type for r in rows)"
+    },
+    {
+      "line": 619,
+      "text": "    lines.append(\"- Low-weight mixed CE can also train selected anchor rows.\")"
+    },
+    {
+      "line": 635,
+      "text": "    lines.append(f\"- split_counts: `{dict(split_counts)}`\")"
+    },
+    {
+      "line": 637,
+      "text": "    lines.append(f\"- label_type_counts: `{dict(label_counts)}`\")"
+    },
+    {
+      "line": 644,
+      "text": "    lines.append(f\"- kl_weight: {args.kl_weight}\")"
+    },
+    {
+      "line": 645,
+      "text": "    lines.append(f\"- anchor_kl_splits: `{args.anchor_kl_splits}`\")"
+    },
+    {
+      "line": 647,
+      "text": "    lines.append(f\"- mixed_ce_anchor_label_types: `{args.mixed_ce_anchor_label_types}`\")"
+    },
+    {
+      "line": 648,
+      "text": "    lines.append(f\"- mixed_ce_anchor_weight_scale: {args.mixed_ce_anchor_weight_scale}\")"
+    },
+    {
+      "line": 650,
+      "text": "    lines.append(f\"- weight_decay: {args.weight_decay}\")"
+    },
+    {
+      "line": 656,
+      "text": "    lines.append(\"| phase | split | rows | top1 | top1_rate | mean_rank | mean_target_prob | mean_target_ce |\")"
+    },
+    {
+      "line": 666,
+      "text": "                f\"{item['mean_target_prob']:.6f} | {item['mean_target_ce']:.6f} |\""
+    },
+    {
+      "line": 683,
+      "text": "    lines.append(\"| id | label_type | side | target | weight |\")"
+    },
+    {
+      "line": 688,
+      "text": "                f\"| `{r.row_id}` | `{r.label_type}` | {r.side_to_move} | \""
+    },
+    {
+      "line": 689,
+      "text": "                f\"{xy_to_str(r.target_xy)} | {r.weight:.2f} |\""
+    },
+    {
+      "line": 696,
+      "text": "        \"policy mass toward its targets while tracking retention/teacher-divergence side effects. \""
+    },
+    {
+      "line": 725,
+      "text": "    anchor_kl_splits = tuple("
+    },
+    {
+      "line": 727,
+      "text": "        for item in str(args.anchor_kl_splits).split(\",\")"
+    },
+    {
+      "line": 730,
+      "text": "    if \"heldout_retention\" in anchor_kl_splits and not args.no_strict_splits:"
+    },
+    {
+      "line": 732,
+      "text": "    anchor_indices = [i for i, r in enumerate(rows) if r.split in anchor_kl_splits]"
+    },
+    {
+      "line": 734,
+      "text": "        raise ValueError(f\"no KL anchor rows selected by anchor_kl_splits={anchor_kl_splits}\")"
+    },
+    {
+      "line": 741,
+      "text": "    mixed_ce_label_types = tuple("
+    },
+    {
+      "line": 743,
+      "text": "        for item in str(args.mixed_ce_anchor_label_types).split(\",\")"
+    },
+    {
+      "line": 753,
+      "text": "        and (not mixed_ce_label_types or r.label_type in mixed_ce_label_types)"
+    },
+    {
+      "line": 762,
+      "text": "    print(f\"anchor_kl_splits={anchor_kl_splits}\")"
+    },
+    {
+      "line": 763,
+      "text": "    print(f\"anchor_kl_rows={len(anchor_indices)}\")"
+    },
+    {
+      "line": 765,
+      "text": "    print(f\"mixed_ce_label_types={mixed_ce_label_types}\")"
+    },
+    {
+      "line": 767,
+      "text": "    print(f\"mixed_ce_weight_scale={args.mixed_ce_anchor_weight_scale}\")"
+    },
+    {
+      "line": 772,
+      "text": "    target_actions_np = np.asarray([r.target_action for r in rows], dtype=np.int64)"
+    },
+    {
+      "line": 773,
+      "text": "    weights_np = np.asarray([r.weight for r in rows], dtype=np.float32)"
+    },
+    {
+      "line": 777,
+      "text": "    target_actions = torch.tensor(target_actions_np, dtype=torch.long, device=device)"
+    },
+    {
+      "line": 778,
+      "text": "    weights = torch.tensor(weights_np, dtype=torch.float32, device=device)"
+    },
+    {
+      "line": 797,
+      "text": "                    f\"BEFORE {r['id']} target={r['policy_target']} \""
+    },
+    {
+      "line": 798,
+      "text": "                    f\"rank={r['target_rank']} prob={r['target_prob']} \""
+    },
+    {
+      "line": 806,
+      "text": "        weight_decay=args.weight_decay,"
+    },
+    {
+      "line": 811,
+      "text": "        ref_probs = torch.exp(masked_log_softmax(ref_logits, masks))"
+    },
+    {
+      "line": 817,
+      "text": "        log_probs = masked_log_softmax(logits, masks)"
+    },
+    {
+      "line": 820,
+      "text": "        train_target_actions = target_actions[train_index_tensor]"
+    },
+    {
+      "line": 821,
+      "text": "        train_weights = weights[train_index_tensor]"
+    },
+    {
+      "line": 822,
+      "text": "        ce_per_row = F.nll_loss(train_log_probs, train_target_actions, reduction=\"none\")"
+    },
+    {
+      "line": 823,
+      "text": "        main_ce_loss = (ce_per_row * train_weights).sum() / train_weights.sum()"
+    },
+    {
+      "line": 827,
+      "text": "            mixed_ce_target_actions = target_actions[mixed_ce_index_tensor]"
+    },
+    {
+      "line": 828,
+      "text": "            mixed_ce_weights = weights[mixed_ce_index_tensor]"
+    },
+    {
+      "line": 829,
+      "text": "            mixed_ce_per_row = F.nll_loss("
+    },
+    {
+      "line": 831,
+      "text": "                mixed_ce_target_actions,"
+    },
+    {
+      "line": 835,
+      "text": "                mixed_ce_per_row * mixed_ce_weights"
+    },
+    {
+      "line": 836,
+      "text": "            ).sum() / mixed_ce_weights.sum()"
+    },
+    {
+      "line": 837,
+      "text": "            mixed_ce_loss = args.mixed_ce_anchor_weight_scale * mixed_ce_unscaled_loss"
+    },
+    {
+      "line": 838,
+      "text": "            ce_loss = main_ce_loss + mixed_ce_loss"
+    },
+    {
+      "line": 840,
+      "text": "            mixed_ce_unscaled_loss = torch.zeros((), dtype=main_ce_loss.dtype, device=device)"
+    },
+    {
+      "line": 841,
+      "text": "            mixed_ce_loss = torch.zeros((), dtype=main_ce_loss.dtype, device=device)"
+    },
+    {
+      "line": 842,
+      "text": "            ce_loss = main_ce_loss"
+    },
+    {
+      "line": 846,
+      "text": "        anchor_weights = weights[anchor_index_tensor]"
+    },
+    {
+      "line": 847,
+      "text": "        anchor_kl = ("
+    },
+    {
+      "line": 851,
+      "text": "        kl_loss = (anchor_kl * anchor_weights).sum() / anchor_weights.sum()"
+    },
+    {
+      "line": 853,
+      "text": "        loss = ce_loss + args.kl_weight * kl_loss"
+    },
+    {
+      "line": 864,
+      "text": "                f\"main_ce={float(main_ce_loss.item()):.6f} \""
+    },
+    {
+      "line": 867,
+      "text": "                f\"anchor_kl={float(kl_loss.item()):.6f}\","
+    },
+    {
+      "line": 890,
+      "text": "                    \"anchor_kl_splits\": list(anchor_kl_splits),"
+    },
+    {
+      "line": 891,
+      "text": "                    \"anchor_kl_rows\": len(anchor_indices),"
+    },
+    {
+      "line": 893,
+      "text": "                    \"mixed_ce_anchor_label_types\": list(mixed_ce_label_types),"
+    },
+    {
+      "line": 894,
+      "text": "                    \"mixed_ce_anchor_weight_scale\": args.mixed_ce_anchor_weight_scale,"
+    },
+    {
+      "line": 899,
+      "text": "                    \"kl_weight\": args.kl_weight,"
+    },
+    {
+      "line": 900,
+      "text": "                    \"weight_decay\": args.weight_decay,"
+    }
+  ],
+  "wrapper_status": {
+    "checkpoint_action": {
+      "action": "quarantined_failed_candidate_checkpoint",
+      "candidate_checkpoint": "checkpoints/probes/retention_family_wrapper_run1_candidate.pt",
+      "candidate_exists": true,
+      "error": "",
+      "final_checkpoint": "checkpoints/retention_family_wrapper_run1_pass.pt",
+      "final_exists_before": false,
+      "promote_on_pass": true,
+      "quarantine_on_fail": true,
+      "quarantine_path": "checkpoints/failed_retention_family_probe/retention_family_wrapper_run1_candidate.pt"
+    },
+    "gates_passed": false,
+    "overall_status": "gates_failed"
+  }
+}
