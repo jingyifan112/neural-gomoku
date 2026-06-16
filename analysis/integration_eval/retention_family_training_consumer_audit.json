@@ -1,0 +1,933 @@
+{
+  "counts": {
+    "category_counts": {
+      "dataset_consumer": 10,
+      "eval_or_gate_consumer": 4,
+      "other_python": 1,
+      "possibly_relevant": 20,
+      "retention_or_teacher_tool": 5,
+      "training_script": 37
+    },
+    "risk_counts": {
+      "high": 15,
+      "low": 26,
+      "low_or_adapted": 6,
+      "medium": 30
+    },
+    "status_counts": {
+      "mentions_new_retention_family_contract": 6,
+      "no_relevant_retention_family_signal": 26,
+      "relevant_consumer_no_retention_family_contract": 10,
+      "uses_generic_split_or_role_terms": 20,
+      "uses_old_heldout_retention_without_new_contract": 15
+    }
+  },
+  "manifest_validation": {
+    "critical_eval_targets": [
+      "7,9"
+    ],
+    "critical_train_targets": [
+      "10,7",
+      "7,10"
+    ],
+    "eval_rows": 9,
+    "summary_counts": {
+      "applied_rows": 44,
+      "bucket_counts": {
+        "eval_gate_candidate": 1,
+        "eval_gate_review": 8,
+        "train_candidate": 2,
+        "unmatched_or_unchanged_review": 33
+      },
+      "eval_manifest_rows": 9,
+      "eval_policy_counts": {
+        "exclude_from_eval_manifest": 35,
+        "restricted_family_level_gate_candidate": 1,
+        "review_before_eval_gate_use": 8
+      },
+      "family_counts": {
+        "bd:4e43e8574f31dd70": 1,
+        "bd:690e24eaa9cbf978": 1,
+        "bd:9af3d20c637fd30d": 1,
+        "bd:a2b4f843dfbb182a": 1,
+        "bd:ea22cc14729b88fd": 3,
+        "bd:fa22a82f75e4b3c2": 1,
+        "bd:fcfbf3a577067568": 3
+      },
+      "review_or_unmatched_rows": 33,
+      "train_manifest_rows": 2,
+      "train_policy_counts": {
+        "exclude_from_train_manifest": 42,
+        "include_as_nonheldout_retention_anchor_candidate": 2
+      }
+    },
+    "train_rows": 2,
+    "validation_errors": []
+  },
+  "metadata": {
+    "eval_manifest": "analysis/integration_eval/retention_family_training_input_dryrun_eval_manifest.csv",
+    "generated_at_utc": "2026-06-16T07:01:02.417262+00:00",
+    "reported_file_count": 77,
+    "scan_globs": [
+      "scripts/*.py",
+      "src/**/*.py"
+    ],
+    "scanned_file_count": 79,
+    "scope": "consumer audit only; no training/checkpoint/C export/benchmark/promotion",
+    "summary_json": "analysis/integration_eval/retention_family_training_input_dryrun_summary.json",
+    "train_manifest": "analysis/integration_eval/retention_family_training_input_dryrun_train_manifest.csv"
+  },
+  "readiness": {
+    "readiness": "blocked_high_risk_consumers_present",
+    "reason": "15 high-risk consumer files require review/adaptation"
+  },
+  "reported_files": [
+    {
+      "category": "dataset_consumer",
+      "consumer_status": "uses_old_heldout_retention_without_new_contract",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "L21: \"split\", || L22: \"role\", || L33: \"heldout\", || L100: if r.get(\"split\") != \"heldout_retention\" and r.get(\"role\") == \"heldout_retention_anchor\" || L103: errors.append(f\"retention anchors leaked into train split: {train_retention}\") || L105: heldout_nonretention = [ || L107: if r.get(\"split\") == \"heldout_retention\" and r.get(\"role\") != \"heldout_retention_anchor\" || L109: if heldout_nonretention: || L110: warnings.append(f\"heldout rows with non-retention role: {heldout_nonretention}\") || L126: split_counts = Counter(r.get(\"split\") for r in rows) || L127: role_counts = Counter(r.get(\"role\") for r in rows) || L134: train_candidate_rows = [r for r in rows if r.get(\"split\") == \"train_candidate\"]",
+      "old_or_ambiguous_hits": "heldout:13;heldout_retention:8;retention_anchor:4;role:17;split:19",
+      "path": "scripts/accept_teacher_divergence_retention_clean_v2_dataset.py",
+      "recommendation": "block training until this consumer is adapted to train/eval manifests and gate_scope",
+      "risk_level": "high"
+    },
+    {
+      "category": "possibly_relevant",
+      "consumer_status": "no_relevant_retention_family_signal",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "L56: for line in snapshot.splitlines(): || L57: tokens = line.strip().split() || L124: x_text, y_text = raw.split(\",\", maxsplit=1)",
+      "old_or_ambiguous_hits": "split:4",
+      "path": "scripts/analyze_failure_threats.py",
+      "recommendation": "no action for this audit",
+      "risk_level": "low"
+    },
+    {
+      "category": "training_script",
+      "consumer_status": "mentions_new_retention_family_contract",
+      "new_contract_hits": "allowed_as_only_sibling_family_gate:6;external_or_family_level_only_not_sibling_only:1;gate_scope:13;heldout_retention_gate:9;nonheldout_retention_anchor:3;train_retention_anchor:2",
+      "new_hit_lines": "L252: if role == \"nonheldout_retention_anchor\": || L253: return \"train_retention_anchor\" || L254: if role == \"heldout_retention_gate\": || L255: return \"heldout_retention_gate\" || L256: if role == \"heldout_retention_gate_family_conflict_review\": || L257: return \"heldout_retention_gate_review\" || L258: if role == \"heldout_retention_gate_review\": || L259: return \"heldout_retention_gate_review\" || L264: if role == \"nonheldout_retention_anchor\": || L265: return \"nonheldout_retention_anchor\" || L266: if role == \"heldout_retention_gate\": || L267: return \"heldout_retention_gate\"",
+      "old_hit_lines": "L3: Apply a materialized retention-family split to a dataset in dry-run mode. || L6: - applied split manifest CSV || L32: DEFAULT_SPLIT_MANIFEST = Path(\"analysis/integration_eval/retention_family_materialized_split_manifest.csv\") || L34: DEFAULT_OUT_CSV = Path(\"analysis/integration_eval/retention_family_applied_split_dryrun_manifest.csv\") || L35: DEFAULT_OUT_JSON = Path(\"analysis/integration_eval/retention_family_applied_split_dryrun.json\") || L36: DEFAULT_OUT_MD = Path(\"analysis/integration_eval/retention_family_applied_split_dryrun_report.md\") || L97: \"split\", || L98: \"role\", || L99: \"label_role\", || L100: \"label_type\", || L169: def is_heldout_retention(row: Dict[str, Any]) -> bool: || L170: split = row_get(row, [\"split\"])",
+      "old_or_ambiguous_hits": "heldout:20;heldout_retention:17;label_type:3;retention_anchor:5;role:62;split:64",
+      "path": "scripts/apply_retention_family_materialized_split.py",
+      "recommendation": "review implementation semantics before enabling training",
+      "risk_level": "low_or_adapted"
+    },
+    {
+      "category": "possibly_relevant",
+      "consumer_status": "no_relevant_retention_family_signal",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "L206: lines = text.splitlines()",
+      "old_or_ambiguous_hits": "split:1",
+      "path": "scripts/audit_debug_artifact_deep_schema.py",
+      "recommendation": "no action for this audit",
+      "risk_level": "low"
+    },
+    {
+      "category": "training_script",
+      "consumer_status": "uses_old_heldout_retention_without_new_contract",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "L41: def load_eval_csv(path: Path, split: str) -> dict[str, dict[str, dict[str, str]]]: || L52: \"split\", || L53: \"label_type\", || L70: if row[\"split\"] != split: || L84: def audit_variant(variant: str, scale: str, path: Path, split: str) -> list[dict[str, Any]]: || L85: grouped = load_eval_csv(path, split=split) || L107: \"label_type\": before[\"label_type\"], || L175: \"label_type\": first[\"label_type\"], || L220: split: str, || L227: lines.append(\"# Mixed-CE heldout regression audit\") || L231: lines.append(f\"- audited split: `{split}`\") || L309: lines.append(\"No heldout rows gained target top-1 under these variants.\")",
+      "old_or_ambiguous_hits": "heldout:6;heldout_retention:1;label_type:5;split:15",
+      "path": "scripts/audit_mixed_ce_heldout_regressions.py",
+      "recommendation": "block training until this consumer is adapted to train/eval manifests and gate_scope",
+      "risk_level": "high"
+    },
+    {
+      "category": "training_script",
+      "consumer_status": "mentions_new_retention_family_contract",
+      "new_contract_hits": "allowed_as_only_sibling_family_gate:2;external_or_family_level_only_not_sibling_only:3;gate_scope:7;heldout_retention_gate:1;nonheldout_retention_anchor:3;retention_family_training_input_dryrun_eval_manifest:3;retention_family_training_input_dryrun_train_manifest:3;train_retention_anchor:1",
+      "new_hit_lines": "L26: DEFAULT_TRAIN_MANIFEST = Path(\"analysis/integration_eval/retention_family_training_input_dryrun_train_manifest.csv\") || L27: DEFAULT_EVAL_MANIFEST = Path(\"analysis/integration_eval/retention_family_training_input_dryrun_eval_manifest.csv\") || L49: \"retention_family_training_input_dryrun_train_manifest\", || L50: \"retention_family_training_input_dryrun_eval_manifest\", || L51: \"train_retention_anchor\", || L52: \"nonheldout_retention_anchor\", || L53: \"heldout_retention_gate\", || L54: \"gate_scope\", || L55: \"external_or_family_level_only_not_sibling_only\", || L56: \"allowed_as_only_sibling_family_gate\", || L171: \"recommendation\": \"block training until this consumer is adapted to train/eval manifests and gate_scope\", || L254: if r.get(\"gate_scope\") != \"external_or_family_level_only_not_sibling_only\":",
+      "old_hit_lines": "L3: Audit whether current training/data-consumer scripts understand retention-family split artifacts. || L51: \"train_retention_anchor\", || L52: \"nonheldout_retention_anchor\", || L53: \"heldout_retention_gate\", || L61: \"heldout_retention\", || L62: \"retention_anchor\", || L63: \"heldout\", || L64: \"label_type\", || L65: \"role\", || L66: \"split\", || L125: for lineno, line in enumerate(text.splitlines(), 1): || L142: if \"eval\" in name or \"gate\" in name or \"heldout\" in body:",
+      "old_or_ambiguous_hits": "heldout:17;heldout_retention:12;label_type:1;retention_anchor:5;role:2;split:6",
+      "path": "scripts/audit_retention_family_training_consumers.py",
+      "recommendation": "review implementation semantics before enabling training",
+      "risk_level": "low_or_adapted"
+    },
+    {
+      "category": "eval_or_gate_consumer",
+      "consumer_status": "uses_old_heldout_retention_without_new_contract",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "L77: TYPE_KEYS = [\"role\", \"bucket\", \"label\", \"labeled_failure_type\", \"failure_type\", \"reason\"] || L198: def candidate_role_guess(path: Path, row: dict[str, Any]) -> str: || L208: return \"heldout_retention_candidate\" || L218: def inclusion_hint(row: dict[str, Any], role_guess: str, existing_source_ids: set[str]) -> tuple[str, str]: || L226: if role_guess == \"teacher_divergence_candidate\": || L230: if role_guess == \"teacher_label_candidate_needs_model_move\": || L234: if role_guess == \"heldout_retention_candidate\": || L263: role_guess_counts = Counter() || L271: role_guess = candidate_role_guess(path, row) || L272: include_hint, include_reason = inclusion_hint(row, role_guess, existing_source_ids) || L287: role_guess_counts[role_guess] += 1 || L294: \"role_guess\": role_guess,",
+      "old_or_ambiguous_hits": "heldout:2;heldout_retention:2;role:32",
+      "path": "scripts/audit_teacher_divergence_expansion_sources.py",
+      "recommendation": "block training until this consumer is adapted to train/eval manifests and gate_scope",
+      "risk_level": "high"
+    },
+    {
+      "category": "retention_or_teacher_tool",
+      "consumer_status": "no_relevant_retention_family_signal",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "L40: \"id\", \"game\", \"ply\", \"move\", \"side\", \"color\", \"role\",",
+      "old_or_ambiguous_hits": "role:1",
+      "path": "scripts/audit_teacher_divergence_source_schema.py",
+      "recommendation": "no action for this audit",
+      "risk_level": "low"
+    },
+    {
+      "category": "possibly_relevant",
+      "consumer_status": "no_relevant_retention_family_signal",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "L120: x_text, y_text = xy.split(\",\", maxsplit=1) || L147: black_score, white_score = (int(part) for part in game.result_score.split(\"-\", maxsplit=1)) || L167: for line_no, line in enumerate(log_path.read_text(encoding=\"utf-8\", errors=\"replace\").splitlines(), start=1): || L229: token = pending_rapfi_bestline.split()[0] if pending_rapfi_bestline.split() else \"\" || L692: for reason in row[\"enrichment_reason\"].split(\";\"):",
+      "old_or_ambiguous_hits": "split:8",
+      "path": "scripts/build_15x15_failure_corpus_census.py",
+      "recommendation": "no action for this audit",
+      "risk_level": "low"
+    },
+    {
+      "category": "dataset_consumer",
+      "consumer_status": "uses_generic_split_or_role_terms",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "L21: role: str || L36: role=\"nearby_teacher_anchor\", || L49: role=\"strong_teacher_divergence\", || L62: role=\"strong_teacher_divergence\", || L75: role=\"nearby_teacher_continuation\", || L88: role=\"nearby_teacher_continuation\", || L105: role=\"tactical_regression_anchor\", || L118: role=\"tactical_regression_anchor\", || L131: role=\"tactical_regression_anchor\", || L144: role=\"tactical_regression_anchor\", || L157: role=\"tactical_regression_anchor\", || L170: role=\"tactical_regression_anchor\",",
+      "old_or_ambiguous_hits": "role:15",
+      "path": "scripts/build_candidate_g_teacher_policy_dataset.py",
+      "recommendation": "inspect before training; may need explicit retention-family contract support",
+      "risk_level": "medium"
+    },
+    {
+      "category": "dataset_consumer",
+      "consumer_status": "uses_generic_split_or_role_terms",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "L140: \"role\": row[\"role\"], || L180: dataset_rows = sorted(dataset_rows, key=lambda r: (r[\"game\"], r[\"ply\"], r[\"role\"])) || L182: role_counts: dict[str, int] = {} || L184: role_counts[row[\"role\"]] = role_counts.get(row[\"role\"], 0) + 1 || L203: \"role_counts\": role_counts, || L238: for role, count in sorted(role_counts.items()): || L239: lines.append(f\"- {role}: {count}\") || L245: \"| role | game | ply | side | last move | model | teacher | teacher rank | weight | stones |\", || L251: f\"| {row['role']} | {row['game']} | {row['ply']} | {row['side_to_move']} | \"",
+      "old_or_ambiguous_hits": "role:15",
+      "path": "scripts/build_candidate_g_teacher_seed_dataset.py",
+      "recommendation": "inspect before training; may need explicit retention-family contract support",
+      "risk_level": "medium"
+    },
+    {
+      "category": "retention_or_teacher_tool",
+      "consumer_status": "no_relevant_retention_family_signal",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "L28: def compact_row(row: dict[str, str], role: str, reason: str, weight: float) -> dict: || L31: \"role\": role, || L106: role=\"seed_teacher_divergence\", || L121: role=\"retention_anchor\", || L147: role=\"nearby_nondivergent_anchor\", || L172: role=\"general_teacher_aligned_anchor\", || L178: selected = sorted(selected, key=lambda x: (x[\"game\"], x[\"ply\"], x[\"role\"])) || L191: \"seed_teacher_divergence\": sum(1 for r in selected if r[\"role\"] == \"seed_teacher_divergence\"), || L192: \"retention_anchor\": sum(1 for r in selected if r[\"role\"] == \"retention_anchor\"), || L193: \"nearby_nondivergent_anchor\": sum(1 for r in selected if r[\"role\"] == \"nearby_nondivergent_anchor\"), || L194: \"general_teacher_aligned_anchor\": sum(1 for r in selected if r[\"role\"] == \"general_teacher_aligned_anchor\"), || L227: \"| role | game | ply | side | model | teacher | teacher rank | teacher prob | model prob | weight | reason |\",",
+      "old_or_ambiguous_hits": "retention_anchor:3;role:14",
+      "path": "scripts/build_candidate_g_teacher_seed_manifest.py",
+      "recommendation": "no action for this audit",
+      "risk_level": "low"
+    },
+    {
+      "category": "possibly_relevant",
+      "consumer_status": "no_relevant_retention_family_signal",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "L65: game_number, move_count = raw_target.split(\":\", maxsplit=1)",
+      "old_or_ambiguous_hits": "split:2",
+      "path": "scripts/build_rapfi_failure_set.py",
+      "recommendation": "no action for this audit",
+      "risk_level": "low"
+    },
+    {
+      "category": "retention_or_teacher_tool",
+      "consumer_status": "no_relevant_retention_family_signal",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "L91: for line in snapshot.splitlines(): || L92: tokens = line.strip().split() || L122: x_text, y_text = text.split(\",\", maxsplit=1) || L150: for item in spec.split(\",\"): || L154: depth_text, timeout_text = item.split(\":\", maxsplit=1) || L240: for line in query_path.read_text(encoding=\"utf-8\").splitlines():",
+      "old_or_ambiguous_hits": "split:8",
+      "path": "scripts/build_rapfi_teacher_scoregap.py",
+      "recommendation": "no action for this audit",
+      "risk_level": "low"
+    },
+    {
+      "category": "training_script",
+      "consumer_status": "mentions_new_retention_family_contract",
+      "new_contract_hits": "nonheldout_retention_anchor:13",
+      "new_hit_lines": "L593: family_recommendation = \"add_nonheldout_retention_anchor_for_family\" || L611: \"needs_nonheldout_retention_anchor\": needs_nonheldout, || L622: split_proposal = \"nonheldout_retention_anchor_candidate\" || L636: \"needs_nonheldout_retention_anchor\": finfo[\"needs_nonheldout_retention_anchor\"], || L669: \"needs_nonheldout_retention_anchor\", || L685: \"mixed_signal_conflict\", \"needs_nonheldout_retention_anchor\", || L711: md_lines.append(f\"- families needing non-heldout retention anchor: {sum(1 for f in family_rows if f['needs_nonheldout_retention_anchor'])}\") || L712: md_lines.append(f\"- families keeping heldout gate directly/review: {sum(1 for f in family_rows if not f['needs_nonheldout_retention_anchor'])}\") || L751: yesno(f[\"needs_nonheldout_retention_anchor\"]), || L797: \"- Rows proposed as `nonheldout_retention_anchor_candidate` are candidates for the next dataset split, not training actions in this branch.\" || L811: print(\"families needing non-heldout retention anchor:\", sum(1 for f in family_rows if f[\"needs_nonheldout_retention_anchor\"])) || L812: print(\"families keeping heldout gate/review:\", sum(1 for f in family_rows if not f[\"needs_nonheldout_retention_anchor\"]))",
+      "old_hit_lines": "L3: Build a heldout-retention family split proposal. || L6: - Label every heldout_retention row with a family_id. || L8: - Emit CSV/MD proposal for the next split-design step. || L33: DEFAULT_OUT_CSV = Path(\"analysis/integration_eval/retention_family_split_proposal.csv\") || L34: DEFAULT_OUT_MD = Path(\"analysis/integration_eval/retention_family_split_proposal.md\") || L40: \"analysis/integration_eval/*heldout*regression*.csv\", || L44: \"retention_family_split_proposal\", || L45: \"family_split_proposal\", || L48: # Design-stage manual signals from exp/15x15-retention-family-split-design. || L56: # Therefore sibling targets in this family must not serve as each other's only heldout check. || L164: \"split\", \"role\", \"policy_target\", \"teacher_move\", || L206: def is_heldout_retention(row: Dict[str, Any]) -> bool:",
+      "old_or_ambiguous_hits": "heldout:58;heldout_retention:18;label_type:1;retention_anchor:13;role:6;split:22",
+      "path": "scripts/build_retention_family_split_proposal.py",
+      "recommendation": "review implementation semantics before enabling training",
+      "risk_level": "low_or_adapted"
+    },
+    {
+      "category": "training_script",
+      "consumer_status": "mentions_new_retention_family_contract",
+      "new_contract_hits": "allowed_as_only_sibling_family_gate:6;external_or_family_level_only_not_sibling_only:5;gate_scope:16;heldout_retention_gate:3;nonheldout_retention_anchor:3;retention_family_training_input_dryrun_eval_manifest:2;retention_family_training_input_dryrun_train_manifest:2;train_retention_anchor:1",
+      "new_hit_lines": "L26: DEFAULT_OUT_TRAIN_CSV = Path(\"analysis/integration_eval/retention_family_training_input_dryrun_train_manifest.csv\") || L27: DEFAULT_OUT_EVAL_CSV = Path(\"analysis/integration_eval/retention_family_training_input_dryrun_eval_manifest.csv\") || L63: if proposed_split == \"train_retention_anchor\" or proposed_role == \"nonheldout_retention_anchor\": || L66: if proposed_split == \"heldout_retention_gate\" or proposed_role == \"heldout_retention_gate\": || L69: if proposed_split == \"heldout_retention_gate_review\" or \"review\" in proposed_role: || L81: return \"include_as_nonheldout_retention_anchor_candidate\" || L87: gate_scope = clean(row.get(\"gate_scope\")) || L90: if gate_scope == \"normal_heldout_gate\": || L92: if gate_scope == \"external_or_family_level_only_not_sibling_only\": || L106: if clean(row.get(\"gate_scope\")) == \"external_or_family_level_only_not_sibling_only\": || L130: \"gate_scope\": clean(row.get(\"gate_scope\")), || L131: \"allowed_as_only_sibling_family_gate\": clean(row.get(\"allowed_as_only_sibling_family_gate\")),",
+      "old_hit_lines": "L3: Build candidate training/eval input manifests from retention family applied split dry-run. || L24: DEFAULT_APPLIED_CSV = Path(\"analysis/integration_eval/retention_family_applied_split_dryrun_manifest.csv\") || L59: proposed_split = clean(row.get(\"proposed_split\")) || L60: proposed_role = clean(row.get(\"proposed_role\")) || L61: materialized_role = clean(row.get(\"materialized_role\")) || L63: if proposed_split == \"train_retention_anchor\" or proposed_role == \"nonheldout_retention_anchor\": || L66: if proposed_split == \"heldout_retention_gate\" or proposed_role == \"heldout_retention_gate\": || L69: if proposed_split == \"heldout_retention_gate_review\" or \"review\" in proposed_role: || L72: if materialized_role: || L81: return \"include_as_nonheldout_retention_anchor_candidate\" || L90: if gate_scope == \"normal_heldout_gate\": || L91: return \"normal_heldout_gate_candidate\"",
+      "old_or_ambiguous_hits": "heldout:14;heldout_retention:6;retention_anchor:4;role:17;split:14",
+      "path": "scripts/build_retention_family_training_input_dryrun.py",
+      "recommendation": "review implementation semantics before enabling training",
+      "risk_level": "low_or_adapted"
+    },
+    {
+      "category": "eval_or_gate_consumer",
+      "consumer_status": "uses_old_heldout_retention_without_new_contract",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "L57: def split_moves(x: Any) -> list[str]: || L64: for tok in s.split(): || L190: expected_moves = split_moves(erow.get(\"expected_blocking_moves\", \"\")) || L191: opponent_wins = split_moves(erow.get(\"opponent_immediate_winning_moves\", \"\")) || L230: suggested_split = \"train_candidate_candidate\" || L231: role_guess = \"safety_block_teacher_candidate\" || L233: suggested_split = \"heldout_retention_candidate\" || L234: role_guess = \"safety_block_retention_candidate\" || L244: \"suggested_split\": suggested_split, || L245: \"role_guess\": role_guess, || L308: r[\"suggested_split\"], || L319: \"suggested_split_counts\": dict(Counter(c[\"suggested_split\"] for c in candidates)),",
+      "old_or_ambiguous_hits": "heldout:2;heldout_retention:2;role:12;split:19",
+      "path": "scripts/build_safety_block_candidate_manifest.py",
+      "recommendation": "block training until this consumer is adapted to train/eval manifests and gate_scope",
+      "risk_level": "high"
+    },
+    {
+      "category": "retention_or_teacher_tool",
+      "consumer_status": "no_relevant_retention_family_signal",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "L40: \"retention_anchors\": [ || L67: \"role\", || L106: \"role_counts\": {}, || L123: role_counts = Counter() || L131: role = row.get(\"role\") or row.get(\"label\") or row.get(\"category\") || L132: if role: || L133: role_counts[role] += 1 || L168: summary[\"role_counts\"] = dict(role_counts) || L196: \"role_counts\": {}, || L220: role_counts = Counter() || L224: role = row.get(\"role\") or row.get(\"label\") or row.get(\"category\") || L225: if role:",
+      "old_or_ambiguous_hits": "retention_anchor:1;role:25;split:3",
+      "path": "scripts/build_teacher_divergence_data_inventory.py",
+      "recommendation": "no action for this audit",
+      "risk_level": "low"
+    },
+    {
+      "category": "dataset_consumer",
+      "consumer_status": "uses_old_heldout_retention_without_new_contract",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "L144: split: str, || L145: role: str, || L156: heldout: bool, || L161: \"split\": split, || L162: \"role\": role, || L175: \"label_type\": \"policy_teacher\", || L177: \"heldout\": bool(heldout), || L187: split: str, || L188: role: str, || L211: \"split\": split, || L212: \"role\": role, || L266: clean.setdefault(\"heldout\", clean.get(\"split\") == \"heldout_retention\")",
+      "old_or_ambiguous_hits": "heldout:12;heldout_retention:5;label_type:1;retention_anchor:10;role:34;split:28",
+      "path": "scripts/build_teacher_divergence_retention_clean_v2_dataset.py",
+      "recommendation": "block training until this consumer is adapted to train/eval manifests and gate_scope",
+      "risk_level": "high"
+    },
+    {
+      "category": "dataset_consumer",
+      "consumer_status": "uses_old_heldout_retention_without_new_contract",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "L86: parts = [p.strip() for p in s.split(\",\")] || L185: split: str, || L186: role: str, || L207: \"split\": split, || L208: \"role\": role, || L240: dedupe_key = (split, board_digest, target) || L242: base_manifest[\"skip_reason\"] = \"duplicate_split_board_target\" || L257: \"split\": split, || L258: \"role\": role, || L271: \"label_type\": raw_row.get(\"label_type\", \"policy_target\"), || L273: \"heldout\": split.startswith(\"heldout\"), || L327: split=\"train_teacher_divergence\",",
+      "old_or_ambiguous_hits": "heldout:7;heldout_retention:5;label_type:3;retention_anchor:3;role:12;split:25",
+      "path": "scripts/build_teacher_divergence_retention_dataset.py",
+      "recommendation": "block training until this consumer is adapted to train/eval manifests and gate_scope",
+      "risk_level": "high"
+    },
+    {
+      "category": "dataset_consumer",
+      "consumer_status": "uses_old_heldout_retention_without_new_contract",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "L39: \"retention_anchors\": [ || L57: ROLE_KEYS = [\"role\", \"category\", \"label_type\"] || L177: def classify_role(source_group: str, row: dict[str, Any]) -> str: || L178: existing_role = norm_scalar(get_any(row, ROLE_KEYS, \"\")) || L179: lower_role = existing_role.lower() || L184: if \"heldout\" in lower_role or \"retention\" in lower_role or \"anchor\" in lower_role: || L185: return \"heldout_retention_anchor\" || L187: if \"teacher_divergence\" in lower_role or \"seed_teacher_divergence\" in lower_role: || L190: if source_group == \"retention_anchors\": || L191: return \"heldout_retention_anchor\" || L207: return existing_role or \"audit_only\" || L210: def split_for_role(role: str, source_group: str) -> str:",
+      "old_or_ambiguous_hits": "heldout:11;heldout_retention:8;label_type:1;retention_anchor:7;role:44;split:20",
+      "path": "scripts/build_teacher_divergence_retention_expanded_dataset.py",
+      "recommendation": "block training until this consumer is adapted to train/eval manifests and gate_scope",
+      "risk_level": "high"
+    },
+    {
+      "category": "dataset_consumer",
+      "consumer_status": "uses_old_heldout_retention_without_new_contract",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "L83: \"split\": \"train_candidate\", || L84: \"role\": \"teacher_divergence\", || L97: \"label_type\": \"policy_teacher_safety_block\", || L99: \"heldout\": False, || L139: if norm(c.get(\"suggested_split\")) != \"train_candidate_candidate\": || L141: if norm(c.get(\"role_guess\")) != \"safety_block_teacher_candidate\": || L260: if r.get(\"role\") == \"heldout_retention_anchor\" and r.get(\"split\") != \"heldout_retention\" || L273: \"split_counts\": dict(Counter(r.get(\"split\") for r in rows)), || L274: \"role_counts\": dict(Counter(r.get(\"role\") for r in rows)), || L283: key=lambda r: (r.get(\"split\", \"\"), r.get(\"role\", \"\"), r.get(\"bucket\", \"\"), r.get(\"id\", \"\")), || L294: \"split_counts\": validation[\"split_counts\"], || L295: \"role_counts\": validation[\"role_counts\"],",
+      "old_or_ambiguous_hits": "heldout:3;heldout_retention:2;label_type:1;retention_anchor:1;role:8;split:13",
+      "path": "scripts/build_teacher_divergence_retention_safety_v3_dataset.py",
+      "recommendation": "block training until this consumer is adapted to train/eval manifests and gate_scope",
+      "risk_level": "high"
+    },
+    {
+      "category": "dataset_consumer",
+      "consumer_status": "uses_generic_split_or_role_terms",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "L27: \"label_type\", || L76: return [part.strip() for part in raw.split() if part.strip()] || L81: for line in snapshot.splitlines(): || L82: tokens = line.strip().split() || L96: label_type: str, || L108: \"label_type\": label_type, || L128: label_type = \"old_immediate_block_regression\" || L132: label_type = \"verified_double_threat_loss\" || L143: label_type=label_type, || L163: label_type=\"early_forcing_value_negative\", || L178: label_type=\"pre_double_threat_warning\", || L195: label_type=\"verified_double_threat_loss\",",
+      "old_or_ambiguous_hits": "label_type:11;split:3",
+      "path": "scripts/build_v12b_forced_line_dataset.py",
+      "recommendation": "inspect before training; may need explicit retention-family contract support",
+      "risk_level": "medium"
+    },
+    {
+      "category": "dataset_consumer",
+      "consumer_status": "uses_generic_split_or_role_terms",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "L43: for raw_line in snapshot.splitlines(): || L50: tokens = line.split() || L140: \"old_final_xy\": [int(x) for x in str(item[\"final\"]).split(\",\")],",
+      "old_or_ambiguous_hits": "split:3",
+      "path": "scripts/build_v12l_margin_repair_dataset.py",
+      "recommendation": "inspect before training; may need explicit retention-family contract support",
+      "risk_level": "medium"
+    },
+    {
+      "category": "training_script",
+      "consumer_status": "uses_generic_split_or_role_terms",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "L148: for col, token in enumerate(line.strip().split()): || L166: lines = debug_log.read_text(encoding=\"utf-8\", errors=\"replace\").splitlines() || L340: lines = [line.strip() for line in proc.stdout.splitlines() if line.strip()] || L349: bestline = line.split(\"Bestline\", maxsplit=1)[1].strip()",
+      "old_or_ambiguous_hits": "split:5",
+      "path": "scripts/candidate_d_teacher_disagreement_census.py",
+      "recommendation": "inspect before training; may need explicit retention-family contract support",
+      "risk_level": "medium"
+    },
+    {
+      "category": "possibly_relevant",
+      "consumer_status": "no_relevant_retention_family_signal",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "L102: for item in args.rapfi_retry_spec.split(\",\"): || L105: depth_text, timeout_text = item.split(\":\", maxsplit=1) || L186: for line in query_path.read_text(encoding=\"utf-8\").splitlines(): || L488: return sum(token in row[\"classification\"].split(\";\") for row in rows)",
+      "old_or_ambiguous_hits": "split:5",
+      "path": "scripts/candidate_i_rapfi_requery_census.py",
+      "recommendation": "no action for this audit",
+      "risk_level": "low"
+    },
+    {
+      "category": "possibly_relevant",
+      "consumer_status": "no_relevant_retention_family_signal",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "L102: x_text, y_text = xy.split(\",\", maxsplit=1) || L123: tokens = [part for part in bestline.split() if part] || L155: for line in path.read_text(encoding=\"utf-8\", errors=\"replace\").splitlines(): || L179: for line in path.read_text(encoding=\"utf-8\", errors=\"replace\").splitlines(): || L247: x_text, y_text = xy.split(\",\", maxsplit=1) || L253: x_text, y_text = decision.board_moves_before[-1][1].split(\",\", maxsplit=1) || L452: return sum(token in row[\"classification\"].split(\";\") for row in rows) || L458: d_divergences = [row for row in rows if \"diverges_from_candidate_d_baseline\" in row[\"classification\"].split(\";\")] || L459: teacher_divergences = [row for row in rows if \"diverges_from_rapfi_teacher\" in row[\"classification\"].split(\";\")] || L460: low_policy = [row for row in rows if \"teacher_low_policy_visibility\" in row[\"classification\"].split(\";\")] || L461: value_disfavors = [row for row in rows if \"value_disfavors_candidate\" in row[\"classification\"].split(\";\")]",
+      "old_or_ambiguous_hits": "split:14",
+      "path": "scripts/candidate_i_smoke_failure_census.py",
+      "recommendation": "no action for this audit",
+      "risk_level": "low"
+    },
+    {
+      "category": "possibly_relevant",
+      "consumer_status": "no_relevant_retention_family_signal",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "L12: for item in line.split(): || L13: x, y = item.split(\",\")",
+      "old_or_ambiguous_hits": "split:2",
+      "path": "scripts/categorize_tactical_mid_failures.py",
+      "recommendation": "no action for this audit",
+      "risk_level": "low"
+    },
+    {
+      "category": "possibly_relevant",
+      "consumer_status": "no_relevant_retention_family_signal",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "L135: f\"{label} has duplicate comparison keys ({sample}); rerun with --key game_move or split the log.\"",
+      "old_or_ambiguous_hits": "split:1",
+      "path": "scripts/compare_decision_logs.py",
+      "recommendation": "no action for this audit",
+      "risk_level": "low"
+    },
+    {
+      "category": "training_script",
+      "consumer_status": "mentions_new_retention_family_contract",
+      "new_contract_hits": "nonheldout_retention_anchor:1",
+      "new_hit_lines": "L176: recommendation = \"split_sibling_targets_and_add_nonheldout_retention_anchor\"",
+      "old_hit_lines": "L12: AUDIT_SUMMARY = Path(\"analysis/integration_eval/teacher_divergence_policy_mixed_ce_heldout_regression_audit_summary.csv\") || L13: BLOCKER_REVIEW = Path(\"analysis/integration_eval/teacher_divergence_policy_mixed_ce_heldout_blocker_position_review.csv\") || L15: OUT_ROWS = Path(\"analysis/integration_eval/teacher_divergence_retention_family_split_design_rows.csv\") || L16: OUT_FAMILIES = Path(\"analysis/integration_eval/teacher_divergence_retention_family_split_design_families.csv\") || L17: OUT_REPORT = Path(\"analysis/integration_eval/teacher_divergence_retention_family_split_design_report.md\") || L87: heldout_rows = [ || L89: if r.get(\"split\") == \"heldout_retention\" or r.get(\"heldout\") is True || L94: for row in heldout_rows: || L137: \"label_type\": row.get(\"label_type\", \"\"), || L138: \"role\": row.get(\"role\", \"\"), || L176: recommendation = \"split_sibling_targets_and_add_nonheldout_retention_anchor\" || L178: recommendation = \"split_sibling_targets_by_board_family\"",
+      "old_or_ambiguous_hits": "heldout:14;heldout_retention:2;label_type:3;retention_anchor:2;role:2;split:9",
+      "path": "scripts/design_retention_family_splits.py",
+      "recommendation": "review implementation semantics before enabling training",
+      "risk_level": "low_or_adapted"
+    },
+    {
+      "category": "training_script",
+      "consumer_status": "uses_generic_split_or_role_terms",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "L207: \"role\": sample[\"role\"],",
+      "old_or_ambiguous_hits": "role:2",
+      "path": "scripts/evaluate_candidate_g_policy.py",
+      "recommendation": "inspect before training; may need explicit retention-family contract support",
+      "risk_level": "medium"
+    },
+    {
+      "category": "training_script",
+      "consumer_status": "uses_generic_split_or_role_terms",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "L99: x_text, y_text = coord.split(\",\", maxsplit=1)",
+      "old_or_ambiguous_hits": "split:2",
+      "path": "scripts/evaluate_candidate_h_value.py",
+      "recommendation": "inspect before training; may need explicit retention-family contract support",
+      "risk_level": "medium"
+    },
+    {
+      "category": "training_script",
+      "consumer_status": "relevant_consumer_no_retention_family_contract",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "",
+      "old_or_ambiguous_hits": "",
+      "path": "scripts/evaluate_checkpoint.py",
+      "recommendation": "inspect before training if this script is in the training path",
+      "risk_level": "medium"
+    },
+    {
+      "category": "training_script",
+      "consumer_status": "uses_generic_split_or_role_terms",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "L63: for line in snapshot.splitlines(): || L64: tokens = line.strip().split() || L91: return {part.strip() for part in raw.split() if part.strip()} || L131: \"label_type\", || L201: \"label_type\": \"\", || L229: for line in board_text.splitlines(): || L230: tokens = line.strip().split() || L247: def split_dataset_id(sample_id: str) -> tuple[str, str]: || L250: game_part = sample_id.split(\"_m\", maxsplit=1)[0] || L251: move_part = sample_id.split(\"_m\", maxsplit=1)[1] || L252: return game_part.split(\"_g\", maxsplit=1)[1], move_part || L265: game_number, move_count = split_dataset_id(sample_id)",
+      "old_or_ambiguous_hits": "label_type:10;split:13",
+      "path": "scripts/evaluate_rapfi_failure_set.py",
+      "recommendation": "inspect before training; may need explicit retention-family contract support",
+      "risk_level": "medium"
+    },
+    {
+      "category": "training_script",
+      "consumer_status": "relevant_consumer_no_retention_family_contract",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "",
+      "old_or_ambiguous_hits": "",
+      "path": "scripts/evaluate_tactical_mid_must_block_cases.py",
+      "recommendation": "inspect before training if this script is in the training path",
+      "risk_level": "medium"
+    },
+    {
+      "category": "eval_or_gate_consumer",
+      "consumer_status": "uses_generic_split_or_role_terms",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "L36: for line in stdout.splitlines(): || L45: for line in stderr.splitlines(): || L195: \"stderr_tail\": \"\\\\n\".join(proc.stderr.splitlines()[-6:]),",
+      "old_or_ambiguous_hits": "split:3",
+      "path": "scripts/evaluate_tactical_mid_must_block_cases_c_engine.py",
+      "recommendation": "inspect before training; may need explicit retention-family contract support",
+      "risk_level": "medium"
+    },
+    {
+      "category": "training_script",
+      "consumer_status": "uses_generic_split_or_role_terms",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "L148: x, y = [int(v) for v in move_s.split(\",\")]",
+      "old_or_ambiguous_hits": "split:1",
+      "path": "scripts/evaluate_tactical_mid_preterminal_actionable_cases.py",
+      "recommendation": "inspect before training; may need explicit retention-family contract support",
+      "risk_level": "medium"
+    },
+    {
+      "category": "eval_or_gate_consumer",
+      "consumer_status": "uses_generic_split_or_role_terms",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "L49: for line in stdout.splitlines(): || L58: for line in stderr.splitlines(): || L159: x, y = [int(v) for v in move_s.split(\",\")] || L227: \"stderr_tail\": \"\\\\n\".join(proc.stderr.splitlines()[-6:]),",
+      "old_or_ambiguous_hits": "split:4",
+      "path": "scripts/evaluate_tactical_mid_preterminal_actionable_cases_c_engine.py",
+      "recommendation": "inspect before training; may need explicit retention-family contract support",
+      "risk_level": "medium"
+    },
+    {
+      "category": "training_script",
+      "consumer_status": "uses_old_heldout_retention_without_new_contract",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "L56: parser.add_argument(\"--max-heldout-prob-regressed\", type=int, default=4) || L57: parser.add_argument(\"--max-heldout-rank-regressed\", type=int, default=3) || L58: parser.add_argument(\"--allow-heldout-top1-loss\", action=\"store_true\") || L69: def split_stats(rows: list[dict[str, str]]) -> dict[str, dict[str, Any]]: || L79: grouped[b[\"split\"]].append((b, after[row_id])) || L82: for split, pairs in grouped.items(): || L117: out[split] = { || L141: held = stats[\"heldout_retention\"] || L165: if held[\"prob_regressed\"] > args.max_heldout_prob_regressed: || L167: f\"heldout_retention prob_regressed {held['prob_regressed']} > {args.max_heldout_prob_regressed}\" || L169: if held[\"rank_regressed\"] > args.max_heldout_rank_regressed: || L171: f\"heldout_retention rank_regressed {held['rank_regressed']} > {args.max_heldout_rank_regressed}\"",
+      "old_or_ambiguous_hits": "heldout:21;heldout_retention:9;split:14",
+      "path": "scripts/evaluate_teacher_divergence_policy_probe_gates.py",
+      "recommendation": "block training until this consumer is adapted to train/eval manifests and gate_scope",
+      "risk_level": "high"
+    },
+    {
+      "category": "possibly_relevant",
+      "consumer_status": "no_relevant_retention_family_signal",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "L110: lines = path.read_text(encoding=\"utf-8\", errors=\"replace\").splitlines(keepends=True)",
+      "old_or_ambiguous_hits": "split:1",
+      "path": "scripts/extract_failure_board_snapshots.py",
+      "recommendation": "no action for this audit",
+      "risk_level": "low"
+    },
+    {
+      "category": "possibly_relevant",
+      "consumer_status": "no_relevant_retention_family_signal",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "L172: black_score, white_score = (int(part) for part in game.result_score.split(\"-\", maxsplit=1))",
+      "old_or_ambiguous_hits": "split:2",
+      "path": "scripts/extract_rapfi_failure_positions.py",
+      "recommendation": "no action for this audit",
+      "risk_level": "low"
+    },
+    {
+      "category": "possibly_relevant",
+      "consumer_status": "no_relevant_retention_family_signal",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "L9: def split_sgf_trees(text: str) -> list[str]: || L43: color, xy = s.split(\"@\") || L44: x, y = xy.split(\",\") || L73: sgf_trees = split_sgf_trees(sgf_path.read_text())",
+      "old_or_ambiguous_hits": "split:4",
+      "path": "scripts/extract_tactical_mid_must_block_cases.py",
+      "recommendation": "no action for this audit",
+      "risk_level": "low"
+    },
+    {
+      "category": "possibly_relevant",
+      "consumer_status": "no_relevant_retention_family_signal",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "L138: observed_next_role = \"neural\" if observed_next_color == neural_color else \"opponent\" || L169: \"observed_next_role\": observed_next_role, || L177: observed_next_role == \"opponent\" || L191: if observed_next_role == \"neural\": || L243: role_counts = Counter(str(r[\"observed_next_role\"]) for r in rows) || L248: neural_rows = [r for r in rows if r[\"observed_next_role\"] == \"neural\"] || L266: for role, count in role_counts.most_common(): || L267: lines.append(f\"| rows where observed next role is `{role}` | {count}/{n} | {count/n:.3f} |\") || L280: f\"`{r['observed_next_role']}` | `{r['observed_next_move']}` | \" || L334: \"observed_next_role\", || L362: neural_rows = [r for r in rows if r[\"observed_next_role\"] == \"neural\"]",
+      "old_or_ambiguous_hits": "role:15",
+      "path": "scripts/extract_tactical_mid_preterminal_cases.py",
+      "recommendation": "no action for this audit",
+      "risk_level": "low"
+    },
+    {
+      "category": "training_script",
+      "consumer_status": "relevant_consumer_no_retention_family_contract",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "",
+      "old_or_ambiguous_hits": "",
+      "path": "scripts/init_capacity_candidate_a_b6c64.py",
+      "recommendation": "inspect before training if this script is in the training path",
+      "risk_level": "medium"
+    },
+    {
+      "category": "training_script",
+      "consumer_status": "relevant_consumer_no_retention_family_contract",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "",
+      "old_or_ambiguous_hits": "",
+      "path": "scripts/init_capacity_candidate_b_b4c96.py",
+      "recommendation": "inspect before training if this script is in the training path",
+      "risk_level": "medium"
+    },
+    {
+      "category": "retention_or_teacher_tool",
+      "consumer_status": "no_relevant_retention_family_signal",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "",
+      "old_or_ambiguous_hits": "",
+      "path": "scripts/inspect_teacher_divergence_retention_sources.py",
+      "recommendation": "no action for this audit",
+      "risk_level": "low"
+    },
+    {
+      "category": "training_script",
+      "consumer_status": "relevant_consumer_no_retention_family_contract",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "",
+      "old_or_ambiguous_hits": "",
+      "path": "scripts/interpolate_checkpoints.py",
+      "recommendation": "inspect before training if this script is in the training path",
+      "risk_level": "medium"
+    },
+    {
+      "category": "possibly_relevant",
+      "consumer_status": "no_relevant_retention_family_signal",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "",
+      "old_or_ambiguous_hits": "",
+      "path": "scripts/label_rapfi_failure_set.py",
+      "recommendation": "no action for this audit",
+      "risk_level": "low"
+    },
+    {
+      "category": "training_script",
+      "consumer_status": "mentions_new_retention_family_contract",
+      "new_contract_hits": "allowed_as_only_sibling_family_gate:4;external_or_family_level_only_not_sibling_only:2;gate_scope:12;heldout_retention_gate:9;nonheldout_retention_anchor:12",
+      "new_hit_lines": "L63: proposal == \"nonheldout_retention_anchor_candidate\" || L68: return \"nonheldout_retention_anchor\" || L71: return \"heldout_retention_gate\" || L74: return \"heldout_retention_gate_family_conflict_review\" || L76: return \"heldout_retention_gate_review\" || L86: if role == \"nonheldout_retention_anchor\": || L98: if role == \"heldout_retention_gate\": || L105: if role == \"heldout_retention_gate_family_conflict_review\": || L111: def gate_scope(row: Dict[str, str], role: str) -> str: || L115: return \"external_or_family_level_only_not_sibling_only\" || L116: if role == \"heldout_retention_gate\": || L144: \"needs_nonheldout_retention_anchor\",",
+      "old_hit_lines": "L3: Materialize retention family split artifacts from retention_family_split_proposal.csv. || L5: This is split-artifact generation only: || L24: DEFAULT_PROPOSAL_CSV = Path(\"analysis/integration_eval/retention_family_split_proposal.csv\") || L25: DEFAULT_OUT_MANIFEST_CSV = Path(\"analysis/integration_eval/retention_family_materialized_split_manifest.csv\") || L26: DEFAULT_OUT_JSON = Path(\"analysis/integration_eval/retention_family_materialized_split.json\") || L27: DEFAULT_OUT_MD = Path(\"analysis/integration_eval/retention_family_materialized_split_report.md\") || L49: def split_targets(targets: str) -> List[str]: || L50: return [x.strip() for x in clean(targets).split(\";\") if x.strip()] || L53: def materialized_role(row: Dict[str, str]) -> str: || L58: proposal = clean(row.get(\"split_proposal\")) || L63: proposal == \"nonheldout_retention_anchor_candidate\" || L68: return \"nonheldout_retention_anchor\"",
+      "old_or_ambiguous_hits": "heldout:40;heldout_retention:21;retention_anchor:12;role:33;split:18",
+      "path": "scripts/materialize_retention_family_split.py",
+      "recommendation": "review implementation semantics before enabling training",
+      "risk_level": "low_or_adapted"
+    },
+    {
+      "category": "training_script",
+      "consumer_status": "uses_old_heldout_retention_without_new_contract",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "L46: x, y = xy.split(\",\", maxsplit=1) || L82: for line in text.splitlines(): || L83: tokens = line.strip().split() || L151: def summarize(rows: list[dict[str, str]], split: str | None = None) -> dict[str, Any]: || L152: subset = [r for r in rows if split is None or r[\"split\"] == split] || L209: lines.append(f\"- Split counts: `{dataset_summary.get('split_counts')}`\") || L210: lines.append(f\"- Role counts: `{dataset_summary.get('role_counts')}`\") || L214: lines.append(\"| split | rows | top1 | top3 | top5 | top10 | mean rank | median rank | mean target prob |\") || L216: for split in [\"ALL\"] + sorted(Counter(r[\"split\"] for r in rows)): || L217: summary = summarize(rows, None if split == \"ALL\" else split) || L223: f\"| `{split}` | {den} | \" || L233: lines.append(\"| id | split | side | target | rank | prob | top move | top prob | reference move | reference kind | bucket |\")",
+      "old_or_ambiguous_hits": "heldout:5;heldout_retention:2;retention_anchor:2;role:4;split:28",
+      "path": "scripts/probe_teacher_divergence_retention_dataset.py",
+      "recommendation": "block training until this consumer is adapted to train/eval manifests and gate_scope",
+      "risk_level": "high"
+    },
+    {
+      "category": "training_script",
+      "consumer_status": "uses_generic_split_or_role_terms",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "L40: AUDIT_SUMMARY = Path(\"analysis/integration_eval/teacher_divergence_policy_mixed_ce_heldout_regression_audit_summary.csv\") || L42: OUT_DETAIL = Path(\"analysis/integration_eval/teacher_divergence_policy_mixed_ce_heldout_blocker_position_review.csv\") || L43: OUT_REPORT = Path(\"analysis/integration_eval/teacher_divergence_policy_mixed_ce_heldout_blocker_position_review.md\") || L84: x, y = [int(v) for v in target.split(\",\")] || L140: \"label_type\": r.get(\"label_type\", \"\"), || L186: lines.append(\"# Mixed-CE heldout blocker position review\") || L190: lines.append(\"- read-only review of six repeated heldout blockers\") || L205: lines.append(\"All six are heldout `policy_target` rows. Filtering only by label_type is therefore not enough.\") || L269: lines.append(\"The candidate D move15 rows are especially important because one nearby heldout row gained top-1 under all mixed-CE scales, while two sibling targets regressed. This suggests a local target conflict rather  || L280: lines.append(\"- add explicit retention anchors for these blocker families outside the heldout split, or\") || L281: lines.append(\"- make mixed-CE selection conditional on source family instead of label_type alone.\")",
+      "old_or_ambiguous_hits": "heldout:8;label_type:4;split:2",
+      "path": "scripts/review_mixed_ce_heldout_blocker_positions.py",
+      "recommendation": "inspect before training; may need explicit retention-family contract support",
+      "risk_level": "medium"
+    },
+    {
+      "category": "possibly_relevant",
+      "consumer_status": "no_relevant_retention_family_signal",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "",
+      "old_or_ambiguous_hits": "",
+      "path": "scripts/run_15x15_rapfi_corpus.py",
+      "recommendation": "no action for this audit",
+      "risk_level": "low"
+    },
+    {
+      "category": "training_script",
+      "consumer_status": "uses_old_heldout_retention_without_new_contract",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "L31: \"--anchor-kl-splits\", || L36: \"--mixed-ce-anchor-splits\", || L84: parser.add_argument(\"--max-heldout-prob-regressed\", type=int, default=4) || L85: parser.add_argument(\"--max-heldout-rank-regressed\", type=int, default=3) || L86: parser.add_argument(\"--allow-heldout-top1-loss\", action=\"store_true\") || L119: \"--anchor-kl-splits\", || L120: args.anchor_kl_splits, || L130: if args.mixed_ce_anchor_splits is not None: || L131: cmd.extend([\"--mixed-ce-anchor-splits\", str(args.mixed_ce_anchor_splits)]) || L132: if args.mixed_ce_anchor_label_types is not None: || L133: cmd.extend([\"--mixed-ce-anchor-label-types\", str(args.mixed_ce_anchor_label_types)]) || L170: grouped[b[\"split\"]].append((b, after[row_id]))",
+      "old_or_ambiguous_hits": "heldout:29;heldout_retention:8;label_type:4;split:19",
+      "path": "scripts/run_teacher_divergence_regression_gated_policy_probe.py",
+      "recommendation": "block training until this consumer is adapted to train/eval manifests and gate_scope",
+      "risk_level": "high"
+    },
+    {
+      "category": "possibly_relevant",
+      "consumer_status": "no_relevant_retention_family_signal",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "L39: black_score, white_score = raw_result.split(\"-\") || L63: for line in text.splitlines():",
+      "old_or_ambiguous_hits": "split:2",
+      "path": "scripts/summarize_candidate_h_rapfi_smoke.py",
+      "recommendation": "no action for this audit",
+      "risk_level": "low"
+    },
+    {
+      "category": "other_python",
+      "consumer_status": "no_relevant_retention_family_signal",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "L11: def split_sgf_trees(text: str) -> list[str]: || L47: for line in log_path.read_text().splitlines(): || L57: left, right = [x.strip() for x in pairing.split(\" vs \")] || L145: sgf_trees = split_sgf_trees(sgf_path.read_text())",
+      "old_or_ambiguous_hits": "split:4",
+      "path": "scripts/summarize_gomocup_score_run.py",
+      "recommendation": "no action for this audit",
+      "risk_level": "low"
+    },
+    {
+      "category": "training_script",
+      "consumer_status": "uses_generic_split_or_role_terms",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "L27: role: str || L186: tokens = line.split() if \" \" in line else list(line) || L307: role = str(first_present(row, (\"role\", \"anchor_role\", \"candidate_role\", \"kind\")) or \"\") || L380: role=role, || L479: \"role\": sample.role, || L511: text = f\"{sample.row_id} {sample.role}\".lower() || L516: text = f\"{sample.row_id} {sample.role}\".lower() || L517: if sample.role == \"retention_anchor\": || L644: \"| row_id | role | target | before_top | before_rank | before_prob | before_gap | \" || L658: f\"| {sample.row_id} | {sample.role} | {a['target']} | \" || L691: role_counts: dict[str, int] = {} || L693: role_counts[sample.role] = role_counts.get(sample.role, 0) + 1",
+      "old_or_ambiguous_hits": "retention_anchor:1;role:23;split:1",
+      "path": "scripts/train_candidate_g_policy_first_dry_run.py",
+      "recommendation": "inspect before training; may need explicit retention-family contract support",
+      "risk_level": "medium"
+    },
+    {
+      "category": "training_script",
+      "consumer_status": "relevant_consumer_no_retention_family_contract",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "",
+      "old_or_ambiguous_hits": "",
+      "path": "scripts/train_candidate_g_teacher_policy.py",
+      "recommendation": "inspect before training if this script is in the training path",
+      "risk_level": "medium"
+    },
+    {
+      "category": "training_script",
+      "consumer_status": "uses_generic_split_or_role_terms",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "L133: if row[\"role\"] in {\"strong_teacher_divergence\", \"nearby_teacher_continuation\", \"tactical_regression_anchor\"}:",
+      "old_or_ambiguous_hits": "role:1",
+      "path": "scripts/train_candidate_h_value_ranking.py",
+      "recommendation": "inspect before training; may need explicit retention-family contract support",
+      "risk_level": "medium"
+    },
+    {
+      "category": "training_script",
+      "consumer_status": "relevant_consumer_no_retention_family_contract",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "",
+      "old_or_ambiguous_hits": "",
+      "path": "scripts/train_greedy_sparring_v10.py",
+      "recommendation": "inspect before training if this script is in the training path",
+      "risk_level": "medium"
+    },
+    {
+      "category": "training_script",
+      "consumer_status": "relevant_consumer_no_retention_family_contract",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "",
+      "old_or_ambiguous_hits": "",
+      "path": "scripts/train_greedy_sparring_v9.py",
+      "recommendation": "inspect before training if this script is in the training path",
+      "risk_level": "medium"
+    },
+    {
+      "category": "training_script",
+      "consumer_status": "uses_generic_split_or_role_terms",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "L28: label_type: str || L79: for line in snapshot.splitlines(): || L80: tokens = line.strip().split() || L100: for line in board_text.splitlines(): || L101: tokens = line.strip().split() || L119: x_text, y_text = coord.split(\",\", maxsplit=1) || L126: return [part.strip() for part in raw.split() if part.strip()] || L202: label_type=label_row[\"failure_type\"], || L256: game_number = sample_id.split(\"_m\", maxsplit=1)[0].split(\"_g\")[-1] if \"_g\" in sample_id else \"\" || L263: label_type=str(row[\"label_type\"]), || L306: f\"label_type={sample.label_type} \"",
+      "old_or_ambiguous_hits": "label_type:6;split:10",
+      "path": "scripts/train_rapfi_failure_repair.py",
+      "recommendation": "inspect before training; may need explicit retention-family contract support",
+      "risk_level": "medium"
+    },
+    {
+      "category": "training_script",
+      "consumer_status": "uses_generic_split_or_role_terms",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "L51: for raw_line in snapshot.splitlines(): || L52: tokens = raw_line.strip().split()",
+      "old_or_ambiguous_hits": "split:2",
+      "path": "scripts/train_rapfi_teacher_policy_margin.py",
+      "recommendation": "inspect before training; may need explicit retention-family contract support",
+      "risk_level": "medium"
+    },
+    {
+      "category": "training_script",
+      "consumer_status": "uses_old_heldout_retention_without_new_contract",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "L28: split: str || L29: role: str || L30: label_type: str || L80: \"--anchor-kl-splits\", || L83: \"Comma-separated splits used for KL anchoring against the base model. \" || L84: \"heldout_retention should normally stay evaluation-only.\" || L97: parser.add_argument(\"--no-strict-splits\", action=\"store_true\") || L191: raw_lines = text_value.split(\"/\") || L203: raw_lines = text_value.splitlines() || L213: tokens = line.split() || L255: tokens = line.split() if \" \" in line else list(line) || L326: def prepare_rows(dataset_path: Path, board_size: int, strict_splits: bool) -> tuple[dict[str, Any], list[PreparedRow]]:",
+      "old_or_ambiguous_hits": "heldout:7;heldout_retention:7;label_type:12;role:14;split:69",
+      "path": "scripts/train_teacher_divergence_policy_anchor_probe.py",
+      "recommendation": "block training until this consumer is adapted to train/eval manifests and gate_scope",
+      "risk_level": "high"
+    },
+    {
+      "category": "training_script",
+      "consumer_status": "uses_old_heldout_retention_without_new_contract",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "L28: split: str || L29: role: str || L30: label_type: str || L80: \"--anchor-kl-splits\", || L83: \"Comma-separated splits used for KL anchoring against the base model. \" || L84: \"heldout_retention should normally stay evaluation-only.\" || L91: \"--mixed-ce-anchor-splits\", || L93: help=\"Comma-separated splits to add as low-weight CE anchors.\", || L98: help=\"Optional comma-separated label_type filter for mixed CE anchor rows.\", || L120: parser.add_argument(\"--no-strict-splits\", action=\"store_true\") || L214: raw_lines = text_value.split(\"/\") || L226: raw_lines = text_value.splitlines()",
+      "old_or_ambiguous_hits": "heldout:9;heldout_retention:9;label_type:24;role:14;split:85",
+      "path": "scripts/train_teacher_divergence_policy_mixed_ce_anchor_probe.py",
+      "recommendation": "block training until this consumer is adapted to train/eval manifests and gate_scope",
+      "risk_level": "high"
+    },
+    {
+      "category": "training_script",
+      "consumer_status": "uses_old_heldout_retention_without_new_contract",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "L28: split: str || L29: role: str || L30: label_type: str || L89: parser.add_argument(\"--no-strict-splits\", action=\"store_true\") || L183: raw_lines = text_value.split(\"/\") || L195: raw_lines = text_value.splitlines() || L205: tokens = line.split() || L247: tokens = line.split() if \" \" in line else list(line) || L318: def prepare_rows(dataset_path: Path, board_size: int, strict_splits: bool) -> tuple[dict[str, Any], list[PreparedRow]]: || L322: split_counts = Counter(str(r.get(\"split\")) for r in rows) || L323: role_counts = Counter(str(r.get(\"role\")) for r in rows) || L324: label_counts = Counter(str(r.get(\"label_type\")) for r in rows)",
+      "old_or_ambiguous_hits": "heldout:3;heldout_retention:3;label_type:12;role:14;split:52",
+      "path": "scripts/train_teacher_divergence_policy_probe.py",
+      "recommendation": "block training until this consumer is adapted to train/eval manifests and gate_scope",
+      "risk_level": "high"
+    },
+    {
+      "category": "training_script",
+      "consumer_status": "uses_generic_split_or_role_terms",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "L54: for raw_line in snapshot.splitlines(): || L61: tokens = line.split()",
+      "old_or_ambiguous_hits": "split:2",
+      "path": "scripts/train_v12l_margin_repair.py",
+      "recommendation": "inspect before training; may need explicit retention-family contract support",
+      "risk_level": "medium"
+    },
+    {
+      "category": "training_script",
+      "consumer_status": "uses_generic_split_or_role_terms",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "L47: case_weights = [float(x) for x in args.case_weights.split(\",\")]",
+      "old_or_ambiguous_hits": "split:1",
+      "path": "scripts/train_v12l_margin_repair_frozen_bn.py",
+      "recommendation": "inspect before training; may need explicit retention-family contract support",
+      "risk_level": "medium"
+    },
+    {
+      "category": "dataset_consumer",
+      "consumer_status": "uses_old_heldout_retention_without_new_contract",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "L27: a, b = [p.strip() for p in s.split(\",\", 1)] || L131: for line in board.splitlines(): || L132: tokens = line.strip().split() || L223: \"split\": row.get(\"split\", \"\"), || L224: \"role\": row.get(\"role\", \"\"), || L248: split = result[\"split\"] || L251: if split == \"heldout_retention\" and not row.get(\"heldout\"): || L252: err(\"heldout_retention row has false/missing heldout flag\") || L253: if split == \"train_teacher_divergence\" and row.get(\"heldout\"): || L254: err(\"train row has heldout flag\") || L335: \"split\", || L336: \"role\",",
+      "old_or_ambiguous_hits": "heldout:6;heldout_retention:2;role:3;split:29",
+      "path": "scripts/validate_teacher_divergence_retention_dataset.py",
+      "recommendation": "block training until this consumer is adapted to train/eval manifests and gate_scope",
+      "risk_level": "high"
+    },
+    {
+      "category": "training_script",
+      "consumer_status": "uses_generic_split_or_role_terms",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "L93: x_text, y_text = coord.split(\",\", maxsplit=1) || L239: for line in result.stdout.splitlines():",
+      "old_or_ambiguous_hits": "split:3",
+      "path": "scripts/verify_candidate_h_c_export.py",
+      "recommendation": "inspect before training; may need explicit retention-family contract support",
+      "risk_level": "medium"
+    },
+    {
+      "category": "possibly_relevant",
+      "consumer_status": "no_relevant_retention_family_signal",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "",
+      "old_or_ambiguous_hits": "",
+      "path": "src/gomoku_agent/board.py",
+      "recommendation": "no action for this audit",
+      "risk_level": "low"
+    },
+    {
+      "category": "training_script",
+      "consumer_status": "relevant_consumer_no_retention_family_contract",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "",
+      "old_or_ambiguous_hits": "",
+      "path": "src/gomoku_agent/checkpoint.py",
+      "recommendation": "inspect before training if this script is in the training path",
+      "risk_level": "medium"
+    },
+    {
+      "category": "possibly_relevant",
+      "consumer_status": "no_relevant_retention_family_signal",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "",
+      "old_or_ambiguous_hits": "",
+      "path": "src/gomoku_agent/mcts.py",
+      "recommendation": "no action for this audit",
+      "risk_level": "low"
+    },
+    {
+      "category": "possibly_relevant",
+      "consumer_status": "no_relevant_retention_family_signal",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "",
+      "old_or_ambiguous_hits": "",
+      "path": "src/gomoku_agent/model.py",
+      "recommendation": "no action for this audit",
+      "risk_level": "low"
+    },
+    {
+      "category": "training_script",
+      "consumer_status": "uses_generic_split_or_role_terms",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "L60: row_text, col_text = raw.split()",
+      "old_or_ambiguous_hits": "split:1",
+      "path": "src/gomoku_agent/play.py",
+      "recommendation": "inspect before training; may need explicit retention-family contract support",
+      "risk_level": "medium"
+    },
+    {
+      "category": "possibly_relevant",
+      "consumer_status": "no_relevant_retention_family_signal",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "",
+      "old_or_ambiguous_hits": "",
+      "path": "src/gomoku_agent/search_safety.py",
+      "recommendation": "no action for this audit",
+      "risk_level": "low"
+    },
+    {
+      "category": "possibly_relevant",
+      "consumer_status": "no_relevant_retention_family_signal",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "",
+      "old_or_ambiguous_hits": "",
+      "path": "src/gomoku_agent/self_play.py",
+      "recommendation": "no action for this audit",
+      "risk_level": "low"
+    },
+    {
+      "category": "training_script",
+      "consumer_status": "relevant_consumer_no_retention_family_contract",
+      "new_contract_hits": "",
+      "new_hit_lines": "",
+      "old_hit_lines": "",
+      "old_or_ambiguous_hits": "",
+      "path": "src/gomoku_agent/train.py",
+      "recommendation": "inspect before training if this script is in the training path",
+      "risk_level": "medium"
+    }
+  ]
+}
