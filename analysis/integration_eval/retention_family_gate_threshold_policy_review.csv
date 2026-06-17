@@ -1,0 +1,10 @@
+eval_row_index,family_id,source,policy_target,before_rank,after_rank,rank_delta_after_minus_before,before_prob,after_prob,prob_delta_after_minus_before,abs_prob_drop,prob_epsilon,current_gate_prob_regressed,rank_regressed,top1_lost,rank_unchanged_or_improved,top1_preserved,within_epsilon,is_critical_7_9,critical_harmed,threshold_policy_class
+1,bd:690e24eaa9cbf978,b_mcts16_g1_m46_target_5_11_over_4_12,"5,11",39,38,-1,0.00194259,0.00182245,-0.00012014,0.00012014,0.0005,True,False,False,True,True,True,False,False,warning_prob_only_within_epsilon
+2,bd:9af3d20c637fd30d,v12l_g2_m15_target_8_6_over_6_6,"8,6",1,1,0,0.42844999,0.44035241,0.01190242,,0.0005,False,False,False,True,True,False,False,False,pass_no_regression
+3,bd:a2b4f843dfbb182a,v12l_g2_m13_target_8_6_over_9_4,"8,6",1,1,0,0.5077036,0.51800746,0.01030386,,0.0005,False,False,False,True,True,False,False,False,pass_no_regression
+4,bd:4e43e8574f31dd70,b_mcts16_g2_m19_target_10_7_over_7_11,"10,7",9,9,0,0.01283324,0.01283597,2.73e-06,,0.0005,False,False,False,True,True,False,False,False,pass_no_regression
+5,bd:fcfbf3a577067568,candidate_e_g2_m17_white_last_9_9_target_block_left_7_9_over_live_final_9_10,"7,9",1,1,0,0.52332556,0.53405023,0.01072467,,0.0005,False,False,False,True,True,False,False,False,pass_no_regression
+6,bd:fcfbf3a577067568,candidate_e_g2_m17_white_last_9_9_target_block_right_10_9_over_live_final_9_10,"10,9",7,7,0,0.00526721,0.00530354,3.633e-05,,0.0005,False,False,False,True,True,False,False,False,pass_no_regression
+7,bd:fcfbf3a577067568,candidate_e_g2_m17_white_last_9_9_target_future_block_8_10_over_live_final_9_10,"8,10",168,167,-1,2.02e-06,1.64e-06,-3.8e-07,3.8e-07,0.0005,True,False,False,True,True,True,False,False,warning_prob_only_within_epsilon
+8,bd:fa22a82f75e4b3c2,candidate_e_g2_m13_white_target_5_8_over_8_8,"5,8",3,3,0,0.0453654,0.04490543,-0.00045997,0.00045997,0.0005,True,False,False,True,True,True,False,False,warning_prob_only_within_epsilon
+9,bd:ea22cc14729b88fd,candidate_d_g2_m15_white_last_8_9_target_safe_7_9_over_live_final_8_8,"7,9",4,4,0,0.09005976,0.09247528,0.00241552,,0.0005,False,False,False,True,True,False,True,False,pass_no_regression
