@@ -199,6 +199,12 @@ def compare_rows(
         before_top1 = top1_value(b) if b else None
         after_top1 = top1_value(a) if a else None
 
+        prob_delta = None
+        abs_prob_drop = None
+        if before_prob is not None and after_prob is not None:
+            prob_delta = after_prob - before_prob
+            abs_prob_drop = max(0.0, before_prob - after_prob)
+
         rank_regressed = (
             before_rank is not None and after_rank is not None and after_rank > before_rank
         )
@@ -230,6 +236,8 @@ def compare_rows(
             "after_rank": after_rank,
             "before_prob": before_prob,
             "after_prob": after_prob,
+            "prob_delta": prob_delta,
+            "abs_prob_drop": abs_prob_drop,
             "before_top1": before_top1,
             "after_top1": after_top1,
             "rank_regressed": rank_regressed,
@@ -239,6 +247,28 @@ def compare_rows(
             "top1_lost": top1_lost,
         })
     return out
+
+
+def classify_prob_regression_for_gate(row: Dict[str, Any], eval_prob_epsilon: float) -> str:
+    if not row["prob_regressed"]:
+        return "not_regressed"
+    if row["side"] != "eval":
+        return "non_eval_prob_regression_not_gate_failure"
+
+    if row["rank_regressed"] or row["top1_lost"]:
+        return "hard_regression_context"
+
+    if row["family_id"] == CRITICAL_FAMILY and row["policy_target"] == "7,9":
+        return "hard_critical_7_9_regression"
+
+    abs_prob_drop = row.get("abs_prob_drop")
+    if abs_prob_drop is None:
+        return "hard_missing_probability_delta"
+
+    if abs_prob_drop <= eval_prob_epsilon:
+        return "warning_prob_only_within_epsilon"
+
+    return "hard_prob_drop_exceeds_epsilon"
 
 
 def gate_decision(
@@ -258,12 +288,23 @@ def gate_decision(
 
     eval_rank_regressed = [r for r in eval_rows if r["rank_regressed"]]
     eval_prob_regressed = [r for r in eval_rows if r["prob_regressed"]]
+    eval_prob_hard_regressed = [
+        r for r in eval_prob_regressed
+        if str(r.get("prob_regression_gate_class", "")).startswith("hard_")
+    ]
+    eval_prob_warnings = [
+        r for r in eval_prob_regressed
+        if r.get("prob_regression_gate_class") == "warning_prob_only_within_epsilon"
+    ]
     eval_top1_lost = [r for r in eval_rows if r["top1_lost"]]
 
     if len(eval_rank_regressed) > max_eval_rank_regressed:
         failures.append(f"eval rank regressions {len(eval_rank_regressed)} > {max_eval_rank_regressed}")
-    if len(eval_prob_regressed) > max_eval_prob_regressed:
-        failures.append(f"eval prob regressions {len(eval_prob_regressed)} > {max_eval_prob_regressed}")
+    if len(eval_prob_hard_regressed) > max_eval_prob_regressed:
+        failures.append(
+            f"eval hard prob regressions {len(eval_prob_hard_regressed)} > {max_eval_prob_regressed} "
+            f"(warnings={len(eval_prob_warnings)})"
+        )
     if eval_top1_lost:
         failures.append(f"eval top1 losses: {len(eval_top1_lost)}")
 
@@ -319,11 +360,20 @@ def main() -> int:
     ap.add_argument("--eval-after-csv", type=Path, required=True)
     ap.add_argument("--max-eval-rank-regressed", type=int, default=0)
     ap.add_argument("--max-eval-prob-regressed", type=int, default=0)
+    ap.add_argument(
+        "--eval-prob-epsilon",
+        type=float,
+        default=0.0,
+        help="Absolute eval probability-drop epsilon. Prob-only eval drops within epsilon become warnings.",
+    )
     ap.add_argument("--require-train-improvement", action="store_true")
     ap.add_argument("--out-json", type=Path, default=DEFAULT_OUT_JSON)
     ap.add_argument("--out-md", type=Path, default=DEFAULT_OUT_MD)
     ap.add_argument("--fail-exit-code", type=int, default=1)
     args = ap.parse_args()
+
+    if args.eval_prob_epsilon < 0:
+        raise SystemExit("ERROR: --eval-prob-epsilon must be non-negative")
 
     train_adapter_rows = read_json_rows(args.train_adapter_json)
     eval_adapter_rows = read_json_rows(args.eval_adapter_json)
@@ -347,6 +397,12 @@ def main() -> int:
         build_probe_index(eval_after),
     ))
 
+    for row in comparisons:
+        row["prob_regression_gate_class"] = classify_prob_regression_for_gate(
+            row,
+            eval_prob_epsilon=args.eval_prob_epsilon,
+        )
+
     decision, failures = gate_decision(
         comparisons,
         max_eval_rank_regressed=args.max_eval_rank_regressed,
@@ -357,6 +413,17 @@ def main() -> int:
     side_counts = Counter(r["side"] for r in comparisons)
     eval_rank_regressed = sum(1 for r in comparisons if r["side"] == "eval" and r["rank_regressed"])
     eval_prob_regressed = sum(1 for r in comparisons if r["side"] == "eval" and r["prob_regressed"])
+    eval_prob_hard_regressed = sum(
+        1 for r in comparisons
+        if r["side"] == "eval"
+        and r["prob_regressed"]
+        and str(r.get("prob_regression_gate_class", "")).startswith("hard_")
+    )
+    eval_prob_warnings = sum(
+        1 for r in comparisons
+        if r["side"] == "eval"
+        and r.get("prob_regression_gate_class") == "warning_prob_only_within_epsilon"
+    )
     train_improved = sum(1 for r in comparisons if r["side"] == "train" and (r["rank_improved"] or r["prob_improved"]))
 
     payload = {
@@ -369,6 +436,10 @@ def main() -> int:
             "train_after_csv": str(args.train_after_csv),
             "eval_before_csv": str(args.eval_before_csv),
             "eval_after_csv": str(args.eval_after_csv),
+            "eval_prob_epsilon": args.eval_prob_epsilon,
+            "eval_prob_threshold_policy": (
+                "prob-only eval drops within epsilon are warnings; rank/top1/critical regressions remain hard failures"
+            ),
         },
         "decision": decision,
         "failures": failures,
@@ -376,6 +447,9 @@ def main() -> int:
             "side_counts": dict(sorted(side_counts.items())),
             "eval_rank_regressed": eval_rank_regressed,
             "eval_prob_regressed": eval_prob_regressed,
+            "eval_prob_hard_regressed": eval_prob_hard_regressed,
+            "eval_prob_warnings": eval_prob_warnings,
+            "eval_prob_epsilon": args.eval_prob_epsilon,
             "train_improved": train_improved,
         },
         "comparisons": comparisons,
@@ -396,13 +470,28 @@ def main() -> int:
     md.append(f"- side counts: `{dict(sorted(side_counts.items()))}`")
     md.append(f"- eval rank regressions: {eval_rank_regressed}")
     md.append(f"- eval prob regressions: {eval_prob_regressed}")
+    md.append(f"- eval hard prob regressions: {eval_prob_hard_regressed}")
+    md.append(f"- eval prob warnings: {eval_prob_warnings}")
+    md.append(f"- eval prob epsilon: {args.eval_prob_epsilon}")
     md.append(f"- train improved rows: {train_improved}")
     md.append("")
     md.append("## Critical family rows")
     md.append("")
     critical = [r for r in comparisons if r["family_id"] == CRITICAL_FAMILY]
     md.append(table(
-        ["side", "target", "before_rank", "after_rank", "before_prob", "after_prob", "gate_scope", "rank_regressed", "prob_regressed"],
+        [
+            "side",
+            "target",
+            "before_rank",
+            "after_rank",
+            "before_prob",
+            "after_prob",
+            "prob_delta",
+            "gate_scope",
+            "rank_regressed",
+            "prob_regressed",
+            "prob_gate_class",
+        ],
         [
             [
                 r["side"],
@@ -411,9 +500,11 @@ def main() -> int:
                 r["after_rank"],
                 r["before_prob"],
                 r["after_prob"],
+                r["prob_delta"],
                 r["gate_scope"],
                 r["rank_regressed"],
                 r["prob_regressed"],
+                r["prob_regression_gate_class"],
             ]
             for r in critical
         ],
@@ -422,7 +513,20 @@ def main() -> int:
     md.append("## All comparisons")
     md.append("")
     md.append(table(
-        ["side", "family_id", "target", "before_rank", "after_rank", "before_prob", "after_prob", "rank_regressed", "prob_regressed", "risk_flags"],
+        [
+            "side",
+            "family_id",
+            "target",
+            "before_rank",
+            "after_rank",
+            "before_prob",
+            "after_prob",
+            "prob_delta",
+            "rank_regressed",
+            "prob_regressed",
+            "prob_gate_class",
+            "risk_flags",
+        ],
         [
             [
                 r["side"],
@@ -432,8 +536,10 @@ def main() -> int:
                 r["after_rank"],
                 r["before_prob"],
                 r["after_prob"],
+                r["prob_delta"],
                 r["rank_regressed"],
                 r["prob_regressed"],
+                r["prob_regression_gate_class"],
                 r["risk_flags"],
             ]
             for r in comparisons
