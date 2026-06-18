@@ -1,0 +1,16 @@
+loaded checkpoints/15x15_current_best.pt
+device: cpu
+source_dataset: analysis/public_benchmark_eval/rapfi_teacher_policy_margin_dataset_corpus8_selected.json
+checkpoint: checkpoints/15x15_current_best.pt
+out: analysis/public_benchmark_eval/rapfi_teacher_policy_multisuppress_dataset_corpus8_selected.json
+source_rows: 25
+written_rows: 25
+skipped_rows: 0
+rows: 25
+suppress_count_min: 5
+suppress_count_mean: 5.0
+suppress_count_max: 5
+target_rank_gt10: 10
+target_rank_gt50: 3
+mean_worst_suppress_gap: -4.9541279983520505
+median_worst_suppress_gap: -5.318236351013184
