@@ -1,0 +1,232 @@
+loaded checkpoints/15x15_current_best.pt
+loaded checkpoints/15x15_current_best.pt
+device: cpu
+dataset: analysis/public_benchmark_eval/rapfi_teacher_policy_margin_dataset_corpus8_selected.json
+anchor_snapshots: analysis/public_benchmark_eval/corpus8_selected_board_snapshots.json
+loaded init checkpoint: checkpoints/15x15_current_best.pt
+loaded reference checkpoint: checkpoints/15x15_current_best.pt
+margin samples: 25
+anchor samples: 32
+out checkpoint: checkpoints/15x15_policy_only_teacher_divergence_repair_probe.pt
+NOTE: policy-head-only training; never writes checkpoints/15x15_current_best.pt
+====================================================================================================
+BEFORE
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g1_m4
+target_rc: [5, 7] suppress_rc: [6, 7] sample_weight: 2.3775
+target_prob=0.01358208 suppress_prob=0.72742701 target_rank=4 suppress_rank=1 target_logit=-12.166259 suppress_logit=-8.185496 gap=-3.980762
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g1_m6
+target_rc: [8, 7] suppress_rc: [6, 6] sample_weight: 2.115
+target_prob=0.02087609 suppress_prob=0.43714118 target_rank=4 suppress_rank=1 target_logit=-13.089215 suppress_logit=-10.047564 gap=-3.041652
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g1_m8
+target_rc: [5, 8] suppress_rc: [6, 6] sample_weight: 1.845
+target_prob=0.00018429 suppress_prob=0.49138370 target_rank=102 suppress_rank=1 target_logit=-18.394066 suppress_logit=-10.505617 gap=-7.888449
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g1_m40
+target_rc: [6, 12] suppress_rc: [8, 5] sample_weight: 1.0
+target_prob=0.15029132 suppress_prob=0.40536731 target_rank=3 suppress_rank=1 target_logit=-13.347017 suppress_logit=-12.354799 gap=-0.992218
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g2_m5
+target_rc: [6, 8] suppress_rc: [8, 7] sample_weight: 2.395
+target_prob=0.01223993 suppress_prob=0.87139928 target_rank=5 suppress_rank=1 target_logit=-11.899786 suppress_logit=-7.634389 gap=-4.265397
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g2_m7
+target_rc: [6, 5] suppress_rc: [5, 6] sample_weight: 1.0
+target_prob=0.01570867 suppress_prob=0.58181024 target_rank=4 suppress_rank=1 target_logit=-12.366463 suppress_logit=-8.754531 gap=-3.611932
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g2_m9
+target_rc: [5, 10] suppress_rc: [5, 9] sample_weight: 1.6875
+target_prob=0.06524349 suppress_prob=0.59637177 target_rank=3 suppress_rank=1 target_logit=-11.348016 suppress_logit=-9.135278 gap=-2.212738
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g2_m11
+target_rc: [7, 9] suppress_rc: [5, 6] sample_weight: 1.25
+target_prob=0.00032455 suppress_prob=0.42217776 target_rank=12 suppress_rank=1 target_logit=-14.860500 suppress_logit=-7.689746 gap=-7.170754
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g2_m21
+target_rc: [9, 7] suppress_rc: [4, 2] sample_weight: 1.0
+target_prob=0.00014416 suppress_prob=0.90291756 target_rank=47 suppress_rank=1 target_logit=-17.108755 suppress_logit=-8.366301 gap=-8.742455
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g3_m4
+target_rc: [6, 5] suppress_rc: [8, 8] sample_weight: 1.395
+target_prob=0.00723689 suppress_prob=0.75445420 target_rank=9 suppress_rank=1 target_logit=-12.783678 suppress_logit=-8.136875 gap=-4.646803
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g3_m24
+target_rc: [7, 3] suppress_rc: [6, 7] sample_weight: 1.0
+target_prob=0.00318027 suppress_prob=0.95191145 target_rank=7 suppress_rank=1 target_logit=-14.769527 suppress_logit=-9.068021 gap=-5.701507
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g3_m26
+target_rc: [3, 6] suppress_rc: [6, 7] sample_weight: 1.0
+target_prob=0.00419021 suppress_prob=0.92381829 target_rank=5 suppress_rank=1 target_logit=-13.606997 suppress_logit=-8.211232 gap=-5.395764
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g4_m13
+target_rc: [6, 9] suppress_rc: [4, 6] sample_weight: 1.1875
+target_prob=0.00024368 suppress_prob=0.48779637 target_rank=21 suppress_rank=1 target_logit=-16.271742 suppress_logit=-8.669927 gap=-7.601815
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g4_m17
+target_rc: [6, 10] suppress_rc: [9, 9] sample_weight: 1.0
+target_prob=0.00475445 suppress_prob=0.97002023 target_rank=4 suppress_rank=1 target_logit=-12.801732 suppress_logit=-7.483496 gap=-5.318236
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g4_m23
+target_rc: [9, 7] suppress_rc: [3, 7] sample_weight: 1.0
+target_prob=0.00152231 suppress_prob=0.44126201 target_rank=23 suppress_rank=1 target_logit=-15.656615 suppress_logit=-9.987208 gap=-5.669407
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g5_m6
+target_rc: [6, 8] suppress_rc: [8, 9] sample_weight: 1.0275
+target_prob=0.00461780 suppress_prob=0.98702359 target_rank=3 suppress_rank=1 target_logit=-9.378976 suppress_logit=-4.014201 gap=-5.364775
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g5_m8
+target_rc: [5, 8] suppress_rc: [6, 6] sample_weight: 1.0
+target_prob=0.08103481 suppress_prob=0.72868764 target_rank=2 suppress_rank=1 target_logit=-10.695070 suppress_logit=-8.498704 gap=-2.196366
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g5_m12
+target_rc: [9, 8] suppress_rc: [6, 6] sample_weight: 1.54
+target_prob=0.00039491 suppress_prob=0.47611082 target_rank=69 suppress_rank=1 target_logit=-16.250620 suppress_logit=-9.155876 gap=-7.094744
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g5_m14
+target_rc: [9, 7] suppress_rc: [6, 6] sample_weight: 2.665
+target_prob=0.00194023 suppress_prob=0.47136620 target_rank=17 suppress_rank=1 target_logit=-15.054082 suppress_logit=-9.561255 gap=-5.492826
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g5_m16
+target_rc: [5, 7] suppress_rc: [8, 11] sample_weight: 1.0
+target_prob=0.10676790 suppress_prob=0.50340581 target_rank=2 suppress_rank=1 target_logit=-12.225812 suppress_logit=-10.675073 gap=-1.550739
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g5_m28
+target_rc: [11, 5] suppress_rc: [4, 5] sample_weight: 1.0
+target_prob=0.00365030 suppress_prob=0.38212401 target_rank=17 suppress_rank=1 target_logit=-15.121019 suppress_logit=-10.470083 gap=-4.650936
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g5_m30
+target_rc: [9, 4] suppress_rc: [3, 7] sample_weight: 1.0
+target_prob=0.00021954 suppress_prob=0.39997548 target_rank=73 suppress_rank=1 target_logit=-17.880051 suppress_logit=-10.372437 gap=-7.507614
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g6_m5
+target_rc: [8, 6] suppress_rc: [8, 8] sample_weight: 3.0
+target_prob=0.00362991 suppress_prob=0.85466945 target_rank=6 suppress_rank=1 target_logit=-12.897717 suppress_logit=-7.436211 gap=-5.461506
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g6_m17
+target_rc: [6, 8] suppress_rc: [9, 4] sample_weight: 1.0
+target_prob=0.00270314 suppress_prob=0.52000862 target_rank=15 suppress_rank=1 target_logit=-14.597067 suppress_logit=-9.337636 gap=-5.259431
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g6_m19
+target_rc: [5, 9] suppress_rc: [9, 7] sample_weight: 1.0
+target_prob=0.02625631 suppress_prob=0.54581422 target_rank=7 suppress_rank=1 target_logit=-13.033767 suppress_logit=-9.999394 gap=-3.034372
+train_scope=policy_head
+trainable_parameters=101607
+  trainable: policy.0.weight
+  trainable: policy.1.weight
+  trainable: policy.1.bias
+  trainable: policy.4.weight
+  trainable: policy.4.bias
+epoch 001/40 loss=5.958885 margin_loss=5.958885 anchor_kl=0.000000 ce=5.455975 gaps=[-3.9807, -3.0417, -7.8884, -0.9922, -4.2654, -3.6120, -2.2127, -7.1707, -8.7425, -4.6468, -5.7015, -5.3958, -7.6018, -5.3182, -5.6694, -5.3648, -2.1964, -7.0948, -5.4928, -1.5507, -4.6509, -7.5076, -5.4615, -5.2594, -3.0343]
+epoch 005/40 loss=5.943905 margin_loss=5.943905 anchor_kl=0.000007 ce=5.443286 gaps=[-3.9680, -3.0307, -7.8704, -0.9777, -4.2524, -3.5972, -2.1977, -7.1525, -8.7253, -4.6321, -5.6799, -5.3773, -7.5856, -5.3009, -5.6524, -5.3487, -2.1806, -7.0787, -5.4738, -1.5342, -4.6376, -7.4954, -5.4462, -5.2474, -3.0377]
+epoch 010/40 loss=5.925213 margin_loss=5.925211 anchor_kl=0.000031 ce=5.427082 gaps=[-3.9520, -3.0170, -7.8478, -0.9595, -4.2362, -3.5787, -2.1788, -7.1297, -8.7038, -4.6137, -5.6529, -5.3544, -7.5653, -5.2793, -5.6312, -5.3285, -2.1610, -7.0585, -5.4500, -1.5135, -4.6210, -7.4801, -5.4271, -5.2324, -3.0420]
+epoch 015/40 loss=5.906565 margin_loss=5.906562 anchor_kl=0.000071 ce=5.410804 gaps=[-3.9360, -3.0033, -7.8253, -0.9413, -4.2201, -3.5602, -2.1601, -7.1071, -8.6823, -4.5954, -5.6259, -5.3315, -7.5451, -5.2578, -5.6100, -5.3084, -2.1413, -7.0385, -5.4264, -1.4928, -4.6048, -7.4648, -5.4081, -5.2174, -3.0462]
+epoch 020/40 loss=5.887952 margin_loss=5.887946 anchor_kl=0.000125 ce=5.394482 gaps=[-3.9201, -2.9896, -7.8028, -0.9232, -4.2039, -3.5417, -2.1413, -7.0847, -8.6609, -4.5771, -5.5990, -5.3086, -7.5248, -5.2363, -5.5889, -5.2883, -2.1217, -7.0184, -5.4028, -1.4722, -4.5884, -7.4495, -5.3890, -5.2025, -3.0504]
+epoch 025/40 loss=5.869368 margin_loss=5.869358 anchor_kl=0.000195 ce=5.378134 gaps=[-3.9042, -2.9760, -7.7803, -0.9052, -4.1878, -3.5232, -2.1227, -7.0624, -8.6395, -4.5589, -5.5721, -5.2857, -7.5045, -5.2148, -5.5677, -5.2681, -2.1023, -6.9985, -5.3793, -1.4515, -4.5720, -7.4343, -5.3699, -5.1877, -3.0546]
+epoch 030/40 loss=5.850808 margin_loss=5.850794 anchor_kl=0.000278 ce=5.361773 gaps=[-3.8882, -2.9624, -7.7578, -0.8871, -4.1717, -3.5047, -2.1041, -7.0400, -8.6182, -4.5407, -5.5453, -5.2629, -7.4841, -5.1934, -5.5466, -5.2480, -2.0832, -6.9786, -5.3559, -1.4309, -4.5556, -7.4190, -5.3509, -5.1729, -3.0587]
+epoch 035/40 loss=5.832270 margin_loss=5.832252 anchor_kl=0.000375 ce=5.345412 gaps=[-3.8723, -2.9489, -7.7353, -0.8690, -4.1556, -3.4863, -2.0855, -7.0177, -8.5968, -4.5225, -5.5184, -5.2401, -7.4636, -5.1721, -5.5255, -5.2280, -2.0642, -6.9587, -5.3325, -1.4104, -4.5392, -7.4038, -5.3319, -5.1582, -3.0627]
+epoch 040/40 loss=5.813773 margin_loss=5.813749 anchor_kl=0.000485 ce=5.329073 gaps=[-3.8564, -2.9353, -7.7129, -0.8509, -4.1397, -3.4678, -2.0669, -6.9954, -8.5755, -4.5044, -5.4916, -5.2173, -7.4431, -5.1508, -5.5044, -5.2079, -2.0458, -6.9389, -5.3092, -1.3898, -4.5228, -7.3886, -5.3129, -5.1437, -3.0661]
+====================================================================================================
+AFTER
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g1_m4
+target_rc: [5, 7] suppress_rc: [6, 7] sample_weight: 2.3775
+target_prob=0.01518708 suppress_prob=0.71600300 target_rank=4 suppress_rank=1 target_logit=-12.030525 suppress_logit=-8.177286 gap=-3.853239
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g1_m6
+target_rc: [8, 7] suppress_rc: [6, 6] sample_weight: 2.115
+target_prob=0.02167003 suppress_prob=0.40687469 target_rank=4 suppress_rank=2 target_logit=-12.974221 suppress_logit=-10.041646 gap=-2.932575
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g1_m8
+target_rc: [5, 8] suppress_rc: [6, 6] sample_weight: 1.845
+target_prob=0.00021284 suppress_prob=0.47399670 target_rank=101 suppress_rank=1 target_logit=-18.200605 suppress_logit=-10.492167 gap=-7.708438
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g1_m40
+target_rc: [6, 12] suppress_rc: [8, 5] sample_weight: 1.0
+target_prob=0.16433463 suppress_prob=0.38345581 target_rank=3 suppress_rank=1 target_logit=-13.137002 suppress_logit=-12.289682 gap=-0.847320
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g2_m5
+target_rc: [6, 8] suppress_rc: [8, 7] sample_weight: 2.395
+target_prob=0.01384357 suppress_prob=0.86647403 target_rank=4 suppress_rank=1 target_logit=-11.749304 suppress_logit=-7.612692 gap=-4.136611
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g2_m7
+target_rc: [6, 5] suppress_rc: [5, 6] sample_weight: 1.0
+target_prob=0.01794080 suppress_prob=0.57314658 target_rank=4 suppress_rank=1 target_logit=-12.205011 suppress_logit=-8.740948 gap=-3.464064
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g2_m9
+target_rc: [5, 10] suppress_rc: [5, 9] sample_weight: 1.6875
+target_prob=0.07437456 suppress_prob=0.58543152 target_rank=3 suppress_rank=1 target_logit=-11.191017 suppress_logit=-9.127782 gap=-2.063235
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g2_m11
+target_rc: [7, 9] suppress_rc: [5, 6] sample_weight: 1.25
+target_prob=0.00038355 suppress_prob=0.41682798 target_rank=12 suppress_rank=1 target_logit=-14.674149 suppress_logit=-7.683177 gap=-6.990972
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g2_m21
+target_rc: [9, 7] suppress_rc: [4, 2] sample_weight: 1.0
+target_prob=0.00017022 suppress_prob=0.89836258 target_rank=44 suppress_rank=1 target_logit=-16.911020 suppress_logit=-8.339787 gap=-8.571234
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g3_m4
+target_rc: [6, 5] suppress_rc: [8, 8] sample_weight: 1.395
+target_prob=0.00825483 suppress_prob=0.74362421 target_rank=9 suppress_rank=1 target_logit=-12.642899 suppress_logit=-8.142161 gap=-4.500737
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g3_m24
+target_rc: [7, 3] suppress_rc: [6, 7] sample_weight: 1.0
+target_prob=0.00392488 suppress_prob=0.94724846 target_rank=7 suppress_rank=1 target_logit=-14.562486 suppress_logit=-9.076261 gap=-5.486225
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g3_m26
+target_rc: [3, 6] suppress_rc: [6, 7] sample_weight: 1.0
+target_prob=0.00499843 suppress_prob=0.91772562 target_rank=4 suppress_rank=1 target_logit=-13.424844 suppress_logit=-8.212069 gap=-5.212775
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g4_m13
+target_rc: [6, 9] suppress_rc: [4, 6] sample_weight: 1.1875
+target_prob=0.00028513 suppress_prob=0.48503065 target_rank=19 suppress_rank=1 target_logit=-16.090513 suppress_logit=-8.651488 gap=-7.439025
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g4_m17
+target_rc: [6, 10] suppress_rc: [9, 9] sample_weight: 1.0
+target_prob=0.00563288 suppress_prob=0.96787751 target_rank=4 suppress_rank=1 target_logit=-12.615113 suppress_logit=-7.468628 gap=-5.146485
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g4_m23
+target_rc: [9, 7] suppress_rc: [3, 7] sample_weight: 1.0
+target_prob=0.00176327 suppress_prob=0.43155831 target_rank=21 suppress_rank=1 target_logit=-15.463111 suppress_logit=-9.962877 gap=-5.500234
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g5_m6
+target_rc: [6, 8] suppress_rc: [8, 9] sample_weight: 1.0275
+target_prob=0.00541766 suppress_prob=0.98588330 target_rank=3 suppress_rank=1 target_logit=-9.226254 suppress_logit=-4.022381 gap=-5.203874
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g5_m8
+target_rc: [5, 8] suppress_rc: [6, 6] sample_weight: 1.0
+target_prob=0.09210105 suppress_prob=0.70983744 target_rank=2 suppress_rank=1 target_logit=-10.541785 suppress_logit=-8.499636 gap=-2.042150
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g5_m12
+target_rc: [9, 8] suppress_rc: [6, 6] sample_weight: 1.54
+target_prob=0.00045424 suppress_prob=0.46672484 target_rank=66 suppress_rank=1 target_logit=-16.079916 suppress_logit=-9.145036 gap=-6.934880
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g5_m14
+target_rc: [9, 7] suppress_rc: [6, 6] sample_weight: 2.665
+target_prob=0.00229083 suppress_prob=0.46101031 target_rank=15 suppress_rank=1 target_logit=-14.864679 suppress_logit=-9.560173 gap=-5.304506
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g5_m16
+target_rc: [5, 7] suppress_rc: [8, 11] sample_weight: 1.0
+target_prob=0.11984640 suppress_prob=0.47907528 target_rank=2 suppress_rank=1 target_logit=-12.050861 suppress_logit=-10.665215 gap=-1.385647
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g5_m28
+target_rc: [11, 5] suppress_rc: [4, 5] sample_weight: 1.0
+target_prob=0.00415532 suppress_prob=0.38141477 target_rank=17 suppress_rank=1 target_logit=-14.941433 suppress_logit=-10.421935 gap=-4.519498
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g5_m30
+target_rc: [9, 4] suppress_rc: [3, 7] sample_weight: 1.0
+target_prob=0.00024424 suppress_prob=0.39384729 target_rank=73 suppress_rank=1 target_logit=-17.725170 suppress_logit=-10.339595 gap=-7.385575
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g6_m5
+target_rc: [8, 6] suppress_rc: [8, 8] sample_weight: 3.0
+target_prob=0.00420888 suppress_prob=0.85089499 target_rank=6 suppress_rank=1 target_logit=-12.737627 suppress_logit=-7.428535 gap=-5.309093
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g6_m17
+target_rc: [6, 8] suppress_rc: [9, 4] sample_weight: 1.0
+target_prob=0.00296953 suppress_prob=0.50733340 target_rank=15 suppress_rank=1 target_logit=-14.426116 suppress_logit=-9.285350 gap=-5.140766
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g6_m19
+target_rc: [5, 9] suppress_rc: [9, 7] sample_weight: 1.0
+target_prob=0.02579719 suppress_prob=0.55397594 target_rank=7 suppress_rank=1 target_logit=-12.946370 suppress_logit=-9.879515 gap=-3.066855
+saved checkpoints/15x15_policy_only_teacher_divergence_repair_probe.pt
