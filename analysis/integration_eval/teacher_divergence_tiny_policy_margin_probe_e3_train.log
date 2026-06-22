@@ -1,0 +1,378 @@
+loaded checkpoints/15x15_current_best.pt
+loaded checkpoints/15x15_current_best.pt
+device: cpu
+dataset: analysis/integration_eval/teacher_divergence_round2_trainable_trainer_ready_dataset.json
+anchor_snapshots: analysis/public_benchmark_eval/corpus8_selected_board_snapshots.json
+loaded init checkpoint: checkpoints/15x15_current_best.pt
+loaded reference checkpoint: checkpoints/15x15_current_best.pt
+margin samples: 44
+anchor samples: 32
+out checkpoint: checkpoints/15x15_teacher_divergence_round2_policy_margin_tiny_probe_e3.pt
+NOTE: policy-head-only training; never writes checkpoints/15x15_current_best.pt
+====================================================================================================
+BEFORE
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g2_m11
+target_rc: [7, 9] suppress_rc: [5, 6] sample_weight: 1.0
+target_prob=0.00032455 suppress_prob=0.42217776 target_rank=12 suppress_rank=1 target_logit=-14.860500 suppress_logit=-7.689746 gap=-7.170754
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g2_m21
+target_rc: [9, 7] suppress_rc: [4, 2] sample_weight: 1.0
+target_prob=0.00014416 suppress_prob=0.90291756 target_rank=47 suppress_rank=1 target_logit=-17.108755 suppress_logit=-8.366301 gap=-8.742455
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g4_m13
+target_rc: [6, 9] suppress_rc: [4, 6] sample_weight: 1.0
+target_prob=0.00024368 suppress_prob=0.48779637 target_rank=21 suppress_rank=1 target_logit=-16.271742 suppress_logit=-8.669927 gap=-7.601815
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g4_m23
+target_rc: [9, 7] suppress_rc: [3, 7] sample_weight: 1.0
+target_prob=0.00152231 suppress_prob=0.44126201 target_rank=23 suppress_rank=1 target_logit=-15.656615 suppress_logit=-9.987208 gap=-5.669407
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g5_m14
+target_rc: [9, 7] suppress_rc: [6, 6] sample_weight: 1.0
+target_prob=0.00194023 suppress_prob=0.47136620 target_rank=17 suppress_rank=1 target_logit=-15.054082 suppress_logit=-9.561255 gap=-5.492826
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g5_m28
+target_rc: [11, 5] suppress_rc: [4, 5] sample_weight: 1.0
+target_prob=0.00365030 suppress_prob=0.38212401 target_rank=17 suppress_rank=1 target_logit=-15.121019 suppress_logit=-10.470083 gap=-4.650936
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g6_m17
+target_rc: [6, 8] suppress_rc: [9, 4] sample_weight: 1.0
+target_prob=0.00270314 suppress_prob=0.52000862 target_rank=15 suppress_rank=1 target_logit=-14.597067 suppress_logit=-9.337636 gap=-5.259431
+----------------------------------------------------------------------------------------------------
+case_id: holdout_candidate_e_g2_m17_white_last_9_9_target_block_left_7_9_over_live_final_9_10
+target_rc: [7, 9] suppress_rc: [10, 9] sample_weight: 1.0
+target_prob=0.00211056 suppress_prob=0.37028924 target_rank=11 suppress_rank=1 target_logit=-16.380177 suppress_logit=-11.212843 gap=-5.167334
+----------------------------------------------------------------------------------------------------
+case_id: holdout_candidate_e_g2_m13_white_target_5_8_over_8_8
+target_rc: [5, 8] suppress_rc: [8, 8] sample_weight: 1.0
+target_prob=0.00936847 suppress_prob=0.36078149 target_rank=13 suppress_rank=1 target_logit=-15.322603 suppress_logit=-11.671680 gap=-3.650923
+----------------------------------------------------------------------------------------------------
+case_id: tdiv_legacy_g5_m28
+target_rc: [5, 11] suppress_rc: [4, 5] sample_weight: 1.0
+target_prob=0.00264027 suppress_prob=0.38212401 target_rank=23 suppress_rank=1 target_logit=-15.444948 suppress_logit=-10.470083 gap=-4.974865
+----------------------------------------------------------------------------------------------------
+case_id: tdiv_legacy_g5_m30
+target_rc: [4, 9] suppress_rc: [3, 7] sample_weight: 1.0
+target_prob=0.00070860 suppress_prob=0.39997548 target_rank=39 suppress_rank=1 target_logit=-16.708309 suppress_logit=-10.372437 gap=-6.335873
+----------------------------------------------------------------------------------------------------
+case_id: tdiv_legacy_g5_m8
+target_rc: [8, 5] suppress_rc: [6, 6] sample_weight: 1.0
+target_prob=0.00149958 suppress_prob=0.72868764 target_rank=18 suppress_rank=1 target_logit=-14.684765 suppress_logit=-8.498704 gap=-6.186061
+----------------------------------------------------------------------------------------------------
+case_id: tdiv_legacy_g2_m9
+target_rc: [10, 5] suppress_rc: [5, 9] sample_weight: 1.0
+target_prob=0.00038337 suppress_prob=0.59637177 target_rank=43 suppress_rank=1 target_logit=-16.484901 suppress_logit=-9.135278 gap=-7.349624
+----------------------------------------------------------------------------------------------------
+case_id: tdiv_legacy_g3_m4
+target_rc: [5, 6] suppress_rc: [8, 8] sample_weight: 1.0
+target_prob=0.00090715 suppress_prob=0.75445420 target_rank=47 suppress_rank=1 target_logit=-14.860321 suppress_logit=-8.136875 gap=-6.723446
+----------------------------------------------------------------------------------------------------
+case_id: tdiv_legacy_g4_m13
+target_rc: [9, 6] suppress_rc: [4, 6] sample_weight: 1.0
+target_prob=0.00032803 suppress_prob=0.48779637 target_rank=14 suppress_rank=1 target_logit=-15.974479 suppress_logit=-8.669927 gap=-7.304552
+----------------------------------------------------------------------------------------------------
+case_id: tdiv_legacy_g2_m9
+target_rc: [10, 5] suppress_rc: [5, 9] sample_weight: 1.0
+target_prob=0.00038337 suppress_prob=0.59637177 target_rank=43 suppress_rank=1 target_logit=-16.484901 suppress_logit=-9.135278 gap=-7.349624
+----------------------------------------------------------------------------------------------------
+case_id: tdiv_legacy_g3_m4
+target_rc: [5, 6] suppress_rc: [8, 8] sample_weight: 1.0
+target_prob=0.00090715 suppress_prob=0.75445420 target_rank=47 suppress_rank=1 target_logit=-14.860321 suppress_logit=-8.136875 gap=-6.723446
+----------------------------------------------------------------------------------------------------
+case_id: tdiv_legacy_g4_m13
+target_rc: [9, 6] suppress_rc: [4, 6] sample_weight: 1.0
+target_prob=0.00032803 suppress_prob=0.48779637 target_rank=14 suppress_rank=1 target_logit=-15.974479 suppress_logit=-8.669927 gap=-7.304552
+----------------------------------------------------------------------------------------------------
+case_id: tdiv_legacy_g5_m28
+target_rc: [5, 11] suppress_rc: [4, 5] sample_weight: 1.0
+target_prob=0.00264027 suppress_prob=0.38212401 target_rank=23 suppress_rank=1 target_logit=-15.444948 suppress_logit=-10.470083 gap=-4.974865
+----------------------------------------------------------------------------------------------------
+case_id: tdiv_legacy_g5_m30
+target_rc: [4, 9] suppress_rc: [3, 7] sample_weight: 1.0
+target_prob=0.00070860 suppress_prob=0.39997548 target_rank=39 suppress_rank=1 target_logit=-16.708309 suppress_logit=-10.372437 gap=-6.335873
+----------------------------------------------------------------------------------------------------
+case_id: tdiv_legacy_g5_m8
+target_rc: [8, 5] suppress_rc: [6, 6] sample_weight: 1.0
+target_prob=0.00149958 suppress_prob=0.72868764 target_rank=18 suppress_rank=1 target_logit=-14.684765 suppress_logit=-8.498704 gap=-6.186061
+----------------------------------------------------------------------------------------------------
+case_id: tdiv_legacy_g2_m9
+target_rc: [10, 5] suppress_rc: [5, 9] sample_weight: 1.0
+target_prob=0.00038337 suppress_prob=0.59637177 target_rank=43 suppress_rank=1 target_logit=-16.484901 suppress_logit=-9.135278 gap=-7.349624
+----------------------------------------------------------------------------------------------------
+case_id: tdiv_legacy_g3_m4
+target_rc: [5, 6] suppress_rc: [8, 8] sample_weight: 1.0
+target_prob=0.00090715 suppress_prob=0.75445420 target_rank=47 suppress_rank=1 target_logit=-14.860321 suppress_logit=-8.136875 gap=-6.723446
+----------------------------------------------------------------------------------------------------
+case_id: tdiv_legacy_g4_m13
+target_rc: [9, 6] suppress_rc: [4, 6] sample_weight: 1.0
+target_prob=0.00032803 suppress_prob=0.48779637 target_rank=14 suppress_rank=1 target_logit=-15.974479 suppress_logit=-8.669927 gap=-7.304552
+----------------------------------------------------------------------------------------------------
+case_id: tdiv_legacy_g5_m8
+target_rc: [8, 5] suppress_rc: [6, 6] sample_weight: 1.0
+target_prob=0.00149958 suppress_prob=0.72868764 target_rank=18 suppress_rank=1 target_logit=-14.684765 suppress_logit=-8.498704 gap=-6.186061
+----------------------------------------------------------------------------------------------------
+case_id: tdiv_legacy_g5_m28
+target_rc: [5, 11] suppress_rc: [4, 5] sample_weight: 1.0
+target_prob=0.00264027 suppress_prob=0.38212401 target_rank=23 suppress_rank=1 target_logit=-15.444948 suppress_logit=-10.470083 gap=-4.974865
+----------------------------------------------------------------------------------------------------
+case_id: tdiv_legacy_g5_m30
+target_rc: [4, 9] suppress_rc: [3, 7] sample_weight: 1.0
+target_prob=0.00070860 suppress_prob=0.39997548 target_rank=39 suppress_rank=1 target_logit=-16.708309 suppress_logit=-10.372437 gap=-6.335873
+----------------------------------------------------------------------------------------------------
+case_id: td_exp_00253
+target_rc: [5, 6] suppress_rc: [10, 9] sample_weight: 1.0
+target_prob=0.00462112 suppress_prob=0.43301526 target_rank=23 suppress_rank=1 target_logit=-15.607456 suppress_logit=-11.067320 gap=-4.540136
+----------------------------------------------------------------------------------------------------
+case_id: td_exp_00257
+target_rc: [10, 5] suppress_rc: [5, 9] sample_weight: 1.0
+target_prob=0.00038337 suppress_prob=0.59637177 target_rank=43 suppress_rank=1 target_logit=-16.484901 suppress_logit=-9.135278 gap=-7.349624
+----------------------------------------------------------------------------------------------------
+case_id: td_exp_00261
+target_rc: [5, 6] suppress_rc: [8, 8] sample_weight: 1.0
+target_prob=0.00090715 suppress_prob=0.75445420 target_rank=47 suppress_rank=1 target_logit=-14.860321 suppress_logit=-8.136875 gap=-6.723446
+----------------------------------------------------------------------------------------------------
+case_id: td_exp_00262
+target_rc: [9, 6] suppress_rc: [4, 6] sample_weight: 1.0
+target_prob=0.00032803 suppress_prob=0.48779637 target_rank=14 suppress_rank=1 target_logit=-15.974479 suppress_logit=-8.669927 gap=-7.304552
+----------------------------------------------------------------------------------------------------
+case_id: td_exp_00271
+target_rc: [5, 11] suppress_rc: [4, 5] sample_weight: 1.0
+target_prob=0.00264027 suppress_prob=0.38212401 target_rank=23 suppress_rank=1 target_logit=-15.444948 suppress_logit=-10.470083 gap=-4.974865
+----------------------------------------------------------------------------------------------------
+case_id: td_exp_00272
+target_rc: [4, 9] suppress_rc: [3, 7] sample_weight: 1.0
+target_prob=0.00070860 suppress_prob=0.39997548 target_rank=39 suppress_rank=1 target_logit=-16.708309 suppress_logit=-10.372437 gap=-6.335873
+----------------------------------------------------------------------------------------------------
+case_id: td_exp_00274
+target_rc: [8, 5] suppress_rc: [6, 6] sample_weight: 1.0
+target_prob=0.00149958 suppress_prob=0.72868764 target_rank=18 suppress_rank=1 target_logit=-14.684765 suppress_logit=-8.498704 gap=-6.186061
+----------------------------------------------------------------------------------------------------
+case_id: td_exp_00285
+target_rc: [10, 5] suppress_rc: [5, 9] sample_weight: 1.0
+target_prob=0.00038337 suppress_prob=0.59637177 target_rank=43 suppress_rank=1 target_logit=-16.484901 suppress_logit=-9.135278 gap=-7.349624
+----------------------------------------------------------------------------------------------------
+case_id: td_exp_00288
+target_rc: [5, 6] suppress_rc: [8, 8] sample_weight: 1.0
+target_prob=0.00090715 suppress_prob=0.75445420 target_rank=47 suppress_rank=1 target_logit=-14.860321 suppress_logit=-8.136875 gap=-6.723446
+----------------------------------------------------------------------------------------------------
+case_id: td_exp_00291
+target_rc: [9, 6] suppress_rc: [4, 6] sample_weight: 1.0
+target_prob=0.00032803 suppress_prob=0.48779637 target_rank=14 suppress_rank=1 target_logit=-15.974479 suppress_logit=-8.669927 gap=-7.304552
+----------------------------------------------------------------------------------------------------
+case_id: td_exp_00338
+target_rc: [10, 5] suppress_rc: [5, 9] sample_weight: 1.0
+target_prob=0.00038337 suppress_prob=0.59637177 target_rank=43 suppress_rank=1 target_logit=-16.484901 suppress_logit=-9.135278 gap=-7.349624
+----------------------------------------------------------------------------------------------------
+case_id: td_exp_00340
+target_rc: [5, 6] suppress_rc: [10, 9] sample_weight: 1.0
+target_prob=0.00462112 suppress_prob=0.43301526 target_rank=23 suppress_rank=1 target_logit=-15.607456 suppress_logit=-11.067320 gap=-4.540136
+----------------------------------------------------------------------------------------------------
+case_id: td_exp_00343
+target_rc: [5, 6] suppress_rc: [8, 8] sample_weight: 1.0
+target_prob=0.00090715 suppress_prob=0.75445420 target_rank=47 suppress_rank=1 target_logit=-14.860321 suppress_logit=-8.136875 gap=-6.723446
+----------------------------------------------------------------------------------------------------
+case_id: td_exp_00346
+target_rc: [9, 6] suppress_rc: [4, 6] sample_weight: 1.0
+target_prob=0.00032803 suppress_prob=0.48779637 target_rank=14 suppress_rank=1 target_logit=-15.974479 suppress_logit=-8.669927 gap=-7.304552
+----------------------------------------------------------------------------------------------------
+case_id: td_exp_00352
+target_rc: [8, 5] suppress_rc: [6, 6] sample_weight: 1.0
+target_prob=0.00149958 suppress_prob=0.72868764 target_rank=18 suppress_rank=1 target_logit=-14.684765 suppress_logit=-8.498704 gap=-6.186061
+----------------------------------------------------------------------------------------------------
+case_id: td_exp_00357
+target_rc: [5, 11] suppress_rc: [4, 5] sample_weight: 1.0
+target_prob=0.00264027 suppress_prob=0.38212401 target_rank=23 suppress_rank=1 target_logit=-15.444948 suppress_logit=-10.470083 gap=-4.974865
+----------------------------------------------------------------------------------------------------
+case_id: td_exp_00358
+target_rc: [4, 9] suppress_rc: [3, 7] sample_weight: 1.0
+target_prob=0.00070860 suppress_prob=0.39997548 target_rank=39 suppress_rank=1 target_logit=-16.708309 suppress_logit=-10.372437 gap=-6.335873
+train_scope=policy_head
+trainable_parameters=101607
+  trainable: policy.0.weight
+  trainable: policy.1.weight
+  trainable: policy.1.bias
+  trainable: policy.4.weight
+  trainable: policy.4.bias
+epoch 001/3 loss=7.672247 margin_loss=7.323538 anchor_kl=0.000000 ce=6.974193 gaps=[-7.1707, -8.7425, -7.6018, -5.6694, -5.4928, -4.6509, -5.2594, -5.1673, -3.6509, -4.9749, -6.3359, -6.1860, -7.3496, -6.7235, -7.3045, -7.3496, -6.7235, -7.3045, -4.9749, -6.3359, -6.1860, -7.3496, -6.7235, -7.3045, -6.1860, -4.9749, -6.3359, -4.5401, -7.3496, -6.7235, -7.3045, -4.9749, -6.3359, -6.1860, -7.3496, -6.7235, -7.3045, -7.3496, -4.5401, -6.7235, -7.3045, -6.1860, -4.9749, -6.3359]
+epoch 002/3 loss=7.671343 margin_loss=7.322673 anchor_kl=0.000000 ce=6.973403 gaps=[-7.1704, -8.7416, -7.6010, -5.6685, -5.4919, -4.6503, -5.2587, -5.1664, -3.6501, -4.9742, -6.3349, -6.1851, -7.3486, -6.7226, -7.3036, -7.3486, -6.7226, -7.3036, -4.9742, -6.3349, -6.1851, -7.3486, -6.7226, -7.3036, -6.1851, -4.9742, -6.3349, -4.5394, -7.3486, -6.7226, -7.3036, -4.9742, -6.3349, -6.1851, -7.3486, -6.7226, -7.3036, -7.3486, -4.5394, -6.7226, -7.3036, -6.1851, -4.9742, -6.3349]
+epoch 003/3 loss=7.670440 margin_loss=7.321809 anchor_kl=0.000000 ce=6.972610 gaps=[-7.1700, -8.7407, -7.6002, -5.6676, -5.4909, -4.6496, -5.2579, -5.1655, -3.6493, -4.9735, -6.3340, -6.1842, -7.3475, -6.7218, -7.3027, -7.3475, -6.7218, -7.3027, -4.9735, -6.3340, -6.1842, -7.3475, -6.7218, -7.3027, -6.1842, -4.9735, -6.3340, -4.5386, -7.3475, -6.7218, -7.3027, -4.9735, -6.3340, -6.1842, -7.3475, -6.7218, -7.3027, -7.3475, -4.5386, -6.7218, -7.3027, -6.1842, -4.9735, -6.3340]
+====================================================================================================
+AFTER
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g2_m11
+target_rc: [7, 9] suppress_rc: [5, 6] sample_weight: 1.0
+target_prob=0.00032521 suppress_prob=0.42257193 target_rank=12 suppress_rank=1 target_logit=-14.857612 suppress_logit=-7.687955 gap=-7.169657
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g2_m21
+target_rc: [9, 7] suppress_rc: [4, 2] sample_weight: 1.0
+target_prob=0.00014454 suppress_prob=0.90287852 target_rank=47 suppress_rank=1 target_logit=-17.105671 suppress_logit=-8.365862 gap=-8.739809
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g4_m13
+target_rc: [6, 9] suppress_rc: [4, 6] sample_weight: 1.0
+target_prob=0.00024425 suppress_prob=0.48776302 target_rank=21 suppress_rank=1 target_logit=-16.269053 suppress_logit=-8.669643 gap=-7.599409
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g4_m23
+target_rc: [9, 7] suppress_rc: [3, 7] sample_weight: 1.0
+target_prob=0.00152606 suppress_prob=0.44118097 target_rank=23 suppress_rank=1 target_logit=-15.653604 suppress_logit=-9.986839 gap=-5.666764
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g5_m14
+target_rc: [9, 7] suppress_rc: [6, 6] sample_weight: 1.0
+target_prob=0.00194453 suppress_prob=0.47106031 target_rank=17 suppress_rank=1 target_logit=-15.051204 suppress_logit=-9.561239 gap=-5.489964
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g5_m28
+target_rc: [11, 5] suppress_rc: [4, 5] sample_weight: 1.0
+target_prob=0.00365790 suppress_prob=0.38214606 target_rank=17 suppress_rank=1 target_logit=-15.118222 suppress_logit=-10.469308 gap=-4.648914
+----------------------------------------------------------------------------------------------------
+case_id: legacy_g6_m17
+target_rc: [6, 8] suppress_rc: [9, 4] sample_weight: 1.0
+target_prob=0.00270778 suppress_prob=0.51972145 target_rank=15 suppress_rank=1 target_logit=-14.594467 suppress_logit=-9.337304 gap=-5.257163
+----------------------------------------------------------------------------------------------------
+case_id: holdout_candidate_e_g2_m17_white_last_9_9_target_block_left_7_9_over_live_final_9_10
+target_rc: [7, 9] suppress_rc: [10, 9] sample_weight: 1.0
+target_prob=0.00211457 suppress_prob=0.36998969 target_rank=11 suppress_rank=1 target_logit=-16.377064 suppress_logit=-11.212440 gap=-5.164624
+----------------------------------------------------------------------------------------------------
+case_id: holdout_candidate_e_g2_m13_white_target_5_8_over_8_8
+target_rc: [5, 8] suppress_rc: [8, 8] sample_weight: 1.0
+target_prob=0.00938565 suppress_prob=0.36056805 target_rank=13 suppress_rank=1 target_logit=-15.319980 suppress_logit=-11.671481 gap=-3.648499
+----------------------------------------------------------------------------------------------------
+case_id: tdiv_legacy_g5_m28
+target_rc: [5, 11] suppress_rc: [4, 5] sample_weight: 1.0
+target_prob=0.00264589 suppress_prob=0.38214606 target_rank=23 suppress_rank=1 target_logit=-15.442102 suppress_logit=-10.469308 gap=-4.972795
+----------------------------------------------------------------------------------------------------
+case_id: tdiv_legacy_g5_m30
+target_rc: [4, 9] suppress_rc: [3, 7] sample_weight: 1.0
+target_prob=0.00071046 suppress_prob=0.39992413 target_rank=39 suppress_rank=1 target_logit=-16.705065 suppress_logit=-10.371945 gap=-6.333119
+----------------------------------------------------------------------------------------------------
+case_id: tdiv_legacy_g5_m8
+target_rc: [8, 5] suppress_rc: [6, 6] sample_weight: 1.0
+target_prob=0.00150335 suppress_prob=0.72846925 target_rank=18 suppress_rank=1 target_logit=-14.681931 suppress_logit=-8.498681 gap=-6.183249
+----------------------------------------------------------------------------------------------------
+case_id: tdiv_legacy_g2_m9
+target_rc: [10, 5] suppress_rc: [5, 9] sample_weight: 1.0
+target_prob=0.00038436 suppress_prob=0.59602803 target_rank=43 suppress_rank=1 target_logit=-16.481760 suppress_logit=-9.135286 gap=-7.346474
+----------------------------------------------------------------------------------------------------
+case_id: tdiv_legacy_g3_m4
+target_rc: [5, 6] suppress_rc: [8, 8] sample_weight: 1.0
+target_prob=0.00090925 suppress_prob=0.75434506 target_rank=47 suppress_rank=1 target_logit=-14.857912 suppress_logit=-8.136923 gap=-6.720989
+----------------------------------------------------------------------------------------------------
+case_id: tdiv_legacy_g4_m13
+target_rc: [9, 6] suppress_rc: [4, 6] sample_weight: 1.0
+target_prob=0.00032891 suppress_prob=0.48776302 target_rank=14 suppress_rank=1 target_logit=-15.971447 suppress_logit=-8.669643 gap=-7.301804
+----------------------------------------------------------------------------------------------------
+case_id: tdiv_legacy_g2_m9
+target_rc: [10, 5] suppress_rc: [5, 9] sample_weight: 1.0
+target_prob=0.00038436 suppress_prob=0.59602803 target_rank=43 suppress_rank=1 target_logit=-16.481760 suppress_logit=-9.135286 gap=-7.346474
+----------------------------------------------------------------------------------------------------
+case_id: tdiv_legacy_g3_m4
+target_rc: [5, 6] suppress_rc: [8, 8] sample_weight: 1.0
+target_prob=0.00090925 suppress_prob=0.75434506 target_rank=47 suppress_rank=1 target_logit=-14.857912 suppress_logit=-8.136923 gap=-6.720989
+----------------------------------------------------------------------------------------------------
+case_id: tdiv_legacy_g4_m13
+target_rc: [9, 6] suppress_rc: [4, 6] sample_weight: 1.0
+target_prob=0.00032891 suppress_prob=0.48776302 target_rank=14 suppress_rank=1 target_logit=-15.971447 suppress_logit=-8.669643 gap=-7.301804
+----------------------------------------------------------------------------------------------------
+case_id: tdiv_legacy_g5_m28
+target_rc: [5, 11] suppress_rc: [4, 5] sample_weight: 1.0
+target_prob=0.00264589 suppress_prob=0.38214606 target_rank=23 suppress_rank=1 target_logit=-15.442102 suppress_logit=-10.469308 gap=-4.972795
+----------------------------------------------------------------------------------------------------
+case_id: tdiv_legacy_g5_m30
+target_rc: [4, 9] suppress_rc: [3, 7] sample_weight: 1.0
+target_prob=0.00071046 suppress_prob=0.39992413 target_rank=39 suppress_rank=1 target_logit=-16.705065 suppress_logit=-10.371945 gap=-6.333119
+----------------------------------------------------------------------------------------------------
+case_id: tdiv_legacy_g5_m8
+target_rc: [8, 5] suppress_rc: [6, 6] sample_weight: 1.0
+target_prob=0.00150335 suppress_prob=0.72846925 target_rank=18 suppress_rank=1 target_logit=-14.681931 suppress_logit=-8.498681 gap=-6.183249
+----------------------------------------------------------------------------------------------------
+case_id: tdiv_legacy_g2_m9
+target_rc: [10, 5] suppress_rc: [5, 9] sample_weight: 1.0
+target_prob=0.00038436 suppress_prob=0.59602803 target_rank=43 suppress_rank=1 target_logit=-16.481760 suppress_logit=-9.135286 gap=-7.346474
+----------------------------------------------------------------------------------------------------
+case_id: tdiv_legacy_g3_m4
+target_rc: [5, 6] suppress_rc: [8, 8] sample_weight: 1.0
+target_prob=0.00090925 suppress_prob=0.75434506 target_rank=47 suppress_rank=1 target_logit=-14.857912 suppress_logit=-8.136923 gap=-6.720989
+----------------------------------------------------------------------------------------------------
+case_id: tdiv_legacy_g4_m13
+target_rc: [9, 6] suppress_rc: [4, 6] sample_weight: 1.0
+target_prob=0.00032891 suppress_prob=0.48776302 target_rank=14 suppress_rank=1 target_logit=-15.971447 suppress_logit=-8.669643 gap=-7.301804
+----------------------------------------------------------------------------------------------------
+case_id: tdiv_legacy_g5_m8
+target_rc: [8, 5] suppress_rc: [6, 6] sample_weight: 1.0
+target_prob=0.00150335 suppress_prob=0.72846925 target_rank=18 suppress_rank=1 target_logit=-14.681931 suppress_logit=-8.498681 gap=-6.183249
+----------------------------------------------------------------------------------------------------
+case_id: tdiv_legacy_g5_m28
+target_rc: [5, 11] suppress_rc: [4, 5] sample_weight: 1.0
+target_prob=0.00264589 suppress_prob=0.38214606 target_rank=23 suppress_rank=1 target_logit=-15.442102 suppress_logit=-10.469308 gap=-4.972795
+----------------------------------------------------------------------------------------------------
+case_id: tdiv_legacy_g5_m30
+target_rc: [4, 9] suppress_rc: [3, 7] sample_weight: 1.0
+target_prob=0.00071046 suppress_prob=0.39992413 target_rank=39 suppress_rank=1 target_logit=-16.705065 suppress_logit=-10.371945 gap=-6.333119
+----------------------------------------------------------------------------------------------------
+case_id: td_exp_00253
+target_rc: [5, 6] suppress_rc: [10, 9] sample_weight: 1.0
+target_prob=0.00462915 suppress_prob=0.43277609 target_rank=23 suppress_rank=1 target_logit=-15.604812 suppress_logit=-11.066965 gap=-4.537847
+----------------------------------------------------------------------------------------------------
+case_id: td_exp_00257
+target_rc: [10, 5] suppress_rc: [5, 9] sample_weight: 1.0
+target_prob=0.00038436 suppress_prob=0.59602803 target_rank=43 suppress_rank=1 target_logit=-16.481760 suppress_logit=-9.135286 gap=-7.346474
+----------------------------------------------------------------------------------------------------
+case_id: td_exp_00261
+target_rc: [5, 6] suppress_rc: [8, 8] sample_weight: 1.0
+target_prob=0.00090925 suppress_prob=0.75434506 target_rank=47 suppress_rank=1 target_logit=-14.857912 suppress_logit=-8.136923 gap=-6.720989
+----------------------------------------------------------------------------------------------------
+case_id: td_exp_00262
+target_rc: [9, 6] suppress_rc: [4, 6] sample_weight: 1.0
+target_prob=0.00032891 suppress_prob=0.48776302 target_rank=14 suppress_rank=1 target_logit=-15.971447 suppress_logit=-8.669643 gap=-7.301804
+----------------------------------------------------------------------------------------------------
+case_id: td_exp_00271
+target_rc: [5, 11] suppress_rc: [4, 5] sample_weight: 1.0
+target_prob=0.00264589 suppress_prob=0.38214606 target_rank=23 suppress_rank=1 target_logit=-15.442102 suppress_logit=-10.469308 gap=-4.972795
+----------------------------------------------------------------------------------------------------
+case_id: td_exp_00272
+target_rc: [4, 9] suppress_rc: [3, 7] sample_weight: 1.0
+target_prob=0.00071046 suppress_prob=0.39992413 target_rank=39 suppress_rank=1 target_logit=-16.705065 suppress_logit=-10.371945 gap=-6.333119
+----------------------------------------------------------------------------------------------------
+case_id: td_exp_00274
+target_rc: [8, 5] suppress_rc: [6, 6] sample_weight: 1.0
+target_prob=0.00150335 suppress_prob=0.72846925 target_rank=18 suppress_rank=1 target_logit=-14.681931 suppress_logit=-8.498681 gap=-6.183249
+----------------------------------------------------------------------------------------------------
+case_id: td_exp_00285
+target_rc: [10, 5] suppress_rc: [5, 9] sample_weight: 1.0
+target_prob=0.00038436 suppress_prob=0.59602803 target_rank=43 suppress_rank=1 target_logit=-16.481760 suppress_logit=-9.135286 gap=-7.346474
+----------------------------------------------------------------------------------------------------
+case_id: td_exp_00288
+target_rc: [5, 6] suppress_rc: [8, 8] sample_weight: 1.0
+target_prob=0.00090925 suppress_prob=0.75434506 target_rank=47 suppress_rank=1 target_logit=-14.857912 suppress_logit=-8.136923 gap=-6.720989
+----------------------------------------------------------------------------------------------------
+case_id: td_exp_00291
+target_rc: [9, 6] suppress_rc: [4, 6] sample_weight: 1.0
+target_prob=0.00032891 suppress_prob=0.48776302 target_rank=14 suppress_rank=1 target_logit=-15.971447 suppress_logit=-8.669643 gap=-7.301804
+----------------------------------------------------------------------------------------------------
+case_id: td_exp_00338
+target_rc: [10, 5] suppress_rc: [5, 9] sample_weight: 1.0
+target_prob=0.00038436 suppress_prob=0.59602803 target_rank=43 suppress_rank=1 target_logit=-16.481760 suppress_logit=-9.135286 gap=-7.346474
+----------------------------------------------------------------------------------------------------
+case_id: td_exp_00340
+target_rc: [5, 6] suppress_rc: [10, 9] sample_weight: 1.0
+target_prob=0.00462915 suppress_prob=0.43277609 target_rank=23 suppress_rank=1 target_logit=-15.604812 suppress_logit=-11.066965 gap=-4.537847
+----------------------------------------------------------------------------------------------------
+case_id: td_exp_00343
+target_rc: [5, 6] suppress_rc: [8, 8] sample_weight: 1.0
+target_prob=0.00090925 suppress_prob=0.75434506 target_rank=47 suppress_rank=1 target_logit=-14.857912 suppress_logit=-8.136923 gap=-6.720989
+----------------------------------------------------------------------------------------------------
+case_id: td_exp_00346
+target_rc: [9, 6] suppress_rc: [4, 6] sample_weight: 1.0
+target_prob=0.00032891 suppress_prob=0.48776302 target_rank=14 suppress_rank=1 target_logit=-15.971447 suppress_logit=-8.669643 gap=-7.301804
+----------------------------------------------------------------------------------------------------
+case_id: td_exp_00352
+target_rc: [8, 5] suppress_rc: [6, 6] sample_weight: 1.0
+target_prob=0.00150335 suppress_prob=0.72846925 target_rank=18 suppress_rank=1 target_logit=-14.681931 suppress_logit=-8.498681 gap=-6.183249
+----------------------------------------------------------------------------------------------------
+case_id: td_exp_00357
+target_rc: [5, 11] suppress_rc: [4, 5] sample_weight: 1.0
+target_prob=0.00264589 suppress_prob=0.38214606 target_rank=23 suppress_rank=1 target_logit=-15.442102 suppress_logit=-10.469308 gap=-4.972795
+----------------------------------------------------------------------------------------------------
+case_id: td_exp_00358
+target_rc: [4, 9] suppress_rc: [3, 7] sample_weight: 1.0
+target_prob=0.00071046 suppress_prob=0.39992413 target_rank=39 suppress_rank=1 target_logit=-16.705065 suppress_logit=-10.371945 gap=-6.333119
+saved checkpoints/15x15_teacher_divergence_round2_policy_margin_tiny_probe_e3.pt
