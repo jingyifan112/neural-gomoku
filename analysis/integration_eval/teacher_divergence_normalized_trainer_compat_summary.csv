@@ -1,0 +1,21 @@
+audit_item,status,detail
+dataset_sample_count,PASS,sample_count=44
+dataset_not_training_metadata,PASS,metadata.not_training is true
+dataset_required_sample_fields,PASS,all 44 samples contain required single-suppress fields
+dataset_manifest_id_unique,PASS,unique_ids=44
+legacy_rows_in_dataset,PASS,all 9 legacy-normalized rows are present
+manifest_trainable_ready_count,PASS,trainable_ready=44
+dataset_manifest_id_match,PASS,dataset sample IDs exactly match manifest trainable ready IDs
+trainer_has_samples_loader,PASS,found expected trainer marker
+trainer_references_target_rc,PASS,found expected trainer marker
+trainer_references_suppress_rc,PASS,found expected trainer marker
+trainer_has_margin_tensor_builder,PASS,found expected trainer marker
+trainer_looks_single_suppress,PASS,found expected trainer marker
+trainer_has_checkpoint_output_arg,PASS,found expected trainer marker
+trainer_has_metrics_or_logging,PASS,found expected trainer marker
+multi_suppress_not_consumed,PASS,trainer appears compatible with one suppress_rc per sample; suppress_candidates can remain audit metadata
+safe_checkpoint_path,PASS,checkpoints/15x15_teacher_divergence_round2_policy_margin_probe.pt
+safe_metrics_path,PASS,analysis/integration_eval/teacher_divergence_round2_policy_margin_probe_train_metrics.csv
+protected_top10_excluded,PASS,dataset selects only trainable_rank_11_50
+tail_rank_gt50_excluded,PASS,dataset selects only trainable_rank_11_50
+no_training_executed,PASS,audit only; no trainer invocation
