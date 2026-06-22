@@ -739,7 +739,7 @@ def main() -> None:
 
     args.out_csv.parent.mkdir(parents=True, exist_ok=True)
     with args.out_csv.open("w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=output_fields(), lineterminator="\\n")
+        writer = csv.DictWriter(f, fieldnames=output_fields(), lineterminator="\n")
         writer.writeheader()
         writer.writerows(out_rows)
 
