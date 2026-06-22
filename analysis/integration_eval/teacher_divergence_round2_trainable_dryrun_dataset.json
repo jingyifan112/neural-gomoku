@@ -1,0 +1,2381 @@
+{
+  "excluded_from_dryrun_export": {
+    "legacy_needs_schema_normalization": [
+      {
+        "case_id": "legacy_g2_m11",
+        "manifest_id": "td_exp_00008",
+        "primary_source_path": "analysis/public_benchmark_eval/rapfi_teacher_policy_multisuppress_dataset_corpus8_selected.json",
+        "ready_bucket": "trainable_rank_11_50",
+        "reason": "missing suppress fields in merged manifest",
+        "source_class": "canonical_full_schema_seed",
+        "status": "ready_full_schema"
+      },
+      {
+        "case_id": "legacy_g2_m21",
+        "manifest_id": "td_exp_00009",
+        "primary_source_path": "analysis/public_benchmark_eval/rapfi_teacher_policy_multisuppress_dataset_corpus8_selected.json",
+        "ready_bucket": "trainable_rank_11_50",
+        "reason": "missing suppress fields in merged manifest",
+        "source_class": "canonical_full_schema_seed",
+        "status": "ready_full_schema"
+      },
+      {
+        "case_id": "legacy_g4_m13",
+        "manifest_id": "td_exp_00013",
+        "primary_source_path": "analysis/public_benchmark_eval/rapfi_teacher_policy_multisuppress_dataset_corpus8_selected.json",
+        "ready_bucket": "trainable_rank_11_50",
+        "reason": "missing suppress fields in merged manifest",
+        "source_class": "canonical_full_schema_seed",
+        "status": "ready_full_schema"
+      },
+      {
+        "case_id": "legacy_g4_m23",
+        "manifest_id": "td_exp_00015",
+        "primary_source_path": "analysis/public_benchmark_eval/rapfi_teacher_policy_multisuppress_dataset_corpus8_selected.json",
+        "ready_bucket": "trainable_rank_11_50",
+        "reason": "missing suppress fields in merged manifest",
+        "source_class": "canonical_full_schema_seed",
+        "status": "ready_full_schema"
+      },
+      {
+        "case_id": "legacy_g5_m14",
+        "manifest_id": "td_exp_00019",
+        "primary_source_path": "analysis/public_benchmark_eval/rapfi_teacher_policy_multisuppress_dataset_corpus8_selected.json",
+        "ready_bucket": "trainable_rank_11_50",
+        "reason": "missing suppress fields in merged manifest",
+        "source_class": "canonical_full_schema_seed",
+        "status": "ready_full_schema"
+      },
+      {
+        "case_id": "legacy_g5_m28",
+        "manifest_id": "td_exp_00021",
+        "primary_source_path": "analysis/public_benchmark_eval/rapfi_teacher_policy_multisuppress_dataset_corpus8_selected.json",
+        "ready_bucket": "trainable_rank_11_50",
+        "reason": "missing suppress fields in merged manifest",
+        "source_class": "canonical_full_schema_seed",
+        "status": "ready_full_schema"
+      },
+      {
+        "case_id": "legacy_g6_m17",
+        "manifest_id": "td_exp_00024",
+        "primary_source_path": "analysis/public_benchmark_eval/rapfi_teacher_policy_multisuppress_dataset_corpus8_selected.json",
+        "ready_bucket": "trainable_rank_11_50",
+        "reason": "missing suppress fields in merged manifest",
+        "source_class": "canonical_full_schema_seed",
+        "status": "ready_full_schema"
+      },
+      {
+        "case_id": "holdout_candidate_e_g2_m17_white_last_9_9_target_block_left_7_9_over_live_final_9_10",
+        "manifest_id": "td_exp_00055",
+        "primary_source_path": "analysis/integration_eval/teacher_divergence_retention_safety_v3_dataset.json",
+        "ready_bucket": "trainable_rank_11_50",
+        "reason": "missing suppress fields in merged manifest",
+        "source_class": "retention_candidate_dataset",
+        "status": "ready_full_schema"
+      },
+      {
+        "case_id": "holdout_candidate_e_g2_m13_white_target_5_8_over_8_8",
+        "manifest_id": "td_exp_00058",
+        "primary_source_path": "analysis/integration_eval/teacher_divergence_retention_safety_v3_dataset.json",
+        "ready_bucket": "trainable_rank_11_50",
+        "reason": "missing suppress fields in merged manifest",
+        "source_class": "retention_candidate_dataset",
+        "status": "ready_full_schema"
+      }
+    ]
+  },
+  "metadata": {
+    "board_size": 15,
+    "manifest": "analysis/integration_eval/teacher_divergence_expanded_candidate_manifest_with_suppress_round2.csv",
+    "name": "teacher_divergence_round2_trainable_dryrun_dataset",
+    "not_c_export": true,
+    "not_checkpoint": true,
+    "not_promotion": true,
+    "not_public_benchmark": true,
+    "not_training": true,
+    "sample_count": 35,
+    "selection": {
+      "excluded_legacy_needs_normalization_count": 9,
+      "ready_bucket": "trainable_rank_11_50",
+      "requires_suppress_fields": true,
+      "status": "ready_full_schema"
+    }
+  },
+  "samples": [
+    {
+      "before_target_prob": 0.0026402673684060574,
+      "before_target_rank": 23,
+      "board_hash": "6c6e801436baecb5003f5cb4ac0a81f07439dfe1",
+      "case_id": "tdiv_legacy_g5_m28",
+      "current_best_direct_prob": 0.38212400674819946,
+      "current_best_direct_rc": [
+        4,
+        5
+      ],
+      "current_player": 1,
+      "game_number": "5",
+      "manifest_id": "td_exp_00078",
+      "move_count": "28",
+      "notes": "suppress_candidates_built_trainable_rank_11_50",
+      "primary_source_path": "analysis/integration_eval/teacher_divergence_retention_safety_v3_dataset.json",
+      "ready_bucket": "trainable_rank_11_50",
+      "round2_merge_action": "probe_and_suppress_built",
+      "source_class": "retention_candidate_dataset",
+      "split_role": "dryrun_trainable_candidate",
+      "status": "ready_full_schema",
+      "suppress_candidates_probs": [
+        0.38212400674819946,
+        0.3320460617542267,
+        0.052619803696870804,
+        0.041030317544937134,
+        0.030090682208538055
+      ],
+      "suppress_candidates_rcs": [
+        [
+          4,
+          5
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          8,
+          11
+        ]
+      ],
+      "suppress_prob": 0.38212400674819946,
+      "suppress_prob_gap": 0.3794837393797934,
+      "suppress_prob_ratio": 144.72928435989786,
+      "suppress_rank_in_top_policy": 1,
+      "suppress_rc": [
+        4,
+        5
+      ],
+      "target_action": 86,
+      "target_rc": [
+        5,
+        11
+      ],
+      "weight": 1.0
+    },
+    {
+      "before_target_prob": 0.0007085961988195777,
+      "before_target_rank": 39,
+      "board_hash": "6cd50b750735acbb0a84f7f4aba05041f51f88ef",
+      "case_id": "tdiv_legacy_g5_m30",
+      "current_best_direct_prob": 0.3999754786491394,
+      "current_best_direct_rc": [
+        3,
+        7
+      ],
+      "current_player": 1,
+      "game_number": "5",
+      "manifest_id": "td_exp_00079",
+      "move_count": "30",
+      "notes": "suppress_candidates_built_trainable_rank_11_50",
+      "primary_source_path": "analysis/integration_eval/teacher_divergence_retention_safety_v3_dataset.json",
+      "ready_bucket": "trainable_rank_11_50",
+      "round2_merge_action": "probe_and_suppress_built",
+      "source_class": "retention_candidate_dataset",
+      "split_role": "dryrun_trainable_candidate",
+      "status": "ready_full_schema",
+      "suppress_candidates_probs": [
+        0.3999754786491394,
+        0.22157883644104004,
+        0.08537070453166962,
+        0.08209425210952759,
+        0.0300870630890131
+      ],
+      "suppress_candidates_rcs": [
+        [
+          3,
+          7
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          8,
+          11
+        ],
+        [
+          5,
+          9
+        ]
+      ],
+      "suppress_prob": 0.3999754786491394,
+      "suppress_prob_gap": 0.3992668824503198,
+      "suppress_prob_ratio": 564.4617898253514,
+      "suppress_rank_in_top_policy": 1,
+      "suppress_rc": [
+        3,
+        7
+      ],
+      "target_action": 69,
+      "target_rc": [
+        4,
+        9
+      ],
+      "weight": 1.0
+    },
+    {
+      "before_target_prob": 0.0014995787059888244,
+      "before_target_rank": 18,
+      "board_hash": "55989befddf0dafc0e8e32a05f98f9443855943e",
+      "case_id": "tdiv_legacy_g5_m8",
+      "current_best_direct_prob": 0.728687584400177,
+      "current_best_direct_rc": [
+        6,
+        6
+      ],
+      "current_player": 1,
+      "game_number": "5",
+      "manifest_id": "td_exp_00080",
+      "move_count": "8",
+      "notes": "suppress_candidates_built_trainable_rank_11_50",
+      "primary_source_path": "analysis/integration_eval/teacher_divergence_retention_safety_v3_dataset.json",
+      "ready_bucket": "trainable_rank_11_50",
+      "round2_merge_action": "probe_and_suppress_built",
+      "source_class": "retention_candidate_dataset",
+      "split_role": "dryrun_trainable_candidate",
+      "status": "ready_full_schema",
+      "suppress_candidates_probs": [
+        0.728687584400177,
+        0.08103480935096741,
+        0.07870201021432877,
+        0.01201948057860136,
+        0.009058039635419846
+      ],
+      "suppress_candidates_rcs": [
+        [
+          6,
+          6
+        ],
+        [
+          5,
+          8
+        ],
+        [
+          5,
+          9
+        ],
+        [
+          9,
+          6
+        ],
+        [
+          9,
+          8
+        ]
+      ],
+      "suppress_prob": 0.728687584400177,
+      "suppress_prob_gap": 0.7271880056941882,
+      "suppress_prob_ratio": 485.92820202770173,
+      "suppress_rank_in_top_policy": 1,
+      "suppress_rc": [
+        6,
+        6
+      ],
+      "target_action": 125,
+      "target_rc": [
+        8,
+        5
+      ],
+      "weight": 1.0
+    },
+    {
+      "before_target_prob": 0.0003833681985270232,
+      "before_target_rank": 43,
+      "board_hash": "19b77e3587d8808d57fc4a4f5f44d5ae48fd1132",
+      "case_id": "tdiv_legacy_g2_m9",
+      "current_best_direct_prob": 0.5963717699050903,
+      "current_best_direct_rc": [
+        5,
+        9
+      ],
+      "current_player": -1,
+      "game_number": "2",
+      "manifest_id": "td_exp_00088",
+      "move_count": "9",
+      "notes": "suppress_candidates_built_trainable_rank_11_50",
+      "primary_source_path": "analysis/integration_eval/teacher_divergence_retention_safety_v3_dataset.json",
+      "ready_bucket": "trainable_rank_11_50",
+      "round2_merge_action": "probe_and_suppress_built",
+      "source_class": "retention_candidate_dataset",
+      "split_role": "dryrun_trainable_candidate",
+      "status": "ready_full_schema",
+      "suppress_candidates_probs": [
+        0.5963717699050903,
+        0.23774053156375885,
+        0.06524349004030228,
+        0.022774504497647285,
+        0.017271537333726883
+      ],
+      "suppress_candidates_rcs": [
+        [
+          5,
+          9
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          5,
+          10
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          5,
+          8
+        ]
+      ],
+      "suppress_prob": 0.5963717699050903,
+      "suppress_prob_gap": 0.5959884017065633,
+      "suppress_prob_ratio": 1555.610956246421,
+      "suppress_rank_in_top_policy": 1,
+      "suppress_rc": [
+        5,
+        9
+      ],
+      "target_action": 155,
+      "target_rc": [
+        10,
+        5
+      ],
+      "weight": 1.0
+    },
+    {
+      "before_target_prob": 0.0009071464883163571,
+      "before_target_rank": 47,
+      "board_hash": "a7408f1c7c200a150a579f27de8d03b7a5b3523d",
+      "case_id": "tdiv_legacy_g3_m4",
+      "current_best_direct_prob": 0.7544541954994202,
+      "current_best_direct_rc": [
+        8,
+        8
+      ],
+      "current_player": 1,
+      "game_number": "3",
+      "manifest_id": "td_exp_00089",
+      "move_count": "4",
+      "notes": "suppress_candidates_built_trainable_rank_11_50",
+      "primary_source_path": "analysis/integration_eval/teacher_divergence_retention_safety_v3_dataset.json",
+      "ready_bucket": "trainable_rank_11_50",
+      "round2_merge_action": "probe_and_suppress_built",
+      "source_class": "retention_candidate_dataset",
+      "split_role": "dryrun_trainable_candidate",
+      "status": "ready_full_schema",
+      "suppress_candidates_probs": [
+        0.7544541954994202,
+        0.03941049426794052,
+        0.03103281371295452,
+        0.01639549434185028,
+        0.00980225671082735
+      ],
+      "suppress_candidates_rcs": [
+        [
+          8,
+          8
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          11,
+          6
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          2,
+          5
+        ]
+      ],
+      "suppress_prob": 0.7544541954994202,
+      "suppress_prob_gap": 0.7535470490111038,
+      "suppress_prob_ratio": 831.6784612148691,
+      "suppress_rank_in_top_policy": 1,
+      "suppress_rc": [
+        8,
+        8
+      ],
+      "target_action": 81,
+      "target_rc": [
+        5,
+        6
+      ],
+      "weight": 1.0
+    },
+    {
+      "before_target_prob": 0.00032802874920889735,
+      "before_target_rank": 14,
+      "board_hash": "b1604ddd16651447a7a571a6737d7161bd8874a4",
+      "case_id": "tdiv_legacy_g4_m13",
+      "current_best_direct_prob": 0.4877963662147522,
+      "current_best_direct_rc": [
+        4,
+        6
+      ],
+      "current_player": -1,
+      "game_number": "4",
+      "manifest_id": "td_exp_00090",
+      "move_count": "13",
+      "notes": "suppress_candidates_built_trainable_rank_11_50",
+      "primary_source_path": "analysis/integration_eval/teacher_divergence_retention_safety_v3_dataset.json",
+      "ready_bucket": "trainable_rank_11_50",
+      "round2_merge_action": "probe_and_suppress_built",
+      "source_class": "retention_candidate_dataset",
+      "split_role": "dryrun_trainable_candidate",
+      "status": "ready_full_schema",
+      "suppress_candidates_probs": [
+        0.4877963662147522,
+        0.46216896176338196,
+        0.01961659826338291,
+        0.0072491285391151905,
+        0.0064077009446918964
+      ],
+      "suppress_candidates_rcs": [
+        [
+          4,
+          6
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          6,
+          11
+        ]
+      ],
+      "suppress_prob": 0.4877963662147522,
+      "suppress_prob_gap": 0.4874683374655433,
+      "suppress_prob_ratio": 1487.0537030402497,
+      "suppress_rank_in_top_policy": 1,
+      "suppress_rc": [
+        4,
+        6
+      ],
+      "target_action": 141,
+      "target_rc": [
+        9,
+        6
+      ],
+      "weight": 1.0
+    },
+    {
+      "before_target_prob": 0.0003833681985270232,
+      "before_target_rank": 43,
+      "board_hash": "19b77e3587d8808d57fc4a4f5f44d5ae48fd1132",
+      "case_id": "tdiv_legacy_g2_m9",
+      "current_best_direct_prob": 0.5963717699050903,
+      "current_best_direct_rc": [
+        5,
+        9
+      ],
+      "current_player": -1,
+      "game_number": "2",
+      "manifest_id": "td_exp_00117",
+      "move_count": "9",
+      "notes": "suppress_candidates_built_trainable_rank_11_50",
+      "primary_source_path": "analysis/integration_eval/teacher_divergence_retention_clean_v2_dataset.json",
+      "ready_bucket": "trainable_rank_11_50",
+      "round2_merge_action": "probe_and_suppress_built",
+      "source_class": "retention_candidate_dataset",
+      "split_role": "dryrun_trainable_candidate",
+      "status": "ready_full_schema",
+      "suppress_candidates_probs": [
+        0.5963717699050903,
+        0.23774053156375885,
+        0.06524349004030228,
+        0.022774504497647285,
+        0.017271537333726883
+      ],
+      "suppress_candidates_rcs": [
+        [
+          5,
+          9
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          5,
+          10
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          5,
+          8
+        ]
+      ],
+      "suppress_prob": 0.5963717699050903,
+      "suppress_prob_gap": 0.5959884017065633,
+      "suppress_prob_ratio": 1555.610956246421,
+      "suppress_rank_in_top_policy": 1,
+      "suppress_rc": [
+        5,
+        9
+      ],
+      "target_action": 155,
+      "target_rc": [
+        10,
+        5
+      ],
+      "weight": 1.0
+    },
+    {
+      "before_target_prob": 0.0009071464883163571,
+      "before_target_rank": 47,
+      "board_hash": "a7408f1c7c200a150a579f27de8d03b7a5b3523d",
+      "case_id": "tdiv_legacy_g3_m4",
+      "current_best_direct_prob": 0.7544541954994202,
+      "current_best_direct_rc": [
+        8,
+        8
+      ],
+      "current_player": 1,
+      "game_number": "3",
+      "manifest_id": "td_exp_00120",
+      "move_count": "4",
+      "notes": "suppress_candidates_built_trainable_rank_11_50",
+      "primary_source_path": "analysis/integration_eval/teacher_divergence_retention_clean_v2_dataset.json",
+      "ready_bucket": "trainable_rank_11_50",
+      "round2_merge_action": "probe_and_suppress_built",
+      "source_class": "retention_candidate_dataset",
+      "split_role": "dryrun_trainable_candidate",
+      "status": "ready_full_schema",
+      "suppress_candidates_probs": [
+        0.7544541954994202,
+        0.03941049426794052,
+        0.03103281371295452,
+        0.01639549434185028,
+        0.00980225671082735
+      ],
+      "suppress_candidates_rcs": [
+        [
+          8,
+          8
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          11,
+          6
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          2,
+          5
+        ]
+      ],
+      "suppress_prob": 0.7544541954994202,
+      "suppress_prob_gap": 0.7535470490111038,
+      "suppress_prob_ratio": 831.6784612148691,
+      "suppress_rank_in_top_policy": 1,
+      "suppress_rc": [
+        8,
+        8
+      ],
+      "target_action": 81,
+      "target_rc": [
+        5,
+        6
+      ],
+      "weight": 1.0
+    },
+    {
+      "before_target_prob": 0.00032802874920889735,
+      "before_target_rank": 14,
+      "board_hash": "b1604ddd16651447a7a571a6737d7161bd8874a4",
+      "case_id": "tdiv_legacy_g4_m13",
+      "current_best_direct_prob": 0.4877963662147522,
+      "current_best_direct_rc": [
+        4,
+        6
+      ],
+      "current_player": -1,
+      "game_number": "4",
+      "manifest_id": "td_exp_00121",
+      "move_count": "13",
+      "notes": "suppress_candidates_built_trainable_rank_11_50",
+      "primary_source_path": "analysis/integration_eval/teacher_divergence_retention_clean_v2_dataset.json",
+      "ready_bucket": "trainable_rank_11_50",
+      "round2_merge_action": "probe_and_suppress_built",
+      "source_class": "retention_candidate_dataset",
+      "split_role": "dryrun_trainable_candidate",
+      "status": "ready_full_schema",
+      "suppress_candidates_probs": [
+        0.4877963662147522,
+        0.46216896176338196,
+        0.01961659826338291,
+        0.0072491285391151905,
+        0.0064077009446918964
+      ],
+      "suppress_candidates_rcs": [
+        [
+          4,
+          6
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          6,
+          11
+        ]
+      ],
+      "suppress_prob": 0.4877963662147522,
+      "suppress_prob_gap": 0.4874683374655433,
+      "suppress_prob_ratio": 1487.0537030402497,
+      "suppress_rank_in_top_policy": 1,
+      "suppress_rc": [
+        4,
+        6
+      ],
+      "target_action": 141,
+      "target_rc": [
+        9,
+        6
+      ],
+      "weight": 1.0
+    },
+    {
+      "before_target_prob": 0.0026402673684060574,
+      "before_target_rank": 23,
+      "board_hash": "6c6e801436baecb5003f5cb4ac0a81f07439dfe1",
+      "case_id": "tdiv_legacy_g5_m28",
+      "current_best_direct_prob": 0.38212400674819946,
+      "current_best_direct_rc": [
+        4,
+        5
+      ],
+      "current_player": 1,
+      "game_number": "5",
+      "manifest_id": "td_exp_00127",
+      "move_count": "28",
+      "notes": "suppress_candidates_built_trainable_rank_11_50",
+      "primary_source_path": "analysis/integration_eval/teacher_divergence_retention_clean_v2_dataset.json",
+      "ready_bucket": "trainable_rank_11_50",
+      "round2_merge_action": "probe_and_suppress_built",
+      "source_class": "retention_candidate_dataset",
+      "split_role": "dryrun_trainable_candidate",
+      "status": "ready_full_schema",
+      "suppress_candidates_probs": [
+        0.38212400674819946,
+        0.3320460617542267,
+        0.052619803696870804,
+        0.041030317544937134,
+        0.030090682208538055
+      ],
+      "suppress_candidates_rcs": [
+        [
+          4,
+          5
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          8,
+          11
+        ]
+      ],
+      "suppress_prob": 0.38212400674819946,
+      "suppress_prob_gap": 0.3794837393797934,
+      "suppress_prob_ratio": 144.72928435989786,
+      "suppress_rank_in_top_policy": 1,
+      "suppress_rc": [
+        4,
+        5
+      ],
+      "target_action": 86,
+      "target_rc": [
+        5,
+        11
+      ],
+      "weight": 1.0
+    },
+    {
+      "before_target_prob": 0.0007085961988195777,
+      "before_target_rank": 39,
+      "board_hash": "6cd50b750735acbb0a84f7f4aba05041f51f88ef",
+      "case_id": "tdiv_legacy_g5_m30",
+      "current_best_direct_prob": 0.3999754786491394,
+      "current_best_direct_rc": [
+        3,
+        7
+      ],
+      "current_player": 1,
+      "game_number": "5",
+      "manifest_id": "td_exp_00128",
+      "move_count": "30",
+      "notes": "suppress_candidates_built_trainable_rank_11_50",
+      "primary_source_path": "analysis/integration_eval/teacher_divergence_retention_clean_v2_dataset.json",
+      "ready_bucket": "trainable_rank_11_50",
+      "round2_merge_action": "probe_and_suppress_built",
+      "source_class": "retention_candidate_dataset",
+      "split_role": "dryrun_trainable_candidate",
+      "status": "ready_full_schema",
+      "suppress_candidates_probs": [
+        0.3999754786491394,
+        0.22157883644104004,
+        0.08537070453166962,
+        0.08209425210952759,
+        0.0300870630890131
+      ],
+      "suppress_candidates_rcs": [
+        [
+          3,
+          7
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          8,
+          11
+        ],
+        [
+          5,
+          9
+        ]
+      ],
+      "suppress_prob": 0.3999754786491394,
+      "suppress_prob_gap": 0.3992668824503198,
+      "suppress_prob_ratio": 564.4617898253514,
+      "suppress_rank_in_top_policy": 1,
+      "suppress_rc": [
+        3,
+        7
+      ],
+      "target_action": 69,
+      "target_rc": [
+        4,
+        9
+      ],
+      "weight": 1.0
+    },
+    {
+      "before_target_prob": 0.0014995787059888244,
+      "before_target_rank": 18,
+      "board_hash": "55989befddf0dafc0e8e32a05f98f9443855943e",
+      "case_id": "tdiv_legacy_g5_m8",
+      "current_best_direct_prob": 0.728687584400177,
+      "current_best_direct_rc": [
+        6,
+        6
+      ],
+      "current_player": 1,
+      "game_number": "5",
+      "manifest_id": "td_exp_00130",
+      "move_count": "8",
+      "notes": "suppress_candidates_built_trainable_rank_11_50",
+      "primary_source_path": "analysis/integration_eval/teacher_divergence_retention_clean_v2_dataset.json",
+      "ready_bucket": "trainable_rank_11_50",
+      "round2_merge_action": "probe_and_suppress_built",
+      "source_class": "retention_candidate_dataset",
+      "split_role": "dryrun_trainable_candidate",
+      "status": "ready_full_schema",
+      "suppress_candidates_probs": [
+        0.728687584400177,
+        0.08103480935096741,
+        0.07870201021432877,
+        0.01201948057860136,
+        0.009058039635419846
+      ],
+      "suppress_candidates_rcs": [
+        [
+          6,
+          6
+        ],
+        [
+          5,
+          8
+        ],
+        [
+          5,
+          9
+        ],
+        [
+          9,
+          6
+        ],
+        [
+          9,
+          8
+        ]
+      ],
+      "suppress_prob": 0.728687584400177,
+      "suppress_prob_gap": 0.7271880056941882,
+      "suppress_prob_ratio": 485.92820202770173,
+      "suppress_rank_in_top_policy": 1,
+      "suppress_rc": [
+        6,
+        6
+      ],
+      "target_action": 125,
+      "target_rc": [
+        8,
+        5
+      ],
+      "weight": 1.0
+    },
+    {
+      "before_target_prob": 0.0003833681985270232,
+      "before_target_rank": 43,
+      "board_hash": "19b77e3587d8808d57fc4a4f5f44d5ae48fd1132",
+      "case_id": "tdiv_legacy_g2_m9",
+      "current_best_direct_prob": 0.5963717699050903,
+      "current_best_direct_rc": [
+        5,
+        9
+      ],
+      "current_player": -1,
+      "game_number": "2",
+      "manifest_id": "td_exp_00140",
+      "move_count": "9",
+      "notes": "suppress_candidates_built_trainable_rank_11_50",
+      "primary_source_path": "analysis/integration_eval/teacher_divergence_retention_dataset.json",
+      "ready_bucket": "trainable_rank_11_50",
+      "round2_merge_action": "probe_and_suppress_built",
+      "source_class": "retention_candidate_dataset",
+      "split_role": "dryrun_trainable_candidate",
+      "status": "ready_full_schema",
+      "suppress_candidates_probs": [
+        0.5963717699050903,
+        0.23774053156375885,
+        0.06524349004030228,
+        0.022774504497647285,
+        0.017271537333726883
+      ],
+      "suppress_candidates_rcs": [
+        [
+          5,
+          9
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          5,
+          10
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          5,
+          8
+        ]
+      ],
+      "suppress_prob": 0.5963717699050903,
+      "suppress_prob_gap": 0.5959884017065633,
+      "suppress_prob_ratio": 1555.610956246421,
+      "suppress_rank_in_top_policy": 1,
+      "suppress_rc": [
+        5,
+        9
+      ],
+      "target_action": 155,
+      "target_rc": [
+        10,
+        5
+      ],
+      "weight": 1.0
+    },
+    {
+      "before_target_prob": 0.0009071464883163571,
+      "before_target_rank": 47,
+      "board_hash": "a7408f1c7c200a150a579f27de8d03b7a5b3523d",
+      "case_id": "tdiv_legacy_g3_m4",
+      "current_best_direct_prob": 0.7544541954994202,
+      "current_best_direct_rc": [
+        8,
+        8
+      ],
+      "current_player": 1,
+      "game_number": "3",
+      "manifest_id": "td_exp_00143",
+      "move_count": "4",
+      "notes": "suppress_candidates_built_trainable_rank_11_50",
+      "primary_source_path": "analysis/integration_eval/teacher_divergence_retention_dataset.json",
+      "ready_bucket": "trainable_rank_11_50",
+      "round2_merge_action": "probe_and_suppress_built",
+      "source_class": "retention_candidate_dataset",
+      "split_role": "dryrun_trainable_candidate",
+      "status": "ready_full_schema",
+      "suppress_candidates_probs": [
+        0.7544541954994202,
+        0.03941049426794052,
+        0.03103281371295452,
+        0.01639549434185028,
+        0.00980225671082735
+      ],
+      "suppress_candidates_rcs": [
+        [
+          8,
+          8
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          11,
+          6
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          2,
+          5
+        ]
+      ],
+      "suppress_prob": 0.7544541954994202,
+      "suppress_prob_gap": 0.7535470490111038,
+      "suppress_prob_ratio": 831.6784612148691,
+      "suppress_rank_in_top_policy": 1,
+      "suppress_rc": [
+        8,
+        8
+      ],
+      "target_action": 81,
+      "target_rc": [
+        5,
+        6
+      ],
+      "weight": 1.0
+    },
+    {
+      "before_target_prob": 0.00032802874920889735,
+      "before_target_rank": 14,
+      "board_hash": "b1604ddd16651447a7a571a6737d7161bd8874a4",
+      "case_id": "tdiv_legacy_g4_m13",
+      "current_best_direct_prob": 0.4877963662147522,
+      "current_best_direct_rc": [
+        4,
+        6
+      ],
+      "current_player": -1,
+      "game_number": "4",
+      "manifest_id": "td_exp_00146",
+      "move_count": "13",
+      "notes": "suppress_candidates_built_trainable_rank_11_50",
+      "primary_source_path": "analysis/integration_eval/teacher_divergence_retention_dataset.json",
+      "ready_bucket": "trainable_rank_11_50",
+      "round2_merge_action": "probe_and_suppress_built",
+      "source_class": "retention_candidate_dataset",
+      "split_role": "dryrun_trainable_candidate",
+      "status": "ready_full_schema",
+      "suppress_candidates_probs": [
+        0.4877963662147522,
+        0.46216896176338196,
+        0.01961659826338291,
+        0.0072491285391151905,
+        0.0064077009446918964
+      ],
+      "suppress_candidates_rcs": [
+        [
+          4,
+          6
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          6,
+          11
+        ]
+      ],
+      "suppress_prob": 0.4877963662147522,
+      "suppress_prob_gap": 0.4874683374655433,
+      "suppress_prob_ratio": 1487.0537030402497,
+      "suppress_rank_in_top_policy": 1,
+      "suppress_rc": [
+        4,
+        6
+      ],
+      "target_action": 141,
+      "target_rc": [
+        9,
+        6
+      ],
+      "weight": 1.0
+    },
+    {
+      "before_target_prob": 0.0014995787059888244,
+      "before_target_rank": 18,
+      "board_hash": "55989befddf0dafc0e8e32a05f98f9443855943e",
+      "case_id": "tdiv_legacy_g5_m8",
+      "current_best_direct_prob": 0.728687584400177,
+      "current_best_direct_rc": [
+        6,
+        6
+      ],
+      "current_player": 1,
+      "game_number": "5",
+      "manifest_id": "td_exp_00150",
+      "move_count": "8",
+      "notes": "suppress_candidates_built_trainable_rank_11_50",
+      "primary_source_path": "analysis/integration_eval/teacher_divergence_retention_dataset.json",
+      "ready_bucket": "trainable_rank_11_50",
+      "round2_merge_action": "probe_and_suppress_built",
+      "source_class": "retention_candidate_dataset",
+      "split_role": "dryrun_trainable_candidate",
+      "status": "ready_full_schema",
+      "suppress_candidates_probs": [
+        0.728687584400177,
+        0.08103480935096741,
+        0.07870201021432877,
+        0.01201948057860136,
+        0.009058039635419846
+      ],
+      "suppress_candidates_rcs": [
+        [
+          6,
+          6
+        ],
+        [
+          5,
+          8
+        ],
+        [
+          5,
+          9
+        ],
+        [
+          9,
+          6
+        ],
+        [
+          9,
+          8
+        ]
+      ],
+      "suppress_prob": 0.728687584400177,
+      "suppress_prob_gap": 0.7271880056941882,
+      "suppress_prob_ratio": 485.92820202770173,
+      "suppress_rank_in_top_policy": 1,
+      "suppress_rc": [
+        6,
+        6
+      ],
+      "target_action": 125,
+      "target_rc": [
+        8,
+        5
+      ],
+      "weight": 1.0
+    },
+    {
+      "before_target_prob": 0.0026402673684060574,
+      "before_target_rank": 23,
+      "board_hash": "6c6e801436baecb5003f5cb4ac0a81f07439dfe1",
+      "case_id": "tdiv_legacy_g5_m28",
+      "current_best_direct_prob": 0.38212400674819946,
+      "current_best_direct_rc": [
+        4,
+        5
+      ],
+      "current_player": 1,
+      "game_number": "5",
+      "manifest_id": "td_exp_00154",
+      "move_count": "28",
+      "notes": "suppress_candidates_built_trainable_rank_11_50",
+      "primary_source_path": "analysis/integration_eval/teacher_divergence_retention_dataset.json",
+      "ready_bucket": "trainable_rank_11_50",
+      "round2_merge_action": "probe_and_suppress_built",
+      "source_class": "retention_candidate_dataset",
+      "split_role": "dryrun_trainable_candidate",
+      "status": "ready_full_schema",
+      "suppress_candidates_probs": [
+        0.38212400674819946,
+        0.3320460617542267,
+        0.052619803696870804,
+        0.041030317544937134,
+        0.030090682208538055
+      ],
+      "suppress_candidates_rcs": [
+        [
+          4,
+          5
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          8,
+          11
+        ]
+      ],
+      "suppress_prob": 0.38212400674819946,
+      "suppress_prob_gap": 0.3794837393797934,
+      "suppress_prob_ratio": 144.72928435989786,
+      "suppress_rank_in_top_policy": 1,
+      "suppress_rc": [
+        4,
+        5
+      ],
+      "target_action": 86,
+      "target_rc": [
+        5,
+        11
+      ],
+      "weight": 1.0
+    },
+    {
+      "before_target_prob": 0.0007085961988195777,
+      "before_target_rank": 39,
+      "board_hash": "6cd50b750735acbb0a84f7f4aba05041f51f88ef",
+      "case_id": "tdiv_legacy_g5_m30",
+      "current_best_direct_prob": 0.3999754786491394,
+      "current_best_direct_rc": [
+        3,
+        7
+      ],
+      "current_player": 1,
+      "game_number": "5",
+      "manifest_id": "td_exp_00155",
+      "move_count": "30",
+      "notes": "suppress_candidates_built_trainable_rank_11_50",
+      "primary_source_path": "analysis/integration_eval/teacher_divergence_retention_dataset.json",
+      "ready_bucket": "trainable_rank_11_50",
+      "round2_merge_action": "probe_and_suppress_built",
+      "source_class": "retention_candidate_dataset",
+      "split_role": "dryrun_trainable_candidate",
+      "status": "ready_full_schema",
+      "suppress_candidates_probs": [
+        0.3999754786491394,
+        0.22157883644104004,
+        0.08537070453166962,
+        0.08209425210952759,
+        0.0300870630890131
+      ],
+      "suppress_candidates_rcs": [
+        [
+          3,
+          7
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          8,
+          11
+        ],
+        [
+          5,
+          9
+        ]
+      ],
+      "suppress_prob": 0.3999754786491394,
+      "suppress_prob_gap": 0.3992668824503198,
+      "suppress_prob_ratio": 564.4617898253514,
+      "suppress_rank_in_top_policy": 1,
+      "suppress_rc": [
+        3,
+        7
+      ],
+      "target_action": 69,
+      "target_rc": [
+        4,
+        9
+      ],
+      "weight": 1.0
+    },
+    {
+      "before_target_prob": 0.00462111784145236,
+      "before_target_rank": 23,
+      "board_hash": "32a828f576f74feb3d67377d42bb30e6398b925f",
+      "case_id": "",
+      "current_best_direct_prob": 0.43301525712013245,
+      "current_best_direct_rc": [
+        10,
+        9
+      ],
+      "current_player": -1,
+      "game_number": "2",
+      "manifest_id": "td_exp_00253",
+      "move_count": "19",
+      "notes": "suppress_candidates_built_trainable_rank_11_50",
+      "primary_source_path": "analysis/integration_eval/teacher_divergence_retention_clean_v2_manifest.csv",
+      "ready_bucket": "trainable_rank_11_50",
+      "round2_merge_action": "probe_and_suppress_built",
+      "source_class": "retention_metadata_manifest",
+      "split_role": "dryrun_trainable_candidate",
+      "status": "ready_full_schema",
+      "suppress_candidates_probs": [
+        0.43301525712013245,
+        0.15331101417541504,
+        0.10483847558498383,
+        0.024280978366732597,
+        0.017735803499817848
+      ],
+      "suppress_candidates_rcs": [
+        [
+          10,
+          9
+        ],
+        [
+          6,
+          8
+        ],
+        [
+          7,
+          4
+        ],
+        [
+          3,
+          8
+        ],
+        [
+          5,
+          8
+        ]
+      ],
+      "suppress_prob": 0.43301525712013245,
+      "suppress_prob_gap": 0.4283941392786801,
+      "suppress_prob_ratio": 93.70357389199171,
+      "suppress_rank_in_top_policy": 1,
+      "suppress_rc": [
+        10,
+        9
+      ],
+      "target_action": 81,
+      "target_rc": [
+        5,
+        6
+      ],
+      "weight": 1.0
+    },
+    {
+      "before_target_prob": 0.0003833681985270232,
+      "before_target_rank": 43,
+      "board_hash": "19b77e3587d8808d57fc4a4f5f44d5ae48fd1132",
+      "case_id": "",
+      "current_best_direct_prob": 0.5963717699050903,
+      "current_best_direct_rc": [
+        5,
+        9
+      ],
+      "current_player": -1,
+      "game_number": "2",
+      "manifest_id": "td_exp_00257",
+      "move_count": "9",
+      "notes": "suppress_candidates_built_trainable_rank_11_50",
+      "primary_source_path": "analysis/integration_eval/teacher_divergence_retention_clean_v2_manifest.csv",
+      "ready_bucket": "trainable_rank_11_50",
+      "round2_merge_action": "probe_and_suppress_built",
+      "source_class": "retention_metadata_manifest",
+      "split_role": "dryrun_trainable_candidate",
+      "status": "ready_full_schema",
+      "suppress_candidates_probs": [
+        0.5963717699050903,
+        0.23774053156375885,
+        0.06524349004030228,
+        0.022774504497647285,
+        0.017271537333726883
+      ],
+      "suppress_candidates_rcs": [
+        [
+          5,
+          9
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          5,
+          10
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          5,
+          8
+        ]
+      ],
+      "suppress_prob": 0.5963717699050903,
+      "suppress_prob_gap": 0.5959884017065633,
+      "suppress_prob_ratio": 1555.610956246421,
+      "suppress_rank_in_top_policy": 1,
+      "suppress_rc": [
+        5,
+        9
+      ],
+      "target_action": 155,
+      "target_rc": [
+        10,
+        5
+      ],
+      "weight": 1.0
+    },
+    {
+      "before_target_prob": 0.0009071464883163571,
+      "before_target_rank": 47,
+      "board_hash": "a7408f1c7c200a150a579f27de8d03b7a5b3523d",
+      "case_id": "",
+      "current_best_direct_prob": 0.7544541954994202,
+      "current_best_direct_rc": [
+        8,
+        8
+      ],
+      "current_player": 1,
+      "game_number": "3",
+      "manifest_id": "td_exp_00261",
+      "move_count": "4",
+      "notes": "suppress_candidates_built_trainable_rank_11_50",
+      "primary_source_path": "analysis/integration_eval/teacher_divergence_retention_clean_v2_manifest.csv",
+      "ready_bucket": "trainable_rank_11_50",
+      "round2_merge_action": "probe_and_suppress_built",
+      "source_class": "retention_metadata_manifest",
+      "split_role": "dryrun_trainable_candidate",
+      "status": "ready_full_schema",
+      "suppress_candidates_probs": [
+        0.7544541954994202,
+        0.03941049426794052,
+        0.03103281371295452,
+        0.01639549434185028,
+        0.00980225671082735
+      ],
+      "suppress_candidates_rcs": [
+        [
+          8,
+          8
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          11,
+          6
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          2,
+          5
+        ]
+      ],
+      "suppress_prob": 0.7544541954994202,
+      "suppress_prob_gap": 0.7535470490111038,
+      "suppress_prob_ratio": 831.6784612148691,
+      "suppress_rank_in_top_policy": 1,
+      "suppress_rc": [
+        8,
+        8
+      ],
+      "target_action": 81,
+      "target_rc": [
+        5,
+        6
+      ],
+      "weight": 1.0
+    },
+    {
+      "before_target_prob": 0.00032802874920889735,
+      "before_target_rank": 14,
+      "board_hash": "b1604ddd16651447a7a571a6737d7161bd8874a4",
+      "case_id": "",
+      "current_best_direct_prob": 0.4877963662147522,
+      "current_best_direct_rc": [
+        4,
+        6
+      ],
+      "current_player": -1,
+      "game_number": "4",
+      "manifest_id": "td_exp_00262",
+      "move_count": "13",
+      "notes": "suppress_candidates_built_trainable_rank_11_50",
+      "primary_source_path": "analysis/integration_eval/teacher_divergence_retention_clean_v2_manifest.csv",
+      "ready_bucket": "trainable_rank_11_50",
+      "round2_merge_action": "probe_and_suppress_built",
+      "source_class": "retention_metadata_manifest",
+      "split_role": "dryrun_trainable_candidate",
+      "status": "ready_full_schema",
+      "suppress_candidates_probs": [
+        0.4877963662147522,
+        0.46216896176338196,
+        0.01961659826338291,
+        0.0072491285391151905,
+        0.0064077009446918964
+      ],
+      "suppress_candidates_rcs": [
+        [
+          4,
+          6
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          6,
+          11
+        ]
+      ],
+      "suppress_prob": 0.4877963662147522,
+      "suppress_prob_gap": 0.4874683374655433,
+      "suppress_prob_ratio": 1487.0537030402497,
+      "suppress_rank_in_top_policy": 1,
+      "suppress_rc": [
+        4,
+        6
+      ],
+      "target_action": 141,
+      "target_rc": [
+        9,
+        6
+      ],
+      "weight": 1.0
+    },
+    {
+      "before_target_prob": 0.0026402673684060574,
+      "before_target_rank": 23,
+      "board_hash": "6c6e801436baecb5003f5cb4ac0a81f07439dfe1",
+      "case_id": "",
+      "current_best_direct_prob": 0.38212400674819946,
+      "current_best_direct_rc": [
+        4,
+        5
+      ],
+      "current_player": 1,
+      "game_number": "5",
+      "manifest_id": "td_exp_00271",
+      "move_count": "28",
+      "notes": "suppress_candidates_built_trainable_rank_11_50",
+      "primary_source_path": "analysis/integration_eval/teacher_divergence_retention_clean_v2_manifest.csv",
+      "ready_bucket": "trainable_rank_11_50",
+      "round2_merge_action": "probe_and_suppress_built",
+      "source_class": "retention_metadata_manifest",
+      "split_role": "dryrun_trainable_candidate",
+      "status": "ready_full_schema",
+      "suppress_candidates_probs": [
+        0.38212400674819946,
+        0.3320460617542267,
+        0.052619803696870804,
+        0.041030317544937134,
+        0.030090682208538055
+      ],
+      "suppress_candidates_rcs": [
+        [
+          4,
+          5
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          8,
+          11
+        ]
+      ],
+      "suppress_prob": 0.38212400674819946,
+      "suppress_prob_gap": 0.3794837393797934,
+      "suppress_prob_ratio": 144.72928435989786,
+      "suppress_rank_in_top_policy": 1,
+      "suppress_rc": [
+        4,
+        5
+      ],
+      "target_action": 86,
+      "target_rc": [
+        5,
+        11
+      ],
+      "weight": 1.0
+    },
+    {
+      "before_target_prob": 0.0007085961988195777,
+      "before_target_rank": 39,
+      "board_hash": "6cd50b750735acbb0a84f7f4aba05041f51f88ef",
+      "case_id": "",
+      "current_best_direct_prob": 0.3999754786491394,
+      "current_best_direct_rc": [
+        3,
+        7
+      ],
+      "current_player": 1,
+      "game_number": "5",
+      "manifest_id": "td_exp_00272",
+      "move_count": "30",
+      "notes": "suppress_candidates_built_trainable_rank_11_50",
+      "primary_source_path": "analysis/integration_eval/teacher_divergence_retention_clean_v2_manifest.csv",
+      "ready_bucket": "trainable_rank_11_50",
+      "round2_merge_action": "probe_and_suppress_built",
+      "source_class": "retention_metadata_manifest",
+      "split_role": "dryrun_trainable_candidate",
+      "status": "ready_full_schema",
+      "suppress_candidates_probs": [
+        0.3999754786491394,
+        0.22157883644104004,
+        0.08537070453166962,
+        0.08209425210952759,
+        0.0300870630890131
+      ],
+      "suppress_candidates_rcs": [
+        [
+          3,
+          7
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          8,
+          11
+        ],
+        [
+          5,
+          9
+        ]
+      ],
+      "suppress_prob": 0.3999754786491394,
+      "suppress_prob_gap": 0.3992668824503198,
+      "suppress_prob_ratio": 564.4617898253514,
+      "suppress_rank_in_top_policy": 1,
+      "suppress_rc": [
+        3,
+        7
+      ],
+      "target_action": 69,
+      "target_rc": [
+        4,
+        9
+      ],
+      "weight": 1.0
+    },
+    {
+      "before_target_prob": 0.0014995787059888244,
+      "before_target_rank": 18,
+      "board_hash": "55989befddf0dafc0e8e32a05f98f9443855943e",
+      "case_id": "",
+      "current_best_direct_prob": 0.728687584400177,
+      "current_best_direct_rc": [
+        6,
+        6
+      ],
+      "current_player": 1,
+      "game_number": "5",
+      "manifest_id": "td_exp_00274",
+      "move_count": "8",
+      "notes": "suppress_candidates_built_trainable_rank_11_50",
+      "primary_source_path": "analysis/integration_eval/teacher_divergence_retention_clean_v2_manifest.csv",
+      "ready_bucket": "trainable_rank_11_50",
+      "round2_merge_action": "probe_and_suppress_built",
+      "source_class": "retention_metadata_manifest",
+      "split_role": "dryrun_trainable_candidate",
+      "status": "ready_full_schema",
+      "suppress_candidates_probs": [
+        0.728687584400177,
+        0.08103480935096741,
+        0.07870201021432877,
+        0.01201948057860136,
+        0.009058039635419846
+      ],
+      "suppress_candidates_rcs": [
+        [
+          6,
+          6
+        ],
+        [
+          5,
+          8
+        ],
+        [
+          5,
+          9
+        ],
+        [
+          9,
+          6
+        ],
+        [
+          9,
+          8
+        ]
+      ],
+      "suppress_prob": 0.728687584400177,
+      "suppress_prob_gap": 0.7271880056941882,
+      "suppress_prob_ratio": 485.92820202770173,
+      "suppress_rank_in_top_policy": 1,
+      "suppress_rc": [
+        6,
+        6
+      ],
+      "target_action": 125,
+      "target_rc": [
+        8,
+        5
+      ],
+      "weight": 1.0
+    },
+    {
+      "before_target_prob": 0.0003833681985270232,
+      "before_target_rank": 43,
+      "board_hash": "19b77e3587d8808d57fc4a4f5f44d5ae48fd1132",
+      "case_id": "",
+      "current_best_direct_prob": 0.5963717699050903,
+      "current_best_direct_rc": [
+        5,
+        9
+      ],
+      "current_player": -1,
+      "game_number": "2",
+      "manifest_id": "td_exp_00285",
+      "move_count": "9",
+      "notes": "suppress_candidates_built_trainable_rank_11_50",
+      "primary_source_path": "analysis/integration_eval/teacher_divergence_retention_manifest.csv",
+      "ready_bucket": "trainable_rank_11_50",
+      "round2_merge_action": "probe_and_suppress_built",
+      "source_class": "retention_metadata_manifest",
+      "split_role": "dryrun_trainable_candidate",
+      "status": "ready_full_schema",
+      "suppress_candidates_probs": [
+        0.5963717699050903,
+        0.23774053156375885,
+        0.06524349004030228,
+        0.022774504497647285,
+        0.017271537333726883
+      ],
+      "suppress_candidates_rcs": [
+        [
+          5,
+          9
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          5,
+          10
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          5,
+          8
+        ]
+      ],
+      "suppress_prob": 0.5963717699050903,
+      "suppress_prob_gap": 0.5959884017065633,
+      "suppress_prob_ratio": 1555.610956246421,
+      "suppress_rank_in_top_policy": 1,
+      "suppress_rc": [
+        5,
+        9
+      ],
+      "target_action": 155,
+      "target_rc": [
+        10,
+        5
+      ],
+      "weight": 1.0
+    },
+    {
+      "before_target_prob": 0.0009071464883163571,
+      "before_target_rank": 47,
+      "board_hash": "a7408f1c7c200a150a579f27de8d03b7a5b3523d",
+      "case_id": "",
+      "current_best_direct_prob": 0.7544541954994202,
+      "current_best_direct_rc": [
+        8,
+        8
+      ],
+      "current_player": 1,
+      "game_number": "3",
+      "manifest_id": "td_exp_00288",
+      "move_count": "4",
+      "notes": "suppress_candidates_built_trainable_rank_11_50",
+      "primary_source_path": "analysis/integration_eval/teacher_divergence_retention_manifest.csv",
+      "ready_bucket": "trainable_rank_11_50",
+      "round2_merge_action": "probe_and_suppress_built",
+      "source_class": "retention_metadata_manifest",
+      "split_role": "dryrun_trainable_candidate",
+      "status": "ready_full_schema",
+      "suppress_candidates_probs": [
+        0.7544541954994202,
+        0.03941049426794052,
+        0.03103281371295452,
+        0.01639549434185028,
+        0.00980225671082735
+      ],
+      "suppress_candidates_rcs": [
+        [
+          8,
+          8
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          11,
+          6
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          2,
+          5
+        ]
+      ],
+      "suppress_prob": 0.7544541954994202,
+      "suppress_prob_gap": 0.7535470490111038,
+      "suppress_prob_ratio": 831.6784612148691,
+      "suppress_rank_in_top_policy": 1,
+      "suppress_rc": [
+        8,
+        8
+      ],
+      "target_action": 81,
+      "target_rc": [
+        5,
+        6
+      ],
+      "weight": 1.0
+    },
+    {
+      "before_target_prob": 0.00032802874920889735,
+      "before_target_rank": 14,
+      "board_hash": "b1604ddd16651447a7a571a6737d7161bd8874a4",
+      "case_id": "",
+      "current_best_direct_prob": 0.4877963662147522,
+      "current_best_direct_rc": [
+        4,
+        6
+      ],
+      "current_player": -1,
+      "game_number": "4",
+      "manifest_id": "td_exp_00291",
+      "move_count": "13",
+      "notes": "suppress_candidates_built_trainable_rank_11_50",
+      "primary_source_path": "analysis/integration_eval/teacher_divergence_retention_manifest.csv",
+      "ready_bucket": "trainable_rank_11_50",
+      "round2_merge_action": "probe_and_suppress_built",
+      "source_class": "retention_metadata_manifest",
+      "split_role": "dryrun_trainable_candidate",
+      "status": "ready_full_schema",
+      "suppress_candidates_probs": [
+        0.4877963662147522,
+        0.46216896176338196,
+        0.01961659826338291,
+        0.0072491285391151905,
+        0.0064077009446918964
+      ],
+      "suppress_candidates_rcs": [
+        [
+          4,
+          6
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          6,
+          11
+        ]
+      ],
+      "suppress_prob": 0.4877963662147522,
+      "suppress_prob_gap": 0.4874683374655433,
+      "suppress_prob_ratio": 1487.0537030402497,
+      "suppress_rank_in_top_policy": 1,
+      "suppress_rc": [
+        4,
+        6
+      ],
+      "target_action": 141,
+      "target_rc": [
+        9,
+        6
+      ],
+      "weight": 1.0
+    },
+    {
+      "before_target_prob": 0.0003833681985270232,
+      "before_target_rank": 43,
+      "board_hash": "19b77e3587d8808d57fc4a4f5f44d5ae48fd1132",
+      "case_id": "",
+      "current_best_direct_prob": 0.5963717699050903,
+      "current_best_direct_rc": [
+        5,
+        9
+      ],
+      "current_player": -1,
+      "game_number": "2",
+      "manifest_id": "td_exp_00338",
+      "move_count": "9",
+      "notes": "suppress_candidates_built_trainable_rank_11_50",
+      "primary_source_path": "analysis/public_benchmark_eval/rapfi_teacher_policy_candidates_corpus8_selected.csv",
+      "ready_bucket": "trainable_rank_11_50",
+      "round2_merge_action": "probe_and_suppress_built",
+      "source_class": "corpus8_teacher_candidate_csv",
+      "split_role": "dryrun_trainable_candidate",
+      "status": "ready_full_schema",
+      "suppress_candidates_probs": [
+        0.5963717699050903,
+        0.23774053156375885,
+        0.06524349004030228,
+        0.022774504497647285,
+        0.017271537333726883
+      ],
+      "suppress_candidates_rcs": [
+        [
+          5,
+          9
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          5,
+          10
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          5,
+          8
+        ]
+      ],
+      "suppress_prob": 0.5963717699050903,
+      "suppress_prob_gap": 0.5959884017065633,
+      "suppress_prob_ratio": 1555.610956246421,
+      "suppress_rank_in_top_policy": 1,
+      "suppress_rc": [
+        5,
+        9
+      ],
+      "target_action": 155,
+      "target_rc": [
+        10,
+        5
+      ],
+      "weight": 1.0
+    },
+    {
+      "before_target_prob": 0.00462111784145236,
+      "before_target_rank": 23,
+      "board_hash": "32a828f576f74feb3d67377d42bb30e6398b925f",
+      "case_id": "",
+      "current_best_direct_prob": 0.43301525712013245,
+      "current_best_direct_rc": [
+        10,
+        9
+      ],
+      "current_player": -1,
+      "game_number": "2",
+      "manifest_id": "td_exp_00340",
+      "move_count": "19",
+      "notes": "suppress_candidates_built_trainable_rank_11_50",
+      "primary_source_path": "analysis/public_benchmark_eval/rapfi_teacher_policy_candidates_corpus8_selected.csv",
+      "ready_bucket": "trainable_rank_11_50",
+      "round2_merge_action": "probe_and_suppress_built",
+      "source_class": "corpus8_teacher_candidate_csv",
+      "split_role": "dryrun_trainable_candidate",
+      "status": "ready_full_schema",
+      "suppress_candidates_probs": [
+        0.43301525712013245,
+        0.15331101417541504,
+        0.10483847558498383,
+        0.024280978366732597,
+        0.017735803499817848
+      ],
+      "suppress_candidates_rcs": [
+        [
+          10,
+          9
+        ],
+        [
+          6,
+          8
+        ],
+        [
+          7,
+          4
+        ],
+        [
+          3,
+          8
+        ],
+        [
+          5,
+          8
+        ]
+      ],
+      "suppress_prob": 0.43301525712013245,
+      "suppress_prob_gap": 0.4283941392786801,
+      "suppress_prob_ratio": 93.70357389199171,
+      "suppress_rank_in_top_policy": 1,
+      "suppress_rc": [
+        10,
+        9
+      ],
+      "target_action": 81,
+      "target_rc": [
+        5,
+        6
+      ],
+      "weight": 1.0
+    },
+    {
+      "before_target_prob": 0.0009071464883163571,
+      "before_target_rank": 47,
+      "board_hash": "a7408f1c7c200a150a579f27de8d03b7a5b3523d",
+      "case_id": "",
+      "current_best_direct_prob": 0.7544541954994202,
+      "current_best_direct_rc": [
+        8,
+        8
+      ],
+      "current_player": 1,
+      "game_number": "3",
+      "manifest_id": "td_exp_00343",
+      "move_count": "4",
+      "notes": "suppress_candidates_built_trainable_rank_11_50",
+      "primary_source_path": "analysis/public_benchmark_eval/rapfi_teacher_policy_candidates_corpus8_selected.csv",
+      "ready_bucket": "trainable_rank_11_50",
+      "round2_merge_action": "probe_and_suppress_built",
+      "source_class": "corpus8_teacher_candidate_csv",
+      "split_role": "dryrun_trainable_candidate",
+      "status": "ready_full_schema",
+      "suppress_candidates_probs": [
+        0.7544541954994202,
+        0.03941049426794052,
+        0.03103281371295452,
+        0.01639549434185028,
+        0.00980225671082735
+      ],
+      "suppress_candidates_rcs": [
+        [
+          8,
+          8
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          11,
+          6
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          2,
+          5
+        ]
+      ],
+      "suppress_prob": 0.7544541954994202,
+      "suppress_prob_gap": 0.7535470490111038,
+      "suppress_prob_ratio": 831.6784612148691,
+      "suppress_rank_in_top_policy": 1,
+      "suppress_rc": [
+        8,
+        8
+      ],
+      "target_action": 81,
+      "target_rc": [
+        5,
+        6
+      ],
+      "weight": 1.0
+    },
+    {
+      "before_target_prob": 0.00032802874920889735,
+      "before_target_rank": 14,
+      "board_hash": "b1604ddd16651447a7a571a6737d7161bd8874a4",
+      "case_id": "",
+      "current_best_direct_prob": 0.4877963662147522,
+      "current_best_direct_rc": [
+        4,
+        6
+      ],
+      "current_player": -1,
+      "game_number": "4",
+      "manifest_id": "td_exp_00346",
+      "move_count": "13",
+      "notes": "suppress_candidates_built_trainable_rank_11_50",
+      "primary_source_path": "analysis/public_benchmark_eval/rapfi_teacher_policy_candidates_corpus8_selected.csv",
+      "ready_bucket": "trainable_rank_11_50",
+      "round2_merge_action": "probe_and_suppress_built",
+      "source_class": "corpus8_teacher_candidate_csv",
+      "split_role": "dryrun_trainable_candidate",
+      "status": "ready_full_schema",
+      "suppress_candidates_probs": [
+        0.4877963662147522,
+        0.46216896176338196,
+        0.01961659826338291,
+        0.0072491285391151905,
+        0.0064077009446918964
+      ],
+      "suppress_candidates_rcs": [
+        [
+          4,
+          6
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          6,
+          11
+        ]
+      ],
+      "suppress_prob": 0.4877963662147522,
+      "suppress_prob_gap": 0.4874683374655433,
+      "suppress_prob_ratio": 1487.0537030402497,
+      "suppress_rank_in_top_policy": 1,
+      "suppress_rc": [
+        4,
+        6
+      ],
+      "target_action": 141,
+      "target_rc": [
+        9,
+        6
+      ],
+      "weight": 1.0
+    },
+    {
+      "before_target_prob": 0.0014995787059888244,
+      "before_target_rank": 18,
+      "board_hash": "55989befddf0dafc0e8e32a05f98f9443855943e",
+      "case_id": "",
+      "current_best_direct_prob": 0.728687584400177,
+      "current_best_direct_rc": [
+        6,
+        6
+      ],
+      "current_player": 1,
+      "game_number": "5",
+      "manifest_id": "td_exp_00352",
+      "move_count": "8",
+      "notes": "suppress_candidates_built_trainable_rank_11_50",
+      "primary_source_path": "analysis/public_benchmark_eval/rapfi_teacher_policy_candidates_corpus8_selected.csv",
+      "ready_bucket": "trainable_rank_11_50",
+      "round2_merge_action": "probe_and_suppress_built",
+      "source_class": "corpus8_teacher_candidate_csv",
+      "split_role": "dryrun_trainable_candidate",
+      "status": "ready_full_schema",
+      "suppress_candidates_probs": [
+        0.728687584400177,
+        0.08103480935096741,
+        0.07870201021432877,
+        0.01201948057860136,
+        0.009058039635419846
+      ],
+      "suppress_candidates_rcs": [
+        [
+          6,
+          6
+        ],
+        [
+          5,
+          8
+        ],
+        [
+          5,
+          9
+        ],
+        [
+          9,
+          6
+        ],
+        [
+          9,
+          8
+        ]
+      ],
+      "suppress_prob": 0.728687584400177,
+      "suppress_prob_gap": 0.7271880056941882,
+      "suppress_prob_ratio": 485.92820202770173,
+      "suppress_rank_in_top_policy": 1,
+      "suppress_rc": [
+        6,
+        6
+      ],
+      "target_action": 125,
+      "target_rc": [
+        8,
+        5
+      ],
+      "weight": 1.0
+    },
+    {
+      "before_target_prob": 0.0026402673684060574,
+      "before_target_rank": 23,
+      "board_hash": "6c6e801436baecb5003f5cb4ac0a81f07439dfe1",
+      "case_id": "",
+      "current_best_direct_prob": 0.38212400674819946,
+      "current_best_direct_rc": [
+        4,
+        5
+      ],
+      "current_player": 1,
+      "game_number": "5",
+      "manifest_id": "td_exp_00357",
+      "move_count": "28",
+      "notes": "suppress_candidates_built_trainable_rank_11_50",
+      "primary_source_path": "analysis/public_benchmark_eval/rapfi_teacher_policy_candidates_corpus8_selected.csv",
+      "ready_bucket": "trainable_rank_11_50",
+      "round2_merge_action": "probe_and_suppress_built",
+      "source_class": "corpus8_teacher_candidate_csv",
+      "split_role": "dryrun_trainable_candidate",
+      "status": "ready_full_schema",
+      "suppress_candidates_probs": [
+        0.38212400674819946,
+        0.3320460617542267,
+        0.052619803696870804,
+        0.041030317544937134,
+        0.030090682208538055
+      ],
+      "suppress_candidates_rcs": [
+        [
+          4,
+          5
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          8,
+          11
+        ]
+      ],
+      "suppress_prob": 0.38212400674819946,
+      "suppress_prob_gap": 0.3794837393797934,
+      "suppress_prob_ratio": 144.72928435989786,
+      "suppress_rank_in_top_policy": 1,
+      "suppress_rc": [
+        4,
+        5
+      ],
+      "target_action": 86,
+      "target_rc": [
+        5,
+        11
+      ],
+      "weight": 1.0
+    },
+    {
+      "before_target_prob": 0.0007085961988195777,
+      "before_target_rank": 39,
+      "board_hash": "6cd50b750735acbb0a84f7f4aba05041f51f88ef",
+      "case_id": "",
+      "current_best_direct_prob": 0.3999754786491394,
+      "current_best_direct_rc": [
+        3,
+        7
+      ],
+      "current_player": 1,
+      "game_number": "5",
+      "manifest_id": "td_exp_00358",
+      "move_count": "30",
+      "notes": "suppress_candidates_built_trainable_rank_11_50",
+      "primary_source_path": "analysis/public_benchmark_eval/rapfi_teacher_policy_candidates_corpus8_selected.csv",
+      "ready_bucket": "trainable_rank_11_50",
+      "round2_merge_action": "probe_and_suppress_built",
+      "source_class": "corpus8_teacher_candidate_csv",
+      "split_role": "dryrun_trainable_candidate",
+      "status": "ready_full_schema",
+      "suppress_candidates_probs": [
+        0.3999754786491394,
+        0.22157883644104004,
+        0.08537070453166962,
+        0.08209425210952759,
+        0.0300870630890131
+      ],
+      "suppress_candidates_rcs": [
+        [
+          3,
+          7
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          8,
+          11
+        ],
+        [
+          5,
+          9
+        ]
+      ],
+      "suppress_prob": 0.3999754786491394,
+      "suppress_prob_gap": 0.3992668824503198,
+      "suppress_prob_ratio": 564.4617898253514,
+      "suppress_rank_in_top_policy": 1,
+      "suppress_rc": [
+        3,
+        7
+      ],
+      "target_action": 69,
+      "target_rc": [
+        4,
+        9
+      ],
+      "weight": 1.0
+    }
+  ]
+}
