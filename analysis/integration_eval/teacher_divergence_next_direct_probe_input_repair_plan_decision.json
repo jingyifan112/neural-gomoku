@@ -1,0 +1,91 @@
+{
+  "blockers": [],
+  "candidate_checkpoint_path": "checkpoints/15x15_teacher_divergence_round2_policy_margin_gated_run1_e10.pt",
+  "current_best_checkpoint_path": "checkpoints/15x15_current_best.pt",
+  "direct_adapter_decision": "DIRECT_PROBE_EVAL_ADAPTER_BLOCKED",
+  "final_closeout_decision": "RUN1_CORE_REUSE_FINAL_CLOSEOUT_COMPLETE_WITH_WARNINGS",
+  "metrics": {
+    "anchor_max_kl": 6.0956e-06,
+    "anchor_top1_changed": 0,
+    "direct_manifest_rows": 10,
+    "protected_prob_regressed": 11,
+    "protected_rank_regressed": 0,
+    "tail_prob_regressed": 8,
+    "tail_rank_regressed": 0,
+    "trainable_gap_improved": 44,
+    "trainable_rank_regressed": 0
+  },
+  "plan_decision": "DIRECT_PROBE_INPUT_REPAIR_PLAN_READY",
+  "planned_actions": [
+    {
+      "action_id": "inspect_direct_adapter_blockers",
+      "action_type": "diagnostic",
+      "guardrail": "No model eval; text/CSV inspection only.",
+      "priority": "1",
+      "proposed_output": "analysis/integration_eval/teacher_divergence_next_direct_probe_input_repair_blocker_notes.md",
+      "rationale": "Direct adapter did not become a safe eval route; inspect blocker notes and manifest rows before building an executor."
+    },
+    {
+      "action_id": "schema_normalize_direct_manifest",
+      "action_type": "input_repair",
+      "guardrail": "Do not read checkpoints; validate only paths, row counts, split names, and source provenance.",
+      "priority": "2",
+      "proposed_output": "analysis/integration_eval/teacher_divergence_next_direct_probe_input_repair_normalized_manifest.csv",
+      "rationale": "Existing direct manifest rows should be normalized into a stricter candidate-eval-input schema before any local eval executor."
+    },
+    {
+      "action_id": "build_clean_heldout_probe_source_plan",
+      "action_type": "input_repair",
+      "guardrail": "No training, no eval, no C export, no promotion.",
+      "priority": "3",
+      "proposed_output": "analysis/integration_eval/teacher_divergence_next_direct_probe_input_repair_heldout_source_plan.csv",
+      "rationale": "Protected/tail probability warnings remain; a future eval path needs cleaner heldout/direct-probe inputs, not promotion reuse."
+    },
+    {
+      "action_id": "dedupe_warning_propagation",
+      "action_type": "routing_quality",
+      "guardrail": "Report-only patch plan; do not change gate thresholds in this branch.",
+      "priority": "4",
+      "proposed_output": "analysis/integration_eval/teacher_divergence_next_direct_probe_input_repair_warning_dedupe_plan.md",
+      "rationale": "Current route carried repeated warning strings across dispatch/follow-up layers; deduping will make future decisions easier to audit."
+    },
+    {
+      "action_id": "keep_run1_candidate_isolated",
+      "action_type": "governance",
+      "guardrail": "No current_best overwrite; no checkpoint artifacts in git.",
+      "priority": "5",
+      "proposed_output": "No checkpoint promotion; candidate stays local/isolated.",
+      "rationale": "Run1 has positive gap signal but insufficient eval evidence and probability warnings remain."
+    },
+    {
+      "action_id": "reuse_prior_fixed_probe_audit_as_candidate_source",
+      "action_type": "input_repair",
+      "guardrail": "Review-only; no model eval.",
+      "priority": "6",
+      "proposed_output": "analysis/integration_eval/teacher_divergence_next_direct_probe_input_repair_fixed_probe_source_review.csv",
+      "rationale": "Prior fixed-probe/heldout input audit files are available and can seed a cleaner source review."
+    }
+  ],
+  "promotion_decision": "NO_PROMOTION__KEEP_RUN1_CANDIDATE_ISOLATED",
+  "recommended_next": "Create a follow-up branch to normalize/repair direct-probe and heldout input manifests. Keep all work report/input-only until a later explicitly guarded local-eval executor exists.",
+  "root_causes": [
+    "direct_adapter_blocked",
+    "probability_regression_warnings_remain",
+    "direct_manifest_exists_but_route_not_safe",
+    "prior_fixed_probe_heldout_audit_available"
+  ],
+  "warnings": [
+    "combined WARN rows carried forward: 2",
+    "protected raw probability regressions carried forward: 11",
+    "tail raw probability regressions carried forward: 8",
+    "direct adapter warnings carried forward: 2; controlled review warnings carried forward: 5; deferred adapter inputs remain: 88",
+    "direct adapter blocker notes need repair: controlled review is blocked; controlled review blockers present: 2"
+  ],
+  "would_c_export": false,
+  "would_eval_model_now": false,
+  "would_promote": false,
+  "would_public_benchmark": false,
+  "would_read_checkpoint_contents_now": false,
+  "would_train_now": false,
+  "would_write_checkpoint": false
+}
