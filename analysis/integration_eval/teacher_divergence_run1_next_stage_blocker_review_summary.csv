@@ -1,0 +1,31 @@
+metric,value,status,notes
+review_decision,BLOCKED_REVIEW_RECOMMENDS_ROUTING_PATCH_OR_CORE_CLOSEOUT,INFO,Blocked review only; no model eval.
+root_cause_count,2,INFO,direct_probe_adapter_blocked; probability_regression_warnings_remain
+action_count,2,INFO,Inspect direct adapter blocker notes; likely direct-probe path is not ready.; Carry warnings forward; do not promote without later fixed-probe/heldout evidence.
+candidate_checkpoint_exists_locally,1,PASS,Existence only; do not add to git.
+current_best_exists,1,PASS,
+direct_manifest_rows,10,INFO,
+direct_ready_inputs_from_selection,10,INFO,
+direct_adapter_decision,DIRECT_PROBE_EVAL_ADAPTER_BLOCKED,INFO,
+post_adapter_final_route_decision,POST_ADAPTER_ROUTE_BLOCKED,INFO,
+route_aware_local_decision,ROUTE_AWARE_LOCAL_DECISION_BLOCKED,INFO,
+route_aware_next_stage_decision,NEXT_STAGE_BLOCKED,INFO,
+dispatch_decision,NEXT_STAGE_DISPATCH_BLOCKED,INFO,
+followup_decision,NEXT_STAGE_FOLLOWUP_BLOCKED,INFO,
+combined_fail_rows,0,PASS,
+combined_warn_rows,2,WARN,
+trainable_gap_improved,44,PASS,
+trainable_rank_regressed,0,PASS,
+protected_rank_regressed,0,PASS,
+tail_rank_regressed,0,PASS,
+protected_prob_regressed,11,WARN,
+tail_prob_regressed,8,WARN,
+anchor_top1_changed,0,PASS,
+anchor_max_kl,0.0000060956,PASS,
+would_train,0,PASS,
+would_eval_model_now,0,PASS,
+would_read_checkpoint_contents_now,0,PASS,
+would_write_checkpoint,0,PASS,
+would_c_export,0,PASS,
+would_public_benchmark,0,PASS,
+would_promote,0,PASS,
