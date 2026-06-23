@@ -1,0 +1,33 @@
+{
+  "blockers": [],
+  "candidate_checkpoint_path": "checkpoints/15x15_teacher_divergence_round2_policy_margin_gated_run1_e10.pt",
+  "current_best_checkpoint_path": "checkpoints/15x15_current_best.pt",
+  "direct_adapter_decision": "DIRECT_PROBE_EVAL_ADAPTER_BLOCKED",
+  "inspection_decision": "DIRECT_ADAPTER_BLOCKER_INSPECTION_READY_FOR_NORMALIZATION_REVIEW",
+  "plan_decision": "DIRECT_PROBE_INPUT_REPAIR_PLAN_READY",
+  "recommended_next": "Normalize ready/repairable rows into a stricter manifest; keep eval disabled.",
+  "row_counts": {
+    "manifest_rows": 10,
+    "needs_repair_rows": 1,
+    "not_ready_rows": 6,
+    "provenance_repair_rows": 0,
+    "quarantine_rows": 6,
+    "ready_rows": 3,
+    "schema_repair_rows": 0
+  },
+  "warnings": [
+    "combined WARN rows carried forward: 2",
+    "protected probability regressions carried forward: 11",
+    "tail probability regressions carried forward: 8",
+    "direct adapter blocker notes carried forward: controlled review is blocked; controlled review blockers present: 2",
+    "direct adapter warning notes carried forward: controlled review warnings carried forward: 5; deferred adapter inputs remain: 88",
+    "rows recommended for quarantine: 6"
+  ],
+  "would_c_export": false,
+  "would_eval_model_now": false,
+  "would_promote": false,
+  "would_public_benchmark": false,
+  "would_read_checkpoint_contents_now": false,
+  "would_train_now": false,
+  "would_write_checkpoint": false
+}
