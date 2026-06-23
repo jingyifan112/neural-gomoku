@@ -1,0 +1,36 @@
+{
+  "blockers": [],
+  "normalization_decision": "DIRECT_MANIFEST_NORMALIZATION_REVIEW_READY_WITH_REPAIR_QUEUE",
+  "outputs": {
+    "pending": "analysis/integration_eval/teacher_divergence_next_direct_repair_queue_review_pending.csv",
+    "quarantine_additions": "analysis/integration_eval/teacher_divergence_next_direct_repair_queue_review_quarantine_additions.csv",
+    "repair_candidates": "analysis/integration_eval/teacher_divergence_next_direct_repair_queue_review_candidates.csv",
+    "report": "analysis/integration_eval/teacher_divergence_next_direct_repair_queue_review.md",
+    "review_rows": "analysis/integration_eval/teacher_divergence_next_direct_repair_queue_review_rows.csv",
+    "summary_csv": "analysis/integration_eval/teacher_divergence_next_direct_repair_queue_review_summary.csv"
+  },
+  "recommended_next": "Do not merge repair row yet; materialize missing schema/provenance metadata first.",
+  "repair_queue_review_decision": "DIRECT_REPAIR_QUEUE_REVIEW_PENDING_METADATA",
+  "row_counts": {
+    "existing_quarantine_rows": 6,
+    "normalized_manifest_rows": 3,
+    "pending_rows": 1,
+    "quarantine_addition_rows": 0,
+    "repair_candidate_rows": 0,
+    "repair_queue_rows": 1,
+    "reviewed_repair_rows": 1
+  },
+  "warnings": [
+    "combined WARN rows carried forward: 2",
+    "protected probability regressions carried forward: 11",
+    "tail probability regressions carried forward: 8",
+    "repair rows still pending: 1"
+  ],
+  "would_c_export": false,
+  "would_eval_model_now": false,
+  "would_promote": false,
+  "would_public_benchmark": false,
+  "would_read_checkpoint_contents_now": false,
+  "would_train_now": false,
+  "would_write_checkpoint": false
+}
