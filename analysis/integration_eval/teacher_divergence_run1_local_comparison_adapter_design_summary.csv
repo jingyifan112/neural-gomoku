@@ -1,0 +1,26 @@
+metric,value,status,notes
+design_decision,LOCAL_COMPARISON_ADAPTER_DESIGN_BLOCKED,INFO,Adapter design only; no model eval.
+blocker_count,1,FAIL,fixed-probe/heldout plan decision is not ready: FIXED_PROBE_HELDOUT_PLAN_BLOCKED
+warning_count,2,WARN,deferred adapter inputs present: 88; optional already-compared guard outputs present: 28
+input_audit_plan_decision,READY_TO_IMPLEMENT_LOCAL_COMPARISON_ADAPTERS,PASS,
+fixed_probe_heldout_plan_decision,FIXED_PROBE_HELDOUT_PLAN_BLOCKED,FAIL,
+candidate_checkpoint_exists_locally,1,PASS,Local artifact only; do not add to git.
+current_best_exists,1,PASS,
+inventory_rows,783,INFO,
+selection_rows,783,INFO,
+selected_for_initial_executor,13,INFO,
+core_guard_outputs_selected,3,PASS,
+direct_model_eval_inputs_selected,10,INFO,
+deferred_adapter_inputs,88,WARN,
+optional_guard_reuse_inputs,28,INFO,
+adapter_kind:not_selected,622,INFO,
+adapter_kind:board_join_adapter_needed,73,INFO,
+adapter_kind:direct_model_eval_lower_priority,32,INFO,
+adapter_kind:guard_output_reuse_optional,28,INFO,
+adapter_kind:target_adapter_needed,15,INFO,
+adapter_kind:direct_model_eval_anchor_candidate,6,INFO,
+adapter_kind:direct_model_eval_fixed_probe_candidate,3,INFO,
+adapter_kind:core_anchor_drift_guard_reuse,1,INFO,
+adapter_kind:core_protected_tail_guard_reuse,1,INFO,
+adapter_kind:core_trainable_guard_reuse,1,INFO,
+adapter_kind:direct_model_eval_heldout_candidate,1,INFO,
