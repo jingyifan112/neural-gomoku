@@ -1,0 +1,11 @@
+metric,value,status,notes
+plan_decision,READY_TO_IMPLEMENT_LOCAL_COMPARISON_ADAPTERS,INFO,Input audit only.
+inventory_rows,783,INFO,
+direct_model_eval_ready_files,42,INFO,
+already_compared_guard_output_files,30,INFO,
+needs_board_join_adapter_files,73,INFO,
+needs_target_adapter_files,15,INFO,
+run1_trainable_guard_rows,44,PASS,
+run1_bucket_guard_rows,89,PASS,
+run1_anchor_guard_rows,32,PASS,
+plan_summary_rows,21,INFO,
