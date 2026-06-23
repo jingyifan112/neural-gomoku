@@ -1,0 +1,31 @@
+metric,value,status,notes
+dispatch_decision,NEXT_STAGE_DISPATCH_BLOCKED,INFO,No model eval in this branch.
+dispatch_type,blocked,INFO,
+promotion_decision,NO_PROMOTION__BLOCKED,INFO,
+next_action,Fix blockers before continuing.,INFO,
+next_stage_decision,NEXT_STAGE_BLOCKED,INFO,
+recommended_branch,none,INFO,
+local_decision,ROUTE_AWARE_LOCAL_DECISION_BLOCKED,INFO,
+blocker_count,2,FAIL,upstream next-stage blockers present: 3; upstream next-stage decision is blocked
+warning_count,4,WARN,upstream next-stage warnings carried forward: 5; combined local comparison WARN rows carried forward: 2; protected raw probability regressions carried forward: 11; tail raw probability regressions carried forward: 8
+candidate_checkpoint_exists_locally,1,PASS,Existence only; do not add to git.
+current_best_exists,1,PASS,
+direct_manifest_rows,10,INFO,
+combined_summary_rows,12,INFO,
+combined_fail_rows,0,PASS,
+combined_warn_rows,2,WARN,
+trainable_gap_improved,44,PASS,
+trainable_rank_regressed,0,PASS,
+protected_rank_regressed,0,PASS,
+tail_rank_regressed,0,PASS,
+protected_prob_regressed,11,WARN,
+tail_prob_regressed,8,WARN,
+anchor_top1_changed,0,PASS,
+anchor_max_kl,0.0000060956,PASS,
+would_train,0,PASS,
+would_eval_model_now,0,PASS,
+would_read_checkpoint_contents_now,0,PASS,
+would_write_checkpoint,0,PASS,
+would_c_export,0,PASS,
+would_public_benchmark,0,PASS,
+would_promote,0,PASS,

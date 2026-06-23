@@ -1,0 +1,123 @@
+# Teacher-divergence run1 next-stage dispatch
+
+## Branch
+
+`none`
+
+## Scope
+
+- Dispatches the route-aware next stage.
+- Does not train.
+- Does not run model eval.
+- Does not read checkpoint contents.
+- Does not write checkpoints.
+- Does not overwrite `checkpoints/15x15_current_best.pt`.
+- Does not C export.
+- Does not run public benchmark.
+- Does not promote.
+
+## Dispatch decision
+
+`NEXT_STAGE_DISPATCH_BLOCKED`
+
+## Promotion decision
+
+`NO_PROMOTION__BLOCKED`
+
+## Next action
+
+Fix blockers before continuing.
+
+## Summary
+
+| metric | value | status | notes |
+|---|---:|---|---|
+| dispatch_decision | NEXT_STAGE_DISPATCH_BLOCKED | INFO | No model eval in this branch. |
+| dispatch_type | blocked | INFO |  |
+| promotion_decision | NO_PROMOTION__BLOCKED | INFO |  |
+| next_action | Fix blockers before continuing. | INFO |  |
+| next_stage_decision | NEXT_STAGE_BLOCKED | INFO |  |
+| recommended_branch | none | INFO |  |
+| local_decision | ROUTE_AWARE_LOCAL_DECISION_BLOCKED | INFO |  |
+| blocker_count | 2 | FAIL | upstream next-stage blockers present: 3; upstream next-stage decision is blocked |
+| warning_count | 4 | WARN | upstream next-stage warnings carried forward: 5; combined local comparison WARN rows carried forward: 2; protected raw probability regressions carried forward: 11; tail raw probability regressions carried forward: 8 |
+| candidate_checkpoint_exists_locally | 1 | PASS | Existence only; do not add to git. |
+| current_best_exists | 1 | PASS |  |
+| direct_manifest_rows | 10 | INFO |  |
+| combined_summary_rows | 12 | INFO |  |
+| combined_fail_rows | 0 | PASS |  |
+| combined_warn_rows | 2 | WARN |  |
+| trainable_gap_improved | 44 | PASS |  |
+| trainable_rank_regressed | 0 | PASS |  |
+| protected_rank_regressed | 0 | PASS |  |
+| tail_rank_regressed | 0 | PASS |  |
+| protected_prob_regressed | 11 | WARN |  |
+| tail_prob_regressed | 8 | WARN |  |
+| anchor_top1_changed | 0 | PASS |  |
+| anchor_max_kl | 0.0000060956 | PASS |  |
+| would_train | 0 | PASS |  |
+| would_eval_model_now | 0 | PASS |  |
+| would_read_checkpoint_contents_now | 0 | PASS |  |
+| would_write_checkpoint | 0 | PASS |  |
+| would_c_export | 0 | PASS |  |
+| would_public_benchmark | 0 | PASS |  |
+| would_promote | 0 | PASS |  |
+
+## Direct manifest rows
+
+| eval_manifest_id | adapter_kind | path | rows/count |
+|---|---|---|---:|
+| run1_direct_probe_eval_001 | direct_model_eval_fixed_probe_candidate | `analysis/integration_eval/policy_only_teacher_divergence_repair_probe_closeout.md` | 0 |
+| run1_direct_probe_eval_002 | direct_model_eval_fixed_probe_candidate | `analysis/integration_eval/policy_only_teacher_divergence_repair_probe_design.md` | 0 |
+| run1_direct_probe_eval_003 | direct_model_eval_fixed_probe_candidate | `analysis/integration_eval/policy_only_teacher_divergence_repair_probe_script_audit.md` | 0 |
+| run1_direct_probe_eval_004 | direct_model_eval_heldout_candidate | `analysis/integration_eval/teacher_divergence_policy_mixed_ce_heldout_blocker_position_review.md` | 0 |
+| run1_direct_probe_eval_005 | direct_model_eval_anchor_candidate | `analysis/integration_eval/candidate_c_g2_m19_perspective_diagnostic_anchors.json` | 8 |
+| run1_direct_probe_eval_006 | direct_model_eval_anchor_candidate | `analysis/integration_eval/candidate_d_g2_m15_diagnostic_anchors.json` | 3 |
+| run1_direct_probe_eval_007 | direct_model_eval_anchor_candidate | `analysis/integration_eval/candidate_e_g2_m13_diagnostic_anchors.json` | 1 |
+| run1_direct_probe_eval_008 | direct_model_eval_anchor_candidate | `analysis/integration_eval/candidate_e_g2_m17_diagnostic_anchors.json` | 3 |
+| run1_direct_probe_eval_009 | direct_model_eval_anchor_candidate | `analysis/integration_eval/current_best_margin_candidate_c_anchors.json` | 7 |
+| run1_direct_probe_eval_010 | direct_model_eval_anchor_candidate | `analysis/integration_eval/current_best_margin_candidate_c_conservative_anchors.json` | 5 |
+
+## Core reused comparison summary
+
+| section | metric | value | status |
+|---|---|---:|---|
+| trainable_guard_reuse | gap_improved_rows | 44 | PASS |
+| trainable_guard_reuse | target_prob_improved_rows | 44 | INFO |
+| trainable_guard_reuse | target_rank_regressed_rows | 0 | PASS |
+| trainable_guard_reuse | mean_gap_delta | 0.0086329092 | PASS |
+| protected_tail_guard_reuse | evaluated_rows | 89 | PASS |
+| protected_tail_guard_reuse | protected_top10_rank_regressed_rows | 0 | PASS |
+| protected_tail_guard_reuse | protected_top10_prob_regressed_rows | 11 | WARN |
+| protected_tail_guard_reuse | tail_rank_gt50_rank_regressed_rows | 0 | PASS |
+| protected_tail_guard_reuse | tail_rank_gt50_prob_regressed_rows | 8 | WARN |
+| anchor_drift_guard_reuse | anchor_top1_changed_rows | 0 | PASS |
+| anchor_drift_guard_reuse | anchor_mean_kl | 0.0000018348 | INFO |
+| anchor_drift_guard_reuse | anchor_max_kl | 0.0000060956 | PASS |
+
+## Blockers
+
+- upstream next-stage blockers present: 3
+- upstream next-stage decision is blocked
+
+## Warnings
+
+- upstream next-stage warnings carried forward: 5
+- combined local comparison WARN rows carried forward: 2
+- protected raw probability regressions carried forward: 11
+- tail raw probability regressions carried forward: 8
+
+## Outputs
+
+- summary CSV: `analysis/integration_eval/teacher_divergence_run1_next_stage_dispatch_summary.csv`
+- decision JSON: `analysis/integration_eval/teacher_divergence_run1_next_stage_dispatch_decision.json`
+- command plan: `analysis/integration_eval/teacher_divergence_run1_next_stage_dispatch_commands.txt`
+- report: `analysis/integration_eval/teacher_divergence_run1_next_stage_dispatch.md`
+
+## Final guardrails
+
+- No current_best overwrite.
+- No C export.
+- No public benchmark.
+- No promotion.
+- Do not add local checkpoint artifacts to git.
