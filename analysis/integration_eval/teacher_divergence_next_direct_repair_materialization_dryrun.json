@@ -1,0 +1,75 @@
+{
+  "branch": "exp/15x15-teacher-divergence-next-direct-repair-materialization-dryrun",
+  "purpose": "Static-only dry run for direct repair queue materialization after the direct repair materialization policy.",
+  "upstream_branch": "exp/15x15-teacher-divergence-next-direct-repair-materialization-policy",
+  "upstream_commit": "2a080e0",
+  "mode": "static_manifest_materialization_dryrun",
+  "execution_permissions": {
+    "training_allowed_now": 0,
+    "model_eval_allowed_now": 0,
+    "checkpoint_read_allowed_now": 0,
+    "checkpoint_write_allowed_now": 0,
+    "c_export_allowed_now": 0,
+    "public_benchmark_allowed_now": 0,
+    "promotion_allowed_now": 0,
+    "current_best_overwrite_allowed_now": 0
+  },
+  "source_state": {
+    "direct_manifest_rows": 10,
+    "normalized_ready_rows": 3,
+    "repair_queue_rows": 1,
+    "quarantine_rows": 6,
+    "blockers": [],
+    "eval_allowed_now": 0,
+    "checkpoint_read_allowed_now": 0,
+    "requires_future_explicit_flags": 1
+  },
+  "materialized_buckets": [
+    {
+      "bucket": "normalized_ready",
+      "expected_count": 3,
+      "dryrun_status": "STATIC_READY_ONLY",
+      "allowed_next_handling": "May be carried forward as metadata-normalized rows only. No model evaluation or checkpoint read is implied.",
+      "eval_allowed_now": 0,
+      "checkpoint_read_allowed_now": 0,
+      "promotion_allowed_now": 0
+    },
+    {
+      "bucket": "repair_queue",
+      "expected_count": 1,
+      "dryrun_status": "REQUIRES_STATIC_METADATA_REPAIR",
+      "allowed_next_handling": "May be repaired only in a future explicit static repair branch naming the exact field, source, before value, and after value.",
+      "eval_allowed_now": 0,
+      "checkpoint_read_allowed_now": 0,
+      "promotion_allowed_now": 0
+    },
+    {
+      "bucket": "quarantine",
+      "expected_count": 6,
+      "dryrun_status": "EXCLUDED",
+      "allowed_next_handling": "Must remain excluded from ready, eval, checkpoint-read, export, benchmark, and promotion paths.",
+      "eval_allowed_now": 0,
+      "checkpoint_read_allowed_now": 0,
+      "promotion_allowed_now": 0
+    }
+  ],
+  "acceptance_checks": {
+    "static_only_artifact_created": true,
+    "row_count_boundary_preserved": true,
+    "ready_count_preserved": true,
+    "repair_count_preserved": true,
+    "quarantine_count_preserved": true,
+    "quarantine_rows_excluded": true,
+    "checkpoint_paths_modified": false,
+    "checkpoint_paths_staged": false,
+    "training_executed": false,
+    "model_eval_executed": false,
+    "checkpoint_content_read": false,
+    "c_export_executed": false,
+    "public_benchmark_executed": false,
+    "promotion_executed": false
+  },
+  "dryrun_decision": "DIRECT_REPAIR_MATERIALIZATION_DRYRUN_COMPLETE_STATIC_ONLY",
+  "promotion_decision": "NO_PROMOTION__STATIC_DRYRUN_ONLY",
+  "recommended_next_branch": "exp/15x15-teacher-divergence-next-direct-repair-field-spec"
+}
