@@ -1,0 +1,33 @@
+# Teacher-divergence run1 local comparison controlled review next plan
+
+review_decision=LOCAL_COMPARISON_CONTROLLED_REVIEW_BLOCKED
+
+## If proceeding
+
+Next branch:
+exp/15x15-teacher-divergence-run1-direct-probe-eval-adapter
+
+Purpose:
+- Add controlled model-eval adapter only for selected direct-ready fixed-probe/heldout inputs, if any.
+- Keep default mode dry-run.
+- Require explicit confirmation before any model eval.
+- Produce local comparison outputs only.
+
+Must remain forbidden:
+- training
+- checkpoint write
+- current_best overwrite
+- C export
+- public benchmark
+- promotion
+
+## Carried-forward warnings
+- dry-run warnings carried forward: 2
+- combined dry-run WARN rows carried forward: 2
+- protected raw probability regressions carried forward: 11
+- tail raw probability regressions carried forward: 8
+- direct model-eval inputs available for next adapter: 10
+
+## Blockers
+- executor dry-run decision is not ready: LOCAL_COMPARISON_DRYRUN_BLOCKED
+- dry-run blockers present: 1
