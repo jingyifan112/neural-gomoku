@@ -1,0 +1,34 @@
+# Teacher-divergence run1 fixed-probe/heldout local comparison command plan
+# Plan only. Do not execute in this branch.
+
+## Intended next branch
+exp/15x15-teacher-divergence-run1-fixed-probe-heldout-comparison
+
+## Candidate/baseline checkpoints
+baseline=checkpoints/15x15_current_best.pt
+candidate=checkpoints/15x15_teacher_divergence_round2_policy_margin_gated_run1_e10.pt
+
+## Planned comparison responsibilities
+- Compare candidate vs current_best on existing local fixed probes.
+- Compare candidate vs current_best on heldout/retention/protected anchors available in repo.
+- Preserve explicit protected_top10 rank gate.
+- Preserve epsilon-aware probability warning policy.
+- Generate decision report before any C export or public benchmark.
+
+## Planned output files
+- fixed_probe_csv: analysis/integration_eval/teacher_divergence_run1_fixed_probe_candidate_vs_current_best.csv
+- fixed_probe_report: analysis/integration_eval/teacher_divergence_run1_fixed_probe_candidate_vs_current_best.md
+- heldout_csv: analysis/integration_eval/teacher_divergence_run1_heldout_candidate_vs_current_best.csv
+- heldout_report: analysis/integration_eval/teacher_divergence_run1_heldout_candidate_vs_current_best.md
+- decision_csv: analysis/integration_eval/teacher_divergence_run1_fixed_probe_heldout_decision.csv
+- decision_report: analysis/integration_eval/teacher_divergence_run1_fixed_probe_heldout_decision.md
+
+## Hard gates for next comparison
+- fixed-probe tactical regressions: 0 allowed unless explicitly reviewed
+- protected_top10 target rank regressions: 0
+- anchor top1 changes: 0 or explicitly reviewed as non-critical
+- heldout rank/prob regression: bounded by epsilon policy
+- no current_best overwrite
+- no C export
+- no public benchmark
+- no promotion

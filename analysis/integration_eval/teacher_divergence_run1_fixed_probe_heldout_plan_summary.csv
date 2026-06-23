@@ -1,0 +1,22 @@
+metric,value,status,notes
+plan_decision,FIXED_PROBE_HELDOUT_PLAN_BLOCKED,INFO,Plan only; not execution.
+blocker_count,2,FAIL,epsilon review does not allow fixed-probe/heldout: EPSILON_REVIEW_FAILS__REPAIR_GATE_OR_OBJECTIVE; epsilon hard concerns present: 4
+warning_count,4,WARN,epsilon warning rows present: 5; raw probability regressions remain: 19; protected_top10 raw probability regressions: 11; tail_rank_gt50 raw probability regressions: 8
+epsilon_decision,EPSILON_REVIEW_FAILS__REPAIR_GATE_OR_OBJECTIVE,FAIL,
+promotion_readiness_decision,NOT_PROMOTION_READY__READY_FOR_EPSILON_GATED_LOCAL_REVIEW,INFO,
+wrapper_decision,EXECUTION_PASS_KEEP_ISOLATED_CANDIDATE,PASS,
+candidate_checkpoint_exists_locally,1,PASS,Local artifact only; do not add to git.
+current_best_exists,1,PASS,
+hard_concern_rows,4,FAIL,
+epsilon_warning_rows,5,WARN,
+total_prob_regressions,19,WARN,
+protected_top10_prob_regressions,11,WARN,
+tail_rank_gt50_prob_regressions,8,WARN,
+total_rank_regressions,0,PASS,
+max_probability_loss,0.000997871200,INFO,
+trainable_gap_improved_rows,44,PASS,
+trainable_mean_gap_delta,0.0086329092,PASS,
+trainable_rank_regressed_rows,0,PASS,
+protected_rank_regressed_rows,0,PASS,
+anchor_top1_changed_rows,0,PASS,
+anchor_max_kl,0.0000060956,PASS,
