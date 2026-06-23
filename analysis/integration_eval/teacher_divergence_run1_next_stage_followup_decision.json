@@ -1,0 +1,40 @@
+{
+  "blockers": [
+    "dispatch blockers present: 2",
+    "dispatch decision is blocked"
+  ],
+  "candidate_checkpoint_path": "checkpoints/15x15_teacher_divergence_round2_policy_margin_gated_run1_e10.pt",
+  "core_reuse_metrics": {
+    "anchor_max_kl": 6.0956e-06,
+    "anchor_top1_changed": 0,
+    "protected_prob_regressed": 11,
+    "protected_rank_regressed": 0,
+    "tail_prob_regressed": 8,
+    "tail_rank_regressed": 0,
+    "trainable_gap_improved": 44,
+    "trainable_rank_regressed": 0
+  },
+  "created_at_utc": "2026-06-23T06:11:51.250499+00:00",
+  "current_best_checkpoint_path": "checkpoints/15x15_current_best.pt",
+  "direct_manifest_rows": 10,
+  "dispatch_decision": "NEXT_STAGE_DISPATCH_BLOCKED",
+  "dispatch_type": "blocked",
+  "followup_decision": "NEXT_STAGE_FOLLOWUP_BLOCKED",
+  "followup_type": "blocked_review",
+  "future_requires": [],
+  "next_action": "Fix blockers before continuing.",
+  "promotion_decision": "NO_PROMOTION__BLOCKED",
+  "warnings": [
+    "dispatch warnings carried forward: 4",
+    "combined WARN rows carried forward: 2",
+    "protected raw probability regressions carried forward: 11",
+    "tail raw probability regressions carried forward: 8"
+  ],
+  "would_c_export": false,
+  "would_eval_model_now": false,
+  "would_promote": false,
+  "would_public_benchmark": false,
+  "would_read_checkpoint_contents_now": false,
+  "would_train_now": false,
+  "would_write_checkpoint": false
+}

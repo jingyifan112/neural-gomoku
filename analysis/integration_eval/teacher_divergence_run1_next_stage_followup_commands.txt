@@ -1,0 +1,23 @@
+# Teacher-divergence run1 next-stage follow-up commands
+
+followup_decision=NEXT_STAGE_FOLLOWUP_BLOCKED
+followup_type=blocked_review
+
+## Next action
+Fix blockers before continuing.
+
+## Safety status
+- would_train_now: 0
+- would_eval_model_now: 0
+- would_read_checkpoint_contents_now: 0
+- would_write_checkpoint: 0
+- would_c_export: 0
+- would_public_benchmark: 0
+- would_promote: 0
+
+## Still forbidden
+- current_best overwrite
+- C export
+- public benchmark
+- promotion
+- adding local checkpoint artifacts to git
