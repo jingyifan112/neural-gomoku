@@ -1,0 +1,31 @@
+{
+  "action_notes": "Inspect direct adapter blocker notes; likely direct-probe path is not ready.; Carry warnings forward; do not promote without later fixed-probe/heldout evidence.",
+  "blocker_review_decision": "BLOCKED_REVIEW_RECOMMENDS_ROUTING_PATCH_OR_CORE_CLOSEOUT",
+  "blockers": [],
+  "candidate_checkpoint_path": "checkpoints/15x15_teacher_divergence_round2_policy_margin_gated_run1_e10.pt",
+  "current_best_checkpoint_path": "checkpoints/15x15_current_best.pt",
+  "followup_decision": "ROUTING_PATCH_OR_CORE_CLOSEOUT_READY",
+  "promotion_decision": "NO_PROMOTION__LOCAL_CLOSEOUT_ONLY",
+  "recommended_next": "Either patch overly strict routing or proceed with conservative core-reuse closeout.",
+  "root_cause_notes": "direct_probe_adapter_blocked; probability_regression_warnings_remain",
+  "warnings": [
+    "combined WARN rows carried forward: 2",
+    "protected raw probability regressions carried forward: 11",
+    "tail raw probability regressions carried forward: 8",
+    "followup_json: dispatch warnings carried forward: 4",
+    "followup_json: combined WARN rows carried forward: 2",
+    "followup_json: protected raw probability regressions carried forward: 11",
+    "followup_json: tail raw probability regressions carried forward: 8",
+    "dispatch_json: upstream next-stage warnings carried forward: 5",
+    "dispatch_json: combined local comparison WARN rows carried forward: 2",
+    "dispatch_json: protected raw probability regressions carried forward: 11",
+    "dispatch_json: tail raw probability regressions carried forward: 8"
+  ],
+  "would_c_export": false,
+  "would_eval_model_now": false,
+  "would_promote": false,
+  "would_public_benchmark": false,
+  "would_read_checkpoint_contents_now": false,
+  "would_train_now": false,
+  "would_write_checkpoint": false
+}

@@ -1,0 +1,32 @@
+metric,value,status,notes
+followup_decision,ROUTING_PATCH_OR_CORE_CLOSEOUT_READY,INFO,Blocked-review follow-up only; no model eval.
+promotion_decision,NO_PROMOTION__LOCAL_CLOSEOUT_ONLY,INFO,
+recommended_next,Either patch overly strict routing or proceed with conservative core-reuse closeout.,INFO,
+blocker_review_decision,BLOCKED_REVIEW_RECOMMENDS_ROUTING_PATCH_OR_CORE_CLOSEOUT,INFO,
+root_cause_count,2,INFO,direct_probe_adapter_blocked; probability_regression_warnings_remain
+blocker_review_actions,,INFO,Inspect direct adapter blocker notes; likely direct-probe path is not ready.; Carry warnings forward; do not promote without later fixed-probe/heldout evidence.
+blocker_count,0,PASS,
+warning_count,11,WARN,combined WARN rows carried forward: 2; protected raw probability regressions carried forward: 11; tail raw probability regressions carried forward: 8; followup_json: dispatch warnings carried forward: 4; followup_json: combined WARN rows carried forward: 2; followup_json: protected raw probability regressions carried forward: 11; followup_json: tail raw probability regressions carried forward: 8; dispatch_json: upstream next-stage warnings carried forward: 5; dispatch_json: combined local comparison WARN rows carried forward: 2; dispatch_json: protected raw probability regressions carried forward: 11; dispatch_json: tail raw probability regressions carried forward: 8
+dispatch_decision,NEXT_STAGE_DISPATCH_BLOCKED,INFO,
+followup_upstream_decision,NEXT_STAGE_FOLLOWUP_BLOCKED,INFO,
+candidate_checkpoint_exists_locally,1,PASS,Existence only; do not add to git.
+current_best_exists,1,PASS,
+direct_manifest_rows,10,INFO,
+combined_summary_rows,12,INFO,
+combined_fail_rows,0,PASS,
+combined_warn_rows,2,WARN,
+trainable_gap_improved,44,PASS,
+trainable_rank_regressed,0,PASS,
+protected_rank_regressed,0,PASS,
+tail_rank_regressed,0,PASS,
+protected_prob_regressed,11,WARN,
+tail_prob_regressed,8,WARN,
+anchor_top1_changed,0,PASS,
+anchor_max_kl,0.0000060956,PASS,
+would_train,0,PASS,
+would_eval_model_now,0,PASS,
+would_read_checkpoint_contents_now,0,PASS,
+would_write_checkpoint,0,PASS,
+would_c_export,0,PASS,
+would_public_benchmark,0,PASS,
+would_promote,0,PASS,

@@ -1,0 +1,37 @@
+# Teacher-divergence run1 blocker follow-up next plan
+
+followup_decision=ROUTING_PATCH_OR_CORE_CLOSEOUT_READY
+promotion_decision=NO_PROMOTION__LOCAL_CLOSEOUT_ONLY
+
+## Recommended next
+
+Either patch overly strict routing or proceed with conservative core-reuse closeout.
+
+## Still forbidden
+
+- training
+- model eval
+- checkpoint read/write
+- current_best overwrite
+- C export
+- public benchmark
+- promotion
+- adding local checkpoint artifacts to git
+
+## Blockers
+
+- None.
+
+## Warnings
+
+- combined WARN rows carried forward: 2
+- protected raw probability regressions carried forward: 11
+- tail raw probability regressions carried forward: 8
+- followup_json: dispatch warnings carried forward: 4
+- followup_json: combined WARN rows carried forward: 2
+- followup_json: protected raw probability regressions carried forward: 11
+- followup_json: tail raw probability regressions carried forward: 8
+- dispatch_json: upstream next-stage warnings carried forward: 5
+- dispatch_json: combined local comparison WARN rows carried forward: 2
+- dispatch_json: protected raw probability regressions carried forward: 11
+- dispatch_json: tail raw probability regressions carried forward: 8
