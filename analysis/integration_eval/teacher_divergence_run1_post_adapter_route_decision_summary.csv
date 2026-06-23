@@ -1,0 +1,21 @@
+metric,value,status,notes
+final_route_decision,POST_ADAPTER_ROUTE_BLOCKED,INFO,Route only; no model eval.
+route_decision,ROUTE_BLOCKED_FIX_ADAPTER_BLOCKERS,INFO,
+next_branch,none,INFO,
+next_action,Fix adapter blockers before continuing.,INFO,
+blocker_count,2,FAIL,adapter blockers present: 2; adapter decision is blocked
+warning_count,1,WARN,adapter warnings carried forward: 2
+adapter_decision,DIRECT_PROBE_EVAL_ADAPTER_BLOCKED,INFO,
+adapter_blocker_count,2,FAIL,
+adapter_warning_count,2,WARN,
+controlled_review_decision,LOCAL_COMPARISON_CONTROLLED_REVIEW_BLOCKED,INFO,
+core_reuse_inputs,3,PASS,
+direct_ready_inputs_from_selection,10,INFO,
+manifest_rows,10,INFO,
+would_train,0,PASS,
+would_eval_model_now,0,PASS,
+would_read_checkpoint_contents_now,0,PASS,
+would_write_checkpoint,0,PASS,
+would_c_export,0,PASS,
+would_public_benchmark,0,PASS,
+would_promote,0,PASS,

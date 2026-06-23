@@ -1,0 +1,37 @@
+# Teacher-divergence run1 post-adapter route decision next plan
+
+final_route_decision=POST_ADAPTER_ROUTE_BLOCKED
+adapter_decision=DIRECT_PROBE_EVAL_ADAPTER_BLOCKED
+next_branch=none
+
+## Next action
+
+Fix adapter blockers before continuing.
+
+## Required guardrails
+
+- No training.
+- No checkpoint write.
+- No current_best overwrite.
+- No C export.
+- No public benchmark.
+- No promotion.
+- Do not add local checkpoint artifacts to git.
+
+## If direct-probe executor is next
+
+The executor must default to dry-run and require both explicit flags before any local model eval:
+
+```text
+--execute-model-eval
+--confirm-model-eval TEACHER_DIVERGENCE_DIRECT_PROBE_LOCAL_EVAL
+```
+
+## Blockers
+
+- adapter blockers present: 2
+- adapter decision is blocked
+
+## Warnings
+
+- adapter warnings carried forward: 2
