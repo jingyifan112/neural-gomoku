@@ -1,0 +1,2160 @@
+{
+  "branch": "exp/15x15-teacher-divergence-next-direct-repair-field-spec",
+  "purpose": "Static-only field specification scan for the one direct repair-queue row.",
+  "upstream_branch": "exp/15x15-teacher-divergence-next-direct-repair-materialization-dryrun",
+  "upstream_commit": "4ddb33a",
+  "mode": "static_field_spec_scan",
+  "generated_at_utc": "2026-06-23T07:39:02.882538+00:00",
+  "safety_permissions": {
+    "training_allowed_now": 0,
+    "model_eval_allowed_now": 0,
+    "checkpoint_read_allowed_now": 0,
+    "checkpoint_write_allowed_now": 0,
+    "c_export_allowed_now": 0,
+    "public_benchmark_allowed_now": 0,
+    "promotion_allowed_now": 0,
+    "current_best_overwrite_allowed_now": 0
+  },
+  "expected_boundary": {
+    "direct_manifest_rows": 10,
+    "normalized_ready_rows": 3,
+    "repair_queue_rows": 1,
+    "quarantine_rows": 6,
+    "eval_allowed_now": 0,
+    "checkpoint_read_allowed_now": 0
+  },
+  "scan_summary": {
+    "tracked_files_scanned": 75,
+    "json_marker_candidates": 33,
+    "csv_marker_candidates": 33,
+    "markdown_marker_hits": 65,
+    "specific_issue_candidates": 18
+  },
+  "scan_files": [
+    "analysis/integration_eval/candidate_e_teacher_repair_dryrun.md",
+    "analysis/integration_eval/candidate_g_teacher_seed_manifest.json",
+    "analysis/integration_eval/candidate_g_teacher_seed_manifest.md",
+    "analysis/integration_eval/candidate_h_i_j_local_repair_closeout.md",
+    "analysis/integration_eval/policy_only_teacher_divergence_repair_probe_closeout.md",
+    "analysis/integration_eval/policy_only_teacher_divergence_repair_probe_design.md",
+    "analysis/integration_eval/policy_only_teacher_divergence_repair_probe_script_audit.md",
+    "analysis/integration_eval/policy_only_teacher_divergence_repair_probe_train_closeout.md",
+    "analysis/integration_eval/policy_only_teacher_divergence_repair_probe_train_metrics.csv",
+    "analysis/integration_eval/policy_only_teacher_divergence_repair_probe_train_report.md",
+    "analysis/integration_eval/retention_family_applied_split_dryrun_manifest.csv",
+    "analysis/integration_eval/retention_family_materialized_split_manifest.csv",
+    "analysis/integration_eval/retention_family_training_consumer_adapter_manifest.csv",
+    "analysis/integration_eval/retention_family_training_consumer_adapter_train_weighted_manifest.csv",
+    "analysis/integration_eval/retention_family_training_input_dryrun_eval_manifest.csv",
+    "analysis/integration_eval/retention_family_training_input_dryrun_train_manifest.csv",
+    "analysis/integration_eval/safety_block_candidate_manifest.csv",
+    "analysis/integration_eval/safety_block_candidate_manifest.json",
+    "analysis/integration_eval/teacher_divergence_expanded_candidate_manifest.csv",
+    "analysis/integration_eval/teacher_divergence_expanded_candidate_manifest_legacy_suppress_normalized.csv",
+    "analysis/integration_eval/teacher_divergence_expanded_candidate_manifest_report.md",
+    "analysis/integration_eval/teacher_divergence_expanded_candidate_manifest_with_board_joins.csv",
+    "analysis/integration_eval/teacher_divergence_expanded_candidate_manifest_with_board_joins_report.md",
+    "analysis/integration_eval/teacher_divergence_expanded_candidate_manifest_with_board_joins_update_log.csv",
+    "analysis/integration_eval/teacher_divergence_expanded_candidate_manifest_with_fills.csv",
+    "analysis/integration_eval/teacher_divergence_expanded_candidate_manifest_with_fills_report.md",
+    "analysis/integration_eval/teacher_divergence_expanded_candidate_manifest_with_fills_update_log.csv",
+    "analysis/integration_eval/teacher_divergence_expanded_candidate_manifest_with_suppress_round2.csv",
+    "analysis/integration_eval/teacher_divergence_expanded_manifest_design.md",
+    "analysis/integration_eval/teacher_divergence_gated_training_run1_e10_manifest_bucket_guard.csv",
+    "analysis/integration_eval/teacher_divergence_legacy_suppress_manifest_update_report.md",
+    "analysis/integration_eval/teacher_divergence_legacy_trainable_normalization_plan.csv",
+    "analysis/integration_eval/teacher_divergence_legacy_trainable_normalization_plan.md",
+    "analysis/integration_eval/teacher_divergence_manifest_fill_plan.md",
+    "analysis/integration_eval/teacher_divergence_manifest_update_with_suppress_round2_report.md",
+    "analysis/integration_eval/teacher_divergence_next_direct_adapter_blocker_inspection.md",
+    "analysis/integration_eval/teacher_divergence_next_direct_adapter_blocker_inspection_decision.json",
+    "analysis/integration_eval/teacher_divergence_next_direct_adapter_blocker_inspection_rows.csv",
+    "analysis/integration_eval/teacher_divergence_next_direct_adapter_blocker_inspection_summary.csv",
+    "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review.md",
+    "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review_decision.json",
+    "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review_manifest.csv",
+    "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review_quarantine.csv",
+    "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review_repair_queue.csv",
+    "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review_summary.csv",
+    "analysis/integration_eval/teacher_divergence_next_direct_probe_input_repair_actions.csv",
+    "analysis/integration_eval/teacher_divergence_next_direct_probe_input_repair_plan.md",
+    "analysis/integration_eval/teacher_divergence_next_direct_probe_input_repair_plan_decision.json",
+    "analysis/integration_eval/teacher_divergence_next_direct_probe_input_repair_plan_summary.csv",
+    "analysis/integration_eval/teacher_divergence_next_direct_repair_materialization_dryrun.json",
+    "analysis/integration_eval/teacher_divergence_next_direct_repair_materialization_dryrun.md",
+    "analysis/integration_eval/teacher_divergence_next_direct_repair_materialization_policy.md",
+    "analysis/integration_eval/teacher_divergence_next_direct_repair_queue_review.md",
+    "analysis/integration_eval/teacher_divergence_next_direct_repair_queue_review_candidates.csv",
+    "analysis/integration_eval/teacher_divergence_next_direct_repair_queue_review_decision.json",
+    "analysis/integration_eval/teacher_divergence_next_direct_repair_queue_review_pending.csv",
+    "analysis/integration_eval/teacher_divergence_next_direct_repair_queue_review_quarantine_additions.csv",
+    "analysis/integration_eval/teacher_divergence_next_direct_repair_queue_review_rows.csv",
+    "analysis/integration_eval/teacher_divergence_next_direct_repair_queue_review_summary.csv",
+    "analysis/integration_eval/teacher_divergence_policy_mixed_ce_heldout_blocker_position_review.csv",
+    "analysis/integration_eval/teacher_divergence_policy_mixed_ce_heldout_blocker_position_review.md",
+    "analysis/integration_eval/teacher_divergence_policy_mixed_ce_heldout_blocker_position_review_closeout.md",
+    "analysis/integration_eval/teacher_divergence_retention_clean_v2_manifest.csv",
+    "analysis/integration_eval/teacher_divergence_retention_manifest.csv",
+    "analysis/integration_eval/teacher_divergence_retention_safety_v3_manifest.csv",
+    "analysis/integration_eval/teacher_divergence_run1_blocker_followup.md",
+    "analysis/integration_eval/teacher_divergence_run1_blocker_followup_decision.json",
+    "analysis/integration_eval/teacher_divergence_run1_blocker_followup_summary.csv",
+    "analysis/integration_eval/teacher_divergence_run1_direct_probe_eval_adapter.md",
+    "analysis/integration_eval/teacher_divergence_run1_direct_probe_eval_adapter_manifest.csv",
+    "analysis/integration_eval/teacher_divergence_run1_direct_probe_eval_adapter_summary.csv",
+    "analysis/integration_eval/teacher_divergence_run1_next_stage_blocker_review.md",
+    "analysis/integration_eval/teacher_divergence_run1_next_stage_blocker_review_summary.csv",
+    "analysis/integration_eval/teacher_divergence_tiny_posttrain_manifest_bucket_guard.csv",
+    "analysis/integration_eval/v12l_next_direction_fork_value_search.md"
+  ],
+  "json_candidates": [
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_adapter_blocker_inspection_decision.json",
+      "json_path": "$",
+      "object_type": "dict",
+      "evidence": {
+        "direct_adapter_decision": "DIRECT_PROBE_EVAL_ADAPTER_BLOCKED",
+        "inspection_decision": "DIRECT_ADAPTER_BLOCKER_INSPECTION_READY_FOR_NORMALIZATION_REVIEW",
+        "plan_decision": "DIRECT_PROBE_INPUT_REPAIR_PLAN_READY",
+        "recommended_next": "Normalize ready/repairable rows into a stricter manifest; keep eval disabled.",
+        "row_counts": "{\"manifest_rows\": 10, \"needs_repair_rows\": 1, \"not_ready_rows\": 6, \"provenance_repair_rows\": 0, \"quarantine_rows\": 6, \"ready_rows\": 3, \"schema_repair_rows\": 0}"
+      }
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_adapter_blocker_inspection_decision.json",
+      "json_path": "$.row_counts",
+      "object_type": "dict",
+      "evidence": {
+        "needs_repair_rows": "1",
+        "provenance_repair_rows": "0",
+        "quarantine_rows": "6",
+        "schema_repair_rows": "0"
+      }
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_adapter_blocker_inspection_decision.json",
+      "json_path": "$.warnings",
+      "object_type": "list",
+      "evidence": {}
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_adapter_blocker_inspection_decision.json",
+      "json_path": "$.warnings[5]",
+      "object_type": "str",
+      "evidence": {}
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review_decision.json",
+      "json_path": "$",
+      "object_type": "dict",
+      "evidence": {
+        "inspection_decision": "DIRECT_ADAPTER_BLOCKER_INSPECTION_READY_FOR_NORMALIZATION_REVIEW",
+        "normalization_decision": "DIRECT_MANIFEST_NORMALIZATION_REVIEW_READY_WITH_REPAIR_QUEUE",
+        "outputs": "{\"normalized_manifest\": \"analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review_manifest.csv\", \"quarantine\": \"analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review_quarantine.csv\", \"repair_queue\": \"analysis/integration_eval/teacher_div...",
+        "plan_decision": "DIRECT_PROBE_INPUT_REPAIR_PLAN_READY",
+        "recommended_next": "Use the normalized ready manifest as a review-only candidate. Repair queued rows separately. Do not build eval executor yet.",
+        "repair_plan_decision": "DIRECT_PROBE_INPUT_REPAIR_PLAN_READY",
+        "row_counts": "{\"inspection_rows\": 10, \"normalized_ready_rows\": 3, \"original_manifest_rows\": 10, \"quarantine_rows\": 6, \"repair_queue_rows\": 1, \"unclassified_rows\": 0}",
+        "warnings": "[\"combined WARN rows carried forward: 2\", \"protected probability regressions carried forward: 11\", \"tail probability regressions carried forward: 8\", \"repair queue rows: 1\", \"quarantine rows excluded: 6\"]"
+      }
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review_decision.json",
+      "json_path": "$.normalization_decision",
+      "object_type": "str",
+      "evidence": {}
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review_decision.json",
+      "json_path": "$.outputs",
+      "object_type": "dict",
+      "evidence": {
+        "quarantine": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review_quarantine.csv",
+        "repair_queue": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review_repair_queue.csv"
+      }
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review_decision.json",
+      "json_path": "$.outputs.quarantine",
+      "object_type": "str",
+      "evidence": {}
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review_decision.json",
+      "json_path": "$.outputs.repair_queue",
+      "object_type": "str",
+      "evidence": {}
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review_decision.json",
+      "json_path": "$.row_counts",
+      "object_type": "dict",
+      "evidence": {
+        "quarantine_rows": "6",
+        "repair_queue_rows": "1"
+      }
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review_decision.json",
+      "json_path": "$.warnings",
+      "object_type": "list",
+      "evidence": {}
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review_decision.json",
+      "json_path": "$.warnings[4]",
+      "object_type": "str",
+      "evidence": {}
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_materialization_dryrun.json",
+      "json_path": "$",
+      "object_type": "dict",
+      "evidence": {
+        "branch": "exp/15x15-teacher-divergence-next-direct-repair-materialization-dryrun",
+        "purpose": "Static-only dry run for direct repair queue materialization after the direct repair materialization policy.",
+        "upstream_branch": "exp/15x15-teacher-divergence-next-direct-repair-materialization-policy",
+        "execution_permissions": "{\"c_export_allowed_now\": 0, \"checkpoint_read_allowed_now\": 0, \"checkpoint_write_allowed_now\": 0, \"current_best_overwrite_allowed_now\": 0, \"model_eval_allowed_now\": 0, \"promotion_allowed_now\": 0, \"public_benchmark_allowed_now\": 0, \"training_allowed_now\": 0}",
+        "source_state": "{\"blockers\": [], \"checkpoint_read_allowed_now\": 0, \"direct_manifest_rows\": 10, \"eval_allowed_now\": 0, \"normalized_ready_rows\": 3, \"quarantine_rows\": 6, \"repair_queue_rows\": 1, \"requires_future_explicit_flags\": 1}",
+        "materialized_buckets": "[{\"allowed_next_handling\": \"May be carried forward as metadata-normalized rows only. No model evaluation or checkpoint read is implied.\", \"bucket\": \"normalized_ready\", \"checkpoint_read_allowed_now\": 0, \"dryrun_status\": \"STATIC_READY_ONLY\", \"eval_allowed_now\": 0, \"expected_count\": 3, \"promotion_allow...",
+        "acceptance_checks": "{\"c_export_executed\": false, \"checkpoint_content_read\": false, \"checkpoint_paths_modified\": false, \"checkpoint_paths_staged\": false, \"model_eval_executed\": false, \"promotion_executed\": false, \"public_benchmark_executed\": false, \"quarantine_count_preserved\": true, \"quarantine_rows_excluded\": true, \"r...",
+        "dryrun_decision": "DIRECT_REPAIR_MATERIALIZATION_DRYRUN_COMPLETE_STATIC_ONLY",
+        "promotion_decision": "NO_PROMOTION__STATIC_DRYRUN_ONLY",
+        "recommended_next_branch": "exp/15x15-teacher-divergence-next-direct-repair-field-spec"
+      }
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_materialization_dryrun.json",
+      "json_path": "$.execution_permissions",
+      "object_type": "dict",
+      "evidence": {
+        "model_eval_allowed_now": "0",
+        "checkpoint_read_allowed_now": "0"
+      }
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_materialization_dryrun.json",
+      "json_path": "$.source_state",
+      "object_type": "dict",
+      "evidence": {
+        "repair_queue_rows": "1",
+        "quarantine_rows": "6",
+        "eval_allowed_now": "0",
+        "checkpoint_read_allowed_now": "0",
+        "requires_future_explicit_flags": "1"
+      }
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_materialization_dryrun.json",
+      "json_path": "$.materialized_buckets",
+      "object_type": "list",
+      "evidence": {}
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_materialization_dryrun.json",
+      "json_path": "$.materialized_buckets[0]",
+      "object_type": "dict",
+      "evidence": {
+        "dryrun_status": "STATIC_READY_ONLY",
+        "eval_allowed_now": "0",
+        "checkpoint_read_allowed_now": "0"
+      }
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_materialization_dryrun.json",
+      "json_path": "$.materialized_buckets[1]",
+      "object_type": "dict",
+      "evidence": {
+        "bucket": "repair_queue",
+        "dryrun_status": "REQUIRES_STATIC_METADATA_REPAIR",
+        "allowed_next_handling": "May be repaired only in a future explicit static repair branch naming the exact field, source, before value, and after value.",
+        "eval_allowed_now": "0",
+        "checkpoint_read_allowed_now": "0"
+      }
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_materialization_dryrun.json",
+      "json_path": "$.materialized_buckets[1].bucket",
+      "object_type": "str",
+      "evidence": {}
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_materialization_dryrun.json",
+      "json_path": "$.materialized_buckets[2]",
+      "object_type": "dict",
+      "evidence": {
+        "bucket": "quarantine",
+        "dryrun_status": "EXCLUDED",
+        "eval_allowed_now": "0",
+        "checkpoint_read_allowed_now": "0"
+      }
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_materialization_dryrun.json",
+      "json_path": "$.materialized_buckets[2].bucket",
+      "object_type": "str",
+      "evidence": {}
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_materialization_dryrun.json",
+      "json_path": "$.acceptance_checks",
+      "object_type": "dict",
+      "evidence": {
+        "repair_count_preserved": "True",
+        "quarantine_count_preserved": "True",
+        "quarantine_rows_excluded": "True"
+      }
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_queue_review_decision.json",
+      "json_path": "$",
+      "object_type": "dict",
+      "evidence": {
+        "normalization_decision": "DIRECT_MANIFEST_NORMALIZATION_REVIEW_READY_WITH_REPAIR_QUEUE",
+        "outputs": "{\"pending\": \"analysis/integration_eval/teacher_divergence_next_direct_repair_queue_review_pending.csv\", \"quarantine_additions\": \"analysis/integration_eval/teacher_divergence_next_direct_repair_queue_review_quarantine_additions.csv\", \"repair_candidates\": \"analysis/integration_eval/teacher_divergence_...",
+        "recommended_next": "Do not merge repair row yet; materialize missing schema/provenance metadata first.",
+        "repair_queue_review_decision": "DIRECT_REPAIR_QUEUE_REVIEW_PENDING_METADATA",
+        "row_counts": "{\"existing_quarantine_rows\": 6, \"normalized_manifest_rows\": 3, \"pending_rows\": 1, \"quarantine_addition_rows\": 0, \"repair_candidate_rows\": 0, \"repair_queue_rows\": 1, \"reviewed_repair_rows\": 1}",
+        "warnings": "[\"combined WARN rows carried forward: 2\", \"protected probability regressions carried forward: 11\", \"tail probability regressions carried forward: 8\", \"repair rows still pending: 1\"]"
+      }
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_queue_review_decision.json",
+      "json_path": "$.normalization_decision",
+      "object_type": "str",
+      "evidence": {}
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_queue_review_decision.json",
+      "json_path": "$.outputs",
+      "object_type": "dict",
+      "evidence": {
+        "pending": "analysis/integration_eval/teacher_divergence_next_direct_repair_queue_review_pending.csv",
+        "quarantine_additions": "analysis/integration_eval/teacher_divergence_next_direct_repair_queue_review_quarantine_additions.csv",
+        "repair_candidates": "analysis/integration_eval/teacher_divergence_next_direct_repair_queue_review_candidates.csv",
+        "report": "analysis/integration_eval/teacher_divergence_next_direct_repair_queue_review.md",
+        "review_rows": "analysis/integration_eval/teacher_divergence_next_direct_repair_queue_review_rows.csv",
+        "summary_csv": "analysis/integration_eval/teacher_divergence_next_direct_repair_queue_review_summary.csv"
+      }
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_queue_review_decision.json",
+      "json_path": "$.outputs.pending",
+      "object_type": "str",
+      "evidence": {}
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_queue_review_decision.json",
+      "json_path": "$.outputs.quarantine_additions",
+      "object_type": "str",
+      "evidence": {}
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_queue_review_decision.json",
+      "json_path": "$.outputs.repair_candidates",
+      "object_type": "str",
+      "evidence": {}
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_queue_review_decision.json",
+      "json_path": "$.outputs.report",
+      "object_type": "str",
+      "evidence": {}
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_queue_review_decision.json",
+      "json_path": "$.outputs.review_rows",
+      "object_type": "str",
+      "evidence": {}
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_queue_review_decision.json",
+      "json_path": "$.outputs.summary_csv",
+      "object_type": "str",
+      "evidence": {}
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_queue_review_decision.json",
+      "json_path": "$.repair_queue_review_decision",
+      "object_type": "str",
+      "evidence": {}
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_queue_review_decision.json",
+      "json_path": "$.row_counts",
+      "object_type": "dict",
+      "evidence": {
+        "existing_quarantine_rows": "6",
+        "quarantine_addition_rows": "0",
+        "repair_candidate_rows": "0",
+        "repair_queue_rows": "1",
+        "reviewed_repair_rows": "1"
+      }
+    }
+  ],
+  "csv_candidates": [
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_adapter_blocker_inspection_rows.csv",
+      "line": 2,
+      "evidence": {
+        "path": "analysis/integration_eval/policy_only_teacher_divergence_repair_probe_closeout.md",
+        "schema_status": "HAS_CONTEXT_BUT_NEEDS_REVIEW",
+        "provenance_status": "CLEAN_HELDOUT_OR_DIRECT_SOURCE",
+        "direct_eval_readiness": "NEEDS_REPAIR",
+        "clean_source_tokens": "fixed_probe,direct_probe"
+      },
+      "columns": [
+        "manifest_row_id",
+        "eval_manifest_id",
+        "adapter_kind",
+        "path",
+        "sample_rows_or_count",
+        "path_exists",
+        "path_type",
+        "inferred_format",
+        "inspected_count",
+        "schema_keys",
+        "schema_status",
+        "provenance_status",
+        "leakage_risk",
+        "direct_eval_readiness",
+        "risk_level",
+        "recommended_action",
+        "route_tokens",
+        "debug_or_legacy_tokens",
+        "train_derived_tokens",
+        "clean_source_tokens",
+        "problems",
+        "notes"
+      ]
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_adapter_blocker_inspection_rows.csv",
+      "line": 6,
+      "evidence": {
+        "schema_keys": "board,board_size,board_snapshot_before_decision,case_id,current_player,direct,game_number,last_move_rc,last_move_xy,mcts_raw,mcts_safety,move_count,old_final,old_final_xy,policy_safety,reason,side_to_move,source,suppress_rc,suppress_xy,target_rc,target_xy,value,win_length",
+        "schema_status": "HAS_CONTEXT_BUT_NEEDS_REVIEW",
+        "provenance_status": "DEBUG_OR_LEGACY_SOURCE",
+        "recommended_action": "QUARANTINE_FOR_NOW",
+        "clean_source_tokens": "direct_probe"
+      },
+      "columns": [
+        "manifest_row_id",
+        "eval_manifest_id",
+        "adapter_kind",
+        "path",
+        "sample_rows_or_count",
+        "path_exists",
+        "path_type",
+        "inferred_format",
+        "inspected_count",
+        "schema_keys",
+        "schema_status",
+        "provenance_status",
+        "leakage_risk",
+        "direct_eval_readiness",
+        "risk_level",
+        "recommended_action",
+        "route_tokens",
+        "debug_or_legacy_tokens",
+        "train_derived_tokens",
+        "clean_source_tokens",
+        "problems",
+        "notes"
+      ]
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_adapter_blocker_inspection_rows.csv",
+      "line": 7,
+      "evidence": {
+        "schema_keys": "board,board_size,board_snapshot_before_decision,case_id,current_player,direct,game_number,last_move_rc,last_move_xy,mcts_raw,mcts_safety,move_count,old_final,old_final_xy,policy_safety,reason,side_to_move,source,suppress_rc,suppress_xy,target_rc,target_xy,value,win_length",
+        "schema_status": "HAS_CONTEXT_BUT_NEEDS_REVIEW",
+        "provenance_status": "DEBUG_OR_LEGACY_SOURCE",
+        "recommended_action": "QUARANTINE_FOR_NOW",
+        "clean_source_tokens": "direct_probe"
+      },
+      "columns": [
+        "manifest_row_id",
+        "eval_manifest_id",
+        "adapter_kind",
+        "path",
+        "sample_rows_or_count",
+        "path_exists",
+        "path_type",
+        "inferred_format",
+        "inspected_count",
+        "schema_keys",
+        "schema_status",
+        "provenance_status",
+        "leakage_risk",
+        "direct_eval_readiness",
+        "risk_level",
+        "recommended_action",
+        "route_tokens",
+        "debug_or_legacy_tokens",
+        "train_derived_tokens",
+        "clean_source_tokens",
+        "problems",
+        "notes"
+      ]
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_adapter_blocker_inspection_rows.csv",
+      "line": 8,
+      "evidence": {
+        "schema_keys": "board,board_size,board_snapshot_before_decision,case_id,current_player,direct,game_number,last_move_rc,last_move_xy,mcts_raw,mcts_safety,move_count,old_final,old_final_xy,policy_safety,reason,side_to_move,source,suppress_rc,suppress_xy,target_rc,target_xy,value,win_length",
+        "schema_status": "HAS_CONTEXT_BUT_NEEDS_REVIEW",
+        "provenance_status": "DEBUG_OR_LEGACY_SOURCE",
+        "recommended_action": "QUARANTINE_FOR_NOW",
+        "clean_source_tokens": "direct_probe"
+      },
+      "columns": [
+        "manifest_row_id",
+        "eval_manifest_id",
+        "adapter_kind",
+        "path",
+        "sample_rows_or_count",
+        "path_exists",
+        "path_type",
+        "inferred_format",
+        "inspected_count",
+        "schema_keys",
+        "schema_status",
+        "provenance_status",
+        "leakage_risk",
+        "direct_eval_readiness",
+        "risk_level",
+        "recommended_action",
+        "route_tokens",
+        "debug_or_legacy_tokens",
+        "train_derived_tokens",
+        "clean_source_tokens",
+        "problems",
+        "notes"
+      ]
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_adapter_blocker_inspection_rows.csv",
+      "line": 9,
+      "evidence": {
+        "schema_keys": "board,board_size,board_snapshot_before_decision,case_id,current_player,direct,game_number,last_move_rc,last_move_xy,mcts_raw,mcts_safety,move_count,old_final,old_final_xy,policy_safety,reason,side_to_move,source,suppress_rc,suppress_xy,target_rc,target_xy,value,win_length",
+        "schema_status": "HAS_CONTEXT_BUT_NEEDS_REVIEW",
+        "provenance_status": "DEBUG_OR_LEGACY_SOURCE",
+        "recommended_action": "QUARANTINE_FOR_NOW",
+        "clean_source_tokens": "direct_probe"
+      },
+      "columns": [
+        "manifest_row_id",
+        "eval_manifest_id",
+        "adapter_kind",
+        "path",
+        "sample_rows_or_count",
+        "path_exists",
+        "path_type",
+        "inferred_format",
+        "inspected_count",
+        "schema_keys",
+        "schema_status",
+        "provenance_status",
+        "leakage_risk",
+        "direct_eval_readiness",
+        "risk_level",
+        "recommended_action",
+        "route_tokens",
+        "debug_or_legacy_tokens",
+        "train_derived_tokens",
+        "clean_source_tokens",
+        "problems",
+        "notes"
+      ]
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_adapter_blocker_inspection_rows.csv",
+      "line": 10,
+      "evidence": {
+        "schema_keys": "board,board_size,board_snapshot_before_decision,case_id,current_player,game_number,move_count,old_final,old_final_xy,reason,side_to_move,source,suppress_rc,suppress_xy,target_rc,target_xy,win_length",
+        "schema_status": "HAS_CONTEXT_BUT_NEEDS_REVIEW",
+        "provenance_status": "DEBUG_OR_LEGACY_SOURCE",
+        "recommended_action": "QUARANTINE_FOR_NOW",
+        "clean_source_tokens": "direct_probe"
+      },
+      "columns": [
+        "manifest_row_id",
+        "eval_manifest_id",
+        "adapter_kind",
+        "path",
+        "sample_rows_or_count",
+        "path_exists",
+        "path_type",
+        "inferred_format",
+        "inspected_count",
+        "schema_keys",
+        "schema_status",
+        "provenance_status",
+        "leakage_risk",
+        "direct_eval_readiness",
+        "risk_level",
+        "recommended_action",
+        "route_tokens",
+        "debug_or_legacy_tokens",
+        "train_derived_tokens",
+        "clean_source_tokens",
+        "problems",
+        "notes"
+      ]
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_adapter_blocker_inspection_rows.csv",
+      "line": 11,
+      "evidence": {
+        "schema_keys": "board,board_size,board_snapshot_before_decision,case_id,current_player,game_number,move_count,old_final,old_final_xy,reason,side_to_move,source,suppress_rc,suppress_xy,target_rc,target_xy,win_length",
+        "schema_status": "HAS_CONTEXT_BUT_NEEDS_REVIEW",
+        "provenance_status": "DEBUG_OR_LEGACY_SOURCE",
+        "recommended_action": "QUARANTINE_FOR_NOW",
+        "clean_source_tokens": "direct_probe"
+      },
+      "columns": [
+        "manifest_row_id",
+        "eval_manifest_id",
+        "adapter_kind",
+        "path",
+        "sample_rows_or_count",
+        "path_exists",
+        "path_type",
+        "inferred_format",
+        "inspected_count",
+        "schema_keys",
+        "schema_status",
+        "provenance_status",
+        "leakage_risk",
+        "direct_eval_readiness",
+        "risk_level",
+        "recommended_action",
+        "route_tokens",
+        "debug_or_legacy_tokens",
+        "train_derived_tokens",
+        "clean_source_tokens",
+        "problems",
+        "notes"
+      ]
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_adapter_blocker_inspection_summary.csv",
+      "line": 11,
+      "evidence": {
+        "metric": "needs_repair_rows",
+        "status": "INFO"
+      },
+      "columns": [
+        "metric",
+        "value",
+        "status",
+        "notes"
+      ]
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_adapter_blocker_inspection_summary.csv",
+      "line": 13,
+      "evidence": {
+        "metric": "quarantine_rows",
+        "status": "WARN"
+      },
+      "columns": [
+        "metric",
+        "value",
+        "status",
+        "notes"
+      ]
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_adapter_blocker_inspection_summary.csv",
+      "line": 17,
+      "evidence": {
+        "status": "WARN",
+        "notes": "combined WARN rows carried forward: 2; protected probability regressions carried forward: 11; tail probability regressions carried forward: 8; direct adapter blocker notes carried forward: controlled review is blocked; controlled review blockers present: 2; direct adapter warning notes carried forwa..."
+      },
+      "columns": [
+        "metric",
+        "value",
+        "status",
+        "notes"
+      ]
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_adapter_blocker_inspection_summary.csv",
+      "line": 37,
+      "evidence": {
+        "metric": "count_direct_eval_readiness:NEEDS_REPAIR",
+        "status": "INFO"
+      },
+      "columns": [
+        "metric",
+        "value",
+        "status",
+        "notes"
+      ]
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_adapter_blocker_inspection_summary.csv",
+      "line": 46,
+      "evidence": {
+        "metric": "count_recommended_action:QUARANTINE_FOR_NOW",
+        "status": "INFO"
+      },
+      "columns": [
+        "metric",
+        "value",
+        "status",
+        "notes"
+      ]
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review_manifest.csv",
+      "line": 2,
+      "evidence": {
+        "source_manifest_row_id": "2",
+        "source_eval_manifest_id": "run1_direct_probe_eval_002",
+        "source_adapter_kind": "direct_model_eval_fixed_probe_candidate",
+        "source_path": "analysis/integration_eval/policy_only_teacher_divergence_repair_probe_design.md",
+        "source_format": "md",
+        "source_path_exists": "1",
+        "source_inspected_count": "891",
+        "schema_status": "OK",
+        "provenance_status": "CLEAN_HELDOUT_OR_DIRECT_SOURCE",
+        "normalized_status": "NORMALIZED_REVIEW_READY",
+        "eval_allowed_now": "0",
+        "requires_future_explicit_flags": "1",
+        "checkpoint_read_allowed_now": "0"
+      },
+      "columns": [
+        "normalized_manifest_id",
+        "source_manifest_row_id",
+        "source_eval_manifest_id",
+        "source_adapter_kind",
+        "source_path",
+        "source_format",
+        "source_path_exists",
+        "source_inspected_count",
+        "schema_status",
+        "provenance_status",
+        "leakage_risk",
+        "direct_eval_readiness",
+        "risk_level",
+        "normalized_role",
+        "normalized_status",
+        "eval_allowed_now",
+        "requires_future_explicit_flags",
+        "checkpoint_read_allowed_now",
+        "notes"
+      ]
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review_manifest.csv",
+      "line": 3,
+      "evidence": {
+        "source_manifest_row_id": "3",
+        "source_eval_manifest_id": "run1_direct_probe_eval_003",
+        "source_adapter_kind": "direct_model_eval_fixed_probe_candidate",
+        "source_path": "analysis/integration_eval/policy_only_teacher_divergence_repair_probe_script_audit.md",
+        "source_format": "md",
+        "source_path_exists": "1",
+        "source_inspected_count": "1359",
+        "schema_status": "OK",
+        "provenance_status": "CLEAN_HELDOUT_OR_DIRECT_SOURCE",
+        "normalized_status": "NORMALIZED_REVIEW_READY",
+        "eval_allowed_now": "0",
+        "requires_future_explicit_flags": "1",
+        "checkpoint_read_allowed_now": "0"
+      },
+      "columns": [
+        "normalized_manifest_id",
+        "source_manifest_row_id",
+        "source_eval_manifest_id",
+        "source_adapter_kind",
+        "source_path",
+        "source_format",
+        "source_path_exists",
+        "source_inspected_count",
+        "schema_status",
+        "provenance_status",
+        "leakage_risk",
+        "direct_eval_readiness",
+        "risk_level",
+        "normalized_role",
+        "normalized_status",
+        "eval_allowed_now",
+        "requires_future_explicit_flags",
+        "checkpoint_read_allowed_now",
+        "notes"
+      ]
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review_manifest.csv",
+      "line": 4,
+      "evidence": {
+        "source_manifest_row_id": "4",
+        "source_eval_manifest_id": "run1_direct_probe_eval_004",
+        "source_adapter_kind": "direct_model_eval_heldout_candidate",
+        "source_path": "analysis/integration_eval/teacher_divergence_policy_mixed_ce_heldout_blocker_position_review.md",
+        "source_format": "md",
+        "source_path_exists": "1",
+        "source_inspected_count": "299",
+        "schema_status": "OK",
+        "provenance_status": "CLEAN_HELDOUT_OR_DIRECT_SOURCE",
+        "normalized_status": "NORMALIZED_REVIEW_READY",
+        "eval_allowed_now": "0",
+        "requires_future_explicit_flags": "1",
+        "checkpoint_read_allowed_now": "0"
+      },
+      "columns": [
+        "normalized_manifest_id",
+        "source_manifest_row_id",
+        "source_eval_manifest_id",
+        "source_adapter_kind",
+        "source_path",
+        "source_format",
+        "source_path_exists",
+        "source_inspected_count",
+        "schema_status",
+        "provenance_status",
+        "leakage_risk",
+        "direct_eval_readiness",
+        "risk_level",
+        "normalized_role",
+        "normalized_status",
+        "eval_allowed_now",
+        "requires_future_explicit_flags",
+        "checkpoint_read_allowed_now",
+        "notes"
+      ]
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review_quarantine.csv",
+      "line": 2,
+      "evidence": {
+        "quarantine_id": "direct_quarantine_001",
+        "source_manifest_row_id": "5",
+        "source_eval_manifest_id": "run1_direct_probe_eval_005",
+        "source_adapter_kind": "direct_model_eval_anchor_candidate",
+        "source_path": "analysis/integration_eval/candidate_c_g2_m19_perspective_diagnostic_anchors.json",
+        "schema_status": "HAS_CONTEXT_BUT_NEEDS_REVIEW",
+        "provenance_status": "DEBUG_OR_LEGACY_SOURCE",
+        "recommended_action": "QUARANTINE_FOR_NOW",
+        "quarantine_reason": "not_ready_or_high_risk_from_blocker_inspection",
+        "eval_allowed_now": "0"
+      },
+      "columns": [
+        "quarantine_id",
+        "source_manifest_row_id",
+        "source_eval_manifest_id",
+        "source_adapter_kind",
+        "source_path",
+        "schema_status",
+        "provenance_status",
+        "leakage_risk",
+        "direct_eval_readiness",
+        "recommended_action",
+        "problems",
+        "quarantine_reason",
+        "eval_allowed_now",
+        "notes"
+      ]
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review_quarantine.csv",
+      "line": 3,
+      "evidence": {
+        "quarantine_id": "direct_quarantine_002",
+        "source_manifest_row_id": "6",
+        "source_eval_manifest_id": "run1_direct_probe_eval_006",
+        "source_adapter_kind": "direct_model_eval_anchor_candidate",
+        "source_path": "analysis/integration_eval/candidate_d_g2_m15_diagnostic_anchors.json",
+        "schema_status": "HAS_CONTEXT_BUT_NEEDS_REVIEW",
+        "provenance_status": "DEBUG_OR_LEGACY_SOURCE",
+        "recommended_action": "QUARANTINE_FOR_NOW",
+        "quarantine_reason": "not_ready_or_high_risk_from_blocker_inspection",
+        "eval_allowed_now": "0"
+      },
+      "columns": [
+        "quarantine_id",
+        "source_manifest_row_id",
+        "source_eval_manifest_id",
+        "source_adapter_kind",
+        "source_path",
+        "schema_status",
+        "provenance_status",
+        "leakage_risk",
+        "direct_eval_readiness",
+        "recommended_action",
+        "problems",
+        "quarantine_reason",
+        "eval_allowed_now",
+        "notes"
+      ]
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review_quarantine.csv",
+      "line": 4,
+      "evidence": {
+        "quarantine_id": "direct_quarantine_003",
+        "source_manifest_row_id": "7",
+        "source_eval_manifest_id": "run1_direct_probe_eval_007",
+        "source_adapter_kind": "direct_model_eval_anchor_candidate",
+        "source_path": "analysis/integration_eval/candidate_e_g2_m13_diagnostic_anchors.json",
+        "schema_status": "HAS_CONTEXT_BUT_NEEDS_REVIEW",
+        "provenance_status": "DEBUG_OR_LEGACY_SOURCE",
+        "recommended_action": "QUARANTINE_FOR_NOW",
+        "quarantine_reason": "not_ready_or_high_risk_from_blocker_inspection",
+        "eval_allowed_now": "0"
+      },
+      "columns": [
+        "quarantine_id",
+        "source_manifest_row_id",
+        "source_eval_manifest_id",
+        "source_adapter_kind",
+        "source_path",
+        "schema_status",
+        "provenance_status",
+        "leakage_risk",
+        "direct_eval_readiness",
+        "recommended_action",
+        "problems",
+        "quarantine_reason",
+        "eval_allowed_now",
+        "notes"
+      ]
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review_quarantine.csv",
+      "line": 5,
+      "evidence": {
+        "quarantine_id": "direct_quarantine_004",
+        "source_manifest_row_id": "8",
+        "source_eval_manifest_id": "run1_direct_probe_eval_008",
+        "source_adapter_kind": "direct_model_eval_anchor_candidate",
+        "source_path": "analysis/integration_eval/candidate_e_g2_m17_diagnostic_anchors.json",
+        "schema_status": "HAS_CONTEXT_BUT_NEEDS_REVIEW",
+        "provenance_status": "DEBUG_OR_LEGACY_SOURCE",
+        "recommended_action": "QUARANTINE_FOR_NOW",
+        "quarantine_reason": "not_ready_or_high_risk_from_blocker_inspection",
+        "eval_allowed_now": "0"
+      },
+      "columns": [
+        "quarantine_id",
+        "source_manifest_row_id",
+        "source_eval_manifest_id",
+        "source_adapter_kind",
+        "source_path",
+        "schema_status",
+        "provenance_status",
+        "leakage_risk",
+        "direct_eval_readiness",
+        "recommended_action",
+        "problems",
+        "quarantine_reason",
+        "eval_allowed_now",
+        "notes"
+      ]
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review_quarantine.csv",
+      "line": 6,
+      "evidence": {
+        "quarantine_id": "direct_quarantine_005",
+        "source_manifest_row_id": "9",
+        "source_eval_manifest_id": "run1_direct_probe_eval_009",
+        "source_adapter_kind": "direct_model_eval_anchor_candidate",
+        "source_path": "analysis/integration_eval/current_best_margin_candidate_c_anchors.json",
+        "schema_status": "HAS_CONTEXT_BUT_NEEDS_REVIEW",
+        "provenance_status": "DEBUG_OR_LEGACY_SOURCE",
+        "recommended_action": "QUARANTINE_FOR_NOW",
+        "quarantine_reason": "not_ready_or_high_risk_from_blocker_inspection",
+        "eval_allowed_now": "0"
+      },
+      "columns": [
+        "quarantine_id",
+        "source_manifest_row_id",
+        "source_eval_manifest_id",
+        "source_adapter_kind",
+        "source_path",
+        "schema_status",
+        "provenance_status",
+        "leakage_risk",
+        "direct_eval_readiness",
+        "recommended_action",
+        "problems",
+        "quarantine_reason",
+        "eval_allowed_now",
+        "notes"
+      ]
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review_quarantine.csv",
+      "line": 7,
+      "evidence": {
+        "quarantine_id": "direct_quarantine_006",
+        "source_manifest_row_id": "10",
+        "source_eval_manifest_id": "run1_direct_probe_eval_010",
+        "source_adapter_kind": "direct_model_eval_anchor_candidate",
+        "source_path": "analysis/integration_eval/current_best_margin_candidate_c_conservative_anchors.json",
+        "schema_status": "HAS_CONTEXT_BUT_NEEDS_REVIEW",
+        "provenance_status": "DEBUG_OR_LEGACY_SOURCE",
+        "recommended_action": "QUARANTINE_FOR_NOW",
+        "quarantine_reason": "not_ready_or_high_risk_from_blocker_inspection",
+        "eval_allowed_now": "0"
+      },
+      "columns": [
+        "quarantine_id",
+        "source_manifest_row_id",
+        "source_eval_manifest_id",
+        "source_adapter_kind",
+        "source_path",
+        "schema_status",
+        "provenance_status",
+        "leakage_risk",
+        "direct_eval_readiness",
+        "recommended_action",
+        "problems",
+        "quarantine_reason",
+        "eval_allowed_now",
+        "notes"
+      ]
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review_repair_queue.csv",
+      "line": 2,
+      "evidence": {
+        "repair_queue_id": "direct_repair_001",
+        "source_manifest_row_id": "1",
+        "source_eval_manifest_id": "run1_direct_probe_eval_001",
+        "source_adapter_kind": "direct_model_eval_fixed_probe_candidate",
+        "source_path": "analysis/integration_eval/policy_only_teacher_divergence_repair_probe_closeout.md",
+        "schema_status": "HAS_CONTEXT_BUT_NEEDS_REVIEW",
+        "provenance_status": "CLEAN_HELDOUT_OR_DIRECT_SOURCE",
+        "direct_eval_readiness": "NEEDS_REPAIR",
+        "repair_status": "REPAIR_REQUIRED_BEFORE_NORMALIZATION",
+        "eval_allowed_now": "0",
+        "notes": "Do not pass into eval executor until schema/provenance is repaired and re-reviewed."
+      },
+      "columns": [
+        "repair_queue_id",
+        "source_manifest_row_id",
+        "source_eval_manifest_id",
+        "source_adapter_kind",
+        "source_path",
+        "schema_status",
+        "provenance_status",
+        "leakage_risk",
+        "direct_eval_readiness",
+        "recommended_action",
+        "problems",
+        "repair_status",
+        "eval_allowed_now",
+        "notes"
+      ]
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review_summary.csv",
+      "line": 2,
+      "evidence": {
+        "metric": "normalization_decision",
+        "value": "DIRECT_MANIFEST_NORMALIZATION_REVIEW_READY_WITH_REPAIR_QUEUE",
+        "status": "INFO"
+      },
+      "columns": [
+        "metric",
+        "value",
+        "status",
+        "notes"
+      ]
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review_summary.csv",
+      "line": 10,
+      "evidence": {
+        "metric": "repair_queue_rows",
+        "status": "WARN"
+      },
+      "columns": [
+        "metric",
+        "value",
+        "status",
+        "notes"
+      ]
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review_summary.csv",
+      "line": 11,
+      "evidence": {
+        "metric": "quarantine_rows",
+        "status": "WARN"
+      },
+      "columns": [
+        "metric",
+        "value",
+        "status",
+        "notes"
+      ]
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review_summary.csv",
+      "line": 14,
+      "evidence": {
+        "status": "WARN",
+        "notes": "combined WARN rows carried forward: 2; protected probability regressions carried forward: 11; tail probability regressions carried forward: 8; repair queue rows: 1; quarantine rows excluded: 6"
+      },
+      "columns": [
+        "metric",
+        "value",
+        "status",
+        "notes"
+      ]
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_queue_review_pending.csv",
+      "line": 2,
+      "evidence": {
+        "pending_id": "direct_repair_pending_001",
+        "source_repair_queue_id": "direct_repair_001",
+        "source_manifest_row_id": "1",
+        "source_eval_manifest_id": "run1_direct_probe_eval_001",
+        "source_path": "analysis/integration_eval/policy_only_teacher_divergence_repair_probe_closeout.md",
+        "schema_status": "HAS_CONTEXT_BUT_NEEDS_REVIEW",
+        "provenance_status": "CLEAN_HELDOUT_OR_DIRECT_SOURCE",
+        "pending_reasons": "",
+        "next_action": "Manual review required before any normalization.",
+        "eval_allowed_now": "0",
+        "notes": "Needs metadata repair before any normalization."
+      },
+      "columns": [
+        "pending_id",
+        "source_repair_queue_id",
+        "source_manifest_row_id",
+        "source_eval_manifest_id",
+        "source_path",
+        "schema_status",
+        "provenance_status",
+        "leakage_risk",
+        "pending_reasons",
+        "next_action",
+        "eval_allowed_now",
+        "notes"
+      ]
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_queue_review_rows.csv",
+      "line": 2,
+      "evidence": {
+        "repair_queue_id": "direct_repair_001",
+        "source_manifest_row_id": "1",
+        "source_eval_manifest_id": "run1_direct_probe_eval_001",
+        "source_adapter_kind": "direct_model_eval_fixed_probe_candidate",
+        "source_path": "analysis/integration_eval/policy_only_teacher_divergence_repair_probe_closeout.md",
+        "source_path_exists": "1",
+        "schema_status": "HAS_CONTEXT_BUT_NEEDS_REVIEW",
+        "provenance_status": "CLEAN_HELDOUT_OR_DIRECT_SOURCE",
+        "direct_eval_readiness": "NEEDS_REPAIR",
+        "inspection_clean_source_tokens": "fixed_probe,direct_probe",
+        "repair_review_decision": "REPAIR_ROW_MANUAL_REVIEW",
+        "repair_review_bucket": "pending",
+        "candidate_reasons": "",
+        "pending_reasons": "",
+        "quarantine_reasons": "",
+        "next_action": "Manual review required before any normalization.",
+        "eval_allowed_now": "0",
+        "checkpoint_read_allowed_now": "0",
+        "notes": "repair queue review only; no model eval or checkpoint read"
+      },
+      "columns": [
+        "repair_queue_id",
+        "source_manifest_row_id",
+        "source_eval_manifest_id",
+        "source_adapter_kind",
+        "source_path",
+        "source_path_exists",
+        "schema_status",
+        "provenance_status",
+        "leakage_risk",
+        "direct_eval_readiness",
+        "original_recommended_action",
+        "problems",
+        "inspection_risk_level",
+        "inspection_route_tokens",
+        "inspection_clean_source_tokens",
+        "repair_review_decision",
+        "repair_review_bucket",
+        "candidate_reasons",
+        "pending_reasons",
+        "quarantine_reasons",
+        "next_action",
+        "eval_allowed_now",
+        "checkpoint_read_allowed_now",
+        "notes"
+      ]
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_queue_review_summary.csv",
+      "line": 2,
+      "evidence": {
+        "metric": "repair_queue_review_decision",
+        "value": "DIRECT_REPAIR_QUEUE_REVIEW_PENDING_METADATA",
+        "status": "INFO"
+      },
+      "columns": [
+        "metric",
+        "value",
+        "status",
+        "notes"
+      ]
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_queue_review_summary.csv",
+      "line": 4,
+      "evidence": {
+        "metric": "normalization_decision",
+        "value": "DIRECT_MANIFEST_NORMALIZATION_REVIEW_READY_WITH_REPAIR_QUEUE",
+        "status": "INFO"
+      },
+      "columns": [
+        "metric",
+        "value",
+        "status",
+        "notes"
+      ]
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_queue_review_summary.csv",
+      "line": 6,
+      "evidence": {
+        "metric": "repair_queue_rows",
+        "status": "INFO"
+      },
+      "columns": [
+        "metric",
+        "value",
+        "status",
+        "notes"
+      ]
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_queue_review_summary.csv",
+      "line": 7,
+      "evidence": {
+        "metric": "existing_quarantine_rows",
+        "status": "INFO"
+      },
+      "columns": [
+        "metric",
+        "value",
+        "status",
+        "notes"
+      ]
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_queue_review_summary.csv",
+      "line": 11,
+      "evidence": {
+        "metric": "quarantine_addition_rows",
+        "status": "PASS"
+      },
+      "columns": [
+        "metric",
+        "value",
+        "status",
+        "notes"
+      ]
+    }
+  ],
+  "markdown_hits": [
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_adapter_blocker_inspection.md",
+      "line": 33,
+      "text": "| needs_repair_rows | 1 |"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_adapter_blocker_inspection.md",
+      "line": 35,
+      "text": "| quarantine_rows | 6 |"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_adapter_blocker_inspection.md",
+      "line": 43,
+      "text": "| 1 | run1_direct_probe_eval_001 | 1 | HAS_CONTEXT_BUT_NEEDS_REVIEW | CLEAN_HELDOUT_OR_DIRECT_SOURCE | MEDIUM | NEEDS_REPAIR | MANUAL_REVIEW | route_derived_artifact |"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_adapter_blocker_inspection.md",
+      "line": 47,
+      "text": "| 5 | run1_direct_probe_eval_005 | 1 | HAS_CONTEXT_BUT_NEEDS_REVIEW | DEBUG_OR_LEGACY_SOURCE | MEDIUM | NOT_READY | QUARANTINE_FOR_NOW | debug_or_legacy_artifact |"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_adapter_blocker_inspection.md",
+      "line": 48,
+      "text": "| 6 | run1_direct_probe_eval_006 | 1 | HAS_CONTEXT_BUT_NEEDS_REVIEW | DEBUG_OR_LEGACY_SOURCE | MEDIUM | NOT_READY | QUARANTINE_FOR_NOW | debug_or_legacy_artifact |"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_adapter_blocker_inspection.md",
+      "line": 49,
+      "text": "| 7 | run1_direct_probe_eval_007 | 1 | HAS_CONTEXT_BUT_NEEDS_REVIEW | DEBUG_OR_LEGACY_SOURCE | MEDIUM | NOT_READY | QUARANTINE_FOR_NOW | debug_or_legacy_artifact |"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_adapter_blocker_inspection.md",
+      "line": 50,
+      "text": "| 8 | run1_direct_probe_eval_008 | 1 | HAS_CONTEXT_BUT_NEEDS_REVIEW | DEBUG_OR_LEGACY_SOURCE | MEDIUM | NOT_READY | QUARANTINE_FOR_NOW | debug_or_legacy_artifact |"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_adapter_blocker_inspection.md",
+      "line": 51,
+      "text": "| 9 | run1_direct_probe_eval_009 | 1 | HAS_CONTEXT_BUT_NEEDS_REVIEW | DEBUG_OR_LEGACY_SOURCE | MEDIUM | NOT_READY | QUARANTINE_FOR_NOW | debug_or_legacy_artifact |"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_adapter_blocker_inspection.md",
+      "line": 52,
+      "text": "| 10 | run1_direct_probe_eval_010 | 1 | HAS_CONTEXT_BUT_NEEDS_REVIEW | DEBUG_OR_LEGACY_SOURCE | MEDIUM | NOT_READY | QUARANTINE_FOR_NOW | debug_or_legacy_artifact |"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_adapter_blocker_inspection.md",
+      "line": 67,
+      "text": "| needs_repair_rows | 1 | INFO |  |"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_adapter_blocker_inspection.md",
+      "line": 69,
+      "text": "| quarantine_rows | 6 | WARN |  |"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_adapter_blocker_inspection.md",
+      "line": 73,
+      "text": "| warning_count | 6 | WARN | combined WARN rows carried forward: 2; protected probability regressions carried forward: 11; tail probability regressions carried forward: 8; direct adapter blocker notes carried forward: controlled review is blocked; controlled review blockers present: 2; direct adapter warning notes carried forward: controlled review warnings carried forward: 5; deferred adapter inputs remain: 88; rows recommended for quarantine: 6 |"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_adapter_blocker_inspection.md",
+      "line": 93,
+      "text": "| count_direct_eval_readiness:NEEDS_REPAIR | 1 | INFO |  |"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_adapter_blocker_inspection.md",
+      "line": 102,
+      "text": "| count_recommended_action:QUARANTINE_FOR_NOW | 6 | INFO |  |"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_adapter_blocker_inspection.md",
+      "line": 120,
+      "text": "- rows recommended for quarantine: 6"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review.md",
+      "line": 11,
+      "text": "- Places unsafe/not-ready rows into quarantine."
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review.md",
+      "line": 23,
+      "text": "`DIRECT_MANIFEST_NORMALIZATION_REVIEW_READY_WITH_REPAIR_QUEUE`"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review.md",
+      "line": 34,
+      "text": "| repair_queue_rows | 1 |"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review.md",
+      "line": 35,
+      "text": "| quarantine_rows | 6 |"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review.md",
+      "line": 40,
+      "text": "| normalized_manifest_id | source_manifest_row_id | source_eval_manifest_id | source_path | status | eval_allowed_now |"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review.md",
+      "line": 48,
+      "text": "| repair_queue_id | source_manifest_row_id | source_eval_manifest_id | action | problems |"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review.md",
+      "line": 52,
+      "text": "## Quarantine preview"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review.md",
+      "line": 54,
+      "text": "| quarantine_id | source_manifest_row_id | source_eval_manifest_id | provenance | action | problems |"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review.md",
+      "line": 56,
+      "text": "| direct_quarantine_001 | 5 | run1_direct_probe_eval_005 | DEBUG_OR_LEGACY_SOURCE | QUARANTINE_FOR_NOW | debug_or_legacy_artifact |"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review.md",
+      "line": 57,
+      "text": "| direct_quarantine_002 | 6 | run1_direct_probe_eval_006 | DEBUG_OR_LEGACY_SOURCE | QUARANTINE_FOR_NOW | debug_or_legacy_artifact |"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review.md",
+      "line": 58,
+      "text": "| direct_quarantine_003 | 7 | run1_direct_probe_eval_007 | DEBUG_OR_LEGACY_SOURCE | QUARANTINE_FOR_NOW | debug_or_legacy_artifact |"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review.md",
+      "line": 59,
+      "text": "| direct_quarantine_004 | 8 | run1_direct_probe_eval_008 | DEBUG_OR_LEGACY_SOURCE | QUARANTINE_FOR_NOW | debug_or_legacy_artifact |"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review.md",
+      "line": 60,
+      "text": "| direct_quarantine_005 | 9 | run1_direct_probe_eval_009 | DEBUG_OR_LEGACY_SOURCE | QUARANTINE_FOR_NOW | debug_or_legacy_artifact |"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review.md",
+      "line": 61,
+      "text": "| direct_quarantine_006 | 10 | run1_direct_probe_eval_010 | DEBUG_OR_LEGACY_SOURCE | QUARANTINE_FOR_NOW | debug_or_legacy_artifact |"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review.md",
+      "line": 67,
+      "text": "| normalization_decision | DIRECT_MANIFEST_NORMALIZATION_REVIEW_READY_WITH_REPAIR_QUEUE | INFO | Review only; no model eval. |"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review.md",
+      "line": 75,
+      "text": "| repair_queue_rows | 1 | WARN |  |"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review.md",
+      "line": 76,
+      "text": "| quarantine_rows | 6 | WARN |  |"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review.md",
+      "line": 79,
+      "text": "| warning_count | 5 | WARN | combined WARN rows carried forward: 2; protected probability regressions carried forward: 11; tail probability regressions carried forward: 8; repair queue rows: 1; quarantine rows excluded: 6 |"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review.md",
+      "line": 110,
+      "text": "- quarantine rows excluded: 6"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review.md",
+      "line": 114,
+      "text": "Three ready rows can be preserved in a stricter manifest, while repair/quarantine rows remain excluded from any eval path."
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review.md",
+      "line": 119,
+      "text": "- `eval_allowed_now` is 0 for every row."
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_materialization_dryrun.md",
+      "line": 27,
+      "text": "| quarantine rows | 6 |"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_materialization_dryrun.md",
+      "line": 38,
+      "text": "| repair_queue | 1 | `REQUIRES_STATIC_METADATA_REPAIR` | Needs future explicit static repair before any later status promotion. |"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_materialization_dryrun.md",
+      "line": 39,
+      "text": "| quarantine | 6 | `EXCLUDED` | Remains excluded from ready, eval, checkpoint-read, export, benchmark, and promotion paths. |"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_materialization_dryrun.md",
+      "line": 62,
+      "text": "| Quarantine count preserved | PASS |"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_materialization_dryrun.md",
+      "line": 63,
+      "text": "| Quarantine rows excluded | PASS |"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_materialization_dryrun.md",
+      "line": 79,
+      "text": "- The 6 quarantine rows remain excluded."
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_materialization_policy.md",
+      "line": 34,
+      "text": "- `needs_repair_rows = 1`"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_materialization_policy.md",
+      "line": 36,
+      "text": "- `quarantine_rows = 6`"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_materialization_policy.md",
+      "line": 43,
+      "text": "- Quarantine rows: 6."
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_materialization_policy.md",
+      "line": 44,
+      "text": "- `eval_allowed_now = 0`"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_materialization_policy.md",
+      "line": 45,
+      "text": "- `checkpoint_read_allowed_now = 0`"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_materialization_policy.md",
+      "line": 78,
+      "text": "9. No implicit inclusion of quarantine rows."
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_materialization_policy.md",
+      "line": 88,
+      "text": "| repair_queue | 1 | May be described with required metadata repair. No eval permission implied. |"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_materialization_policy.md",
+      "line": 89,
+      "text": "| quarantine | 6 | Must remain excluded. No eval, no checkpoint read, no promotion path. |"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_materialization_policy.md",
+      "line": 97,
+      "text": "- Quarantine rows remain excluded from all follow-on execution."
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_materialization_policy.md",
+      "line": 118,
+      "text": "- Quarantine rows remain 6 unless a later branch explicitly reopens them."
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_materialization_policy.md",
+      "line": 119,
+      "text": "- Quarantine rows are not included in any ready/eval materialization output."
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_materialization_policy.md",
+      "line": 125,
+      "text": "- `eval_allowed_now = 0`"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_materialization_policy.md",
+      "line": 126,
+      "text": "- `checkpoint_read_allowed_now = 0`"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_queue_review.md",
+      "line": 22,
+      "text": "`DIRECT_REPAIR_QUEUE_REVIEW_PENDING_METADATA`"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_queue_review.md",
+      "line": 33,
+      "text": "| repair_queue_rows | 1 |"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_queue_review.md",
+      "line": 36,
+      "text": "| quarantine_addition_rows | 0 |"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_queue_review.md",
+      "line": 40,
+      "text": "| repair_queue_id | source_manifest_row_id | source_eval_manifest_id | path_exists | schema | provenance | leakage | decision | bucket | next_action |"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_queue_review.md",
+      "line": 48,
+      "text": "| repair_queue_review_decision | DIRECT_REPAIR_QUEUE_REVIEW_PENDING_METADATA | INFO | Review only; no eval. |"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_queue_review.md",
+      "line": 50,
+      "text": "| normalization_decision | DIRECT_MANIFEST_NORMALIZATION_REVIEW_READY_WITH_REPAIR_QUEUE | INFO |  |"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_queue_review.md",
+      "line": 52,
+      "text": "| repair_queue_rows | 1 | INFO |  |"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_queue_review.md",
+      "line": 53,
+      "text": "| existing_quarantine_rows | 6 | INFO |  |"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_queue_review.md",
+      "line": 57,
+      "text": "| quarantine_addition_rows | 0 | PASS |  |"
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_queue_review.md",
+      "line": 98,
+      "text": "- `eval_allowed_now` is 0 for all output rows."
+    }
+  ],
+  "specific_issue_candidates": [
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_materialization_dryrun.json",
+      "json_path": "$",
+      "object_type": "dict",
+      "evidence": {
+        "branch": "exp/15x15-teacher-divergence-next-direct-repair-materialization-dryrun",
+        "purpose": "Static-only dry run for direct repair queue materialization after the direct repair materialization policy.",
+        "upstream_branch": "exp/15x15-teacher-divergence-next-direct-repair-materialization-policy",
+        "execution_permissions": "{\"c_export_allowed_now\": 0, \"checkpoint_read_allowed_now\": 0, \"checkpoint_write_allowed_now\": 0, \"current_best_overwrite_allowed_now\": 0, \"model_eval_allowed_now\": 0, \"promotion_allowed_now\": 0, \"public_benchmark_allowed_now\": 0, \"training_allowed_now\": 0}",
+        "source_state": "{\"blockers\": [], \"checkpoint_read_allowed_now\": 0, \"direct_manifest_rows\": 10, \"eval_allowed_now\": 0, \"normalized_ready_rows\": 3, \"quarantine_rows\": 6, \"repair_queue_rows\": 1, \"requires_future_explicit_flags\": 1}",
+        "materialized_buckets": "[{\"allowed_next_handling\": \"May be carried forward as metadata-normalized rows only. No model evaluation or checkpoint read is implied.\", \"bucket\": \"normalized_ready\", \"checkpoint_read_allowed_now\": 0, \"dryrun_status\": \"STATIC_READY_ONLY\", \"eval_allowed_now\": 0, \"expected_count\": 3, \"promotion_allow...",
+        "acceptance_checks": "{\"c_export_executed\": false, \"checkpoint_content_read\": false, \"checkpoint_paths_modified\": false, \"checkpoint_paths_staged\": false, \"model_eval_executed\": false, \"promotion_executed\": false, \"public_benchmark_executed\": false, \"quarantine_count_preserved\": true, \"quarantine_rows_excluded\": true, \"r...",
+        "dryrun_decision": "DIRECT_REPAIR_MATERIALIZATION_DRYRUN_COMPLETE_STATIC_ONLY",
+        "promotion_decision": "NO_PROMOTION__STATIC_DRYRUN_ONLY",
+        "recommended_next_branch": "exp/15x15-teacher-divergence-next-direct-repair-field-spec"
+      }
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_materialization_dryrun.json",
+      "json_path": "$.materialized_buckets[1]",
+      "object_type": "dict",
+      "evidence": {
+        "bucket": "repair_queue",
+        "dryrun_status": "REQUIRES_STATIC_METADATA_REPAIR",
+        "allowed_next_handling": "May be repaired only in a future explicit static repair branch naming the exact field, source, before value, and after value.",
+        "eval_allowed_now": "0",
+        "checkpoint_read_allowed_now": "0"
+      }
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_queue_review_decision.json",
+      "json_path": "$",
+      "object_type": "dict",
+      "evidence": {
+        "normalization_decision": "DIRECT_MANIFEST_NORMALIZATION_REVIEW_READY_WITH_REPAIR_QUEUE",
+        "outputs": "{\"pending\": \"analysis/integration_eval/teacher_divergence_next_direct_repair_queue_review_pending.csv\", \"quarantine_additions\": \"analysis/integration_eval/teacher_divergence_next_direct_repair_queue_review_quarantine_additions.csv\", \"repair_candidates\": \"analysis/integration_eval/teacher_divergence_...",
+        "recommended_next": "Do not merge repair row yet; materialize missing schema/provenance metadata first.",
+        "repair_queue_review_decision": "DIRECT_REPAIR_QUEUE_REVIEW_PENDING_METADATA",
+        "row_counts": "{\"existing_quarantine_rows\": 6, \"normalized_manifest_rows\": 3, \"pending_rows\": 1, \"quarantine_addition_rows\": 0, \"repair_candidate_rows\": 0, \"repair_queue_rows\": 1, \"reviewed_repair_rows\": 1}",
+        "warnings": "[\"combined WARN rows carried forward: 2\", \"protected probability regressions carried forward: 11\", \"tail probability regressions carried forward: 8\", \"repair rows still pending: 1\"]"
+      }
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_adapter_blocker_inspection_rows.csv",
+      "line": 6,
+      "evidence": {
+        "schema_keys": "board,board_size,board_snapshot_before_decision,case_id,current_player,direct,game_number,last_move_rc,last_move_xy,mcts_raw,mcts_safety,move_count,old_final,old_final_xy,policy_safety,reason,side_to_move,source,suppress_rc,suppress_xy,target_rc,target_xy,value,win_length",
+        "schema_status": "HAS_CONTEXT_BUT_NEEDS_REVIEW",
+        "provenance_status": "DEBUG_OR_LEGACY_SOURCE",
+        "recommended_action": "QUARANTINE_FOR_NOW",
+        "clean_source_tokens": "direct_probe"
+      },
+      "columns": [
+        "manifest_row_id",
+        "eval_manifest_id",
+        "adapter_kind",
+        "path",
+        "sample_rows_or_count",
+        "path_exists",
+        "path_type",
+        "inferred_format",
+        "inspected_count",
+        "schema_keys",
+        "schema_status",
+        "provenance_status",
+        "leakage_risk",
+        "direct_eval_readiness",
+        "risk_level",
+        "recommended_action",
+        "route_tokens",
+        "debug_or_legacy_tokens",
+        "train_derived_tokens",
+        "clean_source_tokens",
+        "problems",
+        "notes"
+      ]
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_adapter_blocker_inspection_rows.csv",
+      "line": 7,
+      "evidence": {
+        "schema_keys": "board,board_size,board_snapshot_before_decision,case_id,current_player,direct,game_number,last_move_rc,last_move_xy,mcts_raw,mcts_safety,move_count,old_final,old_final_xy,policy_safety,reason,side_to_move,source,suppress_rc,suppress_xy,target_rc,target_xy,value,win_length",
+        "schema_status": "HAS_CONTEXT_BUT_NEEDS_REVIEW",
+        "provenance_status": "DEBUG_OR_LEGACY_SOURCE",
+        "recommended_action": "QUARANTINE_FOR_NOW",
+        "clean_source_tokens": "direct_probe"
+      },
+      "columns": [
+        "manifest_row_id",
+        "eval_manifest_id",
+        "adapter_kind",
+        "path",
+        "sample_rows_or_count",
+        "path_exists",
+        "path_type",
+        "inferred_format",
+        "inspected_count",
+        "schema_keys",
+        "schema_status",
+        "provenance_status",
+        "leakage_risk",
+        "direct_eval_readiness",
+        "risk_level",
+        "recommended_action",
+        "route_tokens",
+        "debug_or_legacy_tokens",
+        "train_derived_tokens",
+        "clean_source_tokens",
+        "problems",
+        "notes"
+      ]
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_adapter_blocker_inspection_rows.csv",
+      "line": 8,
+      "evidence": {
+        "schema_keys": "board,board_size,board_snapshot_before_decision,case_id,current_player,direct,game_number,last_move_rc,last_move_xy,mcts_raw,mcts_safety,move_count,old_final,old_final_xy,policy_safety,reason,side_to_move,source,suppress_rc,suppress_xy,target_rc,target_xy,value,win_length",
+        "schema_status": "HAS_CONTEXT_BUT_NEEDS_REVIEW",
+        "provenance_status": "DEBUG_OR_LEGACY_SOURCE",
+        "recommended_action": "QUARANTINE_FOR_NOW",
+        "clean_source_tokens": "direct_probe"
+      },
+      "columns": [
+        "manifest_row_id",
+        "eval_manifest_id",
+        "adapter_kind",
+        "path",
+        "sample_rows_or_count",
+        "path_exists",
+        "path_type",
+        "inferred_format",
+        "inspected_count",
+        "schema_keys",
+        "schema_status",
+        "provenance_status",
+        "leakage_risk",
+        "direct_eval_readiness",
+        "risk_level",
+        "recommended_action",
+        "route_tokens",
+        "debug_or_legacy_tokens",
+        "train_derived_tokens",
+        "clean_source_tokens",
+        "problems",
+        "notes"
+      ]
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_adapter_blocker_inspection_rows.csv",
+      "line": 9,
+      "evidence": {
+        "schema_keys": "board,board_size,board_snapshot_before_decision,case_id,current_player,direct,game_number,last_move_rc,last_move_xy,mcts_raw,mcts_safety,move_count,old_final,old_final_xy,policy_safety,reason,side_to_move,source,suppress_rc,suppress_xy,target_rc,target_xy,value,win_length",
+        "schema_status": "HAS_CONTEXT_BUT_NEEDS_REVIEW",
+        "provenance_status": "DEBUG_OR_LEGACY_SOURCE",
+        "recommended_action": "QUARANTINE_FOR_NOW",
+        "clean_source_tokens": "direct_probe"
+      },
+      "columns": [
+        "manifest_row_id",
+        "eval_manifest_id",
+        "adapter_kind",
+        "path",
+        "sample_rows_or_count",
+        "path_exists",
+        "path_type",
+        "inferred_format",
+        "inspected_count",
+        "schema_keys",
+        "schema_status",
+        "provenance_status",
+        "leakage_risk",
+        "direct_eval_readiness",
+        "risk_level",
+        "recommended_action",
+        "route_tokens",
+        "debug_or_legacy_tokens",
+        "train_derived_tokens",
+        "clean_source_tokens",
+        "problems",
+        "notes"
+      ]
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_adapter_blocker_inspection_rows.csv",
+      "line": 10,
+      "evidence": {
+        "schema_keys": "board,board_size,board_snapshot_before_decision,case_id,current_player,game_number,move_count,old_final,old_final_xy,reason,side_to_move,source,suppress_rc,suppress_xy,target_rc,target_xy,win_length",
+        "schema_status": "HAS_CONTEXT_BUT_NEEDS_REVIEW",
+        "provenance_status": "DEBUG_OR_LEGACY_SOURCE",
+        "recommended_action": "QUARANTINE_FOR_NOW",
+        "clean_source_tokens": "direct_probe"
+      },
+      "columns": [
+        "manifest_row_id",
+        "eval_manifest_id",
+        "adapter_kind",
+        "path",
+        "sample_rows_or_count",
+        "path_exists",
+        "path_type",
+        "inferred_format",
+        "inspected_count",
+        "schema_keys",
+        "schema_status",
+        "provenance_status",
+        "leakage_risk",
+        "direct_eval_readiness",
+        "risk_level",
+        "recommended_action",
+        "route_tokens",
+        "debug_or_legacy_tokens",
+        "train_derived_tokens",
+        "clean_source_tokens",
+        "problems",
+        "notes"
+      ]
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_adapter_blocker_inspection_rows.csv",
+      "line": 11,
+      "evidence": {
+        "schema_keys": "board,board_size,board_snapshot_before_decision,case_id,current_player,game_number,move_count,old_final,old_final_xy,reason,side_to_move,source,suppress_rc,suppress_xy,target_rc,target_xy,win_length",
+        "schema_status": "HAS_CONTEXT_BUT_NEEDS_REVIEW",
+        "provenance_status": "DEBUG_OR_LEGACY_SOURCE",
+        "recommended_action": "QUARANTINE_FOR_NOW",
+        "clean_source_tokens": "direct_probe"
+      },
+      "columns": [
+        "manifest_row_id",
+        "eval_manifest_id",
+        "adapter_kind",
+        "path",
+        "sample_rows_or_count",
+        "path_exists",
+        "path_type",
+        "inferred_format",
+        "inspected_count",
+        "schema_keys",
+        "schema_status",
+        "provenance_status",
+        "leakage_risk",
+        "direct_eval_readiness",
+        "risk_level",
+        "recommended_action",
+        "route_tokens",
+        "debug_or_legacy_tokens",
+        "train_derived_tokens",
+        "clean_source_tokens",
+        "problems",
+        "notes"
+      ]
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review_quarantine.csv",
+      "line": 2,
+      "evidence": {
+        "quarantine_id": "direct_quarantine_001",
+        "source_manifest_row_id": "5",
+        "source_eval_manifest_id": "run1_direct_probe_eval_005",
+        "source_adapter_kind": "direct_model_eval_anchor_candidate",
+        "source_path": "analysis/integration_eval/candidate_c_g2_m19_perspective_diagnostic_anchors.json",
+        "schema_status": "HAS_CONTEXT_BUT_NEEDS_REVIEW",
+        "provenance_status": "DEBUG_OR_LEGACY_SOURCE",
+        "recommended_action": "QUARANTINE_FOR_NOW",
+        "quarantine_reason": "not_ready_or_high_risk_from_blocker_inspection",
+        "eval_allowed_now": "0"
+      },
+      "columns": [
+        "quarantine_id",
+        "source_manifest_row_id",
+        "source_eval_manifest_id",
+        "source_adapter_kind",
+        "source_path",
+        "schema_status",
+        "provenance_status",
+        "leakage_risk",
+        "direct_eval_readiness",
+        "recommended_action",
+        "problems",
+        "quarantine_reason",
+        "eval_allowed_now",
+        "notes"
+      ]
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review_quarantine.csv",
+      "line": 3,
+      "evidence": {
+        "quarantine_id": "direct_quarantine_002",
+        "source_manifest_row_id": "6",
+        "source_eval_manifest_id": "run1_direct_probe_eval_006",
+        "source_adapter_kind": "direct_model_eval_anchor_candidate",
+        "source_path": "analysis/integration_eval/candidate_d_g2_m15_diagnostic_anchors.json",
+        "schema_status": "HAS_CONTEXT_BUT_NEEDS_REVIEW",
+        "provenance_status": "DEBUG_OR_LEGACY_SOURCE",
+        "recommended_action": "QUARANTINE_FOR_NOW",
+        "quarantine_reason": "not_ready_or_high_risk_from_blocker_inspection",
+        "eval_allowed_now": "0"
+      },
+      "columns": [
+        "quarantine_id",
+        "source_manifest_row_id",
+        "source_eval_manifest_id",
+        "source_adapter_kind",
+        "source_path",
+        "schema_status",
+        "provenance_status",
+        "leakage_risk",
+        "direct_eval_readiness",
+        "recommended_action",
+        "problems",
+        "quarantine_reason",
+        "eval_allowed_now",
+        "notes"
+      ]
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review_quarantine.csv",
+      "line": 4,
+      "evidence": {
+        "quarantine_id": "direct_quarantine_003",
+        "source_manifest_row_id": "7",
+        "source_eval_manifest_id": "run1_direct_probe_eval_007",
+        "source_adapter_kind": "direct_model_eval_anchor_candidate",
+        "source_path": "analysis/integration_eval/candidate_e_g2_m13_diagnostic_anchors.json",
+        "schema_status": "HAS_CONTEXT_BUT_NEEDS_REVIEW",
+        "provenance_status": "DEBUG_OR_LEGACY_SOURCE",
+        "recommended_action": "QUARANTINE_FOR_NOW",
+        "quarantine_reason": "not_ready_or_high_risk_from_blocker_inspection",
+        "eval_allowed_now": "0"
+      },
+      "columns": [
+        "quarantine_id",
+        "source_manifest_row_id",
+        "source_eval_manifest_id",
+        "source_adapter_kind",
+        "source_path",
+        "schema_status",
+        "provenance_status",
+        "leakage_risk",
+        "direct_eval_readiness",
+        "recommended_action",
+        "problems",
+        "quarantine_reason",
+        "eval_allowed_now",
+        "notes"
+      ]
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review_quarantine.csv",
+      "line": 5,
+      "evidence": {
+        "quarantine_id": "direct_quarantine_004",
+        "source_manifest_row_id": "8",
+        "source_eval_manifest_id": "run1_direct_probe_eval_008",
+        "source_adapter_kind": "direct_model_eval_anchor_candidate",
+        "source_path": "analysis/integration_eval/candidate_e_g2_m17_diagnostic_anchors.json",
+        "schema_status": "HAS_CONTEXT_BUT_NEEDS_REVIEW",
+        "provenance_status": "DEBUG_OR_LEGACY_SOURCE",
+        "recommended_action": "QUARANTINE_FOR_NOW",
+        "quarantine_reason": "not_ready_or_high_risk_from_blocker_inspection",
+        "eval_allowed_now": "0"
+      },
+      "columns": [
+        "quarantine_id",
+        "source_manifest_row_id",
+        "source_eval_manifest_id",
+        "source_adapter_kind",
+        "source_path",
+        "schema_status",
+        "provenance_status",
+        "leakage_risk",
+        "direct_eval_readiness",
+        "recommended_action",
+        "problems",
+        "quarantine_reason",
+        "eval_allowed_now",
+        "notes"
+      ]
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review_quarantine.csv",
+      "line": 6,
+      "evidence": {
+        "quarantine_id": "direct_quarantine_005",
+        "source_manifest_row_id": "9",
+        "source_eval_manifest_id": "run1_direct_probe_eval_009",
+        "source_adapter_kind": "direct_model_eval_anchor_candidate",
+        "source_path": "analysis/integration_eval/current_best_margin_candidate_c_anchors.json",
+        "schema_status": "HAS_CONTEXT_BUT_NEEDS_REVIEW",
+        "provenance_status": "DEBUG_OR_LEGACY_SOURCE",
+        "recommended_action": "QUARANTINE_FOR_NOW",
+        "quarantine_reason": "not_ready_or_high_risk_from_blocker_inspection",
+        "eval_allowed_now": "0"
+      },
+      "columns": [
+        "quarantine_id",
+        "source_manifest_row_id",
+        "source_eval_manifest_id",
+        "source_adapter_kind",
+        "source_path",
+        "schema_status",
+        "provenance_status",
+        "leakage_risk",
+        "direct_eval_readiness",
+        "recommended_action",
+        "problems",
+        "quarantine_reason",
+        "eval_allowed_now",
+        "notes"
+      ]
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review_quarantine.csv",
+      "line": 7,
+      "evidence": {
+        "quarantine_id": "direct_quarantine_006",
+        "source_manifest_row_id": "10",
+        "source_eval_manifest_id": "run1_direct_probe_eval_010",
+        "source_adapter_kind": "direct_model_eval_anchor_candidate",
+        "source_path": "analysis/integration_eval/current_best_margin_candidate_c_conservative_anchors.json",
+        "schema_status": "HAS_CONTEXT_BUT_NEEDS_REVIEW",
+        "provenance_status": "DEBUG_OR_LEGACY_SOURCE",
+        "recommended_action": "QUARANTINE_FOR_NOW",
+        "quarantine_reason": "not_ready_or_high_risk_from_blocker_inspection",
+        "eval_allowed_now": "0"
+      },
+      "columns": [
+        "quarantine_id",
+        "source_manifest_row_id",
+        "source_eval_manifest_id",
+        "source_adapter_kind",
+        "source_path",
+        "schema_status",
+        "provenance_status",
+        "leakage_risk",
+        "direct_eval_readiness",
+        "recommended_action",
+        "problems",
+        "quarantine_reason",
+        "eval_allowed_now",
+        "notes"
+      ]
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review_repair_queue.csv",
+      "line": 2,
+      "evidence": {
+        "repair_queue_id": "direct_repair_001",
+        "source_manifest_row_id": "1",
+        "source_eval_manifest_id": "run1_direct_probe_eval_001",
+        "source_adapter_kind": "direct_model_eval_fixed_probe_candidate",
+        "source_path": "analysis/integration_eval/policy_only_teacher_divergence_repair_probe_closeout.md",
+        "schema_status": "HAS_CONTEXT_BUT_NEEDS_REVIEW",
+        "provenance_status": "CLEAN_HELDOUT_OR_DIRECT_SOURCE",
+        "direct_eval_readiness": "NEEDS_REPAIR",
+        "repair_status": "REPAIR_REQUIRED_BEFORE_NORMALIZATION",
+        "eval_allowed_now": "0",
+        "notes": "Do not pass into eval executor until schema/provenance is repaired and re-reviewed."
+      },
+      "columns": [
+        "repair_queue_id",
+        "source_manifest_row_id",
+        "source_eval_manifest_id",
+        "source_adapter_kind",
+        "source_path",
+        "schema_status",
+        "provenance_status",
+        "leakage_risk",
+        "direct_eval_readiness",
+        "recommended_action",
+        "problems",
+        "repair_status",
+        "eval_allowed_now",
+        "notes"
+      ]
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_queue_review_pending.csv",
+      "line": 2,
+      "evidence": {
+        "pending_id": "direct_repair_pending_001",
+        "source_repair_queue_id": "direct_repair_001",
+        "source_manifest_row_id": "1",
+        "source_eval_manifest_id": "run1_direct_probe_eval_001",
+        "source_path": "analysis/integration_eval/policy_only_teacher_divergence_repair_probe_closeout.md",
+        "schema_status": "HAS_CONTEXT_BUT_NEEDS_REVIEW",
+        "provenance_status": "CLEAN_HELDOUT_OR_DIRECT_SOURCE",
+        "pending_reasons": "",
+        "next_action": "Manual review required before any normalization.",
+        "eval_allowed_now": "0",
+        "notes": "Needs metadata repair before any normalization."
+      },
+      "columns": [
+        "pending_id",
+        "source_repair_queue_id",
+        "source_manifest_row_id",
+        "source_eval_manifest_id",
+        "source_path",
+        "schema_status",
+        "provenance_status",
+        "leakage_risk",
+        "pending_reasons",
+        "next_action",
+        "eval_allowed_now",
+        "notes"
+      ]
+    },
+    {
+      "file": "analysis/integration_eval/teacher_divergence_next_direct_repair_queue_review_rows.csv",
+      "line": 2,
+      "evidence": {
+        "repair_queue_id": "direct_repair_001",
+        "source_manifest_row_id": "1",
+        "source_eval_manifest_id": "run1_direct_probe_eval_001",
+        "source_adapter_kind": "direct_model_eval_fixed_probe_candidate",
+        "source_path": "analysis/integration_eval/policy_only_teacher_divergence_repair_probe_closeout.md",
+        "source_path_exists": "1",
+        "schema_status": "HAS_CONTEXT_BUT_NEEDS_REVIEW",
+        "provenance_status": "CLEAN_HELDOUT_OR_DIRECT_SOURCE",
+        "direct_eval_readiness": "NEEDS_REPAIR",
+        "inspection_clean_source_tokens": "fixed_probe,direct_probe",
+        "repair_review_decision": "REPAIR_ROW_MANUAL_REVIEW",
+        "repair_review_bucket": "pending",
+        "candidate_reasons": "",
+        "pending_reasons": "",
+        "quarantine_reasons": "",
+        "next_action": "Manual review required before any normalization.",
+        "eval_allowed_now": "0",
+        "checkpoint_read_allowed_now": "0",
+        "notes": "repair queue review only; no model eval or checkpoint read"
+      },
+      "columns": [
+        "repair_queue_id",
+        "source_manifest_row_id",
+        "source_eval_manifest_id",
+        "source_adapter_kind",
+        "source_path",
+        "source_path_exists",
+        "schema_status",
+        "provenance_status",
+        "leakage_risk",
+        "direct_eval_readiness",
+        "original_recommended_action",
+        "problems",
+        "inspection_risk_level",
+        "inspection_route_tokens",
+        "inspection_clean_source_tokens",
+        "repair_review_decision",
+        "repair_review_bucket",
+        "candidate_reasons",
+        "pending_reasons",
+        "quarantine_reasons",
+        "next_action",
+        "eval_allowed_now",
+        "checkpoint_read_allowed_now",
+        "notes"
+      ]
+    }
+  ],
+  "field_spec_decision": "DIRECT_REPAIR_FIELD_SPEC_STATIC_CANDIDATES_FOUND",
+  "interpretation": "Specific field-level issue candidates were found in tracked static artifacts.",
+  "recommended_next_branch": "exp/15x15-teacher-divergence-next-direct-repair-static-patch-plan",
+  "promotion_decision": "NO_PROMOTION__STATIC_FIELD_SPEC_ONLY"
+}
