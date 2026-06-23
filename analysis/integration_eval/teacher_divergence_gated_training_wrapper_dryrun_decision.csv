@@ -1,0 +1,25 @@
+item,value,status,notes
+executor_decision,DRY_RUN_READY_FOR_CONTROLLED_EXECUTION,PASS,
+mode,dry_run,PASS,
+execute_requested,0,PASS,
+would_train,0,PASS,
+would_write_checkpoint,0,PASS,
+would_move_checkpoint,0,PASS,
+would_delete_checkpoint,0,PASS,
+source_closeout_decision,PASS_TO_GATED_TRAINING_REVIEW_WITH_WARNINGS,INFO,
+plan_decision,READY_TO_DESIGN_GATED_TRAINING_DRYRUN,INFO,
+missing_required_paths,0,PASS,
+blocker_count,0,PASS,
+warning_count,0,PASS,
+baseline_checkpoint,checkpoints/15x15_current_best.pt,INFO,must never be overwritten
+candidate_checkpoint,checkpoints/15x15_teacher_divergence_round2_policy_margin_gated_review_e10.pt,INFO,isolated candidate only
+quarantine_checkpoint,checkpoints/quarantine/15x15_teacher_divergence_round2_policy_margin_gated_review_e10_FAILED.pt,INFO,failure path only
+candidate_checkpoint_preexisting,0,PASS,
+quarantine_checkpoint_preexisting,0,PASS,
+epochs,10,INFO,
+lr,1e-6,INFO,
+margin,1.0,INFO,
+anchor_kl_weight,0.05,INFO,
+ce_weight,0.05,INFO,
+weight_decay,1e-5,INFO,
+seed,31,INFO,
