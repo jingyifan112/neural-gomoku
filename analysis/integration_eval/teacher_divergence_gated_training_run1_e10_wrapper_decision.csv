@@ -1,0 +1,29 @@
+item,value,status,notes
+executor_decision,EXECUTION_PASS_KEEP_ISOLATED_CANDIDATE,PASS,
+mode,execute,INFO,
+execute_requested,1,INFO,
+confirm_execute_valid,1,INFO,
+executed_training,1,INFO,
+executed_guard,1,INFO,
+moved_to_quarantine,0,PASS,
+preflight_blocker_count,0,PASS,
+preflight_warning_count,0,PASS,
+final_hard_failure_count,0,PASS,
+final_warning_count,2,WARN,protected_top10 raw probability regressions 11; tail_rank_gt50 raw probability regressions 8
+baseline_checkpoint,checkpoints/15x15_current_best.pt,INFO,must never be overwritten
+candidate_checkpoint,checkpoints/15x15_teacher_divergence_round2_policy_margin_gated_run1_e10.pt,INFO,isolated candidate only
+quarantine_checkpoint,checkpoints/quarantine/15x15_teacher_divergence_round2_policy_margin_gated_run1_e10_FAILED.pt,INFO,failure path only
+epochs,10,INFO,
+lr,1e-6,INFO,
+margin,1.0,INFO,
+anchor_kl_weight,0.05,INFO,
+ce_weight,0.05,INFO,
+weight_decay,1e-5,INFO,
+seed,31,INFO,
+trainable_rows,44,INFO,
+trainable_gap_improved,44,INFO,
+trainable_mean_gap_delta,0.008632909177272727,INFO,
+trainable_rank_regressed,0,INFO,
+protected_rank_regressed,0,INFO,
+anchor_top1_changed,0,INFO,
+anchor_max_kl,6.0956e-06,INFO,
