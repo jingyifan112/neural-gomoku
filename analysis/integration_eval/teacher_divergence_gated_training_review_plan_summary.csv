@@ -1,0 +1,22 @@
+item,value,gate,rationale
+source_closeout_decision,PASS_TO_GATED_TRAINING_REVIEW_WITH_WARNINGS,INFO,Decision from tiny probe guard closeout.
+plan_decision,READY_TO_DESIGN_GATED_TRAINING_DRYRUN,INFO,This plan is review-only and does not start training.
+hard_failure_count,0,PASS,Must be zero before any larger run.
+warning_count,2,WARN,Warnings require explicit guard handling.
+trainable_rows,44,PASS,Expected 44 round2 trainable rows.
+trainable_gap_improved_rows,44,PASS,Tiny probe improved all trainable gaps.
+trainable_mean_gap_delta,0.0025900711,PASS,Mean gap delta must remain positive.
+trainable_min_gap_delta,0.0010976791,INFO,Tiny probe min gap delta; useful for calibrating next gate.
+trainable_target_rank_regressed_rows,0,PASS,No trainable target rank regression allowed.
+protected_top10_rows,23,INFO,Protected bucket must be guarded explicitly.
+protected_top10_rank_regressed_rows,0,PASS,Hard fail for any protected rank regression.
+protected_top10_prob_regressed_rows,11,WARN,Raw prob regressions observed; next run needs epsilon-aware guard.
+protected_top10_max_prob_loss,-0.0002995431,WARN,"Use as warning context, not promotion evidence."
+tail_rank_gt50_rows,66,INFO,Tail bucket is not promotion evidence but should be monitored.
+tail_rank_gt50_rank_regressed_rows,0,PASS,Tail rank regression should block uncontrolled scaling.
+tail_rank_gt50_prob_regressed_rows,8,WARN,Raw prob regressions observed; next run needs epsilon-aware guard.
+tail_rank_gt50_max_prob_loss,-0.0000002012,WARN,Use as warning context.
+anchor_rows,32,PASS,Expected corpus8 anchor snapshots.
+anchor_top1_changed_rows,0,PASS,Hard fail for anchor top1 changes.
+anchor_mean_kl,0.0000001493,PASS,Tiny drift was very small.
+anchor_max_kl,0.0000005536,PASS,Use KL as drift gate.
