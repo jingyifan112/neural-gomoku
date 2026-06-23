@@ -1,0 +1,13 @@
+section,rows,metric,value,status,notes
+trainable_guard_reuse,44,gap_improved_rows,44,PASS,
+trainable_guard_reuse,44,target_prob_improved_rows,44,INFO,
+trainable_guard_reuse,44,target_rank_regressed_rows,0,PASS,
+trainable_guard_reuse,44,mean_gap_delta,0.0086329092,PASS,
+protected_tail_guard_reuse,89,evaluated_rows,89,PASS,
+protected_tail_guard_reuse,23,protected_top10_rank_regressed_rows,0,PASS,
+protected_tail_guard_reuse,23,protected_top10_prob_regressed_rows,11,WARN,
+protected_tail_guard_reuse,66,tail_rank_gt50_rank_regressed_rows,0,PASS,
+protected_tail_guard_reuse,66,tail_rank_gt50_prob_regressed_rows,8,WARN,
+anchor_drift_guard_reuse,32,anchor_top1_changed_rows,0,PASS,
+anchor_drift_guard_reuse,32,anchor_mean_kl,0.0000018348,INFO,
+anchor_drift_guard_reuse,32,anchor_max_kl,0.0000060956,PASS,

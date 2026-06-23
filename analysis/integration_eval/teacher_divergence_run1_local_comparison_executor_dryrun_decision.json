@@ -1,0 +1,134 @@
+{
+  "blockers": [
+    "adapter design is not ready: LOCAL_COMPARISON_ADAPTER_DESIGN_BLOCKED"
+  ],
+  "candidate_checkpoint_exists_locally": true,
+  "created_at_utc": "2026-06-23T03:08:33.528202+00:00",
+  "current_best_exists": true,
+  "design_decision": "LOCAL_COMPARISON_ADAPTER_DESIGN_BLOCKED",
+  "execute_requested": false,
+  "executor_decision": "LOCAL_COMPARISON_DRYRUN_BLOCKED",
+  "metrics": {
+    "anchor_max_kl": 6.0956e-06,
+    "anchor_mean_kl": 1.834809375e-06,
+    "anchor_rows": 32,
+    "anchor_top1_changed": 0,
+    "bucket_evaluated": 89,
+    "bucket_rows": 89,
+    "protected_prob_regressed": 11,
+    "protected_rank_regressed": 0,
+    "protected_rows": 23,
+    "tail_prob_regressed": 8,
+    "tail_rank_regressed": 0,
+    "tail_rows": 66,
+    "trainable_gap_improved": 44,
+    "trainable_mean_gap_delta": 0.008632909177272727,
+    "trainable_rank_regressed": 0,
+    "trainable_rows": 44,
+    "trainable_target_prob_improved": 44
+  },
+  "mode": "dry_run",
+  "selected_inputs": [
+    {
+      "adapter_kind": "core_anchor_drift_guard_reuse",
+      "comparison_action": "reuse_already_computed",
+      "path": "analysis/integration_eval/teacher_divergence_gated_training_run1_e10_anchor_drift_guard.csv",
+      "sample_rows_or_count": "3",
+      "stage_class": "run1_output"
+    },
+    {
+      "adapter_kind": "core_protected_tail_guard_reuse",
+      "comparison_action": "reuse_already_computed",
+      "path": "analysis/integration_eval/teacher_divergence_gated_training_run1_e10_manifest_bucket_guard.csv",
+      "sample_rows_or_count": "3",
+      "stage_class": "run1_output"
+    },
+    {
+      "adapter_kind": "core_trainable_guard_reuse",
+      "comparison_action": "reuse_already_computed",
+      "path": "analysis/integration_eval/teacher_divergence_gated_training_run1_e10_trainable_gap_guard.csv",
+      "sample_rows_or_count": "3",
+      "stage_class": "run1_output"
+    },
+    {
+      "adapter_kind": "direct_model_eval_fixed_probe_candidate",
+      "comparison_action": "candidate_vs_current_best_eval",
+      "path": "analysis/integration_eval/policy_only_teacher_divergence_repair_probe_closeout.md",
+      "sample_rows_or_count": "0",
+      "stage_class": "fixed_probe_candidate"
+    },
+    {
+      "adapter_kind": "direct_model_eval_fixed_probe_candidate",
+      "comparison_action": "candidate_vs_current_best_eval",
+      "path": "analysis/integration_eval/policy_only_teacher_divergence_repair_probe_design.md",
+      "sample_rows_or_count": "0",
+      "stage_class": "fixed_probe_candidate"
+    },
+    {
+      "adapter_kind": "direct_model_eval_fixed_probe_candidate",
+      "comparison_action": "candidate_vs_current_best_eval",
+      "path": "analysis/integration_eval/policy_only_teacher_divergence_repair_probe_script_audit.md",
+      "sample_rows_or_count": "0",
+      "stage_class": "fixed_probe_candidate"
+    },
+    {
+      "adapter_kind": "direct_model_eval_heldout_candidate",
+      "comparison_action": "candidate_vs_current_best_eval",
+      "path": "analysis/integration_eval/teacher_divergence_policy_mixed_ce_heldout_blocker_position_review.md",
+      "sample_rows_or_count": "0",
+      "stage_class": "heldout_candidate"
+    },
+    {
+      "adapter_kind": "direct_model_eval_anchor_candidate",
+      "comparison_action": "candidate_vs_current_best_eval",
+      "path": "analysis/integration_eval/candidate_c_g2_m19_perspective_diagnostic_anchors.json",
+      "sample_rows_or_count": "8",
+      "stage_class": "anchor_candidate"
+    },
+    {
+      "adapter_kind": "direct_model_eval_anchor_candidate",
+      "comparison_action": "candidate_vs_current_best_eval",
+      "path": "analysis/integration_eval/candidate_d_g2_m15_diagnostic_anchors.json",
+      "sample_rows_or_count": "3",
+      "stage_class": "anchor_candidate"
+    },
+    {
+      "adapter_kind": "direct_model_eval_anchor_candidate",
+      "comparison_action": "candidate_vs_current_best_eval",
+      "path": "analysis/integration_eval/candidate_e_g2_m13_diagnostic_anchors.json",
+      "sample_rows_or_count": "1",
+      "stage_class": "anchor_candidate"
+    },
+    {
+      "adapter_kind": "direct_model_eval_anchor_candidate",
+      "comparison_action": "candidate_vs_current_best_eval",
+      "path": "analysis/integration_eval/candidate_e_g2_m17_diagnostic_anchors.json",
+      "sample_rows_or_count": "3",
+      "stage_class": "anchor_candidate"
+    },
+    {
+      "adapter_kind": "direct_model_eval_anchor_candidate",
+      "comparison_action": "candidate_vs_current_best_eval",
+      "path": "analysis/integration_eval/current_best_margin_candidate_c_anchors.json",
+      "sample_rows_or_count": "7",
+      "stage_class": "anchor_candidate"
+    },
+    {
+      "adapter_kind": "direct_model_eval_anchor_candidate",
+      "comparison_action": "candidate_vs_current_best_eval",
+      "path": "analysis/integration_eval/current_best_margin_candidate_c_conservative_anchors.json",
+      "sample_rows_or_count": "5",
+      "stage_class": "anchor_candidate"
+    }
+  ],
+  "warnings": [
+    "direct model-eval inputs selected but not executed in dry-run: 10",
+    "combined reused guard output has WARN rows: 2"
+  ],
+  "would_c_export": false,
+  "would_eval_model": false,
+  "would_promote": false,
+  "would_public_benchmark": false,
+  "would_train": false,
+  "would_write_checkpoint": false
+}

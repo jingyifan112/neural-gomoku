@@ -1,0 +1,20 @@
+# Teacher-divergence run1 local comparison executor dry-run commands
+# Dry-run only. No model eval, no C export, no public benchmark, no promotion.
+
+## Inputs reused in this dry-run
+- core_anchor_drift_guard_reuse: analysis/integration_eval/teacher_divergence_gated_training_run1_e10_anchor_drift_guard.csv
+- core_protected_tail_guard_reuse: analysis/integration_eval/teacher_divergence_gated_training_run1_e10_manifest_bucket_guard.csv
+- core_trainable_guard_reuse: analysis/integration_eval/teacher_divergence_gated_training_run1_e10_trainable_gap_guard.csv
+- direct_model_eval_fixed_probe_candidate: analysis/integration_eval/policy_only_teacher_divergence_repair_probe_closeout.md
+- direct_model_eval_fixed_probe_candidate: analysis/integration_eval/policy_only_teacher_divergence_repair_probe_design.md
+- direct_model_eval_fixed_probe_candidate: analysis/integration_eval/policy_only_teacher_divergence_repair_probe_script_audit.md
+- direct_model_eval_heldout_candidate: analysis/integration_eval/teacher_divergence_policy_mixed_ce_heldout_blocker_position_review.md
+- direct_model_eval_anchor_candidate: analysis/integration_eval/candidate_c_g2_m19_perspective_diagnostic_anchors.json
+- direct_model_eval_anchor_candidate: analysis/integration_eval/candidate_d_g2_m15_diagnostic_anchors.json
+- direct_model_eval_anchor_candidate: analysis/integration_eval/candidate_e_g2_m13_diagnostic_anchors.json
+- direct_model_eval_anchor_candidate: analysis/integration_eval/candidate_e_g2_m17_diagnostic_anchors.json
+- direct_model_eval_anchor_candidate: analysis/integration_eval/current_best_margin_candidate_c_anchors.json
+- direct_model_eval_anchor_candidate: analysis/integration_eval/current_best_margin_candidate_c_conservative_anchors.json
+
+## Next implementation branch may add model eval for direct_model_eval inputs only.
+## This branch only reuses already-computed run1 guard outputs.
