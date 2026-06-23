@@ -1,0 +1,69 @@
+{
+  "checkpoint_policy": {
+    "never": [
+      "overwrite checkpoints/15x15_current_best.pt",
+      "C export",
+      "public benchmark",
+      "promotion",
+      "git add checkpoint artifacts"
+    ],
+    "on_fail": "quarantine candidate to checkpoints/quarantine/15x15_teacher_divergence_round2_policy_margin_gated_review_e10_FAILED.pt if it exists",
+    "on_pass": "keep isolated candidate checkpoint only; do not promote"
+  },
+  "commands": {
+    "guard": "env PYTHONPATH=src python scripts/audit_teacher_divergence_tiny_posttrain_guards.py --baseline-checkpoint checkpoints/15x15_current_best.pt --candidate-checkpoint checkpoints/15x15_teacher_divergence_round2_policy_margin_gated_review_e10.pt --trainer-ready-dataset analysis/integration_eval/teacher_divergence_round2_trainable_trainer_ready_dataset.json --manifest analysis/integration_eval/teacher_divergence_expanded_candidate_manifest_legacy_suppress_normalized.csv --anchor-snapshots analysis/public_benchmark_eval/corpus8_selected_board_snapshots.json --out-trainable-csv analysis/integration_eval/teacher_divergence_gated_training_dryrun_e10_trainable_gap_guard.csv --out-bucket-csv analysis/integration_eval/teacher_divergence_gated_training_dryrun_e10_manifest_bucket_guard.csv --out-anchor-csv analysis/integration_eval/teacher_divergence_gated_training_dryrun_e10_anchor_drift_guard.csv --out-report analysis/integration_eval/teacher_divergence_gated_training_dryrun_e10_guard_audit.md --expected-trainable 44",
+    "train": "env PYTHONPATH=src python scripts/train_rapfi_teacher_policy_margin.py --dataset analysis/integration_eval/teacher_divergence_round2_trainable_trainer_ready_dataset.json --anchor-snapshots analysis/public_benchmark_eval/corpus8_selected_board_snapshots.json --init-checkpoint checkpoints/15x15_current_best.pt --reference-checkpoint checkpoints/15x15_current_best.pt --out-checkpoint checkpoints/15x15_teacher_divergence_round2_policy_margin_gated_review_e10.pt --epochs 10 --margin 1.0 --lr 1e-6 --anchor-kl-weight 0.05 --ce-weight 0.05 --weight-decay 1e-5 --seed 31 --print-every 1 | tee analysis/integration_eval/teacher_divergence_gated_training_dryrun_e10_train.log"
+  },
+  "confirm_execute_valid": false,
+  "created_at_utc": "2026-06-23T01:52:15.477577+00:00",
+  "execute_requested": false,
+  "executed_guard": false,
+  "executed_training": false,
+  "executor_decision": "DRY_RUN_READY_FOR_CONTROLLED_EXECUTION",
+  "final_hard_failures": [],
+  "final_warnings": [],
+  "guard_metrics": {
+    "anchor_max_kl": "",
+    "anchor_top1_changed": "",
+    "protected_rank_regressed": "",
+    "trainable_gap_improved": "",
+    "trainable_mean_gap_delta": "",
+    "trainable_rank_regressed": "",
+    "trainable_rows": ""
+  },
+  "hard_gates": {
+    "anchor_max_kl": "<= 0.005",
+    "anchor_top1_changed": "== 0",
+    "protected_top10_rank_regressed": "== 0",
+    "trainable_gap_improved": ">= 40",
+    "trainable_mean_gap_delta": "> 0",
+    "trainable_rank_regressed": "== 0",
+    "trainable_rows": "== 44"
+  },
+  "mode": "dry_run",
+  "moved_to_quarantine": false,
+  "paths": {
+    "anchor_snapshots": "analysis/public_benchmark_eval/corpus8_selected_board_snapshots.json",
+    "baseline_checkpoint": "checkpoints/15x15_current_best.pt",
+    "candidate_checkpoint": "checkpoints/15x15_teacher_divergence_round2_policy_margin_gated_review_e10.pt",
+    "dataset": "analysis/integration_eval/teacher_divergence_round2_trainable_trainer_ready_dataset.json",
+    "manifest": "analysis/integration_eval/teacher_divergence_expanded_candidate_manifest_legacy_suppress_normalized.csv",
+    "quarantine_checkpoint": "checkpoints/quarantine/15x15_teacher_divergence_round2_policy_margin_gated_review_e10_FAILED.pt"
+  },
+  "plan_decision": "READY_TO_DESIGN_GATED_TRAINING_DRYRUN",
+  "planned_outputs": {
+    "anchor_guard_csv": "analysis/integration_eval/teacher_divergence_gated_training_dryrun_e10_anchor_drift_guard.csv",
+    "bucket_guard_csv": "analysis/integration_eval/teacher_divergence_gated_training_dryrun_e10_manifest_bucket_guard.csv",
+    "guard_report": "analysis/integration_eval/teacher_divergence_gated_training_dryrun_e10_guard_audit.md",
+    "train_log": "analysis/integration_eval/teacher_divergence_gated_training_dryrun_e10_train.log",
+    "trainable_guard_csv": "analysis/integration_eval/teacher_divergence_gated_training_dryrun_e10_trainable_gap_guard.csv"
+  },
+  "preflight_blockers": [],
+  "preflight_warnings": [],
+  "source_closeout_decision": "PASS_TO_GATED_TRAINING_REVIEW_WITH_WARNINGS",
+  "warning_gates": {
+    "protected_top10_raw_probability_regressions": "warn if > 0",
+    "tail_rank_gt50_rank_regressions": "warn/block uncontrolled scaling if > 0",
+    "tail_rank_gt50_raw_probability_regressions": "warn if > 0"
+  }
+}

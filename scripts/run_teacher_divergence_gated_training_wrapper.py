@@ -4,15 +4,21 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import os
 import shlex
+import shutil
+import subprocess
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
 
+CONFIRM_TOKEN = "TEACHER_DIVERGENCE_GATED_TRAINING"
+
+
 def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(
-        description="Dry-run executor wrapper for gated teacher-divergence training."
+        description="Controlled wrapper for gated teacher-divergence training. Defaults to dry-run."
     )
     p.add_argument(
         "--wrapper-summary",
@@ -52,27 +58,56 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--ce-weight", type=str, default="0.05")
     p.add_argument("--weight-decay", type=str, default="1e-5")
     p.add_argument("--seed", type=int, default=31)
-    p.add_argument("--execute", action="store_true", help="Intentionally disabled in this dry-run branch.")
+    p.add_argument("--execute", action="store_true")
+    p.add_argument("--confirm-execute", type=str, default="")
+    p.add_argument("--allow-existing-candidate", action="store_true")
+    p.add_argument(
+        "--train-log",
+        type=Path,
+        default=Path("analysis/integration_eval/teacher_divergence_gated_training_dryrun_e10_train.log"),
+    )
+    p.add_argument(
+        "--trainable-guard-csv",
+        type=Path,
+        default=Path("analysis/integration_eval/teacher_divergence_gated_training_dryrun_e10_trainable_gap_guard.csv"),
+    )
+    p.add_argument(
+        "--bucket-guard-csv",
+        type=Path,
+        default=Path("analysis/integration_eval/teacher_divergence_gated_training_dryrun_e10_manifest_bucket_guard.csv"),
+    )
+    p.add_argument(
+        "--anchor-guard-csv",
+        type=Path,
+        default=Path("analysis/integration_eval/teacher_divergence_gated_training_dryrun_e10_anchor_drift_guard.csv"),
+    )
+    p.add_argument(
+        "--guard-report",
+        type=Path,
+        default=Path("analysis/integration_eval/teacher_divergence_gated_training_dryrun_e10_guard_audit.md"),
+    )
     p.add_argument(
         "--out-decision-json",
         type=Path,
-        default=Path("analysis/integration_eval/teacher_divergence_gated_training_wrapper_dryrun_decision.json"),
+        default=Path("analysis/integration_eval/teacher_divergence_gated_training_wrapper_controlled_exec_review_decision.json"),
     )
     p.add_argument(
         "--out-decision-csv",
         type=Path,
-        default=Path("analysis/integration_eval/teacher_divergence_gated_training_wrapper_dryrun_decision.csv"),
+        default=Path("analysis/integration_eval/teacher_divergence_gated_training_wrapper_controlled_exec_review_decision.csv"),
     )
     p.add_argument(
         "--out-commands",
         type=Path,
-        default=Path("analysis/integration_eval/teacher_divergence_gated_training_wrapper_dryrun_commands.txt"),
+        default=Path("analysis/integration_eval/teacher_divergence_gated_training_wrapper_controlled_exec_review_commands.txt"),
     )
     p.add_argument(
         "--out-report",
         type=Path,
-        default=Path("analysis/integration_eval/teacher_divergence_gated_training_wrapper_dryrun_report.md"),
+        default=Path("analysis/integration_eval/teacher_divergence_gated_training_wrapper_controlled_exec_review_report.md"),
     )
+    p.add_argument("--min-gap-improved", type=int, default=40)
+    p.add_argument("--max-anchor-kl", type=float, default=0.005)
     return p.parse_args()
 
 
@@ -85,7 +120,7 @@ def by_item(rows: list[dict[str, str]]) -> dict[str, dict[str, str]]:
     return {r["item"]: r for r in rows}
 
 
-def command(parts: list[str | Path | int | float]) -> str:
+def shell_cmd(parts: list[str | Path | int | float]) -> str:
     return shlex.join([str(p) for p in parts])
 
 
@@ -98,14 +133,116 @@ def csv_row(item: str, value: Any, status: str, notes: str = "") -> dict[str, st
     }
 
 
+def run_logged(cmd: list[str], log_path: Path, env: dict[str, str]) -> None:
+    log_path.parent.mkdir(parents=True, exist_ok=True)
+    with log_path.open("w", encoding="utf-8") as log:
+        proc = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, env=env)
+        log.write(proc.stdout)
+        print(proc.stdout, end="")
+    if proc.returncode != 0:
+        raise RuntimeError(f"command failed with code {proc.returncode}: {shell_cmd(cmd)}")
+
+
+def run_plain(cmd: list[str], env: dict[str, str]) -> None:
+    proc = subprocess.run(cmd, env=env)
+    if proc.returncode != 0:
+        raise RuntimeError(f"command failed with code {proc.returncode}: {shell_cmd(cmd)}")
+
+
+def int_field(row: dict[str, str], key: str) -> int:
+    value = row.get(key, "")
+    if value == "":
+        return 0
+    return int(float(value))
+
+
+def float_field(row: dict[str, str], key: str) -> float:
+    value = row.get(key, "")
+    if value == "":
+        return 0.0
+    return float(value)
+
+
+def evaluate_guards(
+    trainable_csv: Path,
+    bucket_csv: Path,
+    anchor_csv: Path,
+    min_gap_improved: int,
+    max_anchor_kl: float,
+) -> tuple[dict[str, Any], list[str], list[str]]:
+    trainable = read_csv(trainable_csv)
+    bucket = read_csv(bucket_csv)
+    anchors = read_csv(anchor_csv)
+
+    hard_failures: list[str] = []
+    warnings: list[str] = []
+
+    trainable_rows = len(trainable)
+    trainable_gap_improved = sum(int_field(r, "gap_improved") for r in trainable)
+    trainable_rank_regressed = sum(int_field(r, "target_rank_regressed") for r in trainable)
+    trainable_mean_gap_delta = (
+        sum(float_field(r, "gap_delta") for r in trainable) / trainable_rows
+        if trainable_rows
+        else 0.0
+    )
+
+    evaluated_bucket = [r for r in bucket if r.get("status") == "evaluated"]
+    protected = [r for r in evaluated_bucket if r.get("ready_bucket") == "protected_top10"]
+    tail = [r for r in evaluated_bucket if r.get("ready_bucket") == "tail_rank_gt50"]
+
+    protected_rank_regressed = sum(int_field(r, "target_rank_regressed") for r in protected)
+    protected_prob_regressed = sum(int_field(r, "target_prob_regressed") for r in protected)
+    tail_rank_regressed = sum(int_field(r, "target_rank_regressed") for r in tail)
+    tail_prob_regressed = sum(int_field(r, "target_prob_regressed") for r in tail)
+
+    anchor_top1_changed = sum(int_field(r, "top1_changed") for r in anchors)
+    anchor_kl_values = [float_field(r, "kl_ref_to_candidate") for r in anchors]
+    anchor_max_kl = max(anchor_kl_values) if anchor_kl_values else 0.0
+    anchor_mean_kl = sum(anchor_kl_values) / len(anchor_kl_values) if anchor_kl_values else 0.0
+
+    if trainable_rows != 44:
+        hard_failures.append(f"trainable rows {trainable_rows} != 44")
+    if trainable_gap_improved < min_gap_improved:
+        hard_failures.append(f"trainable gap improved {trainable_gap_improved} < {min_gap_improved}")
+    if trainable_mean_gap_delta <= 0:
+        hard_failures.append(f"trainable mean gap delta {trainable_mean_gap_delta:.10f} <= 0")
+    if trainable_rank_regressed != 0:
+        hard_failures.append(f"trainable target rank regressions {trainable_rank_regressed} != 0")
+    if protected_rank_regressed != 0:
+        hard_failures.append(f"protected_top10 rank regressions {protected_rank_regressed} != 0")
+    if anchor_top1_changed != 0:
+        hard_failures.append(f"anchor top1 changed rows {anchor_top1_changed} != 0")
+    if anchor_max_kl > max_anchor_kl:
+        hard_failures.append(f"anchor max KL {anchor_max_kl:.10f} > {max_anchor_kl}")
+
+    if protected_prob_regressed > 0:
+        warnings.append(f"protected_top10 raw probability regressions {protected_prob_regressed}")
+    if tail_prob_regressed > 0:
+        warnings.append(f"tail_rank_gt50 raw probability regressions {tail_prob_regressed}")
+    if tail_rank_regressed > 0:
+        warnings.append(f"tail_rank_gt50 rank regressions {tail_rank_regressed}")
+
+    metrics = {
+        "trainable_rows": trainable_rows,
+        "trainable_gap_improved": trainable_gap_improved,
+        "trainable_mean_gap_delta": trainable_mean_gap_delta,
+        "trainable_rank_regressed": trainable_rank_regressed,
+        "protected_rows": len(protected),
+        "protected_rank_regressed": protected_rank_regressed,
+        "protected_prob_regressed": protected_prob_regressed,
+        "tail_rows": len(tail),
+        "tail_rank_regressed": tail_rank_regressed,
+        "tail_prob_regressed": tail_prob_regressed,
+        "anchor_rows": len(anchors),
+        "anchor_top1_changed": anchor_top1_changed,
+        "anchor_mean_kl": anchor_mean_kl,
+        "anchor_max_kl": anchor_max_kl,
+    }
+    return metrics, hard_failures, warnings
+
+
 def main() -> None:
     args = parse_args()
-
-    if args.execute:
-        raise RuntimeError(
-            "Execute mode is intentionally disabled in this dry-run implementation branch. "
-            "This branch validates wrapper logic only and must not start training."
-        )
 
     required_paths = [
         args.wrapper_summary,
@@ -118,115 +255,158 @@ def main() -> None:
     ]
     missing = [str(p) for p in required_paths if not p.exists()]
 
-    wrapper_rows = read_csv(args.wrapper_summary)
+    wrapper_rows = read_csv(args.wrapper_summary) if args.wrapper_summary.exists() else []
     wrapper = by_item(wrapper_rows)
 
-    expected_wrapper_ready = wrapper.get("allowed_to_design_wrapper", {}).get("value") == "1"
-    expected_missing_paths_zero = wrapper.get("missing_required_paths", {}).get("value") == "0"
     source_decision = wrapper.get("source_closeout_decision", {}).get("value", "")
     plan_decision = wrapper.get("plan_decision", {}).get("value", "")
+    expected_wrapper_ready = wrapper.get("allowed_to_design_wrapper", {}).get("value") == "1"
+    expected_missing_paths_zero = wrapper.get("missing_required_paths", {}).get("value") == "0"
 
-    train_log = Path("analysis/integration_eval/teacher_divergence_gated_training_dryrun_e10_train.log")
-    trainable_guard = Path("analysis/integration_eval/teacher_divergence_gated_training_dryrun_e10_trainable_gap_guard.csv")
-    bucket_guard = Path("analysis/integration_eval/teacher_divergence_gated_training_dryrun_e10_manifest_bucket_guard.csv")
-    anchor_guard = Path("analysis/integration_eval/teacher_divergence_gated_training_dryrun_e10_anchor_drift_guard.csv")
-    guard_report = Path("analysis/integration_eval/teacher_divergence_gated_training_dryrun_e10_guard_audit.md")
-    wrapper_decision_json = Path("analysis/integration_eval/teacher_divergence_gated_training_dryrun_e10_wrapper_decision.json")
-    wrapper_decision_csv = Path("analysis/integration_eval/teacher_divergence_gated_training_dryrun_e10_wrapper_decision.csv")
-    wrapper_closeout = Path("analysis/integration_eval/teacher_divergence_gated_training_dryrun_e10_wrapper_closeout.md")
-
-    train_cmd = command([
-        "env",
-        "PYTHONPATH=src",
+    train_cmd_list = [
         "python",
         "scripts/train_rapfi_teacher_policy_margin.py",
-        "--dataset", args.dataset,
-        "--anchor-snapshots", args.anchor_snapshots,
-        "--init-checkpoint", args.baseline_checkpoint,
-        "--reference-checkpoint", args.baseline_checkpoint,
-        "--out-checkpoint", args.candidate_checkpoint,
-        "--epochs", args.epochs,
-        "--margin", args.margin,
-        "--lr", args.lr,
-        "--anchor-kl-weight", args.anchor_kl_weight,
-        "--ce-weight", args.ce_weight,
-        "--weight-decay", args.weight_decay,
-        "--seed", args.seed,
-        "--print-every", 1,
-    ]) + f" | tee {shlex.quote(str(train_log))}"
+        "--dataset", str(args.dataset),
+        "--anchor-snapshots", str(args.anchor_snapshots),
+        "--init-checkpoint", str(args.baseline_checkpoint),
+        "--reference-checkpoint", str(args.baseline_checkpoint),
+        "--out-checkpoint", str(args.candidate_checkpoint),
+        "--epochs", str(args.epochs),
+        "--margin", str(args.margin),
+        "--lr", str(args.lr),
+        "--anchor-kl-weight", str(args.anchor_kl_weight),
+        "--ce-weight", str(args.ce_weight),
+        "--weight-decay", str(args.weight_decay),
+        "--seed", str(args.seed),
+        "--print-every", "1",
+    ]
 
-    guard_cmd = command([
-        "env",
-        "PYTHONPATH=src",
+    guard_cmd_list = [
         "python",
         "scripts/audit_teacher_divergence_tiny_posttrain_guards.py",
-        "--baseline-checkpoint", args.baseline_checkpoint,
-        "--candidate-checkpoint", args.candidate_checkpoint,
-        "--trainer-ready-dataset", args.dataset,
-        "--manifest", args.manifest,
-        "--anchor-snapshots", args.anchor_snapshots,
-        "--out-trainable-csv", trainable_guard,
-        "--out-bucket-csv", bucket_guard,
-        "--out-anchor-csv", anchor_guard,
-        "--out-report", guard_report,
-        "--expected-trainable", 44,
-    ])
+        "--baseline-checkpoint", str(args.baseline_checkpoint),
+        "--candidate-checkpoint", str(args.candidate_checkpoint),
+        "--trainer-ready-dataset", str(args.dataset),
+        "--manifest", str(args.manifest),
+        "--anchor-snapshots", str(args.anchor_snapshots),
+        "--out-trainable-csv", str(args.trainable_guard_csv),
+        "--out-bucket-csv", str(args.bucket_guard_csv),
+        "--out-anchor-csv", str(args.anchor_guard_csv),
+        "--out-report", str(args.guard_report),
+        "--expected-trainable", "44",
+    ]
+
+    train_shell = "env PYTHONPATH=src " + shell_cmd(train_cmd_list) + f" | tee {shlex.quote(str(args.train_log))}"
+    guard_shell = "env PYTHONPATH=src " + shell_cmd(guard_cmd_list)
 
     hard_gates = {
-        "trainable_rows_evaluated": "== 44",
-        "trainable_gap_improved_rows": ">= 40",
+        "trainable_rows": "== 44",
+        "trainable_gap_improved": f">= {args.min_gap_improved}",
         "trainable_mean_gap_delta": "> 0",
-        "trainable_target_rank_regressions": "== 0",
-        "protected_top10_target_rank_regressions": "== 0",
-        "anchor_top1_changed_rows": "== 0",
-        "anchor_max_kl_ref_to_candidate": "<= 0.005",
+        "trainable_rank_regressed": "== 0",
+        "protected_top10_rank_regressed": "== 0",
+        "anchor_top1_changed": "== 0",
+        "anchor_max_kl": f"<= {args.max_anchor_kl}",
     }
 
     warning_gates = {
-        "protected_top10_raw_probability_regressions": "warn if > 0; require epsilon-aware review",
-        "tail_rank_gt50_raw_probability_regressions": "warn if > 0; require epsilon-aware review",
-        "tail_rank_gt50_rank_regressions": "block uncontrolled scaling and inspect if > 0",
-        "anchor_max_kl_ref_to_candidate": "warn if > 0.001 and <= 0.005",
+        "protected_top10_raw_probability_regressions": "warn if > 0",
+        "tail_rank_gt50_raw_probability_regressions": "warn if > 0",
+        "tail_rank_gt50_rank_regressions": "warn/block uncontrolled scaling if > 0",
     }
 
-    candidate_preexisting = args.candidate_checkpoint.exists()
-    quarantine_preexisting = args.quarantine_checkpoint.exists()
-
-    blockers: list[str] = []
-    warnings: list[str] = []
+    preflight_blockers: list[str] = []
+    preflight_warnings: list[str] = []
 
     if missing:
-        blockers.append("missing required paths")
+        preflight_blockers.append("missing required paths")
     if not expected_wrapper_ready:
-        blockers.append("wrapper design summary does not allow design")
+        preflight_blockers.append("wrapper summary does not report allowed_to_design_wrapper=1")
     if not expected_missing_paths_zero:
-        blockers.append("wrapper design summary reported missing paths")
+        preflight_blockers.append("wrapper summary does not report missing_required_paths=0")
     if source_decision != "PASS_TO_GATED_TRAINING_REVIEW_WITH_WARNINGS":
-        blockers.append(f"unexpected source decision: {source_decision}")
+        preflight_blockers.append(f"unexpected source decision: {source_decision}")
     if plan_decision != "READY_TO_DESIGN_GATED_TRAINING_DRYRUN":
-        blockers.append(f"unexpected plan decision: {plan_decision}")
+        preflight_blockers.append(f"unexpected plan decision: {plan_decision}")
     if args.baseline_checkpoint == args.candidate_checkpoint:
-        blockers.append("candidate checkpoint path equals baseline checkpoint path")
-    if args.baseline_checkpoint.name == "15x15_current_best.pt" and args.candidate_checkpoint.name == "15x15_current_best.pt":
-        blockers.append("candidate would overwrite current_best")
-    if candidate_preexisting:
-        warnings.append(f"candidate checkpoint already exists: {args.candidate_checkpoint}")
-    if quarantine_preexisting:
-        warnings.append(f"quarantine checkpoint already exists: {args.quarantine_checkpoint}")
+        preflight_blockers.append("candidate checkpoint path equals baseline checkpoint path")
+    if args.candidate_checkpoint.name == "15x15_current_best.pt":
+        preflight_blockers.append("candidate checkpoint would overwrite current_best")
+    if args.execute and args.confirm_execute != CONFIRM_TOKEN:
+        preflight_blockers.append(f"--execute requires --confirm-execute {CONFIRM_TOKEN}")
+    if args.execute and args.candidate_checkpoint.exists() and not args.allow_existing_candidate:
+        preflight_blockers.append("candidate checkpoint already exists; refuse overwrite without --allow-existing-candidate")
 
-    executor_decision = "DRY_RUN_READY_FOR_CONTROLLED_EXECUTION" if not blockers else "DRY_RUN_BLOCKED"
+    if args.candidate_checkpoint.exists():
+        preflight_warnings.append(f"candidate checkpoint already exists: {args.candidate_checkpoint}")
+    if args.quarantine_checkpoint.exists():
+        preflight_warnings.append(f"quarantine checkpoint already exists: {args.quarantine_checkpoint}")
+
+    mode = "execute" if args.execute else "dry_run"
+    executed_training = False
+    executed_guard = False
+    moved_to_quarantine = False
+    final_hard_failures: list[str] = list(preflight_blockers)
+    final_warnings: list[str] = list(preflight_warnings)
+    guard_metrics: dict[str, Any] = {}
+
+    if args.execute and not preflight_blockers:
+        env = os.environ.copy()
+        old_pythonpath = env.get("PYTHONPATH", "")
+        env["PYTHONPATH"] = "src" if not old_pythonpath else f"src:{old_pythonpath}"
+
+        args.candidate_checkpoint.parent.mkdir(parents=True, exist_ok=True)
+        args.train_log.parent.mkdir(parents=True, exist_ok=True)
+
+        run_logged(train_cmd_list, args.train_log, env)
+        executed_training = True
+
+        run_plain(guard_cmd_list, env)
+        executed_guard = True
+
+        guard_metrics, guard_failures, guard_warnings = evaluate_guards(
+            args.trainable_guard_csv,
+            args.bucket_guard_csv,
+            args.anchor_guard_csv,
+            args.min_gap_improved,
+            args.max_anchor_kl,
+        )
+        final_hard_failures.extend(guard_failures)
+        final_warnings.extend(guard_warnings)
+
+        if guard_failures and args.candidate_checkpoint.exists():
+            args.quarantine_checkpoint.parent.mkdir(parents=True, exist_ok=True)
+            shutil.move(str(args.candidate_checkpoint), str(args.quarantine_checkpoint))
+            moved_to_quarantine = True
+    else:
+        guard_metrics = {
+            "trainable_rows": "",
+            "trainable_gap_improved": "",
+            "trainable_mean_gap_delta": "",
+            "trainable_rank_regressed": "",
+            "protected_rank_regressed": "",
+            "anchor_top1_changed": "",
+            "anchor_max_kl": "",
+        }
+
+    if args.execute:
+        executor_decision = "EXECUTION_PASS_KEEP_ISOLATED_CANDIDATE" if not final_hard_failures else "EXECUTION_FAIL_CANDIDATE_QUARANTINED_OR_BLOCKED"
+    else:
+        executor_decision = "DRY_RUN_READY_FOR_CONTROLLED_EXECUTION" if not preflight_blockers else "DRY_RUN_BLOCKED"
 
     decision = {
         "created_at_utc": datetime.now(timezone.utc).isoformat(),
-        "mode": "dry_run",
+        "mode": mode,
         "execute_requested": bool(args.execute),
-        "would_train": False,
-        "would_write_checkpoint": False,
-        "would_move_checkpoint": False,
-        "would_delete_checkpoint": False,
+        "confirm_execute_valid": args.confirm_execute == CONFIRM_TOKEN,
+        "executed_training": executed_training,
+        "executed_guard": executed_guard,
+        "moved_to_quarantine": moved_to_quarantine,
         "executor_decision": executor_decision,
-        "blockers": blockers,
-        "warnings": warnings,
+        "preflight_blockers": preflight_blockers,
+        "preflight_warnings": preflight_warnings,
+        "final_hard_failures": final_hard_failures,
+        "final_warnings": final_warnings,
         "source_closeout_decision": source_decision,
         "plan_decision": plan_decision,
         "paths": {
@@ -238,21 +418,19 @@ def main() -> None:
             "anchor_snapshots": str(args.anchor_snapshots),
         },
         "planned_outputs": {
-            "train_log": str(train_log),
-            "trainable_guard": str(trainable_guard),
-            "bucket_guard": str(bucket_guard),
-            "anchor_guard": str(anchor_guard),
-            "guard_report": str(guard_report),
-            "wrapper_decision_json": str(wrapper_decision_json),
-            "wrapper_decision_csv": str(wrapper_decision_csv),
-            "wrapper_closeout": str(wrapper_closeout),
+            "train_log": str(args.train_log),
+            "trainable_guard_csv": str(args.trainable_guard_csv),
+            "bucket_guard_csv": str(args.bucket_guard_csv),
+            "anchor_guard_csv": str(args.anchor_guard_csv),
+            "guard_report": str(args.guard_report),
         },
         "commands": {
-            "train": train_cmd,
-            "guard": guard_cmd,
+            "train": train_shell,
+            "guard": guard_shell,
         },
         "hard_gates": hard_gates,
         "warning_gates": warning_gates,
+        "guard_metrics": guard_metrics,
         "checkpoint_policy": {
             "on_pass": "keep isolated candidate checkpoint only; do not promote",
             "on_fail": f"quarantine candidate to {args.quarantine_checkpoint} if it exists",
@@ -270,23 +448,20 @@ def main() -> None:
     args.out_decision_json.write_text(json.dumps(decision, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
     rows = [
-        csv_row("executor_decision", executor_decision, "PASS" if not blockers else "FAIL", "; ".join(blockers)),
-        csv_row("mode", "dry_run", "PASS"),
-        csv_row("execute_requested", int(args.execute), "PASS" if not args.execute else "FAIL"),
-        csv_row("would_train", 0, "PASS"),
-        csv_row("would_write_checkpoint", 0, "PASS"),
-        csv_row("would_move_checkpoint", 0, "PASS"),
-        csv_row("would_delete_checkpoint", 0, "PASS"),
-        csv_row("source_closeout_decision", source_decision, "INFO"),
-        csv_row("plan_decision", plan_decision, "INFO"),
-        csv_row("missing_required_paths", len(missing), "PASS" if not missing else "FAIL", "; ".join(missing)),
-        csv_row("blocker_count", len(blockers), "PASS" if not blockers else "FAIL", "; ".join(blockers)),
-        csv_row("warning_count", len(warnings), "WARN" if warnings else "PASS", "; ".join(warnings)),
+        csv_row("executor_decision", executor_decision, "PASS" if not final_hard_failures else "FAIL", "; ".join(final_hard_failures)),
+        csv_row("mode", mode, "INFO"),
+        csv_row("execute_requested", int(args.execute), "INFO"),
+        csv_row("confirm_execute_valid", int(args.confirm_execute == CONFIRM_TOKEN), "INFO"),
+        csv_row("executed_training", int(executed_training), "PASS" if not args.execute else "INFO"),
+        csv_row("executed_guard", int(executed_guard), "PASS" if not args.execute else "INFO"),
+        csv_row("moved_to_quarantine", int(moved_to_quarantine), "PASS" if not moved_to_quarantine else "INFO"),
+        csv_row("preflight_blocker_count", len(preflight_blockers), "PASS" if not preflight_blockers else "FAIL", "; ".join(preflight_blockers)),
+        csv_row("preflight_warning_count", len(preflight_warnings), "WARN" if preflight_warnings else "PASS", "; ".join(preflight_warnings)),
+        csv_row("final_hard_failure_count", len(final_hard_failures), "PASS" if not final_hard_failures else "FAIL", "; ".join(final_hard_failures)),
+        csv_row("final_warning_count", len(final_warnings), "WARN" if final_warnings else "PASS", "; ".join(final_warnings)),
         csv_row("baseline_checkpoint", args.baseline_checkpoint, "INFO", "must never be overwritten"),
         csv_row("candidate_checkpoint", args.candidate_checkpoint, "INFO", "isolated candidate only"),
         csv_row("quarantine_checkpoint", args.quarantine_checkpoint, "INFO", "failure path only"),
-        csv_row("candidate_checkpoint_preexisting", int(candidate_preexisting), "WARN" if candidate_preexisting else "PASS"),
-        csv_row("quarantine_checkpoint_preexisting", int(quarantine_preexisting), "WARN" if quarantine_preexisting else "PASS"),
         csv_row("epochs", args.epochs, "INFO"),
         csv_row("lr", args.lr, "INFO"),
         csv_row("margin", args.margin, "INFO"),
@@ -294,59 +469,93 @@ def main() -> None:
         csv_row("ce_weight", args.ce_weight, "INFO"),
         csv_row("weight_decay", args.weight_decay, "INFO"),
         csv_row("seed", args.seed, "INFO"),
+        csv_row("trainable_rows", guard_metrics.get("trainable_rows", ""), "INFO"),
+        csv_row("trainable_gap_improved", guard_metrics.get("trainable_gap_improved", ""), "INFO"),
+        csv_row("trainable_mean_gap_delta", guard_metrics.get("trainable_mean_gap_delta", ""), "INFO"),
+        csv_row("trainable_rank_regressed", guard_metrics.get("trainable_rank_regressed", ""), "INFO"),
+        csv_row("protected_rank_regressed", guard_metrics.get("protected_rank_regressed", ""), "INFO"),
+        csv_row("anchor_top1_changed", guard_metrics.get("anchor_top1_changed", ""), "INFO"),
+        csv_row("anchor_max_kl", guard_metrics.get("anchor_max_kl", ""), "INFO"),
     ]
 
+    args.out_decision_csv.parent.mkdir(parents=True, exist_ok=True)
     with args.out_decision_csv.open("w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=["item", "value", "status", "notes"], lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
 
     command_lines = [
-        "# Teacher-divergence gated training wrapper dry-run commands",
-        "# Generated by scripts/run_teacher_divergence_gated_training_wrapper.py",
-        "# Do not execute automatically in this branch.",
+        "# Teacher-divergence gated training wrapper controlled execution command plan",
+        "# Default invocation below is dry-run only.",
         "",
-        "## Planned training command",
-        train_cmd,
+        "## Dry-run invocation used in this branch",
+        shell_cmd([
+            "python",
+            "scripts/run_teacher_divergence_gated_training_wrapper.py",
+            "--wrapper-summary", args.wrapper_summary,
+            "--dataset", args.dataset,
+            "--manifest", args.manifest,
+            "--anchor-snapshots", args.anchor_snapshots,
+            "--baseline-checkpoint", args.baseline_checkpoint,
+            "--candidate-checkpoint", args.candidate_checkpoint,
+            "--quarantine-checkpoint", args.quarantine_checkpoint,
+            "--epochs", args.epochs,
+            "--lr", args.lr,
+            "--margin", args.margin,
+            "--anchor-kl-weight", args.anchor_kl_weight,
+            "--ce-weight", args.ce_weight,
+            "--weight-decay", args.weight_decay,
+            "--seed", args.seed,
+        ]),
         "",
-        "## Planned guard command",
-        guard_cmd,
+        "## Controlled execution invocation for later branch only",
+        shell_cmd([
+            "python",
+            "scripts/run_teacher_divergence_gated_training_wrapper.py",
+            "--execute",
+            "--confirm-execute", CONFIRM_TOKEN,
+            "--wrapper-summary", args.wrapper_summary,
+            "--dataset", args.dataset,
+            "--manifest", args.manifest,
+            "--anchor-snapshots", args.anchor_snapshots,
+            "--baseline-checkpoint", args.baseline_checkpoint,
+            "--candidate-checkpoint", args.candidate_checkpoint,
+            "--quarantine-checkpoint", args.quarantine_checkpoint,
+            "--epochs", args.epochs,
+            "--lr", args.lr,
+            "--margin", args.margin,
+            "--anchor-kl-weight", args.anchor_kl_weight,
+            "--ce-weight", args.ce_weight,
+            "--weight-decay", args.weight_decay,
+            "--seed", args.seed,
+        ]),
         "",
-        "## Hard gates",
+        "## Planned training command inside executor",
+        train_shell,
+        "",
+        "## Planned guard command inside executor",
+        guard_shell,
+        "",
     ]
-    for k, v in hard_gates.items():
-        command_lines.append(f"- {k}: {v}")
-    command_lines += [
-        "",
-        "## Warning gates",
-    ]
-    for k, v in warning_gates.items():
-        command_lines.append(f"- {k}: {v}")
-    command_lines += [
-        "",
-        "## Checkpoint policy",
-        f"- pass: keep `{args.candidate_checkpoint}` as isolated candidate artifact only",
-        f"- fail: quarantine to `{args.quarantine_checkpoint}` if candidate exists",
-        "- never overwrite `checkpoints/15x15_current_best.pt`",
-        "- never add checkpoint artifacts to git",
-        "",
-    ]
+    args.out_commands.parent.mkdir(parents=True, exist_ok=True)
     args.out_commands.write_text("\n".join(command_lines), encoding="utf-8")
 
     lines = [
-        "# Teacher-divergence gated training wrapper dry-run report",
+        "# Teacher-divergence gated wrapper controlled execution review",
         "",
         "## Branch",
         "",
-        "`exp/15x15-teacher-divergence-gated-training-wrapper-dryrun`",
+        "`exp/15x15-teacher-divergence-gated-wrapper-controlled-exec-review`",
         "",
         "## Scope",
         "",
-        "- Implements a dry-run executor frame for later gated training.",
-        "- Validates wrapper preconditions, commands, hard gates, warning gates, and checkpoint policy.",
-        "- Does not train.",
-        "- Does not write checkpoints.",
-        "- Does not move or delete checkpoints.",
+        "- Upgrades the wrapper to support controlled execution mode.",
+        "- Default mode remains dry-run.",
+        "- Controlled execution requires both `--execute` and the exact confirm token.",
+        "- This branch only runs dry-run validation.",
+        "- Does not train in this run.",
+        "- Does not write checkpoints in this run.",
+        "- Does not move or delete checkpoints in this run.",
         "- Does not overwrite `checkpoints/15x15_current_best.pt`.",
         "- Does not C export.",
         "- Does not run public benchmark.",
@@ -356,15 +565,16 @@ def main() -> None:
         "",
         f"`{executor_decision}`",
         "",
-        "## Dry-run safety flags",
+        "## Safety flags for this run",
         "",
         "| flag | value |",
         "|---|---:|",
-        "| execute_requested | 0 |",
-        "| would_train | 0 |",
-        "| would_write_checkpoint | 0 |",
-        "| would_move_checkpoint | 0 |",
-        "| would_delete_checkpoint | 0 |",
+        f"| mode | {mode} |",
+        f"| execute_requested | {int(args.execute)} |",
+        f"| confirm_execute_valid | {int(args.confirm_execute == CONFIRM_TOKEN)} |",
+        f"| executed_training | {int(executed_training)} |",
+        f"| executed_guard | {int(executed_guard)} |",
+        f"| moved_to_quarantine | {int(moved_to_quarantine)} |",
         "",
         "## Preconditions",
         "",
@@ -372,75 +582,74 @@ def main() -> None:
         "|---|---:|",
         f"| source closeout decision | {source_decision} |",
         f"| plan decision | {plan_decision} |",
-        f"| missing required paths | {len(missing)} |",
-        f"| blockers | {len(blockers)} |",
-        f"| warnings | {len(warnings)} |",
-        f"| candidate checkpoint preexisting | {int(candidate_preexisting)} |",
-        f"| quarantine checkpoint preexisting | {int(quarantine_preexisting)} |",
+        f"| preflight blockers | {len(preflight_blockers)} |",
+        f"| preflight warnings | {len(preflight_warnings)} |",
+        f"| final hard failures | {len(final_hard_failures)} |",
+        f"| final warnings | {len(final_warnings)} |",
         "",
-        "## Planned training command",
-        "",
-        "```bash",
-        train_cmd,
-        "```",
-        "",
-        "## Planned guard command",
-        "",
-        "```bash",
-        guard_cmd,
-        "```",
-        "",
-        "## Hard gates",
+        "## Hard gates for execution mode",
         "",
         "| gate | threshold |",
         "|---|---|",
     ]
-    for k, v in hard_gates.items():
-        lines.append(f"| {k} | {v} |")
+    for key, value in hard_gates.items():
+        lines.append(f"| {key} | {value} |")
 
-    lines += [
+    lines.extend([
         "",
         "## Warning gates",
         "",
         "| gate | action |",
         "|---|---|",
-    ]
-    for k, v in warning_gates.items():
-        lines.append(f"| {k} | {v} |")
+    ])
+    for key, value in warning_gates.items():
+        lines.append(f"| {key} | {value} |")
 
-    lines += [
+    lines.extend([
+        "",
+        "## Planned training command",
+        "",
+        "```bash",
+        train_shell,
+        "```",
+        "",
+        "## Planned guard command",
+        "",
+        "```bash",
+        guard_shell,
+        "```",
         "",
         "## Checkpoint policy",
         "",
         f"- Baseline checkpoint: `{args.baseline_checkpoint}`",
         f"- Candidate checkpoint: `{args.candidate_checkpoint}`",
         f"- Quarantine checkpoint: `{args.quarantine_checkpoint}`",
-        "- Pass action: keep candidate checkpoint isolated only.",
+        "- Pass action: keep isolated candidate checkpoint only.",
         "- Fail action: quarantine candidate checkpoint if it exists.",
         "- Never overwrite `checkpoints/15x15_current_best.pt`.",
         "- Never add checkpoint artifacts to git.",
         "",
-        "## Blockers",
+        "## Preflight blockers",
         "",
-    ]
-    if blockers:
-        for b in blockers:
-            lines.append(f"- {b}")
+    ])
+    if preflight_blockers:
+        for item in preflight_blockers:
+            lines.append(f"- {item}")
     else:
         lines.append("- None.")
 
-    lines += [
+    lines.extend([
         "",
         "## Warnings",
         "",
-    ]
-    if warnings:
-        for w in warnings:
-            lines.append(f"- {w}")
+    ])
+    if final_warnings:
+        for item in final_warnings:
+            lines.append(f"- {item}")
     else:
         lines.append("- None.")
 
-    lines += [
+    lines.extend([
         "",
         "## Outputs",
         "",
@@ -451,7 +660,9 @@ def main() -> None:
         "",
         "## Next step",
         "",
-        "A later branch may add controlled execution mode. This branch remains dry-run only.",
+        "A later branch may run controlled execution by passing `--execute --confirm-execute TEACHER_DIVERGENCE_GATED_TRAINING`.",
+        "",
+        "This branch remains a review/dry-run branch only.",
         "",
         "## Final guardrails",
         "",
@@ -461,21 +672,25 @@ def main() -> None:
         "- No promotion.",
         "- Do not add local checkpoint artifacts to git.",
         "",
-    ]
+    ])
+
+    args.out_report.parent.mkdir(parents=True, exist_ok=True)
     args.out_report.write_text("\n".join(lines), encoding="utf-8")
 
     print("executor_decision:", executor_decision)
+    print("mode:", mode)
     print("execute_requested:", int(args.execute))
-    print("would_train:", 0)
-    print("would_write_checkpoint:", 0)
-    print("missing_required_paths:", len(missing))
-    print("blocker_count:", len(blockers))
-    print("warning_count:", len(warnings))
+    print("executed_training:", int(executed_training))
+    print("executed_guard:", int(executed_guard))
+    print("moved_to_quarantine:", int(moved_to_quarantine))
+    print("preflight_blockers:", len(preflight_blockers))
+    print("final_hard_failures:", len(final_hard_failures))
+    print("final_warnings:", len(final_warnings))
     print("out_decision_json:", args.out_decision_json)
     print("out_decision_csv:", args.out_decision_csv)
     print("out_commands:", args.out_commands)
     print("out_report:", args.out_report)
-    print("dry-run only; no training; no checkpoint write; no C export; no benchmark; no promotion")
+    print("default dry-run; no training unless explicit execute+confirm token")
 
 
 if __name__ == "__main__":
