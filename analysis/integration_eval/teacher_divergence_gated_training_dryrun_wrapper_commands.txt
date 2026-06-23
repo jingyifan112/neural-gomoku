@@ -1,0 +1,26 @@
+# Teacher-divergence gated training dry-run wrapper command plan
+# Review-only. Do not execute this file as a script yet.
+# The actual wrapper implementation should run these steps with save-on-pass logic.
+
+## Step 1: train isolated candidate
+PYTHONPATH=src python scripts/train_rapfi_teacher_policy_margin.py --dataset analysis/integration_eval/teacher_divergence_round2_trainable_trainer_ready_dataset.json --anchor-snapshots analysis/public_benchmark_eval/corpus8_selected_board_snapshots.json --init-checkpoint checkpoints/15x15_current_best.pt --reference-checkpoint checkpoints/15x15_current_best.pt --out-checkpoint checkpoints/15x15_teacher_divergence_round2_policy_margin_gated_review_e10.pt --epochs 10 --margin 1.0 --lr 1e-6 --anchor-kl-weight 0.05 --ce-weight 0.05 --weight-decay 1e-5 --seed 31 --print-every 1 | tee analysis/integration_eval/teacher_divergence_gated_training_dryrun_e10_train.log
+
+## Step 2: run posttrain guards
+PYTHONPATH=src python scripts/audit_teacher_divergence_tiny_posttrain_guards.py --baseline-checkpoint checkpoints/15x15_current_best.pt --candidate-checkpoint checkpoints/15x15_teacher_divergence_round2_policy_margin_gated_review_e10.pt --trainer-ready-dataset analysis/integration_eval/teacher_divergence_round2_trainable_trainer_ready_dataset.json --manifest analysis/integration_eval/teacher_divergence_expanded_candidate_manifest_legacy_suppress_normalized.csv --anchor-snapshots analysis/public_benchmark_eval/corpus8_selected_board_snapshots.json --out-trainable-csv analysis/integration_eval/teacher_divergence_gated_training_dryrun_e10_trainable_gap_guard.csv --out-bucket-csv analysis/integration_eval/teacher_divergence_gated_training_dryrun_e10_manifest_bucket_guard.csv --out-anchor-csv analysis/integration_eval/teacher_divergence_gated_training_dryrun_e10_anchor_drift_guard.csv --out-report analysis/integration_eval/teacher_divergence_gated_training_dryrun_e10_guard_audit.md --expected-trainable 44
+
+## Step 3: apply wrapper decision policy
+- trainable_rows_evaluated: must equal 44
+- trainable_gap_improved_rows: must be >= 40
+- trainable_mean_gap_delta: must be > 0
+- trainable_target_rank_regressions: must equal 0
+- protected_top10_target_rank_regressions: must equal 0
+- anchor_top1_changed_rows: must equal 0
+- anchor_max_kl_ref_to_candidate: must be <= 0.005
+- candidate_checkpoint_action_on_pass: keep isolated candidate checkpoint
+- candidate_checkpoint_action_on_fail: move/quarantine to checkpoints/quarantine/15x15_teacher_divergence_round2_policy_margin_gated_review_e10_FAILED.pt
+
+## Step 4: checkpoint action
+- pass: keep `checkpoints/15x15_teacher_divergence_round2_policy_margin_gated_review_e10.pt` as isolated candidate artifact only
+- fail: move `checkpoints/15x15_teacher_divergence_round2_policy_margin_gated_review_e10.pt` to `checkpoints/quarantine/15x15_teacher_divergence_round2_policy_margin_gated_review_e10_FAILED.pt` if it exists
+- never overwrite `checkpoints/15x15_current_best.pt`
+- never add checkpoint artifacts to git

@@ -1,0 +1,25 @@
+item,value,status,notes
+source_closeout_decision,PASS_TO_GATED_TRAINING_REVIEW_WITH_WARNINGS,INFO,
+plan_decision,READY_TO_DESIGN_GATED_TRAINING_DRYRUN,INFO,
+allowed_to_design_wrapper,1,PASS,
+hard_failure_count,0,PASS,
+warning_count,2,WARN,
+missing_required_paths,0,PASS,
+baseline_checkpoint,checkpoints/15x15_current_best.pt,INFO,must never be overwritten
+candidate_checkpoint,checkpoints/15x15_teacher_divergence_round2_policy_margin_gated_review_e10.pt,INFO,isolated output path
+quarantine_checkpoint,checkpoints/quarantine/15x15_teacher_divergence_round2_policy_margin_gated_review_e10_FAILED.pt,INFO,failure path only
+epochs,10,INFO,
+lr,1e-6,INFO,
+margin,1.0,INFO,
+anchor_kl_weight,0.05,INFO,
+ce_weight,0.05,INFO,
+weight_decay,1e-5,INFO,
+seed,31,INFO,
+train_log,analysis/integration_eval/teacher_divergence_gated_training_dryrun_e10_train.log,INFO,
+trainable_guard_csv,analysis/integration_eval/teacher_divergence_gated_training_dryrun_e10_trainable_gap_guard.csv,INFO,
+bucket_guard_csv,analysis/integration_eval/teacher_divergence_gated_training_dryrun_e10_manifest_bucket_guard.csv,INFO,
+anchor_guard_csv,analysis/integration_eval/teacher_divergence_gated_training_dryrun_e10_anchor_drift_guard.csv,INFO,
+guard_report,analysis/integration_eval/teacher_divergence_gated_training_dryrun_e10_guard_audit.md,INFO,
+wrapper_decision_json,analysis/integration_eval/teacher_divergence_gated_training_dryrun_e10_wrapper_decision.json,INFO,
+wrapper_decision_csv,analysis/integration_eval/teacher_divergence_gated_training_dryrun_e10_wrapper_decision.csv,INFO,
+wrapper_closeout,analysis/integration_eval/teacher_divergence_gated_training_dryrun_e10_wrapper_closeout.md,INFO,
