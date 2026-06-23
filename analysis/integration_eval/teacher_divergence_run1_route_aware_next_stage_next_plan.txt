@@ -1,0 +1,42 @@
+# Teacher-divergence run1 route-aware next-stage plan
+
+next_stage_decision=NEXT_STAGE_BLOCKED
+recommended_branch=none
+
+## Recommended action
+
+Fix blockers before continuing.
+
+## Safety status
+
+- would_train_now: 0
+- would_eval_model_now: 0
+- would_read_checkpoint_contents_now: 0
+- would_write_checkpoint: 0
+- would_c_export: 0
+- would_public_benchmark: 0
+- would_promote: 0
+
+## Blockers
+
+- route-aware local decision blockers present: 3
+- direct adapter blockers present: 2
+- route-aware local decision is blocked
+
+## Warnings
+
+- route-aware warnings carried forward: 5
+- adapter warnings carried forward: 2
+- combined local comparison WARN rows carried forward: 2
+- protected raw probability regressions carried forward: 11
+- tail raw probability regressions carried forward: 8
+
+## Still forbidden
+
+- training
+- checkpoint write
+- current_best overwrite
+- C export
+- public benchmark
+- promotion
+- adding local checkpoint artifacts to git
