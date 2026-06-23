@@ -1,0 +1,126 @@
+{
+  "branch": "exp/15x15-teacher-divergence-next-direct-repair-eval-authorization-policy",
+  "purpose": "Define future explicit authorization requirements for direct repair eval execution without granting execution now.",
+  "upstream_branch": "exp/15x15-teacher-divergence-next-direct-repair-eval-plan-closeout",
+  "upstream_closeout_decision": "DIRECT_REPAIR_EVAL_PLAN_CLOSEOUT_COMPLETE_NO_EXECUTION",
+  "generated_at_utc": "2026-06-23T09:56:57.228973+00:00",
+  "planned_inputs": {
+    "candidate_row": "direct_repair_001",
+    "source_eval_manifest_id": "run1_direct_probe_eval_001",
+    "source_adapter_kind": "direct_model_eval_fixed_probe_candidate",
+    "source_path": "analysis/integration_eval/policy_only_teacher_divergence_repair_probe_closeout.md",
+    "derived_status": "eligible_for_future_explicit_eval_plan_documentation_only"
+  },
+  "future_checkpoint_identity": {
+    "checkpoint_path_string_only": "checkpoints/15x15_current_best.pt",
+    "checkpoint_read_now": false,
+    "checkpoint_contents_inspected_now": false,
+    "note": "Checkpoint identity is recorded as a future planning string only. This branch does not load or inspect checkpoint contents."
+  },
+  "proposed_future_eval_command_documentation_only": [
+    "PYTHONPATH=src python scripts/<future_direct_repair_eval_script>.py \\",
+    "  --input-row direct_repair_001 \\",
+    "  --source-eval-manifest-id run1_direct_probe_eval_001 \\",
+    "  --checkpoint checkpoints/15x15_current_best.pt \\",
+    "  --output-dir analysis/integration_eval/<future_eval_output_dir>"
+  ],
+  "authorization_policy": {
+    "policy_name": "direct_repair_eval_execution_authorization_policy",
+    "scope": "Define future authorization requirements for evaluating direct_repair_001.",
+    "critical_boundary": "This policy does not grant eval execution, checkpoint reads, training, C export, public benchmark, promotion, or current-best overwrite.",
+    "current_authorization_state": {
+      "eval_execution_authorized_now": false,
+      "checkpoint_read_authorized_now": false,
+      "training_authorized_now": false,
+      "checkpoint_write_authorized_now": false,
+      "c_export_authorized_now": false,
+      "public_benchmark_authorized_now": false,
+      "promotion_authorized_now": false,
+      "current_best_overwrite_authorized_now": false,
+      "original_manifest_overwrite_authorized_now": false
+    },
+    "future_authorization_requirements_before_eval_execution": [
+      {
+        "id": "A1",
+        "name": "explicit_checkpoint_read_authorization",
+        "required": true,
+        "criterion": "A later branch must explicitly authorize reading checkpoint contents and name the checkpoint path."
+      },
+      {
+        "id": "A2",
+        "name": "explicit_model_eval_authorization",
+        "required": true,
+        "criterion": "A later branch must explicitly authorize model eval execution and distinguish it from planning/dryrun."
+      },
+      {
+        "id": "A3",
+        "name": "exact_eval_command_review",
+        "required": true,
+        "criterion": "A later branch must replace placeholder script/output paths with exact tracked or generated paths before any execution."
+      },
+      {
+        "id": "A4",
+        "name": "input_row_scope_lock",
+        "required": true,
+        "criterion": "Eval scope must remain limited to direct_repair_001 unless a later branch explicitly expands scope."
+      },
+      {
+        "id": "A5",
+        "name": "quarantine_exclusion_lock",
+        "required": true,
+        "criterion": "The six quarantined rows remain excluded from any eval input."
+      },
+      {
+        "id": "A6",
+        "name": "no_promotion_guard",
+        "required": true,
+        "criterion": "Eval execution, if later authorized, must not imply promotion, C export, benchmark, checkpoint write, current-best overwrite, or model replacement."
+      },
+      {
+        "id": "A7",
+        "name": "result_handling_policy_required",
+        "required": true,
+        "criterion": "A later branch must define how eval output would be recorded and reviewed without automatic promotion."
+      }
+    ],
+    "explicitly_disallowed_in_this_branch": [
+      "Do not run eval.",
+      "Do not read checkpoint contents.",
+      "Do not train.",
+      "Do not write checkpoints.",
+      "Do not export C.",
+      "Do not run public benchmark.",
+      "Do not promote.",
+      "Do not overwrite current_best.",
+      "Do not overwrite original manifest artifacts."
+    ]
+  },
+  "authorization_checks": {
+    "upstream_eval_plan_closeout_complete": true,
+    "upstream_no_execution_recorded": true,
+    "upstream_closeout_checks_pass": true,
+    "planned_input_present": true,
+    "checkpoint_identity_string_only": true,
+    "proposed_command_documented_only": true,
+    "current_eval_execution_not_authorized": true,
+    "current_checkpoint_read_not_authorized": true,
+    "promotion_not_authorized": true,
+    "current_best_overwrite_not_authorized": true
+  },
+  "safety_permissions": {
+    "training_allowed_now": 0,
+    "model_eval_allowed_now": 0,
+    "checkpoint_read_allowed_now": 0,
+    "checkpoint_write_allowed_now": 0,
+    "c_export_allowed_now": 0,
+    "public_benchmark_allowed_now": 0,
+    "promotion_allowed_now": 0,
+    "current_best_overwrite_allowed_now": 0,
+    "original_manifest_overwrite_allowed_now": 0,
+    "eval_authorization_policy_documentation_allowed_now": 1,
+    "eval_execution_allowed_now": 0
+  },
+  "authorization_decision": "DIRECT_REPAIR_EVAL_AUTHORIZATION_POLICY_DEFINED_NO_EXECUTION",
+  "recommended_next_branch": "exp/15x15-teacher-divergence-next-direct-repair-eval-authorization-closeout",
+  "promotion_decision": "NO_PROMOTION__EVAL_AUTHORIZATION_POLICY_ONLY"
+}
