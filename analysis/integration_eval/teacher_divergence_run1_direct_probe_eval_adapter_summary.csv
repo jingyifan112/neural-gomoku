@@ -1,0 +1,24 @@
+metric,value,status,notes
+adapter_decision,DIRECT_PROBE_EVAL_ADAPTER_BLOCKED,INFO,Dry-run/plan only; no model eval.
+blocker_count,2,FAIL,controlled review is blocked; controlled review blockers present: 2
+warning_count,2,WARN,controlled review warnings carried forward: 5; deferred adapter inputs remain: 88
+controlled_review_decision,LOCAL_COMPARISON_CONTROLLED_REVIEW_BLOCKED,FAIL,
+controlled_review_blocker_count,2,FAIL,
+controlled_review_warning_count,5,WARN,
+adapter_design_decision,LOCAL_COMPARISON_ADAPTER_DESIGN_BLOCKED,INFO,
+adapter_design_direct_model_eval_inputs_selected,10,INFO,
+adapter_design_deferred_adapter_inputs,88,WARN,
+candidate_checkpoint_exists_locally,1,PASS,Existence only; do not add to git.
+current_best_exists,1,PASS,
+selected_inputs,13,INFO,
+core_reuse_inputs,3,PASS,
+direct_ready_inputs_from_selection,10,INFO,
+controlled_review_direct_ready_inputs,10,INFO,
+manifest_rows,10,INFO,
+would_train,0,PASS,
+would_eval_model_now,0,PASS,
+would_read_checkpoint_contents_now,0,PASS,
+would_write_checkpoint,0,PASS,
+would_c_export,0,PASS,
+would_public_benchmark,0,PASS,
+would_promote,0,PASS,

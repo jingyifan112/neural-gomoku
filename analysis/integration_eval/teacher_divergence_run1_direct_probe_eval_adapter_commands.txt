@@ -1,0 +1,32 @@
+# Teacher-divergence run1 direct-probe eval adapter command plan
+# Plan/dry-run only. Do not execute model eval in this branch.
+
+adapter_decision=DIRECT_PROBE_EVAL_ADAPTER_BLOCKED
+
+## Candidate/baseline paths for a future executor
+baseline=checkpoints/15x15_current_best.pt
+candidate=checkpoints/15x15_teacher_divergence_round2_policy_margin_gated_run1_e10.pt
+
+## Future execution must require both flags
+--execute-model-eval
+--confirm-model-eval TEACHER_DIVERGENCE_DIRECT_PROBE_LOCAL_EVAL
+
+## Planned direct-ready inputs
+- run1_direct_probe_eval_001: analysis/integration_eval/policy_only_teacher_divergence_repair_probe_closeout.md (direct_model_eval_fixed_probe_candidate, rows=0)
+- run1_direct_probe_eval_002: analysis/integration_eval/policy_only_teacher_divergence_repair_probe_design.md (direct_model_eval_fixed_probe_candidate, rows=0)
+- run1_direct_probe_eval_003: analysis/integration_eval/policy_only_teacher_divergence_repair_probe_script_audit.md (direct_model_eval_fixed_probe_candidate, rows=0)
+- run1_direct_probe_eval_004: analysis/integration_eval/teacher_divergence_policy_mixed_ce_heldout_blocker_position_review.md (direct_model_eval_heldout_candidate, rows=0)
+- run1_direct_probe_eval_005: analysis/integration_eval/candidate_c_g2_m19_perspective_diagnostic_anchors.json (direct_model_eval_anchor_candidate, rows=8)
+- run1_direct_probe_eval_006: analysis/integration_eval/candidate_d_g2_m15_diagnostic_anchors.json (direct_model_eval_anchor_candidate, rows=3)
+- run1_direct_probe_eval_007: analysis/integration_eval/candidate_e_g2_m13_diagnostic_anchors.json (direct_model_eval_anchor_candidate, rows=1)
+- run1_direct_probe_eval_008: analysis/integration_eval/candidate_e_g2_m17_diagnostic_anchors.json (direct_model_eval_anchor_candidate, rows=3)
+- run1_direct_probe_eval_009: analysis/integration_eval/current_best_margin_candidate_c_anchors.json (direct_model_eval_anchor_candidate, rows=7)
+- run1_direct_probe_eval_010: analysis/integration_eval/current_best_margin_candidate_c_conservative_anchors.json (direct_model_eval_anchor_candidate, rows=5)
+
+## Future executor must remain forbidden from
+- training
+- checkpoint write
+- current_best overwrite
+- C export
+- public benchmark
+- promotion
