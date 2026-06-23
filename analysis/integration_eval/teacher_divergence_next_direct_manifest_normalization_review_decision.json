@@ -1,0 +1,39 @@
+{
+  "blockers": [],
+  "candidate_checkpoint_path": "checkpoints/15x15_teacher_divergence_round2_policy_margin_gated_run1_e10.pt",
+  "current_best_checkpoint_path": "checkpoints/15x15_current_best.pt",
+  "inspection_decision": "DIRECT_ADAPTER_BLOCKER_INSPECTION_READY_FOR_NORMALIZATION_REVIEW",
+  "normalization_decision": "DIRECT_MANIFEST_NORMALIZATION_REVIEW_READY_WITH_REPAIR_QUEUE",
+  "outputs": {
+    "normalized_manifest": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review_manifest.csv",
+    "quarantine": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review_quarantine.csv",
+    "repair_queue": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review_repair_queue.csv",
+    "report": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review.md",
+    "summary_csv": "analysis/integration_eval/teacher_divergence_next_direct_manifest_normalization_review_summary.csv"
+  },
+  "plan_decision": "DIRECT_PROBE_INPUT_REPAIR_PLAN_READY",
+  "recommended_next": "Use the normalized ready manifest as a review-only candidate. Repair queued rows separately. Do not build eval executor yet.",
+  "repair_plan_decision": "DIRECT_PROBE_INPUT_REPAIR_PLAN_READY",
+  "row_counts": {
+    "inspection_rows": 10,
+    "normalized_ready_rows": 3,
+    "original_manifest_rows": 10,
+    "quarantine_rows": 6,
+    "repair_queue_rows": 1,
+    "unclassified_rows": 0
+  },
+  "warnings": [
+    "combined WARN rows carried forward: 2",
+    "protected probability regressions carried forward: 11",
+    "tail probability regressions carried forward: 8",
+    "repair queue rows: 1",
+    "quarantine rows excluded: 6"
+  ],
+  "would_c_export": false,
+  "would_eval_model_now": false,
+  "would_promote": false,
+  "would_public_benchmark": false,
+  "would_read_checkpoint_contents_now": false,
+  "would_train_now": false,
+  "would_write_checkpoint": false
+}
