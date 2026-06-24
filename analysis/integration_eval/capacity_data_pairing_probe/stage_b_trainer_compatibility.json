@@ -1,0 +1,26 @@
+{
+  "route": "exp/15x15-capacity-data-pairing-two-stage-training-probe",
+  "stage": "Stage B trainer compatibility",
+  "train_script": "scripts/train_rapfi_teacher_policy_rank_topk_probe.py",
+  "warmstart_checkpoint": "checkpoints/probes/15x15_capacity_data_pairing_b4c96_warmstart.pt",
+  "signals": {
+    "trainer_has_channels_arg": false,
+    "trainer_has_blocks_arg": false,
+    "trainer_mentions_b4c96": false,
+    "trainer_mentions_capacity": false,
+    "trainer_uses_policy_value_net": true,
+    "trainer_loads_compatible_checkpoint": true,
+    "trainer_has_out_checkpoint": true,
+    "trainer_has_init_checkpoint": true,
+    "trainer_has_reference_checkpoint": true
+  },
+  "decision": "STAGE_B_NOT_PROVEN_COMPATIBLE_NEEDS_CODEX_OR_WRAPPER_DO_NOT_TRAIN",
+  "non_execution": {
+    "checkpoint_read": false,
+    "training": false,
+    "checkpoint_write": false,
+    "c_export": false,
+    "public_benchmark": false,
+    "promotion": false
+  }
+}
