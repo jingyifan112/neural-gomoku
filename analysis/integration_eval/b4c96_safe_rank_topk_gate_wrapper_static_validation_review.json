@@ -1,0 +1,45 @@
+{
+  "script": "scripts/evaluate_policy_rank_topk_gate_b4c96.py",
+  "checks": {
+    "script_exists": true,
+    "has_model_a_channels_arg": true,
+    "has_model_b_channels_arg": true,
+    "has_model_a_blocks_arg": true,
+    "has_model_b_blocks_arg": true,
+    "has_model_a_arg": true,
+    "has_model_b_arg": true,
+    "has_dataset_arg": true,
+    "has_out_csv": true,
+    "has_out_report": true,
+    "uses_load_compatible_checkpoint": true,
+    "no_torch_save": true,
+    "no_out_checkpoint_arg": true,
+    "no_subprocess_calls": true,
+    "no_os_system_calls": true,
+    "no_export_command_refs": true,
+    "no_current_best_write_refs": true,
+    "no_manifest_write_refs": false
+  },
+  "danger_hits": {
+    "calls_torch_save": [],
+    "defines_out_checkpoint_arg": [],
+    "calls_subprocess": [],
+    "calls_os_system": [],
+    "mentions_pbrain_export_command": [],
+    "writes_current_best": [],
+    "writes_manifest": [
+      "472: out += [\"- No C export, no public benchmark, no promotion, no manifest overwrite.\"]",
+      "547: out.append(\"Evaluation only. Do not train, export, public benchmark, promote, or overwrite manifests from this wrapper.\")",
+      "634: print(\"evaluation only; no training/checkpoint/export/benchmark/promotion/manifest overwrite\")"
+    ]
+  },
+  "decision": "B4C96_SAFE_GATE_WRAPPER_STATIC_REVIEW_FAIL_REQUIRES_PATCH",
+  "non_execution": {
+    "checkpoint_read": false,
+    "gate_eval": false,
+    "checkpoint_write": false,
+    "c_export": false,
+    "public_benchmark": false,
+    "promotion": false
+  }
+}
