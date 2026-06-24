@@ -1,0 +1,35 @@
+{
+  "route": "exp/15x15-b4c96-safe-rank-topk-gate-wrapper",
+  "script": "scripts/evaluate_policy_rank_topk_gate_b4c96.py",
+  "checks": {
+    "script_exists": true,
+    "has_model_a_channels_arg": true,
+    "has_model_b_channels_arg": true,
+    "has_model_a_blocks_arg": true,
+    "has_model_b_blocks_arg": true,
+    "has_board_size_arg": true,
+    "has_win_length_arg": true,
+    "has_model_a_arg": true,
+    "has_model_b_arg": true,
+    "has_dataset_arg": true,
+    "has_out_csv": true,
+    "has_out_report": true,
+    "uses_load_compatible_checkpoint": true,
+    "mentions_model_a_64_default": true,
+    "mentions_model_b_96_default": true,
+    "does_not_define_out_checkpoint_arg": true,
+    "does_not_call_torch_save": true,
+    "does_not_mention_export": false,
+    "does_not_mention_benchmark": false,
+    "does_not_mention_promotion": false
+  },
+  "decision": "B4C96_SAFE_GATE_WRAPPER_STATIC_VALIDATION_FAIL_REVIEW_REQUIRED",
+  "non_execution": {
+    "checkpoint_read": false,
+    "gate_eval": false,
+    "checkpoint_write": false,
+    "c_export": false,
+    "public_benchmark": false,
+    "promotion": false
+  }
+}
