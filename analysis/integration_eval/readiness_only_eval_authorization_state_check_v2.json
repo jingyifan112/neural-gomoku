@@ -1,0 +1,43 @@
+{
+  "route": "exp/15x15-corrected-readiness-only-eval-auth-state-check",
+  "eval_scope": "corrected static readiness-only eval of analysis/integration_eval/eval_authorization_route_ledger.md, fixing the previous evaluator logic bug by treating checkpoint_read_performed=False as a passing non-execution guard, only to verify authorization state consistency",
+  "input_artifact": "analysis/integration_eval/eval_authorization_route_ledger.md",
+  "checkpoint_path": "NOT REQUIRED",
+  "checkpoint_read_performed": false,
+  "outputs": [
+    "analysis/integration_eval/readiness_only_eval_authorization_state_check_v2.json",
+    "analysis/integration_eval/readiness_only_eval_authorization_state_check_v2.md"
+  ],
+  "timestamp_utc": "2026-06-24T02:42:50.534840+00:00",
+  "authorization_checks": {
+    "input_artifact_exists": true,
+    "required_inactive_authorization_tokens_present": true,
+    "forbidden_active_authorization_tokens_absent": true,
+    "required_route_markers_present": true,
+    "no_eval_authorized": true,
+    "no_checkpoint_read_authorized": true,
+    "no_training_authorized": true,
+    "no_export_authorized": true,
+    "no_benchmark_authorized": true,
+    "no_promotion_authorized": true,
+    "no_current_best_overwrite_authorized": true
+  },
+  "non_execution_guards": {
+    "checkpoint_path_not_required": true,
+    "checkpoint_read_performed_false_is_expected": true,
+    "no_training": true,
+    "no_checkpoint_write": true,
+    "no_c_export": true,
+    "no_public_benchmark": true,
+    "no_promotion": true,
+    "no_current_best_overwrite": true,
+    "no_manifest_overwrite": true,
+    "no_old_untracked_modification": true,
+    "old_outputs_not_overwritten": true
+  },
+  "missing_inactive_tokens": [],
+  "present_forbidden_active_tokens": [],
+  "missing_route_markers": [],
+  "previous_logic_bug_corrected": "checkpoint_read_performed=False is treated as expected non-execution, not as a failing boolean in all(checks.values()).",
+  "decision": "PASS_CORRECTED_STATIC_READINESS_ONLY_AUTHORIZATION_STATE_CHECK"
+}
