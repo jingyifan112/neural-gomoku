@@ -1,0 +1,102 @@
+{
+  "route": "exp/15x15-capacity-data-pairing-design",
+  "timestamp_utc": "2026-06-24T02:59:12.138179+00:00",
+  "input_audit": "analysis/integration_eval/capacity_data_pairing_audit.json",
+  "audit_decision": "CAPACITY_DATA_PAIRING_AUDIT_COMPLETE_READY_FOR_DESIGN_NO_TRAINING",
+  "primary_train": {
+    "path": "analysis/public_benchmark_eval/rapfi_teacher_policy_multisuppress_dataset_corpus8_selected.json",
+    "role": "primary increased-data policy repair training candidate",
+    "reason": "This is the most direct increased-data candidate for teacher-divergence repair: it upgrades the earlier single-suppress formulation to multi-suppress rows.",
+    "row_count": 25
+  },
+  "supporting_data": [
+    {
+      "path": "analysis/integration_eval/policy_only_multisuppress_dryrun_metrics.csv",
+      "role": "multi-suppress readiness/gate metrics",
+      "row_count": 25
+    },
+    {
+      "path": "analysis/integration_eval/policy_only_rank_topk_gate_run1_metrics.csv",
+      "role": "rank/top-k gate evidence",
+      "row_count": 25
+    },
+    {
+      "path": "analysis/integration_eval/policy_only_rank_topk_protected_nosave_probe_group_metrics.csv",
+      "role": "protected group evidence for rank/top-k route",
+      "row_count": 3
+    },
+    {
+      "path": "analysis/integration_eval/teacher_divergence_expanded_candidate_manifest_with_fills.csv",
+      "role": "expanded teacher-divergence candidate pool / future scaling source",
+      "row_count": 362
+    }
+  ],
+  "gate_data": [
+    {
+      "path": "analysis/integration_eval/retention_family_training_consumer_adapter_eval_dataset.json",
+      "role": "retention-family eval/gate set",
+      "row_count": 9
+    },
+    {
+      "path": "analysis/integration_eval/retention_family_training_consumer_adapter_train_weighted_dataset.json",
+      "role": "small weighted adapter train/control set; not sufficient alone for capacity increase",
+      "row_count": 2
+    },
+    {
+      "path": "analysis/integration_eval/retention_family_materialized_split_manifest.csv",
+      "role": "heldout / family split manifest for gate design",
+      "row_count": 11
+    }
+  ],
+  "capacity_target": {
+    "name": "capacity_B_b4c96_data_supported_probe_candidate",
+    "type": "width-increase candidate, data-supported rerun only",
+    "prior_history": [
+      "analysis/integration_eval/capacity_candidate_b_b4c96_init_report.md",
+      "analysis/integration_eval/capacity_candidate_b_b4c96_train_v1_fixed_probe.md",
+      "analysis/integration_eval/capacity_candidate_b_b4c96_train_v2_fixed_probe.md",
+      "analysis/integration_eval/capacity_sweep_a_b_conclusion.md"
+    ],
+    "rationale": "Capacity B is preferred for a minimal data-supported revisit because it is a known capacity-upgrade path with prior reports. It previously did not justify promotion, but those runs should not be treated as satisfying the mentor requirement because they were not cleanly paired with the current increased-data policy/multi-suppress route.",
+    "not_authorized_yet": [
+      "no training",
+      "no checkpoint read",
+      "no checkpoint write",
+      "no export",
+      "no benchmark",
+      "no promotion"
+    ]
+  },
+  "mentor_alignment": {
+    "requirement": "model capacity increase must correspond to increased training data",
+    "design_response": "Do not run a capacity probe unless it is explicitly paired with the increased multi-suppress / teacher-divergence data side and a retention gate.",
+    "status": "design_ready_but_training_not_authorized"
+  },
+  "proposed_next_preflight": {
+    "route": "exp/15x15-capacity-data-pairing-preflight",
+    "purpose": "Discover the exact trainer/evaluator command class and verify input/output paths for a later explicitly authorized no-promotion training probe.",
+    "must_check": [
+      "exact trainer script",
+      "exact dataset argument name",
+      "exact gate/eval script or static evaluator",
+      "whether capacity B initialization exists as code path",
+      "new output checkpoint path under checkpoints/probes/ only",
+      "new eval output paths under analysis/integration_eval/capacity_data_pairing_probe_preflight or similar",
+      "guards against current_best overwrite"
+    ],
+    "codex_needed": false,
+    "codex_note": "Codex is not needed for this design. Codex may be useful after preflight if the existing training wrapper cannot express the intended capacity/data pairing safely."
+  },
+  "design_constraints": {
+    "training_not_authorized_in_this_route": true,
+    "checkpoint_read_not_authorized_in_this_route": true,
+    "checkpoint_write_not_authorized_in_this_route": true,
+    "c_export_not_authorized": true,
+    "public_benchmark_not_authorized": true,
+    "promotion_not_authorized": true,
+    "current_best_overwrite_not_authorized": true,
+    "manifest_overwrite_not_authorized": true,
+    "old_untracked_modification_not_authorized": true
+  },
+  "decision": "CAPACITY_DATA_PAIRING_DESIGN_COMPLETE_READY_FOR_PREFLIGHT_NO_TRAINING"
+}
