@@ -1,0 +1,269 @@
+{
+  "route": "exp/15x15-capacity-data-pairing-audit",
+  "timestamp_utc": "2026-06-24T02:51:47.685336+00:00",
+  "scope": "Static audit of whether increased training-data artifacts and previous capacity-upgrade history are both present enough to design a data-supported capacity probe.",
+  "data_inventory": [
+    {
+      "path": "analysis/public_benchmark_eval/rapfi_teacher_policy_multisuppress_dataset_corpus8_selected.json",
+      "exists": true,
+      "kind": "json",
+      "row_count": 25,
+      "top_level_type": "dict",
+      "top_level_keys": [
+        "checkpoint",
+        "description",
+        "margin",
+        "max_suppress",
+        "name",
+        "samples",
+        "skipped",
+        "source_dataset",
+        "summary",
+        "top_k"
+      ],
+      "notes": [
+        "row_count_from_key=samples"
+      ],
+      "name": "policy_only_multisuppress_dataset",
+      "role": "teacher-divergence policy repair data; multi-suppress objective candidate"
+    },
+    {
+      "path": "analysis/integration_eval/policy_only_multisuppress_dryrun_metrics.csv",
+      "exists": true,
+      "kind": "csv",
+      "row_count": 25,
+      "top_level_type": null,
+      "top_level_keys": null,
+      "notes": [
+        "csv_count_excludes_header"
+      ],
+      "name": "policy_only_multisuppress_dryrun_metrics",
+      "role": "static dry-run metrics for multi-suppress readiness"
+    },
+    {
+      "path": "analysis/integration_eval/policy_only_rank_topk_gate_run1_metrics.csv",
+      "exists": true,
+      "kind": "csv",
+      "row_count": 25,
+      "top_level_type": null,
+      "top_level_keys": null,
+      "notes": [
+        "csv_count_excludes_header"
+      ],
+      "name": "policy_only_rank_topk_gate_run1_metrics",
+      "role": "rank/top-k gate metrics from prior route"
+    },
+    {
+      "path": "analysis/integration_eval/policy_only_rank_topk_protected_nosave_probe_group_metrics.csv",
+      "exists": true,
+      "kind": "csv",
+      "row_count": 3,
+      "top_level_type": null,
+      "top_level_keys": null,
+      "notes": [
+        "csv_count_excludes_header"
+      ],
+      "name": "policy_only_rank_topk_protected_group_metrics",
+      "role": "protected group metrics for rank/top-k probe"
+    },
+    {
+      "path": "analysis/integration_eval/teacher_divergence_expanded_candidate_manifest_with_fills.csv",
+      "exists": true,
+      "kind": "csv",
+      "row_count": 362,
+      "top_level_type": null,
+      "top_level_keys": null,
+      "notes": [
+        "csv_count_excludes_header"
+      ],
+      "name": "teacher_divergence_expanded_candidate_manifest_with_fills",
+      "role": "expanded teacher-divergence candidate manifest with fill status"
+    },
+    {
+      "path": "analysis/integration_eval/teacher_divergence_expanded_candidate_manifest_with_board_joins.csv",
+      "exists": true,
+      "kind": "csv",
+      "row_count": 362,
+      "top_level_type": null,
+      "top_level_keys": null,
+      "notes": [
+        "csv_count_excludes_header"
+      ],
+      "name": "teacher_divergence_expanded_candidate_manifest_with_board_joins",
+      "role": "teacher-divergence candidate manifest after board joins"
+    },
+    {
+      "path": "analysis/integration_eval/retention_family_training_consumer_adapter_train_weighted_dataset.json",
+      "exists": true,
+      "kind": "json",
+      "row_count": 2,
+      "top_level_type": "dict",
+      "top_level_keys": [
+        "metadata",
+        "rows"
+      ],
+      "notes": [
+        "row_count_from_key=rows"
+      ],
+      "name": "retention_family_training_consumer_adapter_train_weighted_dataset",
+      "role": "weighted retention-family adapter training data"
+    },
+    {
+      "path": "analysis/integration_eval/retention_family_training_consumer_adapter_eval_dataset.json",
+      "exists": true,
+      "kind": "json",
+      "row_count": 9,
+      "top_level_type": "dict",
+      "top_level_keys": [
+        "metadata",
+        "rows"
+      ],
+      "notes": [
+        "row_count_from_key=rows"
+      ],
+      "name": "retention_family_training_consumer_adapter_eval_dataset",
+      "role": "retention-family eval/gate data"
+    }
+  ],
+  "capacity_inventory": [
+    {
+      "path": "analysis/integration_eval/capacity_upgrade_audit.md",
+      "exists": true,
+      "kind": "md",
+      "row_count": 139,
+      "top_level_type": null,
+      "top_level_keys": null,
+      "notes": [
+        "md_line_count_only",
+        "mentions_fail",
+        "mentions_non_execution_guard"
+      ],
+      "name": "capacity_upgrade_audit",
+      "role": "prior capacity upgrade audit"
+    },
+    {
+      "path": "analysis/integration_eval/capacity_candidate_a_b6c64_init_report.md",
+      "exists": true,
+      "kind": "md",
+      "row_count": 90,
+      "top_level_type": null,
+      "top_level_keys": null,
+      "notes": [
+        "md_line_count_only",
+        "mentions_pass"
+      ],
+      "name": "capacity_candidate_a_b6c64_init_report",
+      "role": "capacity A b6c64 warm-start/init route"
+    },
+    {
+      "path": "analysis/integration_eval/capacity_candidate_a_b6c64_train_v1_probe.md",
+      "exists": true,
+      "kind": "md",
+      "row_count": 92,
+      "top_level_type": null,
+      "top_level_keys": null,
+      "notes": [
+        "md_line_count_only"
+      ],
+      "name": "capacity_candidate_a_b6c64_train_v1_probe",
+      "role": "capacity A train v1 result"
+    },
+    {
+      "path": "analysis/integration_eval/capacity_candidate_a_b6c64_train_v2_probe.md",
+      "exists": true,
+      "kind": "md",
+      "row_count": 63,
+      "top_level_type": null,
+      "top_level_keys": null,
+      "notes": [
+        "md_line_count_only",
+        "mentions_fail"
+      ],
+      "name": "capacity_candidate_a_b6c64_train_v2_probe",
+      "role": "capacity A train v2 result"
+    },
+    {
+      "path": "analysis/integration_eval/capacity_candidate_b_b4c96_init_report.md",
+      "exists": true,
+      "kind": "md",
+      "row_count": 75,
+      "top_level_type": null,
+      "top_level_keys": null,
+      "notes": [
+        "md_line_count_only",
+        "mentions_pass"
+      ],
+      "name": "capacity_candidate_b_b4c96_init_report",
+      "role": "capacity B b4c96 warm-start/init route"
+    },
+    {
+      "path": "analysis/integration_eval/capacity_candidate_b_b4c96_train_v1_fixed_probe.md",
+      "exists": true,
+      "kind": "md",
+      "row_count": 89,
+      "top_level_type": null,
+      "top_level_keys": null,
+      "notes": [
+        "md_line_count_only"
+      ],
+      "name": "capacity_candidate_b_b4c96_train_v1_fixed_probe",
+      "role": "capacity B train v1 fixed result"
+    },
+    {
+      "path": "analysis/integration_eval/capacity_candidate_b_b4c96_train_v2_fixed_probe.md",
+      "exists": true,
+      "kind": "md",
+      "row_count": 72,
+      "top_level_type": null,
+      "top_level_keys": null,
+      "notes": [
+        "md_line_count_only"
+      ],
+      "name": "capacity_candidate_b_b4c96_train_v2_fixed_probe",
+      "role": "capacity B train v2 fixed result"
+    },
+    {
+      "path": "analysis/integration_eval/capacity_sweep_a_b_conclusion.md",
+      "exists": true,
+      "kind": "md",
+      "row_count": 127,
+      "top_level_type": null,
+      "top_level_keys": null,
+      "notes": [
+        "md_line_count_only",
+        "mentions_fail"
+      ],
+      "name": "capacity_sweep_a_b_conclusion",
+      "role": "prior capacity A/B conclusion"
+    }
+  ],
+  "known_csv_json_data_row_total": 813,
+  "audit_findings": [
+    "DATA_ARTIFACTS_PRESENT",
+    "CAPACITY_HISTORY_PRESENT",
+    "DATA_VOLUME_CAN_BE_QUANTIFIED_FOR_EXISTING_CSV_JSON_ARTIFACTS",
+    "NO_CHECKPOINT_READ_PERFORMED",
+    "NO_TRAINING_PERFORMED",
+    "NO_EXPORT_PERFORMED",
+    "NO_BENCHMARK_PERFORMED",
+    "NO_PROMOTION_PERFORMED"
+  ],
+  "recommended_next_route": {
+    "route": "exp/15x15-capacity-data-pairing-design",
+    "purpose": "Define a concrete data-supported capacity probe: choose one increased-data training set, one heldout/retention gate set, one capacity target, and one strict no-promotion training/eval protocol.",
+    "requires_codex": false,
+    "codex_note": "Codex is not needed for this audit. Codex may become useful later if the training/eval wrapper needs code changes or if we need to refactor trainer arguments safely."
+  },
+  "non_execution_guards": {
+    "checkpoint_read": false,
+    "training": false,
+    "checkpoint_write": false,
+    "c_export": false,
+    "public_benchmark": false,
+    "promotion": false,
+    "current_best_overwrite": false,
+    "manifest_overwrite": false,
+    "old_untracked_modification": false
+  },
+  "decision": "CAPACITY_DATA_PAIRING_AUDIT_COMPLETE_READY_FOR_DESIGN_NO_TRAINING"
+}
