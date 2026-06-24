@@ -1,0 +1,1178 @@
+{
+  "route": "exp/15x15-capacity-data-pairing-preflight",
+  "timestamp_utc": "2026-06-24T03:07:19.216051+00:00",
+  "input_design": "analysis/integration_eval/capacity_data_pairing_design.json",
+  "design_decision": "CAPACITY_DATA_PAIRING_DESIGN_COMPLETE_READY_FOR_PREFLIGHT_NO_TRAINING",
+  "input_status": [
+    {
+      "path": "analysis/public_benchmark_eval/rapfi_teacher_policy_multisuppress_dataset_corpus8_selected.json",
+      "exists": true,
+      "is_file": true
+    },
+    {
+      "path": "analysis/integration_eval/policy_only_multisuppress_dryrun_metrics.csv",
+      "exists": true,
+      "is_file": true
+    },
+    {
+      "path": "analysis/integration_eval/policy_only_rank_topk_gate_run1_metrics.csv",
+      "exists": true,
+      "is_file": true
+    },
+    {
+      "path": "analysis/integration_eval/retention_family_training_consumer_adapter_eval_dataset.json",
+      "exists": true,
+      "is_file": true
+    },
+    {
+      "path": "analysis/integration_eval/retention_family_materialized_split_manifest.csv",
+      "exists": true,
+      "is_file": true
+    },
+    {
+      "path": "analysis/integration_eval/capacity_data_pairing_design.json",
+      "exists": true,
+      "is_file": true
+    },
+    {
+      "path": "analysis/integration_eval/capacity_data_pairing_design.md",
+      "exists": true,
+      "is_file": true
+    }
+  ],
+  "checkpoint_status_existence_only": [
+    {
+      "path": "checkpoints/15x15_current_best_margin_g2m13_m15_3pair_b.pt",
+      "exists": true,
+      "content_read": false
+    },
+    {
+      "path": "checkpoints/15x15_current_best.pt",
+      "exists": true,
+      "content_read": false
+    }
+  ],
+  "likely_script_discovery": [
+    {
+      "path": "scripts/init_capacity_candidate_b_b4c96.py",
+      "exists": true,
+      "arg_lines": [
+        "15: parser.add_argument(",
+        "20: parser.add_argument(",
+        "21: \"--output\",",
+        "25: parser.add_argument(\"--board-size\", type=int, default=15)",
+        "26: parser.add_argument(\"--source-channels\", type=int, default=64)",
+        "27: parser.add_argument(\"--target-channels\", type=int, default=96)",
+        "28: parser.add_argument(\"--blocks\", type=int, default=4)",
+        "29: parser.add_argument(\"--win-length\", type=int, default=5)",
+        "30: parser.add_argument(\"--seed\", type=int, default=29)"
+      ],
+      "checkpoint_refs": [
+        "18: default=Path(\"checkpoints/15x15_current_best_margin_g2m13_m15_3pair_b.pt\"),",
+        "23: default=Path(\"checkpoints/15x15_capacity_b_b4c96_warmstart.pt\"),"
+      ],
+      "output_refs": [
+        "21: \"--output\","
+      ],
+      "guards": []
+    },
+    {
+      "path": "scripts/init_capacity_candidate_a_b6c64.py",
+      "exists": true,
+      "arg_lines": [
+        "15: parser.add_argument(",
+        "20: parser.add_argument(",
+        "21: \"--output\",",
+        "25: parser.add_argument(\"--board-size\", type=int, default=15)",
+        "26: parser.add_argument(\"--channels\", type=int, default=64)",
+        "27: parser.add_argument(\"--source-blocks\", type=int, default=4)",
+        "28: parser.add_argument(\"--target-blocks\", type=int, default=6)",
+        "29: parser.add_argument(\"--win-length\", type=int, default=5)",
+        "30: parser.add_argument(\"--seed\", type=int, default=23)"
+      ],
+      "checkpoint_refs": [
+        "18: default=Path(\"checkpoints/15x15_current_best_margin_g2m13_m15_3pair_b.pt\"),",
+        "23: default=Path(\"checkpoints/15x15_capacity_a_b6c64_warmstart.pt\"),"
+      ],
+      "output_refs": [
+        "21: \"--output\","
+      ],
+      "guards": []
+    },
+    {
+      "path": "scripts/policy_only_multisuppress_dryrun.py",
+      "exists": false,
+      "arg_lines": [],
+      "checkpoint_refs": [],
+      "output_refs": [],
+      "guards": []
+    },
+    {
+      "path": "scripts/train_teacher_divergence_policy_probe.py",
+      "exists": true,
+      "arg_lines": [
+        "47: parser.add_argument(",
+        "48: \"--dataset\",",
+        "52: parser.add_argument(",
+        "57: parser.add_argument(",
+        "58: \"--out-checkpoint\",",
+        "62: parser.add_argument(",
+        "67: parser.add_argument(",
+        "72: parser.add_argument(\"--board-size\", type=int, default=15)",
+        "73: parser.add_argument(\"--win-length\", type=int, default=5)",
+        "74: parser.add_argument(\"--channels\", type=int, default=64)",
+        "75: parser.add_argument(\"--blocks\", type=int, default=4)",
+        "76: parser.add_argument(\"--epochs\", type=int, default=80)",
+        "77: parser.add_argument(\"--lr\", type=float, default=3e-5)",
+        "78: parser.add_argument(\"--kl-weight\", type=float, default=0.25)",
+        "79: parser.add_argument(\"--weight-decay\", type=float, default=1e-4)",
+        "80: parser.add_argument(\"--seed\", type=int, default=17)",
+        "81: parser.add_argument(\"--print-every\", type=int, default=10)",
+        "82: parser.add_argument(",
+        "87: parser.add_argument(\"--dry-run\", action=\"store_true\")",
+        "88: parser.add_argument(\"--no-save\", action=\"store_true\")",
+        "89: parser.add_argument(\"--no-strict-splits\", action=\"store_true\")",
+        "90: parser.add_argument(\"--device\", choices=(\"auto\", \"cpu\", \"cuda\"), default=\"auto\")"
+      ],
+      "checkpoint_refs": [
+        "55: default=Path(\"checkpoints/15x15_current_best_margin_g2m13_m15_3pair_b.pt\"),",
+        "60: default=Path(\"checkpoints/15x15_teacher_divergence_policy_probe.pt\"),",
+        "598: lines.append(f\"- out_checkpoint: `{args.out_checkpoint}`\")",
+        "688: print(f\"out_checkpoint={args.out_checkpoint}\")",
+        "773: args.out_checkpoint.parent.mkdir(parents=True, exist_ok=True)",
+        "796: args.out_checkpoint,",
+        "806: print(f\"wrote checkpoint: {args.out_checkpoint}\")"
+      ],
+      "output_refs": [
+        "63: \"--eval-csv\",",
+        "68: \"--report\","
+      ],
+      "guards": [
+        "87: parser.add_argument(\"--dry-run\", action=\"store_true\")",
+        "712: if args.dry_run:",
+        "713: print(\"dry-run: no training, no checkpoint, no eval/report writes\")"
+      ]
+    },
+    {
+      "path": "scripts/train_teacher_divergence_policy_mixed_ce_anchor_probe.py",
+      "exists": true,
+      "arg_lines": [
+        "47: parser.add_argument(",
+        "48: \"--dataset\",",
+        "52: parser.add_argument(",
+        "57: parser.add_argument(",
+        "58: \"--out-checkpoint\",",
+        "62: parser.add_argument(",
+        "67: parser.add_argument(",
+        "72: parser.add_argument(\"--board-size\", type=int, default=15)",
+        "73: parser.add_argument(\"--win-length\", type=int, default=5)",
+        "74: parser.add_argument(\"--channels\", type=int, default=64)",
+        "75: parser.add_argument(\"--blocks\", type=int, default=4)",
+        "76: parser.add_argument(\"--epochs\", type=int, default=80)",
+        "77: parser.add_argument(\"--lr\", type=float, default=3e-5)",
+        "78: parser.add_argument(\"--kl-weight\", type=float, default=0.35)",
+        "79: parser.add_argument(",
+        "87: parser.add_argument(\"--weight-decay\", type=float, default=1e-4)",
+        "88: parser.add_argument(\"--seed\", type=int, default=17)",
+        "89: parser.add_argument(\"--print-every\", type=int, default=10)",
+        "90: parser.add_argument(",
+        "95: parser.add_argument(",
+        "100: parser.add_argument(",
+        "106: parser.add_argument(",
+        "113: parser.add_argument(",
+        "118: parser.add_argument(\"--dry-run\", action=\"store_true\")",
+        "119: parser.add_argument(\"--no-save\", action=\"store_true\")",
+        "120: parser.add_argument(\"--no-strict-splits\", action=\"store_true\")",
+        "121: parser.add_argument(\"--device\", choices=(\"auto\", \"cpu\", \"cuda\"), default=\"auto\")"
+      ],
+      "checkpoint_refs": [
+        "55: default=Path(\"checkpoints/15x15_current_best_margin_g2m13_m15_3pair_b.pt\"),",
+        "60: default=Path(\"checkpoints/15x15_teacher_divergence_policy_mixed_ce_anchor_probe.pt\"),",
+        "632: lines.append(f\"- out_checkpoint: `{args.out_checkpoint}`\")",
+        "760: print(f\"out_checkpoint={args.out_checkpoint}\")",
+        "931: args.out_checkpoint.parent.mkdir(parents=True, exist_ok=True)",
+        "960: args.out_checkpoint,",
+        "970: print(f\"wrote checkpoint: {args.out_checkpoint}\")"
+      ],
+      "output_refs": [
+        "63: \"--eval-csv\",",
+        "68: \"--report\","
+      ],
+      "guards": [
+        "118: parser.add_argument(\"--dry-run\", action=\"store_true\")",
+        "817: if args.dry_run:",
+        "818: print(\"dry-run: no training, no checkpoint, no eval/report writes\")"
+      ]
+    },
+    {
+      "path": "scripts/probe_retention_family_adapter_dataset.py",
+      "exists": true,
+      "arg_lines": [
+        "158: ap.add_argument(\"--adapter-json\", type=Path, required=True)",
+        "159: ap.add_argument(\"--checkpoint\", type=Path, required=True)",
+        "160: ap.add_argument(\"--output-csv\", type=Path, required=True)",
+        "161: ap.add_argument(\"--output-md\", type=Path, required=True)",
+        "162: ap.add_argument(\"--probe-script\", type=Path, default=DEFAULT_PROBE_SCRIPT)",
+        "163: ap.add_argument(\"--tmp-dir\", type=Path, default=DEFAULT_TMP_DIR)",
+        "164: ap.add_argument(\"--board-size\", type=int, default=15)",
+        "165: ap.add_argument(\"--win-length\", type=int, default=5)",
+        "166: ap.add_argument(\"--channels\", type=int, default=64)",
+        "167: ap.add_argument(\"--blocks\", type=int, default=6)",
+        "168: ap.add_argument(\"--device-env\", default=\"\")",
+        "185: \"--dataset\",",
+        "187: \"--checkpoint\",",
+        "189: \"--output-csv\",",
+        "191: \"--output-md\","
+      ],
+      "checkpoint_refs": [
+        "159: ap.add_argument(\"--checkpoint\", type=Path, required=True)",
+        "187: \"--checkpoint\","
+      ],
+      "output_refs": [
+        "158: ap.add_argument(\"--adapter-json\", type=Path, required=True)",
+        "160: ap.add_argument(\"--output-csv\", type=Path, required=True)",
+        "161: ap.add_argument(\"--output-md\", type=Path, required=True)",
+        "189: \"--output-csv\",",
+        "191: \"--output-md\","
+      ],
+      "guards": []
+    },
+    {
+      "path": "scripts/evaluate_retention_family_adapter_gates.py",
+      "exists": true,
+      "arg_lines": [
+        "355: ap.add_argument(\"--train-adapter-json\", type=Path, required=True)",
+        "356: ap.add_argument(\"--eval-adapter-json\", type=Path, required=True)",
+        "357: ap.add_argument(\"--train-before-csv\", type=Path, required=True)",
+        "358: ap.add_argument(\"--train-after-csv\", type=Path, required=True)",
+        "359: ap.add_argument(\"--eval-before-csv\", type=Path, required=True)",
+        "360: ap.add_argument(\"--eval-after-csv\", type=Path, required=True)",
+        "361: ap.add_argument(\"--max-eval-rank-regressed\", type=int, default=0)",
+        "362: ap.add_argument(\"--max-eval-prob-regressed\", type=int, default=0)",
+        "363: ap.add_argument(",
+        "369: ap.add_argument(\"--require-train-improvement\", action=\"store_true\")",
+        "370: ap.add_argument(\"--out-json\", type=Path, default=DEFAULT_OUT_JSON)",
+        "371: ap.add_argument(\"--out-md\", type=Path, default=DEFAULT_OUT_MD)",
+        "372: ap.add_argument(\"--fail-exit-code\", type=int, default=1)"
+      ],
+      "checkpoint_refs": [],
+      "output_refs": [
+        "355: ap.add_argument(\"--train-adapter-json\", type=Path, required=True)",
+        "356: ap.add_argument(\"--eval-adapter-json\", type=Path, required=True)",
+        "357: ap.add_argument(\"--train-before-csv\", type=Path, required=True)",
+        "358: ap.add_argument(\"--train-after-csv\", type=Path, required=True)",
+        "359: ap.add_argument(\"--eval-before-csv\", type=Path, required=True)",
+        "360: ap.add_argument(\"--eval-after-csv\", type=Path, required=True)",
+        "370: ap.add_argument(\"--out-json\", type=Path, default=DEFAULT_OUT_JSON)",
+        "371: ap.add_argument(\"--out-md\", type=Path, default=DEFAULT_OUT_MD)"
+      ],
+      "guards": []
+    },
+    {
+      "path": "scripts/run_retention_family_gated_training_probe.py",
+      "exists": true,
+      "arg_lines": [
+        "340: ap.add_argument(\"--mode\", choices=[\"preflight\", \"train-and-gate\", \"gates-only\"], default=\"preflight\")",
+        "341: ap.add_argument(\"--train-manifest\", type=Path, default=DEFAULT_TRAIN_MANIFEST)",
+        "342: ap.add_argument(\"--eval-manifest\", type=Path, default=DEFAULT_EVAL_MANIFEST)",
+        "343: ap.add_argument(\"--candidate-checkpoint\", type=Path, required=True)",
+        "344: ap.add_argument(\"--final-checkpoint\", type=Path, default=None)",
+        "345: ap.add_argument(\"--train-cmd\", default=\"\")",
+        "346: ap.add_argument(\"--gate-cmd\", action=\"append\", default=[])",
+        "347: ap.add_argument(\"--promote-on-pass\", action=\"store_true\")",
+        "348: ap.add_argument(\"--quarantine-on-fail\", action=\"store_true\")",
+        "349: ap.add_argument(\"--quarantine-dir\", type=Path, default=Path(\"checkpoints/failed_retention_family_probe\"))",
+        "350: ap.add_argument(\"--log-dir\", type=Path, default=DEFAULT_LOG_DIR)",
+        "351: ap.add_argument(\"--out-json\", type=Path, default=DEFAULT_OUT_JSON)",
+        "352: ap.add_argument(\"--out-md\", type=Path, default=DEFAULT_OUT_MD)"
+      ],
+      "checkpoint_refs": [],
+      "output_refs": [
+        "351: ap.add_argument(\"--out-json\", type=Path, default=DEFAULT_OUT_JSON)",
+        "352: ap.add_argument(\"--out-md\", type=Path, default=DEFAULT_OUT_MD)"
+      ],
+      "guards": []
+    }
+  ],
+  "candidate_script_summary": [
+    {
+      "path": "scripts/accept_teacher_divergence_retention_clean_v2_dataset.py",
+      "mentions_checkpoint": false,
+      "mentions_dataset": true,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 383
+    },
+    {
+      "path": "scripts/apply_retention_family_adapter_train_weights.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": true,
+      "mentions_current_best_guard": false,
+      "line_count": 292
+    },
+    {
+      "path": "scripts/apply_retention_family_materialized_split.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": true,
+      "mentions_current_best_guard": false,
+      "line_count": 613
+    },
+    {
+      "path": "scripts/audit_retention_family_run1_loss_path.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 315
+    },
+    {
+      "path": "scripts/audit_retention_family_training_consumers.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": true,
+      "mentions_current_best_guard": false,
+      "line_count": 551
+    },
+    {
+      "path": "scripts/audit_teacher_divergence_board_join.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 393
+    },
+    {
+      "path": "scripts/audit_teacher_divergence_normalized_trainer_compat.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": true,
+      "mentions_current_best_guard": false,
+      "line_count": 421
+    },
+    {
+      "path": "scripts/audit_teacher_divergence_round2_readiness.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": true,
+      "mentions_current_best_guard": false,
+      "line_count": 356
+    },
+    {
+      "path": "scripts/audit_teacher_divergence_run1_fixed_probe_heldout_inputs.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 472
+    },
+    {
+      "path": "scripts/audit_teacher_divergence_run1_promotion_readiness.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": false,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 376
+    },
+    {
+      "path": "scripts/audit_teacher_divergence_source_inventory.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": false,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 333
+    },
+    {
+      "path": "scripts/audit_teacher_divergence_tiny_posttrain_guards.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 493
+    },
+    {
+      "path": "scripts/build_rapfi_teacher_policy_multisuppress_dataset.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 103
+    },
+    {
+      "path": "scripts/build_retention_family_split_proposal.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 817
+    },
+    {
+      "path": "scripts/build_retention_family_training_consumer_adapter.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 675
+    },
+    {
+      "path": "scripts/build_retention_family_training_input_dryrun.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": true,
+      "mentions_current_best_guard": false,
+      "line_count": 464
+    },
+    {
+      "path": "scripts/build_teacher_divergence_expanded_manifest.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 704
+    },
+    {
+      "path": "scripts/build_teacher_divergence_retention_clean_v2_dataset.py",
+      "mentions_checkpoint": false,
+      "mentions_dataset": true,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 836
+    },
+    {
+      "path": "scripts/build_teacher_divergence_retention_dataset.py",
+      "mentions_checkpoint": false,
+      "mentions_dataset": true,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 579
+    },
+    {
+      "path": "scripts/build_teacher_divergence_retention_safety_v3_dataset.py",
+      "mentions_checkpoint": false,
+      "mentions_dataset": true,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 491
+    },
+    {
+      "path": "scripts/closeout_teacher_divergence_tiny_probe_guard_decision.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": false,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 382
+    },
+    {
+      "path": "scripts/design_retention_family_splits.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 323
+    },
+    {
+      "path": "scripts/design_teacher_divergence_run1_local_comparison_adapters.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 464
+    },
+    {
+      "path": "scripts/diagnose_retention_family_run1_loss_source.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 640
+    },
+    {
+      "path": "scripts/diagnose_retention_family_run1_nan.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 482
+    },
+    {
+      "path": "scripts/dispatch_teacher_divergence_run1_next_stage.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": false,
+      "mentions_dry_run": true,
+      "mentions_current_best_guard": false,
+      "line_count": 516
+    },
+    {
+      "path": "scripts/evaluate_candidate_g_policy.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 398
+    },
+    {
+      "path": "scripts/evaluate_candidate_h_value.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 295
+    },
+    {
+      "path": "scripts/evaluate_checkpoint.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": false,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 243
+    },
+    {
+      "path": "scripts/evaluate_policy_rank_topk_gate.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": true,
+      "mentions_current_best_guard": false,
+      "line_count": 519
+    },
+    {
+      "path": "scripts/evaluate_rapfi_failure_set.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 363
+    },
+    {
+      "path": "scripts/evaluate_retention_family_adapter_gates.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 570
+    },
+    {
+      "path": "scripts/evaluate_tactical_mid_must_block_cases.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": false,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 302
+    },
+    {
+      "path": "scripts/evaluate_tactical_mid_must_block_cases_c_engine.py",
+      "mentions_checkpoint": false,
+      "mentions_dataset": false,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 279
+    },
+    {
+      "path": "scripts/evaluate_tactical_mid_preterminal_actionable_cases.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": false,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 331
+    },
+    {
+      "path": "scripts/evaluate_tactical_mid_preterminal_actionable_cases_c_engine.py",
+      "mentions_checkpoint": false,
+      "mentions_dataset": false,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 323
+    },
+    {
+      "path": "scripts/evaluate_teacher_divergence_policy_probe_gates.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": false,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 345
+    },
+    {
+      "path": "scripts/export_teacher_divergence_round2_trainable_dryrun.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": true,
+      "mentions_current_best_guard": false,
+      "line_count": 406
+    },
+    {
+      "path": "scripts/export_teacher_divergence_round2_trainable_dryrun_legacy_normalized.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": true,
+      "mentions_current_best_guard": false,
+      "line_count": 223
+    },
+    {
+      "path": "scripts/fill_teacher_divergence_board_join.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 345
+    },
+    {
+      "path": "scripts/fill_teacher_divergence_current_best_probe.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 436
+    },
+    {
+      "path": "scripts/fill_teacher_divergence_current_best_probe_round2.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 757
+    },
+    {
+      "path": "scripts/fill_teacher_divergence_legacy_trainable_probe.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": false,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 387
+    },
+    {
+      "path": "scripts/fill_teacher_divergence_legacy_trainable_suppress.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": false,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 198
+    },
+    {
+      "path": "scripts/fill_teacher_divergence_suppress_build.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": false,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 363
+    },
+    {
+      "path": "scripts/fill_teacher_divergence_suppress_build_round2.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": true,
+      "mentions_current_best_guard": false,
+      "line_count": 392
+    },
+    {
+      "path": "scripts/finalize_teacher_divergence_run1_core_reuse_closeout.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": false,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 384
+    },
+    {
+      "path": "scripts/finalize_teacher_divergence_run1_route_aware_local_decision.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": false,
+      "mentions_dry_run": true,
+      "mentions_current_best_guard": false,
+      "line_count": 458
+    },
+    {
+      "path": "scripts/finalize_teacher_divergence_run1_route_aware_next_stage.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": false,
+      "mentions_dry_run": true,
+      "mentions_current_best_guard": false,
+      "line_count": 545
+    },
+    {
+      "path": "scripts/followup_teacher_divergence_run1_blocker_review.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": false,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 444
+    },
+    {
+      "path": "scripts/followup_teacher_divergence_run1_next_stage_dispatch.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": false,
+      "mentions_dry_run": true,
+      "mentions_current_best_guard": false,
+      "line_count": 500
+    },
+    {
+      "path": "scripts/init_capacity_candidate_a_b6c64.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": false,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 112
+    },
+    {
+      "path": "scripts/init_capacity_candidate_b_b4c96.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": false,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 158
+    },
+    {
+      "path": "scripts/inspect_teacher_divergence_next_direct_adapter_blockers.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 726
+    },
+    {
+      "path": "scripts/inspect_teacher_divergence_retention_sources.py",
+      "mentions_checkpoint": false,
+      "mentions_dataset": true,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 265
+    },
+    {
+      "path": "scripts/materialize_retention_family_split.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": false,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 416
+    },
+    {
+      "path": "scripts/plan_teacher_divergence_gated_training_dryrun_wrapper.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": true,
+      "mentions_current_best_guard": false,
+      "line_count": 367
+    },
+    {
+      "path": "scripts/plan_teacher_divergence_gated_training_review.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": false,
+      "mentions_dry_run": true,
+      "mentions_current_best_guard": false,
+      "line_count": 320
+    },
+    {
+      "path": "scripts/plan_teacher_divergence_legacy_trainable_normalization.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": true,
+      "mentions_current_best_guard": false,
+      "line_count": 377
+    },
+    {
+      "path": "scripts/plan_teacher_divergence_next_direct_probe_input_repair.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": false,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 538
+    },
+    {
+      "path": "scripts/plan_teacher_divergence_run1_direct_probe_eval_adapter.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": false,
+      "mentions_dry_run": true,
+      "mentions_current_best_guard": false,
+      "line_count": 416
+    },
+    {
+      "path": "scripts/plan_teacher_divergence_run1_fixed_probe_heldout.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": false,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 414
+    },
+    {
+      "path": "scripts/prepare_teacher_divergence_trainer_ready_dataset.py",
+      "mentions_checkpoint": false,
+      "mentions_dataset": true,
+      "mentions_dry_run": true,
+      "mentions_current_best_guard": false,
+      "line_count": 199
+    },
+    {
+      "path": "scripts/probe_policy_rank_topk_protected_nosave.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 319
+    },
+    {
+      "path": "scripts/probe_retention_family_adapter_dataset.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 339
+    },
+    {
+      "path": "scripts/probe_teacher_divergence_retention_dataset.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 358
+    },
+    {
+      "path": "scripts/review_retention_family_gate_threshold_policy.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": false,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 431
+    },
+    {
+      "path": "scripts/review_retention_family_run2_eval_prob_regressions.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 456
+    },
+    {
+      "path": "scripts/review_teacher_divergence_next_direct_manifest_normalization.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": false,
+      "mentions_dry_run": true,
+      "mentions_current_best_guard": false,
+      "line_count": 609
+    },
+    {
+      "path": "scripts/review_teacher_divergence_next_direct_repair_queue.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": false,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 709
+    },
+    {
+      "path": "scripts/review_teacher_divergence_run1_epsilon_prob_regressions.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": false,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 359
+    },
+    {
+      "path": "scripts/review_teacher_divergence_run1_local_comparison_dryrun.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": false,
+      "mentions_dry_run": true,
+      "mentions_current_best_guard": false,
+      "line_count": 407
+    },
+    {
+      "path": "scripts/review_teacher_divergence_run1_next_stage_blockers.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": false,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 423
+    },
+    {
+      "path": "scripts/route_teacher_divergence_run1_post_adapter_decision.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": false,
+      "mentions_dry_run": true,
+      "mentions_current_best_guard": false,
+      "line_count": 337
+    },
+    {
+      "path": "scripts/run_retention_family_gated_training_probe.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 485
+    },
+    {
+      "path": "scripts/run_teacher_divergence_gated_training_wrapper.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": true,
+      "mentions_current_best_guard": true,
+      "line_count": 697
+    },
+    {
+      "path": "scripts/run_teacher_divergence_regression_gated_policy_probe.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": false,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 407
+    },
+    {
+      "path": "scripts/run_teacher_divergence_run1_local_comparison_executor.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": false,
+      "mentions_dry_run": true,
+      "mentions_current_best_guard": false,
+      "line_count": 475
+    },
+    {
+      "path": "scripts/summarize_teacher_divergence_tiny_policy_margin_probe.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 271
+    },
+    {
+      "path": "scripts/train_candidate_g_policy_first_dry_run.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": true,
+      "mentions_current_best_guard": false,
+      "line_count": 824
+    },
+    {
+      "path": "scripts/train_candidate_g_teacher_policy.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": true,
+      "mentions_current_best_guard": false,
+      "line_count": 274
+    },
+    {
+      "path": "scripts/train_candidate_h_value_ranking.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": true,
+      "mentions_current_best_guard": false,
+      "line_count": 292
+    },
+    {
+      "path": "scripts/train_greedy_sparring_v10.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 584
+    },
+    {
+      "path": "scripts/train_greedy_sparring_v9.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 253
+    },
+    {
+      "path": "scripts/train_rapfi_failure_repair.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": true,
+      "mentions_current_best_guard": false,
+      "line_count": 453
+    },
+    {
+      "path": "scripts/train_rapfi_teacher_policy_margin.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": true,
+      "mentions_current_best_guard": true,
+      "line_count": 383
+    },
+    {
+      "path": "scripts/train_rapfi_teacher_policy_multisuppress_margin.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": true,
+      "mentions_current_best_guard": false,
+      "line_count": 125
+    },
+    {
+      "path": "scripts/train_rapfi_teacher_policy_rank_topk_probe.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": true,
+      "mentions_current_best_guard": true,
+      "line_count": 531
+    },
+    {
+      "path": "scripts/train_teacher_divergence_policy_anchor_probe.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": true,
+      "mentions_current_best_guard": false,
+      "line_count": 846
+    },
+    {
+      "path": "scripts/train_teacher_divergence_policy_mixed_ce_anchor_probe.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": true,
+      "mentions_current_best_guard": false,
+      "line_count": 981
+    },
+    {
+      "path": "scripts/train_teacher_divergence_policy_probe.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": true,
+      "mentions_current_best_guard": false,
+      "line_count": 817
+    },
+    {
+      "path": "scripts/train_v12l_margin_repair.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": true,
+      "mentions_current_best_guard": true,
+      "line_count": 398
+    },
+    {
+      "path": "scripts/train_v12l_margin_repair_frozen_bn.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": true,
+      "mentions_current_best_guard": true,
+      "line_count": 167
+    },
+    {
+      "path": "scripts/update_teacher_divergence_manifest_with_board_joins.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 353
+    },
+    {
+      "path": "scripts/update_teacher_divergence_manifest_with_fills.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": true,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 352
+    },
+    {
+      "path": "scripts/update_teacher_divergence_manifest_with_legacy_suppress_fill.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": false,
+      "mentions_dry_run": true,
+      "mentions_current_best_guard": false,
+      "line_count": 383
+    },
+    {
+      "path": "scripts/update_teacher_divergence_manifest_with_suppress_round2.py",
+      "mentions_checkpoint": true,
+      "mentions_dataset": false,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 462
+    },
+    {
+      "path": "scripts/validate_teacher_divergence_retention_dataset.py",
+      "mentions_checkpoint": false,
+      "mentions_dataset": true,
+      "mentions_dry_run": false,
+      "mentions_current_best_guard": false,
+      "line_count": 454
+    }
+  ],
+  "likely_training_scripts_existing": [
+    "scripts/apply_retention_family_adapter_train_weights.py",
+    "scripts/apply_retention_family_materialized_split.py",
+    "scripts/audit_retention_family_run1_loss_path.py",
+    "scripts/audit_retention_family_training_consumers.py",
+    "scripts/audit_teacher_divergence_board_join.py",
+    "scripts/audit_teacher_divergence_normalized_trainer_compat.py",
+    "scripts/audit_teacher_divergence_round2_readiness.py",
+    "scripts/audit_teacher_divergence_run1_fixed_probe_heldout_inputs.py",
+    "scripts/audit_teacher_divergence_tiny_posttrain_guards.py",
+    "scripts/build_rapfi_teacher_policy_multisuppress_dataset.py",
+    "scripts/build_retention_family_split_proposal.py",
+    "scripts/build_retention_family_training_consumer_adapter.py",
+    "scripts/build_retention_family_training_input_dryrun.py",
+    "scripts/build_teacher_divergence_expanded_manifest.py",
+    "scripts/design_retention_family_splits.py",
+    "scripts/design_teacher_divergence_run1_local_comparison_adapters.py",
+    "scripts/diagnose_retention_family_run1_loss_source.py",
+    "scripts/diagnose_retention_family_run1_nan.py",
+    "scripts/evaluate_candidate_g_policy.py",
+    "scripts/evaluate_candidate_h_value.py",
+    "scripts/evaluate_policy_rank_topk_gate.py",
+    "scripts/evaluate_rapfi_failure_set.py",
+    "scripts/evaluate_retention_family_adapter_gates.py",
+    "scripts/export_teacher_divergence_round2_trainable_dryrun.py",
+    "scripts/export_teacher_divergence_round2_trainable_dryrun_legacy_normalized.py",
+    "scripts/fill_teacher_divergence_board_join.py",
+    "scripts/fill_teacher_divergence_current_best_probe.py",
+    "scripts/fill_teacher_divergence_current_best_probe_round2.py",
+    "scripts/fill_teacher_divergence_suppress_build_round2.py",
+    "scripts/inspect_teacher_divergence_next_direct_adapter_blockers.py"
+  ],
+  "future_probe_paths": {
+    "candidate_checkpoint": "checkpoints/probes/15x15_capacity_data_pairing_b4c96_probe_candidate.pt",
+    "train_report": "analysis/integration_eval/capacity_data_pairing_probe/train_report.md",
+    "train_metrics": "analysis/integration_eval/capacity_data_pairing_probe/train_metrics.csv",
+    "gate_eval_json": "analysis/integration_eval/capacity_data_pairing_probe/gate_eval.json",
+    "gate_eval_md": "analysis/integration_eval/capacity_data_pairing_probe/gate_eval.md",
+    "closeout": "analysis/integration_eval/capacity_data_pairing_probe/closeout.md"
+  },
+  "future_paths_exist": {
+    "candidate_checkpoint": false,
+    "train_report": false,
+    "train_metrics": false,
+    "gate_eval_json": false,
+    "gate_eval_md": false,
+    "closeout": false
+  },
+  "preflight_checks": {
+    "design_json_exists": true,
+    "primary_multisuppress_dataset_exists": true,
+    "retention_eval_dataset_exists": true,
+    "capacity_b_init_script_exists": true,
+    "at_least_one_training_script_candidate_found": true,
+    "future_probe_outputs_do_not_exist_yet": true,
+    "checkpoint_content_read": false,
+    "training_executed": false,
+    "checkpoint_written": false,
+    "export_executed": false,
+    "benchmark_executed": false,
+    "promotion_executed": false
+  },
+  "pass_conditions": {
+    "design_json_exists": true,
+    "primary_multisuppress_dataset_exists": true,
+    "retention_eval_dataset_exists": true,
+    "capacity_b_init_script_exists": true,
+    "at_least_one_training_script_candidate_found": true,
+    "future_probe_outputs_do_not_exist_yet": true,
+    "checkpoint_content_not_read": true,
+    "training_not_executed": true,
+    "checkpoint_not_written": true,
+    "export_not_executed": true,
+    "benchmark_not_executed": true,
+    "promotion_not_executed": true
+  },
+  "recommended_authorization_template": {
+    "status": "TEMPLATE_ONLY_NOT_AUTHORIZATION",
+    "eval_scope": "no-promotion data-supported capacity probe pairing increased multi-suppress teacher-divergence data with a known b4c96 capacity target",
+    "primary_train_dataset": "analysis/public_benchmark_eval/rapfi_teacher_policy_multisuppress_dataset_corpus8_selected.json",
+    "gate_dataset": "analysis/integration_eval/retention_family_training_consumer_adapter_eval_dataset.json",
+    "base_checkpoint": "checkpoints/15x15_current_best_margin_g2m13_m15_3pair_b.pt",
+    "candidate_checkpoint": "checkpoints/probes/15x15_capacity_data_pairing_b4c96_probe_candidate.pt",
+    "forbidden": [
+      "overwrite current_best",
+      "overwrite original manifest",
+      "C export",
+      "public benchmark",
+      "promotion",
+      "modification of old untracked files"
+    ]
+  },
+  "codex_needed_now": false,
+  "codex_possible_next": "Codex may be useful only if the existing training scripts cannot safely express b4c96 capacity plus the selected multi-suppress dataset and retention gate.",
+  "decision": "CAPACITY_DATA_PAIRING_PREFLIGHT_PASS_READY_FOR_EXPLICIT_TRAINING_AUTHORIZATION"
+}
