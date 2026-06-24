@@ -1,0 +1,39 @@
+{
+  "route": "exp/15x15-readiness-only-eval-auth-state-check",
+  "eval_scope": "static readiness-only eval of the current eval authorization route ledger, only to verify that the recorded authorization state is internally consistent and that no eval/checkpoint/training/export/benchmark/promotion authorization is active",
+  "input_artifact": "analysis/integration_eval/eval_authorization_route_ledger.md",
+  "checkpoint_path": "NOT REQUIRED",
+  "outputs": [
+    "analysis/integration_eval/readiness_only_eval_authorization_state_check.json",
+    "analysis/integration_eval/readiness_only_eval_authorization_state_check.md"
+  ],
+  "timestamp_utc": "2026-06-24T02:01:41.644738+00:00",
+  "checks": {
+    "input_artifact_exists": true,
+    "checkpoint_path": "NOT REQUIRED",
+    "checkpoint_read_performed": false,
+    "required_inactive_tokens_present": true,
+    "forbidden_active_tokens_absent": true,
+    "required_route_markers_present": true,
+    "no_training_authorized": true,
+    "no_export_authorized": true,
+    "no_benchmark_authorized": true,
+    "no_promotion_authorized": true,
+    "no_current_best_overwrite_authorized": true
+  },
+  "missing_inactive_tokens": [],
+  "present_forbidden_active_tokens": [],
+  "missing_route_markers": [],
+  "decision": "FAIL_STATIC_READINESS_ONLY_AUTHORIZATION_STATE_CHECK",
+  "non_execution_guards": {
+    "no_checkpoint_read": true,
+    "no_training": true,
+    "no_checkpoint_write": true,
+    "no_c_export": true,
+    "no_public_benchmark": true,
+    "no_promotion": true,
+    "no_current_best_overwrite": true,
+    "no_manifest_overwrite": true,
+    "no_old_untracked_modification": true
+  }
+}
