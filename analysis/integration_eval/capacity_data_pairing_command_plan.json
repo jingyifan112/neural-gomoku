@@ -1,0 +1,45 @@
+{
+  "route": "exp/15x15-capacity-data-pairing-command-plan",
+  "base_branch": "exp/15x15-capacity-data-pairing-training-probe",
+  "base_commit": "459a6b5 Add capacity-data pairing training authorization discovery",
+  "decision": "CAPACITY_DATA_PAIRING_COMMAND_PLAN_COMPLETE_NEEDS_CORRECTED_TWO_STAGE_TRAINING_AUTHORIZATION",
+  "stage_a": {
+    "purpose": "initialize b4c96 warmstart checkpoint",
+    "script_class": "python scripts/init_capacity_candidate_b_b4c96.py",
+    "base_checkpoint": "checkpoints/15x15_current_best_margin_g2m13_m15_3pair_b.pt",
+    "warmstart_checkpoint_output": "checkpoints/probes/15x15_capacity_data_pairing_b4c96_warmstart.pt"
+  },
+  "stage_b": {
+    "purpose": "train no-promotion capacity-data pairing probe",
+    "script_class": "python scripts/train_rapfi_teacher_policy_rank_topk_probe.py",
+    "train_dataset": "analysis/public_benchmark_eval/rapfi_teacher_policy_multisuppress_dataset_corpus8_selected.json",
+    "init_checkpoint": "checkpoints/probes/15x15_capacity_data_pairing_b4c96_warmstart.pt",
+    "reference_checkpoint": "checkpoints/15x15_current_best_margin_g2m13_m15_3pair_b.pt",
+    "candidate_checkpoint_output": "checkpoints/probes/15x15_capacity_data_pairing_b4c96_probe_candidate.pt"
+  },
+  "stage_c": {
+    "purpose": "rank/top-k gate comparison",
+    "script_class": "python scripts/evaluate_policy_rank_topk_gate.py",
+    "model_a": "checkpoints/15x15_current_best_margin_g2m13_m15_3pair_b.pt",
+    "model_b": "checkpoints/probes/15x15_capacity_data_pairing_b4c96_probe_candidate.pt",
+    "gate_dataset": "analysis/public_benchmark_eval/rapfi_teacher_policy_multisuppress_dataset_corpus8_selected.json",
+    "outputs": [
+      "analysis/integration_eval/capacity_data_pairing_probe/gate_eval.csv",
+      "analysis/integration_eval/capacity_data_pairing_probe/gate_eval.md"
+    ]
+  },
+  "retention_gate_note": "retention-family eval dataset schema compatibility still needs a tiny check before executable retention gate use",
+  "codex_needed_now": false,
+  "codex_may_be_needed_next": true,
+  "non_execution": {
+    "checkpoint_read": false,
+    "training": false,
+    "checkpoint_write": false,
+    "c_export": false,
+    "public_benchmark": false,
+    "promotion": false,
+    "current_best_overwrite": false,
+    "manifest_overwrite": false,
+    "old_untracked_modification": false
+  }
+}
