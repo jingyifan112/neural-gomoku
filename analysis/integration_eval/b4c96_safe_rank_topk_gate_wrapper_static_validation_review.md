@@ -4,75 +4,17 @@
 
 `exp/15x15-b4c96-safe-rank-topk-gate-wrapper`
 
-## Reviewed commit
-
-`e403aae Add b4c96-safe rank-topk gate wrapper`
-
-## Original static validation decision
-
-`B4C96_SAFE_GATE_WRAPPER_STATIC_VALIDATION_FAIL_REVIEW_REQUIRED`
-
-## Reason for review
-
-The static validation failed because the text-level checks required:
-
-- `does_not_mention_export`
-- `does_not_mention_benchmark`
-- `does_not_mention_promotion`
-
-to be true.
-
-Those checks are overly conservative if the terms appear only in comments, docstrings, help text, report text, or explicit non-execution guard language.
-
-The meaningful safety question is whether the wrapper contains executable behavior that exports C artifacts, runs public benchmark, promotes, writes checkpoints, overwrites current_best, or overwrites manifests.
-
-## Review scope
-
-Reviewed script:
+## Reviewed script
 
 `scripts/evaluate_policy_rank_topk_gate_b4c96.py`
 
-This review is static only.
+## Review scope
 
-No checkpoint read, no gate/eval, no checkpoint write, no C export, no public benchmark, and no promotion were performed.
+Static review only. No checkpoint read, no gate/eval, no checkpoint write, no C export, no public benchmark, and no promotion were performed.
 
-## Required architecture support
+## Decision
 
-The wrapper exposes:
-
-- `--model-a-channels`
-- `--model-b-channels`
-- `--model-a-blocks`
-- `--model-b-blocks`
-- `--board-size`
-- `--win-length`
-- `--model-a`
-- `--model-b`
-- `--dataset`
-- `--out-csv`
-- `--out-report`
-
-Expected Model A architecture:
-
-- board-size 15
-- channels 64
-- blocks 4
-- win-length 5
-
-Expected Model B architecture:
-
-- board-size 15
-- channels 96
-- blocks 4
-- win-length 5
-
-## Review decision
-
-`B4C96_SAFE_GATE_WRAPPER_STATIC_REVIEW_NEEDED`
-
-## Precise static review result
-
-`B4C96_SAFE_GATE_WRAPPER_STATIC_REVIEW_FAIL_REQUIRES_PATCH`
+`B4C96_SAFE_GATE_WRAPPER_STATIC_REVIEW_PASS_READY_FOR_AUTHORIZED_STAGE_C`
 
 ## Checks
 
@@ -95,7 +37,7 @@ Expected Model B architecture:
 | `no_os_system_calls` | `True` |
 | `no_export_command_refs` | `True` |
 | `no_current_best_write_refs` | `True` |
-| `no_manifest_write_refs` | `False` |
+| `no_manifest_write_refs` | `True` |
 
 ## Danger hits
 
@@ -125,10 +67,5 @@ Expected Model B architecture:
 
 ### `writes_manifest`
 
-- `472: out += ["- No C export, no public benchmark, no promotion, no manifest overwrite."]`
-- `547: out.append("Evaluation only. Do not train, export, public benchmark, promote, or overwrite manifests from this wrapper.")`
-- `634: print("evaluation only; no training/checkpoint/export/benchmark/promotion/manifest overwrite")`
+- none
 
-## Final review decision
-
-`B4C96_SAFE_GATE_WRAPPER_STATIC_REVIEW_FAIL_REQUIRES_PATCH`

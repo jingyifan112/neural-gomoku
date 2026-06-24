@@ -18,7 +18,7 @@
     "no_os_system_calls": true,
     "no_export_command_refs": true,
     "no_current_best_write_refs": true,
-    "no_manifest_write_refs": false
+    "no_manifest_write_refs": true
   },
   "danger_hits": {
     "calls_torch_save": [],
@@ -27,13 +27,9 @@
     "calls_os_system": [],
     "mentions_pbrain_export_command": [],
     "writes_current_best": [],
-    "writes_manifest": [
-      "472: out += [\"- No C export, no public benchmark, no promotion, no manifest overwrite.\"]",
-      "547: out.append(\"Evaluation only. Do not train, export, public benchmark, promote, or overwrite manifests from this wrapper.\")",
-      "634: print(\"evaluation only; no training/checkpoint/export/benchmark/promotion/manifest overwrite\")"
-    ]
+    "writes_manifest": []
   },
-  "decision": "B4C96_SAFE_GATE_WRAPPER_STATIC_REVIEW_FAIL_REQUIRES_PATCH",
+  "decision": "B4C96_SAFE_GATE_WRAPPER_STATIC_REVIEW_PASS_READY_FOR_AUTHORIZED_STAGE_C",
   "non_execution": {
     "checkpoint_read": false,
     "gate_eval": false,

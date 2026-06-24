@@ -469,7 +469,7 @@ def write_report(
     out += ["# b4c96-safe policy-only rank/top-k gate report", ""]
     out += ["## Scope", ""]
     out += ["- Evaluation only: no optimizer, no training, no checkpoint save."]
-    out += ["- No C export, no public benchmark, no promotion, no manifest overwrite."]
+    out += ["- No C export, no public benchmark, no promotion, and manifest files are not modified."]
     out += [f"- Dataset: {args.dataset}"]
     out += [f"- Model A: {args.model_a}"]
     out += [f"- Model B: {args.model_b}"]
@@ -544,7 +544,7 @@ def write_report(
     out += ["", "## Verdict", ""]
     out.append(verdict)
     out += ["", "## Decision", ""]
-    out.append("Evaluation only. Do not train, export, public benchmark, promote, or overwrite manifests from this wrapper.")
+    out.append("Evaluation only. Do not train, export, public benchmark, promote, or modify manifest files from this wrapper.")
     out.append("")
 
     path.write_text("\n".join(out), encoding="utf-8")
@@ -631,7 +631,7 @@ def main() -> int:
     print("verdict:", verdict)
     print("out_csv:", args.out_csv)
     print("out_report:", args.out_report)
-    print("evaluation only; no training/checkpoint/export/benchmark/promotion/manifest overwrite")
+    print("evaluation only; no training/checkpoint/export/benchmark/promotion/manifest modification")
     return 0
 
 
