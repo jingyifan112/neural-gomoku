@@ -1,0 +1,31 @@
+{
+  "route": "exp/15x15-b4c96-safe-stage-c-gate",
+  "stage": "Stage C gate compatibility",
+  "gate_script": "scripts/evaluate_policy_rank_topk_gate.py",
+  "model_a": "checkpoints/15x15_current_best_margin_g2m13_m15_3pair_b.pt",
+  "model_b": "checkpoints/probes/15x15_capacity_data_pairing_b4c96_probe_candidate.pt",
+  "signals": {
+    "has_model_a_arg": true,
+    "has_model_b_arg": true,
+    "has_dataset_arg": true,
+    "has_out_csv": true,
+    "has_out_report": true,
+    "has_model_a_channels_arg": false,
+    "has_model_b_channels_arg": false,
+    "has_model_a_blocks_arg": false,
+    "has_model_b_blocks_arg": false,
+    "has_generic_channels_arg": false,
+    "has_generic_blocks_arg": false,
+    "mentions_b4c96": false,
+    "uses_load_compatible_checkpoint": false
+  },
+  "decision": "STAGE_C_GATE_NOT_PROVEN_COMPATIBLE_NEEDS_B4C96_SAFE_GATE_WRAPPER_DO_NOT_GATE",
+  "non_execution": {
+    "checkpoint_read": false,
+    "gate_eval": false,
+    "checkpoint_write": false,
+    "c_export": false,
+    "public_benchmark": false,
+    "promotion": false
+  }
+}
