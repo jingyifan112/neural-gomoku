@@ -15,32 +15,11 @@ Preflight files:
 - `analysis/integration_eval/capacity_data_pairing_preflight.json`
 - `analysis/integration_eval/capacity_data_pairing_preflight.md`
 
-## Input design route
-
-Design branch:
-
-`exp/15x15-capacity-data-pairing-design`
-
-Design commit:
-
-`072960d Add capacity-data pairing design`
-
-Design files:
-
-- `analysis/integration_eval/capacity_data_pairing_design.json`
-- `analysis/integration_eval/capacity_data_pairing_design.md`
-
-## Purpose
-
-This closeout records that the capacity-data pairing preflight completed successfully.
-
-The preflight checked whether there is enough concrete script/path information to request a later explicit no-promotion training authorization for the capacity-data pairing design.
-
 ## Preflight result
 
 `CAPACITY_DATA_PAIRING_PREFLIGHT_PASS_READY_FOR_EXPLICIT_TRAINING_AUTHORIZATION`
 
-## Key preflight confirmations
+## Key confirmations
 
 Confirmed:
 
@@ -79,17 +58,6 @@ Future output directory:
 
 `analysis/integration_eval/capacity_data_pairing_probe/`
 
-## Actions performed
-
-Performed:
-
-- created capacity-data pairing preflight branch
-- generated `analysis/integration_eval/capacity_data_pairing_preflight.json`
-- generated `analysis/integration_eval/capacity_data_pairing_preflight.md`
-- committed preflight outputs
-- pushed branch to origin
-- recorded this closeout
-
 ## Actions not performed
 
 Not performed:
@@ -106,15 +74,9 @@ Not performed:
 - no overwrite of manifests
 - no modification of old untracked local artifacts
 
-## Codex status
-
-Codex was not needed for audit, design, or preflight.
-
-Codex may become useful only if the next explicitly authorized training probe discovers that the existing training scripts cannot safely express the intended capacity/data pairing.
-
 ## Mentor alignment status
 
-This chain has now established the planning side of the mentor requirement:
+This chain has established the planning side of the mentor requirement:
 
 - data side: increased multi-suppress teacher-divergence dataset selected
 - capacity side: known b4c96 capacity path selected as a data-supported revisit
