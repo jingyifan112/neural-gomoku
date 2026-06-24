@@ -1,0 +1,118 @@
+{
+  "branch": "exp/15x15-teacher-divergence-next-direct-repair-route-final-closeout",
+  "purpose": "Final closeout for the direct repair route after eval authorization closeout, with no execution and no authorization granted.",
+  "upstream_branch": "exp/15x15-teacher-divergence-next-direct-repair-eval-authorization-closeout",
+  "upstream_closeout_decision": "DIRECT_REPAIR_EVAL_AUTHORIZATION_CLOSEOUT_COMPLETE_NO_EXECUTION_NO_AUTHORIZATION_GRANTED",
+  "generated_at_utc": "2026-06-24T00:52:50.708136+00:00",
+  "route_chain": [
+    {
+      "stage": "static_patch_apply",
+      "branch": "exp/15x15-teacher-divergence-next-direct-repair-static-patch-apply",
+      "commit": "e900cd5",
+      "decision": "DIRECT_REPAIR_STATIC_PATCH_APPLY_COMPLETE_DERIVED_ONLY"
+    },
+    {
+      "stage": "static_patch_apply_closeout",
+      "branch": "exp/15x15-teacher-divergence-next-direct-repair-static-patch-apply-closeout",
+      "commit": "e88a7e4",
+      "decision": "DIRECT_REPAIR_STATIC_PATCH_APPLY_CLOSEOUT_COMPLETE_DERIVED_ONLY"
+    },
+    {
+      "stage": "static_ready_gate_policy",
+      "branch": "exp/15x15-teacher-divergence-next-direct-repair-static-ready-gate-policy",
+      "commit": "73fd0ab",
+      "decision": "STATIC_READY_GATE_POLICY_DEFINED_CURRENT_ROW_REMAINS_BLOCKED"
+    },
+    {
+      "stage": "static_review_resolution",
+      "branch": "exp/15x15-teacher-divergence-next-direct-repair-static-review-resolution",
+      "commit": "ab4d541",
+      "decision": "STATIC_REVIEW_RESOLUTION_COMPLETE_FOR_FUTURE_EXPLICIT_PLANNING_POLICY"
+    },
+    {
+      "stage": "eval_planning_policy",
+      "branch": "exp/15x15-teacher-divergence-next-direct-repair-eval-planning-policy",
+      "commit": "b6c5198",
+      "decision": "DIRECT_REPAIR_EVAL_PLANNING_POLICY_READY_NO_EXECUTION"
+    },
+    {
+      "stage": "eval_plan_dryrun",
+      "branch": "exp/15x15-teacher-divergence-next-direct-repair-eval-plan-dryrun",
+      "commit": "bf9b56c",
+      "decision": "DIRECT_REPAIR_EVAL_PLAN_DRYRUN_COMPLETE_NO_EXECUTION"
+    },
+    {
+      "stage": "eval_plan_closeout",
+      "branch": "exp/15x15-teacher-divergence-next-direct-repair-eval-plan-closeout",
+      "commit": "d7af4e0",
+      "decision": "DIRECT_REPAIR_EVAL_PLAN_CLOSEOUT_COMPLETE_NO_EXECUTION"
+    },
+    {
+      "stage": "eval_authorization_policy",
+      "branch": "exp/15x15-teacher-divergence-next-direct-repair-eval-authorization-policy",
+      "commit": "1d27c58",
+      "decision": "DIRECT_REPAIR_EVAL_AUTHORIZATION_POLICY_DEFINED_NO_EXECUTION"
+    },
+    {
+      "stage": "eval_authorization_closeout",
+      "branch": "exp/15x15-teacher-divergence-next-direct-repair-eval-authorization-closeout",
+      "commit": "713d7a0",
+      "decision": "DIRECT_REPAIR_EVAL_AUTHORIZATION_CLOSEOUT_COMPLETE_NO_EXECUTION_NO_AUTHORIZATION_GRANTED"
+    }
+  ],
+  "planned_inputs": {
+    "candidate_row": "direct_repair_001",
+    "source_eval_manifest_id": "run1_direct_probe_eval_001",
+    "source_adapter_kind": "direct_model_eval_fixed_probe_candidate",
+    "source_path": "analysis/integration_eval/policy_only_teacher_divergence_repair_probe_closeout.md",
+    "derived_status": "eligible_for_future_explicit_eval_plan_documentation_only"
+  },
+  "future_checkpoint_identity": {
+    "checkpoint_path_string_only": "checkpoints/15x15_current_best.pt",
+    "checkpoint_read_now": false,
+    "checkpoint_contents_inspected_now": false,
+    "note": "Checkpoint identity is recorded as a future planning string only. This branch does not load or inspect checkpoint contents."
+  },
+  "current_authorization_state_final": {
+    "eval_execution_authorized_now": false,
+    "checkpoint_read_authorized_now": false,
+    "training_authorized_now": false,
+    "checkpoint_write_authorized_now": false,
+    "c_export_authorized_now": false,
+    "public_benchmark_authorized_now": false,
+    "promotion_authorized_now": false,
+    "current_best_overwrite_authorized_now": false,
+    "original_manifest_overwrite_authorized_now": false
+  },
+  "route_final_checks": {
+    "upstream_eval_authorization_closeout_complete": true,
+    "no_authorization_granted": true,
+    "upstream_closeout_checks_pass": true,
+    "eval_execution_remains_disabled": true,
+    "checkpoint_read_remains_disabled": true,
+    "training_remains_disabled": true,
+    "checkpoint_write_remains_disabled": true,
+    "c_export_remains_disabled": true,
+    "public_benchmark_remains_disabled": true,
+    "promotion_remains_disabled": true,
+    "current_best_overwrite_remains_disabled": true,
+    "original_manifest_overwrite_remains_disabled": true
+  },
+  "safety_permissions": {
+    "training_allowed_now": 0,
+    "model_eval_allowed_now": 0,
+    "checkpoint_read_allowed_now": 0,
+    "checkpoint_write_allowed_now": 0,
+    "c_export_allowed_now": 0,
+    "public_benchmark_allowed_now": 0,
+    "promotion_allowed_now": 0,
+    "current_best_overwrite_allowed_now": 0,
+    "original_manifest_overwrite_allowed_now": 0,
+    "eval_execution_allowed_now": 0,
+    "eval_execution_authorized_now": 0,
+    "checkpoint_read_authorized_now": 0
+  },
+  "route_final_decision": "DIRECT_REPAIR_ROUTE_FINAL_CLOSEOUT_COMPLETE_NO_EXECUTION_NO_AUTHORIZATION_GRANTED",
+  "recommended_next_branch": "NONE__ROUTE_CLOSED_SEPARATE_EXPLICIT_AUTHORIZATION_REQUIRED_FOR_EVAL",
+  "promotion_decision": "NO_PROMOTION__ROUTE_FINAL_CLOSEOUT_ONLY"
+}
