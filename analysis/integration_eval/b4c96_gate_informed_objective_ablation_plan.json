@@ -1,0 +1,102 @@
+{
+  "ablation_rows": 8,
+  "branch": "exp/15x15-b4c96-gate-informed-objective-ablation",
+  "compatibility": {
+    "b4c96_gate_has_dual_arch_args": true,
+    "direct_b4c96_nosave_safe": false,
+    "protected_nosave_script_has_architecture_args": false,
+    "protected_nosave_script_has_nosave": true,
+    "rank_topk_train_script_has_architecture_args": false,
+    "rank_topk_train_script_has_nosave": true
+  },
+  "decision": "ABLATION_PLAN_READY_EXECUTION_BLOCKED_NEEDS_B4C96_SAFE_NOSAVE_WRAPPER",
+  "forensics_diagnosis": "B4C96_STAGEC_FAILED_DUE_TO_PROTECTED_OR_OBJECTIVE_REGRESSION",
+  "forensics_hard_fail_reasons": [
+    "protected_top10_regression_nonzero",
+    "target_top5_delta_negative",
+    "rank_gt50_delta_positive",
+    "mean_worst_suppress_gap_delta_negative",
+    "mean_multi_pair_hinge_delta_positive"
+  ],
+  "forensics_key_counts": {
+    "directionally_useful": 9,
+    "protected_top10_regression": 1,
+    "rank_gt50_delta": 1,
+    "rows": 25,
+    "severe_core_regression": 10,
+    "top5_delta": -2
+  },
+  "next_required_action": "Create a b4c96-safe no-save objective ablation wrapper before running any ablation. The wrapper must expose board-size, win-length, channels, blocks, no-save, and per-ablation weights.",
+  "script_inspections": [
+    {
+      "add_arguments": [
+        "--init-checkpoint",
+        "--reference-checkpoint",
+        "--margin",
+        "--ce-weight",
+        "--pair-weight",
+        "--worst-weight",
+        "--anchor-kl-weight",
+        "--lr",
+        "--epochs",
+        "--weight-decay",
+        "--seed",
+        "--print-every",
+        "--dry-run",
+        "--no-save"
+      ],
+      "exists": true,
+      "has_architecture_args": false,
+      "has_b4c96_dual_arch_args": false,
+      "has_no_save": true,
+      "has_out_checkpoint": false,
+      "imports_load_compatible_checkpoint": false,
+      "mentions_channels_blocks": true,
+      "script": "scripts/train_rapfi_teacher_policy_rank_topk_probe.py"
+    },
+    {
+      "add_arguments": [
+        "--init-checkpoint",
+        "--reference-checkpoint",
+        "--epochs",
+        "--lr",
+        "--margin",
+        "--ce-weight",
+        "--pair-weight",
+        "--worst-weight",
+        "--anchor-kl-weight",
+        "--weight-decay",
+        "--seed",
+        "--print-every"
+      ],
+      "exists": true,
+      "has_architecture_args": false,
+      "has_b4c96_dual_arch_args": false,
+      "has_no_save": true,
+      "has_out_checkpoint": false,
+      "imports_load_compatible_checkpoint": false,
+      "mentions_channels_blocks": false,
+      "script": "scripts/probe_policy_rank_topk_protected_nosave.py"
+    },
+    {
+      "add_arguments": [
+        "--margin",
+        "--board-size",
+        "--win-length",
+        "--model-a-channels",
+        "--model-a-blocks",
+        "--model-b-channels",
+        "--model-b-blocks"
+      ],
+      "exists": true,
+      "has_architecture_args": true,
+      "has_b4c96_dual_arch_args": true,
+      "has_no_save": false,
+      "has_out_checkpoint": false,
+      "imports_load_compatible_checkpoint": true,
+      "mentions_channels_blocks": true,
+      "script": "scripts/evaluate_policy_rank_topk_gate_b4c96.py"
+    }
+  ],
+  "source_forensics": "analysis/integration_eval/b4c96_stagec_failure_forensics_summary.json"
+}
