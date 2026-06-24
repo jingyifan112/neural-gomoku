@@ -1,0 +1,53 @@
+{
+  "route": "exp/15x15-capacity-data-pairing-final-review",
+  "decision": "CAPACITY_DATA_PAIRING_FINAL_REVIEW_COMPLETE_GATE_FAILED_NO_PROMOTION",
+  "mentor_alignment": {
+    "capacity_increase_executed": true,
+    "data_increase_executed": true,
+    "paired_capacity_data_training_executed": true,
+    "promotion_allowed": false
+  },
+  "stage_commits": {
+    "stage_b_training": "f1bfec9 Add b4c96-safe Stage B training probe results",
+    "stage_c_gate_execution": "82a0fad Add b4c96-safe Stage C gate execution results",
+    "gate_wrapper": "800df53 Patch b4c96-safe gate wrapper static review"
+  },
+  "artifacts": {
+    "train_report": "analysis/integration_eval/capacity_data_pairing_probe/train_report.md",
+    "train_metrics": "analysis/integration_eval/capacity_data_pairing_probe/train_metrics.csv",
+    "gate_report": "analysis/integration_eval/capacity_data_pairing_probe/gate_eval.md",
+    "gate_csv": "analysis/integration_eval/capacity_data_pairing_probe/gate_eval.csv",
+    "stage_b_closeout": "analysis/integration_eval/capacity_data_pairing_probe/stage_b_closeout.md",
+    "stage_c_closeout": "analysis/integration_eval/capacity_data_pairing_probe/stage_c_gate_execution_closeout.md"
+  },
+  "gate_summary": {
+    "verdict": "FAIL_CANDIDATE_GATE",
+    "target_top3_rows_model_a": 7,
+    "target_top3_rows_model_b": 7,
+    "target_top3_delta": 0,
+    "target_top5_rows_model_a": 11,
+    "target_top5_rows_model_b": 9,
+    "target_top5_delta": -2,
+    "target_top10_rows_model_a": 14,
+    "target_top10_rows_model_b": 15,
+    "target_top10_delta": 1,
+    "rank_gt50_rows_model_a": 3,
+    "rank_gt50_rows_model_b": 4,
+    "rank_gt50_delta": 1,
+    "mean_target_rank_model_a": 17.32,
+    "mean_target_rank_model_b": 19.52,
+    "mean_target_rank_delta": 2.2,
+    "mean_worst_suppress_gap_delta": -0.4851179599761961,
+    "mean_multi_pair_hinge_delta": 0.2737949428558357,
+    "protected_top10_regressions": 1,
+    "teacher_beats_worst_delta": 0,
+    "teacher_beats_all_suppressors_delta": 0
+  },
+  "non_promotion_status": {
+    "c_export": false,
+    "public_benchmark": false,
+    "promotion": false,
+    "current_best_overwrite": false,
+    "manifest_overwrite": false
+  }
+}
