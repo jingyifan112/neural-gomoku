@@ -1,0 +1,126 @@
+{
+  "bucket_a": {
+    "protected_top10": 3,
+    "protected_top3": 7,
+    "protected_top5": 4,
+    "tail_rank_gt50": 3,
+    "trainable_rank_11_50": 8
+  },
+  "bucket_b": {
+    "protected_top10": 6,
+    "protected_top3": 7,
+    "protected_top5": 2,
+    "tail_rank_gt50": 4,
+    "trainable_rank_11_50": 6
+  },
+  "by_game": {
+    "g1": {
+      "directionally_useful": 2,
+      "rows": 4,
+      "tail_rank_gt50_after_b": 1
+    },
+    "g2": {
+      "core_regressed": 3,
+      "directionally_useful": 2,
+      "rows": 5,
+      "tail_rank_gt50_after_b": 1
+    },
+    "g3": {
+      "core_regressed": 2,
+      "directionally_useful": 1,
+      "protected_top10_regression": 1,
+      "rows": 3
+    },
+    "g4": {
+      "core_regressed": 1,
+      "directionally_useful": 2,
+      "rows": 3
+    },
+    "g5": {
+      "core_regressed": 4,
+      "directionally_useful": 1,
+      "rows": 7,
+      "tail_rank_gt50_after_b": 2
+    },
+    "g6": {
+      "directionally_useful": 1,
+      "rows": 3
+    }
+  },
+  "diagnosis": "B4C96_STAGEC_FAILED_DUE_TO_PROTECTED_OR_OBJECTIVE_REGRESSION",
+  "directions": {
+    "multi_pair_hinge": {
+      "improved": 11,
+      "regressed": 14
+    },
+    "primary_gap": {
+      "improved": 13,
+      "regressed": 12
+    },
+    "prob": {
+      "improved": 11,
+      "regressed": 14
+    },
+    "rank": {
+      "improved": 8,
+      "regressed": 11,
+      "same": 6
+    },
+    "worst_gap": {
+      "improved": 12,
+      "regressed": 13
+    }
+  },
+  "failure_tags": {
+    "core_improved": 10,
+    "core_regressed": 10,
+    "multi_pair_hinge_regression": 14,
+    "new_tail_rank_gt50": 2,
+    "primary_gap_regression": 12,
+    "prob_regression": 14,
+    "protected_top10_regression": 1,
+    "rank_regression": 11,
+    "tail_rank_gt50_after_b": 4,
+    "top10_lost": 1,
+    "top5_lost": 3,
+    "worst_gap_regression": 13
+  },
+  "hard_fail_reasons": [
+    "protected_top10_regression_nonzero",
+    "target_top5_delta_negative",
+    "rank_gt50_delta_positive",
+    "mean_worst_suppress_gap_delta_negative",
+    "mean_multi_pair_hinge_delta_positive"
+  ],
+  "means": {
+    "multi_pair_hinge_delta": 0.27379494285583494,
+    "primary_gap_delta": -0.19393319129943848,
+    "target_prob_delta": -0.006593890042131534,
+    "target_rank_a": 17.32,
+    "target_rank_b": 19.52,
+    "target_rank_delta": 2.2,
+    "worst_suppress_gap_delta": -0.4851179599761963
+  },
+  "outcomes": {
+    "directionally_useful": 9,
+    "mixed_or_regressed": 5,
+    "partial_tail_repair_unresolved": 1,
+    "severe_core_regression": 10
+  },
+  "recommendation": "Do not promote. Do not public benchmark. Next route should compare protected/anchor weighting, tail-row pruning, and objective weighting before any further b4c96 training.",
+  "rows": 25,
+  "topk": {
+    "rank_gt50_a": 3,
+    "rank_gt50_b": 4,
+    "rank_gt50_delta": 1,
+    "top10_a": 14,
+    "top10_b": 15,
+    "top10_delta": 1,
+    "top3_a": 7,
+    "top3_b": 7,
+    "top3_delta": 0,
+    "top5_a": 11,
+    "top5_b": 9,
+    "top5_delta": -2
+  }
+}
