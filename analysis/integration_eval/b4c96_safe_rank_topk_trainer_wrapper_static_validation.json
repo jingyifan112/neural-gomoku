@@ -1,0 +1,30 @@
+{
+  "route": "exp/15x15-b4c96-safe-rank-topk-trainer-wrapper",
+  "script": "scripts/train_rapfi_teacher_policy_rank_topk_b4c96_probe.py",
+  "checks": {
+    "script_exists": true,
+    "has_channels_arg": true,
+    "has_blocks_arg": true,
+    "has_board_size_arg": true,
+    "has_win_length_arg": true,
+    "has_init_checkpoint": true,
+    "has_reference_checkpoint": true,
+    "has_out_checkpoint": true,
+    "uses_load_compatible_checkpoint": true,
+    "mentions_current_best_guard": true,
+    "refuses_existing_out_checkpoint": true,
+    "mentions_no_save": true,
+    "mentions_dry_run": true,
+    "mentions_channels_96_default": true,
+    "mentions_blocks_4_default": true
+  },
+  "decision": "B4C96_SAFE_WRAPPER_STATIC_VALIDATION_PASS_READY_FOR_AUTHORIZED_STAGE_B",
+  "non_execution": {
+    "checkpoint_read": false,
+    "training": false,
+    "checkpoint_write": false,
+    "c_export": false,
+    "public_benchmark": false,
+    "promotion": false
+  }
+}
