@@ -1,0 +1,107 @@
+{
+  "decision": "TAIL_GENERATION_PREFLIGHT_READY_WITH_LOCAL_TEACHER_ENGINE",
+  "generation_script_candidates": [
+    "scripts/probe_policy_rank_topk_protected_nosave_b4c96.py",
+    "scripts/accept_teacher_divergence_retention_clean_v2_dataset.py",
+    "scripts/audit_teacher_divergence_board_join.py",
+    "scripts/audit_teacher_divergence_expansion_sources.py",
+    "scripts/audit_teacher_divergence_next_consumer_schema.py",
+    "scripts/audit_teacher_divergence_normalized_trainer_compat.py",
+    "scripts/audit_teacher_divergence_round2_readiness.py",
+    "scripts/audit_teacher_divergence_run1_fixed_probe_heldout_inputs.py",
+    "scripts/audit_teacher_divergence_source_inventory.py",
+    "scripts/audit_teacher_divergence_source_schema.py",
+    "scripts/audit_teacher_divergence_tail_generation_preflight.py",
+    "scripts/audit_teacher_divergence_tiny_posttrain_guards.py",
+    "scripts/build_candidate_g_teacher_policy_dataset.py",
+    "scripts/build_candidate_g_teacher_seed_dataset.py",
+    "scripts/build_candidate_g_teacher_seed_manifest.py",
+    "scripts/build_rapfi_teacher_policy_multisuppress_dataset.py",
+    "scripts/build_rapfi_teacher_scoregap.py",
+    "scripts/build_teacher_divergence_data_inventory.py",
+    "scripts/build_teacher_divergence_expanded_manifest.py",
+    "scripts/build_teacher_divergence_retention_clean_v2_dataset.py",
+    "scripts/build_teacher_divergence_retention_dataset.py",
+    "scripts/build_teacher_divergence_retention_expanded_dataset.py",
+    "scripts/build_teacher_divergence_retention_safety_v3_dataset.py",
+    "scripts/build_v12l_margin_repair_dataset.py",
+    "scripts/candidate_d_teacher_disagreement_census.py"
+  ],
+  "inputs": {
+    "expansion_targets": "analysis/integration_eval/teacher_divergence_expansion_targets/expansion_targets_summary.json",
+    "source_audit": "analysis/integration_eval/teacher_divergence_expansion_source_audit_next/source_audit_summary.json",
+    "tail_plan": "analysis/integration_eval/teacher_divergence_tail_source_generation_plan/tail_source_generation_summary.json",
+    "tail_schema_recovery": "analysis/integration_eval/teacher_divergence_tail_schema_recovery/tail_source_schema_recovery_summary.json"
+  },
+  "multisuppress_schema_artifacts": [
+    "analysis/public_benchmark_eval/rapfi_teacher_policy_multisuppress_dataset_corpus8_selected.json",
+    "analysis/integration_eval/teacher_divergence_data_expansion_design.md",
+    "analysis/integration_eval/teacher_divergence_data_inventory.json",
+    "analysis/integration_eval/teacher_divergence_expanded_candidate_manifest.csv",
+    "analysis/integration_eval/teacher_divergence_expanded_candidate_manifest_legacy_suppress_normalized.csv",
+    "analysis/integration_eval/teacher_divergence_expanded_candidate_manifest_with_board_joins.csv",
+    "analysis/integration_eval/teacher_divergence_expanded_candidate_manifest_with_fills.csv",
+    "analysis/integration_eval/teacher_divergence_expanded_candidate_manifest_with_suppress_round2.csv",
+    "analysis/integration_eval/teacher_divergence_expanded_manifest_design.md",
+    "analysis/integration_eval/teacher_divergence_source_inventory_audit.csv",
+    "analysis/integration_eval/teacher_divergence_suppress_build_fill.csv",
+    "analysis/integration_eval/teacher_divergence_suppress_build_fill_plan.md",
+    "analysis/public_benchmark_eval/rapfi_teacher_policy_multisuppress_dataset_corpus8_selected.json",
+    "analysis/public_benchmark_eval/rapfi_teacher_policy_multisuppress_dataset_corpus8_selected_conservative_selection_next.json",
+    "analysis/public_benchmark_eval/rapfi_teacher_policy_multisuppress_dataset_corpus8_selected_protected_train_11_50_weightcap3.json",
+    "scripts/audit_teacher_divergence_data_selection_next.py",
+    "scripts/audit_teacher_divergence_expansion_source_audit_next.py",
+    "scripts/audit_teacher_divergence_next_consumer_schema.py",
+    "scripts/audit_teacher_divergence_source_inventory.py",
+    "scripts/audit_teacher_divergence_tail_generation_preflight.py",
+    "scripts/build_rapfi_teacher_policy_multisuppress_dataset.py",
+    "scripts/build_teacher_divergence_expanded_manifest.py",
+    "scripts/evaluate_policy_rank_topk_gate.py",
+    "scripts/evaluate_policy_rank_topk_gate_b4c96.py",
+    "scripts/fill_teacher_divergence_suppress_build.py"
+  ],
+  "next_actions": [
+    {
+      "action": "Build a tail candidate source generator that enumerates additional positions and scores model policy rank.",
+      "allowed": "yes",
+      "order": 1,
+      "requires": "board snapshots or expanded failure positions plus b4c64/b4c96 scoring path",
+      "training": "no"
+    },
+    {
+      "action": "Attach or call Rapfi teacher only if a local teacher executable/script is available.",
+      "allowed": "conditional",
+      "order": 2,
+      "requires": "run_rapfi.sh or equivalent local Rapfi command",
+      "training": "no"
+    },
+    {
+      "action": "Materialize tail candidates as heldout tail_guard rows only after >=12 valid rank>50 or near-tail candidates exist.",
+      "allowed": "later",
+      "order": 3,
+      "requires": "candidate manifest with board/side/target/suppress_rcs/rank fields",
+      "training": "no"
+    }
+  ],
+  "prereq_status": {
+    "generation_script_candidates": 68,
+    "has_b4c96_probe_checkpoint": true,
+    "has_board_snapshots": true,
+    "has_current_b4c64_checkpoint": true,
+    "has_external_rapfi_candidate": true,
+    "has_nosave_wrapper": true,
+    "multisuppress_schema_artifacts": 28,
+    "tail_gap": 12,
+    "unique_materializable_tail_from_old_sources": 0,
+    "unique_tail_recovered_from_old_sources": 0
+  },
+  "recommended_next_branch": "exp/15x15-teacher-divergence-tail-candidate-generator",
+  "recommended_next_step": "Write a generator/review script for new tail guard candidates, guarded by no-training/no-checkpoint constraints.",
+  "scope": "preflight only; no source generation run/dataset build/training/checkpoint/export/benchmark/promotion",
+  "upstream_decisions": {
+    "expansion_targets_decision": "TEACHER_DIVERGENCE_EXPANSION_TARGETS_READY",
+    "source_audit_decision": "EXPANSION_SOURCE_AUDIT_HAS_PARTIAL_CANDIDATES",
+    "tail_plan_decision": "TAIL_SOURCE_GENERATION_PLAN_REQUIRED",
+    "tail_schema_recovery_decision": "TAIL_SCHEMA_RECOVERY_NO_TAIL_FOUND"
+  }
+}
