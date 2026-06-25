@@ -1,0 +1,6 @@
+source_path,unclassified_rows,recovered_tail,recovered_protected,recovered_train,materializable_tail,materializable_any,still_unclassified
+analysis/integration_eval/teacher_divergence_data_inventory_manifest.csv,274,0,104,0,0,0,0
+analysis/integration_eval/teacher_divergence_expansion_source_audit.csv,36,0,0,0,0,0,0
+analysis/integration_eval/teacher_divergence_retention_expanded_manifest.csv,231,0,0,0,0,0,0
+analysis/integration_eval/teacher_divergence_retention_expanded_dataset.json,58,0,0,0,0,0,0
+analysis/integration_eval/teacher_divergence_source_schema_audit.json,3,0,0,0,0,0,0

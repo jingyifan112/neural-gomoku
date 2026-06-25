@@ -1,0 +1,83 @@
+{
+  "bucket_counts": {
+    "P0_protected_guard_candidate_recovered": 104,
+    "schema_partially_recovered": 498
+  },
+  "decision": "TAIL_SCHEMA_RECOVERY_NO_TAIL_FOUND",
+  "inputs": {
+    "source_audit_manifest": "analysis/integration_eval/teacher_divergence_expansion_source_audit_next/source_candidate_manifest.csv",
+    "source_audit_summary": "analysis/integration_eval/teacher_divergence_expansion_source_audit_next/source_audit_summary.json",
+    "tail_plan_summary": "analysis/integration_eval/teacher_divergence_tail_source_generation_plan/tail_source_generation_summary.json"
+  },
+  "materializable_counts": {},
+  "outputs": {
+    "manifest": "analysis/integration_eval/teacher_divergence_tail_schema_recovery/tail_source_schema_recovery_manifest.csv",
+    "report": "analysis/integration_eval/teacher_divergence_tail_schema_recovery/tail_source_schema_recovery_report.md",
+    "source_summary": "analysis/integration_eval/teacher_divergence_tail_schema_recovery/tail_source_schema_recovery_by_source.csv",
+    "summary": "analysis/integration_eval/teacher_divergence_tail_schema_recovery/tail_source_schema_recovery_summary.json"
+  },
+  "recommended_next": "Generate new tail source rows or add a source-specific evaluator to recover board/rank metadata.",
+  "scope": "schema recovery only; no dataset build/training/checkpoint/export/benchmark/promotion",
+  "source_summary_rows": [
+    {
+      "materializable_any": 0,
+      "materializable_tail": 0,
+      "recovered_protected": 104,
+      "recovered_tail": 0,
+      "recovered_train": 0,
+      "source_path": "analysis/integration_eval/teacher_divergence_data_inventory_manifest.csv",
+      "still_unclassified": 0,
+      "unclassified_rows": 274
+    },
+    {
+      "materializable_any": 0,
+      "materializable_tail": 0,
+      "recovered_protected": 0,
+      "recovered_tail": 0,
+      "recovered_train": 0,
+      "source_path": "analysis/integration_eval/teacher_divergence_expansion_source_audit.csv",
+      "still_unclassified": 0,
+      "unclassified_rows": 36
+    },
+    {
+      "materializable_any": 0,
+      "materializable_tail": 0,
+      "recovered_protected": 0,
+      "recovered_tail": 0,
+      "recovered_train": 0,
+      "source_path": "analysis/integration_eval/teacher_divergence_retention_expanded_manifest.csv",
+      "still_unclassified": 0,
+      "unclassified_rows": 231
+    },
+    {
+      "materializable_any": 0,
+      "materializable_tail": 0,
+      "recovered_protected": 0,
+      "recovered_tail": 0,
+      "recovered_train": 0,
+      "source_path": "analysis/integration_eval/teacher_divergence_retention_expanded_dataset.json",
+      "still_unclassified": 0,
+      "unclassified_rows": 58
+    },
+    {
+      "materializable_any": 0,
+      "materializable_tail": 0,
+      "recovered_protected": 0,
+      "recovered_tail": 0,
+      "recovered_train": 0,
+      "source_path": "analysis/integration_eval/teacher_divergence_source_schema_audit.json",
+      "still_unclassified": 0,
+      "unclassified_rows": 3
+    }
+  ],
+  "unclassified_rows": 602,
+  "unique_materializable_tail_recovered": 0,
+  "unique_tail_recovered": 0,
+  "upstream": {
+    "protected_gap": 0,
+    "source_audit_decision": "EXPANSION_SOURCE_AUDIT_HAS_PARTIAL_CANDIDATES",
+    "tail_gap": 12,
+    "tail_plan_decision": "TAIL_SOURCE_GENERATION_PLAN_REQUIRED",
+    "train_gap": 5
+  }
+}
