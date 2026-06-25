@@ -1,0 +1,2443 @@
+{
+  "decision": "TAIL_GENERATOR_INPUTS_INSPECTED_NEED_MANUAL_SCHEMA_PATCH",
+  "inputs": {
+    "b4c96_nosave_wrapper": "scripts/probe_policy_rank_topk_protected_nosave_b4c96.py",
+    "base_margin_dataset": "analysis/public_benchmark_eval/rapfi_teacher_policy_margin_dataset_corpus8_selected.json",
+    "base_multisuppress_dataset": "analysis/public_benchmark_eval/rapfi_teacher_policy_multisuppress_dataset_corpus8_selected.json",
+    "board_snapshots": "analysis/public_benchmark_eval/corpus8_selected_board_snapshots.json",
+    "rank_topk_gate": "scripts/evaluate_policy_rank_topk_gate_b4c96.py",
+    "tail_preflight": "analysis/integration_eval/teacher_divergence_tail_generation_preflight/tail_generation_preflight_summary.json"
+  },
+  "json_summaries": {
+    "base_margin_dataset": {
+      "candidate_lists": [
+        {
+          "length": 25,
+          "path": "$.samples",
+          "sample_keys": [
+            "board",
+            "board_size",
+            "case_id",
+            "current_player",
+            "game_number",
+            "label_type",
+            "move_count",
+            "notes",
+            "numeric_gap_available",
+            "numeric_gap_value",
+            "old_final",
+            "sample_weight",
+            "side_to_move",
+            "source",
+            "suggested_bucket",
+            "suppress_move",
+            "suppress_rc",
+            "suppress_xy",
+            "target_rc",
+            "target_xy",
+            "teacher_eval_before",
+            "teacher_eval_kind",
+            "teacher_move",
+            "win_length"
+          ],
+          "sample_type": "dict"
+        },
+        {
+          "length": 15,
+          "path": "$.samples[0].board",
+          "sample_keys": [],
+          "sample_type": "list"
+        },
+        {
+          "length": 15,
+          "path": "$.samples[0].board[0]",
+          "sample_keys": [],
+          "sample_type": "int"
+        },
+        {
+          "length": 15,
+          "path": "$.samples[0].board[1]",
+          "sample_keys": [],
+          "sample_type": "int"
+        },
+        {
+          "length": 15,
+          "path": "$.samples[0].board[2]",
+          "sample_keys": [],
+          "sample_type": "int"
+        },
+        {
+          "length": 2,
+          "path": "$.samples[0].target_xy",
+          "sample_keys": [],
+          "sample_type": "int"
+        },
+        {
+          "length": 2,
+          "path": "$.samples[0].target_rc",
+          "sample_keys": [],
+          "sample_type": "int"
+        },
+        {
+          "length": 2,
+          "path": "$.samples[0].suppress_xy",
+          "sample_keys": [],
+          "sample_type": "int"
+        },
+        {
+          "length": 2,
+          "path": "$.samples[0].suppress_rc",
+          "sample_keys": [],
+          "sample_type": "int"
+        },
+        {
+          "length": 15,
+          "path": "$.samples[1].board",
+          "sample_keys": [],
+          "sample_type": "list"
+        },
+        {
+          "length": 15,
+          "path": "$.samples[1].board[0]",
+          "sample_keys": [],
+          "sample_type": "int"
+        },
+        {
+          "length": 15,
+          "path": "$.samples[1].board[1]",
+          "sample_keys": [],
+          "sample_type": "int"
+        },
+        {
+          "length": 15,
+          "path": "$.samples[1].board[2]",
+          "sample_keys": [],
+          "sample_type": "int"
+        },
+        {
+          "length": 2,
+          "path": "$.samples[1].target_xy",
+          "sample_keys": [],
+          "sample_type": "int"
+        },
+        {
+          "length": 2,
+          "path": "$.samples[1].target_rc",
+          "sample_keys": [],
+          "sample_type": "int"
+        },
+        {
+          "length": 2,
+          "path": "$.samples[1].suppress_xy",
+          "sample_keys": [],
+          "sample_type": "int"
+        },
+        {
+          "length": 2,
+          "path": "$.samples[1].suppress_rc",
+          "sample_keys": [],
+          "sample_type": "int"
+        },
+        {
+          "length": 15,
+          "path": "$.samples[2].board",
+          "sample_keys": [],
+          "sample_type": "list"
+        },
+        {
+          "length": 15,
+          "path": "$.samples[2].board[0]",
+          "sample_keys": [],
+          "sample_type": "int"
+        },
+        {
+          "length": 15,
+          "path": "$.samples[2].board[1]",
+          "sample_keys": [],
+          "sample_type": "int"
+        }
+      ],
+      "common_keys": [
+        [
+          "case_id",
+          5
+        ],
+        [
+          "source",
+          5
+        ],
+        [
+          "board_size",
+          5
+        ],
+        [
+          "win_length",
+          5
+        ],
+        [
+          "game_number",
+          5
+        ],
+        [
+          "move_count",
+          5
+        ],
+        [
+          "side_to_move",
+          5
+        ],
+        [
+          "current_player",
+          5
+        ],
+        [
+          "board",
+          5
+        ],
+        [
+          "target_xy",
+          5
+        ],
+        [
+          "target_rc",
+          5
+        ],
+        [
+          "suppress_xy",
+          5
+        ],
+        [
+          "suppress_rc",
+          5
+        ],
+        [
+          "teacher_move",
+          5
+        ],
+        [
+          "suppress_move",
+          5
+        ],
+        [
+          "old_final",
+          5
+        ],
+        [
+          "sample_weight",
+          5
+        ],
+        [
+          "label_type",
+          5
+        ],
+        [
+          "suggested_bucket",
+          5
+        ],
+        [
+          "teacher_eval_before",
+          5
+        ],
+        [
+          "teacher_eval_kind",
+          5
+        ],
+        [
+          "numeric_gap_available",
+          5
+        ],
+        [
+          "numeric_gap_value",
+          5
+        ],
+        [
+          "notes",
+          5
+        ],
+        [
+          "name",
+          1
+        ],
+        [
+          "description",
+          1
+        ],
+        [
+          "source_dataset",
+          1
+        ],
+        [
+          "samples",
+          1
+        ],
+        [
+          "skipped",
+          1
+        ]
+      ],
+      "dict_examples": [
+        {
+          "keys": [
+            "description",
+            "name",
+            "samples",
+            "skipped",
+            "source_dataset"
+          ],
+          "path": "$"
+        },
+        {
+          "keys": [
+            "board",
+            "board_size",
+            "case_id",
+            "current_player",
+            "game_number",
+            "label_type",
+            "move_count",
+            "notes",
+            "numeric_gap_available",
+            "numeric_gap_value",
+            "old_final",
+            "sample_weight",
+            "side_to_move",
+            "source",
+            "suggested_bucket",
+            "suppress_move",
+            "suppress_rc",
+            "suppress_xy",
+            "target_rc",
+            "target_xy",
+            "teacher_eval_before",
+            "teacher_eval_kind",
+            "teacher_move",
+            "win_length"
+          ],
+          "path": "$.samples[0]"
+        },
+        {
+          "keys": [
+            "board",
+            "board_size",
+            "case_id",
+            "current_player",
+            "game_number",
+            "label_type",
+            "move_count",
+            "notes",
+            "numeric_gap_available",
+            "numeric_gap_value",
+            "old_final",
+            "sample_weight",
+            "side_to_move",
+            "source",
+            "suggested_bucket",
+            "suppress_move",
+            "suppress_rc",
+            "suppress_xy",
+            "target_rc",
+            "target_xy",
+            "teacher_eval_before",
+            "teacher_eval_kind",
+            "teacher_move",
+            "win_length"
+          ],
+          "path": "$.samples[1]"
+        },
+        {
+          "keys": [
+            "board",
+            "board_size",
+            "case_id",
+            "current_player",
+            "game_number",
+            "label_type",
+            "move_count",
+            "notes",
+            "numeric_gap_available",
+            "numeric_gap_value",
+            "old_final",
+            "sample_weight",
+            "side_to_move",
+            "source",
+            "suggested_bucket",
+            "suppress_move",
+            "suppress_rc",
+            "suppress_xy",
+            "target_rc",
+            "target_xy",
+            "teacher_eval_before",
+            "teacher_eval_kind",
+            "teacher_move",
+            "win_length"
+          ],
+          "path": "$.samples[2]"
+        },
+        {
+          "keys": [
+            "board",
+            "board_size",
+            "case_id",
+            "current_player",
+            "game_number",
+            "label_type",
+            "move_count",
+            "notes",
+            "numeric_gap_available",
+            "numeric_gap_value",
+            "old_final",
+            "sample_weight",
+            "side_to_move",
+            "source",
+            "suggested_bucket",
+            "suppress_move",
+            "suppress_rc",
+            "suppress_xy",
+            "target_rc",
+            "target_xy",
+            "teacher_eval_before",
+            "teacher_eval_kind",
+            "teacher_move",
+            "win_length"
+          ],
+          "path": "$.samples[3]"
+        },
+        {
+          "keys": [
+            "board",
+            "board_size",
+            "case_id",
+            "current_player",
+            "game_number",
+            "label_type",
+            "move_count",
+            "notes",
+            "numeric_gap_available",
+            "numeric_gap_value",
+            "old_final",
+            "sample_weight",
+            "side_to_move",
+            "source",
+            "suggested_bucket",
+            "suppress_move",
+            "suppress_rc",
+            "suppress_xy",
+            "target_rc",
+            "target_xy",
+            "teacher_eval_before",
+            "teacher_eval_kind",
+            "teacher_move",
+            "win_length"
+          ],
+          "path": "$.samples[4]"
+        }
+      ],
+      "exists": true,
+      "top_keys": [
+        "description",
+        "name",
+        "samples",
+        "skipped",
+        "source_dataset"
+      ],
+      "type": "dict"
+    },
+    "base_multisuppress_dataset": {
+      "candidate_lists": [
+        {
+          "length": 25,
+          "path": "$.samples",
+          "sample_keys": [
+            "before_primary_gap",
+            "before_primary_suppress_rank",
+            "before_target_prob",
+            "before_target_rank",
+            "before_worst_suppress_gap",
+            "board",
+            "board_size",
+            "case_id",
+            "current_player",
+            "effective_sample_weight",
+            "game_number",
+            "hardness_weight",
+            "label_type",
+            "move_count",
+            "notes",
+            "numeric_gap_available",
+            "numeric_gap_value",
+            "old_final",
+            "primary_suppress_rc",
+            "sample_weight",
+            "side_to_move",
+            "source",
+            "suggested_bucket",
+            "suppress_actions_source",
+            "suppress_candidates",
+            "suppress_move",
+            "suppress_rc",
+            "suppress_rcs",
+            "suppress_xy",
+            "target_rc",
+            "target_xy",
+            "teacher_eval_before",
+            "teacher_eval_kind",
+            "teacher_move",
+            "validation_notes",
+            "win_length"
+          ],
+          "sample_type": "dict"
+        },
+        {
+          "length": 15,
+          "path": "$.samples[0].board",
+          "sample_keys": [],
+          "sample_type": "list"
+        },
+        {
+          "length": 15,
+          "path": "$.samples[0].board[0]",
+          "sample_keys": [],
+          "sample_type": "int"
+        },
+        {
+          "length": 15,
+          "path": "$.samples[0].board[1]",
+          "sample_keys": [],
+          "sample_type": "int"
+        },
+        {
+          "length": 15,
+          "path": "$.samples[0].board[2]",
+          "sample_keys": [],
+          "sample_type": "int"
+        },
+        {
+          "length": 2,
+          "path": "$.samples[0].primary_suppress_rc",
+          "sample_keys": [],
+          "sample_type": "int"
+        },
+        {
+          "length": 5,
+          "path": "$.samples[0].suppress_candidates",
+          "sample_keys": [
+            "action",
+            "gap",
+            "prob",
+            "rank",
+            "rc"
+          ],
+          "sample_type": "dict"
+        },
+        {
+          "length": 2,
+          "path": "$.samples[0].suppress_candidates[0].rc",
+          "sample_keys": [],
+          "sample_type": "int"
+        },
+        {
+          "length": 2,
+          "path": "$.samples[0].suppress_candidates[1].rc",
+          "sample_keys": [],
+          "sample_type": "int"
+        },
+        {
+          "length": 2,
+          "path": "$.samples[0].suppress_candidates[2].rc",
+          "sample_keys": [],
+          "sample_type": "int"
+        },
+        {
+          "length": 2,
+          "path": "$.samples[0].suppress_rc",
+          "sample_keys": [],
+          "sample_type": "int"
+        },
+        {
+          "length": 5,
+          "path": "$.samples[0].suppress_rcs",
+          "sample_keys": [],
+          "sample_type": "list"
+        },
+        {
+          "length": 2,
+          "path": "$.samples[0].suppress_rcs[0]",
+          "sample_keys": [],
+          "sample_type": "int"
+        },
+        {
+          "length": 2,
+          "path": "$.samples[0].suppress_rcs[1]",
+          "sample_keys": [],
+          "sample_type": "int"
+        },
+        {
+          "length": 2,
+          "path": "$.samples[0].suppress_rcs[2]",
+          "sample_keys": [],
+          "sample_type": "int"
+        },
+        {
+          "length": 2,
+          "path": "$.samples[0].suppress_xy",
+          "sample_keys": [],
+          "sample_type": "int"
+        },
+        {
+          "length": 2,
+          "path": "$.samples[0].target_rc",
+          "sample_keys": [],
+          "sample_type": "int"
+        },
+        {
+          "length": 2,
+          "path": "$.samples[0].target_xy",
+          "sample_keys": [],
+          "sample_type": "int"
+        },
+        {
+          "length": 15,
+          "path": "$.samples[1].board",
+          "sample_keys": [],
+          "sample_type": "list"
+        },
+        {
+          "length": 15,
+          "path": "$.samples[1].board[0]",
+          "sample_keys": [],
+          "sample_type": "int"
+        }
+      ],
+      "common_keys": [
+        [
+          "action",
+          25
+        ],
+        [
+          "gap",
+          25
+        ],
+        [
+          "prob",
+          25
+        ],
+        [
+          "rank",
+          25
+        ],
+        [
+          "rc",
+          25
+        ],
+        [
+          "before_primary_gap",
+          5
+        ],
+        [
+          "before_primary_suppress_rank",
+          5
+        ],
+        [
+          "before_target_prob",
+          5
+        ],
+        [
+          "before_target_rank",
+          5
+        ],
+        [
+          "before_worst_suppress_gap",
+          5
+        ],
+        [
+          "board",
+          5
+        ],
+        [
+          "board_size",
+          5
+        ],
+        [
+          "case_id",
+          5
+        ],
+        [
+          "current_player",
+          5
+        ],
+        [
+          "effective_sample_weight",
+          5
+        ],
+        [
+          "game_number",
+          5
+        ],
+        [
+          "hardness_weight",
+          5
+        ],
+        [
+          "label_type",
+          5
+        ],
+        [
+          "move_count",
+          5
+        ],
+        [
+          "notes",
+          5
+        ],
+        [
+          "numeric_gap_available",
+          5
+        ],
+        [
+          "numeric_gap_value",
+          5
+        ],
+        [
+          "old_final",
+          5
+        ],
+        [
+          "primary_suppress_rc",
+          5
+        ],
+        [
+          "sample_weight",
+          5
+        ],
+        [
+          "side_to_move",
+          5
+        ],
+        [
+          "source",
+          5
+        ],
+        [
+          "suggested_bucket",
+          5
+        ],
+        [
+          "suppress_actions_source",
+          5
+        ],
+        [
+          "suppress_candidates",
+          5
+        ],
+        [
+          "suppress_move",
+          5
+        ],
+        [
+          "suppress_rc",
+          5
+        ],
+        [
+          "suppress_rcs",
+          5
+        ],
+        [
+          "suppress_xy",
+          5
+        ],
+        [
+          "target_rc",
+          5
+        ],
+        [
+          "target_xy",
+          5
+        ],
+        [
+          "teacher_eval_before",
+          5
+        ],
+        [
+          "teacher_eval_kind",
+          5
+        ],
+        [
+          "teacher_move",
+          5
+        ],
+        [
+          "validation_notes",
+          5
+        ],
+        [
+          "win_length",
+          5
+        ],
+        [
+          "checkpoint",
+          1
+        ],
+        [
+          "description",
+          1
+        ],
+        [
+          "margin",
+          1
+        ],
+        [
+          "max_suppress",
+          1
+        ],
+        [
+          "name",
+          1
+        ],
+        [
+          "samples",
+          1
+        ],
+        [
+          "skipped",
+          1
+        ],
+        [
+          "source_dataset",
+          1
+        ],
+        [
+          "summary",
+          1
+        ],
+        [
+          "top_k",
+          1
+        ],
+        [
+          "mean_worst_suppress_gap",
+          1
+        ],
+        [
+          "median_worst_suppress_gap",
+          1
+        ],
+        [
+          "rows",
+          1
+        ],
+        [
+          "suppress_count_max",
+          1
+        ],
+        [
+          "suppress_count_mean",
+          1
+        ],
+        [
+          "suppress_count_min",
+          1
+        ],
+        [
+          "target_rank_gt10",
+          1
+        ],
+        [
+          "target_rank_gt50",
+          1
+        ]
+      ],
+      "dict_examples": [
+        {
+          "keys": [
+            "checkpoint",
+            "description",
+            "margin",
+            "max_suppress",
+            "name",
+            "samples",
+            "skipped",
+            "source_dataset",
+            "summary",
+            "top_k"
+          ],
+          "path": "$"
+        },
+        {
+          "keys": [
+            "before_primary_gap",
+            "before_primary_suppress_rank",
+            "before_target_prob",
+            "before_target_rank",
+            "before_worst_suppress_gap",
+            "board",
+            "board_size",
+            "case_id",
+            "current_player",
+            "effective_sample_weight",
+            "game_number",
+            "hardness_weight",
+            "label_type",
+            "move_count",
+            "notes",
+            "numeric_gap_available",
+            "numeric_gap_value",
+            "old_final",
+            "primary_suppress_rc",
+            "sample_weight",
+            "side_to_move",
+            "source",
+            "suggested_bucket",
+            "suppress_actions_source",
+            "suppress_candidates",
+            "suppress_move",
+            "suppress_rc",
+            "suppress_rcs",
+            "suppress_xy",
+            "target_rc",
+            "target_xy",
+            "teacher_eval_before",
+            "teacher_eval_kind",
+            "teacher_move",
+            "validation_notes",
+            "win_length"
+          ],
+          "path": "$.samples[0]"
+        },
+        {
+          "keys": [
+            "action",
+            "gap",
+            "prob",
+            "rank",
+            "rc"
+          ],
+          "path": "$.samples[0].suppress_candidates[0]"
+        },
+        {
+          "keys": [
+            "action",
+            "gap",
+            "prob",
+            "rank",
+            "rc"
+          ],
+          "path": "$.samples[0].suppress_candidates[1]"
+        },
+        {
+          "keys": [
+            "action",
+            "gap",
+            "prob",
+            "rank",
+            "rc"
+          ],
+          "path": "$.samples[0].suppress_candidates[2]"
+        },
+        {
+          "keys": [
+            "action",
+            "gap",
+            "prob",
+            "rank",
+            "rc"
+          ],
+          "path": "$.samples[0].suppress_candidates[3]"
+        },
+        {
+          "keys": [
+            "action",
+            "gap",
+            "prob",
+            "rank",
+            "rc"
+          ],
+          "path": "$.samples[0].suppress_candidates[4]"
+        },
+        {
+          "keys": [
+            "before_primary_gap",
+            "before_primary_suppress_rank",
+            "before_target_prob",
+            "before_target_rank",
+            "before_worst_suppress_gap",
+            "board",
+            "board_size",
+            "case_id",
+            "current_player",
+            "effective_sample_weight",
+            "game_number",
+            "hardness_weight",
+            "label_type",
+            "move_count",
+            "notes",
+            "numeric_gap_available",
+            "numeric_gap_value",
+            "old_final",
+            "primary_suppress_rc",
+            "sample_weight",
+            "side_to_move",
+            "source",
+            "suggested_bucket",
+            "suppress_actions_source",
+            "suppress_candidates",
+            "suppress_move",
+            "suppress_rc",
+            "suppress_rcs",
+            "suppress_xy",
+            "target_rc",
+            "target_xy",
+            "teacher_eval_before",
+            "teacher_eval_kind",
+            "teacher_move",
+            "validation_notes",
+            "win_length"
+          ],
+          "path": "$.samples[1]"
+        }
+      ],
+      "exists": true,
+      "top_keys": [
+        "checkpoint",
+        "description",
+        "margin",
+        "max_suppress",
+        "name",
+        "samples",
+        "skipped",
+        "source_dataset",
+        "summary",
+        "top_k"
+      ],
+      "type": "dict"
+    },
+    "board_snapshots": {
+      "candidate_lists": [
+        {
+          "length": 32,
+          "path": "$",
+          "sample_keys": [
+            "board_snapshot_after_decision",
+            "board_snapshot_before_decision",
+            "direct",
+            "failure_type",
+            "final",
+            "game_number",
+            "loss_reason",
+            "mcts_raw",
+            "mcts_safety",
+            "move_count",
+            "next_rapfi_bestline",
+            "notes",
+            "policy_safety",
+            "previous_rapfi_bestline",
+            "side_to_move",
+            "value"
+          ],
+          "sample_type": "dict"
+        }
+      ],
+      "common_keys": [
+        [
+          "game_number",
+          5
+        ],
+        [
+          "move_count",
+          5
+        ],
+        [
+          "side_to_move",
+          5
+        ],
+        [
+          "value",
+          5
+        ],
+        [
+          "direct",
+          5
+        ],
+        [
+          "policy_safety",
+          5
+        ],
+        [
+          "mcts_raw",
+          5
+        ],
+        [
+          "mcts_safety",
+          5
+        ],
+        [
+          "final",
+          5
+        ],
+        [
+          "previous_rapfi_bestline",
+          5
+        ],
+        [
+          "next_rapfi_bestline",
+          5
+        ],
+        [
+          "board_snapshot_before_decision",
+          5
+        ],
+        [
+          "board_snapshot_after_decision",
+          5
+        ],
+        [
+          "loss_reason",
+          5
+        ],
+        [
+          "failure_type",
+          5
+        ],
+        [
+          "notes",
+          5
+        ]
+      ],
+      "dict_examples": [
+        {
+          "keys": [
+            "board_snapshot_after_decision",
+            "board_snapshot_before_decision",
+            "direct",
+            "failure_type",
+            "final",
+            "game_number",
+            "loss_reason",
+            "mcts_raw",
+            "mcts_safety",
+            "move_count",
+            "next_rapfi_bestline",
+            "notes",
+            "policy_safety",
+            "previous_rapfi_bestline",
+            "side_to_move",
+            "value"
+          ],
+          "path": "$[0]"
+        },
+        {
+          "keys": [
+            "board_snapshot_after_decision",
+            "board_snapshot_before_decision",
+            "direct",
+            "failure_type",
+            "final",
+            "game_number",
+            "loss_reason",
+            "mcts_raw",
+            "mcts_safety",
+            "move_count",
+            "next_rapfi_bestline",
+            "notes",
+            "policy_safety",
+            "previous_rapfi_bestline",
+            "side_to_move",
+            "value"
+          ],
+          "path": "$[1]"
+        },
+        {
+          "keys": [
+            "board_snapshot_after_decision",
+            "board_snapshot_before_decision",
+            "direct",
+            "failure_type",
+            "final",
+            "game_number",
+            "loss_reason",
+            "mcts_raw",
+            "mcts_safety",
+            "move_count",
+            "next_rapfi_bestline",
+            "notes",
+            "policy_safety",
+            "previous_rapfi_bestline",
+            "side_to_move",
+            "value"
+          ],
+          "path": "$[2]"
+        },
+        {
+          "keys": [
+            "board_snapshot_after_decision",
+            "board_snapshot_before_decision",
+            "direct",
+            "failure_type",
+            "final",
+            "game_number",
+            "loss_reason",
+            "mcts_raw",
+            "mcts_safety",
+            "move_count",
+            "next_rapfi_bestline",
+            "notes",
+            "policy_safety",
+            "previous_rapfi_bestline",
+            "side_to_move",
+            "value"
+          ],
+          "path": "$[3]"
+        },
+        {
+          "keys": [
+            "board_snapshot_after_decision",
+            "board_snapshot_before_decision",
+            "direct",
+            "failure_type",
+            "final",
+            "game_number",
+            "loss_reason",
+            "mcts_raw",
+            "mcts_safety",
+            "move_count",
+            "next_rapfi_bestline",
+            "notes",
+            "policy_safety",
+            "previous_rapfi_bestline",
+            "side_to_move",
+            "value"
+          ],
+          "path": "$[4]"
+        }
+      ],
+      "exists": true,
+      "top_keys": [],
+      "type": "list"
+    },
+    "tail_preflight": {
+      "candidate_lists": [
+        {
+          "length": 25,
+          "path": "$.generation_script_candidates",
+          "sample_keys": [],
+          "sample_type": "str"
+        },
+        {
+          "length": 25,
+          "path": "$.multisuppress_schema_artifacts",
+          "sample_keys": [],
+          "sample_type": "str"
+        },
+        {
+          "length": 3,
+          "path": "$.next_actions",
+          "sample_keys": [
+            "action",
+            "allowed",
+            "order",
+            "requires",
+            "training"
+          ],
+          "sample_type": "dict"
+        }
+      ],
+      "common_keys": [
+        [
+          "action",
+          3
+        ],
+        [
+          "allowed",
+          3
+        ],
+        [
+          "order",
+          3
+        ],
+        [
+          "requires",
+          3
+        ],
+        [
+          "training",
+          3
+        ],
+        [
+          "generation_script_candidates",
+          2
+        ],
+        [
+          "multisuppress_schema_artifacts",
+          2
+        ],
+        [
+          "decision",
+          1
+        ],
+        [
+          "inputs",
+          1
+        ],
+        [
+          "next_actions",
+          1
+        ],
+        [
+          "prereq_status",
+          1
+        ],
+        [
+          "recommended_next_branch",
+          1
+        ],
+        [
+          "recommended_next_step",
+          1
+        ],
+        [
+          "scope",
+          1
+        ],
+        [
+          "upstream_decisions",
+          1
+        ],
+        [
+          "expansion_targets",
+          1
+        ],
+        [
+          "source_audit",
+          1
+        ],
+        [
+          "tail_plan",
+          1
+        ],
+        [
+          "tail_schema_recovery",
+          1
+        ],
+        [
+          "has_b4c96_probe_checkpoint",
+          1
+        ],
+        [
+          "has_board_snapshots",
+          1
+        ],
+        [
+          "has_current_b4c64_checkpoint",
+          1
+        ],
+        [
+          "has_external_rapfi_candidate",
+          1
+        ],
+        [
+          "has_nosave_wrapper",
+          1
+        ],
+        [
+          "tail_gap",
+          1
+        ],
+        [
+          "unique_materializable_tail_from_old_sources",
+          1
+        ],
+        [
+          "unique_tail_recovered_from_old_sources",
+          1
+        ],
+        [
+          "expansion_targets_decision",
+          1
+        ],
+        [
+          "source_audit_decision",
+          1
+        ],
+        [
+          "tail_plan_decision",
+          1
+        ],
+        [
+          "tail_schema_recovery_decision",
+          1
+        ]
+      ],
+      "dict_examples": [
+        {
+          "keys": [
+            "decision",
+            "generation_script_candidates",
+            "inputs",
+            "multisuppress_schema_artifacts",
+            "next_actions",
+            "prereq_status",
+            "recommended_next_branch",
+            "recommended_next_step",
+            "scope",
+            "upstream_decisions"
+          ],
+          "path": "$"
+        },
+        {
+          "keys": [
+            "expansion_targets",
+            "source_audit",
+            "tail_plan",
+            "tail_schema_recovery"
+          ],
+          "path": "$.inputs"
+        },
+        {
+          "keys": [
+            "action",
+            "allowed",
+            "order",
+            "requires",
+            "training"
+          ],
+          "path": "$.next_actions[0]"
+        },
+        {
+          "keys": [
+            "action",
+            "allowed",
+            "order",
+            "requires",
+            "training"
+          ],
+          "path": "$.next_actions[1]"
+        },
+        {
+          "keys": [
+            "action",
+            "allowed",
+            "order",
+            "requires",
+            "training"
+          ],
+          "path": "$.next_actions[2]"
+        },
+        {
+          "keys": [
+            "generation_script_candidates",
+            "has_b4c96_probe_checkpoint",
+            "has_board_snapshots",
+            "has_current_b4c64_checkpoint",
+            "has_external_rapfi_candidate",
+            "has_nosave_wrapper",
+            "multisuppress_schema_artifacts",
+            "tail_gap",
+            "unique_materializable_tail_from_old_sources",
+            "unique_tail_recovered_from_old_sources"
+          ],
+          "path": "$.prereq_status"
+        },
+        {
+          "keys": [
+            "expansion_targets_decision",
+            "source_audit_decision",
+            "tail_plan_decision",
+            "tail_schema_recovery_decision"
+          ],
+          "path": "$.upstream_decisions"
+        }
+      ],
+      "exists": true,
+      "top_keys": [
+        "decision",
+        "generation_script_candidates",
+        "inputs",
+        "multisuppress_schema_artifacts",
+        "next_actions",
+        "prereq_status",
+        "recommended_next_branch",
+        "recommended_next_step",
+        "scope",
+        "upstream_decisions"
+      ],
+      "type": "dict"
+    }
+  },
+  "likely_multisuppress_sample_list": {
+    "length": 25,
+    "path": "$.samples",
+    "sample_keys": [
+      "before_primary_gap",
+      "before_primary_suppress_rank",
+      "before_target_prob",
+      "before_target_rank",
+      "before_worst_suppress_gap",
+      "board",
+      "board_size",
+      "case_id",
+      "current_player",
+      "effective_sample_weight",
+      "game_number",
+      "hardness_weight",
+      "label_type",
+      "move_count",
+      "notes",
+      "numeric_gap_available",
+      "numeric_gap_value",
+      "old_final",
+      "primary_suppress_rc",
+      "sample_weight",
+      "side_to_move",
+      "source",
+      "suggested_bucket",
+      "suppress_actions_source",
+      "suppress_candidates",
+      "suppress_move",
+      "suppress_rc",
+      "suppress_rcs",
+      "suppress_xy",
+      "target_rc",
+      "target_xy",
+      "teacher_eval_before",
+      "teacher_eval_kind",
+      "teacher_move",
+      "validation_notes",
+      "win_length"
+    ],
+    "sample_type": "dict"
+  },
+  "likely_snapshot_list": null,
+  "recommended_next": "Patch generator assumptions manually from report before drafting generator.",
+  "scope": "input/schema inspection only; no source generation/dataset build/training/checkpoint/export/benchmark/promotion",
+  "script_summaries": {
+    "b4c96_nosave_wrapper": {
+      "arg_lines": [
+        {
+          "line": 31,
+          "text": "ap.add_argument("
+        },
+        {
+          "line": 39,
+          "text": "ap.add_argument("
+        },
+        {
+          "line": 44,
+          "text": "ap.add_argument("
+        },
+        {
+          "line": 49,
+          "text": "ap.add_argument("
+        },
+        {
+          "line": 54,
+          "text": "ap.add_argument(\"--board-size\", type=int, default=15)"
+        },
+        {
+          "line": 55,
+          "text": "ap.add_argument(\"--win-length\", type=int, default=5)"
+        },
+        {
+          "line": 56,
+          "text": "ap.add_argument(\"--channels\", type=int, default=96)"
+        },
+        {
+          "line": 57,
+          "text": "ap.add_argument(\"--blocks\", type=int, default=4)"
+        },
+        {
+          "line": 58,
+          "text": "ap.add_argument(\"--epochs\", type=int, default=3)"
+        },
+        {
+          "line": 59,
+          "text": "ap.add_argument(\"--lr\", type=float, default=1e-6)"
+        },
+        {
+          "line": 60,
+          "text": "ap.add_argument(\"--margin\", type=float, default=0.25)"
+        },
+        {
+          "line": 61,
+          "text": "ap.add_argument(\"--ce-weight\", type=float, default=1.0)"
+        },
+        {
+          "line": 62,
+          "text": "ap.add_argument(\"--pair-weight\", type=float, default=0.0)"
+        },
+        {
+          "line": 63,
+          "text": "ap.add_argument(\"--worst-weight\", type=float, default=0.0)"
+        },
+        {
+          "line": 64,
+          "text": "ap.add_argument(\"--anchor-kl-weight\", type=float, default=0.05)"
+        },
+        {
+          "line": 65,
+          "text": "ap.add_argument(\"--weight-decay\", type=float, default=1e-5)"
+        },
+        {
+          "line": 66,
+          "text": "ap.add_argument(\"--seed\", type=int, default=37)"
+        },
+        {
+          "line": 67,
+          "text": "ap.add_argument(\"--print-every\", type=int, default=1)"
+        },
+        {
+          "line": 68,
+          "text": "ap.add_argument("
+        },
+        {
+          "line": 76,
+          "text": "ap.add_argument("
+        }
+      ],
+      "checkpoint_lines": [
+        {
+          "line": 13,
+          "text": "from gomoku_agent.checkpoint import load_compatible_checkpoint"
+        },
+        {
+          "line": 28,
+          "text": "\"Optimizer runs in memory only; no checkpoint is saved.\""
+        },
+        {
+          "line": 45,
+          "text": "\"--init-checkpoint\","
+        },
+        {
+          "line": 47,
+          "text": "default=Path(\"checkpoints/probes/15x15_capacity_data_pairing_b4c96_probe_candidate.pt\"),"
+        },
+        {
+          "line": 50,
+          "text": "\"--reference-checkpoint\","
+        },
+        {
+          "line": 52,
+          "text": "default=Path(\"checkpoints/probes/15x15_capacity_data_pairing_b4c96_probe_candidate.pt\"),"
+        },
+        {
+          "line": 98,
+          "text": "if args.init_checkpoint.name == \"15x15_current_best.pt\":"
+        },
+        {
+          "line": 99,
+          "text": "raise ValueError(\"refusing to use current_best as b4c96 init checkpoint\")"
+        },
+        {
+          "line": 100,
+          "text": "if args.reference_checkpoint.name == \"15x15_current_best.pt\":"
+        },
+        {
+          "line": 101,
+          "text": "raise ValueError(\"refusing to use current_best as b4c96 reference checkpoint\")"
+        },
+        {
+          "line": 104,
+          "text": "def load_model_b4c96("
+        },
+        {
+          "line": 105,
+          "text": "checkpoint: Path,"
+        },
+        {
+          "line": 114,
+          "text": "loaded = load_compatible_checkpoint("
+        },
+        {
+          "line": 116,
+          "text": "checkpoint,"
+        },
+        {
+          "line": 124,
+          "text": "f\"could not load compatible checkpoint: {checkpoint} \""
+        },
+        {
+          "line": 249,
+          "text": "\"- No checkpoint is saved.\","
+        },
+        {
+          "line": 267,
+          "text": "f\"- init_checkpoint: `{args.init_checkpoint}`\","
+        },
+        {
+          "line": 268,
+          "text": "f\"- reference_checkpoint: `{args.reference_checkpoint}`\","
+        },
+        {
+          "line": 314,
+          "text": "\"No checkpoint was saved.\","
+        },
+        {
+          "line": 337,
+          "text": "model = load_model_b4c96("
+        },
+        {
+          "line": 338,
+          "text": "args.init_checkpoint,"
+        },
+        {
+          "line": 345,
+          "text": "reference_model = load_model_b4c96("
+        },
+        {
+          "line": 346,
+          "text": "args.reference_checkpoint,"
+        },
+        {
+          "line": 392,
+          "text": "print(\"init_checkpoint:\", args.init_checkpoint)"
+        },
+        {
+          "line": 393,
+          "text": "print(\"reference_checkpoint:\", args.reference_checkpoint)"
+        },
+        {
+          "line": 412,
+          "text": "print(\"b4c96-safe no-save probe complete; no checkpoint saved\")"
+        }
+      ],
+      "classes": [],
+      "dataset_lines": [
+        {
+          "line": 16,
+          "text": "load_anchor_samples,"
+        },
+        {
+          "line": 27,
+          "text": "\"b4c96-safe no-save protected rank/top-k objective ablation wrapper. \""
+        },
+        {
+          "line": 36,
+          "text": "\"rapfi_teacher_policy_multisuppress_dataset_corpus8_selected_protected_train_11_50_weightcap3.json\""
+        },
+        {
+          "line": 73,
+          "text": "\"protected_nosave_group_metrics.csv\""
+        },
+        {
+          "line": 81,
+          "text": "\"protected_nosave_report.md\""
+        },
+        {
+          "line": 130,
+          "text": "def load_protected_dataset(path: Path) -> dict[str, Any]:"
+        },
+        {
+          "line": 132,
+          "text": "required = [\"samples\", \"protected_eval_samples\", \"tail_eval_samples\"]"
+        },
+        {
+          "line": 135,
+          "text": "raise ValueError(f\"missing {key} in protected dataset: {path}\")"
+        },
+        {
+          "line": 136,
+          "text": "if not data[\"samples\"]:"
+        },
+        {
+          "line": 137,
+          "text": "raise ValueError(\"empty train samples\")"
+        },
+        {
+          "line": 167,
+          "text": "protected_group = by_group[\"protected_eval_top10\"]"
+        },
+        {
+          "line": 168,
+          "text": "tail_group = by_group[\"tail_eval_rank_gt50\"]"
+        },
+        {
+          "line": 175,
+          "text": "protected_ok = ("
+        },
+        {
+          "line": 176,
+          "text": "float(protected_group[\"top10_delta\"]) >= 0"
+        },
+        {
+          "line": 177,
+          "text": "and float(protected_group[\"rank_gt50_delta\"]) <= 0"
+        },
+        {
+          "line": 178,
+          "text": "and float(protected_group[\"mean_target_prob_delta\"]) >= -0.002"
+        },
+        {
+          "line": 180,
+          "text": "tail_ok = ("
+        },
+        {
+          "line": 181,
+          "text": "float(tail_group[\"rank_gt50_delta\"]) <= 0"
+        },
+        {
+          "line": 182,
+          "text": "and float(tail_group[\"mean_rank_delta\"]) <= 5"
+        },
+        {
+          "line": 185,
+          "text": "if train_ok and protected_ok and tail_ok:"
+        },
+        {
+          "line": 244,
+          "text": "lines += [\"# b4c96-safe protected no-save objective ablation wrapper report\", \"\"]"
+        },
+        {
+          "line": 328,
+          "text": "data = load_protected_dataset(args.dataset)"
+        },
+        {
+          "line": 330,
+          "text": "(\"train_main_rank_11_50\", data[\"samples\"]),"
+        },
+        {
+          "line": 331,
+          "text": "(\"protected_eval_top10\", data[\"protected_eval_samples\"]),"
+        },
+        {
+          "line": 332,
+          "text": "(\"tail_eval_rank_gt50\", data[\"tail_eval_samples\"]),"
+        },
+        {
+          "line": 357,
+          "text": "anchors = load_anchor_samples(args.anchor_snapshots)"
+        },
+        {
+          "line": 359,
+          "text": "train_tensors = make_multisuppress_tensors(data[\"samples\"], device)"
+        },
+        {
+          "line": 362,
+          "text": "name: diagnose_summary(model, samples, device)"
+        },
+        {
+          "line": 363,
+          "text": "for name, samples in groups"
+        },
+        {
+          "line": 375,
+          "text": "name: diagnose_summary(model, samples, device)"
+        },
+        {
+          "line": 376,
+          "text": "for name, samples in groups"
+        },
+        {
+          "line": 380,
+          "text": "for name, _samples in groups:"
+        },
+        {
+          "line": 398,
+          "text": "print(\"train_rows:\", len(data[\"samples\"]))"
+        },
+        {
+          "line": 399,
+          "text": "print(\"protected_rows:\", len(data[\"protected_eval_samples\"]))"
+        },
+        {
+          "line": 400,
+          "text": "print(\"tail_rows:\", len(data[\"tail_eval_samples\"]))"
+        }
+      ],
+      "exists": true,
+      "functions": [
+        {
+          "line": 24,
+          "text": "def parse_args() -> argparse.Namespace:"
+        },
+        {
+          "line": 87,
+          "text": "def validate_args(args: argparse.Namespace) -> None:"
+        },
+        {
+          "line": 104,
+          "text": "def load_model_b4c96("
+        },
+        {
+          "line": 130,
+          "text": "def load_protected_dataset(path: Path) -> dict[str, Any]:"
+        },
+        {
+          "line": 141,
+          "text": "def summarize_delta(before: dict[str, Any], after: dict[str, Any]) -> dict[str, Any]:"
+        },
+        {
+          "line": 164,
+          "text": "def verdict(group_rows: list[dict[str, Any]]) -> str:"
+        },
+        {
+          "line": 190,
+          "text": "def write_csv(path: Path, rows: list[dict[str, Any]]) -> None:"
+        },
+        {
+          "line": 234,
+          "text": "def write_report("
+        },
+        {
+          "line": 321,
+          "text": "def main() -> int:"
+        }
+      ],
+      "line_count": 417,
+      "rank_lines": [
+        {
+          "line": 15,
+          "text": "from train_rapfi_teacher_policy_rank_topk_probe import ("
+        },
+        {
+          "line": 27,
+          "text": "\"b4c96-safe no-save protected rank/top-k objective ablation wrapper. \""
+        },
+        {
+          "line": 147,
+          "text": "\"rank_gt50\","
+        },
+        {
+          "line": 148,
+          "text": "\"mean_rank\","
+        },
+        {
+          "line": 166,
+          "text": "train_group = by_group[\"train_main_rank_11_50\"]"
+        },
+        {
+          "line": 168,
+          "text": "tail_group = by_group[\"tail_eval_rank_gt50\"]"
+        },
+        {
+          "line": 172,
+          "text": "and float(train_group[\"mean_rank_delta\"]) <= 0"
+        },
+        {
+          "line": 177,
+          "text": "and float(protected_group[\"rank_gt50_delta\"]) <= 0"
+        },
+        {
+          "line": 181,
+          "text": "float(tail_group[\"rank_gt50_delta\"]) <= 0"
+        },
+        {
+          "line": 182,
+          "text": "and float(tail_group[\"mean_rank_delta\"]) <= 5"
+        },
+        {
+          "line": 205,
+          "text": "\"rank_gt50_before\","
+        },
+        {
+          "line": 206,
+          "text": "\"rank_gt50_after\","
+        },
+        {
+          "line": 207,
+          "text": "\"rank_gt50_delta\","
+        },
+        {
+          "line": 208,
+          "text": "\"mean_rank_before\","
+        },
+        {
+          "line": 209,
+          "text": "\"mean_rank_after\","
+        },
+        {
+          "line": 210,
+          "text": "\"mean_rank_delta\","
+        },
+        {
+          "line": 281,
+          "text": "\"| group | rows | top3 delta | top5 delta | top10 delta | rank_gt50 delta | mean_rank delta | target_prob delta | mean_worst_gap delta | hinge delta | beats_worst delta | beats_all delta |\","
+        },
+        {
+          "line": 288,
+          "text": "f\"{float(r['top10_delta']):.6f} | {float(r['rank_gt50_delta']):.6f} | \""
+        },
+        {
+          "line": 289,
+          "text": "f\"{float(r['mean_rank_delta']):.6f} | {float(r['mean_target_prob_delta']):.8f} | \""
+        },
+        {
+          "line": 330,
+          "text": "(\"train_main_rank_11_50\", data[\"samples\"]),"
+        },
+        {
+          "line": 332,
+          "text": "(\"tail_eval_rank_gt50\", data[\"tail_eval_samples\"]),"
+        },
+        {
+          "line": 405,
+          "text": "\"rank_gt50_delta=\", row[\"rank_gt50_delta\"],"
+        },
+        {
+          "line": 406,
+          "text": "\"mean_rank_delta=\", row[\"mean_rank_delta\"],"
+        }
+      ],
+      "rapfi_lines": [
+        {
+          "line": 15,
+          "text": "from train_rapfi_teacher_policy_rank_topk_probe import ("
+        },
+        {
+          "line": 36,
+          "text": "\"rapfi_teacher_policy_multisuppress_dataset_corpus8_selected_protected_train_11_50_weightcap3.json\""
+        }
+      ],
+      "save_lines": []
+    },
+    "rank_topk_gate": {
+      "arg_lines": [
+        {
+          "line": 28,
+          "text": "ap.add_argument("
+        },
+        {
+          "line": 35,
+          "text": "ap.add_argument("
+        },
+        {
+          "line": 40,
+          "text": "ap.add_argument("
+        },
+        {
+          "line": 45,
+          "text": "ap.add_argument("
+        },
+        {
+          "line": 50,
+          "text": "ap.add_argument("
+        },
+        {
+          "line": 55,
+          "text": "ap.add_argument(\"--margin\", type=float, default=1.0)"
+        },
+        {
+          "line": 56,
+          "text": "ap.add_argument(\"--board-size\", type=int, default=15)"
+        },
+        {
+          "line": 57,
+          "text": "ap.add_argument(\"--win-length\", type=int, default=5)"
+        },
+        {
+          "line": 58,
+          "text": "ap.add_argument(\"--model-a-channels\", type=int, default=64)"
+        },
+        {
+          "line": 59,
+          "text": "ap.add_argument(\"--model-a-blocks\", type=int, default=4)"
+        },
+        {
+          "line": 60,
+          "text": "ap.add_argument(\"--model-b-channels\", type=int, default=96)"
+        },
+        {
+          "line": 61,
+          "text": "ap.add_argument(\"--model-b-blocks\", type=int, default=4)"
+        }
+      ],
+      "checkpoint_lines": [
+        {
+          "line": 13,
+          "text": "from gomoku_agent.checkpoint import load_compatible_checkpoint"
+        },
+        {
+          "line": 38,
+          "text": "default=Path(\"checkpoints/15x15_current_best_margin_g2m13_m15_3pair_b.pt\"),"
+        },
+        {
+          "line": 43,
+          "text": "default=Path(\"checkpoints/probes/15x15_capacity_data_pairing_b4c96_probe_candidate.pt\"),"
+        },
+        {
+          "line": 117,
+          "text": "def load_model("
+        },
+        {
+          "line": 118,
+          "text": "checkpoint: Path,"
+        },
+        {
+          "line": 127,
+          "text": "loaded = load_compatible_checkpoint("
+        },
+        {
+          "line": 129,
+          "text": "checkpoint,"
+        },
+        {
+          "line": 137,
+          "text": "f\"could not load compatible checkpoint: {checkpoint} \""
+        },
+        {
+          "line": 471,
+          "text": "out += [\"- Evaluation only: no optimizer, no training, no checkpoint save.\"]"
+        },
+        {
+          "line": 561,
+          "text": "model_a = load_model("
+        },
+        {
+          "line": 569,
+          "text": "model_b = load_model("
+        },
+        {
+          "line": 634,
+          "text": "print(\"evaluation only; no training/checkpoint/export/benchmark/promotion/manifest modification\")"
+        }
+      ],
+      "classes": [],
+      "dataset_lines": [
+        {
+          "line": 145,
+          "text": "rows = dataset.get(\"samples\", [])"
+        },
+        {
+          "line": 147,
+          "text": "raise ValueError(f\"empty or missing samples in dataset: {path}\")"
+        },
+        {
+          "line": 170,
+          "text": "suppress_actions = [rc_to_action(rc, board_size) for rc in sample[\"suppress_rcs\"]]"
+        },
+        {
+          "line": 171,
+          "text": "primary_action = rc_to_action(sample.get(\"primary_suppress_rc\", sample[\"suppress_rcs\"][0]), board_size)"
+        },
+        {
+          "line": 257,
+          "text": "\"suppress_count\": len(sample[\"suppress_rcs\"]),"
+        },
+        {
+          "line": 281,
+          "text": "\"protected_top10_regression\": int(int(before[\"target_rank\"]) <= 10 and int(after[\"target_rank\"]) > 10),"
+        },
+        {
+          "line": 329,
+          "text": "\"protected_top10_regressions\": int(sum(int(r[\"protected_top10_regression\"]) for r in rows)),"
+        },
+        {
+          "line": 376,
+          "text": "\"protected_top10_regression\","
+        },
+        {
+          "line": 430,
+          "text": "f\"protected_top10_regressions == 0: {summary['protected_top10_regressions']}\","
+        },
+        {
+          "line": 444,
+          "text": "and int(summary[\"protected_top10_regressions\"]) == 0"
+        },
+        {
+          "line": 511,
+          "text": "out.append(f\"| protected top-10 regressions | {summary['protected_top10_regressions']} |\")"
+        },
+        {
+          "line": 558,
+          "text": "dataset, samples = load_multisuppress_dataset(args.dataset)"
+        },
+        {
+          "line": 580,
+          "text": "rows = [compare_sample(model_a, model_b, sample, device, args.margin, args.board_size) for sample in samples]"
+        }
+      ],
+      "exists": true,
+      "functions": [
+        {
+          "line": 21,
+          "text": "def parse_args() -> argparse.Namespace:"
+        },
+        {
+          "line": 65,
+          "text": "def validate_arch_args(args: argparse.Namespace) -> None:"
+        },
+        {
+          "line": 82,
+          "text": "def action_to_rc(action: int, board_size: int) -> list[int]:"
+        },
+        {
+          "line": 86,
+          "text": "def validate_rc(rc: list[int] | tuple[int, int], board_size: int) -> tuple[int, int]:"
+        },
+        {
+          "line": 95,
+          "text": "def rc_to_action(rc: list[int] | tuple[int, int], board_size: int) -> int:"
+        },
+        {
+          "line": 100,
+          "text": "def encode_state(board: list[list[int]], current_player: int, board_size: int) -> np.ndarray:"
+        },
+        {
+          "line": 110,
+          "text": "def legal_mask_from_board(board: list[list[int]], board_size: int) -> np.ndarray:"
+        },
+        {
+          "line": 117,
+          "text": "def load_model("
+        },
+        {
+          "line": 143,
+          "text": "def load_multisuppress_dataset(path: Path) -> tuple[dict[str, Any], list[dict[str, Any]]]:"
+        },
+        {
+          "line": 151,
+          "text": "def same_model_path(a: Path, b: Path) -> bool:"
+        },
+        {
+          "line": 158,
+          "text": "def score_policy("
+        },
+        {
+          "line": 243,
+          "text": "def compare_sample("
+        },
+        {
+          "line": 287,
+          "text": "def finite_check(rows: list[dict[str, Any]]) -> tuple[bool, list[str]]:"
+        },
+        {
+          "line": 311,
+          "text": "def summarize(rows: list[dict[str, Any]]) -> dict[str, Any]:"
+        },
+        {
+          "line": 343,
+          "text": "def delta(summary: dict[str, Any], key: str) -> float:"
+        },
+        {
+          "line": 347,
+          "text": "def write_csv(path: Path, rows: list[dict[str, Any]]) -> None:"
+        },
+        {
+          "line": 387,
+          "text": "def load_anchor_count(path: Path) -> tuple[int, str]:"
+        },
+        {
+          "line": 395,
+          "text": "def gate_status(summary: dict[str, Any], finite_ok: bool, self_check: bool) -> tuple[str, list[str]]:"
+        },
+        {
+          "line": 453,
+          "text": "def write_report("
+        },
+        {
+          "line": 553,
+          "text": "def main() -> int:"
+        }
+      ],
+      "line_count": 639,
+      "rank_lines": [
+        {
+          "line": 15,
+          "text": "from train_rapfi_teacher_policy_margin import masked_softmax, rank_of_action"
+        },
+        {
+          "line": 24,
+          "text": "\"No-promotion b4c96-safe policy rank/top-k gate wrapper for \""
+        },
+        {
+          "line": 48,
+          "text": "default=Path(\"analysis/integration_eval/b4c96_safe_rank_topk_gate_metrics.csv\"),"
+        },
+        {
+          "line": 53,
+          "text": "default=Path(\"analysis/integration_eval/b4c96_safe_rank_topk_gate_report.md\"),"
+        },
+        {
+          "line": 201,
+          "text": "target_rank = int(rank_of_action(probs, target_action, mask0))"
+        },
+        {
+          "line": 216,
+          "text": "\"rank\": int(rank_of_action(probs, action, mask0)),"
+        },
+        {
+          "line": 228,
+          "text": "\"target_rank\": target_rank,"
+        },
+        {
+          "line": 231,
+          "text": "\"primary_suppress_rank\": int(primary[\"rank\"]),"
+        },
+        {
+          "line": 234,
+          "text": "\"worst_suppress_rank\": int(worst[\"rank\"]),"
+        },
+        {
+          "line": 258,
+          "text": "\"target_rank_a\": before[\"target_rank\"],"
+        },
+        {
+          "line": 259,
+          "text": "\"target_rank_b\": after[\"target_rank\"],"
+        },
+        {
+          "line": 260,
+          "text": "\"target_rank_delta\": int(after[\"target_rank\"]) - int(before[\"target_rank\"]),"
+        },
+        {
+          "line": 281,
+          "text": "\"protected_top10_regression\": int(int(before[\"target_rank\"]) <= 10 and int(after[\"target_rank\"]) > 10),"
+        },
+        {
+          "line": 282,
+          "text": "\"rank_gt50_a\": int(int(before[\"target_rank\"]) > 50),"
+        },
+        {
+          "line": 283,
+          "text": "\"rank_gt50_b\": int(int(after[\"target_rank\"]) > 50),"
+        },
+        {
+          "line": 312,
+          "text": "ranks_a = [int(r[\"target_rank_a\"]) for r in rows]"
+        },
+        {
+          "line": 313,
+          "text": "ranks_b = [int(r[\"target_rank_b\"]) for r in rows]"
+        },
+        {
+          "line": 321,
+          "text": "\"top3_a\": int(sum(r <= 3 for r in ranks_a)),"
+        },
+        {
+          "line": 322,
+          "text": "\"top3_b\": int(sum(r <= 3 for r in ranks_b)),"
+        },
+        {
+          "line": 323,
+          "text": "\"top5_a\": int(sum(r <= 5 for r in ranks_a)),"
+        },
+        {
+          "line": 324,
+          "text": "\"top5_b\": int(sum(r <= 5 for r in ranks_b)),"
+        },
+        {
+          "line": 325,
+          "text": "\"top10_a\": int(sum(r <= 10 for r in ranks_a)),"
+        },
+        {
+          "line": 326,
+          "text": "\"top10_b\": int(sum(r <= 10 for r in ranks_b)),"
+        },
+        {
+          "line": 327,
+          "text": "\"rank_gt50_a\": int(sum(r > 50 for r in ranks_a)),"
+        },
+        {
+          "line": 328,
+          "text": "\"rank_gt50_b\": int(sum(r > 50 for r in ranks_b)),"
+        },
+        {
+          "line": 330,
+          "text": "\"mean_target_rank_a\": float(np.mean(ranks_a)),"
+        },
+        {
+          "line": 331,
+          "text": "\"mean_target_rank_b\": float(np.mean(ranks_b)),"
+        },
+        {
+          "line": 353,
+          "text": "\"target_rank_a\","
+        },
+        {
+          "line": 354,
+          "text": "\"target_rank_b\","
+        },
+        {
+          "line": 355,
+          "text": "\"target_rank_delta\","
+        },
+        {
+          "line": 377,
+          "text": "\"rank_gt50_a\","
+        },
+        {
+          "line": 378,
+          "text": "\"rank_gt50_b\","
+        },
+        {
+          "line": 405,
+          "text": "\"rank_gt50\","
+        },
+        {
+          "line": 418,
+          "text": "rank_gt50_delta = delta(summary, \"rank_gt50\")"
+        },
+        {
+          "line": 429,
+          "text": "f\"rank_gt50_delta <= 0: {rank_gt50_delta}\","
+        },
+        {
+          "line": 443,
+          "text": "and rank_gt50_delta <= 0"
+        },
+        {
+          "line": 469,
+          "text": "out += [\"# b4c96-safe policy-only rank/top-k gate report\", \"\"]"
+        },
+        {
+          "line": 496,
+          "text": "(\"rank_gt50\", \"target rank > 50 rows\"),"
+        },
+        {
+          "line": 497,
+          "text": "(\"mean_target_rank\", \"mean target rank\"),"
+        },
+        {
+          "line": 521,
+          "text": "out += [\"\", \"## Worst target-rank rows after model B\", \"\"]"
+        },
+        {
+          "line": 523,
+          "text": "\"| case_id | target_rank_a | target_rank_b | target_prob_a | target_prob_b | worst_gap_a | worst_gap_b |\","
+        },
+        {
+          "line": 526,
+          "text": "for row in sorted(rows, key=lambda r: int(r[\"target_rank_b\"]), reverse=True)[:15]:"
+        },
+        {
+          "line": 530,
+          "text": "ra=row[\"target_rank_a\"],"
+        },
+        {
+          "line": 531,
+          "text": "rb=row[\"target_rank_b\"],"
+        },
+        {
+          "line": 619,
+          "text": "\"rank_gt50_a:\","
+        },
+        {
+          "line": 620,
+          "text": "summary[\"rank_gt50_a\"],"
+        },
+        {
+          "line": 621,
+          "text": "\"rank_gt50_b:\","
+        },
+        {
+          "line": 622,
+          "text": "summary[\"rank_gt50_b\"],"
+        },
+        {
+          "line": 624,
+          "text": "delta(summary, \"rank_gt50\"),"
+        }
+      ],
+      "rapfi_lines": [
+        {
+          "line": 15,
+          "text": "from train_rapfi_teacher_policy_margin import masked_softmax, rank_of_action"
+        },
+        {
+          "line": 32,
+          "text": "\"analysis/public_benchmark_eval/rapfi_teacher_policy_multisuppress_dataset_corpus8_selected.json\""
+        }
+      ],
+      "save_lines": []
+    }
+  },
+  "tail_gap": 12,
+  "upstream_preflight_decision": "TAIL_GENERATION_PREFLIGHT_READY_WITH_LOCAL_TEACHER_ENGINE"
+}
