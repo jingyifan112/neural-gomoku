@@ -1,0 +1,73 @@
+{
+  "current_findings": {
+    "materialized_protected_eval_rows": 15,
+    "materialized_quarantine_rows": 3,
+    "materialized_tail_eval_rows": 3,
+    "materialized_train_rows": 4,
+    "protected_failure": true,
+    "row_level_decision": "LEAVE_ONE_OUT_NO_GUARD_SAFE_SUBSET",
+    "selection_base_rows": 25,
+    "strict_train_candidate_rows": 4,
+    "tail_failure": true,
+    "train_improved": true
+  },
+  "decision": "TEACHER_DIVERGENCE_EXPANSION_TARGETS_READY",
+  "expansion_targets": [
+    {
+      "acceptance_rule": "Rows must remain held out as tail_guard until a no-save probe shows rank_gt50_delta <= 0 and mean_rank_delta <= 0.",
+      "current_evidence": "tail_eval_rank_gt50 failed in full conservative probe and every leave-one-out variant",
+      "do_not_use_as": "ordinary_train_rows",
+      "minimum_new_rows": 12,
+      "priority": "P0",
+      "selection_rule": "Collect rank>50 or near-tail teacher-divergence rows, especially cases where training tends to lose top10 or create rank>50 regressions.",
+      "target_area": "tail_guard_expansion"
+    },
+    {
+      "acceptance_rule": "Rows must remain held out as protected_guard until top5_delta >= 0, top10_delta >= 0, and no teacher-beats regression appears.",
+      "current_evidence": "protected_eval_top10 lost top5 coverage or target probability across probes",
+      "do_not_use_as": "ordinary_train_rows",
+      "minimum_new_rows": 12,
+      "priority": "P0",
+      "selection_rule": "Collect top3/top5/top10 teacher rows where target is already relatively good and must not regress.",
+      "target_area": "protected_guard_expansion"
+    },
+    {
+      "acceptance_rule": "Candidate rows may be trainable only after no-save checks show train improvement without protected/tail guard failure.",
+      "current_evidence": "Only 4 strict train candidates survived selection audit, and no leave-one-out subset became guard-safe.",
+      "do_not_use_as": "checkpoint_producing_train_until_guard_safe",
+      "minimum_new_rows": 20,
+      "priority": "P1",
+      "selection_rule": "Collect rank 11-50 directionally useful teacher-divergence rows with no severe/core regression tags and no overlap with protected/tail instability.",
+      "target_area": "train_candidate_expansion"
+    },
+    {
+      "acceptance_rule": "Quarantine rows remain excluded from ordinary training.",
+      "current_evidence": "3 prior train rows became quarantine: legacy_g2_m11, legacy_g2_m21, legacy_g5_m14",
+      "do_not_use_as": "ordinary_train_rows",
+      "minimum_new_rows": 0,
+      "priority": "P1",
+      "selection_rule": "Do not expand from severe/core-regression families unless explicitly reviewed as negative examples.",
+      "target_area": "quarantine_review"
+    },
+    {
+      "acceptance_rule": "Expansion manifest should include game/family balancing and duplicate-family flags.",
+      "current_evidence": "Current corpus is small and concentrated; no 25-row subset was guard-safe for b4c96.",
+      "do_not_use_as": "unbalanced_single_family_expansion",
+      "minimum_new_rows": 20,
+      "priority": "P2",
+      "selection_rule": "Prefer more games/families rather than multiple near-duplicates from the same local pattern.",
+      "target_area": "family_diversity"
+    }
+  ],
+  "inputs": {
+    "materialized_summary": "analysis/integration_eval/teacher_divergence_next_materialize_conservative/materialized_summary.json",
+    "nosave_summary": "analysis/integration_eval/teacher_divergence_next_nosave_probe/nosave_probe_summary.csv",
+    "row_level_report": "analysis/integration_eval/teacher_divergence_row_level_guard_review/leave_one_out_report.md",
+    "row_level_summary": "analysis/integration_eval/teacher_divergence_row_level_guard_review/leave_one_out_summary.json",
+    "selection_summary": "analysis/integration_eval/teacher_divergence_data_selection_next/selection_summary.json",
+    "stop_review": "analysis/integration_eval/b4c96_capacity_route_stop_review.md"
+  },
+  "recommended_next_branch": "exp/15x15-teacher-divergence-expansion-source-audit-next",
+  "recommended_next_step": "Audit available source artifacts for rows matching P0/P1 expansion targets before building any new training dataset.",
+  "scope": "planning only; no training/checkpoint/export/benchmark/promotion"
+}
