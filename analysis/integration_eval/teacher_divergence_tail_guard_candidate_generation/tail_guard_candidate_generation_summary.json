@@ -1,0 +1,20 @@
+{
+  "candidate_rows": 49,
+  "decision": "TAIL_GUARD_CANDIDATE_GENERATION_TARGET_MET",
+  "min_tail_target": 12,
+  "near_tail_rank_threshold": 31,
+  "near_tail_review_candidates": 3,
+  "outputs": {
+    "candidate_source_json": "analysis/integration_eval/teacher_divergence_tail_guard_candidate_generation/tail_guard_candidate_source.json",
+    "manifest_csv": "analysis/integration_eval/teacher_divergence_tail_guard_candidate_generation/tail_guard_candidate_manifest.csv",
+    "report_md": "analysis/integration_eval/teacher_divergence_tail_guard_candidate_generation/tail_guard_candidate_generation_report.md",
+    "summary_json": "analysis/integration_eval/teacher_divergence_tail_guard_candidate_generation/tail_guard_candidate_generation_summary.json"
+  },
+  "scope": "candidate source generation only; no training/checkpoint save/export/benchmark/promotion",
+  "skipped": {
+    "no_candidate_target_extracted": 2
+  },
+  "snapshots": 32,
+  "tail_guard_candidates": 17,
+  "tail_rank_threshold": 50
+}
