@@ -1,0 +1,103 @@
+{
+  "decision": "TEACHER_DIVERGENCE_NEXT_CONSERVATIVE_DATASET_MATERIALIZED",
+  "group_counts": {
+    "protected_eval_samples": 15,
+    "quarantine_samples": 3,
+    "samples": 4,
+    "tail_eval_samples": 3
+  },
+  "out_dataset": "analysis/public_benchmark_eval/rapfi_teacher_policy_multisuppress_dataset_corpus8_selected_conservative_selection_next.json",
+  "protected_case_ids": [
+    "legacy_g1_m4",
+    "legacy_g1_m40",
+    "legacy_g1_m6",
+    "legacy_g2_m5",
+    "legacy_g2_m7",
+    "legacy_g2_m9",
+    "legacy_g3_m24",
+    "legacy_g3_m26",
+    "legacy_g3_m4",
+    "legacy_g4_m17",
+    "legacy_g5_m16",
+    "legacy_g5_m6",
+    "legacy_g5_m8",
+    "legacy_g6_m19",
+    "legacy_g6_m5"
+  ],
+  "protected_eval_rows": 15,
+  "quarantine_case_ids": [
+    "legacy_g2_m11",
+    "legacy_g2_m21",
+    "legacy_g5_m14"
+  ],
+  "quarantine_rows": 3,
+  "recommended_next": "manual schema/consumer audit before any no-save probe",
+  "risk_counts": {
+    "hard_guard": 18,
+    "high": 3,
+    "medium": 4
+  },
+  "role_counts": {
+    "protected_guard_holdout": 15,
+    "quarantine_regression_sensitive": 3,
+    "tail_guard_holdout": 3,
+    "train_candidate_review": 4
+  },
+  "scope": "materialization only; no training/checkpoint/export/benchmark/promotion",
+  "selection_manifest": "analysis/integration_eval/teacher_divergence_data_selection_next/selection_manifest.csv",
+  "source_dataset": "analysis/public_benchmark_eval/rapfi_teacher_policy_multisuppress_dataset_corpus8_selected.json",
+  "source_rows": 25,
+  "suppress_count_stats": {
+    "protected": {
+      "5": 15
+    },
+    "quarantine": {
+      "5": 3
+    },
+    "tail": {
+      "5": 3
+    },
+    "train": {
+      "5": 4
+    }
+  },
+  "tail_case_ids": [
+    "legacy_g1_m8",
+    "legacy_g5_m12",
+    "legacy_g5_m30"
+  ],
+  "tail_eval_rows": 3,
+  "train_case_ids": [
+    "legacy_g4_m13",
+    "legacy_g4_m23",
+    "legacy_g5_m28",
+    "legacy_g6_m17"
+  ],
+  "train_rows": 4,
+  "weight_stats": {
+    "protected": {
+      "max": 3.0,
+      "mean": 2.5075156926910083,
+      "min": 1.4980545043945312,
+      "sum": 37.612735390365124
+    },
+    "quarantine": {
+      "max": 3.0,
+      "mean": 3.0,
+      "min": 3.0,
+      "sum": 9.0
+    },
+    "tail": {
+      "max": 3.0,
+      "mean": 3.0,
+      "min": 3.0,
+      "sum": 9.0
+    },
+    "train": {
+      "max": 3.0,
+      "mean": 2.6612358689308167,
+      "min": 2.412734031677246,
+      "sum": 10.644943475723267
+    }
+  }
+}
