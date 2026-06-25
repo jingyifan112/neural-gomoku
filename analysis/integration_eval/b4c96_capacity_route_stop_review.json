@@ -1,0 +1,57 @@
+{
+  "branch": "exp/15x15-b4c96-capacity-route-stop-review",
+  "decision": "B4C96_CAPACITY_ROUTE_STOPPED_RETURN_TO_DATA_SELECTION",
+  "stop_reason": "Current b4c96 capacity route has failed Stage C plus no-save objective and tail-aware ablations; current data/objective combination is insufficient for checkpoint-producing training.",
+  "evidence_chain": [
+    {
+      "branch": "exp/15x15-capacity-data-pairing-final-review",
+      "commit": "3cdedaa",
+      "result": "capacity-data pairing completed; Stage C gate failed"
+    },
+    {
+      "branch": "exp/15x15-b4c96-stagec-failure-forensics",
+      "commit": "056b473",
+      "result": "failure attributed to protected/objective regressions"
+    },
+    {
+      "branch": "exp/15x15-b4c96-gate-informed-objective-ablation",
+      "commit": "d47957c",
+      "result": "ablation plan created; b4c96-safe no-save wrapper required"
+    },
+    {
+      "branch": "exp/15x15-b4c96-safe-nosave-ablation-wrapper",
+      "commit": "ecfcf62",
+      "result": "wrapper implemented and smoke-tested; no checkpoint saved"
+    },
+    {
+      "branch": "exp/15x15-b4c96-nosave-objective-ablation-run1",
+      "commit": "bde54c7",
+      "result": "A1/A2/A3 all failed"
+    },
+    {
+      "branch": "exp/15x15-b4c96-tail-aware-ablation-dataset-adapter",
+      "commit": "a0dd5f7",
+      "result": "A4/A5 datasets built"
+    },
+    {
+      "branch": "exp/15x15-b4c96-tail-aware-nosave-ablation-run2",
+      "commit": "d007944",
+      "result": "A4/A5 both failed"
+    }
+  ],
+  "forbidden_next_actions": [
+    "checkpoint_save",
+    "c_export",
+    "public_benchmark",
+    "promotion",
+    "current_best_overwrite",
+    "checkpoint_producing_training_from_current_route"
+  ],
+  "recommended_next_route": "exp/15x15-teacher-divergence-data-selection-next",
+  "recommended_next_focus": [
+    "teacher-divergence corpus expansion",
+    "protected/tail data selection",
+    "stable no-save gate-first selection",
+    "more diverse guard examples before another b4c96 capacity probe"
+  ]
+}
