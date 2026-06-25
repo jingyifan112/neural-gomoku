@@ -1,0 +1,152 @@
+{
+  "base_rows": 25,
+  "decision": "TEACHER_DIVERGENCE_DATA_SELECTION_AUDIT_READY",
+  "hard_guard_case_ids": [
+    "legacy_g1_m4",
+    "legacy_g1_m6",
+    "legacy_g1_m8",
+    "legacy_g1_m40",
+    "legacy_g2_m5",
+    "legacy_g2_m7",
+    "legacy_g2_m9",
+    "legacy_g3_m4",
+    "legacy_g3_m24",
+    "legacy_g3_m26",
+    "legacy_g4_m17",
+    "legacy_g5_m6",
+    "legacy_g5_m8",
+    "legacy_g5_m12",
+    "legacy_g5_m16",
+    "legacy_g5_m30",
+    "legacy_g6_m5",
+    "legacy_g6_m19"
+  ],
+  "inputs": {
+    "base_dataset": "analysis/public_benchmark_eval/rapfi_teacher_policy_multisuppress_dataset_corpus8_selected.json",
+    "forensics_csv": "analysis/integration_eval/b4c96_stagec_failure_forensics.csv",
+    "run1_summary": "analysis/integration_eval/b4c96_nosave_objective_ablation_run1/run1_summary.csv",
+    "run2_summary": "analysis/integration_eval/b4c96_tail_aware_nosave_ablation_run2/run2_summary.csv",
+    "split_dataset": "analysis/public_benchmark_eval/rapfi_teacher_policy_multisuppress_dataset_corpus8_selected_protected_train_11_50_weightcap3.json",
+    "stop_review": "analysis/integration_eval/b4c96_capacity_route_stop_review.md"
+  },
+  "manifest_rows": 25,
+  "missing_forensics_case_ids": [],
+  "missing_split_case_ids": [],
+  "previous_split_role_counts": {
+    "previous_protected_eval_top10": 15,
+    "previous_tail_eval_rank_gt50": 3,
+    "previous_train_rank_11_50": 7
+  },
+  "quarantine_case_ids": [
+    "legacy_g2_m11",
+    "legacy_g2_m21",
+    "legacy_g5_m14"
+  ],
+  "rank_bucket_counts": {
+    "protected_top10": 4,
+    "protected_top3": 5,
+    "protected_top5": 6,
+    "tail_rank_gt50": 3,
+    "trainable_rank_11_50": 7
+  },
+  "recommended_next": "manual review of train_candidate_review rows before materializing any new training dataset",
+  "recommended_role_counts": {
+    "protected_guard_holdout": 15,
+    "quarantine_regression_sensitive": 3,
+    "tail_guard_holdout": 3,
+    "train_candidate_review": 4
+  },
+  "run1": {
+    "all_fail": true,
+    "exists": true,
+    "group_rows": {
+      "protected_eval_top10": 3,
+      "tail_eval_rank_gt50": 3,
+      "train_main_rank_11_50": 3
+    },
+    "path": "analysis/integration_eval/b4c96_nosave_objective_ablation_run1/run1_summary.csv",
+    "protected_prob_deltas": [
+      -0.011576579333147187,
+      -0.011576863329779974,
+      -0.011578216784012812
+    ],
+    "protected_top5_deltas": [
+      -1.0,
+      -1.0,
+      -1.0
+    ],
+    "rows": 9,
+    "tail_mean_rank_deltas": [
+      23.333333333333332,
+      23.333333333333332,
+      23.333333333333332
+    ],
+    "tail_rank_gt50_deltas": [
+      2.0,
+      2.0,
+      2.0
+    ],
+    "train_rank_gt50_deltas": [
+      -1.0,
+      -1.0,
+      -1.0
+    ],
+    "verdicts": [
+      "FAIL_B4C96_SAFE_NO_SAVE_PROBE"
+    ]
+  },
+  "run2": {
+    "all_fail": true,
+    "exists": true,
+    "group_rows": {
+      "protected_eval_top10": 2,
+      "tail_eval_rank_gt50": 2,
+      "train_main_rank_11_50": 2
+    },
+    "path": "analysis/integration_eval/b4c96_tail_aware_nosave_ablation_run2/run2_summary.csv",
+    "protected_prob_deltas": [
+      -0.011507382886581274,
+      -0.011508053700284408
+    ],
+    "protected_top5_deltas": [
+      -1.0,
+      -1.0
+    ],
+    "rows": 6,
+    "tail_mean_rank_deltas": [
+      22.333333333333332,
+      22.333333333333332
+    ],
+    "tail_rank_gt50_deltas": [
+      2.0,
+      2.0
+    ],
+    "train_rank_gt50_deltas": [
+      1.0,
+      1.0
+    ],
+    "verdicts": [
+      "FAIL_B4C96_SAFE_NO_SAVE_PROBE"
+    ]
+  },
+  "scope": "selection audit only; no training/checkpoint/export/benchmark/promotion",
+  "selection_risk_counts": {
+    "hard_guard": 18,
+    "high": 3,
+    "medium": 4
+  },
+  "strict_train_candidate_case_ids": [
+    "legacy_g4_m13",
+    "legacy_g4_m23",
+    "legacy_g5_m28",
+    "legacy_g6_m17"
+  ],
+  "strict_train_candidate_rows": 4,
+  "train_candidate_case_ids": [
+    "legacy_g4_m13",
+    "legacy_g4_m23",
+    "legacy_g5_m28",
+    "legacy_g6_m17"
+  ],
+  "train_candidate_review_rows": 4
+}
