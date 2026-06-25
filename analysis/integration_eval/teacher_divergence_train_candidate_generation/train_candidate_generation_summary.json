@@ -1,0 +1,32 @@
+{
+  "candidate_rows": 30,
+  "decision": "TRAIN_CANDIDATE_GENERATION_PARTIAL",
+  "gap_reference_candidates": 0,
+  "min_train_target": 12,
+  "model_arch": {
+    "blocks": 4,
+    "board_size": 15,
+    "channels": 64,
+    "win_length": 5
+  },
+  "model_checkpoint": "checkpoints/15x15_current_best_margin_g2m13_m15_3pair_b.pt",
+  "outputs": {
+    "candidate_source_json": "analysis/integration_eval/teacher_divergence_train_candidate_generation/train_candidate_source.json",
+    "manifest_csv": "analysis/integration_eval/teacher_divergence_train_candidate_generation/train_candidate_manifest.csv",
+    "report_md": "analysis/integration_eval/teacher_divergence_train_candidate_generation/train_candidate_generation_report.md",
+    "summary_json": "analysis/integration_eval/teacher_divergence_train_candidate_generation/train_candidate_generation_summary.json"
+  },
+  "protected_rank_max": 10,
+  "protected_reference_candidates": 17,
+  "scope": "candidate source generation only; no training/checkpoint save/export/benchmark/promotion",
+  "skipped": {
+    "board_target_identity_already_exists": 19,
+    "no_candidate_target_extracted": 2
+  },
+  "snapshots": 32,
+  "tail_rank_threshold": 50,
+  "tail_reference_candidates": 5,
+  "train_candidates": 8,
+  "train_rank_max": 50,
+  "train_rank_min": 11
+}
