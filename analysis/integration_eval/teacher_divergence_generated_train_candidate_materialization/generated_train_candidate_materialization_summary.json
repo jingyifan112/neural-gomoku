@@ -1,0 +1,32 @@
+{
+  "accepted_new_train_candidates": 8,
+  "after_counts": {
+    "protected_eval_samples": 15,
+    "quarantine_samples": 3,
+    "samples": 12,
+    "tail_eval_samples": 15
+  },
+  "base_dataset": "analysis/public_benchmark_eval/rapfi_teacher_policy_multisuppress_dataset_corpus8_selected_conservative_plus_generated_tail_guards_dryrun.json",
+  "before_counts": {
+    "protected_eval_samples": 15,
+    "quarantine_samples": 3,
+    "samples": 4,
+    "tail_eval_samples": 15
+  },
+  "candidate_source": "analysis/integration_eval/teacher_divergence_train_candidate_generation/train_candidate_source.json",
+  "decision": "GENERATED_TRAIN_CANDIDATE_MATERIALIZATION_DRYRUN_TARGET_MET",
+  "max_new_train_candidates": 8,
+  "min_new_train_candidates": 8,
+  "out_dataset": "analysis/public_benchmark_eval/rapfi_teacher_policy_multisuppress_dataset_corpus8_selected_conservative_plus_generated_tail_guards_plus_generated_train_candidates_dryrun.json",
+  "outputs": {
+    "dataset": "analysis/public_benchmark_eval/rapfi_teacher_policy_multisuppress_dataset_corpus8_selected_conservative_plus_generated_tail_guards_plus_generated_train_candidates_dryrun.json",
+    "manifest": "analysis/integration_eval/teacher_divergence_generated_train_candidate_materialization/generated_train_candidate_materialization_manifest.csv",
+    "report": "analysis/integration_eval/teacher_divergence_generated_train_candidate_materialization/generated_train_candidate_materialization_report.md",
+    "summary": "analysis/integration_eval/teacher_divergence_generated_train_candidate_materialization/generated_train_candidate_materialization_summary.json"
+  },
+  "review_decision_counts": {
+    "accepted_generated_train_candidate": 8
+  },
+  "scope": "generated train candidate materialization dry-run only; no training/checkpoint/export/benchmark/promotion",
+  "source_train_candidates": 8
+}

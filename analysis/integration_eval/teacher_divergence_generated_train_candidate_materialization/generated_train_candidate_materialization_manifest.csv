@@ -1,0 +1,9 @@
+case_id,candidate_bucket,game_number,move_count,side_to_move,target_rc,before_target_rank,before_target_prob,before_primary_gap,before_worst_suppress_gap,target_source_field,training_allowed,review_decision,selected_for_train_dryrun
+traingen_g5_m30_t2_4_9,P1_train_candidate,5,30,black,"[4, 9]",48,0.0008259802619669534,-6.257028579711914,-6.257028579711914,policy_safety,True,accepted_generated_train_candidate,1
+traingen_g6_m17_t0_7_9,P1_train_candidate,6,17,white,"[7, 9]",47,0.00038619710141763657,-7.255709648132324,-7.255709648132324,direct,True,accepted_generated_train_candidate,1
+traingen_g1_m38_t1_12_8,P1_train_candidate,1,38,black,"[12, 8]",46,0.0009139606484569681,-5.983615875244141,-5.983615875244141,direct,True,accepted_generated_train_candidate,1
+traingen_g4_m21_t1_10_8,P1_train_candidate,4,21,white,"[10, 8]",44,0.00013093031121127978,-8.872425556182861,-8.872425556182861,direct,True,accepted_generated_train_candidate,1
+traingen_g4_m13_t0_8_4,P1_train_candidate,4,13,white,"[8, 4]",23,0.00045060805437428954,-7.062347888946533,-7.062347888946533,direct,True,accepted_generated_train_candidate,1
+traingen_g5_m8_t1_8_5,P1_train_candidate,5,8,black,"[8, 5]",20,0.0031780123491469774,-5.274003982543945,-5.274003982543945,policy_safety,True,accepted_generated_train_candidate,1
+traingen_g5_m28_t2_5_11,P1_train_candidate,5,28,black,"[5, 11]",18,0.004238760457081408,-4.444487571716309,-4.444487571716309,policy_safety,True,accepted_generated_train_candidate,1
+traingen_g5_m30_t0_9_9,P1_train_candidate,5,30,black,"[9, 9]",17,0.004332567907431653,-4.59968376159668,-4.59968376159668,previous_rapfi_bestline,True,accepted_generated_train_candidate,1
