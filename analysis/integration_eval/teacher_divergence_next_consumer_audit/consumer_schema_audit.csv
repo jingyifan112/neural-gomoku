@@ -1,0 +1,26 @@
+group,row_index,case_id,ok,duplicate_in_group,missing_fields,suppress_count,board_size,win_length,target_rc,primary_suppress_rc,materialized_output_group,recommended_selection_role,selection_risk,selection_flags
+samples,0,legacy_g4_m13,True,False,,5,15,5,"[6, 9]","[4, 6]",samples,train_candidate_review,medium,directionally_useful
+samples,1,legacy_g4_m23,True,False,,5,15,5,"[9, 7]","[3, 7]",samples,train_candidate_review,medium,directionally_useful
+samples,2,legacy_g5_m28,True,False,,5,15,5,"[11, 5]","[4, 5]",samples,train_candidate_review,medium,directionally_useful
+samples,3,legacy_g6_m17,True,False,,5,15,5,"[6, 8]","[9, 4]",samples,train_candidate_review,medium,directionally_useful
+protected_eval_samples,0,legacy_g1_m4,True,False,,5,15,5,"[5, 7]","[6, 7]",protected_eval_samples,protected_guard_holdout,hard_guard,directionally_useful
+protected_eval_samples,1,legacy_g1_m40,True,False,,5,15,5,"[6, 12]","[8, 5]",protected_eval_samples,protected_guard_holdout,hard_guard,prob_regression
+protected_eval_samples,2,legacy_g1_m6,True,False,,5,15,5,"[8, 7]","[6, 6]",protected_eval_samples,protected_guard_holdout,hard_guard,directionally_useful
+protected_eval_samples,3,legacy_g2_m5,True,False,,5,15,5,"[6, 8]","[8, 7]",protected_eval_samples,protected_guard_holdout,hard_guard,severe_core_regression;core_regressed;protected_regression;rank_regression;prob_regression
+protected_eval_samples,4,legacy_g2_m7,True,False,,5,15,5,"[6, 5]","[5, 6]",protected_eval_samples,protected_guard_holdout,hard_guard,directionally_useful
+protected_eval_samples,5,legacy_g2_m9,True,False,,5,15,5,"[5, 10]","[5, 9]",protected_eval_samples,protected_guard_holdout,hard_guard,directionally_useful
+protected_eval_samples,6,legacy_g3_m24,True,False,,5,15,5,"[7, 3]","[6, 7]",protected_eval_samples,protected_guard_holdout,hard_guard,directionally_useful
+protected_eval_samples,7,legacy_g3_m26,True,False,,5,15,5,"[3, 6]","[6, 7]",protected_eval_samples,protected_guard_holdout,hard_guard,severe_core_regression;core_regressed;protected_regression;rank_regression;prob_regression
+protected_eval_samples,8,legacy_g3_m4,True,False,,5,15,5,"[6, 5]","[8, 8]",protected_eval_samples,protected_guard_holdout,hard_guard,severe_core_regression;core_regressed;rank_regression;prob_regression
+protected_eval_samples,9,legacy_g4_m17,True,False,,5,15,5,"[6, 10]","[9, 9]",protected_eval_samples,protected_guard_holdout,hard_guard,severe_core_regression;core_regressed;protected_regression;rank_regression;prob_regression
+protected_eval_samples,10,legacy_g5_m16,True,False,,5,15,5,"[5, 7]","[8, 11]",protected_eval_samples,protected_guard_holdout,hard_guard,prob_regression
+protected_eval_samples,11,legacy_g5_m6,True,False,,5,15,5,"[6, 8]","[8, 9]",protected_eval_samples,protected_guard_holdout,hard_guard,severe_core_regression;core_regressed;rank_regression;prob_regression
+protected_eval_samples,12,legacy_g5_m8,True,False,,5,15,5,"[5, 8]","[6, 6]",protected_eval_samples,protected_guard_holdout,hard_guard,severe_core_regression;core_regressed;rank_regression;prob_regression
+protected_eval_samples,13,legacy_g6_m19,True,False,,5,15,5,"[5, 9]","[9, 7]",protected_eval_samples,protected_guard_holdout,hard_guard,prob_regression
+protected_eval_samples,14,legacy_g6_m5,True,False,,5,15,5,"[8, 6]","[8, 8]",protected_eval_samples,protected_guard_holdout,hard_guard,protected_regression;rank_regression
+tail_eval_samples,0,legacy_g1_m8,True,False,,5,15,5,"[5, 8]","[6, 6]",tail_eval_samples,tail_guard_holdout,hard_guard,tail_regression;directionally_useful
+tail_eval_samples,1,legacy_g5_m12,True,False,,5,15,5,"[9, 8]","[6, 6]",tail_eval_samples,tail_guard_holdout,hard_guard,severe_core_regression;core_regressed;tail_regression;rank_regression;prob_regression
+tail_eval_samples,2,legacy_g5_m30,True,False,,5,15,5,"[9, 4]","[3, 7]",tail_eval_samples,tail_guard_holdout,hard_guard,prob_regression
+quarantine_samples,0,legacy_g2_m11,True,False,,5,15,5,"[7, 9]","[5, 6]",quarantine_samples,quarantine_regression_sensitive,high,severe_core_regression;core_regressed;rank_regression;prob_regression
+quarantine_samples,1,legacy_g2_m21,True,False,,5,15,5,"[9, 7]","[4, 2]",quarantine_samples,quarantine_regression_sensitive,high,severe_core_regression;core_regressed;tail_regression;rank_regression;prob_regression
+quarantine_samples,2,legacy_g5_m14,True,False,,5,15,5,"[9, 7]","[6, 6]",quarantine_samples,quarantine_regression_sensitive,high,severe_core_regression;core_regressed;tail_regression;rank_regression;prob_regression

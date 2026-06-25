@@ -1,0 +1,70 @@
+{
+  "consumer_scan": {
+    "consumer_static_status": "PASS_STATIC_COMPATIBILITY_SCAN",
+    "forbidden_save_in_this_audit": false,
+    "forbidden_save_in_wrapper": false,
+    "trainer_exists": true,
+    "trainer_mentions_effective_sample_weight": true,
+    "trainer_mentions_suppress_rcs": true,
+    "wrapper_exists": true,
+    "wrapper_mentions_protected_eval_samples": true,
+    "wrapper_mentions_quarantine_samples": false,
+    "wrapper_mentions_tail_eval_samples": true
+  },
+  "counts_ok": true,
+  "dataset": "analysis/public_benchmark_eval/rapfi_teacher_policy_multisuppress_dataset_corpus8_selected_conservative_selection_next.json",
+  "decision": "PASS_CONSUMER_SCHEMA_AUDIT",
+  "duplicate_across_dataset": [],
+  "expected_counts": {
+    "protected_eval_samples": 15,
+    "quarantine_samples": 3,
+    "samples": 4,
+    "tail_eval_samples": 3
+  },
+  "group_counts": {
+    "protected_eval_samples": 15,
+    "quarantine_samples": 3,
+    "samples": 4,
+    "tail_eval_samples": 3
+  },
+  "materialized_decision": "TEACHER_DIVERGENCE_NEXT_CONSERVATIVE_DATASET_MATERIALIZED",
+  "materialized_summary": "analysis/integration_eval/teacher_divergence_next_materialize_conservative/materialized_summary.json",
+  "no_duplicate_across_dataset": true,
+  "protected_case_ids": [
+    "legacy_g1_m4",
+    "legacy_g1_m40",
+    "legacy_g1_m6",
+    "legacy_g2_m5",
+    "legacy_g2_m7",
+    "legacy_g2_m9",
+    "legacy_g3_m24",
+    "legacy_g3_m26",
+    "legacy_g3_m4",
+    "legacy_g4_m17",
+    "legacy_g5_m16",
+    "legacy_g5_m6",
+    "legacy_g5_m8",
+    "legacy_g6_m19",
+    "legacy_g6_m5"
+  ],
+  "quarantine_case_ids": [
+    "legacy_g2_m11",
+    "legacy_g2_m21",
+    "legacy_g5_m14"
+  ],
+  "quarantine_kept_separate": true,
+  "recommended_next": "If PASS, run a no-save probe only in a separate branch; do not save checkpoint.",
+  "rows_ok": true,
+  "scope": "consumer/schema audit only; no training/checkpoint/export/benchmark/promotion",
+  "tail_case_ids": [
+    "legacy_g1_m8",
+    "legacy_g5_m12",
+    "legacy_g5_m30"
+  ],
+  "train_case_ids": [
+    "legacy_g4_m13",
+    "legacy_g4_m23",
+    "legacy_g5_m28",
+    "legacy_g6_m17"
+  ]
+}
