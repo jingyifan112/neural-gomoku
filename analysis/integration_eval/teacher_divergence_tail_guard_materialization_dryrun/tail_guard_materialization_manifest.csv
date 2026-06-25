@@ -1,0 +1,18 @@
+case_id,candidate_bucket,game_number,move_count,side_to_move,target_rc,before_target_rank,before_target_prob,target_source_field,review_decision,selected_for_dryrun_tail_eval,materialized_case_id
+tailgen_g2_m7_t0_9_5,P0_tail_guard_candidate,2,7,white,"[9, 5]",200,3.916355467305855e-06,direct,accepted_tail_eval_heldout,1,tailgen_g2_m7_t0_9_5
+tailgen_g1_m6_t0_9_7,P0_tail_guard_candidate,1,6,black,"[9, 7]",172,1.0902872659189676e-05,direct,accepted_tail_eval_heldout,1,tailgen_g1_m6_t0_9_7
+tailgen_g2_m9_t0_9_5,P0_tail_guard_candidate,2,9,white,"[9, 5]",170,1.348687895200096e-05,direct,accepted_tail_eval_heldout,1,tailgen_g2_m9_t0_9_5
+tailgen_g4_m23_t2_12_9,P0_tail_guard_candidate,4,23,white,"[12, 9]",166,1.2980950971073104e-05,policy_safety,accepted_tail_eval_heldout,1,tailgen_g4_m23_t2_12_9
+tailgen_g5_m28_t1_7_3,P0_tail_guard_candidate,5,28,black,"[7, 3]",161,1.4408470914665396e-05,direct,accepted_tail_eval_heldout,1,tailgen_g5_m28_t1_7_3
+tailgen_g5_m30_t1_7_3,P0_tail_guard_candidate,5,30,black,"[7, 3]",152,1.5018829007350554e-05,direct,accepted_tail_eval_heldout,1,tailgen_g5_m30_t1_7_3
+tailgen_g5_m16_t0_7_5,P0_tail_guard_candidate,5,16,black,"[7, 5]",140,7.153149979560902e-05,direct,accepted_tail_eval_heldout,1,tailgen_g5_m16_t0_7_5
+tailgen_g5_m10_t0_10_7,P0_tail_guard_candidate,5,10,black,"[10, 7]",116,0.00031720518033693054,direct,accepted_tail_eval_heldout,1,tailgen_g5_m10_t0_10_7
+tailgen_g2_m21_t1_2_4,P0_tail_guard_candidate,2,21,white,"[2, 4]",108,4.50069453581451e-06,direct,accepted_tail_eval_heldout,1,tailgen_g2_m21_t1_2_4
+tailgen_g4_m17_t2_10_6,P0_tail_guard_candidate,4,17,white,"[10, 6]",104,2.848582662624683e-06,policy_safety,accepted_tail_eval_heldout,1,tailgen_g4_m17_t2_10_6
+tailgen_g1_m40_t1_12_6,P0_tail_guard_candidate,1,40,black,"[12, 6]",97,9.620025098639307e-05,policy_safety,accepted_tail_eval_heldout,1,tailgen_g1_m40_t1_12_6
+tailgen_g1_m4_t0_7_6,P0_tail_guard_candidate,1,4,black,"[7, 6]",82,0.0004511368568089541,direct,accepted_tail_eval_heldout,1,tailgen_g1_m4_t0_7_6
+tailgen_g4_m17_t1_10_8,P0_tail_guard_candidate,4,17,white,"[10, 8]",77,6.391634145247366e-06,direct,accepted_but_over_max_new_tail_guard_cap,0,
+tailgen_g4_m21_t1_10_8,P0_tail_guard_candidate,4,21,white,"[10, 8]",76,8.780846524436704e-06,direct,accepted_but_over_max_new_tail_guard_cap,0,
+tailgen_g3_m24_t1_3_7,P0_tail_guard_candidate,3,24,black,"[3, 7]",76,1.5858462548796086e-05,policy_safety,accepted_but_over_max_new_tail_guard_cap,0,
+tailgen_g6_m17_t0_7_9,P0_tail_guard_candidate,6,17,white,"[7, 9]",68,0.00016565296862259502,direct,accepted_but_over_max_new_tail_guard_cap,0,
+tailgen_g2_m21_t0_9_7,P0_tail_guard_candidate,2,21,white,"[9, 7]",51,3.3643145394712935e-05,previous_rapfi_bestline,board_target_identity_already_exists,0,
