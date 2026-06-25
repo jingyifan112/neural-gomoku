@@ -1,0 +1,48 @@
+{
+  "rows": [
+    {
+      "name": "b4c96_tail_aware_ablation_A4_tail_guard_dataset",
+      "path": "analysis/public_benchmark_eval/b4c96_tail_aware_ablation_A4_tail_guard_dataset.json",
+      "source_train_rows": 7,
+      "protected_eval_rows": 15,
+      "tail_eval_rows": 3,
+      "output_train_rows": 10,
+      "added_tail_guard_rows": 3,
+      "skipped_tail_guard_rows": 0,
+      "severe_downweighted_rows": 0,
+      "train_suppress_count": 5,
+      "weight_min": 0.75,
+      "weight_mean": 2.1894943475723267,
+      "weight_max": 3.0,
+      "weight_sum": 21.894943475723267
+    },
+    {
+      "name": "b4c96_tail_aware_ablation_A5_tail_guard_downweight_dataset",
+      "path": "analysis/public_benchmark_eval/b4c96_tail_aware_ablation_A5_tail_guard_downweight_dataset.json",
+      "source_train_rows": 7,
+      "protected_eval_rows": 15,
+      "tail_eval_rows": 3,
+      "output_train_rows": 10,
+      "added_tail_guard_rows": 3,
+      "skipped_tail_guard_rows": 0,
+      "severe_downweighted_rows": 3,
+      "train_suppress_count": 5,
+      "weight_min": 0.75,
+      "weight_mean": 1.7394943475723266,
+      "weight_max": 3.0,
+      "weight_sum": 17.394943475723267
+    }
+  ],
+  "severe_case_ids": [
+    "legacy_g2_m11",
+    "legacy_g2_m21",
+    "legacy_g2_m5",
+    "legacy_g3_m26",
+    "legacy_g3_m4",
+    "legacy_g4_m17",
+    "legacy_g5_m12",
+    "legacy_g5_m14",
+    "legacy_g5_m6",
+    "legacy_g5_m8"
+  ]
+}

@@ -1,0 +1,3 @@
+name,path,source_train_rows,protected_eval_rows,tail_eval_rows,output_train_rows,added_tail_guard_rows,skipped_tail_guard_rows,severe_downweighted_rows,train_suppress_count,weight_min,weight_mean,weight_max,weight_sum
+b4c96_tail_aware_ablation_A4_tail_guard_dataset,analysis/public_benchmark_eval/b4c96_tail_aware_ablation_A4_tail_guard_dataset.json,7,15,3,10,3,0,0,5,0.75,2.1894943475723267,3.0,21.894943475723267
+b4c96_tail_aware_ablation_A5_tail_guard_downweight_dataset,analysis/public_benchmark_eval/b4c96_tail_aware_ablation_A5_tail_guard_downweight_dataset.json,7,15,3,10,3,0,3,5,0.75,1.7394943475723266,3.0,17.394943475723267
