@@ -1,0 +1,83 @@
+{
+  "decision": "TAIL_SOURCE_GENERATION_PLAN_REQUIRED",
+  "inputs": {
+    "expansion_targets": "analysis/integration_eval/teacher_divergence_expansion_targets/expansion_targets_summary.json",
+    "source_audit_summary": "analysis/integration_eval/teacher_divergence_expansion_source_audit_next/source_audit_summary.json",
+    "source_manifest": "analysis/integration_eval/teacher_divergence_expansion_source_audit_next/source_candidate_manifest.csv"
+  },
+  "protected_gap": 0,
+  "recommended_next_branch": "exp/15x15-teacher-divergence-tail-schema-recovery",
+  "recommended_next_step": "Recover source-specific schema fields from unclassified rows, then mine tail guard candidates.",
+  "scope": "planning only; no dataset build/training/checkpoint/export/benchmark/promotion",
+  "steps": [
+    {
+      "acceptance": "At least one source-specific extractor identifies candidate rows with usable board/side/target fields.",
+      "input": "source_candidate_manifest.csv plus original source artifacts",
+      "output": "tail_source_schema_recovery_manifest.csv",
+      "phase": "schema_recovery",
+      "purpose": "Inspect the 599 unclassified_review rows and recover missing rank/prob/role fields from source-specific schemas.",
+      "step": 1,
+      "training_allowed": "no"
+    },
+    {
+      "acceptance": "At least 12 unique P0 tail_guard candidates, preferably from multiple games/families.",
+      "input": "schema recovery manifest",
+      "output": "tail_guard_candidate_manifest.csv",
+      "phase": "tail_candidate_mining",
+      "purpose": "Mine rank>50 or near-tail teacher-divergence cases from recovered source rows.",
+      "step": 2,
+      "training_allowed": "no"
+    },
+    {
+      "acceptance": "Protected remains >=12 and P1 train candidate pool reaches >=20 without using quarantine rows.",
+      "input": "source audit candidate buckets",
+      "output": "protected_train_candidate_review.csv",
+      "phase": "protected_train_gap_review",
+      "purpose": "Keep already found protected candidates and identify at least 5 more train candidates only if schemas are reliable.",
+      "step": 3,
+      "training_allowed": "no"
+    },
+    {
+      "acceptance": "Schema validates, suppress_rcs are complete, no overlap across train/protected/tail/quarantine.",
+      "input": "tail/protected/train candidate manifests",
+      "output": "candidate review dataset only",
+      "phase": "candidate_materialization_dryrun",
+      "purpose": "Materialize a candidate-only review dataset with tail/protected held out and train candidates separated.",
+      "step": 4,
+      "training_allowed": "no"
+    },
+    {
+      "acceptance": "tail rank_gt50_delta <= 0, tail mean_rank_delta <= 0, protected top5_delta >= 0, protected top10_delta >= 0.",
+      "input": "candidate review dataset",
+      "output": "no-save metrics only",
+      "phase": "future_no_save_probe_gate",
+      "purpose": "Only after candidate review passes, run no-save probes to check guard stability.",
+      "step": 5,
+      "training_allowed": "no checkpoint-producing training"
+    }
+  ],
+  "tail_gap": 12,
+  "train_gap": 5,
+  "upstream": {
+    "candidate_new_counts": {
+      "P0_protected_guard_candidate": 13,
+      "P0_tail_guard_candidate": 0,
+      "P1_train_candidate": 15
+    },
+    "expansion_targets_decision": "TEACHER_DIVERGENCE_EXPANSION_TARGETS_READY",
+    "source_audit_decision": "EXPANSION_SOURCE_AUDIT_HAS_PARTIAL_CANDIDATES",
+    "target_gaps": {
+      "P0_protected_guard_candidate": 0,
+      "P0_tail_guard_candidate": 12,
+      "P1_train_candidate": 5
+    },
+    "unclassified_review_rows": 602,
+    "unclassified_source_counts": {
+      "analysis/integration_eval/teacher_divergence_data_inventory_manifest.csv": 274,
+      "analysis/integration_eval/teacher_divergence_expansion_source_audit.csv": 36,
+      "analysis/integration_eval/teacher_divergence_retention_expanded_dataset.json": 58,
+      "analysis/integration_eval/teacher_divergence_retention_expanded_manifest.csv": 231,
+      "analysis/integration_eval/teacher_divergence_source_schema_audit.json": 3
+    }
+  }
+}
