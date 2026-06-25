@@ -1,0 +1,40 @@
+{
+  "counts": {
+    "protected_eval_samples": 15,
+    "quarantine_samples": 3,
+    "samples": 4,
+    "tail_eval_samples": 15
+  },
+  "dataset": "analysis/public_benchmark_eval/rapfi_teacher_policy_multisuppress_dataset_corpus8_selected_conservative_plus_generated_tail_guards_dryrun.json",
+  "decision": "TAIL_GUARD_CONSUMER_GATE_DRYRUN_AUDIT_PASS",
+  "duplicate_group_identities": 0,
+  "expected_counts": {
+    "generated_tail_rows": 12,
+    "protected_eval_samples": 15,
+    "quarantine_samples": 3,
+    "samples": 4,
+    "tail_eval_samples": 15
+  },
+  "generated_tail_rows": 12,
+  "generated_tail_rows_in_train_samples": 0,
+  "group_counts": {
+    "protected_eval_samples": 15,
+    "quarantine_samples": 3,
+    "samples": 4,
+    "tail_eval_samples": 15
+  },
+  "hard_failures": [],
+  "outputs": {
+    "report_md": "analysis/integration_eval/teacher_divergence_tail_guard_consumer_gate_dryrun_audit/tail_guard_consumer_gate_dryrun_audit_report.md",
+    "row_audit_csv": "analysis/integration_eval/teacher_divergence_tail_guard_consumer_gate_dryrun_audit/tail_guard_consumer_gate_dryrun_audit.csv",
+    "summary_json": "analysis/integration_eval/teacher_divergence_tail_guard_consumer_gate_dryrun_audit/tail_guard_consumer_gate_dryrun_audit_summary.json"
+  },
+  "row_status_counts": {
+    "PASS": 37
+  },
+  "scope": "consumer/gate dry-run audit only; no training/checkpoint save/export/benchmark/promotion",
+  "wrapper": "scripts/probe_policy_rank_topk_protected_nosave_b4c96.py",
+  "wrapper_has_forbidden_save": false,
+  "wrapper_load_error": "",
+  "wrapper_load_ok": true
+}
