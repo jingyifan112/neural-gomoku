@@ -1,0 +1,29 @@
+loaded checkpoints/15x15_current_best.pt
+loaded checkpoints/15x15_current_best.pt
+train_scope=policy_head
+trainable_parameters=101607
+  trainable: policy.0.weight
+  trainable: policy.1.weight
+  trainable: policy.1.bias
+  trainable: policy.4.weight
+  trainable: policy.4.bias
+epoch 001/1 loss=21.475250 ce=7.682783 pair_hinge=5.476148 worst_hinge=8.244265 anchor_kl=0.205872 mean_gap=-4.362462 mean_worst_gap=-7.098113
+device: cpu
+dataset: analysis/public_benchmark_eval/rapfi_teacher_policy_multisuppress_dataset_corpus8_selected_protected_train_11_50_weightcap3.json
+init_checkpoint: checkpoints/15x15_current_best.pt
+reference_checkpoint: checkpoints/15x15_current_best.pt
+board_size: 15
+win_length: 5
+channels: 64
+blocks: 4
+train_rows: 7
+protected_rows: 15
+tail_rows: 3
+train_main_rank_11_50 top10_delta= 0.0 rank_gt50_delta= 0.0 mean_rank_delta= -2.1428571428571423 target_prob_delta= 0.00047871205424598906
+protected_eval_top10 top10_delta= 1.0 rank_gt50_delta= 0.0 mean_rank_delta= -0.40000000000000036 target_prob_delta= -0.012815646351858355
+tail_eval_rank_gt50 top10_delta= 0.0 rank_gt50_delta= 1.0 mean_rank_delta= 36.33333333333333 target_prob_delta= -0.00010760363026444489
+verdict: FAIL_B4C64_CURRENT_BEST_SAFE_NO_SAVE_PROBE
+out_csv: analysis/integration_eval/rank_topk_nosave_b4c64_row_trace_baseline_run1/group_eval.csv
+out_report: analysis/integration_eval/rank_topk_nosave_b4c64_row_trace_baseline_run1/group_report.md
+out_row_csv: analysis/integration_eval/rank_topk_nosave_b4c64_row_trace_baseline_run1/row_trace.csv
+b4c64/current-best-safe no-save probe complete; no checkpoint saved
