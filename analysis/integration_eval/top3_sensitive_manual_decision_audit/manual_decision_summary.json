@@ -1,0 +1,119 @@
+{
+  "branch": "exp/15x15-top3-sensitive-manual-decision-audit",
+  "decision_counts": {
+    "candidate_positive_ce_probe": 3,
+    "exclude_or_schema_review": 33,
+    "hold_for_review": 28,
+    "protect_as_anchor_or_gate": 60,
+    "secondary_positive_ce_probe": 4,
+    "tail_eval_guard_only": 15
+  },
+  "generated_at": "2026-06-26T11:40:37",
+  "input_manifest": "analysis/integration_eval/top3_sensitive_nosave_supervision_audit/top3_sensitive_row_selection_manifest.csv",
+  "primary_positive_ce_candidates": [
+    {
+      "rank": "12",
+      "row_id": "legacy_g2_m11",
+      "score": "9",
+      "source_path": "analysis/integration_eval/teacher_divergence_data_selection_next/selection_manifest.csv",
+      "target_rc": "7,9"
+    },
+    {
+      "rank": "47",
+      "row_id": "legacy_g2_m21",
+      "score": "9",
+      "source_path": "analysis/integration_eval/teacher_divergence_data_selection_next/selection_manifest.csv",
+      "target_rc": "9,7"
+    },
+    {
+      "rank": "17",
+      "row_id": "legacy_g5_m14",
+      "score": "9",
+      "source_path": "analysis/integration_eval/teacher_divergence_data_selection_next/selection_manifest.csv",
+      "target_rc": "9,7"
+    }
+  ],
+  "proposed_use_counts": {
+    "anchor_or_eval_gate_only": 60,
+    "backup_few_row_no_save_positive_ce": 4,
+    "few_row_no_save_positive_ce": 3,
+    "manual_review": 28,
+    "schema_review": 33,
+    "tail_eval_guard": 15
+  },
+  "protected_anchor_gate_candidates": [
+    {
+      "rank": "3",
+      "row_id": "legacy_g5_m6",
+      "score": "19",
+      "source_path": "analysis/integration_eval/teacher_divergence_data_selection_next/selection_manifest.csv",
+      "target_rc": "6,8"
+    },
+    {
+      "rank": "2",
+      "row_id": "legacy_g5_m8",
+      "score": "19",
+      "source_path": "analysis/integration_eval/teacher_divergence_data_selection_next/selection_manifest.csv",
+      "target_rc": "5,8"
+    },
+    {
+      "rank": "3",
+      "row_id": "legacy_g1_m40",
+      "score": "15",
+      "source_path": "analysis/integration_eval/teacher_divergence_data_selection_next/selection_manifest.csv",
+      "target_rc": "6,12"
+    },
+    {
+      "rank": "3",
+      "row_id": "legacy_g2_m9",
+      "score": "15",
+      "source_path": "analysis/integration_eval/teacher_divergence_data_selection_next/selection_manifest.csv",
+      "target_rc": "5,10"
+    },
+    {
+      "rank": "2",
+      "row_id": "legacy_g5_m16",
+      "score": "15",
+      "source_path": "analysis/integration_eval/teacher_divergence_data_selection_next/selection_manifest.csv",
+      "target_rc": "5,7"
+    },
+    {
+      "rank": "5",
+      "row_id": "legacy_g2_m5",
+      "score": "13",
+      "source_path": "analysis/integration_eval/teacher_divergence_data_selection_next/selection_manifest.csv",
+      "target_rc": "6,8"
+    },
+    {
+      "rank": "5",
+      "row_id": "legacy_g3_m26",
+      "score": "13",
+      "source_path": "analysis/integration_eval/teacher_divergence_data_selection_next/selection_manifest.csv",
+      "target_rc": "3,6"
+    },
+    {
+      "rank": "4",
+      "row_id": "legacy_g4_m17",
+      "score": "13",
+      "source_path": "analysis/integration_eval/teacher_divergence_data_selection_next/selection_manifest.csv",
+      "target_rc": "6,10"
+    },
+    {
+      "rank": "9",
+      "row_id": "legacy_g3_m4",
+      "score": "12",
+      "source_path": "analysis/integration_eval/teacher_divergence_data_selection_next/selection_manifest.csv",
+      "target_rc": "6,5"
+    },
+    {
+      "rank": "6",
+      "row_id": "legacy_g6_m5",
+      "score": "12",
+      "source_path": "analysis/integration_eval/teacher_divergence_data_selection_next/selection_manifest.csv",
+      "target_rc": "8,6"
+    }
+  ],
+  "recommended_next_step": "build a tiny no-save probe dataset from primary_positive_ce_candidates, while using protected_anchor_gate_candidates as eval/anchor guards",
+  "rows": 143,
+  "scope": "read-only manual decision audit; no training; no checkpoint save; no C export; no public benchmark; no promotion"
+}
