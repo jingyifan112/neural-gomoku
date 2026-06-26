@@ -1,0 +1,49 @@
+{
+  "comparisons": {
+    "must_block_archived_vs_current_best_probe": {
+      "archived": "analysis/public_benchmark_eval/tactical_mid_too_late_double_threat_eval_c_engine_mcts16.csv",
+      "archived_rows": 16,
+      "exact_field_match": true,
+      "field_checks": 80,
+      "mismatches": 0,
+      "rerun": "analysis/integration_eval/current_best_runner_mismatch_audit/current_best_probe_must_block_c_mcts16.csv",
+      "rerun_rows": 16
+    },
+    "preterminal_archived_vs_current_best_probe": {
+      "archived": "analysis/public_benchmark_eval/tactical_mid_preterminal_actionable_eval_c_engine_mcts16.csv",
+      "archived_rows": 2,
+      "exact_field_match": true,
+      "field_checks": 10,
+      "mismatches": 0,
+      "rerun": "analysis/integration_eval/current_best_runner_mismatch_audit/current_best_probe_preterminal_c_mcts16.csv",
+      "rerun_rows": 2
+    }
+  },
+  "current_best_probe_must_block": {
+    "c_final_exact_target": 0,
+    "c_final_same_as_match_blunder": 16,
+    "rows": 16
+  },
+  "current_best_probe_preterminal": {
+    "c_final_target_prevention": 0,
+    "c_final_zero_double_threat_replies": 0,
+    "rows": 2
+  },
+  "explicit_weights_tested": [
+    "weights/15x15_current_best_probe_weights.bin",
+    "weights/15x15_current_best_margin_g2m13_m15_3pair_b_weights.bin"
+  ],
+  "generated_at": "2026-06-26T10:44:37",
+  "margin_g2m13_m15_3pair_b_must_block": {
+    "c_final_exact_target": 1,
+    "c_final_same_as_match_blunder": 15,
+    "rows": 16
+  },
+  "margin_g2m13_m15_3pair_b_preterminal": {
+    "c_final_target_prevention": 0,
+    "c_final_zero_double_threat_replies": 0,
+    "rows": 2
+  },
+  "missing_default_weight": "weights/15x15_current_best_weights.bin",
+  "scope": "runner/provenance audit only; no training; no checkpoint save; no C export; no public benchmark; no promotion"
+}
