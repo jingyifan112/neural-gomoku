@@ -1,0 +1,27 @@
+{
+  "all_policy_target_match_teacher_move": true,
+  "all_teacher_move_match_target_rc": true,
+  "branch": "exp/15x15-top3-sensitive-objective-target-semantics-audit",
+  "ce_improved_rows": 0,
+  "ce_regressed_rows": 3,
+  "generated_at": "2026-06-26T14:54:35",
+  "preliminary_interpretation": "Target coordinate semantics appear consistent if all target/teacher/policy checks are true. The remaining issue is likely objective/update behavior or train/eval aggregation, not a row id or coordinate mismatch.",
+  "prob_improved_rows": 0,
+  "prob_regressed_rows": 3,
+  "rank_improved_rows": 0,
+  "rank_regressed_rows": 2,
+  "rows": 3,
+  "run1_dataset": "analysis/integration_eval/top3_sensitive_tiny_nosave_probe_run1/tiny_primary_positive_ce_train_candidate_dataset.json",
+  "run1_eval_csv": "analysis/integration_eval/top3_sensitive_tiny_nosave_probe_run1/tiny_nosave_eval.csv",
+  "run1_report": "analysis/integration_eval/top3_sensitive_tiny_nosave_probe_run1/tiny_nosave_report.md",
+  "run1_train_log": "analysis/integration_eval/top3_sensitive_tiny_nosave_probe_run1/tiny_nosave_train.log",
+  "scope": "read-only audit; no training; no checkpoint save; no C export; no public benchmark; no promotion",
+  "script": "scripts/train_teacher_divergence_policy_probe.py",
+  "script_extracts_available": {
+    "choose_policy_target": true,
+    "evaluate_function": false,
+    "masked_log_softmax": true,
+    "prepare_rows": true,
+    "train_loop": true
+  }
+}

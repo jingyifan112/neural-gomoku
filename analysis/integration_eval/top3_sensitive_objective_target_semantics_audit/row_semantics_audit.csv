@@ -1,0 +1,4 @@
+id,target_rc,target_rc_as_xy,teacher_move_xy,policy_target_xy,teacher_move_matches_target_rc,policy_target_matches_teacher_move,rank_before,rank_after,rank_delta,prob_before,prob_after,prob_delta,ce_before,ce_after,ce_delta,top_before,top_after,suggested_weight,label_type,side_to_move
+legacy_g2_m11,"[7, 9]","9,7","9,7","9,7",True,True,12,12,0,0.00032455,0.00018413,-0.00014042000000000001,8.03308199,8.59986499,0.5667830000000009,"6,5","6,5",3.75,neighbor,white
+legacy_g2_m21,"[9, 7]","7,9","7,9","7,9",True,True,47,48,1,0.00014416,0.00006372,-8.044e-05,8.84457584,9.66097829,0.81640245,"2,4","2,4",3.0,late_loss_window,white
+legacy_g5_m14,"[9, 7]","7,9","7,9","7,9",True,True,17,18,1,0.00194023,0.00131850,-0.00062173,6.24494982,6.63126186,0.38631203999999997,"6,6","6,6",6.990845630168915,first_losing_value,black
