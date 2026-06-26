@@ -1,0 +1,11 @@
+{
+  "contains_b4c96_literal": false,
+  "contains_bad_probe_candidate_path": false,
+  "contains_current_best_default": true,
+  "contains_no_save_text": true,
+  "contains_out_checkpoint_arg": false,
+  "contains_refusing_current_best_guard": true,
+  "contains_torch_save": false,
+  "generated_at": "2026-06-26T15:26:48",
+  "wrapper": "scripts/probe_policy_rank_topk_protected_nosave_b4c64_current_best.py"
+}

@@ -1,0 +1,15 @@
+{
+  "contains_b4c96_literal": false,
+  "contains_channels_arg": true,
+  "contains_init_checkpoint_arg": true,
+  "contains_no_save_text": true,
+  "contains_out_checkpoint_arg": false,
+  "contains_reference_checkpoint_arg": true,
+  "contains_save_checkpoint_text": false,
+  "contains_torch_save": false,
+  "destination": "scripts/probe_policy_rank_topk_protected_nosave_b4c64_current_best.py",
+  "generated_at": "2026-06-26T15:22:50",
+  "line_count": 421,
+  "scope": "draft/static wrapper generation only; no training; no checkpoint save; no C export; no public benchmark; no promotion",
+  "source": "scripts/probe_policy_rank_topk_protected_nosave_b4c96.py"
+}
