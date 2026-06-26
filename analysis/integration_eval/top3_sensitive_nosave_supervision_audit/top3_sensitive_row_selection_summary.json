@@ -1,0 +1,23 @@
+{
+  "branch": "exp/15x15-top3-sensitive-nosave-supervision-audit",
+  "candidate_rows": 143,
+  "generated_at": "2026-06-26T11:27:05",
+  "rank_bucket_counts": {
+    "protected_top3": 20,
+    "tail_rank_gt50": 15,
+    "top4_5": 24,
+    "top6_10": 16,
+    "trainable_rank_11_50": 35,
+    "unknown": 33
+  },
+  "recommended_next_step": "manual review of top scored rows before any no-save training probe",
+  "scope": "read-only row-selection audit; no training; no checkpoint save; no C export; no public benchmark; no promotion",
+  "top3_or_near_top10_rows": 60,
+  "top_25_source_counts": {
+    "analysis/integration_eval/policy_only_rank_topk_gate_baseline_self_metrics.csv": 1,
+    "analysis/integration_eval/policy_only_rank_topk_gate_run1_metrics.csv": 1,
+    "analysis/integration_eval/teacher_divergence_data_selection_next/selection_manifest.csv": 18,
+    "analysis/public_benchmark_eval/rapfi_teacher_policy_multisuppress_dataset_corpus8_selected.json": 5
+  },
+  "top_text_hits": 90
+}

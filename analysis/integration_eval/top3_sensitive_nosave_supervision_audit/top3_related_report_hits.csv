@@ -1,0 +1,91 @@
+path,line,text
+analysis/integration_eval/expanded_data_b6c64_benchmark_preserving_closeout/closeout_report.md,3,- decision: `CLOSEOUT_NO_SAVED_CANDIDATE_TOP3_WARNING`
+analysis/integration_eval/expanded_data_b6c64_benchmark_preserving_closeout/closeout_report.md,14,| archived current-best | 7.0/24 | aspirational recovery target |
+analysis/integration_eval/expanded_data_b6c64_benchmark_preserving_closeout/closeout_report.md,15,| current local b6c64 baseline | 2.0/24 | reproducible local no-regression gate |
+analysis/integration_eval/expanded_data_b6c64_benchmark_preserving_closeout/closeout_report.md,16,| expanded public candidate | 2.0/24 | actual candidate public benchmark result |
+analysis/integration_eval/expanded_data_b6c64_benchmark_preserving_closeout/closeout_report.md,18,"The current local b6c64 runner does not reproduce the archived `7.0/24` current-best score. The reproducible local b6c64 baseline is `2.0/24`, and the expanded public candidate also scored `2.0/24`."
+analysis/integration_eval/expanded_data_b6c64_benchmark_preserving_closeout/closeout_report.md,26,| protected KL guard rows | 15 |
+analysis/integration_eval/expanded_data_b6c64_benchmark_preserving_closeout/closeout_report.md,31,## No-save sweep result
+analysis/integration_eval/expanded_data_b6c64_benchmark_preserving_closeout/closeout_report.md,39,| observed top3 deltas | `[-1]` |
+analysis/integration_eval/expanded_data_b6c64_benchmark_preserving_closeout/closeout_report.md,44,"All tested configs were soft passes only. They improved broad metrics but retained `top3_delta = -1`, so this route does not qualify for saved candidate creation."
+analysis/integration_eval/expanded_data_b6c64_benchmark_preserving_closeout/closeout_report.md,52,- No no-save config achieved `PASS_HARD_NO_SAVE`.
+analysis/integration_eval/expanded_data_b6c64_benchmark_preserving_closeout/closeout_report.md,53,- Every no-save config retained top3 regression.
+analysis/integration_eval/expanded_data_b6c64_benchmark_preserving_closeout/closeout_report.md,54,"- Current local b6c64 baseline is only `2.0/24`, so public-benchmark recovery remains unresolved."
+analysis/integration_eval/expanded_data_b6c64_benchmark_preserving_closeout/closeout_report.md,55,- The archived `7.0/24` current-best score is not currently reproduced by the local b6c64 runner.
+analysis/integration_eval/expanded_data_b6c64_benchmark_preserving_closeout/closeout_report.md,61,1. Add targeted positive supervision for the top3-sensitive teacher-divergence row and repeat no-save only; or
+analysis/integration_eval/expanded_data_b6c64_benchmark_preserving_closeout/closeout_report.md,62,"2. Audit/recover the archived current-best runner that produced `7.0/24`, then restart benchmark-preserving training from that reproducible baseline."
+analysis/integration_eval/b4c96_nosave_objective_ablation_run1/run1_closeout.md,1,# b4c96 no-save objective ablation run1 closeout
+analysis/integration_eval/b4c96_nosave_objective_ablation_run1/run1_closeout.md,5,`exp/15x15-b4c96-nosave-objective-ablation-run1`
+analysis/integration_eval/b4c96_nosave_objective_ablation_run1/run1_closeout.md,9,Run b4c96-safe no-save objective ablations after the capacity-data paired b4c96 candidate failed Stage C due to protected/objective regressions.
+analysis/integration_eval/b4c96_nosave_objective_ablation_run1/run1_closeout.md,11,This route uses the b4c96-safe no-save wrapper created in:
+analysis/integration_eval/b4c96_nosave_objective_ablation_run1/run1_closeout.md,13,`exp/15x15-b4c96-safe-nosave-ablation-wrapper`
+analysis/integration_eval/b4c96_nosave_objective_ablation_run1/run1_closeout.md,17,No-save ablation only.
+analysis/integration_eval/b4c96_nosave_objective_ablation_run1/run1_closeout.md,23,- Dataset: `analysis/public_benchmark_eval/rapfi_teacher_policy_multisuppress_dataset_corpus8_selected_protected_train_11_50_weightcap3.json`
+analysis/integration_eval/b4c96_nosave_objective_ablation_run1/run1_closeout.md,48,- protected group lost top-5 coverage and target probability
+analysis/integration_eval/b4c96_nosave_objective_ablation_run1/run1_closeout.md,58,| A1 | protected_eval_top10 | -1 | +2 | 0 | -0.666667 | -0.01157658 | +0.911788 | -0.108818 |
+analysis/integration_eval/b4c96_nosave_objective_ablation_run1/run1_closeout.md,59,| A1 | tail_eval_rank_gt50 | 0 | -1 | +2 | +23.333333 | -0.00579524 | -1.014543 | +1.280915 |
+analysis/integration_eval/b4c96_nosave_objective_ablation_run1/run1_closeout.md,61,| A2 | protected_eval_top10 | -1 | +2 | 0 | -0.666667 | -0.01157686 | +0.911791 | -0.108834 |
+analysis/integration_eval/b4c96_nosave_objective_ablation_run1/run1_closeout.md,62,| A2 | tail_eval_rank_gt50 | 0 | -1 | +2 | +23.333333 | -0.00579522 | -1.014530 | +1.280866 |
+analysis/integration_eval/b4c96_nosave_objective_ablation_run1/run1_closeout.md,64,| A3 | protected_eval_top10 | -1 | +2 | 0 | -0.666667 | -0.01157822 | +0.911739 | -0.108866 |
+analysis/integration_eval/b4c96_nosave_objective_ablation_run1/run1_closeout.md,65,| A3 | tail_eval_rank_gt50 | 0 | -1 | +2 | +23.333333 | -0.00579517 | -1.014528 | +1.280806 |
+analysis/integration_eval/b4c96_nosave_objective_ablation_run1/run1_closeout.md,69,"The unlocked b4c96-safe no-save wrapper works, but simple objective reweighting is not enough."
+analysis/integration_eval/b4c96_nosave_objective_ablation_run1/run1_closeout.md,73,- protected group should not lose top-5/top-10 coverage
+analysis/integration_eval/b4c96_nosave_objective_ablation_run1/run1_closeout.md,85,`B4C96_NOSAVE_OBJECTIVE_ABLATION_RUN1_ALL_FAIL_NO_CHECKPOINT`
+analysis/integration_eval/b4c96_nosave_objective_ablation_run1/run1_closeout.md,95,Build an adapter for A4/A5-style ablations before further no-save training:
+analysis/integration_eval/b4c96_nosave_objective_ablation_run1/run1_closeout.md,100,- protected/tail hard-guard reporting
+analysis/integration_eval/b4c96_tail_aware_nosave_ablation_run2/run2_closeout.md,1,# b4c96 tail-aware no-save ablation run2 closeout
+analysis/integration_eval/b4c96_tail_aware_nosave_ablation_run2/run2_closeout.md,5,`exp/15x15-b4c96-tail-aware-nosave-ablation-run2`
+analysis/integration_eval/b4c96_tail_aware_nosave_ablation_run2/run2_closeout.md,9,Run A4/A5 tail-aware no-save ablations after A1/A2/A3 objective-only reweighting failed.
+analysis/integration_eval/b4c96_tail_aware_nosave_ablation_run2/run2_closeout.md,11,This route tests whether adding tail guard rows and severe-regression downweighting can prevent the protected/tail regressions observed in run1.
+analysis/integration_eval/b4c96_tail_aware_nosave_ablation_run2/run2_closeout.md,15,No-save ablation only.
+analysis/integration_eval/b4c96_tail_aware_nosave_ablation_run2/run2_closeout.md,21,- Wrapper: `scripts/probe_policy_rank_topk_protected_nosave_b4c96.py`
+analysis/integration_eval/b4c96_tail_aware_nosave_ablation_run2/run2_closeout.md,47,| A4 | protected_eval_top10 | -1 | +2 | 0 | -0.666667 | -0.01150738 | +0.890207 | -0.098539 |
+analysis/integration_eval/b4c96_tail_aware_nosave_ablation_run2/run2_closeout.md,48,| A4 | tail_eval_rank_gt50 | 0 | -1 | +2 | +22.333333 | -0.00576096 | -1.041146 | +1.266028 |
+analysis/integration_eval/b4c96_tail_aware_nosave_ablation_run2/run2_closeout.md,50,| A5 | protected_eval_top10 | -1 | +2 | 0 | -0.666667 | -0.01150805 | +0.890158 | -0.098536 |
+analysis/integration_eval/b4c96_tail_aware_nosave_ablation_run2/run2_closeout.md,51,| A5 | tail_eval_rank_gt50 | 0 | -1 | +2 | +22.333333 | -0.00576089 | -1.041126 | +1.266004 |
+analysis/integration_eval/b4c96_tail_aware_nosave_ablation_run2/run2_closeout.md,59,- protected group still loses top-5 coverage
+analysis/integration_eval/b4c96_tail_aware_nosave_ablation_run2/run2_closeout.md,60,- protected target probability still regresses by about `-0.0115`
+analysis/integration_eval/b4c96_tail_aware_nosave_ablation_run2/run2_closeout.md,75,`B4C96_TAIL_AWARE_NOSAVE_ABLATION_RUN2_ALL_FAIL_NO_CHECKPOINT`
+analysis/integration_eval/b4c96_tail_aware_nosave_ablation_run2/run2_closeout.md,89,- failure forensics identified protected/objective regressions
+analysis/integration_eval/b4c96_tail_aware_nosave_ablation_run2/run2_closeout.md,90,- no-save objective ablation run1 failed
+analysis/integration_eval/b4c96_tail_aware_nosave_ablation_run2/run2_closeout.md,91,- tail-aware no-save ablation run2 failed
+analysis/integration_eval/policy_only_rank_topk_protected_nosave_probe_closeout.md,1,# Policy-only rank/top-k protected no-save probe closeout
+analysis/integration_eval/policy_only_rank_topk_protected_nosave_probe_closeout.md,5,`exp/15x15-policy-only-rank-topk-protected-nosave-probe`
+analysis/integration_eval/policy_only_rank_topk_protected_nosave_probe_closeout.md,9,This branch ran a protected no-save probe only.
+analysis/integration_eval/policy_only_rank_topk_protected_nosave_probe_closeout.md,19,The protected dataset split was:
+analysis/integration_eval/policy_only_rank_topk_protected_nosave_probe_closeout.md,22,- protected_eval_top10: 15 rows
+analysis/integration_eval/policy_only_rank_topk_protected_nosave_probe_closeout.md,23,- tail_eval_rank_gt50: 3 rows
+analysis/integration_eval/policy_only_rank_topk_protected_nosave_probe_closeout.md,42,| group | rows | top3_delta | top5_delta | top10_delta | rank_gt50_delta | mean_rank_delta | target_prob_delta | mean_worst_gap_delta | hinge_delta | beats_worst_delta | beats_all_delta |
+analysis/integration_eval/policy_only_rank_topk_protected_nosave_probe_closeout.md,45,| protected_eval_top10 | 15 | 0.000000 | 0.000000 | 1.000000 | 0.000000 | -0.466667 | -0.01282100 | 0.735103 | -0.185786 | -1.000000 | -1.000000 |
+analysis/integration_eval/policy_only_rank_topk_protected_nosave_probe_closeout.md,46,| tail_eval_rank_gt50 | 3 | 0.000000 | 0.000000 | 0.000000 | 1.000000 | 37.333333 | -0.00009595 | 0.497262 | 0.558160 | 0.000000 | 0.000000 |
+analysis/integration_eval/policy_only_rank_topk_protected_nosave_probe_closeout.md,50,The protected split partially improved the intended training group:
+analysis/integration_eval/policy_only_rank_topk_protected_nosave_probe_closeout.md,57,"However, the evaluation-only groups were not protected:"
+analysis/integration_eval/policy_only_rank_topk_protected_nosave_probe_closeout.md,59,- protected top10 target probability dropped by about 0.0128;
+analysis/integration_eval/policy_only_rank_topk_protected_nosave_probe_closeout.md,60,- protected top10 lost teacher_beats_worst and teacher_beats_all rows;
+analysis/integration_eval/policy_only_rank_topk_protected_nosave_probe_closeout.md,61,- tail rank_gt50 worsened by 1 row;
+analysis/integration_eval/policy_only_rank_topk_protected_nosave_probe_closeout.md,69,Reject this protected no-save probe.
+analysis/integration_eval/policy_only_rank_topk_protected_nosave_probe_closeout.md,86,2. run2 full dataset no-save ablations: failed; CE-only and weak-suppress both unstable.
+analysis/integration_eval/policy_only_rank_topk_protected_nosave_probe_closeout.md,87,3. protected no-save probe: failed; train group improved slightly but protected/tail groups regressed.
+analysis/integration_eval/policy_only_rank_topk_training_run2_ablation_closeout.md,9,Run2 was a no-save ablation only.
+analysis/integration_eval/policy_only_rank_topk_training_run2_ablation_closeout.md,26,- no-save: true
+analysis/integration_eval/policy_only_rank_topk_training_run2_ablation_closeout.md,39,- no-save: true
+analysis/integration_eval/policy_only_rank_topk_training_run2_ablation_closeout.md,45,| top3 | 7 | 7 | 0.0 | 7 | 7 | 0.0 |
+analysis/integration_eval/policy_only_rank_topk_training_run2_ablation_closeout.md,48,| rank_gt50 | 2 | 3 | 1.0 | 2 | 3 | 1.0 |
+analysis/integration_eval/policy_only_rank_topk_training_run2_ablation_closeout.md,64,- target top3 did not improve;
+analysis/integration_eval/policy_only_rank_topk_training_run2_ablation_closeout.md,67,- rank_gt50 worsened by one row;
+analysis/integration_eval/policy_only_rank_topk_training_run2_ablation_closeout.md,97,`exp/15x15-policy-only-rank-topk-protected-weighting-audit`
+analysis/integration_eval/policy_only_rank_topk_training_run2_ablation_closeout.md,102,2. Should rows with baseline target rank <= 10 be protected or downweighted?
+analysis/integration_eval/teacher_divergence_data_selection_next/selection_report.md,13,- split_dataset: `analysis/public_benchmark_eval/rapfi_teacher_policy_multisuppress_dataset_corpus8_selected_protected_train_11_50_weightcap3.json`
+analysis/integration_eval/teacher_divergence_data_selection_next/selection_report.md,15,- run1_summary: `analysis/integration_eval/b4c96_nosave_objective_ablation_run1/run1_summary.csv`
+analysis/integration_eval/teacher_divergence_data_selection_next/selection_report.md,16,- run2_summary: `analysis/integration_eval/b4c96_tail_aware_nosave_ablation_run2/run2_summary.csv`
+analysis/integration_eval/teacher_divergence_data_selection_next/selection_report.md,23,"The next safe step is not more b4c96 training. The next safe step is to classify teacher-divergence rows into train candidates, protected guards, tail guards, and quarantine rows."
+analysis/integration_eval/teacher_divergence_data_selection_next/selection_report.md,36,| protected_guard_holdout | 15 |
+analysis/integration_eval/teacher_divergence_data_selection_next/selection_report.md,53,| protected_top10 | 4 |
+analysis/integration_eval/teacher_divergence_data_selection_next/selection_report.md,54,| protected_top3 | 5 |
+analysis/integration_eval/teacher_divergence_data_selection_next/selection_report.md,55,| protected_top5 | 6 |
+analysis/integration_eval/teacher_divergence_data_selection_next/selection_report.md,56,| tail_rank_gt50 | 3 |
+analysis/integration_eval/teacher_divergence_data_selection_next/selection_report.md,82,Rows marked as protected or tail guards should remain held out from ordinary training and used as gate/guard evidence.
+analysis/integration_eval/teacher_divergence_data_selection_next/selection_report.md,84,Rows marked as quarantine should not be used for checkpoint-producing training without manual review because previous b4c96 forensics or ablations linked them to protected/tail instability.
+analysis/integration_eval/current_best_explicit_weight_public_provenance/explicit_current_best_probe_tactical_mid_mcts16_closeout.md,77,- Compare this explicit-weight score against archived tactical_mid `7.0/24`.
+analysis/integration_eval/current_best_explicit_weight_public_provenance/explicit_current_best_probe_tactical_mid_mcts16_closeout.md,78,"- If this reproduces `7.0/24`, the archived current-best public score is recovered with explicit weights."
+analysis/integration_eval/current_best_explicit_weight_public_provenance/explicit_current_best_probe_tactical_mid_mcts16_closeout.md,79,"- If this remains near current local `2.0/24`, the mismatch is likely in public benchmark environment/run conditions rather than the C diagnostic subset."
