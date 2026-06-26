@@ -1,0 +1,53 @@
+{
+  "decision": "BENCHMARK_PRESERVING_TRAINING_INPUT_DRYRUN_READY",
+  "not_training": true,
+  "not_checkpoint": true,
+  "not_export": true,
+  "not_promotion": true,
+  "baseline_policy": {
+    "current_local_baseline_score": 2.0,
+    "current_local_baseline_score_rate": 0.083,
+    "expanded_candidate_score": 2.0,
+    "expanded_candidate_score_rate": 0.083,
+    "archived_current_best_score": 7.0,
+    "archived_current_best_score_rate": 0.292,
+    "local_no_regression_gate": ">= 2.0/24 on tactical_mid",
+    "aspirational_recovery_target": "recover toward archived 7.0/24 on tactical_mid"
+  },
+  "source_counts": {
+    "teacher_samples": 12,
+    "protected_eval_samples": 15,
+    "tail_eval_samples": 15,
+    "quarantine_samples": 3,
+    "before_public_kl_anchor_pool": 192,
+    "before_public_kl_anchor_selected": 48,
+    "after_diagnostic_anchor_pool": 192
+  },
+  "training_input_counts": {
+    "teacher_divergence_ce_train": 12,
+    "public_tactical_mid_kl_anchor_train": 48,
+    "protected_top10_kl_guard": 15,
+    "tail_rank_kl_guard": 15
+  },
+  "diagnostic_counts": {
+    "after_candidate_regression_diagnostic_only": 192
+  },
+  "total_training_records": 90,
+  "total_diagnostic_records": 192,
+  "manifest_rows": 282,
+  "board_payload_counts": {
+    "True": 282
+  },
+  "weight_policy": {
+    "teacher_divergence_ce_train": 1.0,
+    "public_tactical_mid_kl_anchor_train": 0.2,
+    "protected_top10_kl_guard": 0.35,
+    "tail_rank_kl_guard": 0.35,
+    "after_candidate_regression_diagnostic_only": 0.0
+  },
+  "recommended_next_step": {
+    "name": "benchmark_preserving_training_adapter_dryrun",
+    "description": "Implement a trainer adapter that can read this dry-run input, compute CE on teacher-divergence rows, compute KL-to-reference on selected public/protected/tail anchors, and run with --no-save first.",
+    "first_run_mode": "dry_run_or_no_save_only"
+  }
+}

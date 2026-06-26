@@ -1,0 +1,62 @@
+{
+  "decision": "CLOSEOUT_NO_SAVED_CANDIDATE_TOP3_WARNING",
+  "promotion_readiness": "NOT_PROMOTION_READY",
+  "route": "expanded_data_b6c64_benchmark_preserving_adapter",
+  "not_saved_candidate": true,
+  "not_export": true,
+  "not_public_benchmark_after_adapter": true,
+  "not_promotion": true,
+  "adapter_candidate_checkpoint_exists": false,
+  "public_candidate_checkpoint_exists": true,
+  "public_candidate_weights_exists": true,
+  "baseline_policy": {
+    "archived_current_best_score": 7.0,
+    "current_local_b6c64_baseline_score": 2.0,
+    "expanded_public_candidate_score": 2.0,
+    "interpretation": "The current local b6c64 baseline reproduces 2.0/24, not the archived current-best 7.0/24. The expanded public candidate also scored 2.0/24, so it did not improve over current local b6c64 baseline."
+  },
+  "input_summary": {
+    "teacher_samples": 12,
+    "public_kl_anchor_selected": 48,
+    "protected_eval_samples": 15,
+    "tail_eval_samples": 15,
+    "total_training_records": 90,
+    "total_diagnostic_records": 192
+  },
+  "anchor_summary": {
+    "before_public_kl_anchors": 192,
+    "after_regression_diagnostic_anchors": 192,
+    "total": 384
+  },
+  "sweep_summary": {
+    "configs": 5,
+    "hard_pass_count": 0,
+    "soft_pass_count": 5,
+    "fail_count": 0,
+    "top3_deltas": [
+      -1
+    ],
+    "rank_gt50_deltas": [
+      0
+    ],
+    "mean_rank_delta_min": -4.0,
+    "mean_rank_delta_max": -4.0,
+    "target_prob_delta_min": 4.4883946732928066e-05,
+    "target_prob_delta_max": 4.553300095722079e-05,
+    "recommended_configs": [
+      "ce_only_lr5e7_wd0",
+      "ce_only_lr1e7_wd0",
+      "balanced_lr1e7_wd0",
+      "balanced_lr5e8_wd0",
+      "strong_kl_lr5e7_wd0"
+    ]
+  },
+  "artifact_inputs": {
+    "preflight": "analysis/integration_eval/expanded_data_b6c64_benchmark_preserving_preflight/benchmark_preserving_preflight_summary.json",
+    "baseline_mismatch": "analysis/integration_eval/expanded_data_b6c64_baseline_mismatch_audit/baseline_mismatch_audit.json",
+    "anchor": "analysis/integration_eval/expanded_data_b6c64_benchmark_anchor_dryrun/benchmark_anchor_dryrun_summary.json",
+    "training_input": "analysis/integration_eval/expanded_data_b6c64_benchmark_preserving_training_input_dryrun/benchmark_preserving_training_input_summary.json",
+    "sweep": "analysis/integration_eval/expanded_data_b6c64_benchmark_preserving_adapter_nosave_sweep/adapter_nosave_sweep_summary.json"
+  },
+  "recommendation": "Do not create a saved adapter candidate from this route. The no-save sweep found only soft passes with persistent top3 regression. Next work should either add stronger positive supervision for the top3-sensitive row or revisit the archived-current-best runner mismatch."
+}
