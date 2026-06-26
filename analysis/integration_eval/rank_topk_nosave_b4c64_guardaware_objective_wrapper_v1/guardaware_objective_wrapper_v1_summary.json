@@ -1,0 +1,17 @@
+{
+  "branch": "exp/15x15-rank-topk-nosave-b4c64-guardaware-objective-wrapper-v1",
+  "call_path_still_uses_imported_train_directly": false,
+  "call_path_uses_train_guardaware": false,
+  "contains_compute_guardaware_loss_terms": false,
+  "contains_hard_guard_beats_arg": false,
+  "contains_hard_guard_reference_kl_arg": false,
+  "contains_hard_guard_target_ce_arg": false,
+  "contains_make_hard_guard_beats_mask": false,
+  "contains_out_checkpoint": false,
+  "contains_torch_save": false,
+  "contains_train_guardaware": false,
+  "generated_at": "2026-06-26T18:02:57",
+  "help_contains_hard_guard_args": false,
+  "scope": "wrapper patch only; help/syntax check only; no training; no checkpoint save; no C export; no public benchmark; no promotion",
+  "wrapper": "scripts/probe_policy_rank_topk_protected_nosave_b4c64_current_best.py"
+}
