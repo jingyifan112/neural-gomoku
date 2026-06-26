@@ -1,0 +1,29 @@
+{
+  "branch": "exp/15x15-top3-sensitive-ce-route-closeout",
+  "checkpoint_exists": false,
+  "final_route_decision": "CLOSE_LEGACY_TINY_CE_ROUTE_NO_SAVE",
+  "generated_at": "2026-06-26T15:13:11",
+  "inputs": {
+    "preflight_summary": "analysis/integration_eval/top3_sensitive_tiny_nosave_probe_preflight/preflight_summary.json",
+    "run1_summary": "analysis/integration_eval/top3_sensitive_tiny_nosave_probe_run1/run1_summary.json",
+    "semantics_summary": "analysis/integration_eval/top3_sensitive_objective_target_semantics_audit/semantics_summary.json"
+  },
+  "next_recommended_route": "objective/update-direction audit or dedicated rank/top-k no-save wrapper; do not continue by increasing epochs",
+  "preflight_ready": true,
+  "run1_ce_improved_regressed": [
+    0,
+    3
+  ],
+  "run1_decision": "FAIL_NO_SAVE_OBJECTIVE_MOVED_WRONG_DIRECTION",
+  "run1_prob_improved_regressed": [
+    0,
+    3
+  ],
+  "run1_rank_improved_same_regressed": [
+    0,
+    1,
+    2
+  ],
+  "scope": "route closeout only; no training; no checkpoint save; no C export; no public benchmark; no promotion",
+  "semantics_coordinate_ok": true
+}
