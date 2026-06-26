@@ -1,0 +1,85 @@
+wrapper: scripts/probe_policy_rank_topk_protected_nosave_b4c64_current_best.py
+line_count: 785
+
+=== imports ===
+6-6: from __future__ import annotations
+8-8: import argparse
+9-9: import csv
+10-10: import json
+11-11: from pathlib import Path
+12-12: from typing import Any
+14-14: import numpy as np
+15-15: import torch
+17-17: from gomoku_agent.checkpoint import load_compatible_checkpoint
+18-18: from gomoku_agent.model import PolicyValueNet
+19-25: from train_rapfi_teacher_policy_rank_topk_probe import (
+    load_anchor_samples,
+    make_anchor_tensors,
+    make_multisuppress_tensors,
+    diagnose_summary,
+    train,
+)
+
+=== top-level functions ===
+parse_args: lines 28-106 args=[]
+validate_args: lines 109-119 args=['args']
+load_model_b4c64_current_best: lines 123-146 args=['checkpoint', 'device', 'board_size', 'win_length', 'channels', 'blocks']
+load_protected_dataset: lines 149-157 args=['path']
+summarize_delta: lines 160-180 args=['before', 'after']
+_stable_json: lines 184-189 args=['value']
+diagnose_row_trace: lines 192-230 args=['model', 'groups', 'device']
+summarize_row_trace_delta: lines 233-293 args=['before_rows', 'after_rows']
+write_row_csv: lines 296-346 args=['path', 'rows']
+_trace_float: lines 351-358 args=['row', 'key']
+evaluate_hard_guards: lines 361-453 args=['data', 'row_trace_rows']
+apply_hard_guard_verdict: lines 456-462 args=['base_verdict', 'hard_guard_rows']
+write_hard_guard_csv: lines 465-497 args=['path', 'rows']
+verdict: lines 501-524 args=['group_rows']
+write_csv: lines 527-568 args=['path', 'rows']
+write_report: lines 571-673 args=['path', 'args', 'data', 'rows', 'history', 'final_verdict', 'hard_guard_rows']
+main: lines 676-781 args=[]
+
+=== class defs ===
+
+=== key symbol occurrences ===
+
+--- def train ---
+
+--- make_multisuppress_tensors ---
+22:     make_multisuppress_tensors,
+714:     train_tensors = make_multisuppress_tensors(data["samples"], device)
+
+--- make_anchor_tensors ---
+21:     make_anchor_tensors,
+713:     anchor_tensors = make_anchor_tensors(anchors, device)
+
+--- diagnose_summary ---
+23:     diagnose_summary,
+202:             d = diagnose_summary(model, [sample], device)
+717:         name: diagnose_summary(model, samples, device)
+731:         name: diagnose_summary(model, samples, device)
+
+--- hard_guard_samples ---
+103:             "hard_guard_samples. No checkpoints are saved."
+365:     hard_samples = data.get("hard_guard_samples", [])
+
+--- loss = ---
+
+--- ce_loss ---
+640:             "ce_loss",
+
+--- pair_hinge_loss ---
+641:             "pair_hinge_loss",
+
+--- worst_hinge_loss ---
+642:             "worst_hinge_loss",
+
+--- anchor_kl ---
+613:         f"- anchor_kl_weight: {args.anchor_kl_weight}",
+643:             "anchor_kl",
+
+--- optimizer ---
+
+--- torch.save ---
+
+--- out_checkpoint ---
