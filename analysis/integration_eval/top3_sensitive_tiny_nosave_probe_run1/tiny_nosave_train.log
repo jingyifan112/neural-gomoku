@@ -1,0 +1,29 @@
+dataset=analysis/integration_eval/top3_sensitive_tiny_nosave_probe_run1/tiny_primary_positive_ce_train_candidate_dataset.json
+rows=3
+split_counts={'train_candidate': 3}
+role_counts={'top3_sensitive_positive_ce': 3}
+label_type_counts={'neighbor': 1, 'late_loss_window': 1, 'first_losing_value': 1}
+device=cpu
+base_checkpoint=checkpoints/15x15_current_best.pt
+out_checkpoint=analysis/integration_eval/top3_sensitive_tiny_nosave_probe_run1/SHOULD_NOT_SAVE.pt
+training_rows=3
+IMPORTANT: no C export, no benchmark, no promotion/current-best overwrite.
+loaded checkpoints/15x15_current_best.pt
+loaded checkpoints/15x15_current_best.pt
+train_scope=policy_head
+trainable_parameters=101607
+  trainable: policy.0.weight
+  trainable: policy.1.weight
+  trainable: policy.1.bias
+  trainable: policy.4.weight
+  trainable: policy.4.bias
+epoch 001/30 loss=7.867465 train_ce=7.864784 train_kl=0.007661
+epoch 005/30 loss=7.867120 train_ce=7.864439 train_kl=0.007661
+epoch 010/30 loss=7.866679 train_ce=7.863998 train_kl=0.007660
+epoch 015/30 loss=7.866239 train_ce=7.863558 train_kl=0.007659
+epoch 020/30 loss=7.865803 train_ce=7.863123 train_kl=0.007658
+epoch 025/30 loss=7.865363 train_ce=7.862683 train_kl=0.007657
+epoch 030/30 loss=7.864924 train_ce=7.862245 train_kl=0.007656
+wrote eval csv: analysis/integration_eval/top3_sensitive_tiny_nosave_probe_run1/tiny_nosave_eval.csv
+wrote report: analysis/integration_eval/top3_sensitive_tiny_nosave_probe_run1/tiny_nosave_report.md
+no checkpoint saved due to --no-save

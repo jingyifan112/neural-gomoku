@@ -1,0 +1,7 @@
+phase,id,split,role,label_type,source_id,side_to_move,policy_target,target_rank,target_prob,target_ce,top_move,top_prob,top_matches_target,value,used_for_training,suggested_weight
+before,legacy_g2_m11,train_candidate,top3_sensitive_positive_ce,neighbor,legacy_g2_m11,white,"9,7",12,0.00032455,8.03308199,"6,5",0.42217785,False,-0.21376181,True,3.7500
+before,legacy_g2_m21,train_candidate,top3_sensitive_positive_ce,late_loss_window,legacy_g2_m21,white,"7,9",47,0.00014416,8.84457584,"2,4",0.90291786,False,-0.81570107,True,3.0000
+before,legacy_g5_m14,train_candidate,top3_sensitive_positive_ce,first_losing_value,legacy_g5_m14,black,"7,9",17,0.00194023,6.24494982,"6,6",0.47136724,False,-0.63408327,True,6.9908
+after,legacy_g2_m11,train_candidate,top3_sensitive_positive_ce,neighbor,legacy_g2_m11,white,"9,7",12,0.00018413,8.59986499,"6,5",0.44157764,False,-0.21376181,True,3.7500
+after,legacy_g2_m21,train_candidate,top3_sensitive_positive_ce,late_loss_window,legacy_g2_m21,white,"7,9",48,0.00006372,9.66097829,"2,4",0.93873847,False,-0.81570107,True,3.0000
+after,legacy_g5_m14,train_candidate,top3_sensitive_positive_ce,first_losing_value,legacy_g5_m14,black,"7,9",18,0.00131850,6.63126186,"6,6",0.49576244,False,-0.63408327,True,6.9908
