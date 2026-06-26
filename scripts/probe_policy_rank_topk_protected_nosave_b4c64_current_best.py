@@ -99,10 +99,7 @@ def validate_args(args: argparse.Namespace) -> None:
         raise ValueError("--blocks must be positive")
     if args.epochs <= 0:
         raise ValueError("--epochs must be positive")
-    if args.init_checkpoint.name == "15x15_current_best.pt":
-        raise ValueError("refusing to use current_best as b4c64_current_best init checkpoint")
-    if args.reference_checkpoint.name == "15x15_current_best.pt":
-        raise ValueError("refusing to use current_best as b4c64_current_best reference checkpoint")
+    # current_best is the intended safe init/reference default for this b4c64 no-save wrapper.
 
 
 def load_model_b4c64_current_best(

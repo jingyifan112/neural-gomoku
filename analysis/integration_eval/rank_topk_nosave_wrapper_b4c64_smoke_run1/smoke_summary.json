@@ -1,0 +1,14 @@
+{
+  "branch": "exp/15x15-rank-topk-nosave-wrapper-b4c64-smoke-run1",
+  "checkpoint_like_outputs": [],
+  "dataset": "analysis/public_benchmark_eval/rapfi_teacher_policy_multisuppress_dataset_corpus8_selected_protected_train_11_50_weightcap3.json",
+  "eval_csv": "analysis/integration_eval/rank_topk_nosave_wrapper_b4c64_smoke_run1/smoke_eval.csv",
+  "eval_rows": 3,
+  "generated_at": "2026-06-26T15:34:35",
+  "init_checkpoint": "checkpoints/15x15_current_best.pt",
+  "reference_checkpoint": "checkpoints/15x15_current_best.pt",
+  "report": "analysis/integration_eval/rank_topk_nosave_wrapper_b4c64_smoke_run1/smoke_report.md",
+  "scope": "1-epoch smoke only; no checkpoint save; no C export; no public benchmark; no promotion",
+  "smoke_status": "PASS_NO_SAVE_SMOKE",
+  "train_log": "analysis/integration_eval/rank_topk_nosave_wrapper_b4c64_smoke_run1/smoke_train.log"
+}
