@@ -1,0 +1,39 @@
+usage: probe_policy_rank_topk_protected_nosave_b4c64_current_best.py
+       [-h] [--dataset DATASET] [--anchor-snapshots ANCHOR_SNAPSHOTS]
+       [--init-checkpoint INIT_CHECKPOINT]
+       [--reference-checkpoint REFERENCE_CHECKPOINT] [--board-size BOARD_SIZE]
+       [--win-length WIN_LENGTH] [--channels CHANNELS] [--blocks BLOCKS]
+       [--epochs EPOCHS] [--lr LR] [--margin MARGIN] [--ce-weight CE_WEIGHT]
+       [--pair-weight PAIR_WEIGHT] [--worst-weight WORST_WEIGHT]
+       [--anchor-kl-weight ANCHOR_KL_WEIGHT] [--weight-decay WEIGHT_DECAY]
+       [--seed SEED] [--print-every PRINT_EVERY] [--out-csv OUT_CSV]
+       [--out-report OUT_REPORT] [--out-row-csv OUT_ROW_CSV]
+
+b4c64/current-best-safe no-save protected rank/top-k objective ablation
+wrapper. Optimizer runs in memory only; no checkpoint is saved.
+
+options:
+  -h, --help            show this help message and exit
+  --dataset DATASET
+  --anchor-snapshots ANCHOR_SNAPSHOTS
+  --init-checkpoint INIT_CHECKPOINT
+  --reference-checkpoint REFERENCE_CHECKPOINT
+  --board-size BOARD_SIZE
+  --win-length WIN_LENGTH
+  --channels CHANNELS
+  --blocks BLOCKS
+  --epochs EPOCHS
+  --lr LR
+  --margin MARGIN
+  --ce-weight CE_WEIGHT
+  --pair-weight PAIR_WEIGHT
+  --worst-weight WORST_WEIGHT
+  --anchor-kl-weight ANCHOR_KL_WEIGHT
+  --weight-decay WEIGHT_DECAY
+  --seed SEED
+  --print-every PRINT_EVERY
+  --out-csv OUT_CSV
+  --out-report OUT_REPORT
+  --out-row-csv OUT_ROW_CSV
+                        Optional per-row before/after diagnostics CSV. No
+                        checkpoints are saved.

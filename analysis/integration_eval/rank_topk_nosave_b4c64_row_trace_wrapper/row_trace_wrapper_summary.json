@@ -1,0 +1,13 @@
+{
+  "branch": "exp/15x15-rank-topk-nosave-b4c64-row-trace-wrapper",
+  "contains_out_checkpoint": false,
+  "contains_out_row_csv": true,
+  "contains_row_trace_call": true,
+  "contains_row_trace_helper": true,
+  "contains_torch_save": false,
+  "contains_write_row_csv": true,
+  "generated_at": "2026-06-26T16:53:24",
+  "help_contains_out_row_csv": true,
+  "scope": "wrapper patch only; help/syntax check only; no training; no checkpoint save; no C export; no public benchmark; no promotion",
+  "wrapper": "scripts/probe_policy_rank_topk_protected_nosave_b4c64_current_best.py"
+}
