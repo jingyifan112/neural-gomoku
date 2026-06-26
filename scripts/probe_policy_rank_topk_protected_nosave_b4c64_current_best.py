@@ -94,6 +94,15 @@ def parse_args() -> argparse.Namespace:
             "No checkpoints are saved."
         ),
     )
+    ap.add_argument(
+        "--out-hard-guard-csv",
+        type=Path,
+        default=None,
+        help=(
+            "Optional hard-guard row verdict CSV when the dataset provides "
+            "hard_guard_samples. No checkpoints are saved."
+        ),
+    )
     return ap.parse_args()
 
 
@@ -338,6 +347,157 @@ def write_row_csv(path: Path, rows: list[dict[str, Any]]) -> None:
 
 
 
+
+def _trace_float(row: dict[str, Any], key: str) -> float | None:
+    value = row.get(key)
+    if value in ("", None):
+        return None
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return None
+
+
+def evaluate_hard_guards(
+    data: dict[str, Any],
+    row_trace_rows: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    hard_samples = data.get("hard_guard_samples", [])
+    if not hard_samples:
+        return []
+
+    trace_by_case: dict[str, dict[str, Any]] = {}
+    for row in row_trace_rows:
+        case_id = str(row.get("case_id", ""))
+        if case_id:
+            trace_by_case[case_id] = row
+
+    out: list[dict[str, Any]] = []
+    for sample in hard_samples:
+        case_id = str(sample.get("case_id", ""))
+        role = str(sample.get("guarded_split_v1_hard_guard_role", ""))
+        gate = sample.get("guarded_split_v1_required_gate", {}) or {}
+        trace = trace_by_case.get(case_id)
+
+        failures: list[str] = []
+        if trace is None:
+            failures.append("missing_row_trace")
+            out.append(
+                {
+                    "case_id": case_id,
+                    "hard_guard_role": role,
+                    "guard_pass": False,
+                    "failure_reasons": ";".join(failures),
+                    "required_gate": json.dumps(gate, sort_keys=True),
+                }
+            )
+            continue
+
+        checks = {
+            "teacher_beats_worst_delta_min": ("teacher_beats_worst_delta", ">="),
+            "teacher_beats_all_delta_min": ("teacher_beats_all_delta", ">="),
+            "rank_delta_max": ("rank_delta", "<="),
+            "target_prob_delta_min": ("target_prob_delta", ">="),
+            "rank_gt50_delta_max": ("rank_gt50_delta", "<="),
+            "rank_after_max": ("rank_after", "<="),
+        }
+
+        observed: dict[str, Any] = {}
+        for gate_key, required in gate.items():
+            if gate_key not in checks:
+                continue
+
+            trace_key, op = checks[gate_key]
+            actual = _trace_float(trace, trace_key)
+            observed[trace_key] = actual
+
+            if actual is None:
+                failures.append(f"{trace_key}=missing")
+                continue
+
+            required_value = float(required)
+            if op == ">=" and actual < required_value:
+                failures.append(f"{trace_key}={actual} < {required_value}")
+            elif op == "<=" and actual > required_value:
+                failures.append(f"{trace_key}={actual} > {required_value}")
+
+        out.append(
+            {
+                "case_id": case_id,
+                "group": trace.get("group", ""),
+                "row_index": trace.get("row_index", ""),
+                "hard_guard_role": role,
+                "guard_pass": not failures,
+                "failure_reasons": ";".join(failures),
+                "required_gate": json.dumps(gate, sort_keys=True),
+                "rank_before": trace.get("rank_before", ""),
+                "rank_after": trace.get("rank_after", ""),
+                "rank_delta": trace.get("rank_delta", ""),
+                "target_prob_before": trace.get("target_prob_before", ""),
+                "target_prob_after": trace.get("target_prob_after", ""),
+                "target_prob_delta": trace.get("target_prob_delta", ""),
+                "worst_gap_before": trace.get("worst_gap_before", ""),
+                "worst_gap_after": trace.get("worst_gap_after", ""),
+                "worst_gap_delta": trace.get("worst_gap_delta", ""),
+                "rank_gt50_before": trace.get("rank_gt50_before", ""),
+                "rank_gt50_after": trace.get("rank_gt50_after", ""),
+                "rank_gt50_delta": trace.get("rank_gt50_delta", ""),
+                "teacher_beats_worst_before": trace.get("teacher_beats_worst_before", ""),
+                "teacher_beats_worst_after": trace.get("teacher_beats_worst_after", ""),
+                "teacher_beats_worst_delta": trace.get("teacher_beats_worst_delta", ""),
+                "teacher_beats_all_before": trace.get("teacher_beats_all_before", ""),
+                "teacher_beats_all_after": trace.get("teacher_beats_all_after", ""),
+                "teacher_beats_all_delta": trace.get("teacher_beats_all_delta", ""),
+            }
+        )
+    return out
+
+
+def apply_hard_guard_verdict(
+    base_verdict: str,
+    hard_guard_rows: list[dict[str, Any]],
+) -> str:
+    if any(not bool(row.get("guard_pass")) for row in hard_guard_rows):
+        return "FAIL_HARD_GUARD_ROW_DAMAGE"
+    return base_verdict
+
+
+def write_hard_guard_csv(path: Path, rows: list[dict[str, Any]]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    fieldnames = [
+        "case_id",
+        "group",
+        "row_index",
+        "hard_guard_role",
+        "guard_pass",
+        "failure_reasons",
+        "required_gate",
+        "rank_before",
+        "rank_after",
+        "rank_delta",
+        "target_prob_before",
+        "target_prob_after",
+        "target_prob_delta",
+        "worst_gap_before",
+        "worst_gap_after",
+        "worst_gap_delta",
+        "rank_gt50_before",
+        "rank_gt50_after",
+        "rank_gt50_delta",
+        "teacher_beats_worst_before",
+        "teacher_beats_worst_after",
+        "teacher_beats_worst_delta",
+        "teacher_beats_all_before",
+        "teacher_beats_all_after",
+        "teacher_beats_all_delta",
+    ]
+    with path.open("w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames, lineterminator="\n")
+        writer.writeheader()
+        writer.writerows(rows)
+
+
+
 def verdict(group_rows: list[dict[str, Any]]) -> str:
     by_group = {r["group"]: r for r in group_rows}
     train_group = by_group["train_main_rank_11_50"]
@@ -415,6 +575,7 @@ def write_report(
     rows: list[dict[str, Any]],
     history: list[dict[str, float]],
     final_verdict: str,
+    hard_guard_rows: list[dict[str, Any]] | None = None,
 ) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     lines: list[str] = []
@@ -484,6 +645,23 @@ def write_report(
             "mean_worst_gap",
         ]:
             lines.append(f"| {key} | {final[key]:.8f} |")
+
+    hard_guard_rows = hard_guard_rows or []
+    if hard_guard_rows:
+        lines += ["", "## Hard guard row verdicts", ""]
+        lines += [
+            "| case_id | role | pass | failure reasons | rank before→after | rank>50 before→after | beats-worst before→after | beats-all before→after |",
+            "|---|---|---:|---|---:|---:|---:|---:|",
+        ]
+        for r in hard_guard_rows:
+            lines.append(
+                f"| {r.get('case_id')} | {r.get('hard_guard_role')} | "
+                f"{r.get('guard_pass')} | {r.get('failure_reasons', '')} | "
+                f"{r.get('rank_before', '')}→{r.get('rank_after', '')} | "
+                f"{r.get('rank_gt50_before', '')}→{r.get('rank_gt50_after', '')} | "
+                f"{r.get('teacher_beats_worst_before', '')}→{r.get('teacher_beats_worst_after', '')} | "
+                f"{r.get('teacher_beats_all_before', '')}→{r.get('teacher_beats_all_after', '')} |"
+            )
 
     lines += ["", "## Verdict", "", final_verdict, ""]
     lines += ["## Decision", ""]
@@ -561,13 +739,16 @@ def main() -> int:
         row.update(summarize_delta(before[name], after[name]))
         rows.append(row)
 
-    final_verdict = verdict(rows)
+    row_trace_rows = summarize_row_trace_delta(before_row_trace, after_row_trace)
+    hard_guard_rows = evaluate_hard_guards(data, row_trace_rows)
+    final_verdict = apply_hard_guard_verdict(verdict(rows), hard_guard_rows)
 
     write_csv(args.out_csv, rows)
-    write_report(args.out_report, args, data, rows, history, final_verdict)
+    write_report(args.out_report, args, data, rows, history, final_verdict, hard_guard_rows)
     if args.out_row_csv is not None:
-        row_trace_rows = summarize_row_trace_delta(before_row_trace, after_row_trace)
         write_row_csv(args.out_row_csv, row_trace_rows)
+    if args.out_hard_guard_csv is not None:
+        write_hard_guard_csv(args.out_hard_guard_csv, hard_guard_rows)
 
     print("device:", device)
     print("dataset:", args.dataset)
@@ -593,6 +774,9 @@ def main() -> int:
     print("out_report:", args.out_report)
     if args.out_row_csv is not None:
         print("out_row_csv:", args.out_row_csv)
+    print("hard_guard_rows:", len(hard_guard_rows))
+    if args.out_hard_guard_csv is not None:
+        print("out_hard_guard_csv:", args.out_hard_guard_csv)
     print("b4c64/current-best-safe no-save probe complete; no checkpoint saved")
     return 0
 

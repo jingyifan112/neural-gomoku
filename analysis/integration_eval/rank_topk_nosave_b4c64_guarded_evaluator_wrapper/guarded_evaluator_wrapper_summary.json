@@ -1,0 +1,14 @@
+{
+  "branch": "exp/15x15-rank-topk-nosave-b4c64-guarded-evaluator-wrapper",
+  "contains_apply_hard_guard_verdict": true,
+  "contains_evaluate_hard_guards": true,
+  "contains_fail_hard_guard_verdict": true,
+  "contains_out_checkpoint": false,
+  "contains_out_hard_guard_csv": true,
+  "contains_torch_save": false,
+  "contains_write_hard_guard_csv": true,
+  "generated_at": "2026-06-26T17:17:01",
+  "help_contains_out_hard_guard_csv": true,
+  "scope": "wrapper patch only; help/syntax check only; no training; no checkpoint save; no C export; no public benchmark; no promotion",
+  "wrapper": "scripts/probe_policy_rank_topk_protected_nosave_b4c64_current_best.py"
+}
