@@ -1,0 +1,77 @@
+def train(args: argparse.Namespace) -> None:
+    torch.manual_seed(args.seed)
+    np.random.seed(args.seed)
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    samples, states_cpu, masks_cpu, targets_cpu, weights_cpu = load_dataset(args.dataset, args.board_size)
+    print(f"device={device}")
+    print(f"dataset={args.dataset}")
+    print(f"samples={len(samples)}")
+    print(f"init_checkpoint={args.init_checkpoint}")
+
+    model = load_model(args.init_checkpoint, args, device)
+    reference = load_model(args.init_checkpoint, args, device)
+    reference.eval()
+    for parameter in reference.parameters():
+        parameter.requires_grad = False
+
+    states = states_cpu.to(device)
+    masks = masks_cpu.to(device)
+    targets = targets_cpu.to(device)
+    weights = weights_cpu.to(device)
+
+    print_identity_diagnostics("BEFORE", model, samples, states_cpu, masks_cpu, targets_cpu, device)
+    if args.dry_run:
+        print("dry-run: no training or checkpoint write")
+        return
+
+    optimizer = torch.optim.AdamW(configure_trainable(model, args.train_scope), lr=args.lr, weight_decay=args.weight_decay)
+    with torch.no_grad():
+        ref_logits, _ = reference(states)
+        ref_probs = torch.exp(masked_log_softmax(ref_logits, masks))
+
+    for epoch in range(1, args.epochs + 1):
+        set_training_mode(model, args.train_scope)
+        logits, _values = model(states)
+        log_probs = masked_log_softmax(logits, masks)
+        ce_per_row = -(targets * log_probs).sum(dim=-1)
+        ce_loss = (ce_per_row * weights).sum() / weights.sum()
+        kl_per_row = (ref_probs * (torch.log(ref_probs.clamp_min(1e-12)) - log_probs)).sum(dim=-1)
+        kl_loss = (kl_per_row * weights).sum() / weights.sum()
+        loss = ce_loss + args.kl_weight * kl_loss
+
+        optimizer.zero_grad()
+        loss.backward()
+        torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
+        optimizer.step()
+
+        if epoch == 1 or epoch == args.epochs or epoch % args.print_every == 0:
+            print(
+                f"epoch {epoch:03d}/{args.epochs} "
+                f"loss={float(loss.item()):.6f} "
+                f"policy_ce={float(ce_loss.item()):.6f} "
+                f"kl={float(kl_loss.item()):.6f}",
+                flush=True,
+            )
+
+    print_identity_diagnostics("AFTER", model, samples, states_cpu, masks_cpu, targets_cpu, device)
+    args.out_checkpoint.parent.mkdir(parents=True, exist_ok=True)
+    torch.save(
+        {
+            "model": model.state_dict(),
+            "board_size": args.board_size,
+            "win_length": args.win_length,
+            "channels": args.channels,
+            "blocks": args.blocks,
+            "candidate_g_teacher_policy": {
+                "init_checkpoint": str(args.init_checkpoint),
+                "dataset": str(args.dataset),
+                "epochs": args.epochs,
+                "lr": args.lr,
+                "kl_weight": args.kl_weight,
+                "train_scope": args.train_scope,
+                "value_tuning": "frozen/no value loss in Candidate G policy phase",
+            },
+        },
+        args.out_checkpoint,
+    )
+    print(f"saved {args.out_checkpoint}")

@@ -1,0 +1,55 @@
+def diagnose_summary(
+    model: torch.nn.Module,
+    samples: list[dict[str, Any]],
+    device: torch.device,
+) -> dict[str, Any]:
+    ranks = []
+    probs = []
+    worst_gaps = []
+    pair_hinges = []
+    beats_worst = 0
+    beats_all = 0
+
+    for sample in samples:
+        board = sample["board"]
+        current_player = int(sample["current_player"])
+        legal_np = legal_mask_from_board(board)
+
+        target_action = rc_to_action(sample["target_rc"])
+        suppress_actions = [rc_to_action(rc) for rc in sample["suppress_rcs"]]
+
+        state = torch.tensor(
+            encode_state(board, current_player),
+            dtype=torch.float32,
+            device=device,
+        ).unsqueeze(0)
+        mask = torch.tensor(legal_np, dtype=torch.float32, device=device).unsqueeze(0)
+
+        logits, _values = model(state)
+        prob = masked_softmax(logits, mask)[0]
+        logits0 = logits[0]
+        mask0 = mask[0]
+
+        target_logit = float(logits0[target_action].item())
+        gaps = [target_logit - float(logits0[action].item()) for action in suppress_actions]
+
+        ranks.append(int(rank_of_action(prob, target_action, mask0)))
+        probs.append(float(prob[target_action].item()))
+        worst_gaps.append(float(min(gaps)))
+        pair_hinges.append(float(np.mean([max(0.0, 0.25 - gap) for gap in gaps])))
+        beats_worst += int(min(gaps) > 0.0)
+        beats_all += int(all(gap > 0.0 for gap in gaps))
+
+    return {
+        "rows": len(samples),
+        "top3": int(sum(rank <= 3 for rank in ranks)),
+        "top5": int(sum(rank <= 5 for rank in ranks)),
+        "top10": int(sum(rank <= 10 for rank in ranks)),
+        "rank_gt50": int(sum(rank > 50 for rank in ranks)),
+        "mean_rank": float(np.mean(ranks)),
+        "mean_target_prob": float(np.mean(probs)),
+        "mean_worst_gap": float(np.mean(worst_gaps)),
+        "mean_pair_hinge_margin_025": float(np.mean(pair_hinges)),
+        "teacher_beats_worst": int(beats_worst),
+        "teacher_beats_all": int(beats_all),
+    }

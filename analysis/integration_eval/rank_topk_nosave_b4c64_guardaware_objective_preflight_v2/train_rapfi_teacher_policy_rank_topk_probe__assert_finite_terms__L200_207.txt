@@ -1,0 +1,8 @@
+def assert_finite_terms(terms: dict[str, torch.Tensor], label: str) -> None:
+    bad = []
+    for name, value in terms.items():
+        scalar = float(value.detach().item())
+        if not math.isfinite(scalar):
+            bad.append(f"{name}={scalar}")
+    if bad:
+        raise RuntimeError(f"non-finite {label} terms: {', '.join(bad)}")

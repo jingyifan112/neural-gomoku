@@ -1,0 +1,51 @@
+def compute_loss_terms(
+    model: torch.nn.Module,
+    reference_model: torch.nn.Module,
+    tensors: tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor],
+    anchor_tensors: tuple[torch.Tensor, torch.Tensor],
+    ref_anchor_probs: torch.Tensor,
+    args: argparse.Namespace,
+) -> dict[str, torch.Tensor]:
+    states, legal_masks, target_actions, suppress_actions, weights = tensors
+    anchor_states, anchor_masks = anchor_tensors
+    weight_sum = weights.sum().clamp_min(1e-12)
+
+    logits, _values = model(states)
+    log_probs = masked_log_softmax(logits, legal_masks)
+
+    target_logits = logits.gather(1, target_actions.unsqueeze(1)).squeeze(1)
+    suppress_logits = logits.gather(1, suppress_actions)
+    gaps = target_logits.unsqueeze(1) - suppress_logits
+
+    ce_per_row = -log_probs.gather(1, target_actions.unsqueeze(1)).squeeze(1)
+    ce_loss = (ce_per_row * weights).sum() / weight_sum
+
+    pair_hinge_per_row = F.relu(args.margin - gaps).mean(dim=1)
+    pair_hinge_loss = (pair_hinge_per_row * weights).sum() / weight_sum
+
+    worst_gap = gaps.min(dim=1).values
+    worst_hinge_per_row = F.relu(args.margin - worst_gap)
+    worst_hinge_loss = (worst_hinge_per_row * weights).sum() / weight_sum
+
+    anchor_logits, _anchor_values = model(anchor_states)
+    anchor_log_probs = masked_log_softmax(anchor_logits, anchor_masks)
+    anchor_kl = (
+        ref_anchor_probs * (torch.log(ref_anchor_probs.clamp_min(1e-12)) - anchor_log_probs)
+    ).sum(dim=-1).mean()
+
+    loss = (
+        args.ce_weight * ce_loss
+        + args.pair_weight * pair_hinge_loss
+        + args.worst_weight * worst_hinge_loss
+        + args.anchor_kl_weight * anchor_kl
+    )
+
+    return {
+        "loss": loss,
+        "ce_loss": ce_loss,
+        "pair_hinge_loss": pair_hinge_loss,
+        "worst_hinge_loss": worst_hinge_loss,
+        "anchor_kl": anchor_kl,
+        "mean_gap": gaps.mean(),
+        "mean_worst_gap": worst_gap.mean(),
+    }

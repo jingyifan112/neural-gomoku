@@ -1,0 +1,850 @@
+{
+  "addendum_generated_at": "2026-06-26T18:00:38",
+  "branch": "exp/15x15-rank-topk-nosave-b4c64-guardaware-objective-preflight-v2",
+  "diagnosis": {
+    "compute_loss_terms_extracted": true,
+    "make_anchor_tensors_extracted": false,
+    "reason_for_v2": "v1 attempted to extract local wrapper train(), but the wrapper appears to use imported training helpers/loss functions.",
+    "train_extract_count": 10,
+    "wrapper_has_local_train": false
+  },
+  "extracts": [
+    {
+      "args": [
+        "model",
+        "checkpoint",
+        "device",
+        "board_size",
+        "channels",
+        "blocks"
+      ],
+      "extract": "analysis/integration_eval/rank_topk_nosave_b4c64_guardaware_objective_preflight_v2/checkpoint__load_compatible_checkpoint__L11_39.txt",
+      "function": "load_compatible_checkpoint",
+      "line_end": 39,
+      "line_start": 11,
+      "source": "src/gomoku_agent/checkpoint.py"
+    },
+    {
+      "args": [
+        "samples",
+        "device"
+      ],
+      "extract": "analysis/integration_eval/rank_topk_nosave_b4c64_guardaware_objective_preflight_v2/train_rapfi_teacher_policy_rank_topk_probe__make_multisuppress_tensors__L92_144.txt",
+      "function": "make_multisuppress_tensors",
+      "line_end": 144,
+      "line_start": 92,
+      "source": "scripts/train_rapfi_teacher_policy_rank_topk_probe.py"
+    },
+    {
+      "args": [
+        "model",
+        "samples",
+        "device"
+      ],
+      "extract": "analysis/integration_eval/rank_topk_nosave_b4c64_guardaware_objective_preflight_v2/train_rapfi_teacher_policy_rank_topk_probe__diagnose_summary__L211_265.txt",
+      "function": "diagnose_summary",
+      "line_end": 265,
+      "line_start": 211,
+      "source": "scripts/train_rapfi_teacher_policy_rank_topk_probe.py"
+    },
+    {
+      "args": [
+        "model",
+        "reference_model",
+        "tensors",
+        "anchor_tensors",
+        "args"
+      ],
+      "extract": "analysis/integration_eval/rank_topk_nosave_b4c64_guardaware_objective_preflight_v2/train_rapfi_teacher_policy_rank_topk_probe__train__L268_322.txt",
+      "function": "train",
+      "line_end": 322,
+      "line_start": 268,
+      "source": "scripts/train_rapfi_teacher_policy_rank_topk_probe.py"
+    },
+    {
+      "args": [
+        "args"
+      ],
+      "extract": "analysis/integration_eval/rank_topk_nosave_b4c64_guardaware_objective_preflight_v2/train_teacher_divergence_policy_probe__train__L665_808.txt",
+      "function": "train",
+      "line_end": 808,
+      "line_start": 665,
+      "source": "scripts/train_teacher_divergence_policy_probe.py"
+    },
+    {
+      "args": [
+        "args"
+      ],
+      "extract": "analysis/integration_eval/rank_topk_nosave_b4c64_guardaware_objective_preflight_v2/train_teacher_divergence_policy_mixed_ce_anchor_probe__train__L704_972.txt",
+      "function": "train",
+      "line_end": 972,
+      "line_start": 704,
+      "source": "scripts/train_teacher_divergence_policy_mixed_ce_anchor_probe.py"
+    },
+    {
+      "args": [
+        "model",
+        "reference_model",
+        "tensors",
+        "anchor_tensors",
+        "args"
+      ],
+      "extract": "analysis/integration_eval/rank_topk_nosave_b4c64_guardaware_objective_preflight_v2/train_rapfi_teacher_policy_rank_topk_b4c96_probe__train__L451_505.txt",
+      "function": "train",
+      "line_end": 505,
+      "line_start": 451,
+      "source": "scripts/train_rapfi_teacher_policy_rank_topk_b4c96_probe.py"
+    },
+    {
+      "args": [
+        "args"
+      ],
+      "extract": "analysis/integration_eval/rank_topk_nosave_b4c64_guardaware_objective_preflight_v2/train_teacher_divergence_policy_anchor_probe__train__L676_837.txt",
+      "function": "train",
+      "line_end": 837,
+      "line_start": 676,
+      "source": "scripts/train_teacher_divergence_policy_anchor_probe.py"
+    },
+    {
+      "args": [
+        "model",
+        "reference_model",
+        "margin_tensors",
+        "anchor_tensors",
+        "args"
+      ],
+      "extract": "analysis/integration_eval/rank_topk_nosave_b4c64_guardaware_objective_preflight_v2/train_v12l_margin_repair__train__L279_332.txt",
+      "function": "train",
+      "line_end": 332,
+      "line_start": 279,
+      "source": "scripts/train_v12l_margin_repair.py"
+    },
+    {
+      "args": [
+        "args"
+      ],
+      "extract": "analysis/integration_eval/rank_topk_nosave_b4c64_guardaware_objective_preflight_v2/train_candidate_g_teacher_policy__train__L189_265.txt",
+      "function": "train",
+      "line_end": 265,
+      "line_start": 189,
+      "source": "scripts/train_candidate_g_teacher_policy.py"
+    },
+    {
+      "args": [
+        "args"
+      ],
+      "extract": "analysis/integration_eval/rank_topk_nosave_b4c64_guardaware_objective_preflight_v2/train_candidate_h_value_ranking__train__L196_283.txt",
+      "function": "train",
+      "line_end": 283,
+      "line_start": 196,
+      "source": "scripts/train_candidate_h_value_ranking.py"
+    },
+    {
+      "args": [
+        "model",
+        "reference_model",
+        "margin_tensors",
+        "anchor_tensors",
+        "args"
+      ],
+      "extract": "analysis/integration_eval/rank_topk_nosave_b4c64_guardaware_objective_preflight_v2/train_rapfi_teacher_policy_margin__train__L253_310.txt",
+      "function": "train",
+      "line_end": 310,
+      "line_start": 253,
+      "source": "scripts/train_rapfi_teacher_policy_margin.py"
+    },
+    {
+      "args": [
+        "model",
+        "base_model",
+        "samples",
+        "args",
+        "device"
+      ],
+      "extract": "analysis/integration_eval/rank_topk_nosave_b4c64_guardaware_objective_preflight_v2/train_candidate_g_policy_first_dry_run__train__L522_597.txt",
+      "function": "train",
+      "line_end": 597,
+      "line_start": 522,
+      "source": "scripts/train_candidate_g_policy_first_dry_run.py"
+    }
+  ],
+  "found_defs": {
+    "diagnose_summary": [
+      {
+        "args": [
+          "model",
+          "samples",
+          "device",
+          "board_size"
+        ],
+        "line_end": 448,
+        "line_start": 394,
+        "path": "scripts/train_rapfi_teacher_policy_rank_topk_b4c96_probe.py"
+      },
+      {
+        "args": [
+          "model",
+          "samples",
+          "device"
+        ],
+        "line_end": 265,
+        "line_start": 211,
+        "path": "scripts/train_rapfi_teacher_policy_rank_topk_probe.py"
+      }
+    ],
+    "make_anchor_tensors": [
+      {
+        "args": [
+          "anchors",
+          "device"
+        ],
+        "line_end": 327,
+        "line_start": 324,
+        "path": "scripts/train_rapfi_teacher_policy_rank_topk_b4c96_probe.py"
+      },
+      {
+        "args": [
+          "anchors",
+          "device"
+        ],
+        "line_end": 208,
+        "line_start": 203,
+        "path": "scripts/train_v12l_margin_repair.py"
+      },
+      {
+        "args": [
+          "anchors",
+          "device"
+        ],
+        "line_end": 214,
+        "line_start": 211,
+        "path": "scripts/train_rapfi_teacher_policy_margin.py"
+      }
+    ],
+    "make_multisuppress_tensors": [
+      {
+        "args": [
+          "samples",
+          "device",
+          "board_size"
+        ],
+        "line_end": 321,
+        "line_start": 264,
+        "path": "scripts/train_rapfi_teacher_policy_rank_topk_b4c96_probe.py"
+      },
+      {
+        "args": [
+          "samples",
+          "device"
+        ],
+        "line_end": 144,
+        "line_start": 92,
+        "path": "scripts/train_rapfi_teacher_policy_rank_topk_probe.py"
+      }
+    ],
+    "masked_softmax": [
+      {
+        "args": [
+          "logits",
+          "legal_mask"
+        ],
+        "line_end": 217,
+        "line_start": 216,
+        "path": "scripts/train_v12l_margin_repair.py"
+      },
+      {
+        "args": [
+          "logits",
+          "legal_mask"
+        ],
+        "line_end": 167,
+        "line_start": 166,
+        "path": "scripts/train_rapfi_teacher_policy_margin.py"
+      }
+    ],
+    "rank_of_action": [
+      {
+        "args": [
+          "action",
+          "legal_actions_sorted"
+        ],
+        "line_end": 321,
+        "line_start": 317,
+        "path": "scripts/generate_teacher_divergence_tail_guard_candidates.py"
+      },
+      {
+        "args": [
+          "probs",
+          "legal_mask",
+          "action"
+        ],
+        "line_end": 274,
+        "line_start": 271,
+        "path": "scripts/candidate_d_teacher_disagreement_census.py"
+      },
+      {
+        "args": [
+          "probs",
+          "legal",
+          "action"
+        ],
+        "line_end": 70,
+        "line_start": 65,
+        "path": "scripts/evaluate_tactical_mid_must_block_cases.py"
+      },
+      {
+        "args": [
+          "probs",
+          "action",
+          "legal_mask"
+        ],
+        "line_end": 225,
+        "line_start": 220,
+        "path": "scripts/train_v12l_margin_repair.py"
+      },
+      {
+        "args": [
+          "probs",
+          "board",
+          "action"
+        ],
+        "line_end": 186,
+        "line_start": 183,
+        "path": "scripts/evaluate_candidate_g_policy.py"
+      },
+      {
+        "args": [
+          "probs",
+          "legal",
+          "action"
+        ],
+        "line_end": 172,
+        "line_start": 167,
+        "path": "scripts/evaluate_tactical_mid_preterminal_actionable_cases.py"
+      },
+      {
+        "args": [
+          "probs",
+          "action",
+          "legal_mask"
+        ],
+        "line_end": 173,
+        "line_start": 170,
+        "path": "scripts/train_rapfi_teacher_policy_margin.py"
+      }
+    ],
+    "train": [
+      {
+        "args": [
+          "args"
+        ],
+        "line_end": 808,
+        "line_start": 665,
+        "path": "scripts/train_teacher_divergence_policy_probe.py"
+      },
+      {
+        "args": [
+          "args"
+        ],
+        "line_end": 972,
+        "line_start": 704,
+        "path": "scripts/train_teacher_divergence_policy_mixed_ce_anchor_probe.py"
+      },
+      {
+        "args": [
+          "model",
+          "reference_model",
+          "tensors",
+          "anchor_tensors",
+          "args"
+        ],
+        "line_end": 505,
+        "line_start": 451,
+        "path": "scripts/train_rapfi_teacher_policy_rank_topk_b4c96_probe.py"
+      },
+      {
+        "args": [
+          "args"
+        ],
+        "line_end": 837,
+        "line_start": 676,
+        "path": "scripts/train_teacher_divergence_policy_anchor_probe.py"
+      },
+      {
+        "args": [
+          "model",
+          "reference_model",
+          "margin_tensors",
+          "anchor_tensors",
+          "args"
+        ],
+        "line_end": 332,
+        "line_start": 279,
+        "path": "scripts/train_v12l_margin_repair.py"
+      },
+      {
+        "args": [
+          "args"
+        ],
+        "line_end": 265,
+        "line_start": 189,
+        "path": "scripts/train_candidate_g_teacher_policy.py"
+      },
+      {
+        "args": [
+          "args"
+        ],
+        "line_end": 283,
+        "line_start": 196,
+        "path": "scripts/train_candidate_h_value_ranking.py"
+      },
+      {
+        "args": [
+          "model",
+          "reference_model",
+          "margin_tensors",
+          "anchor_tensors",
+          "args"
+        ],
+        "line_end": 310,
+        "line_start": 253,
+        "path": "scripts/train_rapfi_teacher_policy_margin.py"
+      },
+      {
+        "args": [
+          "model",
+          "reference_model",
+          "tensors",
+          "anchor_tensors",
+          "args"
+        ],
+        "line_end": 322,
+        "line_start": 268,
+        "path": "scripts/train_rapfi_teacher_policy_rank_topk_probe.py"
+      },
+      {
+        "args": [
+          "model",
+          "base_model",
+          "samples",
+          "args",
+          "device"
+        ],
+        "line_end": 597,
+        "line_start": 522,
+        "path": "scripts/train_candidate_g_policy_first_dry_run.py"
+      }
+    ]
+  },
+  "generated_at": "2026-06-26T17:56:19",
+  "imports": [
+    {
+      "line": 6,
+      "module": "__future__",
+      "names": [
+        "annotations"
+      ],
+      "resolved": [],
+      "type": "from"
+    },
+    {
+      "line": 8,
+      "module": "argparse",
+      "name": "argparse",
+      "resolved": [],
+      "type": "import"
+    },
+    {
+      "line": 9,
+      "module": "csv",
+      "name": "csv",
+      "resolved": [],
+      "type": "import"
+    },
+    {
+      "line": 10,
+      "module": "json",
+      "name": "json",
+      "resolved": [],
+      "type": "import"
+    },
+    {
+      "line": 11,
+      "module": "pathlib",
+      "names": [
+        "Path"
+      ],
+      "resolved": [],
+      "type": "from"
+    },
+    {
+      "line": 12,
+      "module": "typing",
+      "names": [
+        "Any"
+      ],
+      "resolved": [],
+      "type": "from"
+    },
+    {
+      "line": 14,
+      "module": "numpy",
+      "name": "np",
+      "resolved": [],
+      "type": "import"
+    },
+    {
+      "line": 15,
+      "module": "torch",
+      "name": "torch",
+      "resolved": [],
+      "type": "import"
+    },
+    {
+      "line": 17,
+      "module": "gomoku_agent.checkpoint",
+      "names": [
+        "load_compatible_checkpoint"
+      ],
+      "resolved": [
+        "src/gomoku_agent/checkpoint.py"
+      ],
+      "type": "from"
+    },
+    {
+      "line": 18,
+      "module": "gomoku_agent.model",
+      "names": [
+        "PolicyValueNet"
+      ],
+      "resolved": [
+        "src/gomoku_agent/model.py"
+      ],
+      "type": "from"
+    },
+    {
+      "line": 19,
+      "module": "train_rapfi_teacher_policy_rank_topk_probe",
+      "names": [
+        "load_anchor_samples",
+        "make_anchor_tensors",
+        "make_multisuppress_tensors",
+        "diagnose_summary",
+        "train"
+      ],
+      "resolved": [
+        "scripts/train_rapfi_teacher_policy_rank_topk_probe.py"
+      ],
+      "type": "from"
+    }
+  ],
+  "local_wrapper_functions": {
+    "_stable_json": {
+      "args": [
+        "value"
+      ],
+      "line_end": 189,
+      "line_start": 184
+    },
+    "_trace_float": {
+      "args": [
+        "row",
+        "key"
+      ],
+      "line_end": 358,
+      "line_start": 351
+    },
+    "apply_hard_guard_verdict": {
+      "args": [
+        "base_verdict",
+        "hard_guard_rows"
+      ],
+      "line_end": 462,
+      "line_start": 456
+    },
+    "diagnose_row_trace": {
+      "args": [
+        "model",
+        "groups",
+        "device"
+      ],
+      "line_end": 230,
+      "line_start": 192
+    },
+    "evaluate_hard_guards": {
+      "args": [
+        "data",
+        "row_trace_rows"
+      ],
+      "line_end": 453,
+      "line_start": 361
+    },
+    "load_model_b4c64_current_best": {
+      "args": [
+        "checkpoint",
+        "device",
+        "board_size",
+        "win_length",
+        "channels",
+        "blocks"
+      ],
+      "line_end": 146,
+      "line_start": 123
+    },
+    "load_protected_dataset": {
+      "args": [
+        "path"
+      ],
+      "line_end": 157,
+      "line_start": 149
+    },
+    "main": {
+      "args": [],
+      "line_end": 781,
+      "line_start": 676
+    },
+    "parse_args": {
+      "args": [],
+      "line_end": 106,
+      "line_start": 28
+    },
+    "summarize_delta": {
+      "args": [
+        "before",
+        "after"
+      ],
+      "line_end": 180,
+      "line_start": 160
+    },
+    "summarize_row_trace_delta": {
+      "args": [
+        "before_rows",
+        "after_rows"
+      ],
+      "line_end": 293,
+      "line_start": 233
+    },
+    "validate_args": {
+      "args": [
+        "args"
+      ],
+      "line_end": 119,
+      "line_start": 109
+    },
+    "verdict": {
+      "args": [
+        "group_rows"
+      ],
+      "line_end": 524,
+      "line_start": 501
+    },
+    "write_csv": {
+      "args": [
+        "path",
+        "rows"
+      ],
+      "line_end": 568,
+      "line_start": 527
+    },
+    "write_hard_guard_csv": {
+      "args": [
+        "path",
+        "rows"
+      ],
+      "line_end": 497,
+      "line_start": 465
+    },
+    "write_report": {
+      "args": [
+        "path",
+        "args",
+        "data",
+        "rows",
+        "history",
+        "final_verdict",
+        "hard_guard_rows"
+      ],
+      "line_end": 673,
+      "line_start": 571
+    },
+    "write_row_csv": {
+      "args": [
+        "path",
+        "rows"
+      ],
+      "line_end": 346,
+      "line_start": 296
+    }
+  },
+  "rank_topk_probe_additional_extracts": [
+    {
+      "args": [
+        "samples",
+        "device"
+      ],
+      "extract": "analysis/integration_eval/rank_topk_nosave_b4c64_guardaware_objective_preflight_v2/train_rapfi_teacher_policy_rank_topk_probe__make_multisuppress_tensors__L92_144.txt",
+      "function": "make_multisuppress_tensors",
+      "line_end": 144,
+      "line_start": 92,
+      "source": "scripts/train_rapfi_teacher_policy_rank_topk_probe.py"
+    },
+    {
+      "args": [
+        "model",
+        "reference_model",
+        "tensors",
+        "anchor_tensors",
+        "ref_anchor_probs",
+        "args"
+      ],
+      "extract": "analysis/integration_eval/rank_topk_nosave_b4c64_guardaware_objective_preflight_v2/train_rapfi_teacher_policy_rank_topk_probe__compute_loss_terms__L147_197.txt",
+      "function": "compute_loss_terms",
+      "line_end": 197,
+      "line_start": 147,
+      "source": "scripts/train_rapfi_teacher_policy_rank_topk_probe.py"
+    },
+    {
+      "args": [
+        "terms",
+        "label"
+      ],
+      "extract": "analysis/integration_eval/rank_topk_nosave_b4c64_guardaware_objective_preflight_v2/train_rapfi_teacher_policy_rank_topk_probe__assert_finite_terms__L200_207.txt",
+      "function": "assert_finite_terms",
+      "line_end": 207,
+      "line_start": 200,
+      "source": "scripts/train_rapfi_teacher_policy_rank_topk_probe.py"
+    },
+    {
+      "args": [
+        "model",
+        "samples",
+        "device"
+      ],
+      "extract": "analysis/integration_eval/rank_topk_nosave_b4c64_guardaware_objective_preflight_v2/train_rapfi_teacher_policy_rank_topk_probe__diagnose_summary__L211_265.txt",
+      "function": "diagnose_summary",
+      "line_end": 265,
+      "line_start": 211,
+      "source": "scripts/train_rapfi_teacher_policy_rank_topk_probe.py"
+    },
+    {
+      "args": [
+        "model",
+        "reference_model",
+        "tensors",
+        "anchor_tensors",
+        "args"
+      ],
+      "extract": "analysis/integration_eval/rank_topk_nosave_b4c64_guardaware_objective_preflight_v2/train_rapfi_teacher_policy_rank_topk_probe__train__L268_322.txt",
+      "function": "train",
+      "line_end": 322,
+      "line_start": 268,
+      "source": "scripts/train_rapfi_teacher_policy_rank_topk_probe.py"
+    }
+  ],
+  "rank_topk_probe_all_functions": {
+    "action_to_rc": {
+      "args": [
+        "action"
+      ],
+      "line_end": 33,
+      "line_start": 32
+    },
+    "assert_finite_terms": {
+      "args": [
+        "terms",
+        "label"
+      ],
+      "line_end": 207,
+      "line_start": 200
+    },
+    "assert_not_current_best": {
+      "args": [
+        "path"
+      ],
+      "line_end": 81,
+      "line_start": 79
+    },
+    "compute_loss_terms": {
+      "args": [
+        "model",
+        "reference_model",
+        "tensors",
+        "anchor_tensors",
+        "ref_anchor_probs",
+        "args"
+      ],
+      "line_end": 197,
+      "line_start": 147
+    },
+    "diagnose_summary": {
+      "args": [
+        "model",
+        "samples",
+        "device"
+      ],
+      "line_end": 265,
+      "line_start": 211
+    },
+    "load_multisuppress_samples": {
+      "args": [
+        "path"
+      ],
+      "line_end": 89,
+      "line_start": 84
+    },
+    "main": {
+      "args": [],
+      "line_end": 527,
+      "line_start": 415
+    },
+    "make_multisuppress_tensors": {
+      "args": [
+        "samples",
+        "device"
+      ],
+      "line_end": 144,
+      "line_start": 92
+    },
+    "parse_args": {
+      "args": [],
+      "line_end": 76,
+      "line_start": 36
+    },
+    "train": {
+      "args": [
+        "model",
+        "reference_model",
+        "tensors",
+        "anchor_tensors",
+        "args"
+      ],
+      "line_end": 322,
+      "line_start": 268
+    },
+    "write_report": {
+      "args": [
+        "path",
+        "args",
+        "dataset_meta",
+        "before",
+        "after",
+        "initial_terms",
+        "history",
+        "saved_checkpoint"
+      ],
+      "line_end": 412,
+      "line_start": 325
+    }
+  },
+  "rank_topk_probe_missing_wanted_functions": [
+    "configure_policy_head_trainable",
+    "make_anchor_tensors",
+    "masked_log_softmax",
+    "masked_softmax",
+    "rank_of_action",
+    "set_policy_head_training_mode"
+  ],
+  "rank_topk_probe_source": "scripts/train_rapfi_teacher_policy_rank_topk_probe.py",
+  "scope": "corrective source-map/preflight only; no training; no checkpoint save; no C export; no public benchmark; no promotion",
+  "wrapper": "scripts/probe_policy_rank_topk_protected_nosave_b4c64_current_best.py"
+}

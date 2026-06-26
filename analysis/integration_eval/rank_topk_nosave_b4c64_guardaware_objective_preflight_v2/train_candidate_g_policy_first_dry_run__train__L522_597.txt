@@ -1,0 +1,76 @@
+def train(
+    model: PolicyValueNet,
+    base_model: PolicyValueNet,
+    samples: list[Sample],
+    args: argparse.Namespace,
+    device: torch.device,
+) -> None:
+    states = torch.tensor(np.stack([s.state for s in samples]), dtype=torch.float32)
+    targets = torch.tensor([s.target_idx for s in samples], dtype=torch.long)
+    weights = torch.tensor([s.weight for s in samples], dtype=torch.float32)
+    masks = torch.tensor(np.stack([s.legal_mask for s in samples]), dtype=torch.float32)
+
+    base_model.eval()
+    with torch.no_grad():
+        base_logits, _ = base_model(states.to(device))
+        base_log_probs = F.log_softmax(masked_logits(base_logits, masks.to(device)), dim=-1).cpu()
+        base_probs = base_log_probs.exp()
+
+    loader = DataLoader(
+        TensorDataset(states, targets, weights, masks, base_log_probs, base_probs),
+        batch_size=args.batch_size,
+        shuffle=True,
+    )
+
+    optimizer = torch.optim.AdamW(
+        [p for p in model.parameters() if p.requires_grad],
+        lr=args.lr,
+        weight_decay=args.weight_decay,
+    )
+
+    for epoch in range(args.epochs):
+        model.train()
+        freeze_batchnorm(model)
+
+        total_loss = 0.0
+        total_ce = 0.0
+        total_kl = 0.0
+        total_weight = 0.0
+
+        for batch_states, batch_targets, batch_weights, batch_masks, batch_base_logp, batch_base_p in loader:
+            batch_states = batch_states.to(device)
+            batch_targets = batch_targets.to(device)
+            batch_weights = batch_weights.to(device)
+            batch_masks = batch_masks.to(device)
+            batch_base_logp = batch_base_logp.to(device)
+            batch_base_p = batch_base_p.to(device)
+
+            logits, _ = model(batch_states)
+            log_probs = F.log_softmax(masked_logits(logits, batch_masks), dim=-1)
+
+            ce = F.nll_loss(log_probs, batch_targets, reduction="none")
+            kl = (batch_base_p * (batch_base_logp - log_probs)).sum(dim=-1)
+
+            denom = batch_weights.sum().clamp_min(1e-8)
+            ce_loss = (batch_weights * ce).sum() / denom
+            kl_loss = (batch_weights * kl).sum() / denom
+            loss = ce_loss + args.kl_anchor * kl_loss
+
+            optimizer.zero_grad()
+            loss.backward()
+            torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
+            optimizer.step()
+
+            total_loss += float(loss.item()) * float(denom.item())
+            total_ce += float(ce_loss.item()) * float(denom.item())
+            total_kl += float(kl_loss.item()) * float(denom.item())
+            total_weight += float(denom.item())
+
+        if epoch == 0 or (epoch + 1) % 10 == 0 or epoch + 1 == args.epochs:
+            print(
+                f"epoch {epoch + 1}/{args.epochs}: "
+                f"loss={total_loss / total_weight:.6f} "
+                f"ce={total_ce / total_weight:.6f} "
+                f"kl={total_kl / total_weight:.6f}",
+                flush=True,
+            )

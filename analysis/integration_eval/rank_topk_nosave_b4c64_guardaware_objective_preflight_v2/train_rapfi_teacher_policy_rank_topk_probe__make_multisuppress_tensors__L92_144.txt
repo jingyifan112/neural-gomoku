@@ -1,0 +1,53 @@
+def make_multisuppress_tensors(
+    samples: list[dict[str, Any]],
+    device: torch.device,
+) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor]:
+    states = []
+    legal_masks = []
+    target_actions = []
+    suppress_actions = []
+    weights = []
+
+    expected_suppress_count = None
+
+    for sample in samples:
+        board = sample["board"]
+        current_player = int(sample["current_player"])
+        legal_mask = legal_mask_from_board(board)
+
+        target_action = rc_to_action(sample["target_rc"])
+        suppress = [rc_to_action(rc) for rc in sample["suppress_rcs"]]
+
+        if expected_suppress_count is None:
+            expected_suppress_count = len(suppress)
+        if len(suppress) != expected_suppress_count:
+            raise ValueError(
+                f"{sample['case_id']}: variable suppress count not supported in this first probe"
+            )
+
+        if legal_mask[target_action] <= 0:
+            raise ValueError(f"{sample['case_id']}: illegal target_rc {sample['target_rc']}")
+
+        seen: set[int] = set()
+        for action in suppress:
+            if legal_mask[action] <= 0:
+                raise ValueError(f"{sample['case_id']}: illegal suppress_rc {action_to_rc(action)}")
+            if action == target_action:
+                raise ValueError(f"{sample['case_id']}: suppress equals target {action_to_rc(action)}")
+            if action in seen:
+                raise ValueError(f"{sample['case_id']}: duplicate suppress {action_to_rc(action)}")
+            seen.add(action)
+
+        states.append(encode_state(board, current_player))
+        legal_masks.append(legal_mask)
+        target_actions.append(target_action)
+        suppress_actions.append(suppress)
+        weights.append(float(sample.get("effective_sample_weight", sample.get("sample_weight", 1.0))))
+
+    return (
+        torch.tensor(np.stack(states), dtype=torch.float32, device=device),
+        torch.tensor(np.stack(legal_masks), dtype=torch.float32, device=device),
+        torch.tensor(target_actions, dtype=torch.long, device=device),
+        torch.tensor(np.asarray(suppress_actions), dtype=torch.long, device=device),
+        torch.tensor(weights, dtype=torch.float32, device=device),
+    )
