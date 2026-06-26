@@ -1,0 +1,186 @@
+{
+  "branch": "exp/15x15-rank-topk-nosave-wrapper-readiness-audit",
+  "checkpoints": [
+    {
+      "exists": true,
+      "path": "checkpoints/15x15_current_best.pt",
+      "size": 1684421
+    },
+    {
+      "exists": true,
+      "path": "checkpoints/15x15_current_best_margin_g2m13_m15_3pair_b.pt",
+      "size": 1687043
+    },
+    {
+      "exists": true,
+      "path": "checkpoints/probes/15x15_capacity_data_pairing_b4c96_probe_candidate.pt",
+      "size": 3199895
+    }
+  ],
+  "datasets": [
+    {
+      "exists": true,
+      "json_top_keys": [
+        "checkpoint",
+        "description",
+        "margin",
+        "max_suppress",
+        "name",
+        "samples",
+        "skipped",
+        "source_dataset",
+        "summary",
+        "top_k"
+      ],
+      "path": "analysis/public_benchmark_eval/rapfi_teacher_policy_multisuppress_dataset_corpus8_selected.json",
+      "sample_like_count": 25,
+      "size": 152736
+    },
+    {
+      "exists": true,
+      "json_top_keys": [
+        "description",
+        "name",
+        "protected_eval_samples",
+        "samples",
+        "selection_rule",
+        "source_dataset",
+        "summary",
+        "tail_eval_samples",
+        "weight_cap"
+      ],
+      "path": "analysis/public_benchmark_eval/rapfi_teacher_policy_multisuppress_dataset_corpus8_selected_protected_train_11_50_weightcap3.json",
+      "sample_like_count": 7,
+      "size": 156840
+    },
+    {
+      "exists": true,
+      "json_top_keys": [
+        "metadata",
+        "samples"
+      ],
+      "path": "analysis/integration_eval/top3_sensitive_tiny_nosave_probe_preflight/primary_positive_ce_dataset.json",
+      "sample_like_count": 3,
+      "size": 18932
+    },
+    {
+      "exists": true,
+      "json_top_keys": [
+        "metadata",
+        "samples"
+      ],
+      "path": "analysis/integration_eval/top3_sensitive_tiny_nosave_probe_preflight/protected_anchor_gate_dataset.json",
+      "sample_like_count": 15,
+      "size": 92051
+    },
+    {
+      "exists": true,
+      "json_top_keys": [
+        "metadata",
+        "samples"
+      ],
+      "path": "analysis/integration_eval/top3_sensitive_tiny_nosave_probe_preflight/tail_eval_guard_dataset.json",
+      "sample_like_count": 3,
+      "size": 18889
+    },
+    {
+      "exists": true,
+      "json_top_keys": [
+        "<list>"
+      ],
+      "path": "analysis/public_benchmark_eval/corpus8_selected_board_snapshots.json",
+      "sample_like_count": 32,
+      "size": 55720
+    }
+  ],
+  "generated_at": "2026-06-26T15:14:59",
+  "preliminary_decision": "Existing b4c96 no-save rank/top-k wrapper is useful as a reference, but must be audited before direct use. If it hardcodes b4c96 or candidate/reference semantics, create a b4c64/current-best-safe wrapper instead of reusing it blindly.",
+  "scope": "readiness audit only; no training; no checkpoint save; no C export; no public benchmark; no promotion",
+  "scripts": {
+    "scripts/evaluate_policy_rank_topk_gate_b4c96.py": {
+      "args": [
+        "---",
+        "--board-size",
+        "--dataset",
+        "--margin",
+        "--model-a",
+        "--model-a-blocks",
+        "--model-a-channels",
+        "--model-b",
+        "--model-b-blocks",
+        "--model-b-channels",
+        "--out-csv",
+        "--out-report",
+        "--win-length"
+      ],
+      "exists": true,
+      "has_no_save_text": false,
+      "mentions_b4c96": true,
+      "mentions_channels_arg": false,
+      "mentions_init_checkpoint": false,
+      "mentions_reference_checkpoint": false
+    },
+    "scripts/probe_policy_rank_topk_protected_nosave_b4c96.py": {
+      "args": [
+        "---",
+        "--anchor-kl-weight",
+        "--anchor-snapshots",
+        "--blocks",
+        "--board-size",
+        "--ce-weight",
+        "--channels",
+        "--dataset",
+        "--epochs",
+        "--init-checkpoint",
+        "--lr",
+        "--margin",
+        "--out-csv",
+        "--out-report",
+        "--pair-weight",
+        "--print-every",
+        "--reference-checkpoint",
+        "--seed",
+        "--weight-decay",
+        "--win-length",
+        "--worst-weight"
+      ],
+      "exists": true,
+      "has_no_save_text": true,
+      "mentions_b4c96": true,
+      "mentions_channels_arg": true,
+      "mentions_init_checkpoint": true,
+      "mentions_reference_checkpoint": true
+    },
+    "scripts/train_teacher_divergence_policy_probe.py": {
+      "args": [
+        "---",
+        "--base-checkpoint",
+        "--blocks",
+        "--board-size",
+        "--channels",
+        "--dataset",
+        "--device",
+        "--dry-run",
+        "--epochs",
+        "--eval-csv",
+        "--kl-weight",
+        "--lr",
+        "--no-save",
+        "--no-strict-splits",
+        "--out-checkpoint",
+        "--print-every",
+        "--report",
+        "--seed",
+        "--train-scope",
+        "--weight-decay",
+        "--win-length"
+      ],
+      "exists": true,
+      "has_no_save_text": true,
+      "mentions_b4c96": false,
+      "mentions_channels_arg": true,
+      "mentions_init_checkpoint": false,
+      "mentions_reference_checkpoint": false
+    }
+  }
+}
