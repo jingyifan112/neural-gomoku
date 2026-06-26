@@ -1,0 +1,150 @@
+=== PYTHONPATH=src scripts/train_teacher_divergence_policy_probe.py --help ===
+usage: train_teacher_divergence_policy_probe.py [-h] [--dataset DATASET]
+                                                [--base-checkpoint BASE_CHECKPOINT]
+                                                [--out-checkpoint OUT_CHECKPOINT]
+                                                [--eval-csv EVAL_CSV]
+                                                [--report REPORT]
+                                                [--board-size BOARD_SIZE]
+                                                [--win-length WIN_LENGTH]
+                                                [--channels CHANNELS]
+                                                [--blocks BLOCKS]
+                                                [--epochs EPOCHS] [--lr LR]
+                                                [--kl-weight KL_WEIGHT]
+                                                [--weight-decay WEIGHT_DECAY]
+                                                [--seed SEED]
+                                                [--print-every PRINT_EVERY]
+                                                [--train-scope {policy_head,policy_and_tower,all}]
+                                                [--dry-run] [--no-save]
+                                                [--no-strict-splits]
+                                                [--device {auto,cpu,cuda}]
+
+Small policy-focused teacher-divergence probe. This trains only
+train_candidate rows and writes Python-only probe artifacts.
+
+options:
+  -h, --help            show this help message and exit
+  --dataset DATASET
+  --base-checkpoint BASE_CHECKPOINT
+  --out-checkpoint OUT_CHECKPOINT
+  --eval-csv EVAL_CSV
+  --report REPORT
+  --board-size BOARD_SIZE
+  --win-length WIN_LENGTH
+  --channels CHANNELS
+  --blocks BLOCKS
+  --epochs EPOCHS
+  --lr LR
+  --kl-weight KL_WEIGHT
+  --weight-decay WEIGHT_DECAY
+  --seed SEED
+  --print-every PRINT_EVERY
+  --train-scope {policy_head,policy_and_tower,all}
+  --dry-run
+  --no-save
+  --no-strict-splits
+  --device {auto,cpu,cuda}
+
+=== PYTHONPATH=src scripts/train_teacher_divergence_policy_mixed_ce_anchor_probe.py --help ===
+usage: train_teacher_divergence_policy_mixed_ce_anchor_probe.py
+       [-h] [--dataset DATASET] [--base-checkpoint BASE_CHECKPOINT]
+       [--out-checkpoint OUT_CHECKPOINT] [--eval-csv EVAL_CSV]
+       [--report REPORT] [--board-size BOARD_SIZE] [--win-length WIN_LENGTH]
+       [--channels CHANNELS] [--blocks BLOCKS] [--epochs EPOCHS] [--lr LR]
+       [--kl-weight KL_WEIGHT] [--anchor-kl-splits ANCHOR_KL_SPLITS]
+       [--weight-decay WEIGHT_DECAY] [--seed SEED] [--print-every PRINT_EVERY]
+       [--mixed-ce-anchor-splits MIXED_CE_ANCHOR_SPLITS]
+       [--mixed-ce-anchor-label-types MIXED_CE_ANCHOR_LABEL_TYPES]
+       [--mixed-ce-anchor-weight-scale MIXED_CE_ANCHOR_WEIGHT_SCALE]
+       [--mixed-ce-anchor-max-rows MIXED_CE_ANCHOR_MAX_ROWS]
+       [--train-scope {policy_head,policy_and_tower,all}] [--dry-run]
+       [--no-save] [--no-strict-splits] [--device {auto,cpu,cuda}]
+
+Anchored policy-focused teacher-divergence probe. This trains only
+train_candidate rows and writes Python-only probe artifacts.
+
+options:
+  -h, --help            show this help message and exit
+  --dataset DATASET
+  --base-checkpoint BASE_CHECKPOINT
+  --out-checkpoint OUT_CHECKPOINT
+  --eval-csv EVAL_CSV
+  --report REPORT
+  --board-size BOARD_SIZE
+  --win-length WIN_LENGTH
+  --channels CHANNELS
+  --blocks BLOCKS
+  --epochs EPOCHS
+  --lr LR
+  --kl-weight KL_WEIGHT
+  --anchor-kl-splits ANCHOR_KL_SPLITS
+                        Comma-separated splits used for KL anchoring against
+                        the base model. heldout_retention should normally stay
+                        evaluation-only.
+  --weight-decay WEIGHT_DECAY
+  --seed SEED
+  --print-every PRINT_EVERY
+  --mixed-ce-anchor-splits MIXED_CE_ANCHOR_SPLITS
+                        Comma-separated splits to add as low-weight CE
+                        anchors.
+  --mixed-ce-anchor-label-types MIXED_CE_ANCHOR_LABEL_TYPES
+                        Optional comma-separated label_type filter for mixed
+                        CE anchor rows.
+  --mixed-ce-anchor-weight-scale MIXED_CE_ANCHOR_WEIGHT_SCALE
+                        Multiplier applied to row weights for mixed CE anchor
+                        rows.
+  --mixed-ce-anchor-max-rows MIXED_CE_ANCHOR_MAX_ROWS
+                        Optional cap for mixed CE anchor rows. 0 means no cap.
+  --train-scope {policy_head,policy_and_tower,all}
+  --dry-run
+  --no-save
+  --no-strict-splits
+  --device {auto,cpu,cuda}
+
+=== PYTHONPATH=src scripts/probe_policy_rank_topk_protected_nosave_b4c96.py --help ===
+usage: probe_policy_rank_topk_protected_nosave_b4c96.py [-h]
+                                                        [--dataset DATASET]
+                                                        [--anchor-snapshots ANCHOR_SNAPSHOTS]
+                                                        [--init-checkpoint INIT_CHECKPOINT]
+                                                        [--reference-checkpoint REFERENCE_CHECKPOINT]
+                                                        [--board-size BOARD_SIZE]
+                                                        [--win-length WIN_LENGTH]
+                                                        [--channels CHANNELS]
+                                                        [--blocks BLOCKS]
+                                                        [--epochs EPOCHS]
+                                                        [--lr LR]
+                                                        [--margin MARGIN]
+                                                        [--ce-weight CE_WEIGHT]
+                                                        [--pair-weight PAIR_WEIGHT]
+                                                        [--worst-weight WORST_WEIGHT]
+                                                        [--anchor-kl-weight ANCHOR_KL_WEIGHT]
+                                                        [--weight-decay WEIGHT_DECAY]
+                                                        [--seed SEED]
+                                                        [--print-every PRINT_EVERY]
+                                                        [--out-csv OUT_CSV]
+                                                        [--out-report OUT_REPORT]
+
+b4c96-safe no-save protected rank/top-k objective ablation wrapper. Optimizer
+runs in memory only; no checkpoint is saved.
+
+options:
+  -h, --help            show this help message and exit
+  --dataset DATASET
+  --anchor-snapshots ANCHOR_SNAPSHOTS
+  --init-checkpoint INIT_CHECKPOINT
+  --reference-checkpoint REFERENCE_CHECKPOINT
+  --board-size BOARD_SIZE
+  --win-length WIN_LENGTH
+  --channels CHANNELS
+  --blocks BLOCKS
+  --epochs EPOCHS
+  --lr LR
+  --margin MARGIN
+  --ce-weight CE_WEIGHT
+  --pair-weight PAIR_WEIGHT
+  --worst-weight WORST_WEIGHT
+  --anchor-kl-weight ANCHOR_KL_WEIGHT
+  --weight-decay WEIGHT_DECAY
+  --seed SEED
+  --print-every PRINT_EVERY
+  --out-csv OUT_CSV
+  --out-report OUT_REPORT

@@ -1,0 +1,55 @@
+{
+  "available_source_ids": 25,
+  "available_source_samples": 35,
+  "branch": "exp/15x15-top3-sensitive-tiny-nosave-probe-preflight",
+  "decision_counts": {
+    "candidate_positive_ce_probe": 3,
+    "exclude_or_schema_review": 33,
+    "hold_for_review": 28,
+    "protect_as_anchor_or_gate": 60,
+    "secondary_positive_ce_probe": 4,
+    "tail_eval_guard_only": 15
+  },
+  "decision_manifest": "analysis/integration_eval/top3_sensitive_manual_decision_audit/manual_decision_manifest.csv",
+  "generated_at": "2026-06-26T14:12:11",
+  "outputs": [
+    {
+      "dataset": "analysis/integration_eval/top3_sensitive_tiny_nosave_probe_preflight/primary_positive_ce_dataset.json",
+      "manifest": "analysis/integration_eval/top3_sensitive_tiny_nosave_probe_preflight/primary_positive_ce_manifest.csv",
+      "materialized_samples": 3,
+      "missing_row_ids": [],
+      "name": "primary_positive_ce",
+      "requested_rows": 3
+    },
+    {
+      "dataset": "analysis/integration_eval/top3_sensitive_tiny_nosave_probe_preflight/backup_positive_ce_dataset.json",
+      "manifest": "analysis/integration_eval/top3_sensitive_tiny_nosave_probe_preflight/backup_positive_ce_manifest.csv",
+      "materialized_samples": 4,
+      "missing_row_ids": [],
+      "name": "backup_positive_ce",
+      "requested_rows": 4
+    },
+    {
+      "dataset": "analysis/integration_eval/top3_sensitive_tiny_nosave_probe_preflight/protected_anchor_gate_dataset.json",
+      "manifest": "analysis/integration_eval/top3_sensitive_tiny_nosave_probe_preflight/protected_anchor_gate_manifest.csv",
+      "materialized_samples": 15,
+      "missing_row_ids": [],
+      "name": "protected_anchor_gate",
+      "requested_rows": 15
+    },
+    {
+      "dataset": "analysis/integration_eval/top3_sensitive_tiny_nosave_probe_preflight/tail_eval_guard_dataset.json",
+      "manifest": "analysis/integration_eval/top3_sensitive_tiny_nosave_probe_preflight/tail_eval_guard_manifest.csv",
+      "materialized_samples": 3,
+      "missing_row_ids": [],
+      "name": "tail_eval_guard",
+      "requested_rows": 3
+    }
+  ],
+  "ready_for_tiny_probe": true,
+  "scope": "tiny no-save probe preflight only; no training; no checkpoint save; no C export; no public benchmark; no promotion",
+  "source_jsons": [
+    "analysis/public_benchmark_eval/rapfi_teacher_policy_multisuppress_dataset_corpus8_selected.json",
+    "analysis/public_benchmark_eval/rapfi_teacher_policy_multisuppress_dataset_corpus8_selected_protected_train_11_50_weightcap3.json"
+  ]
+}

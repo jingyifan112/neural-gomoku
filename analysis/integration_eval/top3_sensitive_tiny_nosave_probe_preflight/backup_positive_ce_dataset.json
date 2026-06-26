@@ -1,0 +1,1541 @@
+{
+  "metadata": {
+    "generated_at": "2026-06-26T14:12:11",
+    "materialized_samples": 4,
+    "missing_row_ids": [],
+    "name": "backup_positive_ce",
+    "requested_rows": 4,
+    "scope": "preflight/materialization only; no training; no checkpoint save; no C export; no public benchmark; no promotion",
+    "source_decision_manifest": "analysis/integration_eval/top3_sensitive_manual_decision_audit/manual_decision_manifest.csv",
+    "source_jsons": [
+      "analysis/public_benchmark_eval/rapfi_teacher_policy_multisuppress_dataset_corpus8_selected.json",
+      "analysis/public_benchmark_eval/rapfi_teacher_policy_multisuppress_dataset_corpus8_selected_protected_train_11_50_weightcap3.json"
+    ]
+  },
+  "samples": [
+    {
+      "before_primary_gap": -7.601815223693848,
+      "before_primary_suppress_rank": 1,
+      "before_target_prob": 0.00024367563310079277,
+      "before_target_rank": 21,
+      "before_worst_suppress_gap": -7.601815223693848,
+      "board": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          1,
+          0,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          -1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "board_size": 15,
+      "case_id": "legacy_g4_m13",
+      "current_player": -1,
+      "effective_sample_weight": 3.5625,
+      "game_number": 4,
+      "hardness_weight": 3.0,
+      "label_type": "neighbor",
+      "move_count": 13,
+      "notes": "margin target is Rapfi teacher move; suppress move is current_best direct move",
+      "numeric_gap_available": true,
+      "numeric_gap_value": 75.0,
+      "old_final": "6,4",
+      "primary_suppress_rc": [
+        4,
+        6
+      ],
+      "sample_weight": 1.1875,
+      "side_to_move": "white",
+      "source": "rapfi_teacher_policy_margin_dataset_corpus8_selected",
+      "suggested_bucket": "priority_policy_numeric_gap",
+      "suppress_actions_source": "primary_current_best_direct_plus_current_best_top_policy",
+      "suppress_candidates": [
+        {
+          "action": 66,
+          "gap": -7.601815223693848,
+          "prob": 0.4877963662147522,
+          "rank": 1,
+          "rc": [
+            4,
+            6
+          ]
+        },
+        {
+          "action": 68,
+          "gap": -7.547847747802734,
+          "prob": 0.46216896176338196,
+          "rank": 2,
+          "rc": [
+            4,
+            8
+          ]
+        },
+        {
+          "action": 80,
+          "gap": -4.388293266296387,
+          "prob": 0.019616596400737762,
+          "rank": 3,
+          "rc": [
+            5,
+            5
+          ]
+        },
+        {
+          "action": 38,
+          "gap": -3.39279842376709,
+          "prob": 0.007249127607792616,
+          "rank": 4,
+          "rc": [
+            2,
+            8
+          ]
+        },
+        {
+          "action": 101,
+          "gap": -3.2694177627563477,
+          "prob": 0.006407700479030609,
+          "rank": 5,
+          "rc": [
+            6,
+            11
+          ]
+        }
+      ],
+      "suppress_move": "6,4",
+      "suppress_rc": [
+        4,
+        6
+      ],
+      "suppress_rcs": [
+        [
+          4,
+          6
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          6,
+          11
+        ]
+      ],
+      "suppress_xy": [
+        6,
+        4
+      ],
+      "target_rc": [
+        6,
+        9
+      ],
+      "target_xy": [
+        9,
+        6
+      ],
+      "teacher_eval_before": "-42",
+      "teacher_eval_kind": "numeric",
+      "teacher_move": "9,6",
+      "validation_notes": "target and all suppress moves legal; suppress_rcs excludes target and duplicates",
+      "win_length": 5
+    },
+    {
+      "before_primary_gap": -5.669406890869141,
+      "before_primary_suppress_rank": 1,
+      "before_target_prob": 0.0015223149675875902,
+      "before_target_rank": 23,
+      "before_worst_suppress_gap": -5.669406890869141,
+      "board": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          1,
+          1,
+          1,
+          1,
+          -1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          1,
+          0,
+          1,
+          -1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          -1,
+          1,
+          -1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "board_size": 15,
+      "case_id": "legacy_g4_m23",
+      "current_player": -1,
+      "effective_sample_weight": 2.667351722717285,
+      "game_number": 4,
+      "hardness_weight": 2.667351722717285,
+      "label_type": "late_loss_window",
+      "move_count": 23,
+      "notes": "margin target is Rapfi teacher move; suppress move is current_best direct move",
+      "numeric_gap_available": false,
+      "numeric_gap_value": "",
+      "old_final": "7,3",
+      "primary_suppress_rc": [
+        3,
+        7
+      ],
+      "sample_weight": 1.0,
+      "side_to_move": "white",
+      "source": "rapfi_teacher_policy_margin_dataset_corpus8_selected",
+      "suggested_bucket": "priority_policy_gap_unavailable",
+      "suppress_actions_source": "primary_current_best_direct_plus_current_best_top_policy",
+      "suppress_candidates": [
+        {
+          "action": 52,
+          "gap": -5.669406890869141,
+          "prob": 0.44126200675964355,
+          "rank": 1,
+          "rc": [
+            3,
+            7
+          ]
+        },
+        {
+          "action": 67,
+          "gap": -5.311643600463867,
+          "prob": 0.3085474371910095,
+          "rank": 2,
+          "rc": [
+            4,
+            7
+          ]
+        },
+        {
+          "action": 147,
+          "gap": -4.0464935302734375,
+          "prob": 0.08707114309072495,
+          "rank": 3,
+          "rc": [
+            9,
+            12
+          ]
+        },
+        {
+          "action": 79,
+          "gap": -3.04348087310791,
+          "prob": 0.031935326755046844,
+          "rank": 4,
+          "rc": [
+            5,
+            4
+          ]
+        },
+        {
+          "action": 85,
+          "gap": -2.4755725860595703,
+          "prob": 0.01809806004166603,
+          "rank": 5,
+          "rc": [
+            5,
+            10
+          ]
+        }
+      ],
+      "suppress_move": "7,3",
+      "suppress_rc": [
+        3,
+        7
+      ],
+      "suppress_rcs": [
+        [
+          3,
+          7
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          9,
+          12
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          5,
+          10
+        ]
+      ],
+      "suppress_xy": [
+        7,
+        3
+      ],
+      "target_rc": [
+        9,
+        7
+      ],
+      "target_xy": [
+        7,
+        9
+      ],
+      "teacher_eval_before": "",
+      "teacher_eval_kind": "NA",
+      "teacher_move": "7,9",
+      "validation_notes": "target and all suppress moves legal; suppress_rcs excludes target and duplicates",
+      "win_length": 5
+    },
+    {
+      "before_primary_gap": -4.650936126708984,
+      "before_primary_suppress_rank": 1,
+      "before_target_prob": 0.0036502995062619448,
+      "before_target_rank": 17,
+      "before_worst_suppress_gap": -4.650936126708984,
+      "board": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1,
+          -1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1,
+          -1,
+          1,
+          1,
+          -1,
+          -1,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0,
+          -1,
+          -1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          -1,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "board_size": 15,
+      "case_id": "legacy_g5_m28",
+      "current_player": 1,
+      "effective_sample_weight": 2.412734031677246,
+      "game_number": 5,
+      "hardness_weight": 2.412734031677246,
+      "label_type": "late_loss_window",
+      "move_count": 28,
+      "notes": "margin target is Rapfi teacher move; suppress move is current_best direct move",
+      "numeric_gap_available": false,
+      "numeric_gap_value": "",
+      "old_final": "5,4",
+      "primary_suppress_rc": [
+        4,
+        5
+      ],
+      "sample_weight": 1.0,
+      "side_to_move": "black",
+      "source": "rapfi_teacher_policy_margin_dataset_corpus8_selected",
+      "suggested_bucket": "priority_policy_gap_unavailable",
+      "suppress_actions_source": "primary_current_best_direct_plus_current_best_top_policy",
+      "suppress_candidates": [
+        {
+          "action": 65,
+          "gap": -4.650936126708984,
+          "prob": 0.38212400674819946,
+          "rank": 1,
+          "rc": [
+            4,
+            5
+          ]
+        },
+        {
+          "action": 52,
+          "gap": -4.510464668273926,
+          "prob": 0.3320460617542267,
+          "rank": 2,
+          "rc": [
+            3,
+            7
+          ]
+        },
+        {
+          "action": 94,
+          "gap": -2.668283462524414,
+          "prob": 0.052619799971580505,
+          "rank": 3,
+          "rc": [
+            6,
+            4
+          ]
+        },
+        {
+          "action": 50,
+          "gap": -2.4195022583007812,
+          "prob": 0.041030317544937134,
+          "rank": 4,
+          "rc": [
+            3,
+            5
+          ]
+        },
+        {
+          "action": 131,
+          "gap": -2.1094064712524414,
+          "prob": 0.030090680345892906,
+          "rank": 5,
+          "rc": [
+            8,
+            11
+          ]
+        }
+      ],
+      "suppress_move": "5,4",
+      "suppress_rc": [
+        4,
+        5
+      ],
+      "suppress_rcs": [
+        [
+          4,
+          5
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          8,
+          11
+        ]
+      ],
+      "suppress_xy": [
+        5,
+        4
+      ],
+      "target_rc": [
+        11,
+        5
+      ],
+      "target_xy": [
+        5,
+        11
+      ],
+      "teacher_eval_before": "",
+      "teacher_eval_kind": "NA",
+      "teacher_move": "5,11",
+      "validation_notes": "target and all suppress moves legal; suppress_rcs excludes target and duplicates",
+      "win_length": 5
+    },
+    {
+      "before_primary_gap": -5.259430885314941,
+      "before_primary_suppress_rank": 1,
+      "before_target_prob": 0.0027031416539102793,
+      "before_target_rank": 15,
+      "before_worst_suppress_gap": -5.259430885314941,
+      "board": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          -1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          -1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0,
+          1,
+          -1,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "board_size": 15,
+      "case_id": "legacy_g6_m17",
+      "current_player": -1,
+      "effective_sample_weight": 2.5648577213287354,
+      "game_number": 6,
+      "hardness_weight": 2.5648577213287354,
+      "label_type": "first_direct_vs_mcts_divergence;late_loss_window",
+      "move_count": 17,
+      "notes": "margin target is Rapfi teacher move; suppress move is current_best direct move",
+      "numeric_gap_available": false,
+      "numeric_gap_value": "",
+      "old_final": "4,9",
+      "primary_suppress_rc": [
+        9,
+        4
+      ],
+      "sample_weight": 1.0,
+      "side_to_move": "white",
+      "source": "rapfi_teacher_policy_margin_dataset_corpus8_selected",
+      "suggested_bucket": "priority_policy_gap_unavailable",
+      "suppress_actions_source": "primary_current_best_direct_plus_current_best_top_policy",
+      "suppress_candidates": [
+        {
+          "action": 139,
+          "gap": -5.259430885314941,
+          "prob": 0.5200086236000061,
+          "rank": 1,
+          "rc": [
+            9,
+            4
+          ]
+        },
+        {
+          "action": 142,
+          "gap": -4.036606788635254,
+          "prob": 0.15308928489685059,
+          "rank": 2,
+          "rc": [
+            9,
+            7
+          ]
+        },
+        {
+          "action": 95,
+          "gap": -3.240976333618164,
+          "prob": 0.06908867508172989,
+          "rank": 3,
+          "rc": [
+            6,
+            5
+          ]
+        },
+        {
+          "action": 97,
+          "gap": -3.148578643798828,
+          "prob": 0.06299108266830444,
+          "rank": 4,
+          "rc": [
+            6,
+            7
+          ]
+        },
+        {
+          "action": 155,
+          "gap": -2.889895439147949,
+          "prob": 0.04863337054848671,
+          "rank": 5,
+          "rc": [
+            10,
+            5
+          ]
+        }
+      ],
+      "suppress_move": "4,9",
+      "suppress_rc": [
+        9,
+        4
+      ],
+      "suppress_rcs": [
+        [
+          9,
+          4
+        ],
+        [
+          9,
+          7
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          10,
+          5
+        ]
+      ],
+      "suppress_xy": [
+        4,
+        9
+      ],
+      "target_rc": [
+        6,
+        8
+      ],
+      "target_xy": [
+        8,
+        6
+      ],
+      "teacher_eval_before": "+M3",
+      "teacher_eval_kind": "mate",
+      "teacher_move": "8,6",
+      "validation_notes": "target and all suppress moves legal; suppress_rcs excludes target and duplicates",
+      "win_length": 5
+    }
+  ]
+}
