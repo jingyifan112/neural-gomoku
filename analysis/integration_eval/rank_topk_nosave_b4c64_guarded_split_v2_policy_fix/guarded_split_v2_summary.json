@@ -1,0 +1,37 @@
+{
+  "branch": "exp/15x15-rank-topk-nosave-b4c64-guarded-split-v2-policy-fix",
+  "changed_case_id": "legacy_g1_m8",
+  "changed_objects": 4,
+  "decision": "Use v2 for the next hardguard-only sanity rerun; this tests no-further-damage preservation instead of impossible one-step rank<=50 repair.",
+  "generated_at": "2026-06-29T10:40:23",
+  "hard_guard_rows": 2,
+  "legacy_g1_m40_effective_gates": [
+    {
+      "rank_delta_max": 0,
+      "target_prob_delta_min": -0.02,
+      "teacher_beats_all_delta_min": 0,
+      "teacher_beats_worst_delta_min": 0
+    }
+  ],
+  "legacy_g1_m8_effective_gates": [
+    {
+      "rank_delta_max": 0,
+      "rank_gt50_delta_max": 0,
+      "target_prob_delta_min": 0
+    }
+  ],
+  "new_gate": {
+    "rank_delta_max": 0,
+    "rank_gt50_delta_max": 0,
+    "target_prob_delta_min": 0
+  },
+  "old_gate": {
+    "rank_after_max": 50,
+    "rank_delta_max": 0,
+    "rank_gt50_delta_max": 0,
+    "target_prob_delta_min": 0
+  },
+  "output_dataset": "analysis/public_benchmark_eval/rapfi_teacher_policy_multisuppress_dataset_corpus8_selected_guarded_split_v2.json",
+  "scope": "guarded split policy fix only; no training; no checkpoint save; no C export; no public benchmark; no promotion",
+  "source_dataset": "analysis/public_benchmark_eval/rapfi_teacher_policy_multisuppress_dataset_corpus8_selected_guarded_split_v1.json"
+}
