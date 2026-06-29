@@ -1,0 +1,6 @@
+baseline_opponent,log_file,candidate_config,games_expected,games_seen,candidate_score,candidate_wins,candidate_losses,candidate_draws,candidate_score_rate,rapfi_full_score_reference,gap_vs_rapfi_full,parse_status
+random,analysis/public_benchmark_eval/guardaware_v2_candidate_public_benchmark_run1/candidate_mcts32_vs_random_24g.log,MCTS32,24,24,24.0,24,0,0,1.0,24,0.0,OK
+tactical_lite,analysis/public_benchmark_eval/guardaware_v2_candidate_public_benchmark_run1/candidate_mcts32_vs_tactical_lite_24g.log,MCTS32,24,24,23.0,23,1,0,0.958,24,-1.0,OK
+tactical_mid,analysis/public_benchmark_eval/guardaware_v2_candidate_public_benchmark_run1/candidate_mcts16_vs_tactical_mid_24g.log,MCTS16,24,24,7.0,6,16,2,0.292,24,-17.0,OK
+tactical_plus,analysis/public_benchmark_eval/guardaware_v2_candidate_public_benchmark_run1/candidate_mcts16_vs_tactical_plus_24g.log,MCTS16,24,24,3.0,2,20,2,0.125,24,-21.0,OK
+rapfi_fast_depth1,analysis/public_benchmark_eval/guardaware_v2_candidate_public_benchmark_run1/candidate_mcts32_vs_rapfi_fast_depth1_24g.log,MCTS32,24,24,0.0,0,24,0,0.0,24,-24.0,OK

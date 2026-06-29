@@ -1,0 +1,3380 @@
+
+=== RUN candidate_mcts32_vs_random_24g ===
+neural=neural_guardaware_v2_mcts32
+opponent=random
+log=/Users/jing1fan/neural-gomoku/analysis/public_benchmark_eval/guardaware_v2_candidate_public_benchmark_run1/candidate_mcts32_vs_random_24g.log
+---------------------------
+Global Options:
+openings = /Users/jing1fan/gomoku_public_benchmark/gomocup2026_public_score/freestyle15_openings.txt
+openingType = offset
+boardSize = 15
+gameRule = 0
+pgn =
+sgf =
+msg =
+log = 0
+sample =
+random = 0
+repeat = 1
+transform = 0
+sprt = 0
+gauntlet = 0
+concurrency = 1
+games = 24
+rounds = 1
+resignCount = 0
+resignScore = 0
+drawCount = 0
+drawScore = 0
+drawAfter = 225
+fatalerror = 0
+debug = 0
+
+Engine number = 2
+---------------------------
+Engine 0 Options:
+name = neural_guardaware_v2_mcts32
+cmd = /Users/jing1fan/gomoku_public_benchmark/run_neural_guardaware_v2_candidate_mcts32.sh
+nodes = 0
+depth = 0
+timeoutTurn = 5000
+timeoutMatch = 60000
+increment = 0
+maxMemory = 367001600
+thread = 0
+tolerance = 3000
+---------------------------
+Engine 1 Options:
+name = random
+cmd = /Users/jing1fan/gomoku_public_benchmark/run_random.sh
+nodes = 0
+depth = 0
+timeoutTurn = 5000
+timeoutMatch = 60000
+increment = 0
+maxMemory = 367001600
+thread = 0
+tolerance = 3000
+---------------------------
+loaded weights=/Users/jing1fan/neural-gomoku/c_inference/weights/15x15_b4c64_guardaware_v2_modefix_candidate_run1_weights.bin mcts_sims=32 debug_decision=0 move_mode=mcts_safe
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58568
+INFO time_left 57146
+INFO time_left 55736
+INFO time_left 55373
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58573
+INFO time_left 57158
+INFO time_left 55744
+INFO time_left 55378
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58577
+INFO time_left 57159
+INFO time_left 55745
+INFO time_left 54335
+INFO time_left 52925
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58565
+INFO time_left 57150
+INFO time_left 55744
+INFO time_left 54343
+INFO time_left 52947
+INFO time_left 52593
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58576
+INFO time_left 58100
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58579
+INFO time_left 57197
+INFO time_left 56122
+INFO time_left 54784
+INFO time_left 54290
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58558
+INFO time_left 57136
+INFO time_left 55722
+INFO time_left 54312
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58578
+INFO time_left 57166
+INFO time_left 55914
+INFO time_left 55488
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58574
+INFO time_left 57157
+INFO time_left 55976
+INFO time_left 55610
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58570
+INFO time_left 58195
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58569
+INFO time_left 57141
+INFO time_left 55726
+INFO time_left 54319
+INFO time_left 52915
+INFO time_left 51519
+INFO time_left 50123
+INFO time_left 48934
+INFO time_left 48593
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58566
+INFO time_left 57144
+INFO time_left 55730
+INFO time_left 54383
+INFO time_left 53017
+INFO time_left 51753
+INFO time_left 50358
+INFO time_left 49879
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58566
+INFO time_left 57133
+INFO time_left 55716
+INFO time_left 54307
+INFO time_left 52907
+INFO time_left 51518
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58581
+INFO time_left 57158
+INFO time_left 55743
+INFO time_left 54339
+INFO time_left 52937
+INFO time_left 51540
+INFO time_left 50150
+INFO time_left 48902
+INFO time_left 48534
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58563
+INFO time_left 57120
+INFO time_left 55703
+INFO time_left 54289
+INFO time_left 53088
+INFO time_left 51690
+INFO time_left 50296
+INFO time_left 48943
+INFO time_left 48569
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58563
+INFO time_left 57139
+INFO time_left 55723
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58594
+INFO time_left 57190
+INFO time_left 55786
+INFO time_left 54389
+INFO time_left 52994
+INFO time_left 51600
+INFO time_left 50257
+INFO time_left 49320
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58581
+INFO time_left 57171
+INFO time_left 55769
+INFO time_left 54376
+INFO time_left 52988
+INFO time_left 51605
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58561
+INFO time_left 57130
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58570
+INFO time_left 57145
+INFO time_left 55725
+INFO time_left 54406
+INFO time_left 54006
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58562
+INFO time_left 57132
+INFO time_left 55708
+INFO time_left 55303
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58562
+INFO time_left 57979
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58592
+INFO time_left 57156
+INFO time_left 56033
+INFO time_left 55658
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58567
+INFO time_left 57139
+INFO time_left 56730
+Load opening file /Users/jing1fan/gomoku_public_benchmark/gomocup2026_public_score/freestyle15_openings.txt
+[1] Load engine: neural-gomoku (version 0.1-9x9-smoke) by neural-gomoku, ?
+[1] Load engine: random-baseline (version 0.1) by local, ?
+[1] Started game 1 of 24 (random vs neural_guardaware_v2_mcts32)
+[1] Finished game 1 (random vs neural_guardaware_v2_mcts32): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts32 vs random: 1 - 0 - 0  [1.000] 1
+[1] Started game 2 of 24 (neural_guardaware_v2_mcts32 vs random)
+[1] Finished game 2 (neural_guardaware_v2_mcts32 vs random): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts32 vs random: 2 - 0 - 0  [1.000] 2
+[1] Started game 3 of 24 (random vs neural_guardaware_v2_mcts32)
+[1] Finished game 3 (random vs neural_guardaware_v2_mcts32): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts32 vs random: 3 - 0 - 0  [1.000] 3
+[1] Started game 4 of 24 (neural_guardaware_v2_mcts32 vs random)
+[1] Finished game 4 (neural_guardaware_v2_mcts32 vs random): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts32 vs random: 4 - 0 - 0  [1.000] 4
+[1] Started game 5 of 24 (random vs neural_guardaware_v2_mcts32)
+[1] Finished game 5 (random vs neural_guardaware_v2_mcts32): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts32 vs random: 5 - 0 - 0  [1.000] 5
+[1] Started game 6 of 24 (neural_guardaware_v2_mcts32 vs random)
+[1] Finished game 6 (neural_guardaware_v2_mcts32 vs random): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts32 vs random: 6 - 0 - 0  [1.000] 6
+[1] Started game 7 of 24 (random vs neural_guardaware_v2_mcts32)
+[1] Finished game 7 (random vs neural_guardaware_v2_mcts32): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts32 vs random: 7 - 0 - 0  [1.000] 7
+[1] Started game 8 of 24 (neural_guardaware_v2_mcts32 vs random)
+[1] Finished game 8 (neural_guardaware_v2_mcts32 vs random): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts32 vs random: 8 - 0 - 0  [1.000] 8
+[1] Started game 9 of 24 (random vs neural_guardaware_v2_mcts32)
+[1] Finished game 9 (random vs neural_guardaware_v2_mcts32): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts32 vs random: 9 - 0 - 0  [1.000] 9
+[1] Started game 10 of 24 (neural_guardaware_v2_mcts32 vs random)
+[1] Finished game 10 (neural_guardaware_v2_mcts32 vs random): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts32 vs random: 10 - 0 - 0  [1.000] 10
+[1] Started game 11 of 24 (random vs neural_guardaware_v2_mcts32)
+[1] Finished game 11 (random vs neural_guardaware_v2_mcts32): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts32 vs random: 11 - 0 - 0  [1.000] 11
+[1] Started game 12 of 24 (neural_guardaware_v2_mcts32 vs random)
+[1] Finished game 12 (neural_guardaware_v2_mcts32 vs random): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts32 vs random: 12 - 0 - 0  [1.000] 12
+[1] Started game 13 of 24 (random vs neural_guardaware_v2_mcts32)
+[1] Finished game 13 (random vs neural_guardaware_v2_mcts32): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts32 vs random: 13 - 0 - 0  [1.000] 13
+[1] Started game 14 of 24 (neural_guardaware_v2_mcts32 vs random)
+[1] Finished game 14 (neural_guardaware_v2_mcts32 vs random): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts32 vs random: 14 - 0 - 0  [1.000] 14
+[1] Started game 15 of 24 (random vs neural_guardaware_v2_mcts32)
+[1] Finished game 15 (random vs neural_guardaware_v2_mcts32): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts32 vs random: 15 - 0 - 0  [1.000] 15
+[1] Started game 16 of 24 (neural_guardaware_v2_mcts32 vs random)
+[1] Finished game 16 (neural_guardaware_v2_mcts32 vs random): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts32 vs random: 16 - 0 - 0  [1.000] 16
+[1] Started game 17 of 24 (random vs neural_guardaware_v2_mcts32)
+[1] Finished game 17 (random vs neural_guardaware_v2_mcts32): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts32 vs random: 17 - 0 - 0  [1.000] 17
+[1] Started game 18 of 24 (neural_guardaware_v2_mcts32 vs random)
+[1] Finished game 18 (neural_guardaware_v2_mcts32 vs random): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts32 vs random: 18 - 0 - 0  [1.000] 18
+[1] Started game 19 of 24 (random vs neural_guardaware_v2_mcts32)
+[1] Finished game 19 (random vs neural_guardaware_v2_mcts32): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts32 vs random: 19 - 0 - 0  [1.000] 19
+[1] Started game 20 of 24 (neural_guardaware_v2_mcts32 vs random)
+[1] Finished game 20 (neural_guardaware_v2_mcts32 vs random): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts32 vs random: 20 - 0 - 0  [1.000] 20
+[1] Started game 21 of 24 (random vs neural_guardaware_v2_mcts32)
+[1] Finished game 21 (random vs neural_guardaware_v2_mcts32): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts32 vs random: 21 - 0 - 0  [1.000] 21
+[1] Started game 22 of 24 (neural_guardaware_v2_mcts32 vs random)
+[1] Finished game 22 (neural_guardaware_v2_mcts32 vs random): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts32 vs random: 22 - 0 - 0  [1.000] 22
+[1] Started game 23 of 24 (random vs neural_guardaware_v2_mcts32)
+[1] Finished game 23 (random vs neural_guardaware_v2_mcts32): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts32 vs random: 23 - 0 - 0  [1.000] 23
+[1] Started game 24 of 24 (neural_guardaware_v2_mcts32 vs random)
+[1] Finished game 24 (neural_guardaware_v2_mcts32 vs random): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts32 vs random: 24 - 0 - 0  [1.000] 24
+
+=== SCORE candidate_mcts32_vs_random_24g ===
+[1] Finished game 21 (random vs neural_guardaware_v2_mcts32): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts32 vs random: 21 - 0 - 0  [1.000] 21
+[1] Finished game 22 (neural_guardaware_v2_mcts32 vs random): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts32 vs random: 22 - 0 - 0  [1.000] 22
+[1] Finished game 23 (random vs neural_guardaware_v2_mcts32): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts32 vs random: 23 - 0 - 0  [1.000] 23
+[1] Finished game 24 (neural_guardaware_v2_mcts32 vs random): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts32 vs random: 24 - 0 - 0  [1.000] 24
+
+=== RUN candidate_mcts32_vs_tactical_lite_24g ===
+neural=neural_guardaware_v2_mcts32
+opponent=tactical_lite
+log=/Users/jing1fan/neural-gomoku/analysis/public_benchmark_eval/guardaware_v2_candidate_public_benchmark_run1/candidate_mcts32_vs_tactical_lite_24g.log
+---------------------------
+Global Options:
+openings = /Users/jing1fan/gomoku_public_benchmark/gomocup2026_public_score/freestyle15_openings.txt
+openingType = offset
+boardSize = 15
+gameRule = 0
+pgn =
+sgf =
+msg =
+log = 0
+sample =
+random = 0
+repeat = 1
+transform = 0
+sprt = 0
+gauntlet = 0
+concurrency = 1
+games = 24
+rounds = 1
+resignCount = 0
+resignScore = 0
+drawCount = 0
+drawScore = 0
+drawAfter = 225
+fatalerror = 0
+debug = 0
+
+Engine number = 2
+---------------------------
+Engine 0 Options:
+name = neural_guardaware_v2_mcts32
+cmd = /Users/jing1fan/gomoku_public_benchmark/run_neural_guardaware_v2_candidate_mcts32.sh
+nodes = 0
+depth = 0
+timeoutTurn = 5000
+timeoutMatch = 60000
+increment = 0
+maxMemory = 367001600
+thread = 0
+tolerance = 3000
+---------------------------
+Engine 1 Options:
+name = tactical_lite
+cmd = /Users/jing1fan/gomoku_public_benchmark/run_tactical_lite.sh
+nodes = 0
+depth = 0
+timeoutTurn = 5000
+timeoutMatch = 60000
+increment = 0
+maxMemory = 367001600
+thread = 0
+tolerance = 3000
+---------------------------
+loaded weights=/Users/jing1fan/neural-gomoku/c_inference/weights/15x15_b4c64_guardaware_v2_modefix_candidate_run1_weights.bin mcts_sims=32 debug_decision=0 move_mode=mcts_safe
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58546
+INFO time_left 57101
+INFO time_left 55653
+INFO time_left 54228
+INFO time_left 52814
+INFO time_left 51474
+INFO time_left 50271
+INFO time_left 49884
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58561
+INFO time_left 57129
+INFO time_left 55704
+INFO time_left 54286
+INFO time_left 52872
+INFO time_left 51582
+INFO time_left 50181
+INFO time_left 48787
+INFO time_left 47432
+INFO time_left 47106
+INFO time_left 46677
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58563
+INFO time_left 57130
+INFO time_left 55707
+INFO time_left 54525
+INFO time_left 53111
+INFO time_left 52621
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58566
+INFO time_left 57138
+INFO time_left 55712
+INFO time_left 54295
+INFO time_left 52884
+INFO time_left 51477
+INFO time_left 50078
+INFO time_left 48688
+INFO time_left 47304
+INFO time_left 45925
+INFO time_left 44648
+INFO time_left 43286
+INFO time_left 43252
+INFO time_left 42987
+INFO time_left 42655
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58561
+INFO time_left 57128
+INFO time_left 56721
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58566
+INFO time_left 57142
+INFO time_left 55723
+INFO time_left 54305
+INFO time_left 52895
+INFO time_left 51887
+INFO time_left 50490
+INFO time_left 49133
+INFO time_left 48170
+INFO time_left 47386
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58553
+INFO time_left 57120
+INFO time_left 55691
+INFO time_left 54387
+INFO time_left 52965
+INFO time_left 51554
+INFO time_left 51521
+INFO time_left 50285
+INFO time_left 49880
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58562
+INFO time_left 57122
+INFO time_left 55691
+INFO time_left 54274
+INFO time_left 52830
+INFO time_left 51422
+INFO time_left 50019
+INFO time_left 48623
+INFO time_left 47243
+INFO time_left 45956
+INFO time_left 44671
+INFO time_left 43302
+INFO time_left 42123
+INFO time_left 40836
+INFO time_left 39587
+INFO time_left 38813
+INFO time_left 38121
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58552
+INFO time_left 57117
+INFO time_left 55684
+INFO time_left 54261
+INFO time_left 52877
+INFO time_left 51637
+INFO time_left 50259
+INFO time_left 49770
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58556
+INFO time_left 57153
+INFO time_left 56576
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58549
+INFO time_left 57101
+INFO time_left 55637
+INFO time_left 54197
+INFO time_left 52763
+INFO time_left 51323
+INFO time_left 49910
+INFO time_left 48505
+INFO time_left 47051
+INFO time_left 45644
+INFO time_left 45314
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58551
+INFO time_left 57104
+INFO time_left 55660
+INFO time_left 54231
+INFO time_left 52949
+INFO time_left 52043
+INFO time_left 50637
+INFO time_left 49241
+INFO time_left 47847
+INFO time_left 46463
+INFO time_left 45127
+INFO time_left 43750
+INFO time_left 42382
+INFO time_left 42348
+INFO time_left 41065
+INFO time_left 39711
+INFO time_left 39379
+INFO time_left 38990
+INFO time_left 38574
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58557
+INFO time_left 57119
+INFO time_left 55688
+INFO time_left 54295
+INFO time_left 52877
+INFO time_left 51461
+INFO time_left 50174
+INFO time_left 48852
+INFO time_left 47450
+INFO time_left 46126
+INFO time_left 44808
+INFO time_left 43561
+INFO time_left 42335
+INFO time_left 40974
+INFO time_left 39686
+INFO time_left 39652
+INFO time_left 39618
+INFO time_left 39584
+INFO time_left 38521
+INFO time_left 37493
+INFO time_left 37459
+INFO time_left 37424
+INFO time_left 37389
+INFO time_left 36320
+INFO time_left 36287
+INFO time_left 35432
+INFO time_left 34446
+INFO time_left 34413
+INFO time_left 34114
+INFO time_left 33892
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58557
+INFO time_left 57118
+INFO time_left 55684
+INFO time_left 54260
+INFO time_left 52834
+INFO time_left 51423
+INFO time_left 50020
+INFO time_left 48613
+INFO time_left 47245
+INFO time_left 45955
+INFO time_left 44681
+INFO time_left 43312
+INFO time_left 41941
+INFO time_left 40635
+INFO time_left 39281
+INFO time_left 37967
+INFO time_left 37934
+INFO time_left 36730
+INFO time_left 35521
+INFO time_left 34326
+INFO time_left 33107
+INFO time_left 31549
+INFO time_left 30291
+INFO time_left 29017
+INFO time_left 28984
+INFO time_left 27821
+INFO time_left 27788
+INFO time_left 27490
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58538
+INFO time_left 57190
+INFO time_left 55742
+INFO time_left 54300
+INFO time_left 52868
+INFO time_left 51442
+INFO time_left 50022
+INFO time_left 48606
+INFO time_left 47394
+INFO time_left 45988
+INFO time_left 44592
+INFO time_left 43205
+INFO time_left 42655
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58540
+INFO time_left 57086
+INFO time_left 56253
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58561
+INFO time_left 57147
+INFO time_left 55720
+INFO time_left 54363
+INFO time_left 52985
+INFO time_left 51717
+INFO time_left 50319
+INFO time_left 48924
+INFO time_left 47531
+INFO time_left 46146
+INFO time_left 44767
+INFO time_left 43394
+INFO time_left 42191
+INFO time_left 40811
+INFO time_left 40215
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58562
+INFO time_left 57200
+INFO time_left 55916
+INFO time_left 54664
+INFO time_left 53418
+INFO time_left 52247
+INFO time_left 50918
+INFO time_left 50885
+INFO time_left 49813
+INFO time_left 48432
+INFO time_left 47294
+INFO time_left 46752
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58531
+INFO time_left 57070
+INFO time_left 55653
+INFO time_left 54262
+INFO time_left 52825
+INFO time_left 51533
+INFO time_left 50111
+INFO time_left 48957
+INFO time_left 47540
+INFO time_left 46139
+INFO time_left 44741
+INFO time_left 43872
+INFO time_left 42982
+INFO time_left 42642
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58548
+INFO time_left 57095
+INFO time_left 55651
+INFO time_left 54220
+INFO time_left 53278
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58532
+INFO time_left 57073
+INFO time_left 55726
+INFO time_left 54350
+INFO time_left 52910
+INFO time_left 51475
+INFO time_left 50047
+INFO time_left 48631
+INFO time_left 47222
+INFO time_left 46907
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58697
+INFO time_left 57240
+INFO time_left 55784
+INFO time_left 54342
+INFO time_left 53070
+INFO time_left 51624
+INFO time_left 50350
+INFO time_left 48971
+INFO time_left 48938
+INFO time_left 47536
+INFO time_left 46143
+INFO time_left 46110
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58577
+INFO time_left 57111
+INFO time_left 55691
+INFO time_left 54247
+INFO time_left 52807
+INFO time_left 51377
+INFO time_left 50094
+INFO time_left 48676
+INFO time_left 47264
+INFO time_left 45857
+INFO time_left 44452
+INFO time_left 43059
+INFO time_left 41675
+INFO time_left 40296
+INFO time_left 38923
+INFO time_left 37553
+INFO time_left 36197
+INFO time_left 34838
+INFO time_left 33484
+INFO time_left 32143
+INFO time_left 30806
+INFO time_left 30772
+INFO time_left 29617
+INFO time_left 28315
+INFO time_left 27002
+INFO time_left 26689
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58537
+INFO time_left 57160
+INFO time_left 56789
+Load opening file /Users/jing1fan/gomoku_public_benchmark/gomocup2026_public_score/freestyle15_openings.txt
+[1] Load engine: neural-gomoku (version 0.1-9x9-smoke) by neural-gomoku, ?
+[1] Load engine: tactical-lite (version 0.1) by local, ?
+[1] Started game 1 of 24 (tactical_lite vs neural_guardaware_v2_mcts32)
+[1] Finished game 1 (tactical_lite vs neural_guardaware_v2_mcts32): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts32 vs tactical_lite: 1 - 0 - 0  [1.000] 1
+[1] Started game 2 of 24 (neural_guardaware_v2_mcts32 vs tactical_lite)
+[1] Finished game 2 (neural_guardaware_v2_mcts32 vs tactical_lite): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts32 vs tactical_lite: 2 - 0 - 0  [1.000] 2
+[1] Started game 3 of 24 (tactical_lite vs neural_guardaware_v2_mcts32)
+[1] Finished game 3 (tactical_lite vs neural_guardaware_v2_mcts32): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts32 vs tactical_lite: 3 - 0 - 0  [1.000] 3
+[1] Started game 4 of 24 (neural_guardaware_v2_mcts32 vs tactical_lite)
+[1] Finished game 4 (neural_guardaware_v2_mcts32 vs tactical_lite): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts32 vs tactical_lite: 4 - 0 - 0  [1.000] 4
+[1] Started game 5 of 24 (tactical_lite vs neural_guardaware_v2_mcts32)
+[1] Finished game 5 (tactical_lite vs neural_guardaware_v2_mcts32): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts32 vs tactical_lite: 5 - 0 - 0  [1.000] 5
+[1] Started game 6 of 24 (neural_guardaware_v2_mcts32 vs tactical_lite)
+[1] Finished game 6 (neural_guardaware_v2_mcts32 vs tactical_lite): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts32 vs tactical_lite: 6 - 0 - 0  [1.000] 6
+[1] Started game 7 of 24 (tactical_lite vs neural_guardaware_v2_mcts32)
+[1] Finished game 7 (tactical_lite vs neural_guardaware_v2_mcts32): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts32 vs tactical_lite: 7 - 0 - 0  [1.000] 7
+[1] Started game 8 of 24 (neural_guardaware_v2_mcts32 vs tactical_lite)
+[1] Finished game 8 (neural_guardaware_v2_mcts32 vs tactical_lite): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts32 vs tactical_lite: 8 - 0 - 0  [1.000] 8
+[1] Started game 9 of 24 (tactical_lite vs neural_guardaware_v2_mcts32)
+[1] Finished game 9 (tactical_lite vs neural_guardaware_v2_mcts32): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts32 vs tactical_lite: 9 - 0 - 0  [1.000] 9
+[1] Started game 10 of 24 (neural_guardaware_v2_mcts32 vs tactical_lite)
+[1] Finished game 10 (neural_guardaware_v2_mcts32 vs tactical_lite): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts32 vs tactical_lite: 10 - 0 - 0  [1.000] 10
+[1] Started game 11 of 24 (tactical_lite vs neural_guardaware_v2_mcts32)
+[1] Finished game 11 (tactical_lite vs neural_guardaware_v2_mcts32): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts32 vs tactical_lite: 11 - 0 - 0  [1.000] 11
+[1] Started game 12 of 24 (neural_guardaware_v2_mcts32 vs tactical_lite)
+[1] Finished game 12 (neural_guardaware_v2_mcts32 vs tactical_lite): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts32 vs tactical_lite: 12 - 0 - 0  [1.000] 12
+[1] Started game 13 of 24 (tactical_lite vs neural_guardaware_v2_mcts32)
+[1] Finished game 13 (tactical_lite vs neural_guardaware_v2_mcts32): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts32 vs tactical_lite: 13 - 0 - 0  [1.000] 13
+[1] Started game 14 of 24 (neural_guardaware_v2_mcts32 vs tactical_lite)
+[1] Finished game 14 (neural_guardaware_v2_mcts32 vs tactical_lite): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts32 vs tactical_lite: 14 - 0 - 0  [1.000] 14
+[1] Started game 15 of 24 (tactical_lite vs neural_guardaware_v2_mcts32)
+[1] Finished game 15 (tactical_lite vs neural_guardaware_v2_mcts32): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts32 vs tactical_lite: 15 - 0 - 0  [1.000] 15
+[1] Started game 16 of 24 (neural_guardaware_v2_mcts32 vs tactical_lite)
+[1] Finished game 16 (neural_guardaware_v2_mcts32 vs tactical_lite): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts32 vs tactical_lite: 16 - 0 - 0  [1.000] 16
+[1] Started game 17 of 24 (tactical_lite vs neural_guardaware_v2_mcts32)
+[1] Finished game 17 (tactical_lite vs neural_guardaware_v2_mcts32): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts32 vs tactical_lite: 17 - 0 - 0  [1.000] 17
+[1] Started game 18 of 24 (neural_guardaware_v2_mcts32 vs tactical_lite)
+[1] Finished game 18 (neural_guardaware_v2_mcts32 vs tactical_lite): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts32 vs tactical_lite: 18 - 0 - 0  [1.000] 18
+[1] Started game 19 of 24 (tactical_lite vs neural_guardaware_v2_mcts32)
+[1] Finished game 19 (tactical_lite vs neural_guardaware_v2_mcts32): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts32 vs tactical_lite: 19 - 0 - 0  [1.000] 19
+[1] Started game 20 of 24 (neural_guardaware_v2_mcts32 vs tactical_lite)
+[1] Finished game 20 (neural_guardaware_v2_mcts32 vs tactical_lite): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts32 vs tactical_lite: 20 - 0 - 0  [1.000] 20
+[1] Started game 21 of 24 (tactical_lite vs neural_guardaware_v2_mcts32)
+[1] Finished game 21 (tactical_lite vs neural_guardaware_v2_mcts32): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts32 vs tactical_lite: 21 - 0 - 0  [1.000] 21
+[1] Started game 22 of 24 (neural_guardaware_v2_mcts32 vs tactical_lite)
+[1] Finished game 22 (neural_guardaware_v2_mcts32 vs tactical_lite): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts32 vs tactical_lite: 21 - 1 - 0  [0.955] 22
+[1] Started game 23 of 24 (tactical_lite vs neural_guardaware_v2_mcts32)
+[1] Finished game 23 (tactical_lite vs neural_guardaware_v2_mcts32): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts32 vs tactical_lite: 22 - 1 - 0  [0.957] 23
+[1] Started game 24 of 24 (neural_guardaware_v2_mcts32 vs tactical_lite)
+[1] Finished game 24 (neural_guardaware_v2_mcts32 vs tactical_lite): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts32 vs tactical_lite: 23 - 1 - 0  [0.958] 24
+
+=== SCORE candidate_mcts32_vs_tactical_lite_24g ===
+[1] Finished game 21 (tactical_lite vs neural_guardaware_v2_mcts32): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts32 vs tactical_lite: 21 - 0 - 0  [1.000] 21
+[1] Finished game 22 (neural_guardaware_v2_mcts32 vs tactical_lite): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts32 vs tactical_lite: 21 - 1 - 0  [0.955] 22
+[1] Finished game 23 (tactical_lite vs neural_guardaware_v2_mcts32): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts32 vs tactical_lite: 22 - 1 - 0  [0.957] 23
+[1] Finished game 24 (neural_guardaware_v2_mcts32 vs tactical_lite): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts32 vs tactical_lite: 23 - 1 - 0  [0.958] 24
+
+=== RUN candidate_mcts16_vs_tactical_mid_24g ===
+neural=neural_guardaware_v2_mcts16
+opponent=tactical_mid
+log=/Users/jing1fan/neural-gomoku/analysis/public_benchmark_eval/guardaware_v2_candidate_public_benchmark_run1/candidate_mcts16_vs_tactical_mid_24g.log
+---------------------------
+Global Options:
+openings = /Users/jing1fan/gomoku_public_benchmark/gomocup2026_public_score/freestyle15_openings.txt
+openingType = offset
+boardSize = 15
+gameRule = 0
+pgn =
+sgf =
+msg =
+log = 0
+sample =
+random = 0
+repeat = 1
+transform = 0
+sprt = 0
+gauntlet = 0
+concurrency = 1
+games = 24
+rounds = 1
+resignCount = 0
+resignScore = 0
+drawCount = 0
+drawScore = 0
+drawAfter = 225
+fatalerror = 0
+debug = 0
+
+Engine number = 2
+---------------------------
+Engine 0 Options:
+name = neural_guardaware_v2_mcts16
+cmd = /Users/jing1fan/gomoku_public_benchmark/run_neural_guardaware_v2_candidate_mcts16.sh
+nodes = 0
+depth = 0
+timeoutTurn = 5000
+timeoutMatch = 60000
+increment = 0
+maxMemory = 367001600
+thread = 0
+tolerance = 3000
+---------------------------
+Engine 1 Options:
+name = tactical_mid
+cmd = /Users/jing1fan/gomoku_public_benchmark/run_tactical_mid.sh
+nodes = 0
+depth = 0
+timeoutTurn = 5000
+timeoutMatch = 60000
+increment = 0
+maxMemory = 367001600
+thread = 0
+tolerance = 3000
+---------------------------
+loaded weights=/Users/jing1fan/neural-gomoku/c_inference/weights/15x15_b4c64_guardaware_v2_modefix_candidate_run1_weights.bin mcts_sims=16 debug_decision=0 move_mode=mcts_safe
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 59075
+INFO time_left 58157
+INFO time_left 57246
+INFO time_left 56381
+INFO time_left 56347
+INFO time_left 55398
+INFO time_left 55365
+INFO time_left 54488
+INFO time_left 53588
+INFO time_left 53554
+INFO time_left 52698
+INFO time_left 51887
+INFO time_left 51853
+INFO time_left 51017
+INFO time_left 50983
+INFO time_left 50148
+INFO time_left 50115
+INFO time_left 50081
+INFO time_left 49431
+INFO time_left 49397
+INFO time_left 49363
+INFO time_left 48648
+INFO time_left 47864
+INFO time_left 47092
+INFO time_left 47059
+INFO time_left 46294
+INFO time_left 45531
+INFO time_left 44775
+INFO time_left 44017
+INFO time_left 43256
+INFO time_left 42510
+INFO time_left 41772
+INFO time_left 41038
+INFO time_left 40460
+INFO time_left 40426
+INFO time_left 39699
+INFO time_left 39665
+INFO time_left 38954
+INFO time_left 38237
+INFO time_left 37531
+INFO time_left 36822
+INFO time_left 36789
+INFO time_left 36755
+INFO time_left 36101
+INFO time_left 36067
+INFO time_left 35377
+INFO time_left 34741
+INFO time_left 34707
+INFO time_left 34673
+INFO time_left 34639
+INFO time_left 33967
+INFO time_left 33297
+INFO time_left 32633
+INFO time_left 31966
+INFO time_left 31342
+INFO time_left 30685
+INFO time_left 30028
+INFO time_left 29377
+INFO time_left 28718
+INFO time_left 28685
+INFO time_left 28062
+INFO time_left 28028
+INFO time_left 27381
+INFO time_left 27347
+INFO time_left 27314
+INFO time_left 26679
+INFO time_left 26060
+INFO time_left 26026
+INFO time_left 25419
+INFO time_left 24790
+INFO time_left 24157
+INFO time_left 23539
+INFO time_left 22909
+INFO time_left 22875
+INFO time_left 22253
+INFO time_left 21626
+INFO time_left 21002
+INFO time_left 20382
+INFO time_left 19758
+INFO time_left 19141
+INFO time_left 19107
+INFO time_left 18485
+INFO time_left 18451
+INFO time_left 18417
+INFO time_left 18384
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 59081
+INFO time_left 58166
+INFO time_left 57319
+INFO time_left 57286
+INFO time_left 56342
+INFO time_left 56307
+INFO time_left 55431
+INFO time_left 54563
+INFO time_left 53720
+INFO time_left 53685
+INFO time_left 53650
+INFO time_left 52809
+INFO time_left 51972
+INFO time_left 51141
+INFO time_left 50378
+INFO time_left 50344
+INFO time_left 49577
+INFO time_left 49543
+INFO time_left 48743
+INFO time_left 47942
+INFO time_left 47908
+INFO time_left 47126
+INFO time_left 46343
+INFO time_left 45792
+INFO time_left 45758
+INFO time_left 45724
+INFO time_left 44961
+INFO time_left 44413
+INFO time_left 43762
+INFO time_left 43729
+INFO time_left 42990
+INFO time_left 42251
+INFO time_left 41514
+INFO time_left 40786
+INFO time_left 40752
+INFO time_left 40717
+INFO time_left 40081
+INFO time_left 40047
+INFO time_left 39377
+INFO time_left 39343
+INFO time_left 38643
+INFO time_left 38609
+INFO time_left 37962
+INFO time_left 37929
+INFO time_left 37895
+INFO time_left 37444
+INFO time_left 37410
+INFO time_left 37376
+INFO time_left 37342
+INFO time_left 36661
+INFO time_left 35994
+INFO time_left 35392
+INFO time_left 34729
+INFO time_left 34695
+INFO time_left 34038
+INFO time_left 33398
+INFO time_left 33364
+INFO time_left 33330
+INFO time_left 33297
+INFO time_left 32651
+INFO time_left 32018
+INFO time_left 31984
+INFO time_left 31950
+INFO time_left 31448
+INFO time_left 30908
+INFO time_left 30269
+INFO time_left 29637
+INFO time_left 29604
+INFO time_left 28967
+INFO time_left 28337
+INFO time_left 28303
+INFO time_left 28269
+INFO time_left 27638
+INFO time_left 26999
+INFO time_left 26337
+INFO time_left 25710
+INFO time_left 25070
+INFO time_left 24448
+INFO time_left 24414
+INFO time_left 24379
+INFO time_left 23759
+INFO time_left 23726
+INFO time_left 23107
+INFO time_left 22491
+INFO time_left 22457
+INFO time_left 22423
+INFO time_left 21805
+INFO time_left 21192
+INFO time_left 21158
+INFO time_left 20543
+INFO time_left 20508
+INFO time_left 19896
+INFO time_left 19280
+INFO time_left 18667
+INFO time_left 18054
+INFO time_left 17439
+INFO time_left 16829
+INFO time_left 16212
+INFO time_left 15603
+INFO time_left 14988
+INFO time_left 14376
+INFO time_left 13767
+INFO time_left 13158
+INFO time_left 12541
+INFO time_left 11933
+INFO time_left 11324
+INFO time_left 10709
+INFO time_left 10169
+INFO time_left 9932
+INFO time_left 9773
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 59084
+INFO time_left 58175
+INFO time_left 57276
+INFO time_left 56376
+INFO time_left 55493
+INFO time_left 54608
+INFO time_left 53989
+INFO time_left 53955
+INFO time_left 53225
+INFO time_left 53192
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 59082
+INFO time_left 58186
+INFO time_left 57285
+INFO time_left 56410
+INFO time_left 56377
+INFO time_left 55507
+INFO time_left 55473
+INFO time_left 54710
+INFO time_left 54676
+INFO time_left 53931
+INFO time_left 53091
+INFO time_left 52339
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 59082
+INFO time_left 58177
+INFO time_left 57278
+INFO time_left 56382
+INFO time_left 55863
+INFO time_left 55829
+INFO time_left 55124
+INFO time_left 55091
+INFO time_left 54327
+INFO time_left 54293
+INFO time_left 53566
+INFO time_left 53533
+INFO time_left 53499
+INFO time_left 52736
+INFO time_left 52702
+INFO time_left 51890
+INFO time_left 51079
+INFO time_left 51046
+INFO time_left 50247
+INFO time_left 49485
+INFO time_left 48759
+INFO time_left 47977
+INFO time_left 47245
+INFO time_left 47212
+INFO time_left 46444
+INFO time_left 46409
+INFO time_left 45651
+INFO time_left 44895
+INFO time_left 44861
+INFO time_left 44163
+INFO time_left 44128
+INFO time_left 43488
+INFO time_left 43455
+INFO time_left 42726
+INFO time_left 42692
+INFO time_left 42659
+INFO time_left 42624
+INFO time_left 42590
+INFO time_left 41885
+INFO time_left 41851
+INFO time_left 41149
+INFO time_left 40455
+INFO time_left 39755
+INFO time_left 39068
+INFO time_left 38422
+INFO time_left 38387
+INFO time_left 37753
+INFO time_left 37719
+INFO time_left 37039
+INFO time_left 37005
+INFO time_left 36337
+INFO time_left 35669
+INFO time_left 35000
+INFO time_left 34966
+INFO time_left 34307
+INFO time_left 34164
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 59215
+INFO time_left 59182
+INFO time_left 58283
+INFO time_left 57394
+INFO time_left 56512
+INFO time_left 55747
+INFO time_left 55713
+INFO time_left 54994
+INFO time_left 54960
+INFO time_left 54110
+INFO time_left 53348
+INFO time_left 52659
+INFO time_left 52625
+INFO time_left 51920
+INFO time_left 51886
+INFO time_left 51240
+INFO time_left 51206
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 59083
+INFO time_left 58166
+INFO time_left 57257
+INFO time_left 56590
+INFO time_left 56556
+INFO time_left 55867
+INFO time_left 55834
+INFO time_left 54961
+INFO time_left 54928
+INFO time_left 54063
+INFO time_left 53301
+INFO time_left 53267
+INFO time_left 52420
+INFO time_left 52387
+INFO time_left 51640
+INFO time_left 51607
+INFO time_left 50853
+INFO time_left 50815
+INFO time_left 50009
+INFO time_left 49314
+INFO time_left 49280
+INFO time_left 48581
+INFO time_left 48548
+INFO time_left 48514
+INFO time_left 47743
+INFO time_left 46977
+INFO time_left 46942
+INFO time_left 46907
+INFO time_left 46874
+INFO time_left 46123
+INFO time_left 45461
+INFO time_left 45427
+INFO time_left 44692
+INFO time_left 43965
+INFO time_left 43931
+INFO time_left 43284
+INFO time_left 43251
+INFO time_left 43217
+INFO time_left 43183
+INFO time_left 42480
+INFO time_left 41777
+INFO time_left 41077
+INFO time_left 40385
+INFO time_left 39696
+INFO time_left 39662
+INFO time_left 38973
+INFO time_left 38295
+INFO time_left 37619
+INFO time_left 36938
+INFO time_left 36904
+INFO time_left 36870
+INFO time_left 36205
+INFO time_left 35782
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 59208
+INFO time_left 59174
+INFO time_left 58274
+INFO time_left 57542
+INFO time_left 57508
+INFO time_left 56778
+INFO time_left 56744
+INFO time_left 55875
+INFO time_left 55138
+INFO time_left 55105
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 59081
+INFO time_left 58371
+INFO time_left 58338
+INFO time_left 57440
+INFO time_left 56544
+INFO time_left 55845
+INFO time_left 55811
+INFO time_left 55777
+INFO time_left 55081
+INFO time_left 55048
+INFO time_left 55014
+INFO time_left 54168
+INFO time_left 53325
+INFO time_left 52493
+INFO time_left 51930
+INFO time_left 51897
+INFO time_left 51863
+INFO time_left 51091
+INFO time_left 50811
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 59084
+INFO time_left 58374
+INFO time_left 58340
+INFO time_left 57443
+INFO time_left 56550
+INFO time_left 55667
+INFO time_left 54894
+INFO time_left 54022
+INFO time_left 53161
+INFO time_left 52300
+INFO time_left 51591
+INFO time_left 51557
+INFO time_left 50714
+INFO time_left 50681
+INFO time_left 50648
+INFO time_left 49834
+INFO time_left 49020
+INFO time_left 48987
+INFO time_left 48416
+INFO time_left 48382
+INFO time_left 48347
+INFO time_left 47558
+INFO time_left 47525
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 59079
+INFO time_left 58162
+INFO time_left 57250
+INFO time_left 56346
+INFO time_left 55436
+INFO time_left 54544
+INFO time_left 53770
+INFO time_left 53736
+INFO time_left 53019
+INFO time_left 52986
+INFO time_left 52259
+INFO time_left 52225
+INFO time_left 51389
+INFO time_left 50556
+INFO time_left 49714
+INFO time_left 49680
+INFO time_left 48864
+INFO time_left 48831
+INFO time_left 48017
+INFO time_left 47217
+INFO time_left 46416
+INFO time_left 45728
+INFO time_left 45694
+INFO time_left 45659
+INFO time_left 44984
+INFO time_left 44950
+INFO time_left 44916
+INFO time_left 44159
+INFO time_left 43464
+INFO time_left 43430
+INFO time_left 43395
+INFO time_left 42656
+INFO time_left 41904
+INFO time_left 41870
+INFO time_left 41139
+INFO time_left 40416
+INFO time_left 40382
+INFO time_left 39653
+INFO time_left 39619
+INFO time_left 39584
+INFO time_left 39550
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 59088
+INFO time_left 58180
+INFO time_left 57272
+INFO time_left 56544
+INFO time_left 56511
+INFO time_left 55801
+INFO time_left 55767
+INFO time_left 55055
+INFO time_left 55022
+INFO time_left 54261
+INFO time_left 54228
+INFO time_left 53389
+INFO time_left 52559
+INFO time_left 51840
+INFO time_left 51807
+INFO time_left 50981
+INFO time_left 50259
+INFO time_left 50225
+INFO time_left 49459
+INFO time_left 48665
+INFO time_left 48631
+INFO time_left 48597
+INFO time_left 48563
+INFO time_left 47796
+INFO time_left 47029
+INFO time_left 46995
+INFO time_left 46961
+INFO time_left 46202
+INFO time_left 45451
+INFO time_left 45417
+INFO time_left 44669
+INFO time_left 44635
+INFO time_left 43975
+INFO time_left 43941
+INFO time_left 43216
+INFO time_left 43182
+INFO time_left 42463
+INFO time_left 41750
+INFO time_left 41716
+INFO time_left 41003
+INFO time_left 40302
+INFO time_left 40268
+INFO time_left 39572
+INFO time_left 38878
+INFO time_left 38224
+INFO time_left 37535
+INFO time_left 36921
+INFO time_left 36238
+INFO time_left 35562
+INFO time_left 34877
+INFO time_left 34843
+INFO time_left 34809
+INFO time_left 34775
+INFO time_left 34145
+INFO time_left 33488
+INFO time_left 32825
+INFO time_left 32171
+INFO time_left 31515
+INFO time_left 31481
+INFO time_left 30834
+INFO time_left 30183
+INFO time_left 29537
+INFO time_left 29503
+INFO time_left 29469
+INFO time_left 28825
+INFO time_left 28187
+INFO time_left 27552
+INFO time_left 26981
+INFO time_left 26350
+INFO time_left 25707
+INFO time_left 25078
+INFO time_left 24445
+INFO time_left 23818
+INFO time_left 23783
+INFO time_left 23749
+INFO time_left 23119
+INFO time_left 22498
+INFO time_left 22464
+INFO time_left 21836
+INFO time_left 21802
+INFO time_left 21768
+INFO time_left 21148
+INFO time_left 20525
+INFO time_left 20492
+INFO time_left 20458
+INFO time_left 20424
+INFO time_left 19808
+INFO time_left 19189
+INFO time_left 19155
+INFO time_left 19122
+INFO time_left 19088
+INFO time_left 18470
+INFO time_left 17856
+INFO time_left 17239
+INFO time_left 16623
+INFO time_left 15993
+INFO time_left 15380
+INFO time_left 14759
+INFO time_left 14146
+INFO time_left 13529
+INFO time_left 12917
+INFO time_left 12298
+INFO time_left 11687
+INFO time_left 11068
+INFO time_left 10452
+INFO time_left 9836
+INFO time_left 9224
+INFO time_left 8713
+INFO time_left 8539
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 59084
+INFO time_left 58229
+INFO time_left 58195
+INFO time_left 57329
+INFO time_left 57295
+INFO time_left 56487
+INFO time_left 56454
+INFO time_left 55603
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 59087
+INFO time_left 58183
+INFO time_left 57345
+INFO time_left 57312
+INFO time_left 56583
+INFO time_left 56549
+INFO time_left 55696
+INFO time_left 55663
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 59085
+INFO time_left 58166
+INFO time_left 57431
+INFO time_left 57397
+INFO time_left 56688
+INFO time_left 56655
+INFO time_left 55960
+INFO time_left 55926
+INFO time_left 55187
+INFO time_left 55154
+INFO time_left 54302
+INFO time_left 54269
+INFO time_left 53430
+INFO time_left 52627
+INFO time_left 51961
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 59082
+INFO time_left 58329
+INFO time_left 58295
+INFO time_left 57470
+INFO time_left 57437
+INFO time_left 56686
+INFO time_left 56652
+INFO time_left 55790
+INFO time_left 55756
+INFO time_left 54890
+INFO time_left 54124
+INFO time_left 54090
+INFO time_left 53256
+INFO time_left 52428
+INFO time_left 51604
+INFO time_left 51570
+INFO time_left 50802
+INFO time_left 50769
+INFO time_left 49959
+INFO time_left 49926
+INFO time_left 49166
+INFO time_left 49132
+INFO time_left 48390
+INFO time_left 47614
+INFO time_left 47580
+INFO time_left 47545
+INFO time_left 47510
+INFO time_left 47476
+INFO time_left 47442
+INFO time_left 46806
+INFO time_left 46064
+INFO time_left 46030
+INFO time_left 45719
+INFO time_left 45685
+INFO time_left 45026
+INFO time_left 44719
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 59094
+INFO time_left 58256
+INFO time_left 58222
+INFO time_left 57343
+INFO time_left 56473
+INFO time_left 55607
+INFO time_left 54755
+INFO time_left 53896
+INFO time_left 53130
+INFO time_left 53097
+INFO time_left 53063
+INFO time_left 52195
+INFO time_left 52161
+INFO time_left 51304
+INFO time_left 51269
+INFO time_left 50497
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 59105
+INFO time_left 58225
+INFO time_left 58190
+INFO time_left 57381
+INFO time_left 57347
+INFO time_left 56655
+INFO time_left 56621
+INFO time_left 55807
+INFO time_left 55773
+INFO time_left 54939
+INFO time_left 54906
+INFO time_left 54088
+INFO time_left 53313
+INFO time_left 53280
+INFO time_left 53246
+INFO time_left 53211
+INFO time_left 52527
+INFO time_left 51736
+INFO time_left 50955
+INFO time_left 50172
+INFO time_left 49922
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 59065
+INFO time_left 58148
+INFO time_left 57241
+INFO time_left 56578
+INFO time_left 56544
+INFO time_left 55821
+INFO time_left 55787
+INFO time_left 55015
+INFO time_left 54979
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 59211
+INFO time_left 59177
+INFO time_left 58260
+INFO time_left 57503
+INFO time_left 57469
+INFO time_left 56738
+INFO time_left 56705
+INFO time_left 55832
+INFO time_left 54971
+INFO time_left 54227
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 59076
+INFO time_left 58167
+INFO time_left 57257
+INFO time_left 56484
+INFO time_left 56450
+INFO time_left 55652
+INFO time_left 55619
+INFO time_left 54787
+INFO time_left 54754
+INFO time_left 53972
+INFO time_left 53938
+INFO time_left 53089
+INFO time_left 52327
+INFO time_left 52292
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 59237
+INFO time_left 59204
+INFO time_left 58295
+INFO time_left 57408
+INFO time_left 56674
+INFO time_left 56641
+INFO time_left 55919
+INFO time_left 55886
+INFO time_left 55852
+INFO time_left 55161
+INFO time_left 55127
+INFO time_left 54322
+INFO time_left 53650
+INFO time_left 53616
+INFO time_left 53581
+INFO time_left 53083
+INFO time_left 53049
+INFO time_left 53014
+INFO time_left 52980
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 59081
+INFO time_left 58160
+INFO time_left 57532
+INFO time_left 57498
+INFO time_left 56603
+INFO time_left 55869
+INFO time_left 55836
+INFO time_left 55100
+INFO time_left 55067
+INFO time_left 54199
+INFO time_left 53484
+INFO time_left 53450
+INFO time_left 52725
+INFO time_left 52691
+INFO time_left 51866
+INFO time_left 51043
+INFO time_left 50232
+INFO time_left 49417
+INFO time_left 49384
+INFO time_left 48582
+INFO time_left 47789
+INFO time_left 47001
+INFO time_left 46966
+INFO time_left 46198
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 59082
+INFO time_left 58324
+INFO time_left 58291
+INFO time_left 57554
+INFO time_left 57520
+INFO time_left 56639
+INFO time_left 55930
+INFO time_left 55896
+INFO time_left 55182
+INFO time_left 55148
+INFO time_left 54298
+INFO time_left 53454
+INFO time_left 52615
+INFO time_left 51845
+INFO time_left 51812
+INFO time_left 50991
+INFO time_left 50210
+INFO time_left 50177
+INFO time_left 49380
+INFO time_left 48632
+INFO time_left 48598
+INFO time_left 47792
+Load opening file /Users/jing1fan/gomoku_public_benchmark/gomocup2026_public_score/freestyle15_openings.txt
+[1] Load engine: neural-gomoku (version 0.1-9x9-smoke) by neural-gomoku, ?
+[1] Load engine: tactical-mid (version 0.1) by local, ?
+[1] Started game 1 of 24 (tactical_mid vs neural_guardaware_v2_mcts16)
+[1] Finished game 1 (tactical_mid vs neural_guardaware_v2_mcts16): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts16 vs tactical_mid: 0 - 1 - 0  [0.000] 1
+[1] Started game 2 of 24 (neural_guardaware_v2_mcts16 vs tactical_mid)
+[1] Finished game 2 (neural_guardaware_v2_mcts16 vs tactical_mid): 1/2-1/2 {Draw by fullfilled board}
+Score of neural_guardaware_v2_mcts16 vs tactical_mid: 0 - 1 - 1  [0.250] 2
+[1] Started game 3 of 24 (tactical_mid vs neural_guardaware_v2_mcts16)
+[1] Finished game 3 (tactical_mid vs neural_guardaware_v2_mcts16): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts16 vs tactical_mid: 0 - 2 - 1  [0.167] 3
+[1] Started game 4 of 24 (neural_guardaware_v2_mcts16 vs tactical_mid)
+[1] Finished game 4 (neural_guardaware_v2_mcts16 vs tactical_mid): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts16 vs tactical_mid: 0 - 3 - 1  [0.125] 4
+[1] Started game 5 of 24 (tactical_mid vs neural_guardaware_v2_mcts16)
+[1] Finished game 5 (tactical_mid vs neural_guardaware_v2_mcts16): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts16 vs tactical_mid: 1 - 3 - 1  [0.300] 5
+[1] Started game 6 of 24 (neural_guardaware_v2_mcts16 vs tactical_mid)
+[1] Finished game 6 (neural_guardaware_v2_mcts16 vs tactical_mid): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts16 vs tactical_mid: 1 - 4 - 1  [0.250] 6
+[1] Started game 7 of 24 (tactical_mid vs neural_guardaware_v2_mcts16)
+[1] Finished game 7 (tactical_mid vs neural_guardaware_v2_mcts16): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts16 vs tactical_mid: 2 - 4 - 1  [0.357] 7
+[1] Started game 8 of 24 (neural_guardaware_v2_mcts16 vs tactical_mid)
+[1] Finished game 8 (neural_guardaware_v2_mcts16 vs tactical_mid): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts16 vs tactical_mid: 3 - 4 - 1  [0.438] 8
+[1] Started game 9 of 24 (tactical_mid vs neural_guardaware_v2_mcts16)
+[1] Finished game 9 (tactical_mid vs neural_guardaware_v2_mcts16): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts16 vs tactical_mid: 4 - 4 - 1  [0.500] 9
+[1] Started game 10 of 24 (neural_guardaware_v2_mcts16 vs tactical_mid)
+[1] Finished game 10 (neural_guardaware_v2_mcts16 vs tactical_mid): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts16 vs tactical_mid: 4 - 5 - 1  [0.450] 10
+[1] Started game 11 of 24 (tactical_mid vs neural_guardaware_v2_mcts16)
+[1] Finished game 11 (tactical_mid vs neural_guardaware_v2_mcts16): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts16 vs tactical_mid: 4 - 6 - 1  [0.409] 11
+[1] Started game 12 of 24 (neural_guardaware_v2_mcts16 vs tactical_mid)
+[1] Finished game 12 (neural_guardaware_v2_mcts16 vs tactical_mid): 1/2-1/2 {Draw by fullfilled board}
+Score of neural_guardaware_v2_mcts16 vs tactical_mid: 4 - 6 - 2  [0.417] 12
+[1] Started game 13 of 24 (tactical_mid vs neural_guardaware_v2_mcts16)
+[1] Finished game 13 (tactical_mid vs neural_guardaware_v2_mcts16): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts16 vs tactical_mid: 4 - 7 - 2  [0.385] 13
+[1] Started game 14 of 24 (neural_guardaware_v2_mcts16 vs tactical_mid)
+[1] Finished game 14 (neural_guardaware_v2_mcts16 vs tactical_mid): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts16 vs tactical_mid: 4 - 8 - 2  [0.357] 14
+[1] Started game 15 of 24 (tactical_mid vs neural_guardaware_v2_mcts16)
+[1] Finished game 15 (tactical_mid vs neural_guardaware_v2_mcts16): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts16 vs tactical_mid: 4 - 9 - 2  [0.333] 15
+[1] Started game 16 of 24 (neural_guardaware_v2_mcts16 vs tactical_mid)
+[1] Finished game 16 (neural_guardaware_v2_mcts16 vs tactical_mid): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts16 vs tactical_mid: 5 - 9 - 2  [0.375] 16
+[1] Started game 17 of 24 (tactical_mid vs neural_guardaware_v2_mcts16)
+[1] Finished game 17 (tactical_mid vs neural_guardaware_v2_mcts16): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts16 vs tactical_mid: 5 - 10 - 2  [0.353] 17
+[1] Started game 18 of 24 (neural_guardaware_v2_mcts16 vs tactical_mid)
+[1] Finished game 18 (neural_guardaware_v2_mcts16 vs tactical_mid): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts16 vs tactical_mid: 6 - 10 - 2  [0.389] 18
+[1] Started game 19 of 24 (tactical_mid vs neural_guardaware_v2_mcts16)
+[1] Finished game 19 (tactical_mid vs neural_guardaware_v2_mcts16): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts16 vs tactical_mid: 6 - 11 - 2  [0.368] 19
+[1] Started game 20 of 24 (neural_guardaware_v2_mcts16 vs tactical_mid)
+[1] Finished game 20 (neural_guardaware_v2_mcts16 vs tactical_mid): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts16 vs tactical_mid: 6 - 12 - 2  [0.350] 20
+[1] Started game 21 of 24 (tactical_mid vs neural_guardaware_v2_mcts16)
+[1] Finished game 21 (tactical_mid vs neural_guardaware_v2_mcts16): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts16 vs tactical_mid: 6 - 13 - 2  [0.333] 21
+[1] Started game 22 of 24 (neural_guardaware_v2_mcts16 vs tactical_mid)
+[1] Finished game 22 (neural_guardaware_v2_mcts16 vs tactical_mid): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts16 vs tactical_mid: 6 - 14 - 2  [0.318] 22
+[1] Started game 23 of 24 (tactical_mid vs neural_guardaware_v2_mcts16)
+[1] Finished game 23 (tactical_mid vs neural_guardaware_v2_mcts16): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts16 vs tactical_mid: 6 - 15 - 2  [0.304] 23
+[1] Started game 24 of 24 (neural_guardaware_v2_mcts16 vs tactical_mid)
+[1] Finished game 24 (neural_guardaware_v2_mcts16 vs tactical_mid): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts16 vs tactical_mid: 6 - 16 - 2  [0.292] 24
+
+=== SCORE candidate_mcts16_vs_tactical_mid_24g ===
+[1] Finished game 21 (tactical_mid vs neural_guardaware_v2_mcts16): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts16 vs tactical_mid: 6 - 13 - 2  [0.333] 21
+[1] Finished game 22 (neural_guardaware_v2_mcts16 vs tactical_mid): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts16 vs tactical_mid: 6 - 14 - 2  [0.318] 22
+[1] Finished game 23 (tactical_mid vs neural_guardaware_v2_mcts16): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts16 vs tactical_mid: 6 - 15 - 2  [0.304] 23
+[1] Finished game 24 (neural_guardaware_v2_mcts16 vs tactical_mid): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts16 vs tactical_mid: 6 - 16 - 2  [0.292] 24
+
+=== RUN candidate_mcts16_vs_tactical_plus_24g ===
+neural=neural_guardaware_v2_mcts16
+opponent=tactical_plus
+log=/Users/jing1fan/neural-gomoku/analysis/public_benchmark_eval/guardaware_v2_candidate_public_benchmark_run1/candidate_mcts16_vs_tactical_plus_24g.log
+---------------------------
+Global Options:
+openings = /Users/jing1fan/gomoku_public_benchmark/gomocup2026_public_score/freestyle15_openings.txt
+openingType = offset
+boardSize = 15
+gameRule = 0
+pgn =
+sgf =
+msg =
+log = 0
+sample =
+random = 0
+repeat = 1
+transform = 0
+sprt = 0
+gauntlet = 0
+concurrency = 1
+games = 24
+rounds = 1
+resignCount = 0
+resignScore = 0
+drawCount = 0
+drawScore = 0
+drawAfter = 225
+fatalerror = 0
+debug = 0
+
+Engine number = 2
+---------------------------
+Engine 0 Options:
+name = neural_guardaware_v2_mcts16
+cmd = /Users/jing1fan/gomoku_public_benchmark/run_neural_guardaware_v2_candidate_mcts16.sh
+nodes = 0
+depth = 0
+timeoutTurn = 5000
+timeoutMatch = 60000
+increment = 0
+maxMemory = 367001600
+thread = 0
+tolerance = 3000
+---------------------------
+Engine 1 Options:
+name = tactical_plus
+cmd = /Users/jing1fan/gomoku_public_benchmark/run_tactical_plus.sh
+nodes = 0
+depth = 0
+timeoutTurn = 5000
+timeoutMatch = 60000
+increment = 0
+maxMemory = 367001600
+thread = 0
+tolerance = 3000
+---------------------------
+loaded weights=/Users/jing1fan/neural-gomoku/c_inference/weights/15x15_b4c64_guardaware_v2_modefix_candidate_run1_weights.bin mcts_sims=16 debug_decision=0 move_mode=mcts_safe
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 59071
+INFO time_left 58148
+INFO time_left 57230
+INFO time_left 56358
+INFO time_left 56324
+INFO time_left 55369
+INFO time_left 55336
+INFO time_left 54456
+INFO time_left 53588
+INFO time_left 52661
+INFO time_left 51800
+INFO time_left 50928
+INFO time_left 50075
+INFO time_left 49236
+INFO time_left 48403
+INFO time_left 47550
+INFO time_left 47517
+INFO time_left 47483
+INFO time_left 46674
+INFO time_left 45866
+INFO time_left 45084
+INFO time_left 44286
+INFO time_left 43501
+INFO time_left 42714
+INFO time_left 41939
+INFO time_left 41906
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 59067
+INFO time_left 58160
+INFO time_left 57251
+INFO time_left 56407
+INFO time_left 56374
+INFO time_left 56340
+INFO time_left 55455
+INFO time_left 54585
+INFO time_left 53743
+INFO time_left 53710
+INFO time_left 52855
+INFO time_left 52008
+INFO time_left 51165
+INFO time_left 50326
+INFO time_left 50292
+INFO time_left 49500
+INFO time_left 49466
+INFO time_left 48651
+INFO time_left 47847
+INFO time_left 47070
+INFO time_left 47037
+INFO time_left 47003
+INFO time_left 46219
+INFO time_left 45438
+INFO time_left 44704
+INFO time_left 44670
+INFO time_left 43900
+INFO time_left 43281
+INFO time_left 42871
+INFO time_left 42537
+INFO time_left 42240
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 59083
+INFO time_left 58163
+INFO time_left 57256
+INFO time_left 56355
+INFO time_left 55599
+INFO time_left 55566
+INFO time_left 54687
+INFO time_left 53816
+INFO time_left 52942
+INFO time_left 52185
+INFO time_left 52151
+INFO time_left 51303
+INFO time_left 51269
+INFO time_left 50428
+INFO time_left 50395
+INFO time_left 49708
+INFO time_left 49674
+INFO time_left 48862
+INFO time_left 48829
+INFO time_left 48025
+INFO time_left 47231
+INFO time_left 46437
+INFO time_left 45653
+INFO time_left 45619
+INFO time_left 44843
+INFO time_left 44074
+INFO time_left 43309
+INFO time_left 42549
+INFO time_left 41792
+INFO time_left 41042
+INFO time_left 40288
+INFO time_left 40253
+INFO time_left 40219
+INFO time_left 39488
+INFO time_left 38760
+INFO time_left 38028
+INFO time_left 37310
+INFO time_left 36592
+INFO time_left 36558
+INFO time_left 35911
+INFO time_left 35876
+INFO time_left 35169
+INFO time_left 34473
+INFO time_left 33772
+INFO time_left 33080
+INFO time_left 32390
+INFO time_left 31706
+INFO time_left 31672
+INFO time_left 31637
+INFO time_left 31602
+INFO time_left 30927
+INFO time_left 30566
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 59079
+INFO time_left 58164
+INFO time_left 57260
+INFO time_left 56492
+INFO time_left 56458
+INFO time_left 55670
+INFO time_left 55636
+INFO time_left 54766
+INFO time_left 54055
+INFO time_left 54021
+INFO time_left 53172
+INFO time_left 52451
+INFO time_left 52416
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 59082
+INFO time_left 58172
+INFO time_left 57264
+INFO time_left 56362
+INFO time_left 55468
+INFO time_left 54574
+INFO time_left 53688
+INFO time_left 52986
+INFO time_left 52111
+INFO time_left 51250
+INFO time_left 50394
+INFO time_left 50360
+INFO time_left 50325
+INFO time_left 49615
+INFO time_left 49582
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58991
+INFO time_left 58956
+INFO time_left 58053
+INFO time_left 57152
+INFO time_left 56259
+INFO time_left 55492
+INFO time_left 55459
+INFO time_left 54654
+INFO time_left 53827
+INFO time_left 52969
+INFO time_left 52117
+INFO time_left 51271
+INFO time_left 50428
+INFO time_left 49597
+INFO time_left 49563
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 59076
+INFO time_left 58156
+INFO time_left 57247
+INFO time_left 56575
+INFO time_left 56540
+INFO time_left 55848
+INFO time_left 55814
+INFO time_left 54939
+INFO time_left 54066
+INFO time_left 53350
+INFO time_left 53317
+INFO time_left 52467
+INFO time_left 52433
+INFO time_left 51593
+INFO time_left 51559
+INFO time_left 50740
+INFO time_left 49921
+INFO time_left 49111
+INFO time_left 48298
+INFO time_left 47585
+INFO time_left 46785
+INFO time_left 45994
+INFO time_left 45206
+INFO time_left 45172
+INFO time_left 45137
+INFO time_left 45102
+INFO time_left 44360
+INFO time_left 44326
+INFO time_left 44292
+INFO time_left 43581
+INFO time_left 43548
+INFO time_left 42802
+INFO time_left 42768
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 59215
+INFO time_left 59180
+INFO time_left 58280
+INFO time_left 57362
+INFO time_left 56659
+INFO time_left 56625
+INFO time_left 55871
+INFO time_left 55837
+INFO time_left 55061
+INFO time_left 55027
+INFO time_left 54175
+INFO time_left 53331
+INFO time_left 52486
+INFO time_left 51657
+INFO time_left 50828
+INFO time_left 50010
+INFO time_left 49194
+INFO time_left 49161
+INFO time_left 48361
+INFO time_left 48327
+INFO time_left 47590
+INFO time_left 46849
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 59076
+INFO time_left 58156
+INFO time_left 57247
+INFO time_left 56622
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 59063
+INFO time_left 58289
+INFO time_left 57383
+INFO time_left 56880
+INFO time_left 56845
+INFO time_left 56137
+INFO time_left 56104
+INFO time_left 55232
+INFO time_left 54368
+INFO time_left 54334
+INFO time_left 54300
+INFO time_left 53457
+INFO time_left 52727
+INFO time_left 51899
+INFO time_left 51865
+INFO time_left 51042
+INFO time_left 50374
+INFO time_left 49562
+INFO time_left 48759
+INFO time_left 47959
+INFO time_left 47926
+INFO time_left 47892
+INFO time_left 47114
+INFO time_left 46333
+INFO time_left 45561
+INFO time_left 44794
+INFO time_left 44760
+INFO time_left 44002
+INFO time_left 43252
+INFO time_left 42507
+INFO time_left 42473
+INFO time_left 41732
+INFO time_left 40995
+INFO time_left 40266
+INFO time_left 39536
+INFO time_left 38813
+INFO time_left 38094
+INFO time_left 37381
+INFO time_left 36667
+INFO time_left 35997
+INFO time_left 35286
+INFO time_left 35253
+INFO time_left 34557
+INFO time_left 34522
+INFO time_left 33826
+INFO time_left 33140
+INFO time_left 32450
+INFO time_left 32417
+INFO time_left 32383
+INFO time_left 31707
+INFO time_left 31673
+INFO time_left 31638
+INFO time_left 31603
+INFO time_left 30935
+INFO time_left 30274
+INFO time_left 30240
+INFO time_left 29628
+INFO time_left 29595
+INFO time_left 29080
+INFO time_left 28424
+INFO time_left 27775
+INFO time_left 27123
+INFO time_left 26477
+INFO time_left 25826
+INFO time_left 25185
+INFO time_left 24561
+INFO time_left 23916
+INFO time_left 23279
+INFO time_left 23245
+INFO time_left 23211
+INFO time_left 22607
+INFO time_left 21975
+INFO time_left 21941
+INFO time_left 21906
+INFO time_left 21274
+INFO time_left 21240
+INFO time_left 20609
+INFO time_left 19984
+INFO time_left 19356
+INFO time_left 18729
+INFO time_left 18106
+INFO time_left 17476
+INFO time_left 16855
+INFO time_left 16232
+INFO time_left 15608
+INFO time_left 14989
+INFO time_left 14362
+INFO time_left 13743
+INFO time_left 13123
+INFO time_left 12501
+INFO time_left 11884
+INFO time_left 11258
+INFO time_left 10641
+INFO time_left 10025
+INFO time_left 9404
+INFO time_left 8786
+INFO time_left 8752
+INFO time_left 8136
+INFO time_left 7512
+INFO time_left 6897
+INFO time_left 6277
+INFO time_left 5658
+INFO time_left 5034
+INFO time_left 4406
+INFO time_left 3785
+INFO time_left 3169
+INFO time_left 2656
+INFO time_left 2310
+INFO time_left 2100
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 59075
+INFO time_left 58152
+INFO time_left 57233
+INFO time_left 56330
+INFO time_left 55437
+INFO time_left 54542
+INFO time_left 53841
+INFO time_left 53807
+INFO time_left 53106
+INFO time_left 53072
+INFO time_left 53037
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 59087
+INFO time_left 58178
+INFO time_left 57274
+INFO time_left 56373
+INFO time_left 55644
+INFO time_left 55610
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 59088
+INFO time_left 58233
+INFO time_left 58200
+INFO time_left 57325
+INFO time_left 57291
+INFO time_left 56418
+INFO time_left 55543
+INFO time_left 55510
+INFO time_left 54669
+INFO time_left 54635
+INFO time_left 53840
+INFO time_left 53806
+INFO time_left 52907
+INFO time_left 52873
+INFO time_left 52050
+INFO time_left 51236
+INFO time_left 51202
+INFO time_left 51168
+INFO time_left 51134
+INFO time_left 50337
+INFO time_left 49590
+INFO time_left 48804
+INFO time_left 48028
+INFO time_left 47993
+INFO time_left 47225
+INFO time_left 46564
+INFO time_left 45809
+INFO time_left 45055
+INFO time_left 44303
+INFO time_left 43584
+INFO time_left 42841
+INFO time_left 42107
+INFO time_left 41373
+INFO time_left 41340
+INFO time_left 41306
+INFO time_left 41272
+INFO time_left 41238
+INFO time_left 40526
+INFO time_left 39814
+INFO time_left 39780
+INFO time_left 39077
+INFO time_left 38375
+INFO time_left 37682
+INFO time_left 37648
+INFO time_left 37614
+INFO time_left 36925
+INFO time_left 36892
+INFO time_left 36206
+INFO time_left 36173
+INFO time_left 35499
+INFO time_left 34824
+INFO time_left 34790
+INFO time_left 34122
+INFO time_left 33459
+INFO time_left 32792
+INFO time_left 32758
+INFO time_left 32108
+INFO time_left 32073
+INFO time_left 32038
+INFO time_left 31388
+INFO time_left 30741
+INFO time_left 30087
+INFO time_left 29442
+INFO time_left 28798
+INFO time_left 28155
+INFO time_left 27510
+INFO time_left 27476
+INFO time_left 26839
+INFO time_left 26234
+INFO time_left 25601
+INFO time_left 24967
+INFO time_left 24328
+INFO time_left 23699
+INFO time_left 23070
+INFO time_left 22432
+INFO time_left 21805
+INFO time_left 21174
+INFO time_left 20547
+INFO time_left 19920
+INFO time_left 19886
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 59095
+INFO time_left 58190
+INFO time_left 57357
+INFO time_left 57324
+INFO time_left 56438
+INFO time_left 55563
+INFO time_left 54723
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 59080
+INFO time_left 58169
+INFO time_left 57427
+INFO time_left 57393
+INFO time_left 56687
+INFO time_left 56654
+INFO time_left 55946
+INFO time_left 55912
+INFO time_left 55175
+INFO time_left 54299
+INFO time_left 53438
+INFO time_left 52589
+INFO time_left 51917
+INFO time_left 51217
+INFO time_left 51184
+INFO time_left 51150
+INFO time_left 50474
+INFO time_left 50440
+INFO time_left 49762
+INFO time_left 49728
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 59083
+INFO time_left 58172
+INFO time_left 57265
+INFO time_left 56369
+INFO time_left 55477
+INFO time_left 54730
+INFO time_left 54695
+INFO time_left 53831
+INFO time_left 53108
+INFO time_left 53074
+INFO time_left 52228
+INFO time_left 51382
+INFO time_left 50543
+INFO time_left 50508
+INFO time_left 50473
+INFO time_left 49649
+INFO time_left 48820
+INFO time_left 48010
+INFO time_left 47204
+INFO time_left 47171
+INFO time_left 46384
+INFO time_left 45594
+INFO time_left 44818
+INFO time_left 44038
+INFO time_left 43271
+INFO time_left 42502
+INFO time_left 41746
+INFO time_left 40992
+INFO time_left 40236
+INFO time_left 39491
+INFO time_left 38819
+INFO time_left 38081
+INFO time_left 38047
+INFO time_left 38013
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 59091
+INFO time_left 58199
+INFO time_left 57348
+INFO time_left 57315
+INFO time_left 56443
+INFO time_left 55604
+INFO time_left 55570
+INFO time_left 55535
+INFO time_left 54705
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 59100
+INFO time_left 58220
+INFO time_left 58185
+INFO time_left 57303
+INFO time_left 56432
+INFO time_left 55572
+INFO time_left 54716
+INFO time_left 53861
+INFO time_left 53070
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 59073
+INFO time_left 58145
+INFO time_left 57235
+INFO time_left 56331
+INFO time_left 55438
+INFO time_left 54549
+INFO time_left 53666
+INFO time_left 52788
+INFO time_left 52092
+INFO time_left 52058
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 59210
+INFO time_left 59177
+INFO time_left 58282
+INFO time_left 57386
+INFO time_left 56676
+INFO time_left 56642
+INFO time_left 55773
+INFO time_left 55034
+INFO time_left 55001
+INFO time_left 54209
+INFO time_left 53354
+INFO time_left 52511
+INFO time_left 51672
+INFO time_left 50838
+INFO time_left 50014
+INFO time_left 49980
+INFO time_left 49256
+INFO time_left 49221
+INFO time_left 48519
+INFO time_left 47721
+INFO time_left 47687
+INFO time_left 46881
+INFO time_left 46099
+INFO time_left 46064
+INFO time_left 45291
+INFO time_left 44523
+INFO time_left 43756
+INFO time_left 43142
+INFO time_left 42389
+INFO time_left 41641
+INFO time_left 41607
+INFO time_left 40863
+INFO time_left 40126
+INFO time_left 39395
+INFO time_left 38664
+INFO time_left 37941
+INFO time_left 37218
+INFO time_left 36503
+INFO time_left 35824
+INFO time_left 35117
+INFO time_left 35084
+INFO time_left 35050
+INFO time_left 34348
+INFO time_left 33658
+INFO time_left 33014
+INFO time_left 32980
+INFO time_left 32297
+INFO time_left 31612
+INFO time_left 30936
+INFO time_left 30256
+INFO time_left 30223
+INFO time_left 30189
+INFO time_left 29521
+INFO time_left 28890
+INFO time_left 28855
+INFO time_left 28192
+INFO time_left 27536
+INFO time_left 26872
+INFO time_left 26220
+INFO time_left 25570
+INFO time_left 25536
+INFO time_left 25502
+INFO time_left 24848
+INFO time_left 24206
+INFO time_left 23599
+INFO time_left 23565
+INFO time_left 22920
+INFO time_left 22886
+INFO time_left 22251
+INFO time_left 21608
+INFO time_left 20974
+INFO time_left 20342
+INFO time_left 19710
+INFO time_left 19675
+INFO time_left 19047
+INFO time_left 19013
+INFO time_left 18381
+INFO time_left 18346
+INFO time_left 17720
+INFO time_left 17686
+INFO time_left 17064
+INFO time_left 16431
+INFO time_left 15809
+INFO time_left 15182
+INFO time_left 14560
+INFO time_left 13936
+INFO time_left 13313
+INFO time_left 12691
+INFO time_left 12069
+INFO time_left 11450
+INFO time_left 10827
+INFO time_left 10209
+INFO time_left 9587
+INFO time_left 8969
+INFO time_left 8345
+INFO time_left 8311
+INFO time_left 7798
+INFO time_left 7177
+INFO time_left 6556
+INFO time_left 5974
+INFO time_left 5352
+INFO time_left 4737
+INFO time_left 4119
+INFO time_left 3497
+INFO time_left 2881
+INFO time_left 2260
+INFO time_left 1781
+INFO time_left 1747
+INFO time_left 1541
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 59068
+INFO time_left 58147
+INFO time_left 57237
+INFO time_left 56453
+INFO time_left 56419
+INFO time_left 55531
+INFO time_left 54644
+INFO time_left 53768
+INFO time_left 53009
+INFO time_left 52149
+INFO time_left 51288
+INFO time_left 51255
+INFO time_left 51221
+INFO time_left 50426
+INFO time_left 50393
+INFO time_left 49834
+INFO time_left 49475
+INFO time_left 48656
+INFO time_left 48622
+INFO time_left 47822
+INFO time_left 47022
+INFO time_left 46988
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 59079
+INFO time_left 58146
+INFO time_left 57387
+INFO time_left 57353
+INFO time_left 56459
+INFO time_left 55575
+INFO time_left 54809
+INFO time_left 53942
+INFO time_left 53078
+INFO time_left 53044
+INFO time_left 52298
+INFO time_left 51483
+INFO time_left 50681
+INFO time_left 50223
+INFO time_left 49604
+INFO time_left 48781
+INFO time_left 47958
+INFO time_left 47192
+INFO time_left 46443
+INFO time_left 45645
+INFO time_left 44845
+INFO time_left 44142
+INFO time_left 43418
+INFO time_left 42639
+INFO time_left 41867
+INFO time_left 41833
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 59076
+INFO time_left 58156
+INFO time_left 57250
+INFO time_left 56339
+INFO time_left 55439
+INFO time_left 54555
+INFO time_left 53666
+INFO time_left 52961
+INFO time_left 52927
+INFO time_left 52892
+INFO time_left 52039
+INFO time_left 52005
+INFO time_left 51158
+INFO time_left 50321
+INFO time_left 49630
+INFO time_left 49597
+INFO time_left 49563
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 59077
+INFO time_left 58168
+INFO time_left 57257
+INFO time_left 56358
+INFO time_left 55654
+INFO time_left 55620
+Load opening file /Users/jing1fan/gomoku_public_benchmark/gomocup2026_public_score/freestyle15_openings.txt
+[1] Load engine: neural-gomoku (version 0.1-9x9-smoke) by neural-gomoku, ?
+[1] Load engine: tactical-plus (version 0.1) by local, ?
+[1] Started game 1 of 24 (tactical_plus vs neural_guardaware_v2_mcts16)
+[1] Finished game 1 (tactical_plus vs neural_guardaware_v2_mcts16): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts16 vs tactical_plus: 0 - 1 - 0  [0.000] 1
+[1] Started game 2 of 24 (neural_guardaware_v2_mcts16 vs tactical_plus)
+[1] Finished game 2 (neural_guardaware_v2_mcts16 vs tactical_plus): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts16 vs tactical_plus: 1 - 1 - 0  [0.500] 2
+[1] Started game 3 of 24 (tactical_plus vs neural_guardaware_v2_mcts16)
+[1] Finished game 3 (tactical_plus vs neural_guardaware_v2_mcts16): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts16 vs tactical_plus: 2 - 1 - 0  [0.667] 3
+[1] Started game 4 of 24 (neural_guardaware_v2_mcts16 vs tactical_plus)
+[1] Finished game 4 (neural_guardaware_v2_mcts16 vs tactical_plus): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts16 vs tactical_plus: 2 - 2 - 0  [0.500] 4
+[1] Started game 5 of 24 (tactical_plus vs neural_guardaware_v2_mcts16)
+[1] Finished game 5 (tactical_plus vs neural_guardaware_v2_mcts16): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts16 vs tactical_plus: 2 - 3 - 0  [0.400] 5
+[1] Started game 6 of 24 (neural_guardaware_v2_mcts16 vs tactical_plus)
+[1] Finished game 6 (neural_guardaware_v2_mcts16 vs tactical_plus): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts16 vs tactical_plus: 2 - 4 - 0  [0.333] 6
+[1] Started game 7 of 24 (tactical_plus vs neural_guardaware_v2_mcts16)
+[1] Finished game 7 (tactical_plus vs neural_guardaware_v2_mcts16): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts16 vs tactical_plus: 2 - 5 - 0  [0.286] 7
+[1] Started game 8 of 24 (neural_guardaware_v2_mcts16 vs tactical_plus)
+[1] Finished game 8 (neural_guardaware_v2_mcts16 vs tactical_plus): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts16 vs tactical_plus: 2 - 6 - 0  [0.250] 8
+[1] Started game 9 of 24 (tactical_plus vs neural_guardaware_v2_mcts16)
+[1] Finished game 9 (tactical_plus vs neural_guardaware_v2_mcts16): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts16 vs tactical_plus: 2 - 7 - 0  [0.222] 9
+[1] Started game 10 of 24 (neural_guardaware_v2_mcts16 vs tactical_plus)
+[1] Finished game 10 (neural_guardaware_v2_mcts16 vs tactical_plus): 1/2-1/2 {Draw by fullfilled board}
+Score of neural_guardaware_v2_mcts16 vs tactical_plus: 2 - 7 - 1  [0.250] 10
+[1] Started game 11 of 24 (tactical_plus vs neural_guardaware_v2_mcts16)
+[1] Finished game 11 (tactical_plus vs neural_guardaware_v2_mcts16): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts16 vs tactical_plus: 2 - 8 - 1  [0.227] 11
+[1] Started game 12 of 24 (neural_guardaware_v2_mcts16 vs tactical_plus)
+[1] Finished game 12 (neural_guardaware_v2_mcts16 vs tactical_plus): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts16 vs tactical_plus: 2 - 9 - 1  [0.208] 12
+[1] Started game 13 of 24 (tactical_plus vs neural_guardaware_v2_mcts16)
+[1] Finished game 13 (tactical_plus vs neural_guardaware_v2_mcts16): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts16 vs tactical_plus: 2 - 10 - 1  [0.192] 13
+[1] Started game 14 of 24 (neural_guardaware_v2_mcts16 vs tactical_plus)
+[1] Finished game 14 (neural_guardaware_v2_mcts16 vs tactical_plus): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts16 vs tactical_plus: 2 - 11 - 1  [0.179] 14
+[1] Started game 15 of 24 (tactical_plus vs neural_guardaware_v2_mcts16)
+[1] Finished game 15 (tactical_plus vs neural_guardaware_v2_mcts16): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts16 vs tactical_plus: 2 - 12 - 1  [0.167] 15
+[1] Started game 16 of 24 (neural_guardaware_v2_mcts16 vs tactical_plus)
+[1] Finished game 16 (neural_guardaware_v2_mcts16 vs tactical_plus): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts16 vs tactical_plus: 2 - 13 - 1  [0.156] 16
+[1] Started game 17 of 24 (tactical_plus vs neural_guardaware_v2_mcts16)
+[1] Finished game 17 (tactical_plus vs neural_guardaware_v2_mcts16): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts16 vs tactical_plus: 2 - 14 - 1  [0.147] 17
+[1] Started game 18 of 24 (neural_guardaware_v2_mcts16 vs tactical_plus)
+[1] Finished game 18 (neural_guardaware_v2_mcts16 vs tactical_plus): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts16 vs tactical_plus: 2 - 15 - 1  [0.139] 18
+[1] Started game 19 of 24 (tactical_plus vs neural_guardaware_v2_mcts16)
+[1] Finished game 19 (tactical_plus vs neural_guardaware_v2_mcts16): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts16 vs tactical_plus: 2 - 16 - 1  [0.132] 19
+[1] Started game 20 of 24 (neural_guardaware_v2_mcts16 vs tactical_plus)
+[1] Finished game 20 (neural_guardaware_v2_mcts16 vs tactical_plus): 1/2-1/2 {Draw by fullfilled board}
+Score of neural_guardaware_v2_mcts16 vs tactical_plus: 2 - 16 - 2  [0.150] 20
+[1] Started game 21 of 24 (tactical_plus vs neural_guardaware_v2_mcts16)
+[1] Finished game 21 (tactical_plus vs neural_guardaware_v2_mcts16): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts16 vs tactical_plus: 2 - 17 - 2  [0.143] 21
+[1] Started game 22 of 24 (neural_guardaware_v2_mcts16 vs tactical_plus)
+[1] Finished game 22 (neural_guardaware_v2_mcts16 vs tactical_plus): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts16 vs tactical_plus: 2 - 18 - 2  [0.136] 22
+[1] Started game 23 of 24 (tactical_plus vs neural_guardaware_v2_mcts16)
+[1] Finished game 23 (tactical_plus vs neural_guardaware_v2_mcts16): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts16 vs tactical_plus: 2 - 19 - 2  [0.130] 23
+[1] Started game 24 of 24 (neural_guardaware_v2_mcts16 vs tactical_plus)
+[1] Finished game 24 (neural_guardaware_v2_mcts16 vs tactical_plus): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts16 vs tactical_plus: 2 - 20 - 2  [0.125] 24
+
+=== SCORE candidate_mcts16_vs_tactical_plus_24g ===
+[1] Finished game 21 (tactical_plus vs neural_guardaware_v2_mcts16): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts16 vs tactical_plus: 2 - 17 - 2  [0.143] 21
+[1] Finished game 22 (neural_guardaware_v2_mcts16 vs tactical_plus): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts16 vs tactical_plus: 2 - 18 - 2  [0.136] 22
+[1] Finished game 23 (tactical_plus vs neural_guardaware_v2_mcts16): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts16 vs tactical_plus: 2 - 19 - 2  [0.130] 23
+[1] Finished game 24 (neural_guardaware_v2_mcts16 vs tactical_plus): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts16 vs tactical_plus: 2 - 20 - 2  [0.125] 24
+
+=== RUN candidate_mcts32_vs_rapfi_fast_depth1_24g ===
+neural=neural_guardaware_v2_mcts32
+opponent=rapfi_fast
+log=/Users/jing1fan/neural-gomoku/analysis/public_benchmark_eval/guardaware_v2_candidate_public_benchmark_run1/candidate_mcts32_vs_rapfi_fast_depth1_24g.log
+---------------------------
+Global Options:
+openings = /Users/jing1fan/gomoku_public_benchmark/gomocup2026_public_score/freestyle15_openings.txt
+openingType = offset
+boardSize = 15
+gameRule = 0
+pgn =
+sgf =
+msg =
+log = 0
+sample =
+random = 0
+repeat = 1
+transform = 0
+sprt = 0
+gauntlet = 0
+concurrency = 1
+games = 24
+rounds = 1
+resignCount = 0
+resignScore = 0
+drawCount = 0
+drawScore = 0
+drawAfter = 225
+fatalerror = 0
+debug = 0
+
+Engine number = 2
+---------------------------
+Engine 0 Options:
+name = neural_guardaware_v2_mcts32
+cmd = /Users/jing1fan/gomoku_public_benchmark/run_neural_guardaware_v2_candidate_mcts32.sh
+nodes = 0
+depth = 0
+timeoutTurn = 5000
+timeoutMatch = 60000
+increment = 0
+maxMemory = 367001600
+thread = 0
+tolerance = 3000
+---------------------------
+Engine 1 Options:
+name = rapfi_fast
+cmd = /Users/jing1fan/gomoku_public_benchmark/run_rapfi.sh
+nodes = 0
+depth = 1
+timeoutTurn = 1000
+timeoutMatch = 1000
+increment = 0
+maxMemory = 367001600
+thread = 0
+tolerance = 3000
+---------------------------
+loaded weights=/Users/jing1fan/neural-gomoku/c_inference/weights/15x15_b4c64_guardaware_v2_modefix_candidate_run1_weights.bin mcts_sims=32 debug_decision=0 move_mode=mcts_safe
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58499
+INFO time_left 57017
+INFO time_left 55546
+INFO time_left 54086
+INFO time_left 52621
+INFO time_left 51159
+INFO time_left 49951
+INFO time_left 48626
+INFO time_left 48592
+INFO time_left 48559
+INFO time_left 48525
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58515
+INFO time_left 57071
+INFO time_left 55744
+INFO time_left 54258
+INFO time_left 52829
+INFO time_left 52796
+INFO time_left 51381
+INFO time_left 49980
+INFO time_left 48553
+INFO time_left 47225
+INFO time_left 47191
+INFO time_left 45815
+INFO time_left 44412
+INFO time_left 43003
+INFO time_left 41613
+INFO time_left 41579
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58520
+INFO time_left 57049
+INFO time_left 55623
+INFO time_left 54193
+INFO time_left 52799
+INFO time_left 51330
+INFO time_left 51296
+INFO time_left 51262
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58504
+INFO time_left 57036
+INFO time_left 55641
+INFO time_left 54180
+INFO time_left 52726
+INFO time_left 51366
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58517
+INFO time_left 57038
+INFO time_left 55657
+INFO time_left 54293
+INFO time_left 52969
+INFO time_left 51519
+INFO time_left 51485
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58518
+INFO time_left 57250
+INFO time_left 55983
+INFO time_left 54679
+INFO time_left 53350
+INFO time_left 53316
+INFO time_left 53282
+INFO time_left 53248
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58517
+INFO time_left 57043
+INFO time_left 55768
+INFO time_left 54298
+INFO time_left 53066
+INFO time_left 52029
+INFO time_left 51995
+INFO time_left 51961
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58651
+INFO time_left 57175
+INFO time_left 55707
+INFO time_left 54430
+INFO time_left 54396
+INFO time_left 53085
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58492
+INFO time_left 57213
+INFO time_left 55736
+INFO time_left 54416
+INFO time_left 53122
+INFO time_left 52001
+INFO time_left 50732
+INFO time_left 50699
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58510
+INFO time_left 57175
+INFO time_left 55704
+INFO time_left 54812
+INFO time_left 53573
+INFO time_left 52126
+INFO time_left 50684
+INFO time_left 50649
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58509
+INFO time_left 57027
+INFO time_left 55551
+INFO time_left 54252
+INFO time_left 52793
+INFO time_left 52759
+INFO time_left 51442
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58516
+INFO time_left 57236
+INFO time_left 55764
+INFO time_left 54441
+INFO time_left 54407
+INFO time_left 54374
+INFO time_left 53227
+INFO time_left 53192
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58518
+INFO time_left 57103
+INFO time_left 55632
+INFO time_left 54172
+INFO time_left 52738
+INFO time_left 52704
+INFO time_left 52670
+INFO time_left 51363
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58525
+INFO time_left 57107
+INFO time_left 55701
+INFO time_left 55666
+INFO time_left 55631
+INFO time_left 54185
+INFO time_left 52927
+INFO time_left 51573
+INFO time_left 51538
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58509
+INFO time_left 57032
+INFO time_left 55646
+INFO time_left 54174
+INFO time_left 52823
+INFO time_left 51367
+INFO time_left 50023
+INFO time_left 48960
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58514
+INFO time_left 57225
+INFO time_left 55831
+INFO time_left 54505
+INFO time_left 53051
+INFO time_left 53017
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58519
+INFO time_left 57082
+INFO time_left 57047
+INFO time_left 55660
+INFO time_left 55625
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58560
+INFO time_left 57210
+INFO time_left 55769
+INFO time_left 55736
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58506
+INFO time_left 57030
+INFO time_left 55562
+INFO time_left 54202
+INFO time_left 53026
+INFO time_left 52991
+INFO time_left 52957
+INFO time_left 51878
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58649
+INFO time_left 57173
+INFO time_left 55871
+INFO time_left 54417
+INFO time_left 52969
+INFO time_left 51676
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58521
+INFO time_left 57045
+INFO time_left 55575
+INFO time_left 54233
+INFO time_left 52770
+INFO time_left 51399
+INFO time_left 49956
+INFO time_left 48585
+INFO time_left 47210
+INFO time_left 47176
+INFO time_left 47142
+INFO time_left 47107
+INFO time_left 47072
+INFO time_left 47038
+INFO time_left 47004
+INFO time_left 45717
+INFO time_left 45682
+INFO time_left 45648
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58674
+INFO time_left 57194
+INFO time_left 55903
+INFO time_left 54444
+INFO time_left 53147
+INFO time_left 51701
+INFO time_left 50271
+INFO time_left 48838
+INFO time_left 47479
+INFO time_left 46158
+INFO time_left 44728
+INFO time_left 43387
+INFO time_left 42076
+INFO time_left 42042
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58492
+INFO time_left 57098
+INFO time_left 55715
+INFO time_left 54252
+INFO time_left 53000
+INFO time_left 51658
+INFO time_left 50297
+INFO time_left 48898
+INFO time_left 48864
+INFO time_left 48830
+INFO time_left 48795
+INFO time_left 48759
+INFO rule 0
+INFO timeout_turn 5000
+INFO timeout_match 60000
+INFO max_memory 367001600
+INFO time_left 60000
+INFO time_left 58521
+INFO time_left 57198
+INFO time_left 55964
+INFO time_left 54507
+INFO time_left 53210
+INFO time_left 51761
+INFO time_left 50455
+INFO time_left 49023
+INFO time_left 47780
+INFO time_left 46357
+INFO time_left 45117
+INFO time_left 43697
+INFO time_left 42298
+INFO time_left 40892
+INFO time_left 40858
+INFO time_left 40823
+INFO time_left 39593
+Load opening file /Users/jing1fan/gomoku_public_benchmark/gomocup2026_public_score/freestyle15_openings.txt
+[1] Load engine: neural-gomoku (version 0.1-9x9-smoke) by neural-gomoku, ?
+[1] Load engine: Rapfi (version 0.43.02 (clang++ 21.0.0 on Apple NEON_DOTPROD)) by Rapfi developers (see AUTHORS file), China
+[1] Started game 1 of 24 (rapfi_fast vs neural_guardaware_v2_mcts32)
+[1] Finished game 1 (rapfi_fast vs neural_guardaware_v2_mcts32): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts32 vs rapfi_fast: 0 - 1 - 0  [0.000] 1
+[1] Started game 2 of 24 (neural_guardaware_v2_mcts32 vs rapfi_fast)
+[1] Finished game 2 (neural_guardaware_v2_mcts32 vs rapfi_fast): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts32 vs rapfi_fast: 0 - 2 - 0  [0.000] 2
+[1] Started game 3 of 24 (rapfi_fast vs neural_guardaware_v2_mcts32)
+[1] Finished game 3 (rapfi_fast vs neural_guardaware_v2_mcts32): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts32 vs rapfi_fast: 0 - 3 - 0  [0.000] 3
+[1] Started game 4 of 24 (neural_guardaware_v2_mcts32 vs rapfi_fast)
+[1] Finished game 4 (neural_guardaware_v2_mcts32 vs rapfi_fast): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts32 vs rapfi_fast: 0 - 4 - 0  [0.000] 4
+[1] Started game 5 of 24 (rapfi_fast vs neural_guardaware_v2_mcts32)
+[1] Finished game 5 (rapfi_fast vs neural_guardaware_v2_mcts32): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts32 vs rapfi_fast: 0 - 5 - 0  [0.000] 5
+[1] Started game 6 of 24 (neural_guardaware_v2_mcts32 vs rapfi_fast)
+[1] Finished game 6 (neural_guardaware_v2_mcts32 vs rapfi_fast): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts32 vs rapfi_fast: 0 - 6 - 0  [0.000] 6
+[1] Started game 7 of 24 (rapfi_fast vs neural_guardaware_v2_mcts32)
+[1] Finished game 7 (rapfi_fast vs neural_guardaware_v2_mcts32): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts32 vs rapfi_fast: 0 - 7 - 0  [0.000] 7
+[1] Started game 8 of 24 (neural_guardaware_v2_mcts32 vs rapfi_fast)
+[1] Finished game 8 (neural_guardaware_v2_mcts32 vs rapfi_fast): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts32 vs rapfi_fast: 0 - 8 - 0  [0.000] 8
+[1] Started game 9 of 24 (rapfi_fast vs neural_guardaware_v2_mcts32)
+[1] Finished game 9 (rapfi_fast vs neural_guardaware_v2_mcts32): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts32 vs rapfi_fast: 0 - 9 - 0  [0.000] 9
+[1] Started game 10 of 24 (neural_guardaware_v2_mcts32 vs rapfi_fast)
+[1] Finished game 10 (neural_guardaware_v2_mcts32 vs rapfi_fast): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts32 vs rapfi_fast: 0 - 10 - 0  [0.000] 10
+[1] Started game 11 of 24 (rapfi_fast vs neural_guardaware_v2_mcts32)
+[1] Finished game 11 (rapfi_fast vs neural_guardaware_v2_mcts32): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts32 vs rapfi_fast: 0 - 11 - 0  [0.000] 11
+[1] Started game 12 of 24 (neural_guardaware_v2_mcts32 vs rapfi_fast)
+[1] Finished game 12 (neural_guardaware_v2_mcts32 vs rapfi_fast): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts32 vs rapfi_fast: 0 - 12 - 0  [0.000] 12
+[1] Started game 13 of 24 (rapfi_fast vs neural_guardaware_v2_mcts32)
+[1] Finished game 13 (rapfi_fast vs neural_guardaware_v2_mcts32): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts32 vs rapfi_fast: 0 - 13 - 0  [0.000] 13
+[1] Started game 14 of 24 (neural_guardaware_v2_mcts32 vs rapfi_fast)
+[1] Finished game 14 (neural_guardaware_v2_mcts32 vs rapfi_fast): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts32 vs rapfi_fast: 0 - 14 - 0  [0.000] 14
+[1] Started game 15 of 24 (rapfi_fast vs neural_guardaware_v2_mcts32)
+[1] Finished game 15 (rapfi_fast vs neural_guardaware_v2_mcts32): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts32 vs rapfi_fast: 0 - 15 - 0  [0.000] 15
+[1] Started game 16 of 24 (neural_guardaware_v2_mcts32 vs rapfi_fast)
+[1] Finished game 16 (neural_guardaware_v2_mcts32 vs rapfi_fast): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts32 vs rapfi_fast: 0 - 16 - 0  [0.000] 16
+[1] Started game 17 of 24 (rapfi_fast vs neural_guardaware_v2_mcts32)
+[1] Finished game 17 (rapfi_fast vs neural_guardaware_v2_mcts32): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts32 vs rapfi_fast: 0 - 17 - 0  [0.000] 17
+[1] Started game 18 of 24 (neural_guardaware_v2_mcts32 vs rapfi_fast)
+[1] Finished game 18 (neural_guardaware_v2_mcts32 vs rapfi_fast): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts32 vs rapfi_fast: 0 - 18 - 0  [0.000] 18
+[1] Started game 19 of 24 (rapfi_fast vs neural_guardaware_v2_mcts32)
+[1] Finished game 19 (rapfi_fast vs neural_guardaware_v2_mcts32): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts32 vs rapfi_fast: 0 - 19 - 0  [0.000] 19
+[1] Started game 20 of 24 (neural_guardaware_v2_mcts32 vs rapfi_fast)
+[1] Finished game 20 (neural_guardaware_v2_mcts32 vs rapfi_fast): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts32 vs rapfi_fast: 0 - 20 - 0  [0.000] 20
+[1] Started game 21 of 24 (rapfi_fast vs neural_guardaware_v2_mcts32)
+[1] Finished game 21 (rapfi_fast vs neural_guardaware_v2_mcts32): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts32 vs rapfi_fast: 0 - 21 - 0  [0.000] 21
+[1] Started game 22 of 24 (neural_guardaware_v2_mcts32 vs rapfi_fast)
+[1] Finished game 22 (neural_guardaware_v2_mcts32 vs rapfi_fast): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts32 vs rapfi_fast: 0 - 22 - 0  [0.000] 22
+[1] Started game 23 of 24 (rapfi_fast vs neural_guardaware_v2_mcts32)
+[1] Finished game 23 (rapfi_fast vs neural_guardaware_v2_mcts32): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts32 vs rapfi_fast: 0 - 23 - 0  [0.000] 23
+[1] Started game 24 of 24 (neural_guardaware_v2_mcts32 vs rapfi_fast)
+[1] Finished game 24 (neural_guardaware_v2_mcts32 vs rapfi_fast): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts32 vs rapfi_fast: 0 - 24 - 0  [0.000] 24
+
+=== SCORE candidate_mcts32_vs_rapfi_fast_depth1_24g ===
+[1] Finished game 21 (rapfi_fast vs neural_guardaware_v2_mcts32): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts32 vs rapfi_fast: 0 - 21 - 0  [0.000] 21
+[1] Finished game 22 (neural_guardaware_v2_mcts32 vs rapfi_fast): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts32 vs rapfi_fast: 0 - 22 - 0  [0.000] 22
+[1] Finished game 23 (rapfi_fast vs neural_guardaware_v2_mcts32): 1-0 {Black win by five connection}
+Score of neural_guardaware_v2_mcts32 vs rapfi_fast: 0 - 23 - 0  [0.000] 23
+[1] Finished game 24 (neural_guardaware_v2_mcts32 vs rapfi_fast): 0-1 {White win by five connection}
+Score of neural_guardaware_v2_mcts32 vs rapfi_fast: 0 - 24 - 0  [0.000] 24
+
+=== all ladder runs complete ===
