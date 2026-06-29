@@ -13,6 +13,7 @@ from typing import Any
 
 import numpy as np
 import torch
+import torch.nn.functional as F
 
 from gomoku_agent.checkpoint import load_compatible_checkpoint
 from gomoku_agent.model import PolicyValueNet
@@ -22,6 +23,11 @@ from train_rapfi_teacher_policy_rank_topk_probe import (
     make_multisuppress_tensors,
     diagnose_summary,
     train,
+    masked_softmax,
+    masked_log_softmax,
+    configure_policy_head_trainable,
+    set_policy_head_training_mode,
+    assert_finite_terms,
 )
 
 
@@ -66,6 +72,30 @@ def parse_args() -> argparse.Namespace:
     ap.add_argument("--pair-weight", type=float, default=0.0)
     ap.add_argument("--worst-weight", type=float, default=0.0)
     ap.add_argument("--anchor-kl-weight", type=float, default=0.05)
+    ap.add_argument(
+        "--hard-guard-reference-kl-weight",
+        type=float,
+        default=0.0,
+        help="Guard-aware v1: KL weight preserving current_best distribution on hard_guard_samples.",
+    )
+    ap.add_argument(
+        "--hard-guard-target-ce-weight",
+        type=float,
+        default=0.0,
+        help="Guard-aware v1: target CE weight on hard_guard_samples.",
+    )
+    ap.add_argument(
+        "--hard-guard-beats-weight",
+        type=float,
+        default=0.0,
+        help="Guard-aware v1: beats-worst hinge weight on hard guard rows that previously beat suppressors.",
+    )
+    ap.add_argument(
+        "--hard-guard-beats-margin",
+        type=float,
+        default=0.0,
+        help="Guard-aware v1: margin for hard-guard beats preservation; default 0 preserves target above suppressors.",
+    )
     ap.add_argument("--weight-decay", type=float, default=1e-5)
     ap.add_argument("--seed", type=int, default=37)
     ap.add_argument("--print-every", type=int, default=1)
@@ -178,6 +208,221 @@ def summarize_delta(before: dict[str, Any], after: dict[str, Any]) -> dict[str, 
         if key != "rows":
             out[f"{key}_delta"] = float(after[key]) - float(before[key])
     return out
+
+
+
+
+def make_hard_guard_beats_mask(samples: list[dict[str, Any]], device: torch.device) -> torch.Tensor:
+    flags: list[float] = []
+    for sample in samples:
+        role = str(sample.get("guarded_split_v1_hard_guard_role", ""))
+        trace = sample.get("guarded_split_v1_trace", {}) or {}
+        beats_worst_before = float(trace.get("teacher_beats_worst_before", 0) or 0)
+        beats_all_before = float(trace.get("teacher_beats_all_before", 0) or 0)
+        active = (
+            role == "hard_protected_beats_guard"
+            or beats_worst_before > 0
+            or beats_all_before > 0
+        )
+        flags.append(1.0 if active else 0.0)
+    return torch.tensor(flags, dtype=torch.float32, device=device)
+
+
+def _weighted_mean(values: torch.Tensor, weights: torch.Tensor) -> torch.Tensor:
+    return (values * weights).sum() / weights.sum().clamp_min(1e-8)
+
+
+def _zero_loss_like(reference: torch.Tensor) -> torch.Tensor:
+    return torch.zeros((), dtype=reference.dtype, device=reference.device)
+
+
+def compute_multisuppress_terms(
+    model: torch.nn.Module,
+    tensors: tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor],
+    margin: float,
+) -> dict[str, torch.Tensor]:
+    states, legal_masks, target_actions, suppress_actions, weights = tensors
+
+    logits, _values = model(states)
+    log_probs = masked_log_softmax(logits, legal_masks)
+
+    target_logits = logits.gather(1, target_actions.unsqueeze(1)).squeeze(1)
+    ce_per_row = -log_probs.gather(1, target_actions.unsqueeze(1)).squeeze(1)
+
+    if suppress_actions.ndim == 1:
+        suppress_actions = suppress_actions.unsqueeze(1)
+
+    valid_suppress = suppress_actions >= 0
+    safe_suppress_actions = suppress_actions.clamp_min(0)
+    suppress_logits = logits.gather(1, safe_suppress_actions)
+    gaps = target_logits.unsqueeze(1) - suppress_logits
+
+    pair_hinges = F.relu(float(margin) - gaps) * valid_suppress.float()
+    suppress_counts = valid_suppress.float().sum(dim=1).clamp_min(1.0)
+    per_row_pair_hinge = pair_hinges.sum(dim=1) / suppress_counts
+
+    suppress_logits_for_worst = suppress_logits.masked_fill(~valid_suppress, -1.0e9)
+    worst_suppress_logits = suppress_logits_for_worst.max(dim=1).values
+    worst_gaps = target_logits - worst_suppress_logits
+    per_row_worst_hinge = F.relu(float(margin) - worst_gaps)
+
+    return {
+        "logits": logits,
+        "log_probs": log_probs,
+        "weights": weights,
+        "ce_loss": _weighted_mean(ce_per_row, weights),
+        "pair_hinge_loss": _weighted_mean(per_row_pair_hinge, weights),
+        "worst_hinge_loss": _weighted_mean(per_row_worst_hinge, weights),
+        "mean_gap": (gaps * valid_suppress.float()).sum() / valid_suppress.float().sum().clamp_min(1.0),
+        "mean_worst_gap": _weighted_mean(worst_gaps, weights),
+        "per_row_worst_hinge": per_row_worst_hinge,
+    }
+
+
+def compute_guardaware_loss_terms(
+    model: torch.nn.Module,
+    tensors: tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor],
+    anchor_tensors: tuple[torch.Tensor, torch.Tensor],
+    ref_anchor_probs: torch.Tensor,
+    hard_guard_tensors: tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor] | None,
+    ref_hard_guard_probs: torch.Tensor | None,
+    hard_guard_beats_mask: torch.Tensor | None,
+    args: argparse.Namespace,
+) -> dict[str, torch.Tensor]:
+    main = compute_multisuppress_terms(model, tensors, args.margin)
+
+    anchor_states, anchor_masks = anchor_tensors
+    anchor_logits, _anchor_values = model(anchor_states)
+    anchor_log_probs = masked_log_softmax(anchor_logits, anchor_masks)
+    anchor_kl = (
+        ref_anchor_probs
+        * (torch.log(ref_anchor_probs.clamp_min(1e-12)) - anchor_log_probs)
+    ).sum(dim=-1).mean()
+
+    hard_guard_reference_kl = _zero_loss_like(main["ce_loss"])
+    hard_guard_target_ce = _zero_loss_like(main["ce_loss"])
+    hard_guard_beats_hinge = _zero_loss_like(main["ce_loss"])
+
+    if hard_guard_tensors is not None:
+        guard = compute_multisuppress_terms(
+            model,
+            hard_guard_tensors,
+            args.hard_guard_beats_margin,
+        )
+        _guard_states, _guard_masks, _guard_targets, _guard_suppress, guard_weights = hard_guard_tensors
+
+        if ref_hard_guard_probs is not None:
+            hard_guard_reference_kl_per_row = (
+                ref_hard_guard_probs
+                * (torch.log(ref_hard_guard_probs.clamp_min(1e-12)) - guard["log_probs"])
+            ).sum(dim=-1)
+            hard_guard_reference_kl = _weighted_mean(
+                hard_guard_reference_kl_per_row,
+                guard_weights,
+            )
+
+        hard_guard_target_ce = guard["ce_loss"]
+
+        if hard_guard_beats_mask is not None and float(hard_guard_beats_mask.sum().item()) > 0:
+            beats_weights = guard_weights * hard_guard_beats_mask
+            hard_guard_beats_hinge = _weighted_mean(
+                guard["per_row_worst_hinge"],
+                beats_weights,
+            )
+
+    loss = (
+        args.ce_weight * main["ce_loss"]
+        + args.pair_weight * main["pair_hinge_loss"]
+        + args.worst_weight * main["worst_hinge_loss"]
+        + args.anchor_kl_weight * anchor_kl
+        + args.hard_guard_reference_kl_weight * hard_guard_reference_kl
+        + args.hard_guard_target_ce_weight * hard_guard_target_ce
+        + args.hard_guard_beats_weight * hard_guard_beats_hinge
+    )
+
+    return {
+        "loss": loss,
+        "ce_loss": main["ce_loss"],
+        "pair_hinge_loss": main["pair_hinge_loss"],
+        "worst_hinge_loss": main["worst_hinge_loss"],
+        "anchor_kl": anchor_kl,
+        "hard_guard_reference_kl": hard_guard_reference_kl,
+        "hard_guard_target_ce": hard_guard_target_ce,
+        "hard_guard_beats_hinge": hard_guard_beats_hinge,
+        "mean_gap": main["mean_gap"],
+        "mean_worst_gap": main["mean_worst_gap"],
+    }
+
+
+def train_guardaware(
+    model: torch.nn.Module,
+    reference_model: torch.nn.Module,
+    tensors: tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor],
+    anchor_tensors: tuple[torch.Tensor, torch.Tensor],
+    hard_guard_tensors: tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor] | None,
+    hard_guard_beats_mask: torch.Tensor | None,
+    args: argparse.Namespace,
+) -> list[dict[str, float]]:
+    optimizer = torch.optim.AdamW(
+        configure_policy_head_trainable(model),
+        lr=args.lr,
+        weight_decay=args.weight_decay,
+    )
+
+    reference_model.eval()
+    anchor_states, anchor_masks = anchor_tensors
+    with torch.no_grad():
+        ref_anchor_logits, _ref_values = reference_model(anchor_states)
+        ref_anchor_probs = masked_softmax(ref_anchor_logits, anchor_masks)
+
+    ref_hard_guard_probs = None
+    if hard_guard_tensors is not None:
+        guard_states, guard_masks, _guard_targets, _guard_suppress, _guard_weights = hard_guard_tensors
+        with torch.no_grad():
+            ref_guard_logits, _ref_guard_values = reference_model(guard_states)
+            ref_hard_guard_probs = masked_softmax(ref_guard_logits, guard_masks)
+
+    history: list[dict[str, float]] = []
+    for epoch in range(1, args.epochs + 1):
+        set_policy_head_training_mode(model)
+        terms = compute_guardaware_loss_terms(
+            model,
+            tensors,
+            anchor_tensors,
+            ref_anchor_probs,
+            hard_guard_tensors,
+            ref_hard_guard_probs,
+            hard_guard_beats_mask,
+            args,
+        )
+        assert_finite_terms(terms, f"guardaware epoch {epoch}")
+
+        optimizer.zero_grad()
+        terms["loss"].backward()
+        torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=0.5)
+        optimizer.step()
+
+        row = {name: float(value.detach().item()) for name, value in terms.items()}
+        row["epoch"] = float(epoch)
+        history.append(row)
+
+        if epoch == 1 or epoch == args.epochs or epoch % args.print_every == 0:
+            print(
+                f"epoch {epoch:03d}/{args.epochs} "
+                f"loss={row['loss']:.6f} "
+                f"ce={row['ce_loss']:.6f} "
+                f"pair_hinge={row['pair_hinge_loss']:.6f} "
+                f"worst_hinge={row['worst_hinge_loss']:.6f} "
+                f"anchor_kl={row['anchor_kl']:.6f} "
+                f"hard_guard_kl={row['hard_guard_reference_kl']:.6f} "
+                f"hard_guard_ce={row['hard_guard_target_ce']:.6f} "
+                f"hard_guard_beats={row['hard_guard_beats_hinge']:.6f} "
+                f"mean_gap={row['mean_gap']:.6f} "
+                f"mean_worst_gap={row['mean_worst_gap']:.6f}",
+                flush=True,
+            )
+
+    return history
 
 
 
@@ -611,6 +856,10 @@ def write_report(
         f"- pair_weight: {args.pair_weight}",
         f"- worst_weight: {args.worst_weight}",
         f"- anchor_kl_weight: {args.anchor_kl_weight}",
+        f"- hard_guard_reference_kl_weight: {args.hard_guard_reference_kl_weight}",
+        f"- hard_guard_target_ce_weight: {args.hard_guard_target_ce_weight}",
+        f"- hard_guard_beats_weight: {args.hard_guard_beats_weight}",
+        f"- hard_guard_beats_margin: {args.hard_guard_beats_margin}",
         "",
     ]
 
@@ -641,6 +890,9 @@ def write_report(
             "pair_hinge_loss",
             "worst_hinge_loss",
             "anchor_kl",
+            "hard_guard_reference_kl",
+            "hard_guard_target_ce",
+            "hard_guard_beats_hinge",
             "mean_gap",
             "mean_worst_gap",
         ]:
@@ -711,6 +963,17 @@ def main() -> int:
 
     anchors = load_anchor_samples(args.anchor_snapshots)
     anchor_tensors = make_anchor_tensors(anchors, device)
+    hard_guard_samples = data.get("hard_guard_samples", []) or []
+    hard_guard_tensors = (
+        make_multisuppress_tensors(hard_guard_samples, device)
+        if hard_guard_samples
+        else None
+    )
+    hard_guard_beats_mask = (
+        make_hard_guard_beats_mask(hard_guard_samples, device)
+        if hard_guard_samples
+        else None
+    )
     train_tensors = make_multisuppress_tensors(data["samples"], device)
 
     before = {
@@ -719,11 +982,13 @@ def main() -> int:
     }
     before_row_trace = diagnose_row_trace(model, groups, device)
 
-    history = train(
+    history = train_guardaware(
         model,
         reference_model,
         train_tensors,
         anchor_tensors,
+        hard_guard_tensors,
+        hard_guard_beats_mask,
         args,
     )
 
@@ -775,6 +1040,7 @@ def main() -> int:
     if args.out_row_csv is not None:
         print("out_row_csv:", args.out_row_csv)
     print("hard_guard_rows:", len(hard_guard_rows))
+    print("hard_guard_objective_rows:", len(data.get("hard_guard_samples", []) or []))
     if args.out_hard_guard_csv is not None:
         print("out_hard_guard_csv:", args.out_hard_guard_csv)
     print("b4c64/current-best-safe no-save probe complete; no checkpoint saved")
