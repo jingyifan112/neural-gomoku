@@ -1,0 +1,10 @@
+loaded checkpoints/15x15_current_best.pt
+loaded checkpoints/15x15_current_best.pt
+loaded checkpoints/15x15_current_best.pt
+{
+  "any_policy_head_training_rank_differs_from_eval": false,
+  "any_train_rank_differs_from_eval": true,
+  "max_abs_policy_head_training_minus_eval_target_prob_delta": 0.0,
+  "max_abs_train_minus_eval_target_prob_delta": 0.026625797152519226
+}
+wrote analysis/integration_eval/rank_topk_nosave_b4c64_bn_mode_semantics_audit
