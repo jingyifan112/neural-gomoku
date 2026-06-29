@@ -1,0 +1,13 @@
+{
+  "branch": "exp/15x15-rank-topk-nosave-b4c64-diagnostics-mode-fix-wrapper",
+  "call_path_uses_train_guardaware": true,
+  "contains_diagnostics_mode_fix_marker": true,
+  "contains_hard_guard_args": true,
+  "contains_out_checkpoint": false,
+  "contains_torch_save": false,
+  "contains_train_guardaware": true,
+  "generated_at": "2026-06-29T10:21:02",
+  "scope": "wrapper diagnostics mode fix only; no training; no checkpoint save; no C export; no public benchmark; no promotion",
+  "set_policy_head_training_mode_call_count": 3,
+  "wrapper": "scripts/probe_policy_rank_topk_protected_nosave_b4c64_current_best.py"
+}

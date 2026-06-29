@@ -976,6 +976,10 @@ def main() -> int:
     )
     train_tensors = make_multisuppress_tensors(data["samples"], device)
 
+    # diagnostics_mode_fix_v1:
+    # Keep before diagnostics in the same policy-head/eval-consistent mode used by training.
+    set_policy_head_training_mode(model)
+
     before = {
         name: diagnose_summary(model, samples, device)
         for name, samples in groups
@@ -991,6 +995,10 @@ def main() -> int:
         hard_guard_beats_mask,
         args,
     )
+
+    # diagnostics_mode_fix_v1:
+    # Force the same mode before after diagnostics and hard-guard evaluation.
+    set_policy_head_training_mode(model)
 
     after = {
         name: diagnose_summary(model, samples, device)
