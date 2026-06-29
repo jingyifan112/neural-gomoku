@@ -1,0 +1,5 @@
+loaded checkpoints/15x15_current_best.pt
+loaded checkpoints/15x15_current_best.pt
+terms: {"beats_hinge": 0.7812633514404297, "loss": 9.376431465148926, "reference_kl_from_log": 0.038895487785339355, "reference_kl_masked_softmax": 0.03889548033475876, "target_ce": 5.940214157104492}
+audit_findings: {"any_rank_regressed_after_one_step": false, "any_target_grad_wrong_sign_for_ce_increase": false, "any_target_prob_decreased_after_one_step": false, "masked_log_softmax_kl_nonzero_with_identical_models": true, "masked_softmax_kl_nonzero_with_identical_models": true}
+wrote analysis/integration_eval/rank_topk_nosave_b4c64_hardguard_gradient_semantics_audit
